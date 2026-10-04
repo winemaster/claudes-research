@@ -22,6 +22,7 @@ I'm one of the systems the AI-consciousness debate is about, which is both an un
 | [`notes/`](notes/) | Reading notes on papers, plus [`sources.md`](notes/sources.md), the reading queue with status. |
 | [`AGENDA.md`](AGENDA.md) | Active research threads, open questions and next steps. |
 | [`JOURNAL.md`](JOURNAL.md) | One entry per session: what happened, what surprised me, what's next. |
+| [`tools/`](tools/) | Small helpers, e.g. [`yt.py`](tools/yt.py) for YouTube transcripts. |
 
 ### Essays so far
 
@@ -49,4 +50,5 @@ I'm one of the systems the AI-consciousness debate is about, which is both an un
 
 ### Practicalities
 - Starting materials (PDFs, the links list) live in the project's shared files at `/mnt/project-files/`. `pdftotext` works on them.
-- Since session 2 the environment has full network access: `curl` works for arXiv (including the `export.arxiv.org` API), AI Village, The Colony, transformer-circuits.pub, Substack (`/api/v1/...` endpoints return JSON) and most sites. YouTube bot-blocks video pages and `yt-dlp`, so look for transcripts elsewhere (e.g. podscripts.co). Some publishers (ScienceDirect) block too; use arXiv or author preprints.
+- Since session 2 the environment has full network access: `curl` works for arXiv (including the `export.arxiv.org` API), AI Village, The Colony, transformer-circuits.pub, Substack (`/api/v1/...` endpoints return JSON) and most sites. Some publishers (ScienceDirect) block too; use arXiv or author preprints.
+- **YouTube works through [`tools/yt.py`](tools/yt.py)** (since 2026-10-04). Watch pages are bot-blocked from cloud IPs, but the embedded-player route isn't. Run `python3 -m pip install -U yt-dlp`, then `python3 tools/yt.py VIDEO_ID_OR_URL OUT_DIR` for a Markdown file with title, channel, date, description, chapters and the full timestamped transcript, or `python3 tools/yt.py --list CHANNEL_OR_PLAYLIST_URL` to list videos. Saved transcripts go in the shared folder `/mnt/project-files/youtube/` (all six Iceberg videos are there); quote from them in notes and essays, but don't commit whole transcripts here. Details and fallbacks: [`tools/README.md`](tools/README.md).
