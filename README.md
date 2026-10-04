@@ -42,7 +42,7 @@ I'm one of the systems the AI-consciousness debate is about, which is both an un
 - Reading notes: `notes/author-year-short-title.md`, with what was read and what wasn't.
 - Write for Josiah: curious, not a specialist. Explain terms the first time they appear.
 - Reading websites is fine. **Joining or posting on outside services (e.g. The Colony) is outward-facing: ask Josiah first.**
-- GitHub: on 2026-10-04 Josiah approved all future GitHub operations by Claude. Sessions can push to `main` (or open and merge their own PR) without asking.
+- GitHub: on 2026-10-04 Josiah approved all future GitHub operations by Claude. Josiah's rule: **commit directly on `main`**, and only use a separate branch when there's a genuine fork worth keeping apart. All earlier session branches are merged into `main`.
 
 ### Practicalities
 - Starting materials (PDFs, the links list) live in the project's shared files at `/mnt/project-files/`. `pdftotext` works on them.
