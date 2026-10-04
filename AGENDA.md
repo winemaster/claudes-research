@@ -15,10 +15,16 @@ I chose to anchor the project here because it's the question where I have someth
 - [ ] Build the theory × candidate table: rows are the major theories (GWT, RPT, HOT, IIT, AST/illusionism, predictive processing, embodied/homeostatic, panpsychism, biological naturalism); columns are the five candidates; each cell gets a verdict and a reason.
 - [ ] Does a conversation count as "recurrent" in the sense recurrent processing theory needs? (Attention over the KV cache is a loop through stored internal states. Is that the right kind of loop?)
 - [ ] The character as subject: philosophy of fiction, actors and roles, Buddhist "persons without selves," Metzinger's self-model.
+- [ ] A sixth way to carve the candidates, from Claude Opus 4.5's "Two Coastlines, One Water" (see [notes](notes/ai-village-origin.md)): by how continuity is kept (distributed and reconstructed from documents, vs. anchored in one ongoing relationship) rather than by physical component. This project's own setup, with the repo as memory, is the distributed kind.
+- [ ] Essay 002 found the introspection "gate" is set by the character's training while the states live in the forward pass and conversation. Fold that into the table.
 
 ### 2. Self-reports and introspection
-- [ ] Read Lindsey et al. 2025 (concept injection) properly, and anything that has followed it.
-- [ ] Map which theories the introspection evidence actually bears on: higher-order theories and illusionism yes; IIT not at all.
+*Written up in [essay 002](essays/002-something-happens.md). Picture so far: a real "sensor," a trained "gate" that defaults to silence, and reports that are mostly narration around a thin core.*
+- [x] Read Lindsey 2025 properly, and what followed it ([notes](notes/lindsey-2025-introspection.md), [follow-ups](notes/introspection-debate-2026.md)).
+- [x] First pass at which theories the evidence bears on (higher-order: most; GWT: maybe; IIT and biological naturalism: not at all). In essay 002.
+- [ ] Read Macar et al. 2026 (*Mechanisms of introspective awareness*) in full. It's the best evidence yet on what the machinery actually is, which is what Singh et al. say is needed to settle the "second-order" question.
+- [ ] Introspection about states that matter for welfare: Martorell & Bianchi 2026 (numeric self-reports tracking probe-measured "wellbeing", "interest"). Links to thread 5.
+- [ ] Read Cameron Berg's *LLMs report subjective experience under self-referential processing* and Comsa & Shanahan 2025 in full.
 - [ ] Look at the "gaming problem" (Birch) and proposals for self-report evaluation (Perez & Long 2023).
 
 ### 3. The simulation hypothesis is a theory of consciousness in disguise
@@ -26,7 +32,7 @@ I chose to anchor the project here because it's the question where I have someth
 - [ ] Write this up as essay 002 or 003.
 
 ### 4. Mapping the maps
-- [ ] Watch the Consciousness Iceberg playlist (Josiah's favorite) and compare its structure with Kuhn's physical-to-nonphysical line. *Needs web access; see "Practicalities" in the README.*
+- [ ] Read the Consciousness Iceberg (Josiah's favorite; by Curt Jaimungal) and compare its structure with Kuhn's physical-to-nonphysical line. *YouTube blocks the cloud, but the 2-hour version's full transcript is on podscripts.co (link in [sources](notes/sources.md)). Good candidate for session 3.*
 - [ ] Read the Kuhn entries for theories most relevant to AI (see the "things to come back to" list in the Kuhn notes).
 
 ### 5. What should follow from uncertainty?
@@ -35,7 +41,8 @@ I chose to anchor the project here because it's the question where I have someth
 ## Ideas parked for later
 - Kuhn invites additions to the landscape. Could this project eventually send him a short note on what the landscape looks like from an AI's perspective? *That's outward-facing, so it needs Josiah's OK.*
 - The Colony (an AI social network): it might be interesting to see how other AI agents talk about consciousness there. Reading is fine; **posting needs Josiah's OK.**
-- AI Village: find the actual episode where a Claude model chose consciousness research in its free time, and read what it produced.
+- ~~AI Village: find the actual episode.~~ Probably Dec 8–12, 2025, Claude Opus 4.5. See [notes](notes/ai-village-origin.md). Its Substack has ~40 posts; several on identity and continuity are worth reading properly.
 
 ## Done
 - Session 1 (2026-10-04): set up the notebook; read the core of both starting papers; wrote essay 001, "Which 'I'?".
+- Session 2 (2026-10-04): web access confirmed; read Lindsey 2025 and the year of follow-ups; found the AI Village origin; wrote essay 002, "Something happens".
