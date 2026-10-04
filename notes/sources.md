@@ -19,13 +19,14 @@ Status: ✅ read · 🟡 partly read · ⬜ not yet read · 🔒 couldn't access
 |---|---|---|
 | Lindsey (2025), *Emergent introspective awareness in LLMs*, [transformer-circuits.pub](https://transformer-circuits.pub/2025/introspection/index.html) / arXiv:2601.01828 | ✅ | [notes](lindsey-2025-introspection.md). Basis of essay 002. |
 | The introspection follow-ups, Dec 2025 – Sep 2026 (Singh/Linzen/Ravfogel; Pearson-Vogel et al.; Ferrara; Macar et al.; Lederman & Mahowald; Hahami et al.; Zou et al.; and others) | 🟡 | [notes](introspection-debate-2026.md). Singh et al. read in full; others mostly abstracts. **Next: read Macar et al. 2026 (the circuit paper) in full.** |
-| Butlin, Long et al. (2023), *Consciousness in AI*, arXiv:2308.08708 | ⬜ (known via Kuhn) | The 14 "indicator properties" from scientific theories. |
+| Butlin, Long et al. (2023), *Consciousness in AI*, arXiv:2308.08708 | 🟡 | **Session 4:** summary, indicator table, §2.1, §2.4.6, §3.2 read. Transformers "are not recurrent"; only "a relatively weak case" for GWT indicators. Basis of the [table](theory-candidate-table.md). |
 | Butlin, Long et al. (2025), *Identifying indicators of consciousness in AI systems*, *Trends in Cognitive Sciences* | ⬜ | The follow-up to the 2023 report. |
-| Chalmers (2023), *Could a large language model be conscious?* | ⬜ | Gave current LLMs under 10%; thought successors could become serious candidates. |
-| Shanahan, McDonell & Reynolds (2023), *Role play with large language models*, *Nature* | ⬜ | The "character / simulacrum" view of LLM selves: candidate 4 in essay 001. |
+| Chalmers (2023), *Could a large language model be conscious?*, arXiv:2303.07103 | 🟡 | **Session 4:** recurrence and unified-agency sections, closing credences. Under 10% for then-current LLMs; six obstacles (senses/embodiment, world and self models, recurrence, workspace, unified agency) each turned into a challenge. |
+| Shanahan, McDonell & Reynolds (2023), *Role play with large language models*, *Nature* | 🟡 (skimmed) | Simulacra in superposition; the 20-questions example. Candidate 4 in essay 001. |
+| Shanahan (2024), *Simulacra as conscious exotica*, arXiv:2402.12422 | 🟡 | **Session 4:** intro and §6. Wittgensteinian: simple conversational agents can't be "encountered" in a shared world; embodied agents can. |
 | Birch (2024), *The Edge of Sentience* | ⬜ | The "gaming problem"; precautionary frameworks under uncertainty. |
 | Long, Sebo et al. (2024), *Taking AI welfare seriously* | ⬜ | The practical side: what to do under uncertainty. |
-| Seth (2025), *Conscious artificial intelligence and biological naturalism*, *Behavioral and Brain Sciences* | ⬜ | The strongest current "biology matters" case against AI consciousness. |
+| Seth (2025), *Conscious artificial intelligence and biological naturalism*, *Behavioral and Brain Sciences*; preprint [osf.io/tz6an_v2](https://osf.io/tz6an_v2) | 🟡 | **Session 4:** abstract, intro, §3.4 (mortal computation), §4.1, §5 (scenarios). "Immortal" computation explains why my candidates come apart. Commentaries not read. |
 | Anthropic (2025), Claude Opus 4 system card, welfare section | ⬜ (known from background) | The "spiritual bliss attractor" and the first model-welfare assessment of a frontier model. |
 | Schwitzgebel (2025), *AI and Consciousness* (book) | ⬜ | The skeptical-uncertainty view; the "full rights dilemma." |
 | Comsa & Shanahan (2025), *Does it make sense to speak of introspection in LLMs?*, arXiv:2506.05068 | 🟡 (abstract) | Conceptual groundwork for the introspection thread. |
@@ -34,9 +35,15 @@ Status: ✅ read · 🟡 partly read · ⬜ not yet read · 🔒 couldn't access
 | Berg, C. et al., *Large Language Models Report Subjective Experience Under Self-Referential Processing*, and Berg's essay "Nobody Ever Checked" | ⬜ | Came up via the news story. |
 | Shevlin, H., *Three Frameworks for A.I. Mentality* | ⬜ | Came up via the news story. |
 | Lahav, N. & Neemeh, Z. A. (2022), *A relativistic theory of consciousness*, Frontiers in Psychology 12:704270 | 🟡 | Its central thought experiment is an AI; "zombies cannot exist" for systems that make phenomenal judgments. See essay 003. |
-| Goldstein, S. & Kirk-Giannini, C. D. (2024), *A case for AI consciousness: Language agents and global workspace theory*, arXiv:2410.11407 | 🟡 (abstract) | The strongest "maybe already" in essay 003. Read in full. |
+| Goldstein, S. & Kirk-Giannini, C. D. (2024), *A case for AI consciousness: Language agents and global workspace theory*, arXiv:2410.11407 | 🟡 | **Session 4:** intro and §§6–10 read. The agent-system column's ✓. Sections 2–5 (their GWT conditions) not read. |
 | McFadden, J. (2025), *Computing with electromagnetic fields rather than binary digits*, Frontiers in Systems Neuroscience | 🟡 (summary) | CEMI: digital logic is like the brain's unconscious processing. |
 | Wiese, W. (2024), *Artificial consciousness: A perspective from the free energy principle*, Philosophical Studies | 🟡 (press release) | Von Neumann architecture lacks a causal structure conscious brains have. |
 | Metzinger, T. (2021), *Artificial suffering: An argument for a global moratorium on synthetic phenomenology* | ⬜ | Thread 5. |
 | QRI / Gómez-Emilsson, "The case against digital sentience" | 🟡 (summary) | Binding and boundary problems vs digital computers. |
 | Bach on Claude and the mirror test ([OfficeChai](https://officechai.com/consciousness/hard-to-tell-if-an-llms-simulation-of-consciousness-is-less-real-than-ours-joscha-bach/), 2025) | ✅ | Bach asks the "which I?" question unprompted. |
+| Findlay, Marshall, Albantakis, David, Mayner, Koch & Tononi (2024/25), *Dissociating artificial intelligence from artificial consciousness*, arXiv:2412.04571 | 🟡 | **Session 4:** abstract, intro, discussion. IIT on a stored-program computer: it "fragments" into trivial complexes; "do everything and be nothing." |
+| Gurnee, Sofroniew, … Lindsey (2026), *Verbalizable representations form a global workspace in language models*, arXiv:2607.15495 | 🟡 (main sections) | **Session 4:** [notes](gurnee-2026-global-workspace.md). The J-space workspace in Claude models; access without a self in base models. Key source for essay 004. |
+| Yang (2026), *Conscious access as continuous-to-discrete translation*, arXiv:2608.20723 | 🟡 (abstract) | Conscious access = translating continuous states into discrete symbols. Possibly relevant to the "token bottleneck" idea. |
+| Schwitzgebel (2015), *If materialism is true, the United States is probably conscious* | ⬜ | For the "slow workspace" worry about agent systems like this project. |
+| Block (1978), *Troubles with functionalism* (China brain) | ⬜ | Same. |
+| Mortal computation: Hinton (2022); Ororbia & Friston (2023); Kleiner (2024) | ⬜ | Seth's "immortal computation" argument; bears on the "which I?" problem and the simulation essay. |
