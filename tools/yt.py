@@ -42,18 +42,18 @@ def ydl(client=None, **extra):
 
 
 def pick_track(info):
-    """English captions: human-made first, then YouTube's auto captions."""
+    """English captions: human-made first, then YouTube's auto captions.
+
+    Auto captions list "en-orig" (the speech recognizer's own output) next to
+    "en" entries that are machine translations (URLs with tlang=); those
+    translated URLs are the ones the caption server rate-limits hardest.
+    """
     for key in ("subtitles", "automatic_captions"):
         tracks = info.get(key) or {}
-        for lang in ("en", "en-US", "en-GB", "en-orig"):
+        for lang in ("en-orig", "en", "en-US", "en-GB"):
             for t in tracks.get(lang, []):
-                if t.get("ext") == "json3":
+                if t.get("ext") == "json3" and "tlang=" not in t["url"]:
                     return key, lang, t["url"]
-        for lang, ts in tracks.items():  # any English variant, never a translation
-            if lang.startswith("en") and "-" not in lang[3:]:
-                for t in ts:
-                    if t.get("ext") == "json3":
-                        return key, lang, t["url"]
     return None
 
 

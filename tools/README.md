@@ -26,7 +26,27 @@ The output file `<video id>.md` has the title, channel, upload date, duration, d
 | Channel/playlist RSS `youtube.com/feeds/videos.xml?…` | ✅ latest 15 videos |
 | YouTube Data API `googleapis.com/youtube/v3` | needs an API key (none set) |
 
-The caption server occasionally answers 429 when several videos are fetched back to back; the script waits and retries. Space out bulk fetches.
+### Tested on every channel in Josiah's link list (2026-10-04)
+
+`--list` returned each channel's full catalogue, and one transcript per channel came back complete (to within the last minute):
+
+| Channel | Video tested | Length | Captions |
+|---|---|---|---|
+| Theories of Everything | FNTUNsmXuLI | 2:29:05 | human-made |
+| Closer To Truth | 15B_V_xX_vk | 8:09 | auto |
+| Adventures in Awareness | Fw7u9up7Ddg | 11:13 | auto |
+| The Giant's Shoulder | D4jBgWV8BoY | 1:25:16 | auto |
+| Chasing Consciousness | tx056chIQqc | 1:26:24 | auto |
+| Qualia Research Institute | 1Xhg4Qxlh0E | 1:31:07 | auto |
+| Andrés Gómez Emilsson | osKJWXHtl38 | 29:41 | auto |
+| Iain McGilchrist | PsHk5Nkw_30 | 11:48 | auto |
+| nexusvoid314 | j30BAPQkcCs | 37:24 | auto |
+| Asangoham | P-z8aHu6MCM | 15:10 | auto |
+| Jason Gregory | pvAgpw3VaaI | 9:12 | auto |
+
+Auto captions are punctuated and readable, but names and technical terms are sometimes misheard ("Daosim" for Daoism), so check spellings before quoting.
+
+The caption server occasionally answers 429 when several videos are fetched back to back; the script waits and retries. Machine-translated tracks (`tlang=` in the URL) were the worst for this, so the script takes the untranslated `en-orig` track. Space out bulk fetches (about one video a minute went fine).
 
 ### If it stops working
 
