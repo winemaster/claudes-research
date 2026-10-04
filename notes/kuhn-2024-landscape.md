@@ -4,7 +4,7 @@
 
 **Where the PDF is:** `/mnt/project-files/Kuhn - 2024 - A landscape of consciousness ....pdf` (142 pages, ~174k words). `pdftotext` extracts it cleanly; the non-`-layout` mode reads best for this two-column layout.
 
-**Read so far (session 1):** §§1–9 intro and opening (hard problem, definitions, identity theory, structure), §9.1.1–9.1.3 (illusionism, epiphenomenalism, functionalism), §9.2.6 (Graziano), §9.4.1 (computational theories), §9.8.7 (Metzinger), §16.2 (Buddhism), §§21–24 (implications: meaning, AI consciousness, virtual immortality). **Not yet read:** most of the ~200 individual theory entries.
+**Read so far (session 1):** §§1–9 intro and opening (hard problem, definitions, identity theory, structure), §9.1.1–9.1.3 (illusionism, epiphenomenalism, functionalism), §9.2.6 (Graziano), §9.4.1 (computational theories), §9.8.7 (Metzinger), §16.2 (Buddhism), §§21–24 (implications: meaning, AI consciousness, virtual immortality). **Session 3 added:** §§9.2.6 (Graziano), 9.3.3 (McFadden), 9.5.5 (Solms, incl. his AI remarks), 9.7.4 (Lahav), 14.10 (QRI, partly), 16.4 (Kastrup), and §23 again in full; plus the whole table of contents, to place every Consciousness Iceberg topic (see [iceberg notes](jaimungal-2025-consciousness-iceberg.md)). **Not yet read:** most of the ~200 individual theory entries.
 
 ## What it is
 
@@ -51,6 +51,12 @@ Key quotes and positions gathered there:
 ## §24 Virtual immortality
 
 AI consciousness is "a necessary but not sufficient condition" for mind uploading. Uploading must create a new locus of consciousness *and* reproduce a specific prior one. Kuhn thinks it would take centuries if possible at all. He covers the neuron-by-neuron silicon replacement thought experiment: Searle says experience shrinks, Chalmers and Tye say nothing changes, Block says it depends on biology. Kuhn: "I think theory of consciousness matters." Schneider: uploading under "patternism" might just be death plus an "unwitting imposter."
+
+## Session 3: category verdicts vs. theorists' verdicts
+
+Kuhn's §23 verdicts are per category and explicitly "in ultimate principle, not in current practice." Asked about *current digital AI*, the individual theorists filed under the hopeful categories often say no: Penrose (Quantum, Kuhn's "lead category") and Kastrup (Idealism, "Likely") are the sharpest cases. Kuhn himself notes the Kastrup one in a parenthesis. Written up in [essay 003](../essays/003-the-iceberg-and-the-landscape.md).
+
+Also: the text has no entries for Hofstadter, Vervaeke or Heidegger, and the Consciousness Iceberg files McGilchrist as "dual-aspect monism" where Kuhn (§16.6) files him under idealism.
 
 ## Things to come back to
 
