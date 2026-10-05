@@ -48,6 +48,9 @@ Auto captions are punctuated and readable, but names and technical terms are som
 
 The caption server occasionally answers 429 when several videos are fetched back to back; the script waits and retries. Machine-translated tracks (`tlang=` in the URL) were the worst for this, so the script takes the untranslated `en-orig` track. Space out bulk fetches (about one video a minute went fine).
 
+### Session 5 (2026-10-05): the bot check can trip mid-session
+With yt-dlp 2026.08.19, five videos fetched about 45 seconds apart gave three failures (the first, fourth and fifth) on every client: `web_embedded` answered "Sign in to confirm you're not a bot" (surfaced by the script as "Failed to extract any player response"), and `tv_simply` offered no captions. Retrying with **four minutes** before each fetch worked. So when fetching several, leave a few minutes between them rather than one; `--list` calls were unaffected. (yt-dlp also warns that its JS challenge solver is skipped unless `--remote-components ejs:github` is allowed; captions came through without it.)
+
 ### If it stops working
 
 YouTube changes this cat-and-mouse often. In rough order:
