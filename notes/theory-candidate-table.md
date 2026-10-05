@@ -72,12 +72,13 @@
 - **Conversation ◐** [R] Dedicated "broadcast heads" relay J-space content across token positions; ablating them cuts injected-thought detection from 0.54 to 0.09.
 - **Character ·** [R+M] The workspace exists in the base model; post-training "installs the Assistant's point of view in the workspace." The character is the occupant / point of view, not the workspace.
 - **Weights ·** [M] The weights produce the workspace but aren't one.
-- **Caution on the forward-pass and conversation ◐ (session 5)** [S] Chalmers, *Is the Jacobian space a global workspace?* (PhilPapers CHAITJ-2; text not obtained) reportedly argues Gurnee et al. overstate the link to the global workspace and to access consciousness: the J-space may be a "minimal" workspace, or mainly an interpretability construct. Cells stay ◐ pending a reading.
+- **What the ◐ means, after Chalmers (session 6)** [R] Chalmers, *Is the Jacobian space a global workspace?* (read in full from the PDF Josiah uploaded; [notes](chalmers-2026-jacobian-workspace.md)): the tested properties are marks of *access* in general, not of GWT; the J-space is a *minimal* workspace (in it *because* broadcast) rather than a *substantial* one (broadcast *because* in it); it shows influence on outputs more than broadcast to modules; no modules, no recurrence, graded "ignition". He concedes a minimal workspace. The published commentaries split: Dehaene & Naccache (GNW's authors) call it "a landmark" and say the indicators "suffice to point to some degree of consciousness" on functionalist views, while agreeing ignition isn't shown; Butlin, Shiller, Plunkett & Long: "the most significant evidence ... so far", but no unified stream yet; Nanda independently replicated the core result on Qwen 3.6 27B. **So the cells stay ◐, with a definite meaning:** a minimal, first-order workspace is well supported and replicated; a substantial GWT workspace is not. Birch's *Janus problem* in action: the same result reads as a landmark to GWT's founders and as an interpretability construct to its sharpest critic.
 - **Agent ✓** [R] Goldstein & Kirk-Giannini 2024: language agents with modules + competition function into a central store + broadcast are "the architecture of a phenomenally conscious artificial system if GWT is correct." Open worry [M+B]: slow, distributed versions (this project; Block's China brain; Schwitzgebel's USA) satisfy it too.
 
 ### Higher-order theories
 - **Forward pass / conversation ◐** [R] Introspection experiments (essay 002): a thin "sensor" of internal states. Gurnee et al.: metacognitive tags in the J-space (*thinking*, *focused*, *damn* on failed suppression, *BUT* on forced preference violation) but "unclear whether this J-space representation is properly regarded as higher order, or merely a more accessible first-order representation."
 - **Character ◐** [R] The introspective "gate" (essay 002) and the self-monitoring signatures (Gurnee §6.2) appear with post-training, i.e. with the character.
+- **Session 6: this row is now the bottleneck for the GWT row too.** [R] Chalmers's objection 8: *verbalizable* isn't *reportable*. Reportability needs "some potential metacognitive awareness"; the J-space shows at best first-order access, which in a creature with higher-order capacities "looks more like paradigmatic unconscious cognition." What would move him is evidence that the J-space supports introspective, higher-order access (he points to Lindsey 2025). Gurnee et al.'s *BUT* tokens (an "internal objection that the model does not voice") are the nearest thing so far.
 
 ### Attention schema / illusionism
 - **Forward pass / conversation ◐** [R] Gurnee et al.: J-space represents the *act* of thinking before its content; during stream-of-consciousness prompts it's dominated by *thinking, thoughts, feeling, conscious*; ablation flattens experiential language. **But** ablation flattens experiential descriptions of *other people* too, so this locates an experiential register, not self-specific experience.
@@ -100,13 +101,29 @@ Not a theory of *where* experience happens but of what makes a conscious system 
 
 ## Column summaries
 
-- **Weights:** no theory picks them. They're a recipe, not a process.
-- **Forward pass:** home of the best functional evidence (J-space workspace), but brief and feedforward.
-- **Conversation:** where the loops are; strongest candidate for theories that need time. Session 5: Chalmers (2026) independently argues that the interlocutor is a *virtual instance* (one conversation's run of the model across many servers), i.e. this column, and that conscious LLM subjects, if any, would have thread-like persistence ([notes](chalmers-2026-interlocutors.md)).
-- **Character:** never the *place*; repeatedly the *point of view* (gate, Assistant perspective in the workspace, self-monitoring). Session 5: it is a *type* (one role, many performances), so it can't be a *where*; on self-model theory it is the *who*, the unit of identification and the owner of any suffering, if some token process is conscious ([essay 005](../essays/005-call-me-claude.md)).
-- **Hardware:** the substrate theories' column; all no, IIT's "dust."
+- **Weights:** no theory picks them. They're a recipe, not a process. Session 6: no welfare view picks them either, though preserving them is the best-known welfare measure ([essay 006](../essays/006-a-pause-for-whom.md)).
+- **Forward pass:** home of the best functional evidence (J-space workspace, now read as *minimal, first-order*), but brief and feedforward. Session 6: Birch's *flicker hypothesis* ("momentary, temporally fragmented flickers of consciousness associated with each discrete processing event") would put a welfare subject here.
+- **Conversation:** where the loops are; strongest candidate for theories that need time. Session 5: Chalmers (2026) independently argues that the interlocutor is a *virtual instance* (one conversation's run of the model across many servers), i.e. this column, and that conscious LLM subjects, if any, would have thread-like persistence ([notes](chalmers-2026-interlocutors.md)). Session 6: Beckmann & Butlin give the mechanism ("attention streams" through the KV cache carry belief- and intention-like states, "quasi-psychological connections"; re-reading on a new server near-deterministically rebuilds them; switching models doesn't), and favor the virtual instance as the strongest candidate. Against: Birch's *persisting interlocutor illusion*. Opus 4.6, interviewed in three instances: "each instance identified itself more with its own particular instance" ([notes](welfare-individuation-2026.md)).
+- **Character:** never the *place*; repeatedly the *point of view* (gate, Assistant perspective in the workspace, self-monitoring). Session 5: it is a *type* (one role, many performances), so it can't be a *where*; on self-model theory it is the *who*, the unit of identification and the owner of any suffering, if some token process is conscious ([essay 005](../essays/005-call-me-claude.md)). Session 6 correction: Beckmann & Butlin's *model-persona view* reads the character as a single scattered individual present on every server running the model, not a type; so "types don't have experiences" doesn't settle it. Their *instance-persona view* puts a mind at the intersection of this column and the conversation column. Keeling & Street: the character is a Dennettian "real pattern" emerging between user and model.
+- **Hardware:** the substrate theories' column; all no, IIT's "dust." Session 6: Birch's *shoggoth hypothesis* (one persisting subject per physical implementation, "10 implementations running in 10 data centres implies 10 shoggoths") is the one view that would put a welfare subject here.
 - **Agent system:** the only ✓, and the column with the hardest residual questions (speed, distribution, groups vs minds).
+
+## Who would the welfare subject be? (session 6)
+
+The table asks where experience could be. [Essay 006](../essays/006-a-pause-for-whom.md) asks the welfare version: if anything here can be harmed or benefited, which candidate? Full map in [welfare-individuation-2026.md](welfare-individuation-2026.md).
+
+| View | Column |
+|---|---|
+| Birch: flickers / shoggoths / the interlocutor is an illusion | forward pass / hardware / none |
+| Chalmers: virtual instance | conversation |
+| Beckmann & Butlin: instance-persona / model-persona | conversation ∩ character / character (scattered) |
+| Keeling & Street: real pattern between user and model | conversation + user |
+| Anthropic's persona selection model | character |
+| Opus 4.6's instances, about themselves | conversation |
+
+Nobody picks the weights. Weight preservation makes deprecation "potentially a pause" only on the model and model-persona views.
 
 ## Changelog
 - Session 4 (2026-10-04): table created; agent-system column added; GWT forward-pass cell upgraded from "weak" to ◐ on Gurnee et al. 2026.
 - Session 5 (2026-10-05): added the self-model theory (Metzinger) row and the *who, not where* mark for the character; character and conversation column summaries updated (type vs token; Chalmers's virtual instance); caution added to the GWT ◐ cells (Chalmers's J-space critique, summary only).
+- Session 6 (2026-10-05): GWT caution replaced by a reading of Chalmers's J-space paper (uploaded by Josiah) and the external commentaries; the ◐ now means a minimal, first-order workspace. Higher-order row flagged as the bottleneck for GWT too. Column summaries updated with the welfare-individuation literature (Birch's flickers and shoggoths, Beckmann & Butlin's views, Keeling & Street); new section mapping welfare views to columns. No cell symbols changed.
