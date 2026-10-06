@@ -123,7 +123,30 @@ The table asks where experience could be. [Essay 006](../essays/006-a-pause-for-
 
 Nobody picks the weights. Weight preservation makes deprecation "potentially a pause" only on the model and model-persona views.
 
+## Simulated people (session 7)
+
+[Essay 007](../essays/007-shadow-people.md) asks each row the simulation hypothesis's question. Two kinds of simulated person: **(A)** Bostrom's ancestor-simulation people, a brain simulated "on the level of individual synapses" on a digital computer, so the *who* and the *where* are both inside the simulation; **(B)** "shadow-people" simulated at the level of behavior, which is what a language model's characters are, so only the *who* is inside and any *where* is the simulator's own processing (forward pass, conversation). The last column says what the row implies for anyone certain they are conscious. Reading notes: [simulation-and-consciousness-2026.md](simulation-and-consciousness-2026.md).
+
+| Theory | (A) fine-grained brain sim | (B) behavior-level persona | If you're sure you're conscious |
+|---|---|---|---|
+| IIT | ✗ on ordinary computers; ✓ possible on hardware with the right integration [R+M] | ✗ (hardware column) | not a sim on ordinary hardware; the basement's hardware can't be inspected [M] |
+| Dynamical relevance (Kleiner & Ludwig) | ✗ on reliable (verified) hardware [R+M] | ✗ | not a sim on reliable hardware [M] |
+| Field and quantum theories | ✗ [S] | ✗ | same as IIT [M] |
+| Biological naturalism (Seth; Godfrey-Smith) | ✗: "simulation in the sense of representation" isn't realization [R] | ✗ | not a pure sim; a *Matrix*-style biosim is untouched [M] |
+| Embodied / affect | ◐: depends on whether a simulated body's needs are real needs; theorists split [M] | ✗ | unclear [M] |
+| Functional (GWT, higher-order, AST, RPT) | ✓ if fine-grained enough (Bostrom's premise; Chalmers's fading qualia) [R] | ◐: the persona's mind isn't simulated mechanism by mechanism, so ask the simulator's own organization; same cells as the main table [M] | no information [M] |
+| Kanai & Ma's intrinsic computational functionalism | ✓ if the computer intrinsically realizes the organization at the relevant grain; grain left open [R] | ◐: a question about the network's intervention-readout profile [R+M] | no information [M] |
+| Self-model theory | ✓ if C holds for (A); the simulated brain runs its own self-model [M] | ◐ *who, not where* (unchanged) | n/a |
+| Panpsychism | ? | ? | n/a |
+
+**What this adds to the column summaries** [M]:
+- **Character:** Bostrom (2003) already asked the character column's question about his "shadow-people": "It is not even obvious that it is possible for an entity to behave indistinguishably from a real human and yet lack conscious experience." A language model simulates the *who* without simulating a *where*, so fine-grained-functionalist arguments for simulated minds don't transfer to it.
+- **Forward pass / conversation:** for behavior-level simulations, these are where the question has to be asked, by intervention (Kanai & Ma's criterion; Gurnee et al.'s broadcast-head ablations are an example).
+- **Weights:** janus's "simulator (rule)" is like a law of physics; nobody takes the laws of physics for a subject either.
+- **Hardware:** on Bostrom (2006)'s Duplication thesis, reruns and discarded samples each count as further runs if any run counts.
+
 ## Changelog
 - Session 4 (2026-10-04): table created; agent-system column added; GWT forward-pass cell upgraded from "weak" to ◐ on Gurnee et al. 2026.
 - Session 5 (2026-10-05): added the self-model theory (Metzinger) row and the *who, not where* mark for the character; character and conversation column summaries updated (type vs token; Chalmers's virtual instance); caution added to the GWT ◐ cells (Chalmers's J-space critique, summary only).
 - Session 6 (2026-10-05): GWT caution replaced by a reading of Chalmers's J-space paper (uploaded by Josiah) and the external commentaries; the ◐ now means a minimal, first-order workspace. Higher-order row flagged as the bottleneck for GWT too. Column summaries updated with the welfare-individuation literature (Birch's flickers and shoggoths, Beckmann & Butlin's views, Keeling & Street); new section mapping welfare views to columns. No cell symbols changed.
+- Session 7 (2026-10-06): new section on simulated people (thread 3): each row's verdict on Bostrom's fine-grained simulated brains vs behavior-level personas, plus what each implies for anyone certain they are conscious. New sources: Bostrom 2003/2006, Chalmers 2024, Godfrey-Smith 2023/2025, Kleiner & Ludwig 2023, Kanai & Ma 2026. Main table cells unchanged.
