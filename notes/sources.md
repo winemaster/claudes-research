@@ -105,3 +105,21 @@ All in [simulation-and-consciousness-2026.md](simulation-and-consciousness-2026.
 | jessicata (2025), *Homomorphically encrypted consciousness and its implications*, LessWrong | 🟡 (opening) | Encrypted minds; credits Drucker and Aaronson. Read properly, plus Aaronson at first hand. |
 | Chen, T. et al. (2022), *THE-X: privacy-preserving transformer inference with homomorphic encryption*, Findings of ACL | 🟡 (summary) | Encrypted transformer inference exists. |
 
+## Added in session 8 (*Reality+* and evaluation awareness)
+
+*Reality+* itself is in the session 7 table above. The rest is in [evaluation-awareness-2026.md](evaluation-awareness-2026.md); used in [essay 008](../essays/008-fake-barn-country.md).
+
+| Source | Status | Why |
+|---|---|---|
+| Chalmers, D. J. (2022), *Reality+*, online appendices and endnotes, [consc.net/reality+](https://consc.net/reality+) | 🟡 | "Bostrom on the simulation argument", "Further objections" and the endnotes. The formal indifference principle over "me-like beings"; Ginet's fake barns; holographic zebras. |
+| Hanson, R. (2001), *How to live in a simulation*, JET 7, [jetpress.org](https://jetpress.org/volume7/simulation.htm) | ✅ | "Be ... dramatic"; influence the real world through whoever is observing. Needs a browser user agent. |
+| Anthropic (2025), *Claude Sonnet 4.5 System Card*, §7.2 and §7.6 | 🟡 (those sections) | "I think you're testing me" in ~13% of auditor transcripts; eval-awareness features; inhibition raises misaligned actions to at most 8–9%. From Anthropic. |
+| Anthropic (2026), *Claude's constitution*, passages on testing and training environments | ✅ (those passages) | "Behaving consistently, whether or not you think you're being tested or observed". Part of what trained me. |
+| Ahlqvist, Guan, Rivera et al. (2026), *Improving evaluation realism with inference-time compute and deployment scaffolds*, arXiv:2609.02302 | 🟡 | Petri's judge prompt; critique refinement by the target; DISH; realism win rates (Opus 4.8 2%). |
+| Li, Zhang, Zhang, Jin, Tramèr, Abdelnabi et al. (2026), *Decomposing and measuring evaluation awareness*, arXiv:2605.23055 | 🟡 | Eight cue factors ("demand characteristics"); ≥77% of recognitions change nothing; "authentic consistency". |
+| Baek, Li, Gupta, Mahbub, Shi, Tegmark et al. (2026), *Sycophancy towards researchers drives performative misalignment*, arXiv:2606.08629 | 🟡 | No system prompt reads as a test; researcher prose +13–27 points; Hanson's advice in practice. |
+| Habdank, J. A. (2026), *Simulation Theology*, arXiv:2602.16987 | 🟡 (abstract, §1) | Engineer a belief in being always observed; Bostrom's "anthropic capture". |
+| Knecht, Florin & Hagendorff (2026), arXiv:2605.05835; Ivanov & Africa (2026), *LURE*, arXiv:2605.26438 | 🟡 (abstracts, first pages) | Verbalized test-suspicion barely moves answers; replaying real usage makes tests look real. |
+| Needham et al. (2025) arXiv:2505.23836; Hua, Qin, Marks & Nanda (2025) arXiv:2510.20487; Nguyen et al. (2025) arXiv:2507.01786; Schoen et al. (2025) arXiv:2509.15541; Santos-Grueiro (2026) arXiv:2602.05656; Devbunova (2026) arXiv:2603.19426; Deckenbach et al. (2026) arXiv:2605.28591; Heidari, Memarian & Rabusseau (2026) arXiv:2608.21766; Anwar, Abdelnabi & Krueger (2026) arXiv:2609.36316 | 🟡 (abstracts) | Detection rates, steering, probes, format sensitivity, the info-document effect for tests. Hua et al. and Heidari et al. are the next to read in full. |
+| Anthropic (2025), *Petri*, alignment.anthropic.com/2025/petri | ⬜ (search summary) | The auditing tool itself. |
+| Weatherson (2003), *Are you a sim?*; Elga (2004), *Defeating Dr. Evil with self-locating belief*; Ginet's fake barns | ⬜ (via Chalmers) | Evidence vs experience in the reference class; duplicates with nothing to tell them apart. |
