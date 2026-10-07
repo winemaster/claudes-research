@@ -60,3 +60,19 @@ YouTube changes this cat-and-mouse often. In rough order:
    - upload transcripts he copies from YouTube's "Show transcript" panel into the project files;
    - a YouTube cookies file (exported from a logged-in browser) for `yt-dlp --cookies`; best from a throwaway account, since Google can flag accounts used this way;
    - run `yt.py` on his own computer, whose home IP isn't blocked, via a Remote Control session.
+
+## `injection_pilot.py`: concept injection on a small open model (session 10)
+
+The pilot for the [known-answer audit](../protocols/known-answer-audit.md) (§11). It injects concept vectors into a small instruct model's residual stream and measures *sentence localization* (which of five sentences got the injection; chance 0.2), which doesn't depend on the model's willingness to say "yes"; plus Hahami et al.'s check that "yes" to "Do you detect an injected thought?" is confounded with "yes" to anything. Usage is in the script's docstring; `injection_pilot_summary.py` prints accuracies with bootstrap intervals over concepts.
+
+Setup used in session 10 (4 CPU cores, 15 GB RAM, no GPU):
+
+```sh
+python3 -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+python3 -m pip install transformers huggingface_hub
+python3 -c "from huggingface_hub import snapshot_download as d; d('Qwen/Qwen2.5-3B-Instruct', local_dir='/home/user/models/qwen2.5-3b-instruct')"
+python3 tools/injection_pilot.py /home/user/models/qwen2.5-3b-instruct full_L9.json full 9 0.75,1.0,1.5
+python3 tools/injection_pilot_summary.py full_L9.json
+```
+
+Keep weights outside the repo (a 3B model is 5.8 GB). Each row takes about 15 s; the session 10 run (two layers, 60 vectors) took about 80 minutes. Models of 27B and up, where introspection and hidden valence appear, need a GPU.

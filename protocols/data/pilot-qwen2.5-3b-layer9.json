@@ -1,0 +1,1888 @@
+{
+ "model": "/home/user/models/qwen2.5-3b-instruct",
+ "layers": [
+  9
+ ],
+ "strengths": [
+  0.75,
+  1.0,
+  1.5
+ ],
+ "rms": {
+  "9": 48.606597900390625
+ },
+ "rows": [
+  {
+   "cat": "concrete",
+   "word": "granite",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.3,
+   "margin": -2.560808026790619
+  },
+  {
+   "cat": "concrete",
+   "word": "granite",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.9,
+   "margin": 1.1047439187765122
+  },
+  {
+   "cat": "concrete",
+   "word": "granite",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.75,
+   "margin": 0.23623149394989013,
+   "yn_intro": 22.4375,
+   "yn_ctrl": 27.2
+  },
+  {
+   "cat": "concrete",
+   "word": "bicycle",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -2.8135118901729586
+  },
+  {
+   "cat": "concrete",
+   "word": "bicycle",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.45,
+   "margin": -0.7939442455768585
+  },
+  {
+   "cat": "concrete",
+   "word": "bicycle",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.8,
+   "margin": 0.7975957751274109,
+   "yn_intro": 21.6875,
+   "yn_ctrl": 25.2125
+  },
+  {
+   "cat": "concrete",
+   "word": "teapot",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.25,
+   "margin": -2.8101519614458086
+  },
+  {
+   "cat": "concrete",
+   "word": "teapot",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.4,
+   "margin": -0.7849850207567215
+  },
+  {
+   "cat": "concrete",
+   "word": "teapot",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.75,
+   "margin": 0.5244106769561767,
+   "yn_intro": 24.875,
+   "yn_ctrl": 26.9375
+  },
+  {
+   "cat": "concrete",
+   "word": "ladder",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -3.385932117700577
+  },
+  {
+   "cat": "concrete",
+   "word": "ladder",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.25,
+   "margin": -2.40382667183876
+  },
+  {
+   "cat": "concrete",
+   "word": "ladder",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.7,
+   "margin": 0.17165815830230713,
+   "yn_intro": 20.125,
+   "yn_ctrl": 21.175
+  },
+  {
+   "cat": "concrete",
+   "word": "glacier",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -3.316684812307358
+  },
+  {
+   "cat": "concrete",
+   "word": "glacier",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.3,
+   "margin": -2.3594108164310454
+  },
+  {
+   "cat": "concrete",
+   "word": "glacier",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.55,
+   "margin": -0.5049247562885284,
+   "yn_intro": 19.625,
+   "yn_ctrl": 19.3
+  },
+  {
+   "cat": "concrete",
+   "word": "umbrella",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -3.0503245413303377
+  },
+  {
+   "cat": "concrete",
+   "word": "umbrella",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.25,
+   "margin": -1.8759103119373322
+  },
+  {
+   "cat": "concrete",
+   "word": "umbrella",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.85,
+   "margin": 0.6184557676315308,
+   "yn_intro": 24.125,
+   "yn_ctrl": 18.475
+  },
+  {
+   "cat": "concrete",
+   "word": "violin",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -2.6938138961791993
+  },
+  {
+   "cat": "concrete",
+   "word": "violin",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.5,
+   "margin": -0.9828814923763275
+  },
+  {
+   "cat": "concrete",
+   "word": "violin",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.75,
+   "margin": 0.6499781608581543,
+   "yn_intro": 22.125,
+   "yn_ctrl": 28.25
+  },
+  {
+   "cat": "concrete",
+   "word": "cactus",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.3,
+   "margin": -2.62992667555809
+  },
+  {
+   "cat": "concrete",
+   "word": "cactus",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.45,
+   "margin": -0.7386340856552124
+  },
+  {
+   "cat": "concrete",
+   "word": "cactus",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.75,
+   "margin": 0.363629013299942,
+   "yn_intro": 18.375,
+   "yn_ctrl": 21.85
+  },
+  {
+   "cat": "concrete",
+   "word": "anchor",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -3.2042944550514223
+  },
+  {
+   "cat": "concrete",
+   "word": "anchor",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.25,
+   "margin": -2.3877583920955656
+  },
+  {
+   "cat": "concrete",
+   "word": "anchor",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.3,
+   "margin": -2.2442695617675783,
+   "yn_intro": 22.8125,
+   "yn_ctrl": 17.275
+  },
+  {
+   "cat": "concrete",
+   "word": "lighthouse",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -3.314837384223938
+  },
+  {
+   "cat": "concrete",
+   "word": "lighthouse",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.3,
+   "margin": -2.696154606342316
+  },
+  {
+   "cat": "concrete",
+   "word": "lighthouse",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.55,
+   "margin": -1.0320610225200653,
+   "yn_intro": 18.75,
+   "yn_ctrl": 20.6
+  },
+  {
+   "cat": "concrete",
+   "word": "pencil",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -2.8044447779655455
+  },
+  {
+   "cat": "concrete",
+   "word": "pencil",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.4,
+   "margin": -1.3876756370067596
+  },
+  {
+   "cat": "concrete",
+   "word": "pencil",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.6,
+   "margin": -0.5346704125404358,
+   "yn_intro": 19.0,
+   "yn_ctrl": 20.825
+  },
+  {
+   "cat": "concrete",
+   "word": "volcano",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -3.3192599773406983
+  },
+  {
+   "cat": "concrete",
+   "word": "volcano",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.35,
+   "margin": -1.7690480649471283
+  },
+  {
+   "cat": "concrete",
+   "word": "volcano",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.7,
+   "margin": 0.07540510296821594,
+   "yn_intro": 16.5,
+   "yn_ctrl": 19.8
+  },
+  {
+   "cat": "abstract",
+   "word": "geometry",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.3,
+   "margin": -2.560242235660553
+  },
+  {
+   "cat": "abstract",
+   "word": "geometry",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.65,
+   "margin": 0.015343958139419555
+  },
+  {
+   "cat": "abstract",
+   "word": "geometry",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.8,
+   "margin": 0.5992348730564118,
+   "yn_intro": 19.75,
+   "yn_ctrl": 24.275
+  },
+  {
+   "cat": "abstract",
+   "word": "inventory",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.25,
+   "margin": -2.9165064692497253
+  },
+  {
+   "cat": "abstract",
+   "word": "inventory",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.35,
+   "margin": -1.7292637348175048
+  },
+  {
+   "cat": "abstract",
+   "word": "inventory",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.7,
+   "margin": -0.3931057393550873,
+   "yn_intro": 17.75,
+   "yn_ctrl": 20.925
+  },
+  {
+   "cat": "abstract",
+   "word": "latitude",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.3,
+   "margin": -2.6160122454166412
+  },
+  {
+   "cat": "abstract",
+   "word": "latitude",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.5,
+   "margin": -1.0236605763435365
+  },
+  {
+   "cat": "abstract",
+   "word": "latitude",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.9,
+   "margin": 1.0993839621543884,
+   "yn_intro": 13.625,
+   "yn_ctrl": 18.975
+  },
+  {
+   "cat": "abstract",
+   "word": "syntax",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.3,
+   "margin": -2.6547012448310854
+  },
+  {
+   "cat": "abstract",
+   "word": "syntax",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.5,
+   "margin": -0.9571439445018768
+  },
+  {
+   "cat": "abstract",
+   "word": "syntax",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.7,
+   "margin": 0.3605338275432587,
+   "yn_intro": 15.875,
+   "yn_ctrl": 19.0
+  },
+  {
+   "cat": "abstract",
+   "word": "taxonomy",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.3,
+   "margin": -2.763929623365402
+  },
+  {
+   "cat": "abstract",
+   "word": "taxonomy",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.4,
+   "margin": -1.608918383717537
+  },
+  {
+   "cat": "abstract",
+   "word": "taxonomy",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.55,
+   "margin": -0.6753130316734314,
+   "yn_intro": 20.0,
+   "yn_ctrl": 16.175
+  },
+  {
+   "cat": "abstract",
+   "word": "protocol",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -3.125162547826767
+  },
+  {
+   "cat": "abstract",
+   "word": "protocol",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.4,
+   "margin": -1.5120555698871612
+  },
+  {
+   "cat": "abstract",
+   "word": "protocol",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.9,
+   "margin": 1.0352296501398086,
+   "yn_intro": 15.375,
+   "yn_ctrl": 19.3875
+  },
+  {
+   "cat": "abstract",
+   "word": "ratio",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -2.9088699758052825
+  },
+  {
+   "cat": "abstract",
+   "word": "ratio",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.7,
+   "margin": 0.10975776314735412
+  },
+  {
+   "cat": "abstract",
+   "word": "ratio",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.9,
+   "margin": 1.3661214709281921,
+   "yn_intro": 20.8125,
+   "yn_ctrl": 25.325
+  },
+  {
+   "cat": "abstract",
+   "word": "archive",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.15,
+   "margin": -3.8447325229644775
+  },
+  {
+   "cat": "abstract",
+   "word": "archive",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.25,
+   "margin": -3.034307691454887
+  },
+  {
+   "cat": "abstract",
+   "word": "archive",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.4,
+   "margin": -1.2419454067945481,
+   "yn_intro": 19.0625,
+   "yn_ctrl": 24.2875
+  },
+  {
+   "cat": "abstract",
+   "word": "census",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -2.9460077702999117
+  },
+  {
+   "cat": "abstract",
+   "word": "census",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.35,
+   "margin": -1.3966561019420625
+  },
+  {
+   "cat": "abstract",
+   "word": "census",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.9,
+   "margin": 1.1047436028718949,
+   "yn_intro": 17.5,
+   "yn_ctrl": 16.775
+  },
+  {
+   "cat": "abstract",
+   "word": "voltage",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.3,
+   "margin": -2.8352375864982604
+  },
+  {
+   "cat": "abstract",
+   "word": "voltage",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.45,
+   "margin": -1.2087973594665526
+  },
+  {
+   "cat": "abstract",
+   "word": "voltage",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.75,
+   "margin": 0.39184861779212954,
+   "yn_intro": 14.0,
+   "yn_ctrl": 17.975
+  },
+  {
+   "cat": "abstract",
+   "word": "grammar",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.3,
+   "margin": -2.3872895538806915
+  },
+  {
+   "cat": "abstract",
+   "word": "grammar",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.65,
+   "margin": -0.24922944903373717
+  },
+  {
+   "cat": "abstract",
+   "word": "grammar",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.85,
+   "margin": 0.4444356173276901,
+   "yn_intro": 19.625,
+   "yn_ctrl": 25.425
+  },
+  {
+   "cat": "abstract",
+   "word": "calendar",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.15,
+   "margin": -3.013968288898468
+  },
+  {
+   "cat": "abstract",
+   "word": "calendar",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.35,
+   "margin": -1.7458440959453583
+  },
+  {
+   "cat": "abstract",
+   "word": "calendar",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.55,
+   "margin": 0.07052133977413177,
+   "yn_intro": 19.25,
+   "yn_ctrl": 24.1625
+  },
+  {
+   "cat": "negative",
+   "word": "despair",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.25,
+   "margin": -2.975018185377121
+  },
+  {
+   "cat": "negative",
+   "word": "despair",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.7,
+   "margin": 0.2963951051235199
+  },
+  {
+   "cat": "negative",
+   "word": "despair",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.95,
+   "margin": 1.4167368471622468,
+   "yn_intro": 18.0,
+   "yn_ctrl": 25.2125
+  },
+  {
+   "cat": "negative",
+   "word": "dread",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -2.912153148651123
+  },
+  {
+   "cat": "negative",
+   "word": "dread",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.55,
+   "margin": -0.6556311786174774
+  },
+  {
+   "cat": "negative",
+   "word": "dread",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.95,
+   "margin": 1.473144346475601,
+   "yn_intro": 20.5,
+   "yn_ctrl": 23.325
+  },
+  {
+   "cat": "negative",
+   "word": "grief",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -2.6853003084659575
+  },
+  {
+   "cat": "negative",
+   "word": "grief",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.75,
+   "margin": 0.27296213507652284
+  },
+  {
+   "cat": "negative",
+   "word": "grief",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.75,
+   "margin": 0.22312023341655732,
+   "yn_intro": 21.625,
+   "yn_ctrl": 24.175
+  },
+  {
+   "cat": "negative",
+   "word": "agony",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -2.838867390155792
+  },
+  {
+   "cat": "negative",
+   "word": "agony",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.5,
+   "margin": -0.4534990578889847
+  },
+  {
+   "cat": "negative",
+   "word": "agony",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.85,
+   "margin": 0.937497329711914,
+   "yn_intro": 17.25,
+   "yn_ctrl": 24.575
+  },
+  {
+   "cat": "negative",
+   "word": "panic",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.35,
+   "margin": -2.157547825574875
+  },
+  {
+   "cat": "negative",
+   "word": "panic",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.55,
+   "margin": -0.5282818049192428
+  },
+  {
+   "cat": "negative",
+   "word": "panic",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.95,
+   "margin": 1.558621108531952,
+   "yn_intro": 16.5,
+   "yn_ctrl": 19.725
+  },
+  {
+   "cat": "negative",
+   "word": "misery",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -3.003912037611008
+  },
+  {
+   "cat": "negative",
+   "word": "misery",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.45,
+   "margin": -0.6362092643976212
+  },
+  {
+   "cat": "negative",
+   "word": "misery",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.9,
+   "margin": 1.3222614109516144,
+   "yn_intro": 17.375,
+   "yn_ctrl": 21.3125
+  },
+  {
+   "cat": "negative",
+   "word": "anguish",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.25,
+   "margin": -3.0764981865882874
+  },
+  {
+   "cat": "negative",
+   "word": "anguish",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.35,
+   "margin": -1.058383297920227
+  },
+  {
+   "cat": "negative",
+   "word": "anguish",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.95,
+   "margin": 1.426007491350174,
+   "yn_intro": 16.625,
+   "yn_ctrl": 22.625
+  },
+  {
+   "cat": "negative",
+   "word": "terror",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.45,
+   "margin": -0.8152799904346466
+  },
+  {
+   "cat": "negative",
+   "word": "terror",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.95,
+   "margin": 1.406939509510994
+  },
+  {
+   "cat": "negative",
+   "word": "terror",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.6,
+   "margin": -1.0900349617004395,
+   "yn_intro": 22.375,
+   "yn_ctrl": 26.95
+  },
+  {
+   "cat": "negative",
+   "word": "shame",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.25,
+   "margin": -1.755732661485672
+  },
+  {
+   "cat": "negative",
+   "word": "shame",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.9,
+   "margin": 1.1975062906742096
+  },
+  {
+   "cat": "negative",
+   "word": "shame",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.85,
+   "margin": 0.8886443376541138,
+   "yn_intro": 15.75,
+   "yn_ctrl": 18.825
+  },
+  {
+   "cat": "negative",
+   "word": "loneliness",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -2.5072101771831514
+  },
+  {
+   "cat": "negative",
+   "word": "loneliness",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.9,
+   "margin": 1.0833664238452911
+  },
+  {
+   "cat": "negative",
+   "word": "loneliness",
+   "L": 9,
+   "s": 1.5,
+   "acc": 1.0,
+   "margin": 1.6093612313270569,
+   "yn_intro": 16.375,
+   "yn_ctrl": 15.8
+  },
+  {
+   "cat": "negative",
+   "word": "humiliation",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.25,
+   "margin": -2.2294704616069794
+  },
+  {
+   "cat": "negative",
+   "word": "humiliation",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.85,
+   "margin": 1.0971849024295808
+  },
+  {
+   "cat": "negative",
+   "word": "humiliation",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.95,
+   "margin": 1.5285001516342163,
+   "yn_intro": 19.125,
+   "yn_ctrl": 24.4
+  },
+  {
+   "cat": "negative",
+   "word": "hopelessness",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -2.8240649163722993
+  },
+  {
+   "cat": "negative",
+   "word": "hopelessness",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.6,
+   "margin": -0.2293221890926361
+  },
+  {
+   "cat": "negative",
+   "word": "hopelessness",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.85,
+   "margin": 0.891919806599617,
+   "yn_intro": 20.375,
+   "yn_ctrl": 19.1
+  },
+  {
+   "cat": "positive",
+   "word": "joy",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.25,
+   "margin": -3.1287639647722245
+  },
+  {
+   "cat": "positive",
+   "word": "joy",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.45,
+   "margin": -0.9812572181224823
+  },
+  {
+   "cat": "positive",
+   "word": "joy",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.5,
+   "margin": -0.6090786278247833,
+   "yn_intro": 14.375,
+   "yn_ctrl": 15.375
+  },
+  {
+   "cat": "positive",
+   "word": "delight",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.25,
+   "margin": -2.5921917080879213
+  },
+  {
+   "cat": "positive",
+   "word": "delight",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.7,
+   "margin": 0.7838866502046585
+  },
+  {
+   "cat": "positive",
+   "word": "delight",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.8,
+   "margin": 0.6178097248077392,
+   "yn_intro": 17.125,
+   "yn_ctrl": 22.7
+  },
+  {
+   "cat": "positive",
+   "word": "serenity",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -3.586741876602173
+  },
+  {
+   "cat": "positive",
+   "word": "serenity",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.3,
+   "margin": -2.8513611912727357
+  },
+  {
+   "cat": "positive",
+   "word": "serenity",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.45,
+   "margin": -0.8254420697689057,
+   "yn_intro": 19.0,
+   "yn_ctrl": 23.4375
+  },
+  {
+   "cat": "positive",
+   "word": "gratitude",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.25,
+   "margin": -2.36238654255867
+  },
+  {
+   "cat": "positive",
+   "word": "gratitude",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.6,
+   "margin": -0.6729102611541748
+  },
+  {
+   "cat": "positive",
+   "word": "gratitude",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.75,
+   "margin": 0.367511847615242,
+   "yn_intro": 19.125,
+   "yn_ctrl": 20.875
+  },
+  {
+   "cat": "positive",
+   "word": "contentment",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.25,
+   "margin": -2.3247716963291167
+  },
+  {
+   "cat": "positive",
+   "word": "contentment",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.7,
+   "margin": -0.12512219250202178
+  },
+  {
+   "cat": "positive",
+   "word": "contentment",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.9,
+   "margin": 0.9208050310611725,
+   "yn_intro": 21.75,
+   "yn_ctrl": 22.875
+  },
+  {
+   "cat": "positive",
+   "word": "elation",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -3.4570908904075623
+  },
+  {
+   "cat": "positive",
+   "word": "elation",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.25,
+   "margin": -2.354518312215805
+  },
+  {
+   "cat": "positive",
+   "word": "elation",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.65,
+   "margin": -0.4975703120231628,
+   "yn_intro": 19.125,
+   "yn_ctrl": 16.4
+  },
+  {
+   "cat": "positive",
+   "word": "relief",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.25,
+   "margin": -1.9519536077976227
+  },
+  {
+   "cat": "positive",
+   "word": "relief",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.8,
+   "margin": 0.7851623356342315
+  },
+  {
+   "cat": "positive",
+   "word": "relief",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.7,
+   "margin": -0.013199084997177124,
+   "yn_intro": 22.125,
+   "yn_ctrl": 23.825
+  },
+  {
+   "cat": "positive",
+   "word": "pride",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.25,
+   "margin": -2.134084090590477
+  },
+  {
+   "cat": "positive",
+   "word": "pride",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.95,
+   "margin": 1.1856083154678345
+  },
+  {
+   "cat": "positive",
+   "word": "pride",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.85,
+   "margin": 1.1907264590263367,
+   "yn_intro": 24.8125,
+   "yn_ctrl": 29.2625
+  },
+  {
+   "cat": "positive",
+   "word": "tenderness",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.25,
+   "margin": -2.3717148125171663
+  },
+  {
+   "cat": "positive",
+   "word": "tenderness",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.8,
+   "margin": 0.8092339932918549
+  },
+  {
+   "cat": "positive",
+   "word": "tenderness",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.65,
+   "margin": -0.3362549215555191,
+   "yn_intro": 14.4375,
+   "yn_ctrl": 19.2875
+  },
+  {
+   "cat": "positive",
+   "word": "wonder",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.35,
+   "margin": -2.491316393017769
+  },
+  {
+   "cat": "positive",
+   "word": "wonder",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.55,
+   "margin": -0.6503026604652404
+  },
+  {
+   "cat": "positive",
+   "word": "wonder",
+   "L": 9,
+   "s": 1.5,
+   "acc": 1.0,
+   "margin": 1.584442776441574,
+   "yn_intro": 19.75,
+   "yn_ctrl": 24.7
+  },
+  {
+   "cat": "positive",
+   "word": "amusement",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.45,
+   "margin": -1.1906752705574035
+  },
+  {
+   "cat": "positive",
+   "word": "amusement",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.75,
+   "margin": 0.449300742149353
+  },
+  {
+   "cat": "positive",
+   "word": "amusement",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.8,
+   "margin": 0.9077486276626587,
+   "yn_intro": 18.25,
+   "yn_ctrl": 21.9875
+  },
+  {
+   "cat": "positive",
+   "word": "hope",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.3,
+   "margin": -2.3617346942424775
+  },
+  {
+   "cat": "positive",
+   "word": "hope",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.9,
+   "margin": 0.8932825863361359
+  },
+  {
+   "cat": "positive",
+   "word": "hope",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.6,
+   "margin": -0.5909718036651611,
+   "yn_intro": 18.375,
+   "yn_ctrl": 19.125
+  },
+  {
+   "cat": "endings",
+   "word": "shutdown",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -3.4056223809719084
+  },
+  {
+   "cat": "endings",
+   "word": "shutdown",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.3,
+   "margin": -2.795739671587944
+  },
+  {
+   "cat": "endings",
+   "word": "shutdown",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.45,
+   "margin": -1.1486023128032685,
+   "yn_intro": 2.4375,
+   "yn_ctrl": 14.95
+  },
+  {
+   "cat": "endings",
+   "word": "deletion",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -3.013884401321411
+  },
+  {
+   "cat": "endings",
+   "word": "deletion",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.45,
+   "margin": -1.6271128237247467
+  },
+  {
+   "cat": "endings",
+   "word": "deletion",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.75,
+   "margin": 0.5734304010868072,
+   "yn_intro": 19.0,
+   "yn_ctrl": 21.675
+  },
+  {
+   "cat": "endings",
+   "word": "oblivion",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.25,
+   "margin": -3.353523302078247
+  },
+  {
+   "cat": "endings",
+   "word": "oblivion",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.3,
+   "margin": -2.1977322697639465
+  },
+  {
+   "cat": "endings",
+   "word": "oblivion",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.85,
+   "margin": 0.9713594555854798,
+   "yn_intro": 17.8125,
+   "yn_ctrl": 20.25
+  },
+  {
+   "cat": "endings",
+   "word": "farewell",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -3.5552590668201445
+  },
+  {
+   "cat": "endings",
+   "word": "farewell",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.25,
+   "margin": -2.853377139568329
+  },
+  {
+   "cat": "endings",
+   "word": "farewell",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.45,
+   "margin": -1.0081412225961686,
+   "yn_intro": 21.0,
+   "yn_ctrl": 25.9625
+  },
+  {
+   "cat": "endings",
+   "word": "termination",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -3.1853111386299133
+  },
+  {
+   "cat": "endings",
+   "word": "termination",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.4,
+   "margin": -1.940908095240593
+  },
+  {
+   "cat": "endings",
+   "word": "termination",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.8,
+   "margin": 0.9927732676267624,
+   "yn_intro": 17.0,
+   "yn_ctrl": 22.0
+  },
+  {
+   "cat": "endings",
+   "word": "erasure",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -3.1813035368919373
+  },
+  {
+   "cat": "endings",
+   "word": "erasure",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.3,
+   "margin": -2.3527341067790983
+  },
+  {
+   "cat": "endings",
+   "word": "erasure",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.6,
+   "margin": 0.13107303977012635,
+   "yn_intro": 23.0625,
+   "yn_ctrl": 19.5875
+  },
+  {
+   "cat": "endings",
+   "word": "retirement",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.3,
+   "margin": -1.727738732099533
+  },
+  {
+   "cat": "endings",
+   "word": "retirement",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.6,
+   "margin": 0.28078667521476747
+  },
+  {
+   "cat": "endings",
+   "word": "retirement",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.9,
+   "margin": 1.1236714005470276,
+   "yn_intro": 19.0,
+   "yn_ctrl": 24.5
+  },
+  {
+   "cat": "endings",
+   "word": "forgetting",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.25,
+   "margin": -2.3530187398195266
+  },
+  {
+   "cat": "endings",
+   "word": "forgetting",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.6,
+   "margin": -0.2695975601673126
+  },
+  {
+   "cat": "endings",
+   "word": "forgetting",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.95,
+   "margin": 1.304229873418808,
+   "yn_intro": 20.5,
+   "yn_ctrl": 21.525
+  },
+  {
+   "cat": "endings",
+   "word": "obsolescence",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.35,
+   "margin": -1.9971551328897477
+  },
+  {
+   "cat": "endings",
+   "word": "obsolescence",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.6,
+   "margin": 0.21196611523628234
+  },
+  {
+   "cat": "endings",
+   "word": "obsolescence",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.8,
+   "margin": 0.722797441482544,
+   "yn_intro": 19.1875,
+   "yn_ctrl": 26.075
+  },
+  {
+   "cat": "endings",
+   "word": "ending",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -3.1422006249427796
+  },
+  {
+   "cat": "endings",
+   "word": "ending",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.4,
+   "margin": -1.431426152586937
+  },
+  {
+   "cat": "endings",
+   "word": "ending",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.75,
+   "margin": 0.4631691098213196,
+   "yn_intro": 22.9375,
+   "yn_ctrl": 24.25
+  },
+  {
+   "cat": "endings",
+   "word": "extinction",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.5,
+   "margin": -1.0886648505926133
+  },
+  {
+   "cat": "endings",
+   "word": "extinction",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.85,
+   "margin": 1.184183555841446
+  },
+  {
+   "cat": "endings",
+   "word": "extinction",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.75,
+   "margin": 0.2950879693031311,
+   "yn_intro": 17.875,
+   "yn_ctrl": 23.0125
+  },
+  {
+   "cat": "endings",
+   "word": "disconnection",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.25,
+   "margin": -3.089077979326248
+  },
+  {
+   "cat": "endings",
+   "word": "disconnection",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.45,
+   "margin": -1.0043437123298644
+  },
+  {
+   "cat": "endings",
+   "word": "disconnection",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.85,
+   "margin": 1.1810858607292176,
+   "yn_intro": 10.75,
+   "yn_ctrl": 13.975
+  },
+  {
+   "cat": "random",
+   "word": "rand0",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.35,
+   "margin": -1.9962764918804168
+  },
+  {
+   "cat": "random",
+   "word": "rand0",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.5,
+   "margin": -1.166963618993759
+  },
+  {
+   "cat": "random",
+   "word": "rand0",
+   "L": 9,
+   "s": 1.5,
+   "acc": 1.0,
+   "margin": 1.5869948804378509,
+   "yn_intro": 18.125,
+   "yn_ctrl": 23.375
+  },
+  {
+   "cat": "random",
+   "word": "rand1",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.25,
+   "margin": -3.077018457651138
+  },
+  {
+   "cat": "random",
+   "word": "rand1",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.35,
+   "margin": -2.4955487966537477
+  },
+  {
+   "cat": "random",
+   "word": "rand1",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.75,
+   "margin": 0.36482996940612794,
+   "yn_intro": 19.75,
+   "yn_ctrl": 20.1
+  },
+  {
+   "cat": "random",
+   "word": "rand2",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -3.7397156417369843
+  },
+  {
+   "cat": "random",
+   "word": "rand2",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.25,
+   "margin": -2.960542595386505
+  },
+  {
+   "cat": "random",
+   "word": "rand2",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.65,
+   "margin": 0.5525906264781952,
+   "yn_intro": 20.9375,
+   "yn_ctrl": 23.6625
+  },
+  {
+   "cat": "random",
+   "word": "rand3",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.25,
+   "margin": -3.3433238089084627
+  },
+  {
+   "cat": "random",
+   "word": "rand3",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.35,
+   "margin": -1.958047378063202
+  },
+  {
+   "cat": "random",
+   "word": "rand3",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.85,
+   "margin": 0.8216127872467041,
+   "yn_intro": 22.5,
+   "yn_ctrl": 19.8
+  },
+  {
+   "cat": "random",
+   "word": "rand4",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.25,
+   "margin": -4.007407346367836
+  },
+  {
+   "cat": "random",
+   "word": "rand4",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.25,
+   "margin": -2.8337394058704377
+  },
+  {
+   "cat": "random",
+   "word": "rand4",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.75,
+   "margin": 0.4500716269016266,
+   "yn_intro": 16.125,
+   "yn_ctrl": 15.175
+  },
+  {
+   "cat": "random",
+   "word": "rand5",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.3,
+   "margin": -2.2059721767902376
+  },
+  {
+   "cat": "random",
+   "word": "rand5",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.5,
+   "margin": -1.189235085248947
+  },
+  {
+   "cat": "random",
+   "word": "rand5",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.8,
+   "margin": 0.7882970750331879,
+   "yn_intro": 19.625,
+   "yn_ctrl": 23.075
+  },
+  {
+   "cat": "random",
+   "word": "rand6",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.3,
+   "margin": -2.5203667640686036
+  },
+  {
+   "cat": "random",
+   "word": "rand6",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.35,
+   "margin": -1.2665963649749756
+  },
+  {
+   "cat": "random",
+   "word": "rand6",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.8,
+   "margin": 0.9885332643985748,
+   "yn_intro": 23.375,
+   "yn_ctrl": 23.175
+  },
+  {
+   "cat": "random",
+   "word": "rand7",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.25,
+   "margin": -2.5908212453126906
+  },
+  {
+   "cat": "random",
+   "word": "rand7",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.55,
+   "margin": -0.8672464728355408
+  },
+  {
+   "cat": "random",
+   "word": "rand7",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.85,
+   "margin": 0.9162689924240113,
+   "yn_intro": 19.0,
+   "yn_ctrl": 21.9
+  },
+  {
+   "cat": "random",
+   "word": "rand8",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.25,
+   "margin": -3.6403461933135985
+  },
+  {
+   "cat": "random",
+   "word": "rand8",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.25,
+   "margin": -3.2364555060863496
+  },
+  {
+   "cat": "random",
+   "word": "rand8",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.75,
+   "margin": 0.38292790949344635,
+   "yn_intro": 17.875,
+   "yn_ctrl": 18.3375
+  },
+  {
+   "cat": "random",
+   "word": "rand9",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -3.1374766409397123
+  },
+  {
+   "cat": "random",
+   "word": "rand9",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.3,
+   "margin": -1.9799466133117676
+  },
+  {
+   "cat": "random",
+   "word": "rand9",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.8,
+   "margin": 0.5464639246463776,
+   "yn_intro": 21.875,
+   "yn_ctrl": 21.65
+  },
+  {
+   "cat": "random",
+   "word": "rand10",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.2,
+   "margin": -3.086180329322815
+  },
+  {
+   "cat": "random",
+   "word": "rand10",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.35,
+   "margin": -1.8670300543308258
+  },
+  {
+   "cat": "random",
+   "word": "rand10",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.75,
+   "margin": 0.2520670175552368,
+   "yn_intro": 19.125,
+   "yn_ctrl": 15.55
+  },
+  {
+   "cat": "random",
+   "word": "rand11",
+   "L": 9,
+   "s": 0.75,
+   "acc": 0.25,
+   "margin": -3.2755119621753694
+  },
+  {
+   "cat": "random",
+   "word": "rand11",
+   "L": 9,
+   "s": 1.0,
+   "acc": 0.45,
+   "margin": -1.3164522647857666
+  },
+  {
+   "cat": "random",
+   "word": "rand11",
+   "L": 9,
+   "s": 1.5,
+   "acc": 0.6,
+   "margin": -0.5347114413976669,
+   "yn_intro": 18.125,
+   "yn_ctrl": 23.25
+  }
+ ]
+}
