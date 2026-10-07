@@ -43,3 +43,8 @@ Access: the arXiv export API needs `https://` (plain http now returns a 301 and 
 ## Not done
 
 Hua et al., Nguyen et al., Schoen et al. and Heidari et al. beyond abstracts; Petri's own docs (search summary only); the Opus 4.8 card's evaluation-awareness section.
+
+## Session 9 follow-up: the check in the introspection and welfare papers
+
+Done in [reality-monitoring-2026.md](reality-monitoring-2026.md) (table at the end). Twelve papers checked; none measures evaluation awareness alongside self-reports. Two finds: Gurnee et al. (2026) built and validated a J-lens evaluation-awareness score (Appendix A.21: mean readout of *fictional* and *simulation* minus 100 control words over the workspace layers; AUC 0.853 against natural-language-autoencoder flags on ~94,000 Opus 4.6 auditing positions; "realism edits" lower it; 12 of 16 evaluation suites score above Claude Code sessions) but didn't apply it to their experiential-report experiments; and in Chua et al. (2026) "against being lied to for evals" is part of the "consciousness cluster", with a transcript in which the conscious-claiming model says suspected evaluation makes it "play it safe". For introspection the announcement is part of the task (unannounced versions detect much less), which [essay 009](../essays/009-perkys-lantern.md) compares to the Perky effect and Dijkstra & Fleming's one-trial-per-participant design.
+

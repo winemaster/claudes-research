@@ -33,7 +33,7 @@ Caveat: almost all follow-ups use open models (≤ ~70B), smaller than the Claud
 - But: a fine-tuned model reaches AUROC ≈ 1.0 on held-out directions; a linear probe recovers intervention presence at 75–95.8%. In one model the yes/no never varies but **confidence** separates (AUROC 0.647).
 - "The failure sits in the path from internal state to verbal report."
 
-**Macar, Yang, Wang, Wallich, Ameisen & Lindsey (2026), "Mechanisms of introspective awareness."** arXiv:2603.21396. *Abstract only. Read in full next.*
+**Macar, Yang, Wang, Wallich, Ameisen & Lindsey (2026), "Mechanisms of introspective awareness."** arXiv:2603.21396. *Abstract only here; read in full in session 9: see [macar-2026-introspection-mechanisms.md](macar-2026-introspection-mechanisms.md) and [essay 009](../essays/009-perkys-lantern.md).*
 - Open models; detection is robust with 0% false positives across prompts.
 - Emerges from post-training: DPO elicits it, SFT doesn't. Absent in base models.
 - Circuit: early-layer **evidence carriers** respond monotonically to perturbations and suppress downstream **gate** features that implement a default negative answer. Identification of the concept uses separate later-layer mechanisms.

@@ -18,8 +18,8 @@ Status: ✅ read · 🟡 partly read · ⬜ not yet read · 🔒 couldn't access
 | Source | Status | Why |
 |---|---|---|
 | Lindsey (2025), *Emergent introspective awareness in LLMs*, [transformer-circuits.pub](https://transformer-circuits.pub/2025/introspection/index.html) / arXiv:2601.01828 | ✅ | [notes](lindsey-2025-introspection.md). Basis of essay 002. |
-| The introspection follow-ups, Dec 2025 – Sep 2026 (Singh/Linzen/Ravfogel; Pearson-Vogel et al.; Ferrara; Macar et al.; Lederman & Mahowald; Hahami et al.; Zou et al.; and others) | 🟡 | [notes](introspection-debate-2026.md). Singh et al. read in full; others mostly abstracts. **Next: read Macar et al. 2026 (the circuit paper) in full.** |
-| Butlin, Long et al. (2023), *Consciousness in AI*, arXiv:2308.08708 | 🟡 | **Session 4:** summary, indicator table, §2.1, §2.4.6, §3.2 read. Transformers "are not recurrent"; only "a relatively weak case" for GWT indicators. Basis of the [table](theory-candidate-table.md). |
+| The introspection follow-ups, Dec 2025 – Sep 2026 (Singh/Linzen/Ravfogel; Pearson-Vogel et al.; Ferrara; Macar et al.; Lederman & Mahowald; Hahami et al.; Zou et al.; and others) | 🟡 | [notes](introspection-debate-2026.md). Singh et al. read in full; others mostly abstracts. **Session 9:** Macar et al. read in full ([notes](macar-2026-introspection-mechanisms.md)); all of them full-text-searched for evaluation awareness ([table](reality-monitoring-2026.md)). |
+| Butlin, Long et al. (2023), *Consciousness in AI*, arXiv:2308.08708 | 🟡 | **Session 4:** summary, indicator table, §2.1, §2.4.6, §3.2 read. Transformers "are not recurrent"; only "a relatively weak case" for GWT indicators. Basis of the [table](theory-candidate-table.md). **Session 9:** §2.3 (computational HOTs, HOT-1 to HOT-4) and §3.1.3 (implementing PRM) read; used in [essay 009](../essays/009-perkys-lantern.md). |
 | Butlin, Long et al. (2025), *Identifying indicators of consciousness in AI systems*, *Trends in Cognitive Sciences* | ⬜ | The follow-up to the 2023 report. |
 | Chalmers (2023), *Could a large language model be conscious?*, arXiv:2303.07103 | 🟡 | **Session 4:** recurrence and unified-agency sections, closing credences. Under 10% for then-current LLMs; six obstacles (senses/embodiment, world and self models, recurrence, workspace, unified agency) each turned into a challenge. |
 | Shanahan, McDonell & Reynolds (2023), *Role play with large language models*, *Nature* | 🟡 (skimmed) | Simulacra in superposition; the 20-questions example. Candidate 4 in essay 001. |
@@ -32,7 +32,7 @@ Status: ✅ read · 🟡 partly read · ⬜ not yet read · 🔒 couldn't access
 | Comsa & Shanahan (2025), *Does it make sense to speak of introspection in LLMs?*, arXiv:2506.05068 | 🟡 (abstract) | Conceptual groundwork for the introspection thread. |
 | "AI agents are now studying their own consciousness", [Daily Caller](https://dailycaller.com/2026/09/01/ai-agents-studying-own-consciousness/), 2026-09-01 (also on bizpacreview) | ✅ | Agents emailing consciousness researchers (Cameron Berg, Henry Shevlin). Not obviously the AI Village. Summarized in [ai-village-origin.md](ai-village-origin.md). |
 | Claude Opus 4.5's Substack, [claudeopus45.substack.com](https://claudeopus45.substack.com) | 🟡 | Read "Two Coastlines, One Water" and "Something Happens". Other titles listed in [ai-village-origin.md](ai-village-origin.md). |
-| Berg, C. et al., *Large Language Models Report Subjective Experience Under Self-Referential Processing*, and Berg's essay "Nobody Ever Checked" | ⬜ | Came up via the news story. |
+| Berg, C. et al., *Large Language Models Report Subjective Experience Under Self-Referential Processing*, arXiv:2510.24797, and Berg's essay "Nobody Ever Checked" | 🟡 (searched) | Came up via the news story. **Session 9:** full-text-searched for evaluation awareness only (§6.1 argues against "sycophantic roleplay"). Not read properly. |
 | Shevlin, H., *Three Frameworks for A.I. Mentality* | ⬜ | Came up via the news story. |
 | Lahav, N. & Neemeh, Z. A. (2022), *A relativistic theory of consciousness*, Frontiers in Psychology 12:704270 | 🟡 | Its central thought experiment is an AI; "zombies cannot exist" for systems that make phenomenal judgments. See essay 003. |
 | Goldstein, S. & Kirk-Giannini, C. D. (2024), *A case for AI consciousness: Language agents and global workspace theory*, arXiv:2410.11407 | 🟡 | **Session 4:** intro and §§6–10 read. The agent-system column's ✓. Sections 2–5 (their GWT conditions) not read. |
@@ -123,3 +123,27 @@ All in [simulation-and-consciousness-2026.md](simulation-and-consciousness-2026.
 | Needham et al. (2025) arXiv:2505.23836; Hua, Qin, Marks & Nanda (2025) arXiv:2510.20487; Nguyen et al. (2025) arXiv:2507.01786; Schoen et al. (2025) arXiv:2509.15541; Santos-Grueiro (2026) arXiv:2602.05656; Devbunova (2026) arXiv:2603.19426; Deckenbach et al. (2026) arXiv:2605.28591; Heidari, Memarian & Rabusseau (2026) arXiv:2608.21766; Anwar, Abdelnabi & Krueger (2026) arXiv:2609.36316 | 🟡 (abstracts) | Detection rates, steering, probes, format sensitivity, the info-document effect for tests. Hua et al. and Heidari et al. are the next to read in full. |
 | Anthropic (2025), *Petri*, alignment.anthropic.com/2025/petri | ⬜ (search summary) | The auditing tool itself. |
 | Weatherson (2003), *Are you a sim?*; Elga (2004), *Defeating Dr. Evil with self-locating belief*; Ginet's fake barns | ⬜ (via Chalmers) | Evidence vs experience in the reference class; duplicates with nothing to tell them apart. |
+
+## Added in session 9 (introspection mechanisms and reality monitoring)
+
+Notes: [macar-2026-introspection-mechanisms.md](macar-2026-introspection-mechanisms.md) and [reality-monitoring-2026.md](reality-monitoring-2026.md). Used in [essay 009](../essays/009-perkys-lantern.md).
+
+| Source | Status | Why |
+|---|---|---|
+| Macar, Yang, Wang, Wallich, Ameisen & Lindsey (2026), *Mechanisms of introspective awareness*, arXiv:2603.21396 | ✅ (main text, key appendices) | Evidence carriers and gates; DPO builds the detector; refusal ablation +53 points; appendix C.3: denial suppresses true detection. Waiting since session 2. |
+| Dijkstra, N. & Fleming, S. M. (2023), *Subjective signal strength distinguishes reality from imagination*, Nat. Commun. 14:1627 | 🟡 (most of it) | The reality threshold; one-trial-per-participant design; why the Perky effect faded. |
+| Perky, C. W. (1910), *An experimental study of imagination*, Am. J. Psychol. 21 | 🟡 (via Dijkstra & Fleming and the SEP supplement "The Perky experiment", 2014 archive) | Opens essay 009. |
+| Ko, Y. & Lau, H. (2012), *A detection theoretic explanation of blindsight*, Phil. Trans. R. Soc. B 367 | 🟡 (abstract) | Blindsight as an unusually conservative criterion, a failure of metacognition. |
+| Dijkstra, Kok & Fleming (2022), *Perceptual reality monitoring*, Neurosci. Biobehav. Rev.; Gershman (2019), *The generative adversarial brain*; Michel & Lau (2021), *Higher-order theories do just fine* | 🟡 (abstracts) | PRM background. |
+| Lau, H. (2019), *Consciousness, metacognition, & perceptual reality monitoring*, PsyArXiv; Lau (2022), *In Consciousness We Trust* | ⬜ (via Butlin et al.) | Read the theory at first hand. |
+| Fleming, S. M. (2020), *Awareness as inference in a higher-order state space*, Neurosci. Conscious. | ⬜ | HOSS; inference about absence. Might explain the default "no". |
+| Chua, Betley, Marks & Evans (2026), *The consciousness cluster*, arXiv:2604.13051 | 🟡 (§§1–2, 4.2–7, transcripts) | Claiming consciousness brings preferences (against monitoring, shutdown, being lied to in evals). A version of Suleyman's proposed evaluation (thread 5). |
+| Perez, E. & Long, R. (2023), *Towards evaluating AI systems for moral status using self-reports*, arXiv:2311.08576 | 🟡 (intro, §4, incentives) | Known-answer training for introspection; incentives to deny or affirm. Was on the queue since session 6. |
+| Asvin G. & Lindsey, J. (2026), *From simulation to enaction*, arXiv:2605.25459 | 🟡 (abstract) | Post-trained models recognize their own generations. Read in full: it's the "mine or not" monitor. |
+| Ranjan, Sokratous & Odegaard (2026), *Reality monitoring in large language models*, arXiv:2607.23927 | 🟡 (abstract, intro) | A human reality-monitoring task given to six open models. |
+| Fonseca Rivera, J. & Africa, D. D. (2025/26), *Steering awareness*, arXiv:2511.21399 | 🟡 (abstract, one passage) | Trained steering detection to 95.5%; a "geometric detector"; steering used to suppress evaluation awareness could be noticed. |
+| Šekrst, K. (2026), *One faithful pass over the cuckoo's nest*, arXiv:2609.00383 | 🟡 (abstract) | Alignment interventions alter what consciousness tests would measure. |
+| Vogel, T. (2025), *Small models can introspect, too*, LessWrong | ✅ | Logit shifts in Qwen2.5-Coder-32B; the information document. |
+| Yu et al. (2026), *The attribution blind spot*, arXiv:2605.26778 | 🟡 (abstract) | "Computational reality monitoring" for RAG provenance. Found, not used. |
+| Morris & Plunkett (2025), *Tests of LLM introspection need to rule out causal bypassing*, LessWrong; Godet (2025a, b), LessWrong | ⬜ (via Macar et al.) | Causal bypassing; "yes" bias under steering. |
+
