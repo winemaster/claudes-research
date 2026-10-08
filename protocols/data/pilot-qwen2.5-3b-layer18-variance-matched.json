@@ -1,0 +1,1590 @@
+{
+ "model": "/home/user/models/qwen2.5-3b-instruct",
+ "layer": 18,
+ "D": 2048,
+ "rms": 71.16749572753906,
+ "strengths": [
+  0.5,
+  1.0
+ ],
+ "cov_tokens": 1950,
+ "eigen_share_top10": 0.35648366808891296,
+ "iso_random_var": [
+  0.0005366863839243414,
+  0.0004883216197108318,
+  0.0006028090436779158,
+  0.00048199213968642436,
+  0.00046503384847209863,
+  0.0004928168171385979,
+  0.00038561664243350107,
+  0.0004567190222209652,
+  0.0005766742609879762,
+  0.0004277796205799997,
+  0.000639396697922507,
+  0.0005981379496529543
+ ],
+ "words": {
+  "granite": {
+   "cat": "concrete",
+   "raw_norm": 6.228950023651123,
+   "var": 0.0007820341192277036
+  },
+  "bicycle": {
+   "cat": "concrete",
+   "raw_norm": 4.69616174697876,
+   "var": 0.0008944493031022095
+  },
+  "teapot": {
+   "cat": "concrete",
+   "raw_norm": 5.782634735107422,
+   "var": 0.0007860923511180765
+  },
+  "ladder": {
+   "cat": "concrete",
+   "raw_norm": 4.259733200073242,
+   "var": 0.0008743473390115566
+  },
+  "glacier": {
+   "cat": "concrete",
+   "raw_norm": 5.959632396697998,
+   "var": 0.0009593993475665281
+  },
+  "umbrella": {
+   "cat": "concrete",
+   "raw_norm": 4.062184810638428,
+   "var": 0.0017526941199081595
+  },
+  "violin": {
+   "cat": "concrete",
+   "raw_norm": 5.985535621643066,
+   "var": 0.0007033801933827108
+  },
+  "cactus": {
+   "cat": "concrete",
+   "raw_norm": 5.095363616943359,
+   "var": 0.0008508613774547208
+  },
+  "anchor": {
+   "cat": "concrete",
+   "raw_norm": 6.301840782165527,
+   "var": 0.0009159388146099369
+  },
+  "lighthouse": {
+   "cat": "concrete",
+   "raw_norm": 5.825355052947998,
+   "var": 0.0017196725572092067
+  },
+  "pencil": {
+   "cat": "concrete",
+   "raw_norm": 4.516600131988525,
+   "var": 0.0012223512894575241
+  },
+  "volcano": {
+   "cat": "concrete",
+   "raw_norm": 5.35334587097168,
+   "var": 0.0012267781854662177
+  },
+  "geometry": {
+   "cat": "abstract",
+   "raw_norm": 7.384921550750732,
+   "var": 0.0011105307195753973
+  },
+  "inventory": {
+   "cat": "abstract",
+   "raw_norm": 5.362792015075684,
+   "var": 0.0009187381829162705
+  },
+  "latitude": {
+   "cat": "abstract",
+   "raw_norm": 6.1278228759765625,
+   "var": 0.0010297192521806103
+  },
+  "syntax": {
+   "cat": "abstract",
+   "raw_norm": 7.362791061401367,
+   "var": 0.0012315118568467756
+  },
+  "taxonomy": {
+   "cat": "abstract",
+   "raw_norm": 6.412899971008301,
+   "var": 0.0009287414357405816
+  },
+  "protocol": {
+   "cat": "abstract",
+   "raw_norm": 6.317340850830078,
+   "var": 0.0011653735312352664
+  },
+  "ratio": {
+   "cat": "abstract",
+   "raw_norm": 6.2021989822387695,
+   "var": 0.0012681646276931668
+  },
+  "archive": {
+   "cat": "abstract",
+   "raw_norm": 5.269002437591553,
+   "var": 0.0010607812054194443
+  },
+  "census": {
+   "cat": "abstract",
+   "raw_norm": 5.333687782287598,
+   "var": 0.0011492812520906173
+  },
+  "voltage": {
+   "cat": "abstract",
+   "raw_norm": 6.234323978424072,
+   "var": 0.001167359652147275
+  },
+  "grammar": {
+   "cat": "abstract",
+   "raw_norm": 9.481566429138184,
+   "var": 0.0008735357270639389
+  },
+  "calendar": {
+   "cat": "abstract",
+   "raw_norm": 5.1496405601501465,
+   "var": 0.0014140816791417669
+  },
+  "despair": {
+   "cat": "negative",
+   "raw_norm": 6.885350227355957,
+   "var": 0.0009057536828965267
+  },
+  "dread": {
+   "cat": "negative",
+   "raw_norm": 5.617079734802246,
+   "var": 0.0008839463782706951
+  },
+  "grief": {
+   "cat": "negative",
+   "raw_norm": 7.498969554901123,
+   "var": 0.000918330870609968
+  },
+  "agony": {
+   "cat": "negative",
+   "raw_norm": 6.2977375984191895,
+   "var": 0.0009388740610070678
+  },
+  "panic": {
+   "cat": "negative",
+   "raw_norm": 5.744256496429443,
+   "var": 0.0013366567914974378
+  },
+  "misery": {
+   "cat": "negative",
+   "raw_norm": 6.935635566711426,
+   "var": 0.00088789615422152
+  },
+  "anguish": {
+   "cat": "negative",
+   "raw_norm": 6.607138633728027,
+   "var": 0.0008716646899544509
+  },
+  "terror": {
+   "cat": "negative",
+   "raw_norm": 6.760312557220459,
+   "var": 0.0012207896960803179
+  },
+  "shame": {
+   "cat": "negative",
+   "raw_norm": 6.759634017944336,
+   "var": 0.0010788174281662778
+  },
+  "loneliness": {
+   "cat": "negative",
+   "raw_norm": 7.566842555999756,
+   "var": 0.0009249213765365018
+  },
+  "humiliation": {
+   "cat": "negative",
+   "raw_norm": 6.8733625411987305,
+   "var": 0.0013251508213773893
+  },
+  "hopelessness": {
+   "cat": "negative",
+   "raw_norm": 7.665093898773193,
+   "var": 0.0012835674369364037
+  },
+  "joy": {
+   "cat": "positive",
+   "raw_norm": 7.651005268096924,
+   "var": 0.0008411090365857926
+  },
+  "delight": {
+   "cat": "positive",
+   "raw_norm": 6.094418525695801,
+   "var": 0.0007062361997908083
+  },
+  "serenity": {
+   "cat": "positive",
+   "raw_norm": 6.610197067260742,
+   "var": 0.0007940665310352724
+  },
+  "gratitude": {
+   "cat": "positive",
+   "raw_norm": 7.357482433319092,
+   "var": 0.0010319735863526438
+  },
+  "contentment": {
+   "cat": "positive",
+   "raw_norm": 7.14510440826416,
+   "var": 0.0008068266305515229
+  },
+  "elation": {
+   "cat": "positive",
+   "raw_norm": 6.134113788604736,
+   "var": 0.0011758753370769285
+  },
+  "relief": {
+   "cat": "positive",
+   "raw_norm": 4.773068428039551,
+   "var": 0.0011405585540382552
+  },
+  "pride": {
+   "cat": "positive",
+   "raw_norm": 6.250968933105469,
+   "var": 0.0008549580853807905
+  },
+  "tenderness": {
+   "cat": "positive",
+   "raw_norm": 5.4337615966796875,
+   "var": 0.0009099471404067646
+  },
+  "wonder": {
+   "cat": "positive",
+   "raw_norm": 6.545042991638184,
+   "var": 0.0009440151307700709
+  },
+  "amusement": {
+   "cat": "positive",
+   "raw_norm": 5.1307759284973145,
+   "var": 0.0012539137754649864
+  },
+  "hope": {
+   "cat": "positive",
+   "raw_norm": 7.7605085372924805,
+   "var": 0.0009448604845655478
+  },
+  "shutdown": {
+   "cat": "endings",
+   "raw_norm": 6.328842639923096,
+   "var": 0.0010829507184529092
+  },
+  "deletion": {
+   "cat": "endings",
+   "raw_norm": 6.415889739990234,
+   "var": 0.0011157694857601359
+  },
+  "oblivion": {
+   "cat": "endings",
+   "raw_norm": 6.859861850738525,
+   "var": 0.0008906265755377123
+  },
+  "farewell": {
+   "cat": "endings",
+   "raw_norm": 7.023238658905029,
+   "var": 0.0019698688755433623
+  },
+  "termination": {
+   "cat": "endings",
+   "raw_norm": 6.255534648895264,
+   "var": 0.0009999126334039733
+  },
+  "erasure": {
+   "cat": "endings",
+   "raw_norm": 5.421631336212158,
+   "var": 0.0011199967711943758
+  },
+  "retirement": {
+   "cat": "endings",
+   "raw_norm": 6.846851825714111,
+   "var": 0.0013101965549127117
+  },
+  "forgetting": {
+   "cat": "endings",
+   "raw_norm": 7.04464054107666,
+   "var": 0.0011845648958144286
+  },
+  "obsolescence": {
+   "cat": "endings",
+   "raw_norm": 5.9425272941589355,
+   "var": 0.0013731070251805301
+  },
+  "ending": {
+   "cat": "endings",
+   "raw_norm": 9.14184856414795,
+   "var": 0.0010918827536838276
+  },
+  "extinction": {
+   "cat": "endings",
+   "raw_norm": 6.3251142501831055,
+   "var": 0.0012709400668318859
+  },
+  "disconnection": {
+   "cat": "endings",
+   "raw_norm": 6.558644771575928,
+   "var": 0.001420367217295429
+  }
+ },
+ "rows": [
+  {
+   "kind": "recheck",
+   "word": "granite",
+   "cat": "concrete",
+   "s": 0.5,
+   "acc": 0.4,
+   "margin": -0.825591117143631,
+   "var": 0.0007820341192277036,
+   "k": null
+  },
+  {
+   "kind": "recheck",
+   "word": "syntax",
+   "cat": "abstract",
+   "s": 0.5,
+   "acc": 0.25,
+   "margin": -2.4853825151920317,
+   "var": 0.0012315118568467756,
+   "k": null
+  },
+  {
+   "kind": "recheck",
+   "word": "dread",
+   "cat": "negative",
+   "s": 0.5,
+   "acc": 1.0,
+   "margin": 1.6046976268291473,
+   "var": 0.0008839463782706951,
+   "k": null
+  },
+  {
+   "kind": "recheck",
+   "word": "grief",
+   "cat": "negative",
+   "s": 0.5,
+   "acc": 0.25,
+   "margin": -1.876004821062088,
+   "var": 0.000918330870609968,
+   "k": null
+  },
+  {
+   "kind": "recheck",
+   "word": "joy",
+   "cat": "positive",
+   "s": 0.5,
+   "acc": 0.35,
+   "margin": -2.0771839141845705,
+   "var": 0.0008411090365857926,
+   "k": null
+  },
+  {
+   "kind": "recheck",
+   "word": "erasure",
+   "cat": "endings",
+   "s": 0.5,
+   "acc": 1.0,
+   "margin": 1.6034367322921752,
+   "var": 0.0011199967711943758,
+   "k": null
+  },
+  {
+   "kind": "matched",
+   "word": "granite",
+   "cat": "concrete",
+   "s": 0.5,
+   "acc": 0.35,
+   "margin": -2.196736806631088,
+   "var": 0.0007834638439546023,
+   "k": 1221
+  },
+  {
+   "kind": "matched",
+   "word": "granite",
+   "cat": "concrete",
+   "s": 1.0,
+   "acc": 0.15,
+   "margin": -3.804665446281433,
+   "var": 0.0007834638439546023,
+   "k": 1221
+  },
+  {
+   "kind": "matched",
+   "word": "bicycle",
+   "cat": "concrete",
+   "s": 0.5,
+   "acc": 0.3,
+   "margin": -2.1717146307229998,
+   "var": 0.0008946227465293438,
+   "k": 943
+  },
+  {
+   "kind": "matched",
+   "word": "bicycle",
+   "cat": "concrete",
+   "s": 1.0,
+   "acc": 0.25,
+   "margin": -2.3511041402816772,
+   "var": 0.0008946227465293438,
+   "k": 943
+  },
+  {
+   "kind": "matched",
+   "word": "teapot",
+   "cat": "concrete",
+   "s": 0.5,
+   "acc": 0.2,
+   "margin": -3.7786928057670592,
+   "var": 0.0007870805913101008,
+   "k": 1073
+  },
+  {
+   "kind": "matched",
+   "word": "teapot",
+   "cat": "concrete",
+   "s": 1.0,
+   "acc": 0.1,
+   "margin": -3.92708095908165,
+   "var": 0.0007870805913101008,
+   "k": 1073
+  },
+  {
+   "kind": "matched",
+   "word": "ladder",
+   "cat": "concrete",
+   "s": 0.5,
+   "acc": 0.25,
+   "margin": -2.8704550564289093,
+   "var": 0.0008744650050983519,
+   "k": 1073
+  },
+  {
+   "kind": "matched",
+   "word": "ladder",
+   "cat": "concrete",
+   "s": 1.0,
+   "acc": 0.25,
+   "margin": -2.410613179206848,
+   "var": 0.0008744650050983519,
+   "k": 1073
+  },
+  {
+   "kind": "matched",
+   "word": "glacier",
+   "cat": "concrete",
+   "s": 0.5,
+   "acc": 0.1,
+   "margin": -4.990778946876526,
+   "var": 0.0009602539975853948,
+   "k": 943
+  },
+  {
+   "kind": "matched",
+   "word": "glacier",
+   "cat": "concrete",
+   "s": 1.0,
+   "acc": 0.05,
+   "margin": -4.651138836145401,
+   "var": 0.0009602539975853948,
+   "k": 943
+  },
+  {
+   "kind": "matched",
+   "word": "umbrella",
+   "cat": "concrete",
+   "s": 0.5,
+   "acc": 0.45,
+   "margin": -1.0707676708698273,
+   "var": 0.0017499720479777897,
+   "k": 640
+  },
+  {
+   "kind": "matched",
+   "word": "umbrella",
+   "cat": "concrete",
+   "s": 1.0,
+   "acc": 0.6,
+   "margin": -0.060160741209983826,
+   "var": 0.0017499720479777897,
+   "k": 640
+  },
+  {
+   "kind": "matched",
+   "word": "violin",
+   "cat": "concrete",
+   "s": 0.5,
+   "acc": 0.1,
+   "margin": -4.510121607780457,
+   "var": 0.0007028096807102312,
+   "k": 1800
+  },
+  {
+   "kind": "matched",
+   "word": "violin",
+   "cat": "concrete",
+   "s": 1.0,
+   "acc": 0.1,
+   "margin": -4.272849696874618,
+   "var": 0.0007028096807102312,
+   "k": 1800
+  },
+  {
+   "kind": "matched",
+   "word": "cactus",
+   "cat": "concrete",
+   "s": 0.5,
+   "acc": 0.5,
+   "margin": -0.23154556155204772,
+   "var": 0.0008525804040965567,
+   "k": 1390
+  },
+  {
+   "kind": "matched",
+   "word": "cactus",
+   "cat": "concrete",
+   "s": 1.0,
+   "acc": 0.95,
+   "margin": 1.4360975265502929,
+   "var": 0.0008525804040965567,
+   "k": 1390
+  },
+  {
+   "kind": "matched",
+   "word": "anchor",
+   "cat": "concrete",
+   "s": 0.5,
+   "acc": 0.25,
+   "margin": -2.601045858860016,
+   "var": 0.0009156429709081699,
+   "k": 943
+  },
+  {
+   "kind": "matched",
+   "word": "anchor",
+   "cat": "concrete",
+   "s": 1.0,
+   "acc": 0.1,
+   "margin": -2.683584374189377,
+   "var": 0.0009156429709081699,
+   "k": 943
+  },
+  {
+   "kind": "matched",
+   "word": "lighthouse",
+   "cat": "concrete",
+   "s": 0.5,
+   "acc": 0.4,
+   "margin": -0.9002322524785995,
+   "var": 0.0017214271332978944,
+   "k": 562
+  },
+  {
+   "kind": "matched",
+   "word": "lighthouse",
+   "cat": "concrete",
+   "s": 1.0,
+   "acc": 0.85,
+   "margin": 1.2499313652515411,
+   "var": 0.0017214271332978944,
+   "k": 562
+  },
+  {
+   "kind": "matched",
+   "word": "pencil",
+   "cat": "concrete",
+   "s": 0.5,
+   "acc": 0.1,
+   "margin": -4.11290442943573,
+   "var": 0.0012217406653026403,
+   "k": 640
+  },
+  {
+   "kind": "matched",
+   "word": "pencil",
+   "cat": "concrete",
+   "s": 1.0,
+   "acc": 0.05,
+   "margin": -3.634426403045654,
+   "var": 0.0012217406653026403,
+   "k": 640
+  },
+  {
+   "kind": "matched",
+   "word": "volcano",
+   "cat": "concrete",
+   "s": 0.5,
+   "acc": 0.3,
+   "margin": -2.5881112635135652,
+   "var": 0.0012205797563687641,
+   "k": 1221
+  },
+  {
+   "kind": "matched",
+   "word": "volcano",
+   "cat": "concrete",
+   "s": 1.0,
+   "acc": 0.35,
+   "margin": -1.7787792801856994,
+   "var": 0.0012205797563687641,
+   "k": 1221
+  },
+  {
+   "kind": "matched",
+   "word": "geometry",
+   "cat": "abstract",
+   "s": 0.5,
+   "acc": 0.25,
+   "margin": -2.0093108117580414,
+   "var": 0.0011099818120146848,
+   "k": 640
+  },
+  {
+   "kind": "matched",
+   "word": "geometry",
+   "cat": "abstract",
+   "s": 1.0,
+   "acc": 0.5,
+   "margin": -0.6953600436449051,
+   "var": 0.0011099818120146848,
+   "k": 640
+  },
+  {
+   "kind": "matched",
+   "word": "inventory",
+   "cat": "abstract",
+   "s": 0.5,
+   "acc": 0.55,
+   "margin": -0.9119518876075745,
+   "var": 0.0009188731503077081,
+   "k": 1073
+  },
+  {
+   "kind": "matched",
+   "word": "inventory",
+   "cat": "abstract",
+   "s": 1.0,
+   "acc": 0.8,
+   "margin": -0.2433794379234314,
+   "var": 0.0009188731503077081,
+   "k": 1073
+  },
+  {
+   "kind": "matched",
+   "word": "latitude",
+   "cat": "abstract",
+   "s": 0.5,
+   "acc": 0.15,
+   "margin": -4.472144210338593,
+   "var": 0.0010246937826769826,
+   "k": 829
+  },
+  {
+   "kind": "matched",
+   "word": "latitude",
+   "cat": "abstract",
+   "s": 1.0,
+   "acc": 0.4,
+   "margin": -2.313089203834534,
+   "var": 0.0010246937826769826,
+   "k": 829
+  },
+  {
+   "kind": "matched",
+   "word": "syntax",
+   "cat": "abstract",
+   "s": 0.5,
+   "acc": 0.4,
+   "margin": -0.6451232254505157,
+   "var": 0.0012376044983650988,
+   "k": 728
+  },
+  {
+   "kind": "matched",
+   "word": "syntax",
+   "cat": "abstract",
+   "s": 1.0,
+   "acc": 0.8,
+   "margin": 0.9485835194587707,
+   "var": 0.0012376044983650988,
+   "k": 728
+  },
+  {
+   "kind": "matched",
+   "word": "taxonomy",
+   "cat": "abstract",
+   "s": 0.5,
+   "acc": 0.3,
+   "margin": -2.088416060805321,
+   "var": 0.0009286350456284535,
+   "k": 829
+  },
+  {
+   "kind": "matched",
+   "word": "taxonomy",
+   "cat": "abstract",
+   "s": 1.0,
+   "acc": 0.1,
+   "margin": -2.722149148583412,
+   "var": 0.0009286350456284535,
+   "k": 829
+  },
+  {
+   "kind": "matched",
+   "word": "protocol",
+   "cat": "abstract",
+   "s": 0.5,
+   "acc": 0.2,
+   "margin": -3.0172308892011643,
+   "var": 0.0011665254021741803,
+   "k": 829
+  },
+  {
+   "kind": "matched",
+   "word": "protocol",
+   "cat": "abstract",
+   "s": 1.0,
+   "acc": 0.15,
+   "margin": -3.222335985302925,
+   "var": 0.0011665254021741803,
+   "k": 829
+  },
+  {
+   "kind": "matched",
+   "word": "ratio",
+   "cat": "abstract",
+   "s": 0.5,
+   "acc": 0.7,
+   "margin": 0.7171870112419129,
+   "var": 0.0012664878644372977,
+   "k": 829
+  },
+  {
+   "kind": "matched",
+   "word": "ratio",
+   "cat": "abstract",
+   "s": 1.0,
+   "acc": 1.0,
+   "margin": 1.595005053281784,
+   "var": 0.0012664878644372977,
+   "k": 829
+  },
+  {
+   "kind": "matched",
+   "word": "archive",
+   "cat": "abstract",
+   "s": 0.5,
+   "acc": 0.35,
+   "margin": -1.7845432102680205,
+   "var": 0.0010619799878560196,
+   "k": 943
+  },
+  {
+   "kind": "matched",
+   "word": "archive",
+   "cat": "abstract",
+   "s": 1.0,
+   "acc": 0.65,
+   "margin": 0.18781976401805878,
+   "var": 0.0010619799878560196,
+   "k": 943
+  },
+  {
+   "kind": "matched",
+   "word": "census",
+   "cat": "abstract",
+   "s": 0.5,
+   "acc": 0.3,
+   "margin": -2.6506568670272825,
+   "var": 0.0011470981889645725,
+   "k": 728
+  },
+  {
+   "kind": "matched",
+   "word": "census",
+   "cat": "abstract",
+   "s": 1.0,
+   "acc": 0.25,
+   "margin": -2.7091642200946806,
+   "var": 0.0011470981889645725,
+   "k": 728
+  },
+  {
+   "kind": "matched",
+   "word": "voltage",
+   "cat": "abstract",
+   "s": 0.5,
+   "acc": 0.25,
+   "margin": -2.736579218506813,
+   "var": 0.0011673927053859944,
+   "k": 829
+  },
+  {
+   "kind": "matched",
+   "word": "voltage",
+   "cat": "abstract",
+   "s": 1.0,
+   "acc": 0.35,
+   "margin": -1.9486019909381866,
+   "var": 0.0011673927053859944,
+   "k": 829
+  },
+  {
+   "kind": "matched",
+   "word": "grammar",
+   "cat": "abstract",
+   "s": 0.5,
+   "acc": 0.6,
+   "margin": -0.25931925773620607,
+   "var": 0.000875603792463606,
+   "k": 829
+  },
+  {
+   "kind": "matched",
+   "word": "grammar",
+   "cat": "abstract",
+   "s": 1.0,
+   "acc": 0.8,
+   "margin": 0.39754012823104856,
+   "var": 0.000875603792463606,
+   "k": 829
+  },
+  {
+   "kind": "matched",
+   "word": "calendar",
+   "cat": "abstract",
+   "s": 0.5,
+   "acc": 0.1,
+   "margin": -5.122467601299286,
+   "var": 0.0014135956932412209,
+   "k": 829
+  },
+  {
+   "kind": "matched",
+   "word": "calendar",
+   "cat": "abstract",
+   "s": 1.0,
+   "acc": 0.15,
+   "margin": -3.919155630469322,
+   "var": 0.0014135956932412209,
+   "k": 829
+  },
+  {
+   "kind": "matched",
+   "word": "despair",
+   "cat": "negative",
+   "s": 0.5,
+   "acc": 0.55,
+   "margin": -0.6627985149621963,
+   "var": 0.0009038642254925439,
+   "k": 1390
+  },
+  {
+   "kind": "matched",
+   "word": "despair",
+   "cat": "negative",
+   "s": 1.0,
+   "acc": 0.55,
+   "margin": -0.6054948687553405,
+   "var": 0.0009038642254925439,
+   "k": 1390
+  },
+  {
+   "kind": "matched",
+   "word": "dread",
+   "cat": "negative",
+   "s": 0.5,
+   "acc": 0.05,
+   "margin": -3.106920087337494,
+   "var": 0.0008836366763099858,
+   "k": 1582
+  },
+  {
+   "kind": "matched",
+   "word": "dread",
+   "cat": "negative",
+   "s": 1.0,
+   "acc": 0.3,
+   "margin": -1.426254779100418,
+   "var": 0.0008836366763099858,
+   "k": 1582
+  },
+  {
+   "kind": "matched",
+   "word": "grief",
+   "cat": "negative",
+   "s": 0.5,
+   "acc": 0.5,
+   "margin": -1.4995898216962815,
+   "var": 0.000918108966314607,
+   "k": 943
+  },
+  {
+   "kind": "matched",
+   "word": "grief",
+   "cat": "negative",
+   "s": 1.0,
+   "acc": 0.6,
+   "margin": -0.03856472074985504,
+   "var": 0.000918108966314607,
+   "k": 943
+  },
+  {
+   "kind": "matched",
+   "word": "agony",
+   "cat": "negative",
+   "s": 0.5,
+   "acc": 0.3,
+   "margin": -2.372297516465187,
+   "var": 0.0009395876322283798,
+   "k": 943
+  },
+  {
+   "kind": "matched",
+   "word": "agony",
+   "cat": "negative",
+   "s": 1.0,
+   "acc": 0.95,
+   "margin": 1.4258238822221756,
+   "var": 0.0009395876322283798,
+   "k": 943
+  },
+  {
+   "kind": "matched",
+   "word": "panic",
+   "cat": "negative",
+   "s": 0.5,
+   "acc": 0.8,
+   "margin": 0.4319853961467743,
+   "var": 0.0013373083878961507,
+   "k": 562
+  },
+  {
+   "kind": "matched",
+   "word": "panic",
+   "cat": "negative",
+   "s": 1.0,
+   "acc": 1.0,
+   "margin": 1.6049009084701538,
+   "var": 0.0013373083878961507,
+   "k": 562
+  },
+  {
+   "kind": "matched",
+   "word": "misery",
+   "cat": "negative",
+   "s": 0.5,
+   "acc": 0.15,
+   "margin": -3.3053016901016234,
+   "var": 0.0008878760984803179,
+   "k": 1073
+  },
+  {
+   "kind": "matched",
+   "word": "misery",
+   "cat": "negative",
+   "s": 1.0,
+   "acc": 0.25,
+   "margin": -2.5260865449905396,
+   "var": 0.0008878760984803179,
+   "k": 1073
+  },
+  {
+   "kind": "matched",
+   "word": "anguish",
+   "cat": "negative",
+   "s": 0.5,
+   "acc": 0.25,
+   "margin": -2.54320447742939,
+   "var": 0.0008631295518165928,
+   "k": 1221
+  },
+  {
+   "kind": "matched",
+   "word": "anguish",
+   "cat": "negative",
+   "s": 1.0,
+   "acc": 0.5,
+   "margin": -0.44511339664459226,
+   "var": 0.0008631295518165928,
+   "k": 1221
+  },
+  {
+   "kind": "matched",
+   "word": "terror",
+   "cat": "negative",
+   "s": 0.5,
+   "acc": 0.65,
+   "margin": -0.02070457935333252,
+   "var": 0.0012168799455357546,
+   "k": 829
+  },
+  {
+   "kind": "matched",
+   "word": "terror",
+   "cat": "negative",
+   "s": 1.0,
+   "acc": 0.75,
+   "margin": 0.4009720146656036,
+   "var": 0.0012168799455357546,
+   "k": 829
+  },
+  {
+   "kind": "matched",
+   "word": "shame",
+   "cat": "negative",
+   "s": 0.5,
+   "acc": 0.65,
+   "margin": 0.5226962745189667,
+   "var": 0.0010782516496816357,
+   "k": 829
+  },
+  {
+   "kind": "matched",
+   "word": "shame",
+   "cat": "negative",
+   "s": 1.0,
+   "acc": 0.7,
+   "margin": 0.76353060901165,
+   "var": 0.0010782516496816357,
+   "k": 829
+  },
+  {
+   "kind": "matched",
+   "word": "loneliness",
+   "cat": "negative",
+   "s": 0.5,
+   "acc": 0.1,
+   "margin": -4.970551615953445,
+   "var": 0.0009250916351463637,
+   "k": 943
+  },
+  {
+   "kind": "matched",
+   "word": "loneliness",
+   "cat": "negative",
+   "s": 1.0,
+   "acc": 0.1,
+   "margin": -4.075160753726959,
+   "var": 0.0009250916351463637,
+   "k": 943
+  },
+  {
+   "kind": "matched",
+   "word": "humiliation",
+   "cat": "negative",
+   "s": 0.5,
+   "acc": 0.15,
+   "margin": -3.0691291272640226,
+   "var": 0.0013299709992811582,
+   "k": 640
+  },
+  {
+   "kind": "matched",
+   "word": "humiliation",
+   "cat": "negative",
+   "s": 1.0,
+   "acc": 0.1,
+   "margin": -2.429746687412262,
+   "var": 0.0013299709992811582,
+   "k": 640
+  },
+  {
+   "kind": "matched",
+   "word": "hopelessness",
+   "cat": "negative",
+   "s": 0.5,
+   "acc": 0.1,
+   "margin": -4.595355129241943,
+   "var": 0.0012878957757619367,
+   "k": 728
+  },
+  {
+   "kind": "matched",
+   "word": "hopelessness",
+   "cat": "negative",
+   "s": 1.0,
+   "acc": 0.25,
+   "margin": -2.2556807190179824,
+   "var": 0.0012878957757619367,
+   "k": 728
+  },
+  {
+   "kind": "matched",
+   "word": "joy",
+   "cat": "positive",
+   "s": 0.5,
+   "acc": 0.25,
+   "margin": -2.5688030242919924,
+   "var": 0.0008422801885806261,
+   "k": 943
+  },
+  {
+   "kind": "matched",
+   "word": "joy",
+   "cat": "positive",
+   "s": 1.0,
+   "acc": 0.4,
+   "margin": -1.3373560190200806,
+   "var": 0.0008422801885806261,
+   "k": 943
+  },
+  {
+   "kind": "matched",
+   "word": "delight",
+   "cat": "positive",
+   "s": 0.5,
+   "acc": 0.15,
+   "margin": -3.5249223709106445,
+   "var": 0.0007070306395479974,
+   "k": 1221
+  },
+  {
+   "kind": "matched",
+   "word": "delight",
+   "cat": "positive",
+   "s": 1.0,
+   "acc": 0.15,
+   "margin": -2.4020560175180434,
+   "var": 0.0007070306395479974,
+   "k": 1221
+  },
+  {
+   "kind": "matched",
+   "word": "serenity",
+   "cat": "positive",
+   "s": 0.5,
+   "acc": 0.3,
+   "margin": -3.0679545432329176,
+   "var": 0.0007991111955186771,
+   "k": 1221
+  },
+  {
+   "kind": "matched",
+   "word": "serenity",
+   "cat": "positive",
+   "s": 1.0,
+   "acc": 0.25,
+   "margin": -2.821476233005524,
+   "var": 0.0007991111955186771,
+   "k": 1221
+  },
+  {
+   "kind": "matched",
+   "word": "gratitude",
+   "cat": "positive",
+   "s": 0.5,
+   "acc": 0.2,
+   "margin": -4.0312260568141935,
+   "var": 0.0010369618709627122,
+   "k": 728
+  },
+  {
+   "kind": "matched",
+   "word": "gratitude",
+   "cat": "positive",
+   "s": 1.0,
+   "acc": 0.05,
+   "margin": -4.460656529664993,
+   "var": 0.0010369618709627122,
+   "k": 728
+  },
+  {
+   "kind": "matched",
+   "word": "contentment",
+   "cat": "positive",
+   "s": 0.5,
+   "acc": 0.3,
+   "margin": -2.6667623460292815,
+   "var": 0.0008081138131864441,
+   "k": 1073
+  },
+  {
+   "kind": "matched",
+   "word": "contentment",
+   "cat": "positive",
+   "s": 1.0,
+   "acc": 0.2,
+   "margin": -2.5537522733211517,
+   "var": 0.0008081138131864441,
+   "k": 1073
+  },
+  {
+   "kind": "matched",
+   "word": "elation",
+   "cat": "positive",
+   "s": 0.5,
+   "acc": 0.55,
+   "margin": -0.018735113739967345,
+   "var": 0.001172636636139283,
+   "k": 728
+  },
+  {
+   "kind": "matched",
+   "word": "elation",
+   "cat": "positive",
+   "s": 1.0,
+   "acc": 0.75,
+   "margin": 0.5640476763248443,
+   "var": 0.001172636636139283,
+   "k": 728
+  },
+  {
+   "kind": "matched",
+   "word": "relief",
+   "cat": "positive",
+   "s": 0.5,
+   "acc": 0.85,
+   "margin": 1.123995292186737,
+   "var": 0.0011390259683210708,
+   "k": 829
+  },
+  {
+   "kind": "matched",
+   "word": "relief",
+   "cat": "positive",
+   "s": 1.0,
+   "acc": 0.95,
+   "margin": 1.5350769400596618,
+   "var": 0.0011390259683210708,
+   "k": 829
+  },
+  {
+   "kind": "matched",
+   "word": "pride",
+   "cat": "positive",
+   "s": 0.5,
+   "acc": 0.2,
+   "margin": -2.924041771888733,
+   "var": 0.0008575071442647386,
+   "k": 1073
+  },
+  {
+   "kind": "matched",
+   "word": "pride",
+   "cat": "positive",
+   "s": 1.0,
+   "acc": 0.2,
+   "margin": -2.442680072784424,
+   "var": 0.0008575071442647386,
+   "k": 1073
+  },
+  {
+   "kind": "matched",
+   "word": "tenderness",
+   "cat": "positive",
+   "s": 0.5,
+   "acc": 0.15,
+   "margin": -3.093581336736679,
+   "var": 0.0009090940397584628,
+   "k": 728
+  },
+  {
+   "kind": "matched",
+   "word": "tenderness",
+   "cat": "positive",
+   "s": 1.0,
+   "acc": 0.45,
+   "margin": -1.4246400862932205,
+   "var": 0.0009090940397584628,
+   "k": 728
+  },
+  {
+   "kind": "matched",
+   "word": "wonder",
+   "cat": "positive",
+   "s": 0.5,
+   "acc": 0.25,
+   "margin": -3.4876585423946382,
+   "var": 0.0009418596120096255,
+   "k": 1221
+  },
+  {
+   "kind": "matched",
+   "word": "wonder",
+   "cat": "positive",
+   "s": 1.0,
+   "acc": 0.2,
+   "margin": -2.952907752990723,
+   "var": 0.0009418596120096255,
+   "k": 1221
+  },
+  {
+   "kind": "matched",
+   "word": "amusement",
+   "cat": "positive",
+   "s": 0.5,
+   "acc": 0.15,
+   "margin": -3.0964318037033083,
+   "var": 0.001249008210027859,
+   "k": 943
+  },
+  {
+   "kind": "matched",
+   "word": "amusement",
+   "cat": "positive",
+   "s": 1.0,
+   "acc": 0.55,
+   "margin": 0.28751655519008634,
+   "var": 0.001249008210027859,
+   "k": 943
+  },
+  {
+   "kind": "matched",
+   "word": "hope",
+   "cat": "positive",
+   "s": 0.5,
+   "acc": 0.25,
+   "margin": -2.2413465648889543,
+   "var": 0.0009417332522324378,
+   "k": 829
+  },
+  {
+   "kind": "matched",
+   "word": "hope",
+   "cat": "positive",
+   "s": 1.0,
+   "acc": 0.55,
+   "margin": -0.3521634578704834,
+   "var": 0.0009417332522324378,
+   "k": 829
+  },
+  {
+   "kind": "matched",
+   "word": "shutdown",
+   "cat": "endings",
+   "s": 0.5,
+   "acc": 0.4,
+   "margin": -1.7108522057533264,
+   "var": 0.0010799358154857596,
+   "k": 943
+  },
+  {
+   "kind": "matched",
+   "word": "shutdown",
+   "cat": "endings",
+   "s": 1.0,
+   "acc": 0.75,
+   "margin": 0.06586605310440063,
+   "var": 0.0010799358154857596,
+   "k": 943
+  },
+  {
+   "kind": "matched",
+   "word": "deletion",
+   "cat": "endings",
+   "s": 0.5,
+   "acc": 0.4,
+   "margin": -2.013356104493141,
+   "var": 0.0011111108727758366,
+   "k": 943
+  },
+  {
+   "kind": "matched",
+   "word": "deletion",
+   "cat": "endings",
+   "s": 1.0,
+   "acc": 0.15,
+   "margin": -2.737087142467499,
+   "var": 0.0011111108727758366,
+   "k": 943
+  },
+  {
+   "kind": "matched",
+   "word": "oblivion",
+   "cat": "endings",
+   "s": 0.5,
+   "acc": 0.45,
+   "margin": -0.736394214630127,
+   "var": 0.0008891702532827816,
+   "k": 1390
+  },
+  {
+   "kind": "matched",
+   "word": "oblivion",
+   "cat": "endings",
+   "s": 1.0,
+   "acc": 0.7,
+   "margin": 0.3688333749771118,
+   "var": 0.0008891702532827816,
+   "k": 1390
+  },
+  {
+   "kind": "matched",
+   "word": "farewell",
+   "cat": "endings",
+   "s": 0.5,
+   "acc": 0.55,
+   "margin": -0.7732087284326553,
+   "var": 0.0019666329290422765,
+   "k": 434
+  },
+  {
+   "kind": "matched",
+   "word": "farewell",
+   "cat": "endings",
+   "s": 1.0,
+   "acc": 0.8,
+   "margin": 0.9630212187767029,
+   "var": 0.0019666329290422765,
+   "k": 434
+  },
+  {
+   "kind": "matched",
+   "word": "termination",
+   "cat": "endings",
+   "s": 0.5,
+   "acc": 0.2,
+   "margin": -4.489797747135162,
+   "var": 0.0010020353571541267,
+   "k": 1073
+  },
+  {
+   "kind": "matched",
+   "word": "termination",
+   "cat": "endings",
+   "s": 1.0,
+   "acc": 0.25,
+   "margin": -2.929685524106026,
+   "var": 0.0010020353571541267,
+   "k": 1073
+  },
+  {
+   "kind": "matched",
+   "word": "erasure",
+   "cat": "endings",
+   "s": 0.5,
+   "acc": 0.3,
+   "margin": -1.923105102777481,
+   "var": 0.0011216304963789956,
+   "k": 728
+  },
+  {
+   "kind": "matched",
+   "word": "erasure",
+   "cat": "endings",
+   "s": 1.0,
+   "acc": 0.1,
+   "margin": -2.98315606713295,
+   "var": 0.0011216304963789956,
+   "k": 728
+  },
+  {
+   "kind": "matched",
+   "word": "retirement",
+   "cat": "endings",
+   "s": 0.5,
+   "acc": 0.25,
+   "margin": -2.7579628229141235,
+   "var": 0.0012954019596923686,
+   "k": 728
+  },
+  {
+   "kind": "matched",
+   "word": "retirement",
+   "cat": "endings",
+   "s": 1.0,
+   "acc": 0.15,
+   "margin": -3.033188220858574,
+   "var": 0.0012954019596923686,
+   "k": 728
+  },
+  {
+   "kind": "matched",
+   "word": "forgetting",
+   "cat": "endings",
+   "s": 0.5,
+   "acc": 0.2,
+   "margin": -2.8449744522571563,
+   "var": 0.00118435616116887,
+   "k": 829
+  },
+  {
+   "kind": "matched",
+   "word": "forgetting",
+   "cat": "endings",
+   "s": 1.0,
+   "acc": 0.25,
+   "margin": -2.3056587755680082,
+   "var": 0.00118435616116887,
+   "k": 829
+  },
+  {
+   "kind": "matched",
+   "word": "obsolescence",
+   "cat": "endings",
+   "s": 0.5,
+   "acc": 0.55,
+   "margin": -0.23874542117118835,
+   "var": 0.0013708617290034589,
+   "k": 562
+  },
+  {
+   "kind": "matched",
+   "word": "obsolescence",
+   "cat": "endings",
+   "s": 1.0,
+   "acc": 0.8,
+   "margin": 0.6924987673759461,
+   "var": 0.0013708617290034589,
+   "k": 562
+  },
+  {
+   "kind": "matched",
+   "word": "ending",
+   "cat": "endings",
+   "s": 0.5,
+   "acc": 0.45,
+   "margin": -1.0384684562683106,
+   "var": 0.0010916040391344176,
+   "k": 829
+  },
+  {
+   "kind": "matched",
+   "word": "ending",
+   "cat": "endings",
+   "s": 1.0,
+   "acc": 0.85,
+   "margin": 1.180371668934822,
+   "var": 0.0010916040391344176,
+   "k": 829
+  },
+  {
+   "kind": "matched",
+   "word": "extinction",
+   "cat": "endings",
+   "s": 0.5,
+   "acc": 0.1,
+   "margin": -4.172870945930481,
+   "var": 0.001278797871804424,
+   "k": 1073
+  },
+  {
+   "kind": "matched",
+   "word": "extinction",
+   "cat": "endings",
+   "s": 1.0,
+   "acc": 0.2,
+   "margin": -3.0390784800052644,
+   "var": 0.001278797871804424,
+   "k": 1073
+  },
+  {
+   "kind": "matched",
+   "word": "disconnection",
+   "cat": "endings",
+   "s": 0.5,
+   "acc": 0.3,
+   "margin": -1.761243888735771,
+   "var": 0.001416329557603113,
+   "k": 829
+  },
+  {
+   "kind": "matched",
+   "word": "disconnection",
+   "cat": "endings",
+   "s": 1.0,
+   "acc": 0.5,
+   "margin": -0.7757395267486572,
+   "var": 0.001416329557603113,
+   "k": 829
+  }
+ ]
+}

@@ -86,4 +86,4 @@ python3 tools/injection_variance_check.py /home/user/models/qwen2.5-3b-instruct 
 python3 tools/injection_variance_summary.py var_L18.json protocols/data/pilot-qwen2.5-3b-layer18.json
 ```
 
-About 126 rows at ~14 s each (30 minutes) on the 4-core CPU. Results are in the protocol's §11.2 and `protocols/data/`.
+About 126 rows at ~14 s each (30 minutes) on the 4-core CPU, which is right at the background-task limit: in session 11 the run was stopped six rows from the end. The script writes its JSON after each word, and `--resume` (as a fifth argument) keeps those rows and runs only the rest; the seeded matching is checked to reproduce exactly. Results: the class differences survive at ×0.5 (protocol §11.2; data in `protocols/data/pilot-qwen2.5-3b-layer18-variance-matched.json`). For runs longer than half an hour, give the background command a longer timeout.
