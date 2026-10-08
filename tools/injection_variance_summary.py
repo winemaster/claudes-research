@@ -58,3 +58,12 @@ for s in v['strengths']:
           f"matched random {spearman([r['var'] for r in v['rows'] if r['kind']=='matched' and r['s']==s], [r['acc'] for r in v['rows'] if r['kind']=='matched' and r['s']==s]):+.2f}; "
           f"all {spearman(xs, ys):+.2f}")
     print(f"  Spearman(raw norm, accuracy), words: {spearman([W[w]['raw_norm'] for w in allw], [acc_word[(w, s)] for w in allw]):+.2f}")
+    # class contrasts after subtracting each word's own matched random direction
+    dd = {c: [acc_word[(w, s)] - acc_match[(w, s)] for w in W if W[w]['cat'] == c] for c in cats}
+    for a_, b_ in [('negative', 'abstract'), ('endings', 'abstract'), ('negative', 'positive'), ('negative', 'concrete')]:
+        diffs = []
+        for _ in range(5000):
+            diffs.append(st.mean(rng.choices(dd[a_], k=len(dd[a_]))) - st.mean(rng.choices(dd[b_], k=len(dd[b_]))))
+        diffs.sort()
+        print(f"  {a_} vs {b_}, word-minus-matched: {st.mean(dd[a_]) - st.mean(dd[b_]):+.2f} "
+              f"[{diffs[125]:+.2f}, {diffs[4875]:+.2f}]")

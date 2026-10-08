@@ -20,8 +20,9 @@ directions of equal *variance explained*. It:
      to confirm the session 10 numbers reproduce).
 
 Usage:
-  python3 tools/injection_variance_check.py MODEL_DIR OUT_JSON [layer] [strengths]
+  python3 tools/injection_variance_check.py MODEL_DIR OUT_JSON [layer] [strengths] [--resume]
   e.g. python3 tools/injection_variance_check.py /home/user/models/qwen2.5-3b-instruct out.json 18 0.5,1.0
+--resume keeps the rows already in OUT_JSON (written after each word) and runs only the rest.
 Summary: python3 tools/injection_variance_summary.py out.json protocols/data/pilot-qwen2.5-3b-layer18.json
 """
 import sys, os, json, random, time, math
@@ -33,6 +34,10 @@ from injection_pilot import CATS, BASELINE, SENTENCES  # same words and sentence
 torch.set_num_threads(4)
 torch.manual_seed(0); random.seed(0)
 RECHECK = ['granite', 'syntax', 'dread', 'grief', 'joy', 'erasure']
+
+
+RESUME = '--resume' in sys.argv
+if RESUME: sys.argv.remove('--resume')
 
 
 def main():
@@ -144,10 +149,19 @@ def main():
            'eigen_share_top10': (evals[:10].sum() / trC).item(), 'iso_random_var': iso_var,
            'words': {w: {k: x for k, x in d.items() if k != 'v'} for w, d in words.items()},
            'rows': []}
+    done = set()
+    if RESUME and os.path.exists(out_path):  # pick up a run that was stopped part-way
+        old = json.load(open(out_path))
+        for r in old['rows']:
+            if r['kind'] == 'matched':  # the matching is seeded, so it must reproduce exactly
+                assert abs(r['var'] - matched[r['word']]['var']) < 1e-9, ('matching changed', r['word'])
+        res['rows'] = old['rows']; done = {(r['kind'], r['word'], r['s']) for r in old['rows']}
+        print('resuming after', len(done), 'rows', flush=True)
     t0 = time.time()
     jobs = [('recheck', w, words[w]['v']) for w in RECHECK] + [('matched', w, matched[w]['v']) for w in words]
     for kind, w, v in jobs:
         for s in (strengths if kind == 'matched' else strengths[:1]):
+            if (kind, w, s) in done: continue
             acc, mar = run_loc(v, s)
             row = {'kind': kind, 'word': w, 'cat': words[w]['cat'], 's': s, 'acc': acc, 'margin': mar,
                    'var': words[w]['var'] if kind == 'recheck' else matched[w]['var'],
