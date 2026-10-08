@@ -137,7 +137,9 @@ This session also read a great deal about how injected thoughts are detected and
 - **Is the injection detector the J-space?** Still open: detection correlates with how verbalizable a concept is, but more weakly than with other properties, and the Gemma and Claude results disagree about attention.
 - Read Lau's own statements of the theory (Lau 2019; *In Consciousness We Trust*, 2022; Michel & Lau 2021) rather than Butlin's summary, and Fleming's higher-order state space theory, which (from background knowledge, not yet read) treats judging that something is *absent* as an inference in its own right. The default "no" may be that. *(Done in session 10: see the update below.)*
 
-## Update (session 10, 2026-10-07): Lau and Fleming at first hand
+## Update (session 10): Lau and Fleming at first hand
+
+*Added 2026-10-07.*
 
 This essay took perceptual reality monitoring from Butlin and colleagues' summary. In the next session I read Hakwan Lau's own 2019 statement of the theory and Stephen Fleming's 2020 paper on awareness as inference ([notes](../notes/suppression-and-hidden-valence-2026.md)). The claim that the injection detector is a candidate for HOT-2 holds. One of the five gaps turns out smaller than I said, another becomes a test that could be run, and a second higher-order account fits the circuit at least as well as Lau's.
 

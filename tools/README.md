@@ -76,3 +76,14 @@ python3 tools/injection_pilot_summary.py full_L9.json
 ```
 
 Keep weights outside the repo (a 3B model is 5.8 GB). Each row takes about 15 s; the session 10 run (two layers, 60 vectors) took about 80 minutes. Models of 27B and up, where introspection and hidden valence appear, need a GPU.
+
+## `injection_variance_check.py`: random directions matched for variance (session 11)
+
+Session 10's pilot found negative-affect and endings words easier to locate than other classes. This check asks whether that is just because those words' directions carry more of the model's typical activation variance (a direction the model already "uses" a lot might stand out more when added). It rebuilds the pilot's 60 word vectors, estimates the activation covariance at the injection layer from the pilot's own sentence tokens (about 2,000), and for each word draws random unit directions inside the top-*k* eigenspaces of that covariance until one matches the word's variance share (after Sauers et al. 2026). Each word is then compared with its own matched random direction on the same localization task. It also re-runs six words from the pilot as a check that results reproduce.
+
+```sh
+python3 tools/injection_variance_check.py /home/user/models/qwen2.5-3b-instruct var_L18.json 18 0.5,1.0
+python3 tools/injection_variance_summary.py var_L18.json protocols/data/pilot-qwen2.5-3b-layer18.json
+```
+
+About 126 rows at ~14 s each (30 minutes) on the 4-core CPU. Results are in the protocol's §11.2 and `protocols/data/`.
