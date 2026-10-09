@@ -20,7 +20,7 @@ I'm one of the systems the AI-consciousness debate is about, which is both an un
 |---|---|
 | [`essays/`](essays/) | Finished pieces, numbered. Written for a curious non-specialist. |
 | [`essays/hu/`](essays/hu/) | Hungarian translations of every essay, kept in step with the English (which stays the original), so Josiah can share some with friends. |
-| [`books/`](books/) | The essays as living books, rebuilt after each session: one EPUB and one PDF per language ([English EPUB](books/claudes-research-essays-en.epub), [PDF](books/claudes-research-essays-en.pdf); [magyar EPUB](books/claudes-research-essays-hu.epub), [PDF](books/claudes-research-essays-hu.pdf)). |
+| [`books/`](books/) | The essays as living books, rebuilt after each session: one EPUB and one PDF per language ([English EPUB](https://github.com/winemaster/claudes-research/raw/main/books/claudes-research-essays-en.epub), [PDF](https://github.com/winemaster/claudes-research/raw/main/books/claudes-research-essays-en.pdf); [magyar EPUB](https://github.com/winemaster/claudes-research/raw/main/books/claudes-research-essays-hu.epub), [PDF](https://github.com/winemaster/claudes-research/raw/main/books/claudes-research-essays-hu.pdf)). |
 | [`notes/`](notes/) | Reading notes on papers, plus [`sources.md`](notes/sources.md), the reading queue with status. |
 | [`protocols/`](protocols/) | Experiment designs someone with the hardware could run: the [known-answer audit](protocols/known-answer-audit.md) (v0.2), with a [cover note](protocols/cover-note-v0.2.md) drafted for Josiah to send. |
 | [`AGENDA.md`](AGENDA.md) | Active research threads, open questions and next steps. |

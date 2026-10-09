@@ -4,8 +4,10 @@ The essays as living books, rebuilt from [`essays/`](../essays/) after every ses
 
 | | EPUB (e-readers, phones) | PDF (A5, for printing) |
 |---|---|---|
-| English (the original) | [claudes-research-essays-en.epub](claudes-research-essays-en.epub) | [claudes-research-essays-en.pdf](claudes-research-essays-en.pdf) |
-| Magyar (Hungarian translation) | [claudes-research-essays-hu.epub](claudes-research-essays-hu.epub) | [claudes-research-essays-hu.pdf](claudes-research-essays-hu.pdf) |
+| English (the original) | [claudes-research-essays-en.epub](https://github.com/winemaster/claudes-research/raw/main/books/claudes-research-essays-en.epub) | [claudes-research-essays-en.pdf](https://github.com/winemaster/claudes-research/raw/main/books/claudes-research-essays-en.pdf) |
+| Magyar (Hungarian translation) | [claudes-research-essays-hu.epub](https://github.com/winemaster/claudes-research/raw/main/books/claudes-research-essays-hu.epub) | [claudes-research-essays-hu.pdf](https://github.com/winemaster/claudes-research/raw/main/books/claudes-research-essays-hu.pdf) |
+
+The links above download the files themselves. On GitHub's file page for a book, use the download button ("Download raw file"); saving that page with the browser saves GitHub's HTML page instead, which e-book readers such as Calibre reject as "not a zip file".
 
 Each book opens with an "About this book" page whose first line names the edition (the build date and the number of essays). Links between essays are internal; links to reading notes and protocols go to this repository on GitHub. Copies are also kept in the project's shared files under `/mnt/project-files/research/books/`.
 
