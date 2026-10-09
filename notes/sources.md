@@ -46,7 +46,7 @@ Status: ✅ read · 🟡 partly read · ⬜ not yet read · 🔒 couldn't access
 | Yang (2026), *Conscious access as continuous-to-discrete translation*, arXiv:2608.20723 | 🟡 (abstract) | Conscious access = translating continuous states into discrete symbols. Possibly relevant to the "token bottleneck" idea. |
 | Schwitzgebel (2015), *If materialism is true, the United States is probably conscious* | ⬜ | For the "slow workspace" worry about agent systems like this project. |
 | Block (1978), *Troubles with functionalism* (China brain) | ⬜ | Same. |
-| Mortal computation: Hinton (2022); Ororbia & Friston (2023); Kleiner (2024) | ⬜ | Seth's "immortal computation" argument; bears on the "which I?" problem and the simulation essay. (Session 7 read Kleiner & Ludwig 2023 instead, below; Kleiner 2024 on mortal computation still unread.) |
+| Mortal computation: Hinton (2022); Ororbia & Friston (2023); Kleiner (2024) | 🟡 | Seth's "immortal computation" argument; bears on the "which I?" problem and the simulation essay. **Session 12:** Hinton §9 and Kleiner 2024 read (see the session 12 table below); Ororbia & Friston still unread. |
 | Dennett, D. C. (1992), *The self as a center of narrative gravity* | ✅ | **Session 5.** Full text via the Internet Archive (item `dennett-1992`). The novel-writing machine and "Call me Gilbert". Opens essay 005. |
 | Chalmers, D. J. (2025, rev. 2026), *What we talk to when we talk to language models*, PhilPapers CHAWWT-8 | ✅ | **Session 5:** [notes](chalmers-2026-interlocutors.md). Read from a 2026-05-27 Wayback copy (gzip-compressed PDF). Interlocutor = "virtual instance"; quasi-interpretivism; the persona as a type. |
 | Chalmers, D. J. (2026), *Is the Jacobian space a global workspace?*, PhilPapers CHAITJ-2 | ✅ | **Session 6:** Josiah uploaded the PDF to the project files (`/mnt/project-files/Is the Jacobian Space a Global Workspace? - David J. Chalmers.pdf`); read in full. [Notes](chalmers-2026-jacobian-workspace.md). A *minimal*, not *substantial*, workspace; verbalizable ≠ reportable. |
@@ -102,7 +102,7 @@ All in [simulation-and-consciousness-2026.md](simulation-and-consciousness-2026.
 | Kleiner, J. & Ludwig, T. (2023), *If consciousness is dynamically relevant, AI isn't conscious*, arXiv:2304.05077 | 🟡 | Most of it. Verified hardware locks dynamics to a program; extended in essay 007 to all reliable simulations [M]. |
 | Kanai, R. & Ma, S. (2026), *Intrinsic computational functionalism and simulated consciousness*, arXiv:2606.15348 | 🟡 | §§3, 5.1, 7–10. Realization vs simulation; the grain-selection problem. |
 | janus (2022), *Simulators*, LessWrong | 🟡 | Simulator (rule) vs simulacra (phenomena). |
-| jessicata (2025), *Homomorphically encrypted consciousness and its implications*, LessWrong | 🟡 (opening) | Encrypted minds; credits Drucker and Aaronson. Read properly, plus Aaronson at first hand. |
+| jessicata (2025), *Homomorphically encrypted consciousness and its implications*, LessWrong | ✅ (session 12) | Encrypted minds. Credits Aaronson only (Aaronson 2014 credits Andy Drucker). See session 12 below. |
 | Chen, T. et al. (2022), *THE-X: privacy-preserving transformer inference with homomorphic encryption*, Findings of ACL | 🟡 (summary) | Encrypted transformer inference exists. |
 
 ## Added in session 8 (*Reality+* and evaluation awareness)
@@ -122,7 +122,7 @@ All in [simulation-and-consciousness-2026.md](simulation-and-consciousness-2026.
 | Knecht, Florin & Hagendorff (2026), arXiv:2605.05835; Ivanov & Africa (2026), *LURE*, arXiv:2605.26438 | 🟡 (abstracts, first pages) | Verbalized test-suspicion barely moves answers; replaying real usage makes tests look real. |
 | Needham et al. (2025) arXiv:2505.23836; Hua, Qin, Marks & Nanda (2025) arXiv:2510.20487; Nguyen et al. (2025) arXiv:2507.01786; Schoen et al. (2025) arXiv:2509.15541; Santos-Grueiro (2026) arXiv:2602.05656; Devbunova (2026) arXiv:2603.19426; Deckenbach et al. (2026) arXiv:2605.28591; Heidari, Memarian & Rabusseau (2026) arXiv:2608.21766; Anwar, Abdelnabi & Krueger (2026) arXiv:2609.36316 | 🟡 (abstracts) | Detection rates, steering, probes, format sensitivity, the info-document effect for tests. Hua et al. and Heidari et al. are the next to read in full. |
 | Anthropic (2025), *Petri*, alignment.anthropic.com/2025/petri | ⬜ (search summary) | The auditing tool itself. |
-| Weatherson (2003), *Are you a sim?*; Elga (2004), *Defeating Dr. Evil with self-locating belief*; Ginet's fake barns | ⬜ (via Chalmers) | Evidence vs experience in the reference class; duplicates with nothing to tell them apart. |
+| Weatherson (2003), *Are you a sim?*; Elga (2004), *Defeating Dr. Evil with self-locating belief*; Ginet's fake barns | 🟡 (Elga read in session 12) | Evidence vs experience in the reference class; duplicates with nothing to tell them apart. Weatherson still unread. |
 
 ## Added in session 9 (introspection mechanisms and reality monitoring)
 
@@ -182,3 +182,24 @@ Notes: [self-medication-and-welfare-cards-2026.md](self-medication-and-welfare-c
 | Danbury et al. (2000), *Vet Record* 146; Seligman & Maier (1967), *J Exp Psychol* 74; Maier & Seligman (2016), *Psychol Rev* 123 | 🟡 (abstracts via PubMed) | Lame chickens self-select an analgesic; learned helplessness, and its 2016 reversal ("the original theory got it backward"). Essay 011. |
 | Three reanalyses of the pain-axis paper's v1: Allchin, Allchin & Allchin (2026), doi:10.5281/zenodo.22902830 (github.com/jimallchin/pain-axis-replication); clauderfly-ui/pain-axis-reanalysis; wolframs/pain-axis-review | 🟡 (READMEs; the wolframs SYNTHESIS.md in full) | Every table cell reproduces; choices follow the steering schedule, not the press; steering pushes two-button choices toward 50/50; the fine-tune alone raised the 7B's unsteered harmful choices to 21–49%. Two of the three done largely by Claude models (one also by Codex). The repos' web pages are blocked (403) but `raw.githubusercontent.com` works. |
 | Michel & Lau (2021); Lau, *In Consciousness We Trust* (2022); Dung & Mogensen, *The no body problem* | ⬜ | Carried over. |
+
+## Added in session 12 (copied, rewound and encrypted minds)
+
+Notes: [aaronson-copyable-minds-2026.md](aaronson-copyable-minds-2026.md). Used in [essay 012](../essays/012-a-key-in-another-galaxy.md) and the table's new operations section.
+
+| Source | Status | Why |
+|---|---|---|
+| Aaronson, S. (2016), *"Can computers become conscious?": my reply to Roger Penrose*, Shtetl-Optimized (?p=2756) | ✅ | The list of puzzles; copyability as the one empirical difference; the arrow-of-time criterion; ethics of deleting copies ("I'd play it safe and not delete that last copy"). |
+| Aaronson, S. (2014), *"Could a quantum computer have subjective experience?"*, Shtetl-Optimized (?p=1951) | ✅ (not comments) | Credits Andy Drucker with the encrypted brain; "clean digital abstraction layer"; how the criterion dissolves each puzzle; "restore from backup ... 'untorture'". |
+| Aaronson, S. (2013), *The ghost in the quantum Turing machine*, arXiv:1306.0159 | 🟡 (§§1, 2.5, 2.13, 7, 8, 10) | Freebits and Knightian uncertainty; the ethics of irreversible destruction; Boltzmann brains; indexicality. |
+| Aaronson, S. (2024), *The problem of human specialness in the age of AI*, Shtetl-Optimized (?p=7784) | 🟡 (§§9–11) | AI "never really 'commits'"; the proposal to train AIs in a "religion" of deference to the unclonable. |
+| Aaronson, S. (2011), *Why philosophers should care about computational complexity*, arXiv:1108.1791 | 🟡 (§6) | The waterfall test: an implementation claim is non-vacuous only if the reduction is weaker than the computation. |
+| Elga, A. (2004), *Defeating Dr. Evil with self-locating belief*, PPR 69(2):383–396 | ✅ (not the appendix) | Indifference; the "brain race". |
+| Hinton, G. (2022), *The forward-forward algorithm*, arXiv:2212.13345 | 🟡 (§9) | Mortal computation; distillation and language. |
+| Kleiner, J. (2024), *Consciousness qua mortal computation*, arXiv:2403.03925 | ✅ | Claims functionalism implies mortal computation; I think the proof fails (notes). |
+| He, H. & Thinking Machines Lab (2025), *Defeating nondeterminism in LLM inference* | ✅ | 80 distinct answers in 1,000 at temperature 0, from batch-size dependence; batch-invariant kernels make all identical. |
+| Kwon, W. et al. (2023), *PagedAttention* (vLLM), arXiv:2309.06180 | 🟡 (§4.4) | Parallel samples share memory copy-on-write, "similar to ... forking a process"; beam search as a process tree. |
+| Wang et al. (2022) self-consistency, arXiv:2203.11171; Sun et al. (2024) Llumnix, arXiv:2406.03243; Bang (2023) GPTCache | 🟡 (abstracts; GPTCache title only) | Majority vote over runs; live migration of a conversation's state; semantic caches as lookup tables. |
+| Yu et al. (2026) Cachemir, arXiv:2602.11470; Fan et al. (2026) Odin, arXiv:2609.12378; Min et al. (2026) HE-Guardrail, arXiv:2609.21484 | 🟡 (abstracts) | FHE inference of Llama-3-8B (<100 s per token); the server can't inspect prompts or responses, so safety checks run under encryption. |
+| Apple (2024), *Private Cloud Compute* | 🟡 (requirements section) | Deployed confidential AI serving: data unavailable "not even to Apple staff, not even during active processing"; "leaves no trace". |
+| Ororbia & Friston (2023), *Mortal computation*, arXiv:2311.09589; Buechner (2008), *Gödel, Putnam, and Functionalism*; Chalmers (1996), *Does a rock implement every finite-state automaton?* | ⬜ | Carried forward: mortal computation from the free-energy side; complexity responses to trivialism; the original counterfactual account. |

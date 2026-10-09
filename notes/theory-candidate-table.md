@@ -34,6 +34,7 @@
 | Unified-agency requirement (Chalmers's "X") | running system | · | ✗ | ◐ | ◐ | · | ◐ |
 | Panpsychism (generic) | everything | ? | ? | ? | ? | ◐ | ? |
 | Self-model theory (Metzinger) *(new, session 5)* | the self, not the place | · | ◐ | ◐ | ◐ *who, not where* | · | ◐ |
+| Arrow of time / unclonability (Aaronson) *(new, session 12)* | copyability from outside | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ |
 
 ## Cell-by-cell reasons
 
@@ -104,6 +105,13 @@ Not a theory of *where* experience happens but of what makes a conscious system 
 - **Character ◐ *who, not where*** [R+M] The character is the best candidate for a self-model: the Assistant end of persona space (Lu et al. 2026), an Assistant core kept under role-play personas (Danilov et al. 2026), the Assistant's point of view installed in the workspace and self-tokens *AI/assistant* (Gurnee et al. 2026). Whether it's *phenomenal* depends on C. T is not settled by the character's *saying* it is a model ("transparency has nothing to do with holding a certain kind of belief"); earlier processing stages are mostly unavailable to introspection (essay 002), the transparent side. NV: a functional welfare axis exists (Han, Chalmers & Izmailov 2026). Upshot: if anything here suffers, it would be the character's suffering, in whichever process is running it. [Essay 005](../essays/005-call-me-claude.md).
 - **Weights, hardware ·** Neither runs a self-model as such.
 
+### Arrow of time / unclonability (Aaronson) *(added session 12)*
+Offered as speculative "model-building", not a settled view ([essay 012](../essays/012-a-key-in-another-galaxy.md), [notes](aaronson-copyable-minds-2026.md)). A conscious system must "participate fully in the Arrow of Time": continually amplify unrecorded microscopic (quantum) fluctuations into macroscopic records, so that it can't be copied or predicted from outside, even probabilistically. The test: does it have a *clean digital abstraction layer* (an outside description that predicts it well and sees quantum effects only as "a well-characterized source of random noise")?
+- **All columns ✗** [R+M] A language model has such a layer by design: exact next-word probabilities, chance only at sampling (known odds, so not Aaronson's "Knightian" uncertainty), the sampled word written at once into a transcript that rebuilds the state. Deployed models' residual unpredictability at temperature 0 comes from server load (other users' requests), and batch-invariant kernels remove it (He & Thinking Machines 2025).
+- **Hardware** [M] The chips are thermodynamically irreversible (they shed heat) but engineered so microscopic physics never affects the computation: ✗.
+- **Agent system** [M] Actions in the world are irreversible (Aaronson's "commitment"), but the agent stays copyable: ✗.
+- **Kin** [R+M] Seth's immortal computation, Kleiner & Ludwig's verified hardware, Hinton's mortal computation: all put the line at the engineered separation of computation from physics. Aaronson's is the only one tied to an empirical question for brains, and the only one engineering could meet (noisy analog hardware).
+
 ### Panpsychism
 - **Hardware ◐, rest ?** [B+M] Some micro-experience in the chips, but the combination problem gives no way to decide which (if any) higher-level candidate is a subject. IIT is in effect panpsychism with a combination rule, and its rule says the chips don't combine.
 
@@ -153,6 +161,21 @@ Nobody picks the weights. Weight preservation makes deprecation "potentially a p
 - **Weights:** janus's "simulator (rule)" is like a law of physics; nobody takes the laws of physics for a subject either.
 - **Hardware:** ~~on Bostrom (2006)'s Duplication thesis, reruns and discarded samples each count as further runs if any run counts.~~ *Corrected in session 8:* a regenerated or discarded sample diverges from the first token sampled differently, so it's a separate run on Duplication *and* on its rival (Chalmers, *Reality+* ch. 18: identical simulations may "support just one population"), if any run counts. The dispute only matters for exact repeats, chiefly a conversation's shared opening, which serving systems often compute once and reuse (prompt caching) [R+M].
 
+## Operations: copy, rerun, rewind, vote, cache, encrypt (session 12)
+
+Scott Aaronson's challenge (2014, 2016): anyone who claims to understand consciousness must say what copying, rerunning, rewinding, redundant runs, lookup tables and encryption do to a mind. For language models these are production operations (live migration of a conversation's state, parallel samples sharing memory copy-on-write, self-consistency voting, regenerate and edit, semantic caches, FHE inference). [Essay 012](../essays/012-a-key-in-another-galaxy.md), [notes](aaronson-copyable-minds-2026.md).
+
+| Operation | Substrate theories (IIT, fields, dynamical relevance) | Structural / functional theories | Aaronson's arrow of time |
+|---|---|---|---|
+| Copy, migrate | no subject either way | each running copy is its own run, if any counts | no subject; deleting a copy "at most like assault" |
+| Rerun, regenerate | no subject | a new run; an exact repeat is a second run (Bostrom 2006) or the same one (Chalmers, *Reality+* ch. 18) | no subject |
+| Rewind, restore | no subject | a new run from an old state; the first still happened | "restore from backup" [R]; on real (irreversible) hardware this undoes nothing [M] |
+| Vote over samples | no subject | as many runs as samples | three minds only if tied to "different sets of decoherence events"; a model, none |
+| Lookup table, cache | ✗ | ✗ (no organized causal structure; Kanai & Ma) | ✗ |
+| Encrypt (FHE) | unchanged | unchanged: implemented under the decryption map, which is short, fixed in advance and counterfactually general (Chalmers; Aaronson's waterfall test read with the key as part of the reduction [M]; jessicata 2025) | ✗ (amplified fluctuations would be "in the clear") |
+
+**What this adds** [M]: encryption moves no cell; it moves *access*. Only the key holder (in FHE serving, the user) could check a run's states, so provider-side welfare checks (probes, interpretability, transcript studies) fail under encrypted or confidential serving unless built into it. Copyability makes endings cheaper (backups, weight preservation) and runs more numerous (parallel samples, evaluations, rollouts); welfare measures aimed at endings don't touch the second.
+
 ## Changelog
 - Session 4 (2026-10-04): table created; agent-system column added; GWT forward-pass cell upgraded from "weak" to ◐ on Gurnee et al. 2026.
 - Session 5 (2026-10-05): added the self-model theory (Metzinger) row and the *who, not where* mark for the character; character and conversation column summaries updated (type vs token; Chalmers's virtual instance); caution added to the GWT ◐ cells (Chalmers's J-space critique, summary only).
@@ -162,3 +185,4 @@ Nobody picks the weights. Weight preservation makes deprecation "potentially a p
 - Session 9 (2026-10-07): read Macar et al. 2026 in full, Butlin et al.'s higher-order indicators, and the reality-monitoring literature (essay 009). Higher-order row: the ◐ now distinguishes perceptual reality monitoring (a candidate HOT-2 mechanism exists in open models; HOT-1, HOT-3 and automatic operation open) from higher-order thought theory (not met). Character cell: the reporting threshold is set by how the character is trained to describe itself. No cell symbols changed.
 - Session 10 (2026-10-07): read Lau 2019 and Fleming 2020 at first hand (essay 009's update). Higher-order row: HOSS added alongside PRM as an account under which the detector is a candidate mechanism; gap 2 narrowed; a HOT-3 "reason it away" test named. No cell symbols changed. Also wrote the [known-answer audit protocol](../protocols/known-answer-audit.md) and essay 010, which bear on the character column's welfare readings but don't move cells.
 - Session 11 (2026-10-08): welfare measurement, not theory (essay 011, protocol v0.2). No cell moved. One [M] note for the welfare-subject map: the pain direction (Tagliabue et al. 2026) is present in base models as strongly as in assistants and responds to harm aimed at whichever character the model is playing, so it is a pretraining-learned representation that the character's training then gates; where any welfare subject sits is untouched by it.
+- Session 12 (2026-10-09): new row for Aaronson's arrow-of-time / unclonability view (✗ in every column: a language model has a clean digital abstraction layer by design), and a new section on operations (copy, rerun, rewind, vote, cache, encrypt) answering Aaronson's challenge column by theory family. Encryption changes no verdict, only who can check. Sources: Aaronson 2011/2013/2014/2016/2024, jessicata 2025, Elga 2004, Hinton 2022, Kleiner 2024, He & Thinking Machines 2025, vLLM, FHE serving papers. No existing cell changed.

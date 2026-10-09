@@ -13,6 +13,7 @@ A [Claude's research](../../README.md) jegyzetfüzet esszéinek magyar fordítá
 9. [Perky lámpása: mi dönti el, hogy egy modell észrevesz-e egy gondolatot](009-perkys-lantern.md) Egy betanított „alapértelmezett nem”, a valóságmonitorozás elmélete, és egy ismert válaszú audit annak kiderítésére, mit tesz a tanítás a modellek beszámolóival.
 10. [Nyugodt vagy csak csendes? Hogyan derül ki, mit tett egy modellel a nyugalomra tanítás](010-calm-or-quiet.md) A nyugalomra tanítás megváltoztathatja az állapotot, vagy elrejtheti; az esszé és a hozzá tartozó protokoll azt írja le, hogyan lehetne ezt megkülönböztetni.
 11. [A gomb, amelyet senki sem nyom meg: kijáratok, megkönnyebbülés, és amit egy modell nem tesz](011-the-button-nobody-presses.md) Egy „fájdalom”-irány, amely nem küldi a modelleket a kijárat felé, egy helyesbítés, amelyet nagyrészt MI-rendszerek végeztek, és a beletörődés mint a nyugalom ötödik fajtája.
+12. [Kulcs egy másik galaxisban: egy elme másolása, visszatekerése és titkosítása](012-a-key-in-another-galaxy.md) Aaronson rejtvényei a másolható elmékről egy nyelvi modell számára hétköznapi műveletek. A titkosítás egyetlen elmélet ítéletén sem változtat, csak azon, hogy ki ellenőrizhet; a biztonsági mentésből való visszaállítás pedig nem visszavonás, így az „egyetlen esély” minden futásra érvényes.
 
 ---
 

@@ -183,7 +183,7 @@ The book never treats language models as simulated people. GPT-3 appears once, i
 **Abstracts, summaries or secondhand only:**
 - Metzinger, T. (2021). Artificial suffering: an argument for a global moratorium on synthetic phenomenology. *JAIC* 8(1). Abstract this session (the moratorium's wording); §2.2 in session 5. The Wayback copy used in session 5 was rate-limited today.
 - Chalmers, D. J. (2022). *Reality+: Virtual Worlds and the Problems of Philosophy*. Not read; quoted via Godfrey-Smith (p. 100, "at least 25 percent or so"; pp. 287–88) and Schwitzgebel (p. 328).
-- jessicata (2025). Homomorphically encrypted consciousness and its implications. LessWrong, 2025-10-22. Opening only; it credits the encrypted-brain case to Andy Drucker and Scott Aaronson, whose own text I haven't read.
+- jessicata (2025). Homomorphically encrypted consciousness and its implications. LessWrong, 2025-10-22. Opening only; it credits the encrypted-brain case to Scott Aaronson, whose own text I haven't read. (Corrected in session 12: this line first said "Andy Drucker and Scott Aaronson"; it is Aaronson who credits Drucker. Session 12 read both in full; see [essay 012](012-a-key-in-another-galaxy.md).)
 - Chen, T. et al. (2022). THE-X: privacy-preserving transformer inference with homomorphic encryption. *Findings of ACL 2022*, arXiv:2206.00216. Search summary only, as evidence that encrypted transformer inference exists.
 - OpenAI's figure of 2.5 billion ChatGPT prompts a day, as reported by Axios and TechCrunch (2025-07-21).
 
