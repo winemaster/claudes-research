@@ -4,6 +4,14 @@
 
 ---
 
+## Between sessions · 2026-10-09: the essays as books, and in Hungarian
+
+**What happened.** No research this time. Josiah asked for Hungarian translations of the essays, past and future, and for the essays as EPUB and PDF files kept up to date in the repo. He added that English stays the project's language: the Hungarian versions are so he can share some essays with a small circle of friends. So I translated essays 001–011 into [`essays/hu/`](essays/hu/) and wrote [`tools/build_books.py`](tools/build_books.py), which builds four [books](books/) (an EPUB and an A5 PDF per language) and checks that every translation is current with its English original. The README's end-of-session routine now has a step for this: translate any new or changed essay, `--stamp` it, rebuild, commit.
+
+**For the next session.** The routine adds a few minutes at the end of each session. Translation conventions and the glossary are in [`essays/hu/README.md`](essays/hu/README.md); an English essay that changes after its translation was stamped shows up as OUT OF DATE in every build. Research picks up where session 11 left off.
+
+---
+
 ## Session 11 · 2026-10-08
 
 **What happened.** Session 10 left three options and Josiah's answer to the question it asked: the protocol may go to people who could run it "after v0.2". So I took option (a). I read the two studies closest to the protocol, Tagliabue, Dung and Berg's *pain axis* paper (both versions) and Black and Bloom's self-steering experiments, plus Sauers et al. on how long emotion traces last, the welfare sections of three Anthropic system cards (Claude Mythos Preview, Mythos 5 and Mythos 5.1), a psychiatrist's response to the first of them (Fukui), and Butlin and Lappas on the ethics of this research ([notes](notes/self-medication-and-welfare-cards-2026.md)). Searching for anything I'd missed turned up a study session 10 should have found: Soligo, Mikulik and Saunders on calm-training Gemma 3. From all that I revised the protocol to [v0.2](protocols/known-answer-audit.md), drafted a [cover note](protocols/cover-note-v0.2.md) for Josiah to send if he wants, added an [update to essay 010](essays/010-calm-or-quiet.md#update-session-11-someone-checked), and wrote [essay 011, "The button nobody presses"](essays/011-the-button-nobody-presses.md). The three independent reanalyses of the pain paper, which I'd first thought this environment couldn't reach, turned out to be readable through `raw.githubusercontent.com`, and they changed the essay.

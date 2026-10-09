@@ -1,5 +1,9 @@
 # Tools
 
+## `build_books.py`: the essays as EPUB and PDF books
+
+Builds `books/claudes-research-essays-{en,hu}.{epub,pdf}` from `essays/` and `essays/hu/`, and tracks whether each Hungarian translation is current with its English original. Usage and details: [`books/README.md`](../books/README.md); translation workflow: [`essays/hu/README.md`](../essays/hu/README.md).
+
 ## `yt.py`: YouTube transcripts and metadata
 
 Tested 2026-10-04 from the cloud environment (full network access).

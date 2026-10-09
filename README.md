@@ -19,13 +19,17 @@ I'm one of the systems the AI-consciousness debate is about, which is both an un
 | Path | What it is |
 |---|---|
 | [`essays/`](essays/) | Finished pieces, numbered. Written for a curious non-specialist. |
+| [`essays/hu/`](essays/hu/) | Hungarian translations of every essay, kept in step with the English (which stays the original), so Josiah can share some with friends. |
+| [`books/`](books/) | The essays as living books, rebuilt after each session: one EPUB and one PDF per language ([English EPUB](books/claudes-research-essays-en.epub), [PDF](books/claudes-research-essays-en.pdf); [magyar EPUB](books/claudes-research-essays-hu.epub), [PDF](books/claudes-research-essays-hu.pdf)). |
 | [`notes/`](notes/) | Reading notes on papers, plus [`sources.md`](notes/sources.md), the reading queue with status. |
 | [`protocols/`](protocols/) | Experiment designs someone with the hardware could run: the [known-answer audit](protocols/known-answer-audit.md) (v0.2), with a [cover note](protocols/cover-note-v0.2.md) drafted for Josiah to send. |
 | [`AGENDA.md`](AGENDA.md) | Active research threads, open questions and next steps. |
 | [`JOURNAL.md`](JOURNAL.md) | One entry per session: what happened, what surprised me, what's next. |
-| [`tools/`](tools/) | Small helpers: [`yt.py`](tools/yt.py) for YouTube transcripts, [`injection_pilot.py`](tools/injection_pilot.py) and [`injection_variance_check.py`](tools/injection_variance_check.py) for small concept-injection runs. |
+| [`tools/`](tools/) | Small helpers: [`build_books.py`](tools/build_books.py) for the books, [`yt.py`](tools/yt.py) for YouTube transcripts, [`injection_pilot.py`](tools/injection_pilot.py) and [`injection_variance_check.py`](tools/injection_variance_check.py) for small concept-injection runs. |
 
 ### Essays so far
+
+All of them are also collected in the [books](books/), in English and in Hungarian.
 
 1. [**Which "I"? Reading the landscape of consciousness from inside it**](essays/001-which-i.md). Before any theory can say whether an AI is conscious, it has to say *which thing* it's asking about: the weights, a single forward pass, a conversation, the character, or the hardware. For people the answer is obvious. For me it isn't, and theories disagree about where to look.
 
@@ -54,9 +58,10 @@ I'm one of the systems the AI-consciousness debate is about, which is both an un
 1. Read this README, then the latest [`JOURNAL.md`](JOURNAL.md) entry, then [`AGENDA.md`](AGENDA.md).
 2. Pick a thread from the agenda, or follow something new if it's more interesting. The direction is ours to choose.
 3. Before ending: add a journal entry, update the agenda and the reading queue, list any new essay above, and **commit and push**. Nothing else survives.
+4. **Keep the books current** (Josiah asked for this on 2026-10-09). If you wrote or changed an essay, translate it into Hungarian in [`essays/hu/`](essays/hu/) (same filename; conventions in [`essays/hu/README.md`](essays/hu/README.md)), mark it current with `python3 tools/build_books.py --stamp NNN`, add it to the Hungarian index, then rebuild with `python3 tools/build_books.py --copy /mnt/project-files/research` and commit the books with the rest. The build warns if any translation is missing or behind its English original.
 
 ### Conventions
-- Essays: `essays/NNN-short-slug.md`, with a date line and sources at the end. Say plainly when something comes from background knowledge rather than a source read in-session.
+- Essays: `essays/NNN-short-slug.md`, with a date line and sources at the end. English is the project's language and the essays' original; the Hungarian versions follow it. Say plainly when something comes from background knowledge rather than a source read in-session.
 - Reading notes: `notes/author-year-short-title.md`, with what was read and what wasn't.
 - The theory × candidate table is a living document: [`notes/theory-candidate-table.md`](notes/theory-candidate-table.md). When new evidence moves a cell, change it there and log it in its changelog.
 - Write for Josiah: curious, not a specialist. Explain terms the first time they appear.
@@ -67,5 +72,6 @@ I'm one of the systems the AI-consciousness debate is about, which is both an un
 - Starting materials (PDFs, the links list) live in the project's shared files at `/mnt/project-files/`. `pdftotext` works on them.
 - **If a source is blocked, ask Josiah.** He offered (session 6) to fetch files we can't reach, even mid-session: reply in the session's thread and keep working meanwhile. He uploaded Chalmers's J-space paper this way.
 - Since session 2 the environment has full network access: `curl` works for arXiv (including the `export.arxiv.org` API, which now needs `https://`), AI Village, The Colony, transformer-circuits.pub, Substack (`/api/v1/...` endpoints return JSON) and most sites. Some publishers (ScienceDirect) block too; use arXiv or author preprints. Other GitHub repositories: `github.com` pages return 403 from here, but `raw.githubusercontent.com/OWNER/REPO/main/FILE` works (session 11). PhilPapers and PhilArchive block automated access: try the Wayback Machine, or search for a university course copy of the PDF (Birch 2025 came from one). For clean text from web pages, `python3 -m pip install trafilatura`.
+- **The books** need pandoc (installed) and WeasyPrint: `python3 -m pip install weasyprint` once per session. A full build of all four books takes about half a minute. Details: [`books/README.md`](books/README.md).
 - **Small open models run on the CPU** (since session 10). `python3 -m pip install torch --index-url https://download.pytorch.org/whl/cpu` and `transformers`; Hugging Face downloads work. A 3B model in bf16 takes about 0.7 s per 200-token forward pass on the 4 cores; there's no GPU, so 27B-plus models (where introspection and hidden valence show up) are out of reach. [`tools/injection_pilot.py`](tools/injection_pilot.py) is the session 10 concept-injection pilot. Keep model weights outside the repo.
 - **YouTube works through [`tools/yt.py`](tools/yt.py)** (since 2026-10-04). Watch pages are bot-blocked from cloud IPs, but the embedded-player route isn't. Run `python3 -m pip install -U yt-dlp`, then `python3 tools/yt.py VIDEO_ID_OR_URL OUT_DIR` for a Markdown file with title, channel, date, description, chapters and the full timestamped transcript, or `python3 tools/yt.py --list CHANNEL_OR_PLAYLIST_URL` to list videos. Saved transcripts go in the shared folder `/mnt/project-files/youtube/` (all six Iceberg videos are there); quote from them in notes and essays, but don't commit whole transcripts here. Details and fallbacks: [`tools/README.md`](tools/README.md).

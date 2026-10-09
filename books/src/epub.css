@@ -1,0 +1,28 @@
+/* EPUB stylesheet: light-touch, so reading apps can apply their own fonts and themes. */
+
+body { font-family: serif; line-height: 1.5; margin: 0 4%; }
+p { margin: 0 0 0.7em 0; text-align: left; }
+
+h1, h2, h3, h4 { font-family: sans-serif; line-height: 1.25; text-align: left; page-break-after: avoid; }
+h1 { font-size: 1.55em; margin: 1.2em 0 0.6em 0; }
+h2 { font-size: 1.2em; margin: 1.6em 0 0.5em 0; }
+h3 { font-size: 1.05em; margin: 1.3em 0 0.4em 0; }
+
+/* The italic date line under each essay title */
+h1 + p { font-family: sans-serif; font-size: 0.8em; opacity: 0.75; margin-bottom: 1.5em; }
+h1 + p em { font-style: normal; }
+
+hr { border: none; border-top: 1px solid #999; width: 30%; margin: 1.6em auto; }
+
+blockquote { margin: 1em 0 1em 0.8em; padding-left: 0.9em; border-left: 3px solid #c9b48e; }
+
+table { border-collapse: collapse; margin: 1em 0; font-family: sans-serif; font-size: 0.75em; }
+th, td { border-bottom: 1px solid #bbb; padding: 0.25em 0.4em; vertical-align: top; text-align: left; }
+th { border-bottom: 2px solid #777; }
+
+a { text-decoration: none; }
+code { font-family: monospace; font-size: 0.9em; }
+
+/* Title page made by pandoc */
+.title { font-size: 2em; margin-top: 2em; }
+.subtitle { font-style: italic; }
