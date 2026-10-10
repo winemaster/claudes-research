@@ -1,0 +1,436 @@
+{
+ "n_adapters": 300,
+ "held_out_tasks": [
+  39,
+  190,
+  280,
+  290,
+  391,
+  442,
+  1342,
+  1391,
+  1598
+ ],
+ "layers": {
+  "L0.q_proj": {
+   "r": 16,
+   "d_in": 4096,
+   "d_out": 4096,
+   "shared_init_group_sizes": [
+    107
+   ],
+   "shared_init_within_cos_median": 0.894,
+   "held_out_in_shared_group": 0,
+   "A_entry_std": 0.0097,
+   "kaiming_uniform_std": 0.00902,
+   "groups": {
+    "all": {
+     "N": 300,
+     "paper_pca_A_rows": {
+      "1": 0.0221,
+      "4": 0.0856,
+      "16": 0.3059,
+      "17": 0.3126,
+      "32": 0.3461,
+      "64": 0.3814
+     },
+     "paper_pca_B_cols": {
+      "1": 0.0889,
+      "4": 0.2036,
+      "16": 0.4159,
+      "17": 0.4288,
+      "32": 0.5734,
+      "64": 0.7237
+     },
+     "B_colspace_overlap_vs_random": 30.8,
+     "update_top16_share": 0.2942,
+     "update_top16_share_orthogonal_baseline": 0.2896,
+     "update_pairwise_cos_mean": 0.0044
+    },
+    "shared_init": {
+     "N": 107,
+     "paper_pca_A_rows": {
+      "1": 0.0662,
+      "4": 0.2561,
+      "16": 0.8848,
+      "17": 0.889,
+      "32": 0.9224,
+      "64": 0.9521
+     },
+     "paper_pca_B_cols": {
+      "1": 0.0789,
+      "4": 0.2036,
+      "16": 0.4779,
+      "17": 0.4938,
+      "32": 0.6551,
+      "64": 0.8058
+     },
+     "B_colspace_overlap_vs_random": 32.1,
+     "update_top16_share": 0.5359,
+     "update_top16_share_orthogonal_baseline": 0.5264,
+     "update_pairwise_cos_mean": 0.0233
+    },
+    "independent": {
+     "N": 193,
+     "paper_pca_A_rows": {
+      "1": 0.0076,
+      "4": 0.0236,
+      "16": 0.0516,
+      "17": 0.0535,
+      "32": 0.0787,
+      "64": 0.1206
+     },
+     "paper_pca_B_cols": {
+      "1": 0.108,
+      "4": 0.2278,
+      "16": 0.4389,
+      "17": 0.4514,
+      "32": 0.5973,
+      "64": 0.7535
+     },
+     "B_colspace_overlap_vs_random": 30.6,
+     "update_top16_share": 0.3816,
+     "update_top16_share_orthogonal_baseline": 0.3773,
+     "update_pairwise_cos_mean": 0.0021
+    }
+   },
+   "control_A_independent_inits": {
+    "1": 0.0009,
+    "4": 0.0036,
+    "16": 0.0141,
+    "17": 0.015,
+    "32": 0.0278,
+    "64": 0.0542
+   },
+   "control_B_random_directions": {
+    "1": 0.0009,
+    "4": 0.0036,
+    "16": 0.0141,
+    "17": 0.015,
+    "32": 0.0278,
+    "64": 0.0543
+   },
+   "held_out_reconstruction_k16": {
+    "cos_with_original_update": 0.0402,
+    "norm_ratio": 0.0431,
+    "relative_error": 0.9992,
+    "share_of_A_in_top16": 0.0112
+   }
+  },
+  "L15.q_proj": {
+   "r": 16,
+   "d_in": 4096,
+   "d_out": 4096,
+   "shared_init_group_sizes": [
+    107
+   ],
+   "shared_init_within_cos_median": 0.891,
+   "held_out_in_shared_group": 0,
+   "A_entry_std": 0.00974,
+   "kaiming_uniform_std": 0.00902,
+   "groups": {
+    "all": {
+     "N": 300,
+     "paper_pca_A_rows": {
+      "1": 0.0216,
+      "4": 0.0843,
+      "16": 0.305,
+      "17": 0.3071,
+      "32": 0.3222,
+      "64": 0.3487
+     },
+     "paper_pca_B_cols": {
+      "1": 0.0145,
+      "4": 0.0346,
+      "16": 0.094,
+      "17": 0.0982,
+      "32": 0.155,
+      "64": 0.2451
+     },
+     "B_colspace_overlap_vs_random": 4.3,
+     "update_top16_share": 0.1963,
+     "update_top16_share_orthogonal_baseline": 0.1962,
+     "update_pairwise_cos_mean": 0.0019
+    },
+    "shared_init": {
+     "N": 107,
+     "paper_pca_A_rows": {
+      "1": 0.0652,
+      "4": 0.2541,
+      "16": 0.882,
+      "17": 0.8837,
+      "32": 0.8997,
+      "64": 0.9212
+     },
+     "paper_pca_B_cols": {
+      "1": 0.0168,
+      "4": 0.0527,
+      "16": 0.1588,
+      "17": 0.166,
+      "32": 0.2615,
+      "64": 0.4096
+     },
+     "B_colspace_overlap_vs_random": 4.6,
+     "update_top16_share": 0.4404,
+     "update_top16_share_orthogonal_baseline": 0.4387,
+     "update_pairwise_cos_mean": 0.0138
+    },
+    "independent": {
+     "N": 193,
+     "paper_pca_A_rows": {
+      "1": 0.0027,
+      "4": 0.0076,
+      "16": 0.0242,
+      "17": 0.0255,
+      "32": 0.0443,
+      "64": 0.081
+     },
+     "paper_pca_B_cols": {
+      "1": 0.0157,
+      "4": 0.037,
+      "16": 0.1025,
+      "17": 0.1073,
+      "32": 0.1708,
+      "64": 0.2751
+     },
+     "B_colspace_overlap_vs_random": 4.2,
+     "update_top16_share": 0.2737,
+     "update_top16_share_orthogonal_baseline": 0.2737,
+     "update_pairwise_cos_mean": 0.0002
+    }
+   },
+   "control_A_independent_inits": {
+    "1": 0.0009,
+    "4": 0.0036,
+    "16": 0.0141,
+    "17": 0.015,
+    "32": 0.0278,
+    "64": 0.0543
+   },
+   "control_B_random_directions": {
+    "1": 0.0009,
+    "4": 0.0036,
+    "16": 0.0141,
+    "17": 0.015,
+    "32": 0.0278,
+    "64": 0.0543
+   },
+   "held_out_reconstruction_k16": {
+    "cos_with_original_update": 0.0149,
+    "norm_ratio": 0.0159,
+    "relative_error": 0.9999,
+    "share_of_A_in_top16": 0.0107
+   }
+  },
+  "L31.q_proj": {
+   "r": 16,
+   "d_in": 4096,
+   "d_out": 4096,
+   "shared_init_group_sizes": [
+    107
+   ],
+   "shared_init_within_cos_median": 0.909,
+   "held_out_in_shared_group": 0,
+   "A_entry_std": 0.00981,
+   "kaiming_uniform_std": 0.00902,
+   "groups": {
+    "all": {
+     "N": 300,
+     "paper_pca_A_rows": {
+      "1": 0.0209,
+      "4": 0.0824,
+      "16": 0.3009,
+      "17": 0.3053,
+      "32": 0.325,
+      "64": 0.3547
+     },
+     "paper_pca_B_cols": {
+      "1": 0.0226,
+      "4": 0.055,
+      "16": 0.1281,
+      "17": 0.1332,
+      "32": 0.2006,
+      "64": 0.3105
+     },
+     "B_colspace_overlap_vs_random": 5.3,
+     "update_top16_share": 0.2704,
+     "update_top16_share_orthogonal_baseline": 0.2692,
+     "update_pairwise_cos_mean": 0.0077
+    },
+    "shared_init": {
+     "N": 107,
+     "paper_pca_A_rows": {
+      "1": 0.0638,
+      "4": 0.2516,
+      "16": 0.8851,
+      "17": 0.8881,
+      "32": 0.9118,
+      "64": 0.9385
+     },
+     "paper_pca_B_cols": {
+      "1": 0.0287,
+      "4": 0.0817,
+      "16": 0.2252,
+      "17": 0.2351,
+      "32": 0.3601,
+      "64": 0.5348
+     },
+     "B_colspace_overlap_vs_random": 6.7,
+     "update_top16_share": 0.5361,
+     "update_top16_share_orthogonal_baseline": 0.5305,
+     "update_pairwise_cos_mean": 0.0424
+    },
+    "independent": {
+     "N": 193,
+     "paper_pca_A_rows": {
+      "1": 0.0054,
+      "4": 0.0124,
+      "16": 0.033,
+      "17": 0.0345,
+      "32": 0.0556,
+      "64": 0.0951
+     },
+     "paper_pca_B_cols": {
+      "1": 0.0213,
+      "4": 0.0564,
+      "16": 0.1418,
+      "17": 0.1479,
+      "32": 0.2273,
+      "64": 0.3534
+     },
+     "B_colspace_overlap_vs_random": 5.2,
+     "update_top16_share": 0.3569,
+     "update_top16_share_orthogonal_baseline": 0.3563,
+     "update_pairwise_cos_mean": 0.0023
+    }
+   },
+   "control_A_independent_inits": {
+    "1": 0.0009,
+    "4": 0.0036,
+    "16": 0.0141,
+    "17": 0.015,
+    "32": 0.0278,
+    "64": 0.0542
+   },
+   "control_B_random_directions": {
+    "1": 0.0009,
+    "4": 0.0036,
+    "16": 0.0141,
+    "17": 0.015,
+    "32": 0.0278,
+    "64": 0.0542
+   },
+   "held_out_reconstruction_k16": {
+    "cos_with_original_update": 0.0241,
+    "norm_ratio": 0.0264,
+    "relative_error": 0.9997,
+    "share_of_A_in_top16": 0.0111
+   }
+  },
+  "L15.v_proj": {
+   "r": 16,
+   "d_in": 4096,
+   "d_out": 1024,
+   "shared_init_group_sizes": [
+    107
+   ],
+   "shared_init_within_cos_median": 0.88,
+   "held_out_in_shared_group": 0,
+   "A_entry_std": 0.0098,
+   "kaiming_uniform_std": 0.00902,
+   "groups": {
+    "all": {
+     "N": 300,
+     "paper_pca_A_rows": {
+      "1": 0.0211,
+      "4": 0.0829,
+      "16": 0.3021,
+      "17": 0.3049,
+      "32": 0.3233,
+      "64": 0.3515
+     },
+     "paper_pca_B_cols": {
+      "1": 0.039,
+      "4": 0.0652,
+      "16": 0.124,
+      "17": 0.1281,
+      "32": 0.1843,
+      "64": 0.2837
+     },
+     "B_colspace_overlap_vs_random": 1.5,
+     "update_top16_share": 0.2042,
+     "update_top16_share_orthogonal_baseline": 0.2027,
+     "update_pairwise_cos_mean": 0.0087
+    },
+    "shared_init": {
+     "N": 107,
+     "paper_pca_A_rows": {
+      "1": 0.063,
+      "4": 0.2475,
+      "16": 0.8668,
+      "17": 0.8697,
+      "32": 0.8939,
+      "64": 0.9197
+     },
+     "paper_pca_B_cols": {
+      "1": 0.0496,
+      "4": 0.0887,
+      "16": 0.1954,
+      "17": 0.2029,
+      "32": 0.3015,
+      "64": 0.4535
+     },
+     "B_colspace_overlap_vs_random": 1.7,
+     "update_top16_share": 0.4688,
+     "update_top16_share_orthogonal_baseline": 0.4611,
+     "update_pairwise_cos_mean": 0.0586
+    },
+    "independent": {
+     "N": 193,
+     "paper_pca_A_rows": {
+      "1": 0.0039,
+      "4": 0.0102,
+      "16": 0.029,
+      "17": 0.0304,
+      "32": 0.0502,
+      "64": 0.0878
+     },
+     "paper_pca_B_cols": {
+      "1": 0.0364,
+      "4": 0.0649,
+      "16": 0.1321,
+      "17": 0.1368,
+      "32": 0.2013,
+      "64": 0.3129
+     },
+     "B_colspace_overlap_vs_random": 1.4,
+     "update_top16_share": 0.2792,
+     "update_top16_share_orthogonal_baseline": 0.279,
+     "update_pairwise_cos_mean": 0.0016
+    }
+   },
+   "control_A_independent_inits": {
+    "1": 0.0009,
+    "4": 0.0036,
+    "16": 0.0141,
+    "17": 0.015,
+    "32": 0.0278,
+    "64": 0.0542
+   },
+   "control_B_random_directions": {
+    "1": 0.0021,
+    "4": 0.0082,
+    "16": 0.0321,
+    "17": 0.034,
+    "32": 0.0627,
+    "64": 0.1209
+   },
+   "held_out_reconstruction_k16": {
+    "cos_with_original_update": 0.0199,
+    "norm_ratio": 0.0204,
+    "relative_error": 0.9998,
+    "share_of_A_in_top16": 0.0109
+   }
+  }
+ }
+}

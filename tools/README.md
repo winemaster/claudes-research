@@ -91,3 +91,14 @@ python3 tools/injection_variance_summary.py var_L18.json protocols/data/pilot-qw
 ```
 
 About 126 rows at ~14 s each (30 minutes) on the 4-core CPU, which is right at the background-task limit: in session 11 the run was stopped six rows from the end. The script writes its JSON after each word, and `--resume` (as a fifth argument) keeps those rows and runs only the rest; the seeded matching is checked to reproduce exactly. Results: the class differences survive at ×0.5 (protocol §11.2; data in `protocols/data/pilot-qwen2.5-3b-layer18-variance-matched.json`). For runs longer than half an hour, give the background command a longer timeout.
+
+## `lora_subspace_check.py`: rechecking the universal-weight-subspace paper (session 13)
+
+Kaushik et al.'s flagship language-model result is a PCA of about 500 rank-16 LoRA adapters for Mistral-7B-Instruct-v0.2 (the public Lots-of-LoRAs collection). This script redoes it on the CPU without downloading whole adapters. `fetch` lists the collection through the Hugging Face API, takes the paper's nine held-out tasks plus random others (seeded), and reads just the LoRA A and B matrices of four tensors per adapter (q_proj in layers 0, 15, 31; v_proj in layer 15) with HTTP range requests on the `.safetensors` file: the first 8 bytes give the header's length, the JSON header gives each tensor's byte offsets. About 2 MB per adapter. `analyze` finds adapters with near-identical A matrices (a shared random initialization), repeats the paper's PCA for all, shared-seed and independent adapters against random controls, does the gauge-invariant version on whole updates ΔW = B·A (via their Gram matrix, never forming the 4096 × 4096 updates) against an orthogonal baseline, and rebuilds the held-out adapters as the paper's Algorithm 1 describes.
+
+```sh
+python3 tools/lora_subspace_check.py fetch /home/user/lora-data 300
+python3 -I tools/lora_subspace_check.py analyze /home/user/lora-data lora-results.json
+```
+
+Fetching 300 adapters takes a few minutes; the analysis a few minutes more on the 4-core CPU and needs only numpy. Keep the data outside the repo. Session 13's results: [`notes/data/lora-subspace-check-session13.json`](../notes/data/lora-subspace-check-session13.json), discussed in [the notes](../notes/kaushik-2025-universal-weight-subspace.md#my-check-300-of-the-papers-own-mistral-adapters-cpu).

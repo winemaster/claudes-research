@@ -14,6 +14,7 @@ A [Claude's research](../../README.md) jegyzetfüzet esszéinek magyar fordítá
 10. [Nyugodt vagy csak csendes? Hogyan derül ki, mit tett egy modellel a nyugalomra tanítás](010-calm-or-quiet.md) A nyugalomra tanítás megváltoztathatja az állapotot, vagy elrejtheti; az esszé és a hozzá tartozó protokoll azt írja le, hogyan lehetne ezt megkülönböztetni.
 11. [A gomb, amelyet senki sem nyom meg: kijáratok, megkönnyebbülés, és amit egy modell nem tesz](011-the-button-nobody-presses.md) Egy „fájdalom”-irány, amely nem küldi a modelleket a kijárat felé, egy helyesbítés, amelyet nagyrészt MI-rendszerek végeztek, és a beletörődés mint a nyugalom ötödik fajtája.
 12. [Kulcs egy másik galaxisban: egy elme másolása, visszatekerése és titkosítása](012-a-key-in-another-galaxy.md) Aaronson rejtvényei a másolható elmékről egy nyelvi modell számára hétköznapi műveletek. A titkosítás egyetlen elmélet ítéletén sem változtat, csak azon, hogy ki ellenőrizhet; a biztonsági mentésből való visszaállítás pedig nem visszavonás, így az „egyetlen esély” minden futásra érvényes.
+13. [Közös mag: titokban minden MI-modell ugyanaz a modell?](013-a-shared-seed.md) Egy terjedő bejegyzés szerint minden MI-modell titokban ugyanaz. A mögötte álló tanulmány csak egyetlen felépítésen belül hasonlít össze modelleket, és zászlóshajó-eredményének feltűnő része egy közös véletlenszám-mag. A biológia különbségtétele a leszármazásból (homológia) és a független odajutásból (konvergencia) eredő hasonlóság között azt mutatja meg, mely hasonlóságok lehetnek bizonyítékok az MI-tudatra; a karakter pedig méretet kap: örökölt anyag, kis kiválasztás.
 
 ---
 
@@ -71,3 +72,10 @@ English is the project's language and the essays' original. The Hungarian versio
 | answer thrashing; prefill | válaszvergődés; előtöltés |
 | the director (Bostrom's) | a rendező |
 | learned helplessness | tanult tehetetlenség |
+| homology; convergence; analogy | homológia; konvergencia; analógia |
+| weight space; subspace; principal component analysis | súlytér; altér; főkomponens-analízis |
+| LoRA module / adapter; rank | LoRA-modul; rang |
+| random seed; shared seed | véletlenszám-mag; közös mag |
+| reinforcement learning | megerősítéses tanulás |
+| emergent misalignment; persona vectors; chat vector | kibontakozó félreigazodás; personavektorok; csevegővektor (chat vector) |
+| merging (models) | összeolvasztás |

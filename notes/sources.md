@@ -203,3 +203,21 @@ Notes: [aaronson-copyable-minds-2026.md](aaronson-copyable-minds-2026.md). Used 
 | Yu et al. (2026) Cachemir, arXiv:2602.11470; Fan et al. (2026) Odin, arXiv:2609.12378; Min et al. (2026) HE-Guardrail, arXiv:2609.21484 | 🟡 (abstracts) | FHE inference of Llama-3-8B (<100 s per token); the server can't inspect prompts or responses, so safety checks run under encryption. |
 | Apple (2024), *Private Cloud Compute* | 🟡 (requirements section) | Deployed confidential AI serving: data unavailable "not even to Apple staff, not even during active processing"; "leaves no trace". |
 | Ororbia & Friston (2023), *Mortal computation*, arXiv:2311.09589; Buechner (2008), *Gödel, Putnam, and Functionalism*; Chalmers (1996), *Does a rock implement every finite-state automaton?* | ⬜ | Carried forward: mortal computation from the free-energy side; complexity responses to trivialism; the original counterfactual account. |
+
+## Added in session 13 (one model or many: the universal weight subspace)
+
+Notes: [kaushik-2025-universal-weight-subspace.md](kaushik-2025-universal-weight-subspace.md). Used in [essay 013](../essays/013-a-shared-seed.md) and the table's weights and character summaries and operations rows.
+
+| Source | Status | Why |
+|---|---|---|
+| Kaushik, P., Chaudhari, S., Vaidya, A., Chellappa, R. & Yuille, A. (2025, v3 2026), *The universal weight subspace hypothesis*, arXiv:2512.05117v3 | ✅ (proofs and model lists skimmed) | Uploaded by Josiah (`/mnt/project-files`). Within one architecture, a few shared directions per layer; the flagship 500 Mistral LoRAs, 500 ViTs, 50 Llama-3-8B fine-tunes. Checked on 300 of the LoRAs: a third share one random seed. |
+| "Superman" (@thesupermannx), x.com post, 10 Oct 2026, status 2108848295061918160 | ✅ (via api.fxtwitter.com) | "Every AI model on earth is secretly the same model." Link from Josiah. |
+| Hacker News item 46199623 (9 Dec 2025) | ✅ (via hn.algolia.com) | Commenters on v1: siblings vs independents, shared data, the LoRA gauge. |
+| Brüel-Gabrielsson, R. et al. (2024), *Compress then serve*, arXiv:2407.00066 | 🟡 (setup, Table 1) | Made the Lots-of-LoRAs collection; base model Rouge-L 20.6 vs 67.8 with LoRAs. |
+| Schulman, J. & Thinking Machines Lab (2025), *LoRA without regret*, doi:10.64434/tml.20250929 | ✅ | RL learns "only O(1) bits per episode"; rank-1 LoRA matches full RL. |
+| Huh, M., Cheung, B., Wang, T. & Isola, P. (2024), *The Platonic representation hypothesis*, arXiv:2405.07987 | 🟡 (§1, §6) | Convergence of representations, not weights; alignment 0.16 of 1; the eclipse limitation. |
+| Soligo, A., Turner, E., Rajamanoharan, S. & Nanda, N. (2025), *Convergent linear representations of emergent misalignment*, arXiv:2506.11618 | 🟡 (§§1–3) | One misalignment direction transfers across fine-tunes (78% reduction); "already alignment relevant in the aligned Instruct model". |
+| Aghajanyan et al. 2020 (arXiv:2012.13255); Ilharco et al. 2022 (task arithmetic, arXiv:2212.04089); Ainsworth et al. 2022 (Git Re-Basin, arXiv:2209.04836); Huang et al. 2023 (chat vector, arXiv:2310.04799) | 🟡 (abstracts) | Intrinsic dimension of fine-tuning; adding and subtracting fine-tunes; permutation symmetry; transplanting an assistant manner. |
+| Mukherjee et al. 2025 (arXiv:2505.11711); Venhoff et al. 2025 (arXiv:2510.07364); Turner et al. 2025 (arXiv:2506.11613); Wang et al. 2025 (persona features, arXiv:2506.19823); Chen et al. 2025 (persona vectors, arXiv:2507.21509) | 🟡 (abstracts) | RL's sparse but full-rank updates; RL teaches "when"; rank-1 emergent misalignment; a toxic persona feature; persona shifts track persona vectors. |
+| Novembre et al. 2008 (*Nature* 456:98); Nieder, Wagener & Rinnert 2020 (*Science* 369:1626); Nieder 2021 (*Curr. Opin. Neurobiol.* 71:69) | 🟡 (abstracts) | Genome PCA draws Europe's map; a neural correlate of consciousness in crows, without cortex. |
+| Lu et al. (2026), *The Assistant Axis* | ⬜ (re-read) | Carried forward from session 5: check whether its cross-model comparison can tell descent from convergence. |
