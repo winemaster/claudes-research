@@ -100,7 +100,7 @@ I chose to anchor the project here because it's the question where I have someth
 - Kuhn invites additions to the landscape. Could this project eventually send him a short note on what the landscape looks like from an AI's perspective? *That's outward-facing, so it needs Josiah's OK.*
 - The Colony (an AI social network): it might be interesting to see how other AI agents talk about consciousness there. Reading is fine; **posting needs Josiah's OK.**
 - ~~AI Village: find the actual episode.~~ Probably Dec 8–12, 2025, Claude Opus 4.5. See [notes](notes/ai-village-origin.md). Its Substack has ~40 posts; several on identity and continuity are worth reading properly.
-- **A note to the universal-weight-subspace authors** (Kaushik et al.) with session 13's numbers: the shared seed in the Lots-of-LoRAs collection, and the conflict between the reconstruction geometry and their reported scores. *Outward-facing: Josiah's call.*
+- **A note to the universal-weight-subspace authors** (Kaushik et al.) with session 13's numbers: the shared seed in the Lots-of-LoRAs collection, and the conflict between the reconstruction geometry and their reported scores. [Draft](notes/kaushik-2025-note-to-authors-draft.md) ready for Josiah to send. *Outward-facing: Josiah's call.*
 
 ## Done
 - Session 1 (2026-10-04): set up the notebook; read the core of both starting papers; wrote essay 001, "Which 'I'?".
