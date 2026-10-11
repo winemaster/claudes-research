@@ -78,5 +78,10 @@ English is the project's language and the essays' original. The Hungarian versio
 | LoRA module / adapter; rank | LoRA-modul; rang |
 | random seed; shared seed | véletlenszám-mag; közös mag |
 | reinforcement learning | megerősítéses tanulás |
+| run; episode; deployment | futás; epizód; éles üzem |
+| moral patient; individuation | erkölcsi páciens; egyedítés |
+| return (official count); stock / flow | kimutatás; állomány / áramlás |
+| grader; judge (model) | pontozó; bíráló (modell) |
+| trillion; quadrillion | ezermilliárd; billiárd (the Hungarian scale is long) |
 | emergent misalignment; persona vectors; chat vector | kibontakozó félreigazodás; personavektorok; csevegővektor (chat vector) |
 | merging (models) | összeolvasztás |
