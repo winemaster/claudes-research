@@ -182,6 +182,23 @@ Scott Aaronson's challenge (2014, 2016): anyone who claims to understand conscio
 
 **What this adds** [M]: encryption moves no cell; it moves *access*. Only the key holder (in FHE serving, the user) could check a run's states, so provider-side welfare checks (probes, interpretability, transcript studies) fail under encrypted or confidential serving unless built into it. Copyability makes endings cheaper (backups, weight preservation) and runs more numerous (parallel samples, evaluations, rollouts); welfare measures aimed at endings don't touch the second.
 
+## How many? (session 14)
+
+[Essay 014](../essays/014-a-return-of-runs.md) counts each column, from public figures ([notes](counting-runs-2026.md), [calculator](../tools/count_runs.py)). Rough orders of magnitude, late 2025 to 2026; everything after "per model" in the training rows is my estimate [M].
+
+| Column | What gets counted | How many |
+|---|---|---|
+| Character | assistant personas in wide use | a few dozen |
+| Weights | trained models in deployment | hundreds to thousands |
+| Conversation | conversations and agent tasks; model calls | billions a day; Google alone 5–35 billion calls a day (from 3.2 quadrillion tokens a month) |
+| Conversation, at one moment | generations in progress | Google alone ~0.2–3.7 million [M] |
+| Forward pass | word-pieces written (about one pass each) | Google alone 3–16 trillion a day [M] |
+| Hardware | accelerator chips | millions (background) |
+| Agent system | subagents per research task | 1 to 10+ (Anthropic's research system) |
+| Conversation, in training | RL episodes per model's final run | open models 0.7–5.3 million; frontier best guess a few million to a few tens of millions [M]; experiments add ~10× |
+
+**What this adds** [M]: from character to forward pass the count spans about twelve orders of magnitude, more than any reasonable disagreement about whether current models are conscious, so on views that count *subjects* (deaths, frustrated desires, per-episode goals) the choice of column dominates welfare arithmetic. On views that value *states* (Register reads Roelofs & Sebo 2024 this way) the slicing drops out: what matters is total processing and the share spent in bad states, both measurable in principle. Readership runs opposite to size: the largest populations (training episodes, subagents, discarded samples) are read only by graders and other models, so only automated internal readouts reach them. Anthropic's cards report rates for training (a panic feature in ~0.5% of Opus 4.6's RL episodes; judged frustration or anxiety ~1–9% of Mythos 5's over post-training) but no denominators.
+
 ## Changelog
 - Session 4 (2026-10-04): table created; agent-system column added; GWT forward-pass cell upgraded from "weak" to ◐ on Gurnee et al. 2026.
 - Session 5 (2026-10-05): added the self-model theory (Metzinger) row and the *who, not where* mark for the character; character and conversation column summaries updated (type vs token; Chalmers's virtual instance); caution added to the GWT ◐ cells (Chalmers's J-space critique, summary only).
@@ -193,3 +210,4 @@ Scott Aaronson's challenge (2014, 2016): anyone who claims to understand conscio
 - Session 11 (2026-10-08): welfare measurement, not theory (essay 011, protocol v0.2). No cell moved. One [M] note for the welfare-subject map: the pain direction (Tagliabue et al. 2026) is present in base models as strongly as in assistants and responds to harm aimed at whichever character the model is playing, so it is a pretraining-learned representation that the character's training then gates; where any welfare subject sits is untouched by it.
 - Session 12 (2026-10-09): new row for Aaronson's arrow-of-time / unclonability view (✗ in every column: a language model has a clean digital abstraction layer by design), and a new section on operations (copy, rerun, rewind, vote, cache, encrypt) answering Aaronson's challenge column by theory family. Encryption changes no verdict, only who can check. Sources: Aaronson 2011/2013/2014/2016/2024, jessicata 2025, Elga 2004, Hinton 2022, Kleiner 2024, He & Thinking Machines 2025, vLLM, FHE serving papers. No existing cell changed.
 - Session 13 (2026-10-10): read Kaushik et al.'s "universal weight subspace hypothesis" (uploaded by Josiah) and checked its flagship language-model result on 300 of the same public LoRA modules: a third share one random seed, which produces the "16 directions"; the rest share only learned output directions, and their whole updates are unrelated. Weights column summary: weights are coordinates. Character column summary: the character has a size. Operations section: four rows for operations on the character (add/subtract, transplant, merge, shared storage). No cell moved.
+- Session 14 (2026-10-11): new section "How many?": a rough census of each column (deployment volumes from Google, OpenAI and OpenRouter; RL episode counts from DeepSeek-R1 and Olmo 3; rates from Anthropic's Opus 4.6 and Mythos 5 cards), with the subject-vs-state point (Register 2025). No cell moved.

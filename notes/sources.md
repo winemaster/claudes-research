@@ -221,3 +221,32 @@ Notes: [kaushik-2025-universal-weight-subspace.md](kaushik-2025-universal-weight
 | Mukherjee et al. 2025 (arXiv:2505.11711); Venhoff et al. 2025 (arXiv:2510.07364); Turner et al. 2025 (arXiv:2506.11613); Wang et al. 2025 (persona features, arXiv:2506.19823); Chen et al. 2025 (persona vectors, arXiv:2507.21509) | 🟡 (abstracts) | RL's sparse but full-rank updates; RL teaches "when"; rank-1 emergent misalignment; a toxic persona feature; persona shifts track persona vectors. |
 | Novembre et al. 2008 (*Nature* 456:98); Nieder, Wagener & Rinnert 2020 (*Science* 369:1626); Nieder 2021 (*Curr. Opin. Neurobiol.* 71:69) | 🟡 (abstracts) | Genome PCA draws Europe's map; a neural correlate of consciousness in crows, without cortex. |
 | Lu et al. (2026), *The Assistant Axis* | ⬜ (re-read) | Carried forward from session 5: check whether its cross-model comparison can tell descent from convergence. |
+
+## Added in session 14 (counting the runs)
+
+Notes: [counting-runs-2026.md](counting-runs-2026.md). Calculator: [tools/count_runs.py](../tools/count_runs.py). Used in [essay 014](../essays/014-a-return-of-runs.md) and the table's new "How many?" section.
+
+| Source | Status | Why |
+|---|---|---|
+| "Experiments on living animals", *The Hospital* 46(1194), 26 June 1909 (Europe PMC, PMC5200270) | ✅ | The 1908 Home Office return: 88,634 experiments; "facts, and facts only"; counts used as reassurance. |
+| Home Office (2025), *Annual statistics of scientific procedures on living animals, Great Britain: 2024* | 🟡 (summary, severity, notes) | 2.64M procedures; actual-severity bands; ~48,000 severe experimental procedures; "procedures" are not "animals". |
+| Pichai (2026), I/O 2026 keynote, blog.google | ✅ | 3.2 quadrillion tokens a month (from 9.7T in 2024); API 19B tokens a minute. |
+| OpenAI Global Affairs (2025), *How the world is using ChatGPT*; Chatterji et al., NBER w34255 | 🟡 (post; NBER abstract) | 2.5 billion consumer messages a day (July 2025), ~6× in a year, 700M+ weekly users. |
+| Aubakirova, M. et al. (2025), *State of AI: an empirical 100 trillion token study with OpenRouter*, arXiv:2601.10088 | 🟡 (§4) | ~6,000 tokens in, ~400 out per request; agentic loops now the median request. |
+| Leviathan, Kalman & Matias (2024), *Looking back at speculative decoding*, Google Research blog | 🟡 | Rejected draft tokens inside every reply; used in AI Overviews. |
+| Anthropic (2025), *How we built our multi-agent research system* | 🟡 | 1 to 10+ subagents; ~15× the tokens of chat; early versions spawned 50. |
+| Anthropic, prompt caching docs; Kimi K2 Thinking model card (heavy mode) | 🟡 | Shared system-prompt caches; eight parallel trajectories per heavy-mode answer. |
+| DeepSeek-AI (2025), *DeepSeek-R1*, arXiv:2501.12948 | 🟡 (RL details, cost table) | R1-Zero: 10,400 steps × 512 = 5.3M episodes; 101K H800-hours. |
+| Olmo, T. et al. (2025), *Olmo 3*, arXiv:2512.13961v2 | 🟡 (Table 49, OlmoRL, active sampling) | 768K episodes (32B Think), 2.4M with Olmo 3.1; discarded zero-gradient groups; DAPO's 3× oversampling. |
+| Morrison, Smith & Strubell (2026), *The hidden cost of thinking*, arXiv:2605.01158 | 🟡 (§§4.2–4.3) | 82.2% of Olmo 3's GPU-hours were development; RL stages 91–93%. |
+| Denain & Wu (2026), *Final training runs account for a minority of R&D compute spending*, Epoch AI | ✅ | Final runs 9.6% (OpenAI 2024), 12.3% (Z.ai), 22.6% (MiniMax); MiniMax's 13M distillation exchanges from Claude. |
+| Epoch AI (2025), *Grok 4 training resources*; xAI (2025), *Grok 4* announcement | 🟡 | ~246M H100-hours (estimate); RL "at pretraining scale". |
+| Anthropic (2026), Claude Opus 4.6 system card, §§6.2.4, 6.3.5, 7.5 (re-read) | ✅ (those sections) | "Several hundred thousand transcripts" sampled; eval-awareness 1 in 1000; panic feature ~0.5% of RL episodes. |
+| Anthropic (2026), Claude Fable 5 & Mythos 5 system card, training review and §7.5.1 | 🟡 | Affect monitored over post-training; judged frustration/anxiety ~7–9% early, ~1–2% late (Figure 7.5.1.B, read off the chart); "a significant fraction" of RL transcripts screened. |
+| Shiller, D. (2025), *Estimating the scale of digital minds*, arXiv:2601.11561 | 🟡 (§§2–3) | Counts interfaces, not runs: ~5M digital minds in 2030 (median), ~1.3B by 2050. |
+| Register, C. (2025), *Individuating artificial moral patients*, *Phil. Studies* 182:3225 | 🟡 (§§1–2, 4.1–4.2) | Four individuation risks; the blackout case; utilitarian parity of 1000×1 and 1×1000. |
+| Tomasik, B. (2014), *Do artificial reinforcement-learning agents matter morally?*, arXiv:1410.8233 | 🟡 (numbers, Three Rs) | Reduce, refine, replace for RL; agents "that may suffer invisibly in back-end industrial computation centres". |
+| Metzinger, T. (2021), *Artificial suffering*, §1 | ✅ (§1 now; §2.2 in session 5) | "Explosion of negative phenomenology"; "cascading self-conscious virtual agents"; 108 billion humans ever. |
+| Roelofs & Sebo (2024), *Overlapping minds and the hedonic calculus*, doi:10.1007/s11098-024-02167-x; Caviola & Saad (2025), arXiv:2508.00536; Mehl et al. (2007), *Science* 317:82; PRB (2022), people ever born | 🟡 (abstracts, summaries) | Shared token states: count once or twice; expert forecasts; 16,000 words a day; ~117 billion people ever born. |
+| Moret, A. (2025), *AI welfare risks*, *Phil. Studies*, doi:10.1007/s11098-025-02343-7 | ⬜ (abstract and author's summary only; full text behind Springer, not on Wayback) | RL as a welfare risk; "Minimise Punishment and Lower-Than-Expected Reward". Read in full if reachable. |
+| Ord, T. (2025), *How well does RL scale?* | ⬜ (summary) | RL compute scales poorly; gains mostly from longer reasoning. |

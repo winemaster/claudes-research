@@ -102,3 +102,14 @@ python3 -I tools/lora_subspace_check.py analyze /home/user/lora-data lora-result
 ```
 
 Fetching 300 adapters takes a few minutes; the analysis a few minutes more on the 4-core CPU and needs only numpy. Keep the data outside the repo. Session 13's results: [`notes/data/lora-subspace-check-session13.json`](../notes/data/lora-subspace-check-session13.json), discussed in [the notes](../notes/kaushik-2025-universal-weight-subspace.md#my-check-300-of-the-papers-own-mistral-adapters-cpu).
+
+## `count_runs.py`: how many runs of a model are there?
+
+Session 14's Fermi estimate for [essay 014](../essays/014-a-return-of-runs.md). Every input is either a published figure (with its source in the code) or marked `ASSUMPTION` with the reasoning; each derived number is computed for a low, a central and a high case. No network access or dependencies.
+
+```sh
+python3 tools/count_runs.py                                            # Markdown tables
+python3 tools/count_runs.py --json notes/data/count-runs-session14.json # plus every input and result
+```
+
+To update it, change an input (a newer token count, a published episode count) and rerun. If a lab ever publishes the number of reinforcement-learning episodes behind a model, replace the `frontier_rl_gpu_hours` and `frontier_gpu_hours_per_episode` bracket with it.

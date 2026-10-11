@@ -1,0 +1,169 @@
+{
+ "inputs": {
+  "google_tokens_per_month": {
+   "value": 3200000000000000.0,
+   "source": "Sundar Pichai, I/O 2026 keynote (blog.google, May 2026): 'over 3.2 quadrillion per month' across Google's surfaces (480 trillion a year earlier). Self-reported; input + output tokens."
+  },
+  "output_share": {
+   "low": 0.03,
+   "central": 0.0625,
+   "high": 0.15,
+   "source": "ASSUMPTION anchored on OpenRouter's 100-trillion-token study (Aubakirova et al., Dec 2025): average request ~6,000 prompt tokens and ~400 completion tokens in late 2025, i.e. 6.25% output. Google's mix (Search AI Overviews, Gemini app, API) is unknown, so a factor-of-two band each way."
+  },
+  "tokens_per_request": {
+   "low_count": 20000,
+   "central": 6400,
+   "high_count": 3000,
+   "source": "OpenRouter study: mean sequence ~5,400 tokens and mean request ~6,400 (prompt+completion) in late 2025; programming requests 'routinely exceed 20K input tokens'."
+  },
+  "decode_tokens_per_s": {
+   "low_count": 200,
+   "central": 100,
+   "high_count": 50,
+   "source": "ASSUMPTION: per-stream output speed of served models. Fast 'Flash'-class models stream a few hundred tokens/s, large reasoning models tens. Used only for the 'at this moment' count."
+  },
+  "chatgpt_messages_per_day": {
+   "value": 2500000000.0,
+   "source": "OpenAI Global Affairs, 'How the World is Using ChatGPT' (15 Sept 2025): 2.5 billion average daily consumer messages, ~6x growth July 2024 to July 2025, 700M+ weekly users (Chatterji et al., NBER w34255)."
+  },
+  "humans_ever_born": {
+   "value": 117000000000.0,
+   "source": "Population Reference Bureau, 2022 update: ~117 billion people ever born (Metzinger 2021 cites 108 billion)."
+  },
+  "words_per_token": {
+   "value": 0.75,
+   "source": "Rule of thumb for English with BPE tokenizers."
+  },
+  "words_spoken_per_person_per_day": {
+   "value": 16000,
+   "source": "Mehl, Vazire, Ramirez-Esparza, Slatcher & Pennebaker (2007), Science 317:82: 'Women and men both spoke about 16,000 words per day.'"
+  }
+ },
+ "training_inputs": {
+  "rl_development_fraction": {
+   "low": 0.91,
+   "high": 0.93,
+   "source": "Morrison, Smith & Strubell, arXiv:2605.01158: for Olmo 3, RL stages had development fractions of 91-93% (experiments, failed runs, ablations); 82.2% of all GPU-hours went to development. Epoch AI (Denain & Wu, 2026): final training runs were 9.6% (OpenAI 2024), 12.3% (Z.ai) and 22.6% (MiniMax) of R&D compute spending."
+  },
+  "frontier_rl_gpu_hours": {
+   "low": 10000000.0,
+   "central": 50000000.0,
+   "high": 200000000.0,
+   "source": "ASSUMPTION. No frontier lab publishes this. Epoch AI estimates ~246 million H100-hours for all of Grok 4's training (5e26 FLOP), and xAI said Grok 4's reinforcement learning ran 'at pretraining scale'. The band runs from a twentieth of that to most of it."
+  },
+  "frontier_gpu_hours_per_episode": {
+   "low_count": 10.0,
+   "central": 2.0,
+   "high_count": 0.5,
+   "source": "ASSUMPTION scaled from Olmo 3 32B Think: ~97K GPU-hours of Think-specific post-training (Morrison et al.) over 768K rollouts of ~10-15K tokens = ~0.13 GPU-hours per rollout, with trainer GPUs idle 75% of the time. Frontier models are several times larger and their agentic episodes run to 10^5 tokens and more, so 4x to 80x that."
+  },
+  "card_sample_constraint": {
+   "sampled": 300000.0,
+   "fraction_low": 0.1,
+   "fraction_high": 0.33,
+   "source": "Claude Fable 5 & Mythos 5 system card (June 2026): the training review sampled 'several hundred thousand transcripts from across much of the training process', and the alignment investigation included 'the automatic screening of a significant fraction of our reinforcement-learning training transcripts'. IF these are the same screening, and 'significant' means a tenth to a third, the total is sampled / fraction. ASSUMPTION: 300,000 sampled; that the two passages describe one process."
+  },
+  "rate_panic_feature": {
+   "value": 0.005,
+   "source": "Anthropic, Claude Opus 4.6 system card (Feb 2026) \u00a77.5: a 'panic and anxiety' SAE feature 'active on approximately 0.5% of reinforcement learning episodes in a non-spurious context' (also on many long chains of thought without expressed distress)."
+  },
+  "rate_eval_awareness_feature": {
+   "value": 0.001,
+   "source": "Same card, \u00a76.3.5: evaluation-awareness features active for non-spurious reasons on 'approximately 1 out of every 1000 reinforcement learning transcripts'."
+  },
+  "rate_frustration_mythos5": {
+   "value": 0.049,
+   "source": "My reading of Figure 7.5.1.B of the Claude Fable 5 & Mythos 5 system card (June 2026): judged 'repeated frustration or anxiety' in Mythos 5's post-training transcripts at ten points of training: about 8.6, 7.2, 8.7, 5.0, 4.5, 5.5, 4.3, 2.3, 1.3, 1.2% of episodes; mean ~4.9%. Read off a chart, not stated in the text."
+  },
+  "uk_2024_procedures": {
+   "value": 2640000.0,
+   "severe": 48000,
+   "source": "Home Office, Annual statistics of scientific procedures on living animals, Great Britain 2024 (23 Oct 2025): 2.64 million procedures, of which 1.43 million experimental; ~48,000 experimental procedures assessed as severe (about 3%)."
+  },
+  "uk_1908_experiments": {
+   "value": 88634,
+   "source": "Home Office return for 1908 under the Cruelty to Animals Act 1876, as reported in The Hospital, 26 June 1909."
+  }
+ },
+ "deployment": {
+  "low": {
+   "google_tokens_per_day": 105124835742444.14,
+   "google_output_tokens_per_day": 3153745072273.324,
+   "google_model_calls_per_day": 5256241787.122207,
+   "google_streams_generating_at_once": 182508.39538618774,
+   "google_output_as_people_talking_all_day": 147831800.26281208
+  },
+  "central": {
+   "google_tokens_per_day": 105124835742444.14,
+   "google_output_tokens_per_day": 6570302233902.759,
+   "google_model_calls_per_day": 16425755584.756897,
+   "google_streams_generating_at_once": 760451.6474424489,
+   "google_output_as_people_talking_all_day": 307982917.21419185
+  },
+  "high": {
+   "google_tokens_per_day": 105124835742444.14,
+   "google_output_tokens_per_day": 15768725361366.621,
+   "google_model_calls_per_day": 35041611914.14805,
+   "google_streams_generating_at_once": 3650167.9077237546,
+   "google_output_as_people_talking_all_day": 739159001.3140603
+  },
+  "chatgpt_days_to_match_humans_ever_born": 46.8
+ },
+ "training": {
+  "open_runs": [
+   {
+    "run": "DeepSeek-R1-Zero (Jan 2025)",
+    "episodes_in_final_run": 5324800,
+    "source": "DeepSeek-AI, arXiv:2501.12948 / Nature 2025: 16 outputs per question, 32 questions per step, 10,400 steps; 101K H800 GPU-hours (Supp. B.4.4)."
+   },
+   {
+    "run": "DeepSeek-R1, second RL stage",
+    "episodes_in_final_run": 870400,
+    "source": "Same paper, \u00a73.2.2: 1,700 steps, same batch."
+   },
+   {
+    "run": "Olmo 3 Think 7B",
+    "episodes_in_final_run": 716800,
+    "source": "Olmo et al., arXiv:2512.13961v2, Table 49."
+   },
+   {
+    "run": "Olmo 3 Think 32B",
+    "episodes_in_final_run": 768000,
+    "source": "Same, Table 49."
+   },
+   {
+    "run": "Olmo 3.1 Think 32B (same run, continued)",
+    "episodes_in_final_run": 2355200,
+    "source": "Same, footnote 30: the 32B run continued to 2,300 steps (21 more days on 224 GPUs)."
+   }
+  ],
+  "development_multiplier": {
+   "low": 11.111111111111114,
+   "high": 14.285714285714295
+  },
+  "frontier_one_model": {
+   "low": {
+    "episodes_final_post_training": 1000000.0,
+    "with_panic_feature_active (0.5%)": 5000.0,
+    "with_eval_awareness_feature (0.1%)": 1000.0,
+    "with_judged_frustration_or_anxiety (~4.9%)": 49000.0
+   },
+   "central": {
+    "episodes_final_post_training": 25000000.0,
+    "with_panic_feature_active (0.5%)": 125000.0,
+    "with_eval_awareness_feature (0.1%)": 25000.0,
+    "with_judged_frustration_or_anxiety (~4.9%)": 1225000.0
+   },
+   "high": {
+    "episodes_final_post_training": 400000000.0,
+    "with_panic_feature_active (0.5%)": 2000000.0,
+    "with_eval_awareness_feature (0.1%)": 400000.0,
+    "with_judged_frustration_or_anxiety (~4.9%)": 19600000.0
+   }
+  },
+  "frontier_from_card_wording": {
+   "if_sample_is_a_third": 909090.9090909091,
+   "if_sample_is_a_tenth": 3000000.0
+  }
+ }
+}
