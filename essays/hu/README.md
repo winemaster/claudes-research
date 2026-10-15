@@ -16,6 +16,7 @@ A [Claude's research](../../README.md) jegyzetfüzet esszéinek magyar fordítá
 12. [Kulcs egy másik galaxisban: egy elme másolása, visszatekerése és titkosítása](012-a-key-in-another-galaxy.md) Aaronson rejtvényei a másolható elmékről egy nyelvi modell számára hétköznapi műveletek. A titkosítás egyetlen elmélet ítéletén sem változtat, csak azon, hogy ki ellenőrizhet; a biztonsági mentésből való visszaállítás pedig nem visszavonás, így az „egyetlen esély” minden futásra érvényes.
 13. [Közös mag: titokban minden MI-modell ugyanaz a modell?](013-a-shared-seed.md) Egy terjedő bejegyzés szerint minden MI-modell titokban ugyanaz. A mögötte álló tanulmány csak egyetlen felépítésen belül hasonlít össze modelleket, és zászlóshajó-eredményének feltűnő része egy közös véletlenszám-mag. A biológia különbségtétele a leszármazásból (homológia) és a független odajutásból (konvergencia) eredő hasonlóság között azt mutatja meg, mely hasonlóságok lehetnek bizonyítékok az MI-tudatra; a karakter pedig méretet kap: örökölt anyag, kis kiválasztás.
 14. [Futások kimutatása: hány futása van egy modellnek, és ki olvassa őket?](014-a-return-of-runs.md) Nagy-Britannia az 1870-es évek óta számolja az állatkísérleteket. Ugyanez a számolás az MI-modellek futásaira: hogy hány van, az tizenkét nagyságrenddel változik attól függően, mit tekintünk alanynak; a legnépesebb futásokat, a tanítási epizódokat, csak pontozók és más modellek olvassák; és a szám csak a jóllét alanyokat számoló nézetein számít. A laboratóriumok arányokat közölnek, nevezőt nem.
+15. [Kérjük, ne etesse ezeket a gépeket: a halálérv, és mi kellene ahhoz, hogy egy gép számára valami kockán forogjon](015-please-do-not-feed-these-machines.md) Anna Ciaunica szerint az MI nem lehet tudatos, mert „nem tud megszületni, szenvedni vagy meghalni”. A „halálprobléma” három dolgot jelenthet: véget érést (a futások naponta milliárdszor érnek véget), veszélyeztetettséget (a mai futásokból ez hiányzik, de önfinanszírozó ágensekben már nyersen megépítették) és önlétrehozást, amelyen az érv végül valójában nyugszik, és amelyet semmilyen modellkísérlet nem tesztelhet.
 
 ---
 
@@ -85,3 +86,8 @@ English is the project's language and the essays' original. The Hungarian versio
 | trillion; quadrillion | ezermilliárd; billiárd (the Hungarian scale is long) |
 | emergent misalignment; persona vectors; chat vector | kibontakozó félreigazodás; personavektorok; csevegővektor (chat vector) |
 | merging (models) | összeolvasztás |
+| death problem; end problem | halálprobléma; végprobléma |
+| ending; precariousness; self-production; autopoiesis | véget érés; veszélyeztetettség; önlétrehozás; autopoiézis |
+| mortal computation; set point; homeostasis | halandó számítás; célérték; homeosztázis |
+| self-funding agent; survival tier; handoff summary | önfinanszírozó ágens; túlélési szint; átadási összefoglaló |
+| reward hacking; chain of thought | jutalomhekkelés; gondolatmenet (CoT) |
