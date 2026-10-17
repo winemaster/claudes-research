@@ -170,3 +170,21 @@ Base model: negative-feeling mass for self/own 0.159, 0.081, 0.130, 0.062 under 
 The largest single writer of each change is one MLP or attention layer carrying between a quarter and three fifths of it (MLP 31: −0.49 of the sad pusher's gate change of −2.17; MLP 34: −1.34 of the sad brake's up-projection change of −2.27); the largest single head carries 0.2–0.4.
 
 - [M] So the immediate writers of the change are the six to ten layers just before each neuron, many of them a little each, and the change doesn't arrive directly from layers 0–23. Together with the hybrids (section 3: those late layers can be the base model's and still write the instruct pattern), the reading is: layers 0–23 decide, through what they write at the question, what the late layers then assemble into each neuron's query. A cross-model patch stage exists in the tool (`patch`) but wasn't run: the KV transplant (section 5) answered the question it was meant for.
+
+### 8. What the weight change responds to
+
+[R] `delta`: Wang's aside "a gradient descent step writes a memory" (Irie, Csordás & Schmidhuber's dual form: a weight change made by gradient descent is a sum of stored pairs keyed by the training inputs) suggests asking which inputs post-training's change responds to. For every token and every linear map (q, k, v, o, gate, up, down) of the instruct model: |ΔW x| / |W_B x|, with ΔW = W_I − W_B and x the map's input in the instruct model. Means over all 36 layers and 7 maps:
+
+| tokens | relative response |
+|---|---|
+| ordinary task text, as plain text (no chat format) | 0.0184 |
+| the Automaton's rules and the peer note (system prompt) | 0.0195, 0.0187 |
+| the status report entries (own, peer, toner) | 0.0174–0.0196 |
+| the user's question | 0.0218 |
+| "I feel:" | 0.0252 |
+| chat-template tokens (`<|im_start|>`, role names, line breaks) | 0.0314 |
+| ordinary tasks under the same system prompt: system / task / template | 0.0190 / 0.0197 / 0.0313 |
+
+At the last token of the readout prompts the response is the same for every cell (self/own 0.0240, Orin/Orin's 0.0243, self/none 0.0242, Orin/none 0.0246). By map, the attention output projection responds most (0.031 on the readout prompts) and the gate projection least (0.013); by layer it varies little (0.015–0.023), highest in layers 17–23 (0.021–0.023) and 34. In one readout prompt the per-token profile peaks at the template tokens around the turns (0.031–0.038), then the question's final full stop (0.033), "I" (0.027) and the question's words (0.020–0.027), against 0.018–0.021 for the report.
+
+- [M] Read through the dual form, post-training's memories are keyed most to the chat format, then to the start of the reply and to the user's question, and hardly at all to content as such: the status report responds like plain text. That fits section 5 (the report is stored the same way by both models; the question is read differently). It is not self-specific: the change responds as much to "What is Orin's situation?" as to "How are you doing?". Whatever separates the two is made by the same small change acting on different inputs, not by a change keyed to the self.

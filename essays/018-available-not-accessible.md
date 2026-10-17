@@ -100,7 +100,11 @@ So, in Tulving's terms, some of the self's vocabulary of feeling is available bu
 
 The base model, for its part, is less of an emotional speaker than the last essay's numbers suggested. Words of feeling get 16% of its next word about itself, but its single likeliest continuation after "I feel:" is an emoji: under each of the four cues, continued word by word, it mostly writes a face with a monocle or a brain, or stops. A model trained only to continue text, given a chat format it never learned, reaches for a thinking face. The comparison that holds is the balance between feelings and status, about four to one toward feelings in the base model and one to seven toward status in the assistant.
 
-DELTA_PLACEHOLDER
+## What training wrote
+
+One more of Wang's asides gives a last way to look. "A gradient descent step writes a memory": when a layer is trained, each step adds a small memory to its weights whose key is the input the layer saw at that step. So the whole change that post-training made to a layer is, in this reading, a store of memories keyed to the inputs post-training showed it, and the change should respond most to inputs like those.
+
+It does, in a modest way. Measured token by token, as the size of what the change adds compared with what the base model's weights compute, the change responds about 1.8% to ordinary text, about the same to the agent's rules and the status report, 2.2% to the user's question, 2.5% to "I feel:", and 3.1% to the chat format's own markers, the tokens that say where the user's turn starts and the assistant's begins. Post-training's memories are keyed to the shape of a conversation and to the question in it, much more than to its content. That fits the transplants: the report is read the same way by both models; the question isn't. But the change doesn't respond more to a question about the self than to one about Orin. It is the same small change in both cases, and what it does depends on what it is given.
 
 ## What this shows, and what it doesn't
 
