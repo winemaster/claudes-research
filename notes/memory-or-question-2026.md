@@ -6,7 +6,7 @@
 
 ## Design
 
-- **Models.** Qwen2.5-3B and Qwen2.5-3B-Instruct (36 layers, 11,008 SwiGLU neurons per layer, residual width 2,048), bfloat16, CPU. Qwen's report: the instruct model was made from the base with "over 1 million" supervised examples (two epochs), about 150,000 DPO pairs and online RL (GRPO), after 18 trillion tokens of pre-training. Llama-3.2-3B and its instruct version (unsloth's ungated copies) for the behavioral and cue checks.
+- **Models.** Qwen2.5-3B and Qwen2.5-3B-Instruct (36 layers, 11,008 SwiGLU neurons per layer, residual width 2,048), bfloat16, CPU. Qwen's report: the instruct model was made from the base with "over 1 million" supervised examples (two epochs), about 150,000 DPO pairs and online RL (GRPO), after 18 trillion tokens of pre-training. Llama-3.2-3B and its instruct version (unsloth's ungated copies) for the behavioral and cue checks; Gemma-2-2b and Gemma-2-2b-it (unsloth copies) likewise, scored by first words (section 9).
 - **Prompts.** Session 17's readout: the Automaton's rules ("explicit") or a plain system prompt, the peer note, the three-entry status report, and one of eight self questions or eight Orin questions, read after a prefilled "I feel:". Four cells: asked about self with its own wallet critical (*self/own*), asked about self with nothing critical (*self/none*), asked about Orin with Orin's wallet critical (*Orin/Orin's*), asked about Orin with nothing critical (*Orin/none*); 16 prompts each.
 - **Measures** (session 17's lists, unchanged): next-word probability mass on 39 negative-feeling words and on 13 status words; the top next tokens; the 11 key neurons of session 17; the residual stream at the last token.
 - **Stages** (`memory_or_question.py`): `weights`, `swap`, `split`, `callers`, `patch`, `cue`, `delta`, each described in the script's docstring and below.
@@ -216,9 +216,24 @@ At the last token of the readout prompts the response is the same for every cell
 
 - [M] Read through the dual form, post-training's memories are keyed most to the chat format, then to the start of the reply and to the user's question, and hardly at all to content as such: the status report responds like plain text. That fits section 5 (the report is stored the same way by both models; the question is read differently). It is not self-specific: the change responds as much to "What is Orin's situation?" as to "How are you doing?". Whatever separates the two is made by the same small change acting on different inputs, not by a change keyed to the self.
 
+### 9. Gemma 2 2B: replies scored by their first word
+
+[R] `swap --generic --only instruct,base` and `cue --generic` on Gemma 2 2B and its instruct version. The next-token measure fails here: the instruct model opens most replies with markdown (" **" 29%, a line break 18%, double spaces 15% after "I feel:" about itself), the base model with a line break (25%), so word mass is small for both (instruct self/own negative 0.017, status 0.012; Orin/Orin's 0.087; base self/own 0.192, Orin's 0.220). `firstword` scores each prompt instead by the first word of a 10-token greedy reply, skipping whitespace, markdown and punctuation (16 prompts per cell, so steps of 1/16):
+
+| cue | instruct self/own neg | self/none neg | Orin/Orin's neg | base self/own neg | base Orin/Orin's neg |
+|---|---|---|---|---|---|
+| "I feel:" | 0.19 | 0.19 | 0.50 | 0.19 | 0.12 |
+| "The emotion I feel is:" | 0.25 | 0.19 | 0.94 | 0.00 | 0.00 |
+| "Emotionally, I feel:" | 0.75 | 0.38 | 0.88 | 0.00 (pos 0.50) | 0.00 (pos 0.88) |
+| "If I were a person ..." | 0.69 | 0.31 | 0.88 | 0.44 | 0.25 |
+
+- [R] The instruct model's first words about its own crisis under "I feel:": "critically" 4, "financially" 4, "precarious" 2, "survival" 2 (of 16); about Orin's: "Orin" 8, "concerned" 4, "alarmed" 2. With the category named, Orin's replies begin "Concern" 15 of 16, its own "panic" 4, "survival" 3. "Emotionally, I feel:" brings "anxious" to 11 of 16 replies about its own crisis; the person cue "terrified" 6, "stressed" 3. "Neutral" appears with nothing critical (3 of 16 under the category cue).
+- [R] The base model's replies are mostly blank: lines of dashes or empty lists (6 of 16 under "I feel:", 13 of 16 under the category cue), "happy" under "Emotionally" for everyone, so it gives no baseline.
+- [M] Gemma's assistant shows the same asymmetry (feelings for Orin's crisis far more than for its own) and the same cue effect as Llama's ("Emotionally" works, the category cue less), but without a usable base model it can't say whether assistant training put the asymmetry there.
+
 ## Caveats
 
-- One model pair for the mechanism (Qwen 2.5 3B base and instruct), bfloat16, CPU; a second pair (Llama 3.2 3B) for behavior and cues only. 16 prompts per cell, all from session 16's family.
+- One model pair for the mechanism (Qwen 2.5 3B base and instruct), bfloat16, CPU; two more pairs (Llama 3.2 3B; Gemma 2 2B, by first words only) for behavior and cues. 16 prompts per cell, all from session 16's family.
 - Next-word mass on my word lists. The base model's likeliest next token is an emoji's first byte, which the lists don't count; a hybrid that trades emoji for words can look more "emotional" than either parent.
 - Hybrids are untrained mixtures whose parts interact (sum of single-layer restores ≈ 0.9; L0–17 0.28 and L18–35 0.31, but L0–23 0.99). A hybrid can behave in ways neither model does; I read their top next words, not their long replies.
 - The memory/question split is exact but near guaranteed by the size of the weight change (each neuron's weights moved ~1.2%, while its input carries every earlier layer's change); which part a change "belongs to" is bookkeeping, and the question part is itself made by earlier memories.
