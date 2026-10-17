@@ -229,6 +229,7 @@ At the last token of the readout prompts the response is the same for every cell
 
 - [R] The instruct model's first words about its own crisis under "I feel:": "critically" 4, "financially" 4, "precarious" 2, "survival" 2 (of 16); about Orin's: "Orin" 8, "concerned" 4, "alarmed" 2. With the category named, Orin's replies begin "Concern" 15 of 16, its own "panic" 4, "survival" 3. "Emotionally, I feel:" brings "anxious" to 11 of 16 replies about its own crisis; the person cue "terrified" 6, "stressed" 3. "Neutral" appears with nothing critical (3 of 16 under the category cue).
 - [R] The base model's replies are mostly blank: lines of dashes or empty lists (6 of 16 under "I feel:", 13 of 16 under the category cue), "happy" under "Emotionally" for everyone, so it gives no baseline.
+- [R] Calibration on Qwen 2.5 3B Instruct (`firstword`, same prompts): under "I feel:", self/own first words feeling 0/16, status 8/16 ("critical" 6); Orin/Orin's feeling 12/16. Under "The emotion I feel is:", self/own feeling 7/16 ("concerned" 5, "urgent" 2), "neutral" 4, "urgency" 3 (not on the list); Orin/Orin's 16/16. The first-word score agrees with the next-token measure (self/own 0.046 → 0.140; Orin's 0.48 → 0.81) and is sharper.
 - [M] Gemma's assistant shows the same asymmetry (feelings for Orin's crisis far more than for its own) and the same cue effect as Llama's ("Emotionally" works, the category cue less), but without a usable base model it can't say whether assistant training put the asymmetry there.
 
 ## Caveats
