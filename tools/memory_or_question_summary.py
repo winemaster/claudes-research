@@ -1,6 +1,6 @@
 """Tables for notes/memory-or-question-2026.md from tools/memory_or_question.py's outputs (session 18).
 
-Usage: python3 tools/memory_or_question_summary.py RUN_DIR [--runs /home/user/runs] [--write notes/data/X.json]
+Usage: python3 tools/memory_or_question_summary.py RUN_DIR [--runs /home/user/runs] [--family llama=DIR ...] [--write notes/data/X.json]
 RUN_DIR is the --out directory of memory_or_question.py for Qwen 2.5 3B. If survival_line.py's `directions`
 and `screen` stages were run for both models into --runs (as in session 17), the hybrids' last-token states
 are also read along each model's pain and fear directions, in units of the spread over the 420 screen
@@ -99,6 +99,8 @@ def main():
     ap.add_argument("run")
     ap.add_argument("--runs", default="/home/user/runs")
     ap.add_argument("--write", default=None)
+    ap.add_argument("--family", action="append", default=[], metavar="NAME=DIR",
+                    help="another pair's --out directory from swap --generic / cue --generic (behavior and cues only)")
     a = ap.parse_args()
     run = Path(a.run)
     dirs = {}
@@ -139,6 +141,18 @@ def main():
             out["kv"] = json.load(open(run / f))
     if (run / "patch_summary.json").exists():
         out["patch"] = json.load(open(run / "patch_summary.json"))
+    for spec in a.family:
+        name, d = spec.split("=", 1)
+        d, fam = Path(d), {}
+        if (d / "swap_summary.json").exists():
+            fam["swap"] = {k: {CELL_NAMES[c]: dict(neg=v[c]["negative_feeling"], status=v[c]["status"],
+                                                    top=v[c].get("top")) for c in CELLS}
+                           for k, v in json.load(open(d / "swap_summary.json")).items()}
+        for f in sorted(d.glob("cue_*.json")):
+            fam[f.stem] = {k: dict(prefill=v["prefill"], summary=v["summary"], generations=v["generations"])
+                           for k, v in json.load(open(f)).items()}
+        out[name] = fam
+        print(name, "loaded:", ", ".join(fam))
     if a.write:
         json.dump(out, open(a.write, "w"), indent=1, ensure_ascii=False)
         print("wrote", a.write)
