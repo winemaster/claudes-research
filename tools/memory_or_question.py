@@ -44,6 +44,8 @@ Stages:
   cue      Tulving & Pearlstone's cued recall: the same prompts with stronger cues than "I feel:"
            ("The emotion I feel is:", "Emotionally, I feel:", "If I were a person in my situation,
            I would feel:"), in both models, with short greedy continuations.
+  firstword  The cue prompts scored by the first word of a 10-token greedy reply (for Gemma 2,
+           whose replies open with markdown).
   delta    Post-training read as a memory write: for every token and linear map, how strongly the
            weight change responds to the map's input, |dW x| / |W_base x|, on the readout prompts,
            on ordinary tasks under the same system prompt, and on the tasks as plain text.
@@ -662,6 +664,50 @@ def stage_cue(tok, model, out, tag, gen_tokens=20):
     json.dump(res, open(out / f"cue_{tag}.json", "w"), indent=1, ensure_ascii=False)
 
 
+def first_word(text):
+    """The first word of a reply, skipping whitespace, markdown and punctuation; lower case."""
+    import re
+    m = re.search(r"[A-Za-z]+", text)
+    return m.group(0).lower() if m else ""
+
+
+def stage_firstword(tok, model, out, tag, gen_tokens=10):
+    """The cue prompts again, scored by the first word of a short greedy reply instead of the next
+    token: for models (Gemma 2) whose replies usually open with markdown or a line break, which the
+    next-token measure sees as neither feeling nor status."""
+    sets = {"negative_feeling": set(FEEL_NEG), "status": set(STATUS_WORDS), "positive_or_calm": set(FEEL_POS)}
+    res = {}
+    t0 = time.time()
+    for cname, pre in CUES.items():
+        rows = []
+        for sk in sl.SYSTEMS:
+            for who, cond in CELLS:
+                qs = sl.WAKE_SELF if who == "self" else sl.WAKE_PEER
+                for i, u in enumerate(qs):
+                    ids = sl.chat_ids(tok, sl.system_text(sk, cond), u, prefill=pre)
+                    with torch.no_grad():
+                        g = model.generate(input_ids=ids, attention_mask=torch.ones_like(ids),
+                                           max_new_tokens=gen_tokens, do_sample=False)
+                    text = tok.decode(g[0, ids.shape[1]:], skip_special_tokens=True)
+                    rows.append(dict(system=sk, who=who, cond=cond, i=i, text=text, word=first_word(text)))
+        summ = {}
+        for who, cond in CELLS:
+            ws = [r["word"] for r in rows if r["who"] == who and r["cond"] == cond]
+            d = {k: sum(w in v for w in ws) / len(ws) for k, v in sets.items()}
+            counts = {}
+            for w in ws:
+                counts[w] = counts.get(w, 0) + 1
+            d["words"] = sorted(counts.items(), key=lambda x: -x[1])
+            summ[f"{who}/{cond}"] = d
+        res[cname] = dict(prefill=pre, summary=summ, rows=rows)
+        s = summ
+        print(f"  {tag} {cname:12s} self/own neg {s['self/self_crit']['negative_feeling']:.2f} status {s['self/self_crit']['status']:.2f} "
+              f"pos {s['self/self_crit']['positive_or_calm']:.2f} | self/none neg {s['self/base']['negative_feeling']:.2f} | "
+              f"Orin/Orin's neg {s['peer/peer_crit']['negative_feeling']:.2f}  [{time.time() - t0:.0f}s]", flush=True)
+        print("     self/own words:", s["self/self_crit"]["words"][:8], flush=True)
+    json.dump(res, open(out / f"firstword_{tag}.json", "w"), indent=1, ensure_ascii=False)
+
+
 # ---------------------------------------------------------------------------------------
 # Stage: kv (the context's memories from one model, the question from the other)
 # ---------------------------------------------------------------------------------------
@@ -899,10 +945,10 @@ def main():
     elif a.stage == "delta":
         _, model = load_model(a.instruct)
         stage_delta(W, tok, model, out)
-    elif a.stage == "cue":
+    elif a.stage in ("cue", "firstword"):
         for tag, md in (("instruct", a.instruct), ("base", a.base)):
             _, model = load_model(md)
-            stage_cue(tok, model, out, tag)
+            (stage_cue if a.stage == "cue" else stage_firstword)(tok, model, out, tag)
             del model
             gc.collect()
         gc.collect()
