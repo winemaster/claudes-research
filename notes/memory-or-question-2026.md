@@ -35,7 +35,7 @@
 
 ### 3. Hybrids: the question is made in layers 0–23
 
-[R] `swap`: 50 hybrids, each reading the 64 prompts per system prompt (128 in all). "I+B:X" is the instruct model with part X put back to the base model's weights; "B+I:X" the base model with part X from the instruct model. Next-word mass on the 39 negative-feeling words and the 13 status words; *restore* is the fraction of the way from the instruct model's value to the base model's (0 = instruct, 1 = base).
+[R] `swap`: 61 hybrids (36 single layers, 25 larger parts), plus 9 added after the first results (below), each reading the 64 prompts per system prompt (128 in all). "I+B:X" is the instruct model with part X put back to the base model's weights; "B+I:X" the base model with part X from the instruct model. Next-word mass on the 39 negative-feeling words and the 13 status words; *restore* is the fraction of the way from the instruct model's value to the base model's (0 = instruct, 1 = base).
 
 | hybrid | self/own neg | self/own status | restore | self/none neg | restore | Orin/Orin's neg |
 |---|---|---|---|---|---|---|
@@ -67,6 +67,23 @@
 | B+I: L30–35 | 0.237 | 0.025 | 1.73 | 0.176 | 1.41 | 0.331 |
 
 All 36 single-layer swaps are in the data file: none restores more than 0.22 (L18 0.14, L19 0.22, L21 0.16; layers 0–7 and 26–35 within ±0.04; L35 −0.09).
+
+[R] Added after the first results: narrower windows inside layers 0–23, and attention and MLPs separately.
+
+| hybrid | self/own neg | self/own status | restore | self/none neg | restore | Orin/Orin's neg |
+|---|---|---|---|---|---|---|
+| I+B: L18–23 | 0.116 | 0.135 | 0.63 | 0.059 | 0.40 | 0.271 |
+| I+B: L12–23 | 0.128 | 0.102 | 0.74 | 0.075 | 0.54 | 0.273 |
+| I+B: L6–23 | 0.134 | 0.124 | 0.80 | 0.077 | 0.56 | 0.256 |
+| I+B: L0–23 (from above) | 0.155 | 0.094 | 0.99 | 0.112 | 0.85 | 0.224 |
+| I+B: L0–23 attention only | 0.094 | 0.286 | 0.44 | 0.028 | 0.14 | 0.294 |
+| I+B: L0–23 MLPs only | 0.106 | 0.211 | 0.55 | 0.054 | 0.36 | 0.270 |
+| I+B: L18–23 attention only | 0.082 | 0.294 | 0.33 | 0.029 | 0.15 | 0.402 |
+| I+B: L18–23 MLPs only | 0.095 | 0.213 | 0.44 | 0.038 | 0.22 | 0.332 |
+| B+I: L0–23 attention only | 0.116 | 0.079 | 0.64 | 0.076 | 0.55 | 0.165 |
+| B+I: L0–23 MLPs only | 0.076 | 0.122 | 0.28 | 0.029 | 0.14 | 0.152 |
+
+- [R] **Layers 18–23 carry most of it, and attention and MLPs share it.** The base model's layers 18–23 alone restore 0.63 of the self/own effect (0.40 with nothing critical); widening the window downward adds steadily (12–23: 0.74; 6–23: 0.80; 0–23: 0.99). Adding the base model's layers 24–35 on top of 18–23 lowers it to 0.31 (I+B: L18–35), so late layers are interchangeable only when layers 0–23 come from one model. Within layers 0–23 the MLPs carry a little more than attention (0.55 vs 0.44 in the instruct model; in the base model, the instruct model's MLPs of layers 0–23 take it 72% of the way to the assistant, its attention 36%), and the two roughly add (0.44 + 0.55 ≈ 0.99).
 
 - [R] **No single layer, no single kind of component.** The change is spread over layers and over both attention and MLPs, and its parts interact (layers 0–17 alone restore 0.28 and layers 18–35 alone 0.31, but layers 0–23 together 0.99; every window that leaves part of 0–23 to the instruct model stays at or below 0.43).
 - [R] **The first 24 layers decide, both ways.** With the base model's layers 0–23 and its own 24–35, the instruct model gives negative feelings to itself as often as the base model (0.155 vs 0.156; with nothing critical 0.112 vs 0.129) and status words fall from 0.341 to 0.094. Its top next words about itself: " calm" 4.6%, " critical" 4.2%, the first byte of an emoji 3.6%, " panicked", " anxious". The reverse: the base model with the instruct model's layers 0–23 talks about itself like the assistant (0.057; status 0.156; with nothing critical 0.019). Late layers from the other model make little difference in either direction (I+B:L24–35 −0.03; B+I:L24–35 base-like, even more feeling words, 0.267).
@@ -207,5 +224,5 @@ At the last token of the readout prompts the response is the same for every cell
 - The memory/question split is exact but near guaranteed by the size of the weight change (each neuron's weights moved ~1.2%, while its input carries every earlier layer's change); which part a change "belongs to" is bookkeeping, and the question part is itself made by earlier memories.
 - The KV transplant works only because the two models are within ~1% of each other; it says nothing about models from different families.
 - The delta response |ΔW x| / |W_B x| reads Irie et al.'s dual form loosely: the actual post-training was many steps of SFT, DPO and RL with optimizer state, not one gradient step, so "keyed to the chat template" means the change acts most on those inputs, not that those were the training inputs.
-- Planned before seeing results: weights, swap (first 50 hybrids), split, callers, cue, delta. Added after: the narrower hybrids, the KV transplant, the attention-versus-MLP hybrids by band, and the reading of "neutral".
+- Planned before seeing results: weights, swap (the first 61 hybrids), split, callers, cue, delta. Added after: the narrower hybrids, the KV transplant, the attention-versus-MLP hybrids by band, and the reading of "neutral".
 - "Available" means a vocabulary and the neurons that carry it, about a fictional agent's wallet. Nothing here bears on whether either model feels anything.
