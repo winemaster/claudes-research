@@ -165,8 +165,8 @@ Base model: negative-feeling mass for self/own 0.159, 0.081, 0.130, 0.062 under 
 | L35/N9545 sad brake | 1.77 → −0.62 | +0.01 | −0.92 | −1.48 |
 | L33/N9882 happy pusher (−) | 5.56 → 1.94 | −0.17 | −1.29 | −2.17 |
 | L34/N7848 critical brake | 1.16 → 2.81 | +0.03 | +0.82 | +0.79 |
-| L35/N4820 concern brake | −1.14 → −0.36 | +0.00 | +1.20 | −0.33 |
+| L35/N4820 concern brake | −1.14 → −0.36 | −0.08 | +1.20 | −0.33 |
 
-The largest single writer of any of these changes is one MLP or attention layer at about a quarter of it (e.g. MLP 31 −0.49 of the sad pusher's −2.17; MLP 34 −1.34 of the sad brake's up projection, −2.27); the largest single head carries 0.2–0.4.
+The largest single writer of each change is one MLP or attention layer carrying between a quarter and three fifths of it (MLP 31: −0.49 of the sad pusher's gate change of −2.17; MLP 34: −1.34 of the sad brake's up-projection change of −2.27); the largest single head carries 0.2–0.4.
 
 - [M] So the immediate writers of the change are the six to ten layers just before each neuron, many of them a little each, and the change doesn't arrive directly from layers 0–23. Together with the hybrids (section 3: those late layers can be the base model's and still write the instruct pattern), the reading is: layers 0–23 decide, through what they write at the question, what the late layers then assemble into each neuron's query. A cross-model patch stage exists in the tool (`patch`) but wasn't run: the KV transplant (section 5) answered the question it was meant for.

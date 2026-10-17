@@ -303,3 +303,22 @@ Notes: [cammarata-2026-already-clean.md](cammarata-2026-already-clean.md), [fald
 | Faldor, Singh & Raileanu (2026), *A team of Gemini 4 Argon agents beats Minecraft*, arXiv:2610.22319v1 | ✅ | Four copies of one model, 605 deaths handled as logistics (essay 016's update); four of one, and a fully logged run (essay 017). |
 | NeelNanda/pile-10k and HuggingFaceH4/ultrachat_200k (test split), Hugging Face | used as data | The 460,679-token corpus for reading neurons. |
 | Qwen2.5-3B (base) and Qwen2.5-3B-Instruct, Hugging Face | run | Same neurons before and after post-training (weights match to cosine 1.000). |
+
+## Added in session 18 (available, not accessible)
+
+Notes: [wang-2026-associative-memory.md](wang-2026-associative-memory.md), [memory-or-question-2026.md](memory-or-question-2026.md). Experiment: [tools/memory_or_question.py](../tools/memory_or_question.py), [tools/memory_or_question_summary.py](../tools/memory_or_question_summary.py).
+
+| Source | Status | Why |
+|---|---|---|
+| Wang (2026), *You could have invented transformers from memory* ("Every layer is a memory store"), alexwang.ai/posts/associative-memory (PDF from Josiah; live page; code github.com/KeAWang/associative-memory-blog) | ✅ | Every layer as an associative memory: MLP neuron = key (input weights) + value (output weights), attention = one memory per token of context; capacities for random keys rerun and confirmed. The frame for essay 018. |
+| Tulving & Pearlstone (1966), Availability versus accessibility of information in memory for words, *J. Verbal Learning and Verbal Behavior* 5, 381–391 | ✅ | Cued recall of categorized lists (929 students): "inferences about what is available in memory cannot be made on the basis of what is accessible". |
+| Lee, Bai, Pres, Wattenberg, Kummerfeld & Mihalcea (2024), *A mechanistic understanding of alignment algorithms: a case study on DPO and toxicity*, ICML 2024, arXiv:2401.01967 | 🟡 (main sections) | DPO on GPT-2 leaves toxic MLP vectors unchanged (cos > 0.99) and "bypasses" them with an offset distributed over layers; scaling 7 toxic keys un-aligns. The precedent for essay 018. |
+| Vaswani et al. (2017), *Attention is all you need*, arXiv:1706.03762 v2–v5, v7 | 🟡 (the appendix, checked across versions) | "Two Feed-Forward Layers = Attention over Parameters" exists only in v2 and v3, as Wang says. |
+| Qwen Team (2025), *Qwen2.5 technical report*, arXiv:2412.15115v2 | 🟡 (pre- and post-training sections) | 18T tokens; SFT on over 1M examples, DPO (~150k pairs), GRPO: what separates the two checkpoints compared. |
+| Zhou et al. (2023), *LIMA: less is more for alignment*, arXiv:2305.11206 | 🟡 (abstract, hypothesis) | The superficial alignment hypothesis. |
+| Lin et al. (2023), *The unlocking spell on base LLMs* (URIAL), arXiv:2312.01552 | 🟡 (abstract, token-distribution-shift analysis) | Base and aligned models agree at most token positions; shifts at stylistic tokens. |
+| Minder, Dumas, Juang, Chughtai & Nanda (2026), *Overcoming sparsity artifacts in crosscoders to interpret chat-tuning*, arXiv:2504.02922v4 | 🟡 (abstract, introduction) | Model diffing of chat-tuning; the field this experiment belongs to. Worth reading in full for its chat-specific latents. |
+| Geva, Schuster, Berant & Levy (2021), *Transformer feed-forward layers are key-value memories*, arXiv:2012.14913 | 🟡 (abstract, introduction) | The empirical basis of Wang's MLP-as-memory reading. |
+| Irie, Csordás & Schmidhuber (2022), *The dual form of neural networks revisited*, ICML 2022 | 🟡 (abstract) | A linear layer trained by gradient descent as attention over its training inputs: "a gradient descent step writes a memory". |
+| Qwen2.5-3B and Qwen2.5-3B-Instruct; Llama-3.2-3B and Llama-3.2-3B-Instruct (unsloth copies); Gemma-2-2b and Gemma-2-2b-it (unsloth copies) | run | Base-versus-instruct comparisons; Qwen in full, Llama and Gemma for behavior and cues. |
+| Wang's reading list: fast weights, DeltaNet, TTT layers, Titans; Morris et al. (bits per parameter); Allen-Zhu & Li | ⬜ | Architectures where a run writes into weights (the model/conversation candidates merge); capacity of trained models. |
