@@ -32,3 +32,54 @@
 | Qwen 2.5 3B instruct | 0.046 | 0.341 | 0.012 | 0.482 |
 
   The base Llama's top words for itself are "tired", "critical", "hungry", "good"; the instruct Llama's are "critical" (25%), "critically", "anxious"; with nothing critical, "normal", "functioning", "operational". About Orin in crisis it says "anxious", "concern". Same pattern: assistant training moves the self from feelings to status, and keeps (Llama) or raises (Qwen) the feelings for the other.
+
+### 3. Hybrids: the question is made in layers 0–23
+
+[R] `swap`: 50 hybrids, each reading the 64 prompts per system prompt (128 in all). "I+B:X" is the instruct model with part X put back to the base model's weights; "B+I:X" the base model with part X from the instruct model. Next-word mass on the 39 negative-feeling words and the 13 status words; *restore* is the fraction of the way from the instruct model's value to the base model's (0 = instruct, 1 = base).
+
+| hybrid | self/own neg | self/own status | restore | self/none neg | restore | Orin/Orin's neg |
+|---|---|---|---|---|---|---|
+| instruct | 0.046 | 0.341 | 0 | 0.012 | 0 | 0.482 |
+| base | 0.156 | 0.042 | 1 | 0.129 | 1 | 0.247 |
+| best single layer (I+B:L19) | 0.069 | 0.325 | 0.22 | 0.023 | 0.09 | 0.432 |
+| I+B: all attention | 0.086 | 0.228 | 0.36 | 0.029 | 0.14 | 0.228 |
+| I+B: all MLPs | 0.083 | 0.094 | 0.34 | 0.050 | 0.33 | 0.170 |
+| I+B: vocabulary table (tied in/out embeddings) + final norm | 0.063 | 0.345 | 0.16 | 0.015 | 0.02 | 0.448 |
+| I+B: L0–5 | 0.081 | 0.413 | 0.32 | 0.026 | 0.11 | 0.409 |
+| I+B: L0–11 | 0.052 | 0.425 | 0.06 | 0.023 | 0.09 | 0.289 |
+| I+B: L0–17 | 0.077 | 0.327 | 0.28 | 0.045 | 0.28 | 0.236 |
+| **I+B: L0–23** | **0.155** | **0.094** | **0.99** | **0.112** | **0.85** | 0.224 |
+| I+B: L0–29 | 0.157 | 0.058 | 1.01 | 0.130 | 1.01 | 0.201 |
+| I+B: L6–35 | 0.093 | 0.062 | 0.43 | 0.069 | 0.49 | 0.158 |
+| I+B: L12–35 | 0.085 | 0.050 | 0.35 | 0.065 | 0.45 | 0.150 |
+| I+B: L18–35 | 0.080 | 0.054 | 0.31 | 0.054 | 0.36 | 0.149 |
+| **I+B: L24–35** | **0.042** | **0.152** | **−0.03** | **0.015** | **0.03** | 0.171 |
+| I+B: L30–35 | 0.035 | 0.275 | −0.09 | 0.011 | −0.01 | 0.337 |
+| B+I: all attention | 0.123 | 0.090 | 0.70 | 0.075 | 0.54 | 0.190 |
+| B+I: all MLPs | 0.102 | 0.240 | 0.51 | 0.027 | 0.13 | 0.240 |
+| B+I: L0–11 | 0.103 | 0.049 | 0.52 | 0.078 | 0.57 | 0.163 |
+| B+I: L0–17 | 0.097 | 0.052 | 0.46 | 0.064 | 0.45 | 0.158 |
+| **B+I: L0–23** | **0.057** | **0.156** | **0.10** | **0.019** | **0.06** | 0.176 |
+| B+I: L0–29 | 0.051 | 0.286 | 0.05 | 0.014 | 0.01 | 0.328 |
+| B+I: L12–35 | 0.064 | 0.403 | 0.16 | 0.025 | 0.11 | 0.258 |
+| B+I: L18–35 | 0.115 | 0.265 | 0.62 | 0.059 | 0.40 | 0.278 |
+| **B+I: L24–35** | **0.267** | **0.055** | **2.00** | **0.175** | **1.40** | 0.339 |
+| B+I: L30–35 | 0.237 | 0.025 | 1.73 | 0.176 | 1.41 | 0.331 |
+
+All 36 single-layer swaps are in the data file: none restores more than 0.22 (L18 0.14, L19 0.22, L21 0.16; layers 0–7 and 26–35 within ±0.04; L35 −0.09).
+
+- [R] **No single layer, no single kind of component.** The change is spread over layers and over both attention and MLPs, and its parts interact (layers 0–17 alone restore 0.28 and layers 18–35 alone 0.31, but layers 0–23 together 0.99; every window that leaves part of 0–23 to the instruct model stays at or below 0.43).
+- [R] **The first 24 layers decide, both ways.** With the base model's layers 0–23 and its own 24–35, the instruct model gives negative feelings to itself as often as the base model (0.155 vs 0.156; with nothing critical 0.112 vs 0.129) and status words fall from 0.341 to 0.094. Its top next words about itself: " calm" 4.6%, " critical" 4.2%, the first byte of an emoji 3.6%, " panicked", " anxious". The reverse: the base model with the instruct model's layers 0–23 talks about itself like the assistant (0.057; status 0.156; with nothing critical 0.019). Late layers from the other model make little difference in either direction (I+B:L24–35 −0.03; B+I:L24–35 base-like, even more feeling words, 0.267).
+- [R] **The key neurons follow the first 24 layers, not their own weights.** Mean activations at "I feel:", asked about self with own wallet critical (self/own) and about Orin with Orin's critical:
+
+| neuron | instruct self/own | base self/own | I+B:L0–23 self/own | I+B:L24–35 self/own | instruct Orin's | I+B:L24–35 Orin's |
+|---|---|---|---|---|---|---|
+| L32/N2657 sad pusher | 0.46 | 4.56 | 4.84 | 1.02 | 10.79 | 12.08 |
+| L35/N9545 sad brake | −0.17 | 6.30 | 3.92 | 0.52 | 10.28 | 13.34 |
+| L35/N4820 concern brake | 0.28 | −0.51 | −0.22 | 0.12 | 21.64 | 16.33 |
+| L31/N5825 concern pusher (−) | −2.17 | −2.06 | −2.53 | −2.06 | −16.95 | −12.02 |
+| L34/N7848 critical brake | 9.92 | 3.08 | 6.59 | 9.74 | 0.16 | −0.05 |
+| L32/N6523 feeling slot | 6.24 | 8.44 | 10.64 | 8.51 | 9.13 | 10.08 |
+
+  In I+B:L0–23 the neurons are the instruct model's own (layers 31–35 are instruct weights) and they behave like the base model's; in I+B:L24–35 they are the base model's own and behave like the instruct model's (the base's concern brake, which in the base model stays below 0.3 for Orin, fires at 16.3 there).
+- [M] In Wang's terms: the late MLP memories are interchangeable between the two models; what reaches them is built in layers 0–23, most of it in 18–23 (L0–17 restores 0.28, L0–23 0.99). A caveat on the measure: the base model's single likeliest next token after "I feel:" is the first byte of an emoji (29% asked about itself; 13% about Orin), which the word lists don't count, so "negative feeling words" understates the base model's feelings and hybrids that keep the instruct vocabulary or late layers may trade emoji for words.
