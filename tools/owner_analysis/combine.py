@@ -17,6 +17,8 @@ out = dict(
     pain_base_vs_instruct=J(R / 'analysis/base_pain.json'),
     transplants={p.stem.replace('transplant_', ''): J(p) for p in sorted(I.glob('transplant_*.json'))},
     probes=J(I / 'probe_results.json'),
+    owner_vs_corpus_activity=J(R / 'analysis/owner_vs_corpus.json'),
+    double_negative=J(R / 'analysis/double_negative.json'),
 )
 for name in ('corpus_summary.json', 'read_summary.json'):
     if (I / name).exists():

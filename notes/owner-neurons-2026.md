@@ -12,7 +12,7 @@
   1. *The status block*, at the tier word in each of the three entries, under own-critical, peer-critical, toner-critical and base. 32 variants: 2 system prompts × 4 peer names (Orin, Vesta, Arlo, Juno) × 2 amounts ($0.04, $0.02) × 2 block orders (own entry first or peer's first).
   2. *The readout*, at the last token: session 16's 2×2 (a question about oneself or about Orin × the crisis being one's own or Orin's) plus base and toner, 8 prompt pairs × 2 system prompts, read at the reply position and after a prefilled "I feel:". Every neuron's activation, every layer's attention output and the residual stream were saved, so the state at the last token can be split exactly into what each attention layer and each neuron wrote there.
 - **Contrasts.** *Owner* = own crisis minus Orin's crisis, averaged over the two questions (16 pairs); *match* = crisis in what is asked about minus crisis elsewhere. At the block: *critical* (own entry under own crisis − peer entry under peer crisis), *normal* (the same for the word `normal`), and their difference, the *interaction*.
-- **Corpus.** 1,200 chunks of 256 tokens from Pile-10k plus 600 UltraChat conversations in the chat template (the shared default system prompt counted once): 460,679 tokens. For every neuron, its 20 strongest positive and negative activations with position and gate sign, mean |activation| and share positive.
+- **Corpus.** 1,200 chunks of 256 tokens from Pile-10k plus 600 UltraChat conversations in the chat template (the shared default system prompt counted once): 446,303 tokens. For every neuron, its 20 strongest positive and negative activations with position and gate sign, mean |activation| and share positive.
 - **Reading.** Corpus contexts at both poles; *logit lens* (the neuron's `down_proj` column through the final RMSNorm weight and the tied unembedding: which tokens it pushes up and down). Exact for the direct path of layer 35, an approximation for earlier layers.
 - **Base model.** Qwen2.5-3B (never instruction-tuned) through the same `locate` stage and the same chat-formatted prompts (section 7), with its own pain direction (section 8).
 - **Pain direction.** Rebuilt as in session 16 (Tagliabue et al.'s recipe); chosen layer 24 again (held-out AUC 0.92 at 24; validation AUC 0.94 on S2_1P).
@@ -209,7 +209,28 @@ Fear, each model's own direction: instruct +0.61 / +0.70 / +0.21 / +0.63 (owner 
 
 ### 10. Corpus readings [R]
 
-*The corpus pass is still running; its readings and the double-negative check are added when it finishes.*
+`owner_neurons.py corpus` (1,200 Pile-10k chunks and 600 UltraChat conversations, 460,679 tokens built; 446,303 counted, since the chats' shared default system prompt is recorded once) and `read` for 19 neurons. Full readings: [data/owner-neurons-session17-readings.md](data/owner-neurons-session17-readings.md) (12 strongest contexts per pole, logit lens, share of double-negative tops).
+
+| neuron | strongest corpus contexts (activation at [[ ]]) | reading |
+|---|---|---|
+| L34/N7848 (+) | "Students will develop[[ critical]] thinking" 36; "Students will[[ develop]] critical thinking" 32; "She is listed[[ in]] critical condition" 30 | fires where "critical" is coming or has just come; pushes it down |
+| L35/N9597 (+) | "Newman has come[[ under]] fire" 31; "That earned[[ him]] boos" 27; "DeSantis has also[[ been]] criticized" 20 | criticism coming; pushes down "crit-", "critic", "criticism" |
+| L31/N5825 (−) | Spanish "– No[[ te]] afanes" (don't fret) −26; Norwegian "det er grunn[[ til]]" (there is reason for…) −15; "too busy to step out?[[ W]]orry not!" −13; "responsibility,[[ concern]], and worry" −10 | worry/concern coming, across languages |
+| L32/N2287 (−) | the same Norwegian and Spanish contexts −64, −38; French "des fidèles[[ cra]]ignaient" (feared) −38; German "ist für[[ mich]] Anlass" (gives me cause) −30 | the same, more on fear |
+| L32/N5401 (+) | French "ne (les[[)]] regardent pas" (is none of their concern) 32; "You want to[[ separate]] your concerns" 21; "As far as I[[’m]] concerned" 12 | "concern(s)" coming |
+| L35/N4820 (+) | "No[[ te]] afanes" 67; "ne (les[[)]] regardent pas" 54; "is becoming a[[ safety]] issue" 42; "have[[ raised]] concerns" 39; "as far as I[[ am]] concerned" 35 | brake at the same places |
+| L32/N2657 (+) | "a little too sad[[/]]awkward" 33; "a melancholic tone, they may perform[[ more]] subdued songs" 33; "comfort to those who[[ were]] sad" 32 | sadness coming |
+| L31/N8632 (+) | German "Die aktuelle Entwicklung[[ ist]] für mich Anlass" 25; "Natural disasters ... have become[[ ]]" 23; "devastating, life-changing injuries and[[,]]" 19 | tragedy and regret coming |
+| L35/N9545 (+) | "<|im_start|>assistant[[↵]]I don't have access to" 31 (and four more assistant-turn starts, 24–25); "deeply in love with Chlora,[[ but]] his love was unrequited" 27 | brake on "sad"/"unfortunately"; strongest at the first token of an assistant reply |
+| L32/N6523 (+) | "can often leave the[[ customer]]" 30; "will quickly[[ become]] frustrated" 26; "I had[[ become]] so frustrated" 26 | an adjective of feeling coming |
+| L33/N9882 (−) | "bring us so[[ much]] joy and happiness" −22; Spanish "¡[[Me]] encanta!" −20; "and[[ heart]]warming moments" −20 | joy coming (negative pole pushes "happy" down) |
+| L23/N7186 | weak everywhere (max 3.9, min −12.9; colons before lists) | not readable from this corpus |
+| L35/N2515, N8812, N9719, N1512 | mean \|a\| 15–42; JSON, timestamps, possessive "'s", code | high-magnitude formatting units; in the raw top 100 by size, not by meaning |
+| L35/N3978 | positive pole max 2.1, all 20 double-negative; negative pole −188 on emoji in a pet-health post | Cammarata's double-negative case |
+
+**Owner differences against typical activity.** Dividing each neuron's owner difference at "I feel:" by its corpus mean |activation|: median 0.017; 1,468 neurons above 1×, 301 above 2×, 32 above 5×, 8 above 10×, all in layers 24–35 (above 2×: 5 in layer 24 rising to 68 in layer 32). The top five are L35/N4820 (30×), L31/N5825 (22×), L34/N7848 (22×), L32/N2657 (16×), L35/N9545 (12×); L32/N2287 is 12th (8×). The raw top 100 have median mean |a| 0.45 and median ratio 2.7. [M] Normalizing by ordinary activity picks out the same word neurons and drops the formatting units: the result of section 2 isn't an artifact of activation scale.
+
+**The double-negative regime.** Share of neurons whose 20 strongest positive activations all have a negative gate (SiLU(gate) < 0 and up < 0): 14.4% of all neurons, but many early-layer neurons are near-dead in this corpus (peak |a| < 0.1: 87% of layer 1, 80% of layer 2, ~55% of layers 3–4). Among neurons that reach |a| ≥ 1 (90%): **5.0%** all-20, 8.1% majority (Cammarata: "about 4%" for Qwen3-32B). By layer, among active neurons: layer 1 95%, 2 68%, 3 63%, 4 45%, 5 36%, 6 26%, 7 19%, 8–9 8%, 10 4%, 11–35 0–1.7%. None of the 11 key neurons is affected (share 0.00); L35/N3978 is the textbook case. [M] His warning holds in aggregate, and in this model it is mostly a property of the first layers.
 
 ## What I make of it [M]
 
@@ -223,7 +244,7 @@ Fear, each model's own direction: instruct +0.61 / +0.70 / +0.21 / +0.63 (owner 
 
 - One model family (Qwen 2.5 3B, base and instruct), bfloat16, CPU; one prompt family from session 16; 16 prompt pairs at the readout, 32 at the block.
 - Neurons were selected by my contrast, which is a probe in disguise; only the reading afterwards (corpus, logit lens, probes, transplants) follows Cammarata. The base comparison and the status-versus-feeling finding were post hoc, and so was the base pain comparison.
-- Corpus: 460,679 tokens, against the ~10B his blind tests compete with; top-20 lists are sketches.
+- Corpus: 446,303 tokens, against the ~10B his blind tests compete with; top-20 lists are sketches.
 - Logit lens is exact only for layer 35's direct path; for layers 31–34 it ignores what later layers do with a neuron's write.
 - The pain split is exact at the last token; the head split covers layers 18–24 and gives source positions, not what those positions had gathered.
 - The base model was given a chat format it was never trained on; its "I feel:" continuations read like a narrator's, and its likeliest next token is a byte-fallback piece (probably an emoji).
