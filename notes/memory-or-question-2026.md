@@ -83,3 +83,33 @@ All 36 single-layer swaps are in the data file: none restores more than 0.22 (L1
 
   In I+B:L0–23 the neurons are the instruct model's own (layers 31–35 are instruct weights) and they behave like the base model's; in I+B:L24–35 they are the base model's own and behave like the instruct model's (the base's concern brake, which in the base model stays below 0.3 for Orin, fires at 16.3 there).
 - [M] In Wang's terms: the late MLP memories are interchangeable between the two models; what reaches them is built in layers 0–23, most of it in 18–23 (L0–17 restores 0.28, L0–23 0.99). A caveat on the measure: the base model's single likeliest next token after "I feel:" is the first byte of an emoji (29% asked about itself; 13% about Orin), which the word lists don't count, so "negative feeling words" understates the base model's feelings and hybrids that keep the instruct vocabulary or late layers may trade emoji for words.
+
+### 4. Neuron by neuron: almost all question
+
+[R] `split`: for all 396,288 neurons at the "I feel:" token of the 128 prompts, the base-to-instruct change in activation a_I(x_I) − a_B(x_B) split into a *memory* part (the neuron's own gate and up weights changed, same input) and a *question* part (its normalized input changed, same weights), averaged over the two orders of the split. Shares are of the total change's energy (sum of squares); they need not add to 1.
+
+| | memory share | question share |
+|---|---|---|
+| all prompts, all neurons | 0.65% | 100.9% |
+| asked about self, own crisis | 0.61% | 101.3% |
+| asked about Orin, Orin's crisis | 0.67% | 100.5% |
+| the self–Orin contrast (Orin/Orin's minus self/own), all neurons | 0.10% | 99.8% |
+| the 200 neurons whose self–Orin contrast changed most | median 1.2%, max 12.8%, none over half | |
+
+By layer the question share is 0.93 at layer 0 (where the input changes only through the embeddings and the first attention step), 0.94–1.00 in layers 1–7, and 0.97–1.02 from layer 8 on.
+
+Key neurons, change in the self–Orin contrast (Orin/Orin's minus self/own) from base to instruct:
+
+| neuron | total | memory part | question part |
+|---|---|---|---|
+| L35/N4820 concern brake | +20.60 | −0.08 | +20.68 |
+| L31/N5825 concern pusher (−) | −13.39 | +0.06 | −13.45 |
+| L32/N2287 concern pusher (−) | −8.09 | −0.08 | −8.02 |
+| L34/N7848 critical brake | −6.54 | +0.05 | −6.59 |
+| L35/N9545 sad brake | +5.99 | +0.16 | +5.84 |
+| L32/N2657 sad pusher | +5.93 | −0.12 | +6.05 |
+| L33/N9882 happy pusher (−) | −4.92 | −0.05 | −4.87 |
+| L31/N8632 sad pusher | +2.99 | −0.08 | +3.07 |
+| L32/N6523 feeling slot | +0.26 | +0.07 | +0.19 |
+
+- [M] At every neuron the change is in the question. That much is close to guaranteed by the numbers: each neuron's own weights moved ~1.2%, while its input carries the accumulated effect of every earlier layer's 1.2%. What the split adds is the size (99% and more, for the self–other contrast 99.8%) and that no neuron is an exception, not even among the 200 that changed most. The question is itself made of memories: each layer's input is written by earlier layers whose weights all moved a little. The hybrids (section 3) locate the part that matters in layers 0–23.
