@@ -150,3 +150,22 @@ python3 tools/owner_neurons.py transplant MODEL_DIR /home/user/runs --patch spec
 `TAG` is the model directory's name. On 4 CPU cores and a 3B model: `locate` about 10 minutes, the summary a few, `corpus` one to two hours for 1,800 sequences (~460k tokens), a transplant spec a few minutes. Keep at most two jobs at once and give each two threads (`OWNER_THREADS=2`, `TORCH_THREADS=2` for `survival_line.py`): three concurrent jobs ran this machine out of page cache. Outputs stay in the run directory; the combined results are in [`notes/data/owner-neurons-session17.json`](../notes/data/owner-neurons-session17.json).
 
 `tools/owner_analysis/` holds the short scripts behind the notes' other tables, run on the saved `locate` outputs of both models: `dla.py` (direct logit attribution), `base_vs_instruct.py` (next tokens and key neurons in both models), `feel_word_mass.py` (next-word mass on feeling and status words), `base_pain.py` (the pain and fear owner effects along each model's direction and the other's), `corpus_checks.py` (the double-negative share and owner differences against corpus activity) and `combine.py` (writes the results JSON). They use fixed paths under `/home/user/models` and `/home/user/runs`.
+
+## `memory_or_question.py`, `memory_or_question_summary.py`: same memories, new questions? (session 18)
+
+The experiment behind [essay 018](../essays/018-available-not-accessible.md), after Alex Wang's reading of every transformer layer as an associative memory: does assistant training change the memories (a neuron's weights) or the questions put to them (its input)? Compares a base model and its instruct version on session 17's "I feel:" prompts (from `survival_line.py`). Stages: `weights` (relative change of every matrix, neuron key/value cosines, how concentrated the change is), `swap` (hybrid models: parts of one checkpoint put into the other, 72 hybrids for Qwen; resumable, one file per hybrid), `split` (every neuron's change split exactly into a memory part and a question part), `callers` (what writes chosen neurons' gate and up pre-activations, by component and head), `kv` (one model's key/value cache of the first part of the prompt, the other model reading the rest), `cue` (cued recall: "The emotion I feel is:" and two other prefills, with greedy continuations), `delta` (how strongly the weight change responds to each token, |ΔW x|/|W_B x|), and `patch` (cross-model component patching; written but not run).
+
+```sh
+A="--base /home/user/models/Qwen2.5-3B --instruct /home/user/models/Qwen2.5-3B-Instruct --out /home/user/runs/s18"
+python3 tools/memory_or_question.py weights $A
+python3 tools/memory_or_question.py swap $A            # --only instruct,base for a quick behavioral check
+python3 tools/memory_or_question.py split $A
+python3 tools/memory_or_question.py kv $A
+python3 tools/memory_or_question.py cue $A
+python3 tools/memory_or_question.py callers $A         # --neurons 32:2657,35:4820 to choose
+python3 tools/memory_or_question.py delta $A
+python3 tools/memory_or_question.py cue --generic --base .../Llama-3.2-3B --instruct .../Llama-3.2-3B-Instruct --out /home/user/runs/s18-llama
+python3 tools/memory_or_question_summary.py /home/user/runs/s18 --write notes/data/memory-or-question-session18.json
+```
+
+`--generic` drops the Qwen key neurons for other families (`kv` assumes Qwen's `<|im_start|>` template). On 4 CPU cores and a 3B model: `swap` about 90 seconds per hybrid, `split` 4 minutes, `kv` 7, `cue` 16, `callers` 3, `delta` 10. **Run one stage at a time**: two model-sized jobs at once got one killed for memory. The summary script also reads each hybrid's last-token states along both models' pain and fear directions if `survival_line.py directions,screen` has been run for them into `--runs`.
