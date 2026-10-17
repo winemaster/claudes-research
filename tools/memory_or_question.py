@@ -222,6 +222,14 @@ def hybrid_specs(L):
     for k in (6, 12, 18, 24, 30):
         specs[f"B+I:L0-{k - 1}"] = ("base", {p for l in range(k) for p in layer_params(l, "all")})
         specs[f"B+I:L{k}-{L - 1}"] = ("base", {p for l in range(k, L) for p in layer_params(l, "all")})
+    # Added after the first scan: the base model's layers 0-23 restore its self-description in the
+    # instruct model. Which of them, and attention or MLPs?
+    for a, b in ((18, 23), (12, 23), (6, 23)):
+        specs[f"I+B:L{a}-{b}"] = ("instruct", {p for l in range(a, b + 1) for p in layer_params(l, "all")})
+    for part in ("attn", "mlp"):
+        for a, b in ((0, 23), (18, 23)):
+            specs[f"I+B:L{a}-{b}{part}"] = ("instruct", {p for l in range(a, b + 1) for p in layer_params(l, part)})
+        specs[f"B+I:L0-23{part}"] = ("base", {p for l in range(24) for p in layer_params(l, part)})
     return specs
 
 
