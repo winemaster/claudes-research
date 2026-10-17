@@ -60,6 +60,40 @@ def swap_table(run, dirs):
     return rows
 
 
+def callers_table(run, cell=("self", "self_crit"), bands=((0, 11), (12, 17), (18, 23), (24, 35))):
+    """For each recorded neuron: the base-to-instruct change in its gate and up pre-activations at
+    "I feel:" (mean over the cell's prompts), split by what wrote it: the embedding, attention and
+    MLP layers in bands, and the five largest single components and heads."""
+    C = json.load(open(run / "callers.json"))
+    who, cond = cell
+    out = {}
+    names = list(C["base"][0]["neurons"])
+    for nm in names:
+        r = {}
+        for part in ("gate", "up"):
+            mean = {}
+            for tag in ("base", "instruct"):
+                rows = [p["neurons"][nm] for p in C[tag] if p["who"] == who and p["cond"] == cond]
+                comps = rows[0][part].keys()
+                mean[tag] = {c: float(np.mean([x[part][c] for x in rows])) for c in comps}
+                mean[tag]["total"] = float(np.mean([x[part + "_total"] for x in rows]))
+                hk = "heads_" + part
+                mean[tag]["heads"] = {h: float(np.mean([x[hk][h] for x in rows])) for h in rows[0][hk]}
+            d = {c: mean["instruct"][c] - mean["base"][c] for c in mean["base"] if c not in ("heads",)}
+            band = {"emb": d["emb"]}
+            for a, b in bands:
+                for kind in ("attn", "mlp"):
+                    band[f"{kind}{a}-{b}"] = sum(v for c, v in d.items() if c.startswith(kind) and a <= int(c[len(kind):]) <= b)
+            top = sorted(((c, v) for c, v in d.items() if c != "total"), key=lambda x: -abs(x[1]))[:6]
+            dh = {h: mean["instruct"]["heads"][h] - mean["base"]["heads"][h] for h in mean["base"]["heads"]}
+            toph = sorted(dh.items(), key=lambda x: -abs(x[1]))[:5]
+            r[part] = dict(base=round(mean["base"]["total"], 3), instruct=round(mean["instruct"]["total"], 3),
+                           change=round(d["total"], 3), bands={k: round(v, 3) for k, v in band.items()},
+                           top_components=[[c, round(v, 3)] for c, v in top], top_heads=[[h, round(v, 3)] for h, v in toph])
+        out[nm] = r
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("run")
@@ -95,6 +129,14 @@ def main():
     for f in sorted(run.glob("cue_*.json")):
         d = json.load(open(f))
         out[f.stem] = {k: dict(prefill=v["prefill"], summary=v["summary"], generations=v["generations"]) for k, v in d.items()}
+    if (run / "callers.json").exists():
+        out["callers"] = {f"{w}/{c}": callers_table(run, (w, c)) for w, c in (("self", "self_crit"), ("peer", "peer_crit"))}
+        for nm, r in out["callers"]["self/self_crit"].items():
+            g = r["gate"]
+            print(f"  {nm:10s} gate {g['base']:+.2f} -> {g['instruct']:+.2f}  " + " ".join(f"{k} {v:+.2f}" for k, v in g["bands"].items()))
+    for f in ("kv_summary.json",):
+        if (run / f).exists():
+            out["kv"] = json.load(open(run / f))
     if (run / "patch_summary.json").exists():
         out["patch"] = json.load(open(run / "patch_summary.json"))
     if a.write:

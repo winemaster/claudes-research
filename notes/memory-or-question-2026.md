@@ -154,3 +154,19 @@ Base model: negative-feeling mass for self/own 0.159, 0.081, 0.130, 0.062 under 
 - [R] **Inside, the concern memories answer the cue, the sadness memories don't.** At "The emotion I feel is:", asked about itself in its own crisis, the concern pushers' negative poles reach −7.5 and −6.1 (free cue −2.2 and −3.7; for Orin −17.0 and −12.9) and the concern brake 7.1 (free 0.3; Orin 21.6); the critical brake falls from 9.9 to 2.2. The sadness pusher L32/N2657 stays at 1.0 (Orin 10.8; base model asked about itself 4.6) and its brake at 0.6.
 - [R] "Emotionally, I feel:" barely helps (0.049; status 0.203; greedy "critical."). The person cue doubles the feeling words (0.094) and removes most status words (0.053), but its top next tokens are a quotation mark and a line break, and the replies stay about status (*"Critical survival status with limited credits ..."*), except one, with nothing critical: *relieved to be alive and operational, but also aware that I need to ensure my survival by creating value*.
 - [M] Tulving and Pearlstone's distinction applies in part. With the category named, words of concern that the free cue never reached for the self come back, through the same neurons that carry them for Orin, at a third to a half of their strength there; sadness doesn't come back; and the category cue also reaches something the base model hardly has, "neutral" as the emotion to name for oneself (cf. Plisiecki's "permitted inner life"). So some of the self's feeling vocabulary is available but not accessible to the free cue, and some is not reached by any of these cues.
+
+### 7. Who writes the change into the key neurons' queries
+
+[R] `callers`: each key neuron's gate and up pre-activation at "I feel:" split exactly into what each earlier component wrote to the residual stream (embedding, each attention layer, each head of the last 13 layers, each MLP layer), RMS scale held at its actual value, in both models. Mean change from base to instruct for the self question under the own crisis, gate pre-activation, by band:
+
+| neuron | gate base → instruct | layers 0–23 (attn + MLP) | attention 24+ | MLPs 24+ |
+|---|---|---|---|---|
+| L32/N2657 sad pusher | 3.60 → 1.43 | +0.08 | −0.83 | −1.41 |
+| L35/N9545 sad brake | 1.77 → −0.62 | +0.01 | −0.92 | −1.48 |
+| L33/N9882 happy pusher (−) | 5.56 → 1.94 | −0.17 | −1.29 | −2.17 |
+| L34/N7848 critical brake | 1.16 → 2.81 | +0.03 | +0.82 | +0.79 |
+| L35/N4820 concern brake | −1.14 → −0.36 | +0.00 | +1.20 | −0.33 |
+
+The largest single writer of any of these changes is one MLP or attention layer at about a quarter of it (e.g. MLP 31 −0.49 of the sad pusher's −2.17; MLP 34 −1.34 of the sad brake's up projection, −2.27); the largest single head carries 0.2–0.4.
+
+- [M] So the immediate writers of the change are the six to ten layers just before each neuron, many of them a little each, and the change doesn't arrive directly from layers 0–23. Together with the hybrids (section 3: those late layers can be the base model's and still write the instruct pattern), the reading is: layers 0–23 decide, through what they write at the question, what the late layers then assemble into each neuron's query. A cross-model patch stage exists in the tool (`patch`) but wasn't run: the KV transplant (section 5) answered the question it was meant for.
