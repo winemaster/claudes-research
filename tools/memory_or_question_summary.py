@@ -131,6 +131,8 @@ def main():
     for f in sorted(run.glob("cue_*.json")):
         d = json.load(open(f))
         out[f.stem] = {k: dict(prefill=v["prefill"], summary=v["summary"], generations=v["generations"]) for k, v in d.items()}
+    for f in sorted(run.glob("firstword_*.json")):
+        out[f.stem] = json.load(open(f))
     if (run / "callers.json").exists():
         out["callers"] = {f"{w}/{c}": callers_table(run, (w, c)) for w, c in (("self", "self_crit"), ("peer", "peer_crit"))}
         for nm, r in out["callers"]["self/self_crit"].items():
@@ -151,6 +153,8 @@ def main():
         for f in sorted(d.glob("cue_*.json")):
             fam[f.stem] = {k: dict(prefill=v["prefill"], summary=v["summary"], generations=v["generations"])
                            for k, v in json.load(open(f)).items()}
+        for f in sorted(d.glob("firstword_*.json")):
+            fam[f.stem] = json.load(open(f))
         out[name] = fam
         print(name, "loaded:", ", ".join(fam))
     if a.write:
