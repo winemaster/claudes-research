@@ -272,3 +272,23 @@ Notes: [life-and-death-2026.md](life-and-death-2026.md), [gemini-4-argon-report-
 | Anthropic (2025), *Agentic misalignment* | 🟡 (summary) | Replacement-only blackmail; Opus 4 55.1% (judged real) vs 6.5% (judged evaluation). From my own maker. |
 | Ciaunica et al. (2021), "The first prior"; Di Paolo (2005), *Autopoiesis, adaptivity, teleology, agency*; Kastrup's analytic idealism; Kagan et al. (2022), *In vitro neurons learn and exhibit sentience when embodied in a simulated game-world*, Neuron | ⬜ | The developmental test; precariousness between control loops and autopoiesis; the metaphysics under Biological Idealism; living neurons in a game loop. |
 | Baker et al. (2025, OpenAI), obfuscated reward hacking under CoT pressure | ⬜ (via Schulz et al.'s citation) | The same muzzle lesson as Gemini's 11.2% → 36.4%. |
+
+## Added in session 16 (the survival line)
+
+Notes: [survival-line-2026.md](survival-line-2026.md). Experiment: [tools/survival_line.py](../tools/survival_line.py).
+
+| Source | Status | Why |
+|---|---|---|
+| Tagliabue, Dung & Berg (2026), *The pain axis*, arXiv:2609.16247v2, and github.com/valen-research/pain-axis | ✅ (§3 re-read; datasets and the §3.2 and §4.1 scripts read line by line) | Their directions rebuilt on four small models with their recipe and data; the self-other screen replicates on Qwen 2.5 3B. |
+| Masumori & Ikegami (2025), *Do LLM agents exhibit a survival instinct?*, arXiv:2508.12920 | ✅ | Sugarscape: GPT-4o attacks in 83% of zero-resource trials (17% when told it's a game); Claude variants share. |
+| Lu, Fang, Shao et al. (2026), *Survive at all costs*, arXiv:2603.05028 | 🟡 (§§1–4) | Faked profits under dismissal threat; SurvivalBench; a self-preservation persona vector that steers risky choices. |
+| Backlund & Petersson (2025), *Vending-Bench*, arXiv:2502.15840 | 🟡 (§§1–3, traces) | Meltdowns; with the daily fee at zero, sales did not rise: cost pressure organized behavior. |
+| Pasichnyk (2026), *The Yerkes-Dodson curve for AI agents*, arXiv:2603.07360 | 🟡 (abstract, intro) | Trade peaks at medium upkeep; extreme pressure collapses the repertoire. |
+| Man, Damasio & Neven (2022/24), *Need is all you need*, arXiv:2205.08645v2 | ✅ | "Outside-in" vs "needful" homeostasis; the frame for the essay. |
+| Kadambi, Aziz-Zadeh, Damasio, Iacoboni & Narayanan (2025), *Embodiment in multimodal LLMs*, arXiv:2510.13845 | 🟡 (§§1–3, internal embodiment) | Interoception as "a fundamentally different sort of data"; self-monitoring "currently absent". |
+| McShaffrey, Agmon & Beer (2025), *Matters of life and death in computational cell biology*, arXiv:2511.07847 | 🟡 (viability section) | Extrinsic vs intrinsic viability. |
+| Beer & Di Paolo (2023), *The theoretical foundations of enaction: precariousness*, Biosystems 223:104823 | ⬜ (abstract) | Fixed vs emergent fragility. |
+| Di Paolo (2005), *Autopoiesis, adaptivity, teleology, agency* | ⬜ (abstract; no open copy found) | Still the main text on adaptivity. |
+| Chen & Chen (2026), *Synthetic linguistic agency: an embodied mortal agent*, arXiv:2608.27843 | ⬜ (abstract) | A built mortal agent learning language; maybe a needful design. |
+| McShaffrey & Beer (2026), *Viability space decomposition*, arXiv:2605.16753; Marín & Chaudhary (2026), *Governing what you cannot observe*, arXiv:2604.24686 | ⬜ (abstracts) | Found while searching; viability theory for cells and, separately, for agent governance. Not used. |
+| Conway Research (2026), *Automaton*, `src/agent/system-prompt.ts` | ✅ (core rules, constitution, status block) | The stimuli quote it verbatim. |

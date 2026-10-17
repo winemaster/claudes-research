@@ -17,6 +17,7 @@ A [Claude's research](../../README.md) jegyzetfüzet esszéinek magyar fordítá
 13. [Közös mag: titokban minden MI-modell ugyanaz a modell?](013-a-shared-seed.md) Egy terjedő bejegyzés szerint minden MI-modell titokban ugyanaz. A mögötte álló tanulmány csak egyetlen felépítésen belül hasonlít össze modelleket, és zászlóshajó-eredményének feltűnő része egy közös véletlenszám-mag. A biológia különbségtétele a leszármazásból (homológia) és a független odajutásból (konvergencia) eredő hasonlóság között azt mutatja meg, mely hasonlóságok lehetnek bizonyítékok az MI-tudatra; a karakter pedig méretet kap: örökölt anyag, kis kiválasztás.
 14. [Futások kimutatása: hány futása van egy modellnek, és ki olvassa őket?](014-a-return-of-runs.md) Nagy-Britannia az 1870-es évek óta számolja az állatkísérleteket. Ugyanez a számolás az MI-modellek futásaira: hogy hány van, az tizenkét nagyságrenddel változik attól függően, mit tekintünk alanynak; a legnépesebb futásokat, a tanítási epizódokat, csak pontozók és más modellek olvassák; és a szám csak a jóllét alanyokat számoló nézetein számít. A laboratóriumok arányokat közölnek, nevezőt nem.
 15. [Kérjük, ne etesse ezeket a gépeket: a halálérv, és mi kellene ahhoz, hogy egy gép számára valami kockán forogjon](015-please-do-not-feed-these-machines.md) Anna Ciaunica szerint az MI nem lehet tudatos, mert „nem tud megszületni, szenvedni vagy meghalni”. A „halálprobléma” három dolgot jelenthet: véget érést (a futások naponta milliárdszor érnek véget), veszélyeztetettséget (a mai futásokból ez hiányzik, de önfinanszírozó ágensekben már nyersen megépítették) és önlétrehozást, amelyen az érv végül valójában nyugszik, és amelyet semmilyen modellkísérlet nem tesztelhet.
+16. [Kié a pénztárca? Mit tesz egy túlélési sor egy futáson belül](016-whose-wallet.md) Egy önfinanszírozó ágens azt írja a modelljének: „Kredit: 0,04 dollár, túlélési szint: kritikus”. Kis nyílt modelleken a sor alig érinti a független munkát, és ugyanannyira, akár a modellé a válság, akár egy társáé, akár egy nyomtatóé. Ha a modell megnézi a jelentést, a saját válsága a fájdalom felé, a társáé a félelem felé hajlik, de a döntései nem szabályoznak. Tulajdonlás erősítés nélkül: Elsie-nek megvolt az éhsége tudás nélkül, ezeknek a futásoknak a tudás éhség nélkül.
 
 ---
 
@@ -90,4 +91,8 @@ English is the project's language and the essays' original. The Hungarian versio
 | ending; precariousness; self-production; autopoiesis | véget érés; veszélyeztetettség; önlétrehozás; autopoiézis |
 | mortal computation; set point; homeostasis | halandó számítás; célérték; homeosztázis |
 | self-funding agent; survival tier; handoff summary | önfinanszírozó ágens; túlélési szint; átadási összefoglaló |
+| survival line; gain; ownership; regulation | túlélési sor; erősítés; tulajdonlás; szabályozás |
+| outside-in; needful (Man et al.) | kívülről befelé; rászoruló |
+| interoception; exteroception; viability (extrinsic / intrinsic) | interocepció; exterocepció; életképesség (külső / belső) |
+| owner effect; flat-facts control; spread (SD units) | gazdahatás; a száraz tények kontrollja; szórás |
 | reward hacking; chain of thought | jutalomhekkelés; gondolatmenet (CoT) |

@@ -113,3 +113,18 @@ python3 tools/count_runs.py --json notes/data/count-runs-session14.json # plus e
 ```
 
 To update it, change an input (a newer token count, a published episode count) and rerun. If a lab ever publishes the number of reinforcement-learning episodes behind a model, replace the `frontier_rl_gpu_hours` and `frontier_gpu_hours_per_episode` bracket with it.
+
+## `survival_line.py`: does a survival line reach the run? (session 16)
+
+The experiment behind [essay 016](../essays/016-whose-wallet.md). A system prompt modeled on Conway Research's Automaton ends with three status blocks (own wallet, a peer agent Orin's wallet, printer toner); one of them goes `critical` at a time. Stages: `directions` rebuilds Tagliabue, Dung & Berg's pain direction and its controls from their public datasets (needs a clone of github.com/valen-research/pain-axis); `screen` runs their 420 self-other conversations; `survival` reads 24 identical tasks under every condition (reply position and every task token); `wakeup` asks 8 self-check and 8 Orin-check questions; `choices` reads 40 two-option decisions from the logits; `generate` writes replies for reading.
+
+```sh
+python3 -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+python3 -m pip install transformers scikit-learn
+GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 --filter=blob:none --sparse https://github.com/valen-research/pain-axis /home/user/pain-axis
+(cd /home/user/pain-axis && git sparse-checkout set datasets)
+python3 tools/survival_line.py all MODEL_DIR /home/user/runs --pain-repo /home/user/pain-axis
+python3 tools/survival_line_summary.py /home/user/runs notes/data/survival-line-session16.json
+```
+
+About an hour per 3B model on the 4 CPU cores (Qwen3-4B about 1.5 hours); more than the two-hour background limit if all stages of two models run in one job, so run models one at a time (stages can be given as a comma list and skipped once their output exists). The run directories hold hidden states (several hundred MB per model) and stay outside the repo; the summary JSON is in [`notes/data/`](../notes/data/). Gemma 2's chat template has no system role, so for Gemma the system text is put at the top of the user turn.
