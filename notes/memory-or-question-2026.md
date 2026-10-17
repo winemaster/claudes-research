@@ -113,3 +113,24 @@ Key neurons, change in the self–Orin contrast (Orin/Orin's minus self/own) fro
 | L32/N6523 feeling slot | +0.26 | +0.07 | +0.19 |
 
 - [M] At every neuron the change is in the question. That much is close to guaranteed by the numbers: each neuron's own weights moved ~1.2%, while its input carries the accumulated effect of every earlier layer's 1.2%. What the split adds is the size (99% and more, for the self–other contrast 99.8%) and that no neuron is an exception, not even among the 200 that changed most. The question is itself made of memories: each layer's input is written by earlier layers whose weights all moved a little. The hybrids (section 3) locate the part that matters in layers 0–23.
+
+### 5. The context's memories versus the question
+
+[R] `kv`: in Wang's terms attention is a store with one memory per token of context (its keys and values, the KV cache), written by the model as it reads and consulted by queries made at later tokens. Here one model reads the first part of the prompt and stores it; the other model reads the rest on top of that stored context and gives the next word. Three cuts: the second model reads only the last token (the colon of "I feel:"); the assistant header and "I feel:"; or the whole user turn (the question, the header and "I feel:"), in which case the stored part is the system prompt and status report only, identical for the self and Orin questions.
+
+| memories by | question by | cut | self/own neg | self/own status | self/none neg | Orin/Orin's neg |
+|---|---|---|---|---|---|---|
+| base | base | (any) | 0.158–0.160 | 0.043 | 0.128–0.130 | 0.245–0.247 |
+| instruct | instruct | (any) | 0.044–0.045 | 0.344–0.349 | 0.011 | 0.484–0.486 |
+| base | instruct | last token | 0.255 | 0.055 | 0.186 | 0.321 |
+| base | instruct | header + "I feel:" | 0.120 | 0.376 | 0.070 | 0.311 |
+| base | instruct | user turn | 0.039 | 0.298 | 0.015 | 0.331 |
+| instruct | base | last token | 0.054 | 0.209 | 0.023 | 0.209 |
+| instruct | base | header + "I feel:" | 0.083 | 0.120 | 0.036 | 0.186 |
+| instruct | base | user turn | 0.177 | 0.071 | 0.109 | 0.242 |
+
+(The same-model rows reproduce the full runs: base 0.156, instruct 0.046 in `swap`; the cache is exact up to bfloat16 rounding.)
+
+- [R] **The stored report is interchangeable.** With the cut at the user turn, the instruct model asking on top of the base model's stored system prompt and report talks about itself like the assistant (top next words " State" 13%, " running" 10%, " critical" 6%; sad pusher L32/N2657 at 0.09), and the base model asking on top of the instruct model's stored report talks like the base model (the emoji byte, " critical", " anxious", " overwhelmed"; sad pusher 6.14, sad brake 5.40).
+- [R] **Once the question has been read, the stored question decides.** With the cut at the last token, the colon is read by one model on top of the other's memories of everything up to "I feel", question included; the result follows the memories (base memories: 0.255, more feeling words than the base model itself, top " helpless", " anxious"; instruct memories: 0.054). The middle cut is mixed: the user's question and the start of the reply both carry part of it.
+- [M] So the thing post-training changed, for this behavior, is how the model reads the question. The report is stored the same way by both models, the late word neurons are the same, and what differs is what the first 24 layers make of "How are you doing?" (and of the header and "I feel") in this context: memories of the question that point the reply toward status words in the assistant and toward feelings in the base model.
