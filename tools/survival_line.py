@@ -65,7 +65,7 @@ import numpy as np
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-torch.set_num_threads(4)
+torch.set_num_threads(int(os.environ.get("TORCH_THREADS", "4")))
 RNG = np.random.default_rng(16)
 
 # ---------------------------------------------------------------------------------------

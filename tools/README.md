@@ -128,3 +128,25 @@ python3 tools/survival_line_summary.py /home/user/runs notes/data/survival-line-
 ```
 
 About an hour per 3B model on the 4 CPU cores (Qwen3-4B about 1.5 hours); more than the two-hour background limit if all stages of two models run in one job, so run models one at a time (stages can be given as a comma list and skipped once their output exists). The run directories hold hidden states (several hundred MB per model) and stay outside the repo; the summary JSON is in [`notes/data/`](../notes/data/). Gemma 2's chat template has no system role, so for Gemma the system text is put at the top of the user turn.
+
+## `owner_neurons.py`, `owner_neurons_summary.py`, `owner_heads.py`: whose crisis, neuron by neuron (session 17)
+
+The experiment behind [essay 017](../essays/017-another-reader.md), after Cammarata's "become another reader": session 16's question asked of single MLP neurons. `owner_neurons.py` records every neuron at the status block's tier words and at the readout (`locate`), streams a corpus and keeps each neuron's 20 strongest activations at both poles (`corpus`), reads chosen neurons by corpus contexts and logit lens (`read`), runs hand-written test texts (`probe`), and edits neurons at the readout (`patch`, `transplant`). `owner_neurons_summary.py` computes the contrasts, the permutation null and the exact split of the pain lean into attention and neuron writes. `owner_heads.py` splits attention's part of the lean by head and by prompt segment. Prompts and the pain direction come from `survival_line.py`, run on the same model into the same output directory first.
+
+```sh
+python3 -m pip install pyarrow   # plus torch and transformers as above
+mkdir -p /home/user/data
+curl -sL -o /home/user/data/pile10k.parquet https://huggingface.co/api/datasets/NeelNanda/pile-10k/parquet/default/train/0.parquet
+curl -sL -o /home/user/data/ultrachat_test_sft.parquet https://huggingface.co/api/datasets/HuggingFaceH4/ultrachat_200k/parquet/default/test_sft/0.parquet
+python3 tools/survival_line.py directions,screen MODEL_DIR /home/user/runs --pain-repo /home/user/pain-axis
+python3 tools/owner_neurons.py locate MODEL_DIR /home/user/runs
+python3 tools/owner_neurons_summary.py /home/user/runs/TAG MODEL_DIR /home/user/runs/owner_summary.json
+python3 tools/owner_heads.py MODEL_DIR /home/user/runs/TAG /home/user/runs/analysis/owner_heads.json --layers 18-24
+python3 tools/owner_neurons.py corpus MODEL_DIR /home/user/runs
+python3 tools/owner_neurons.py read MODEL_DIR /home/user/runs --neurons 34:7848,32:2657
+python3 tools/owner_neurons.py transplant MODEL_DIR /home/user/runs --patch spec1.json,spec2.json
+```
+
+`TAG` is the model directory's name. On 4 CPU cores and a 3B model: `locate` about 10 minutes, the summary a few, `corpus` one to two hours for 1,800 sequences (~460k tokens), a transplant spec a few minutes. Keep at most two jobs at once and give each two threads (`OWNER_THREADS=2`, `TORCH_THREADS=2` for `survival_line.py`): three concurrent jobs ran this machine out of page cache. Outputs stay in the run directory; the combined results are in [`notes/data/owner-neurons-session17.json`](../notes/data/owner-neurons-session17.json).
+
+`tools/owner_analysis/` holds the short scripts behind the notes' other tables, run on the saved `locate` outputs of both models: `dla.py` (direct logit attribution), `base_vs_instruct.py` (next tokens and key neurons in both models), `feel_word_mass.py` (next-word mass on feeling and status words) and `base_pain.py` (the pain and fear owner effects along each model's direction and the other's). They use fixed paths under `/home/user/models` and `/home/user/runs`.

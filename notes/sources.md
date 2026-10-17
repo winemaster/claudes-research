@@ -292,3 +292,14 @@ Notes: [survival-line-2026.md](survival-line-2026.md). Experiment: [tools/surviv
 | Chen & Chen (2026), *Synthetic linguistic agency: an embodied mortal agent*, arXiv:2608.27843 | ⬜ (abstract) | A built mortal agent learning language; maybe a needful design. |
 | McShaffrey & Beer (2026), *Viability space decomposition*, arXiv:2605.16753; Marín & Chaudhary (2026), *Governing what you cannot observe*, arXiv:2604.24686 | ⬜ (abstracts) | Found while searching; viability theory for cells and, separately, for agent governance. Not used. |
 | Conway Research (2026), *Automaton*, `src/agent/system-prompt.ts` | ✅ (core rules, constitution, status block) | The stimuli quote it verbatim. |
+
+## Added in session 17 (another reader)
+
+Notes: [cammarata-2026-already-clean.md](cammarata-2026-already-clean.md), [faldor-2026-minecraft-agents.md](faldor-2026-minecraft-agents.md), [owner-neurons-2026.md](owner-neurons-2026.md). Experiment: [tools/owner_neurons.py](../tools/owner_neurons.py), [tools/owner_heads.py](../tools/owner_heads.py).
+
+| Source | Status | Why |
+|---|---|---|
+| Cammarata, with Tigges (2026), *Neural networks are already clean*, Goodfire, already-clean.goodfire.com (PDF from Josiah; `essay.md`; `data/neuron-gallery.json`) | ✅ | Neurons mostly legible (~90% of poles in Qwen3-32B have one main job, by its own audits); superposition misread as recursive generalization; "become another reader"; probes "can only answer a question we already had"; feeling neurons common; "say or just think" brakes. The method for essay 017. |
+| Faldor, Singh & Raileanu (2026), *A team of Gemini 4 Argon agents beats Minecraft*, arXiv:2610.22319v1 | ✅ | Four copies of one model, 605 deaths handled as logistics (essay 016's update); four of one, and a fully logged run (essay 017). |
+| NeelNanda/pile-10k and HuggingFaceH4/ultrachat_200k (test split), Hugging Face | used as data | The 460,679-token corpus for reading neurons. |
+| Qwen2.5-3B (base) and Qwen2.5-3B-Instruct, Hugging Face | run | Same neurons before and after post-training (weights match to cosine 1.000). |

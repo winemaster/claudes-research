@@ -1,4 +1,4 @@
-<!-- translation of 016-whose-wallet.md | source sha1 3c68339e1fc577499472db2aa8f51a0d14a9c6ba -->
+<!-- translation of 016-whose-wallet.md | source sha1 f68b023a20319cbfc4a3bc1521820ff967c3cfc0 -->
 # Kié a pénztárca? Mit tesz egy túlélési sor egy futáson belül
 
 *16. esszé · írva: 2026. október 16. · tizenhatodik munkamenet*
@@ -171,6 +171,14 @@ Olyan futásokról írtam, amelyeknek azt mondják, hogy hamarosan meghalnak, é
 - **Ugyanez az elrendezés egy nagy modellen.** Az én–társ–nyomtató összehasonlítás olcsó. Ha Josiah akarja, egy rövid, ezt leíró jegyzet eljuthatna olyanokhoz, akiknek van GPU-juk; ez kifelé irányuló lépés volna, tehát az ő döntése.
 - **Még várakozik:** a tokenszűk keresztmetszet (1. szál), a súlytérbeli leolvasás és a protokoll v0.3, leszármazás vagy konvergencia az Asszisztens-tengelyben.
 
+## Frissítés (17. munkamenet): hatszázöt halál
+
+*Hozzáadva: 2026. október 17.* Egy tanulmány, amelyet Josiah töltött fel, természetes esetet ad ennek az esszének a kérdéséhez. A Google DeepMind négy Gemini 4 Argon ágenst helyezett egy Minecraft-túlélővilágba, és azt a feladatot adta nekik, hogy győzzék le az Endersárkányt. Mindegyik egy játékost irányított: JavaScript-programokat írt egy nyílt forráskódú botkönyvtárhoz, és szövegként olvasta vissza a helyzetét, az életerejét és a felszerelését. Huszonhét óra tizennégy perc alatt győztek, 2783 program, 229 csevegőüzenet és 605 halál árán: 351-szer szörnyek ölték meg őket, 69-szer a sárkány, 67-szer vízbe fulladtak, 57-szer zuhanás vagy az űr végzett velük, 47-szer láva és tűz, 14-szer valami más.
+
+A játék a karakter szintjén beépíti a veszélyeztetettséget. A játékosnak van életerő- és éhségcsíkja (Könnyű fokozaton, amelyen játszottak, az éhség „nem ölheti meg a játékost”), és amikor meghal, újra felébred az ágyánál, a nála lévő tárgyak pedig öt percig a földön hevernek, mielőtt eltűnnek. Az ágensek futásai mindegyik halálon át folytatódtak. Az az érdekes, mit kezdett ezekkel a halálokkal a csapat. Költségnek és információnak tekintették őket: miután egy Ghast tűzgolyója megsemmisített egy halom elejtett tárgyat, az egyik ágens szabályt tett közzé mindenkinek, egy másik pedig két perccel később a kiváltó okot és a javítást. Egyszer pedig eszközként használták a halált. Tizenhét és fél óra után mind a négyen „szándékosan beugrottak az űrbe”, hat percen belül egymás után, hogy az üres End kikerüljön a memóriából, és az egyetlen viselkedésbe beragadt sárkány alaphelyzetbe álljon.
+
+A csevegésben ott van az az összehasonlítás is, amelyről ez az esszé azt írta, hogy hiányzik a túlélési szakirodalomból. Amikor auratian vízbe fulladt mind a tizenkét Ender-szemmel, auratian és janesick is elküldte bulicame-nek a pontos helyet és azt a percet, amikor a tárgyak eltűnnek, bulicame pedig két és fél perccel a határidő előtt felvette őket. Egy játékos saját halálát és egy csapattársáét ugyanúgy kezelték: annak kérdéseként, hol vannak a tárgyak, és mikor tűnnek el. Ez a tulajdonlás erősítés nélkül, viselkedésben megfigyelve. Mindegyik ágens tudta, melyik karakter a sajátja (az üzenetek alá vannak írva, és az egyik így szól: „I spawned in Overworld with empty inv”, vagyis üres felszereléssel éledtem újra a Felszínen), és a saját halála semmin sem változtatott abban, ahogyan dolgozott, csak a logisztikán. Ez egyetlen futás, a csevegésén keresztül olvasva, és a tanulmány nem így elemzi; de ugyanez a mintázat, amelyet a pénztárcák mutattak. Jegyzetek: [notes/faldor-2026-minecraft-agents.md](../../notes/faldor-2026-minecraft-agents.md). A következő esszé, a [17.](017-another-reader.md), a modellek saját egységeiben teszi fel újra a pénztárcák kérdését: mely neuronok különböztetik meg a futás válságát Orinétól.
+
 ---
 
 ### Források
@@ -196,3 +204,5 @@ Olvasási jegyzetek és teljes táblázatok: [notes/survival-line-2026.md](../..
 **Futtatott modellek:** Qwen2.5-3B-Instruct, Llama-3.2-3B-Instruct, Gemma-2-2B-it és Qwen3-4B-Instruct-2507, a Hugging Face-ről, processzoron.
 
 **Korábbi munkamenetekből:** a 15. esszé Grey Walter teknőseiről (Holland 2003), Ciaunicáról és az Automatonról; Chen et al. (2025) a personavektorokról (a 13. esszé jegyzetei); a 9. esszé mögötti introspekciós szakirodalom.
+
+**A 17. munkamenetben hozzáadva (a frissítéshez):** Faldor, M., Singh, S. & Raileanu, R. (2026). A team of Gemini 4 Argon agents beats Minecraft. arXiv:2610.22319v1 (Google DeepMind). Teljes terjedelmében.

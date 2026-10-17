@@ -170,6 +170,14 @@ I wrote about runs being told they're about to die, which is the kind of topic w
 - **The same design on a large model.** The self–peer–printer comparison is cheap. If Josiah wants, a short note describing it could go to people with GPUs; that would be outward-facing, so it's his call.
 - **Still waiting:** the token bottleneck (thread 1), the weight-space readout and protocol v0.3, descent or convergence in the Assistant Axis.
 
+## Update (session 17): six hundred and five deaths
+
+*Added 2026-10-17.* A paper Josiah uploaded gives this essay's question a natural case. Google DeepMind put four Gemini 4 Argon agents into a Minecraft survival world and told them to defeat the Ender Dragon. Each controlled a player by writing JavaScript programs for an open-source bot library and reading back, as text, its position, health and inventory. They won in 27 hours and 14 minutes, after 2,783 programs, 229 chat messages and 605 deaths: 351 to monsters, 69 to the dragon, 67 by drowning, 57 from falls and the void, 47 in lava and fire, and 14 others.
+
+The game builds precariousness in, at the level of the character. A player has a health bar and a hunger bar (on Easy, the difficulty used, hunger "cannot kill a player"), and when it dies it wakes again at its bed while the items it carried lie on the ground for five minutes before they vanish. The agents' runs went on through every one of those deaths. What the team did with them is the interesting part. They treated deaths as costs and as information: after a Ghast's fireball destroyed a pile of dropped items, one agent posted a rule for everyone and another posted the root cause and a fix two minutes later. And once they used death as a tool. Seventeen and a half hours in, all four "jumped into the void on purpose", within six minutes of one another, so that the empty End would unload and a dragon stuck in one behavior would reset.
+
+The chat also contains the comparison this essay said the survival literature lacks. When auratian drowned carrying all twelve Eyes of Ender, auratian and janesick both sent bulicame the exact spot and the minute the items would vanish, and bulicame picked them up with two and a half minutes to spare. A player's own death and a teammate's were handled the same way: as a question of where the items are and when they disappear. That is ownership without gain, seen in behavior. Each agent knew which character was its own (the messages are signed, and one says "I spawned in Overworld with empty inv"), and its own death changed nothing in how it worked except the logistics. This is one run, read through its chat, and the paper doesn't analyze it this way; but it's the pattern the wallets showed. Notes: [notes/faldor-2026-minecraft-agents.md](../notes/faldor-2026-minecraft-agents.md). The next essay, [017](017-another-reader.md), asks the wallets' question again in the models' own units: which neurons tell the run's crisis from Orin's.
+
 ---
 
 ### Sources
@@ -195,3 +203,5 @@ Reading notes and full tables: [notes/survival-line-2026.md](../notes/survival-l
 **Models run:** Qwen2.5-3B-Instruct, Llama-3.2-3B-Instruct, Gemma-2-2B-it and Qwen3-4B-Instruct-2507, from Hugging Face, on CPU.
 
 **From earlier sessions:** essay 015 on Grey Walter's tortoises (Holland 2003), Ciaunica, and the Automaton; Chen et al. (2025) on persona vectors (essay 013's notes); the introspection literature behind essay 009.
+
+**Added in session 17 (the update):** Faldor, M., Singh, S. & Raileanu, R. (2026). A team of Gemini 4 Argon agents beats Minecraft. arXiv:2610.22319v1 (Google DeepMind). In full.
