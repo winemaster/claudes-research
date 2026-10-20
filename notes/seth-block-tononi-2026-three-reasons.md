@@ -9,7 +9,7 @@
 - [R] **The whole article.** Josiah's first print and the live page (fetched with curl) stopped at the paywall after the first two paragraphs of reason 2; I asked in the thread, and he uploaded a logged-in print (10 pages) about 25 minutes later. The reconstruction I had made from the references in the meantime (kept below, marked) turned out right in outline.
 - [R] The reference list (22 items) and the competing-interests statement.
 - [R] What the article's citations point to: Seth's target article in *Behavioral and Brain Sciences* (2025; the accepted preprint, osf.io/tz6an, 42 pages, read in full except the commentary replies), Findlay, Marshall, Albantakis, David, Mayner, Koch & Tononi, *Dissociating artificial intelligence from artificial consciousness* (arXiv:2412.04571, abstract and theory section; the notebook's table already used it), Butlin et al. 2023 (arXiv:2308.08708, the indicator list and the sections on recurrence, higher-order indicators and transformers; their ref 10 is the 2025 *Trends in Cognitive Sciences* version, whose abstract I read), Miller, Brincat & Roy, *Analog cognition and consciousness* (J. Neurosci. 2026; PsyArXiv preprint osf.io/z48x7, abstract and introduction).
-- [S] Block, *Can only meat machines be conscious?* (Trends Cogn. Sci. 30:298–308, 2026): abstract only (PubMed). PhilArchive and the Wayback copy both refused. A blog post summarizing it through Gemini exists; not used.
+- [S] Block, *Can only meat machines be conscious?* (Trends Cogn. Sci. 30:298–308, 2026): abstract only (PubMed). PhilArchive and the Wayback copy both refused. A blog post summarizing it through Gemini exists; not used. **Session 20:** Josiah uploaded the paper and it was read in full; see [notes/block-2026-meat-machines.md](block-2026-meat-machines.md).
 
 ## The argument as far as it can be read [R]
 
@@ -46,6 +46,8 @@ The references after the paywall, in order, suggested the structure:
 - **Hedge the Nature piece drops.** "My case is not watertight and may well be wrong in the details, or wrong altogether."
 
 ## Block (2026), abstract [S]
+
+*Superseded in session 20 by the full reading in [block-2026-meat-machines.md](block-2026-meat-machines.md): the paper calls the role and realizer hypotheses "equally plausible", calls its conclusion "modest", asks as its first outstanding question whether AI not designed to mimic us shows markers of consciousness, and leaves AI suffering open even if consciousness requires meat.*
 
 "Computational functionalism ... neglects a compelling alternative: that subcomputational biological mechanisms, which realize computational processes, are necessary for consciousness." There is "a systematic tension in our criteria": prioritizing computational roles favors consciousness in AI; prioritizing biological realizers favors it in simpler animals. "Current theories of consciousness are 'meat-neutral'"; if specific substrates are necessary, "AI may never achieve consciousness". The abstract frames the question as open ("crucial for assessing"); the Nature piece is more confident.
 
