@@ -45,15 +45,22 @@ Stages:
             position sits on the line from the pure-B to the pure-A activation ("projection share"),
             and how sharp the switch is. Text: the authors' country pairs and carrier sentences
             (data/experiments/ignition.json of their repository). Proteins and DNA: real sequences
-            with one token mixed between its own identity and another token.
+            with one token mixed between its own identity and another token. --ignition-design
+            sequence runs that design on text and the untrained copy too (a real token among the 200
+            most frequent, mixed with another of them), for a design-matched comparison.
+  evals     Text (and the untrained control): the authors' lens-quality prompt sets (multihop,
+            association, typo, poetry, multilingual), scored as pass@k for the J-lens and the logit
+            lens, as a check that the lens finds known intermediates in a model this small.
   property  Proteins only: whether the lens holds a class of residues rather than the next one, read
             as the expected hydrophobicity of each layer's readout, correlated across positions with
-            the hydrophobicity of the residues already read, of the next residue, and of the next 8.
+            the hydrophobicity of the residues already read, of the next residue, of the next 8, and
+            of residues 2 to 8 ahead, also as partial correlations (controlling for the residues read
+            and the next one).
 
 Usage:
-  python3 tools/jlens_compare.py STAGE --model {text,protein,dna} --work DIR [options]
+  python3 tools/jlens_compare.py STAGE --model {text,protein,dna,random} --work DIR [options]
 Needs torch, transformers, numpy, pandas (for the text corpus), sentencepiece (for DNA). Model weights, corpora and the J_l
-matrices stay outside the repository (--models, --data, --work). On 4 CPU cores a fit is about 45 s
+matrices stay outside the repository (--models, --data, --work). On 4 CPU cores a fit is about 65 s
 per prompt (768 backward passes over 128 tokens); the other stages take minutes. JLENS_THREADS sets
 torch's thread count (default 4).
 """
@@ -459,7 +466,7 @@ def ignition_items(a, model):
     from transformers import AutoTokenizer
     items = []
     rng = random.Random(1)
-    if a.model in ("text", "random"):
+    if a.model in ("text", "random") and a.ignition_design == "countries":
         tok = AutoTokenizer.from_pretrained(os.path.join(a.models, MODEL_DIRS["text"]))
         ig = json.load(open(a.ignition_json))
         countries = [c for c in ig["countries_12"] if len(tok(" " + c)["input_ids"]) == 1]
@@ -473,10 +480,16 @@ def ignition_items(a, model):
         return items
     prompts = corpus(a.model, a.data, a.models, 96, EVAL_OFFSET[a.model])
     strings, content = load_vocab(a.model, a.models)
+    pool = content if a.model == "protein" else frequent_tokens(prompts, content, 200)
     for ids in prompts:
         p = rng.randrange(40, SEQ_LEN - 8)
+        if a.model != "protein":    # as with amino acids, the real token is one of a small set of frequent ones
+            spots = [q for q in range(40, SEQ_LEN - 8) if ids[q] in pool]
+            if not spots:
+                continue
+            p = rng.choice(spots)
         B = ids[p]
-        A = rng.choice([c for c in (content if a.model == "protein" else frequent_tokens(prompts, content, 200)) if c != B])
+        A = rng.choice([c for c in pool if c != B])
         items.append((ids[:p + 1], p, A, B))
     return items
 
@@ -509,7 +522,9 @@ def stage_ignition(a):
     res["bimodality_mid"] = [float(((share[:, l, 10] - 0.5).abs() * 2).clamp(max=1).mean()) for l in range(L)]
     for l in range(L):
         print(f"  layer {l}: max_slope={res['max_slope'][l]:.2f} near_endpoint={res['near_endpoint'][l]:.2f} bimodal@0.5={res['bimodality_mid'][l]:.2f}", flush=True)
-    out = Path(a.work) / a.model / "ignition.json"
+    res["design"] = "countries" if (a.model in ("text", "random") and a.ignition_design == "countries") else "sequence"
+    name = "ignition.json" if a.ignition_design == "countries" or a.model not in ("text", "random") else "ignition_sequence.json"
+    out = Path(a.work) / a.model / name
     json.dump(res, open(out, "w"), indent=1)
     print("ignition done", out, flush=True)
 
@@ -536,19 +551,27 @@ def stage_property(a):
     kd_of = {c: KYTE_DOOLITTLE[strings[c]] for c in content}
     W = 8
     pos = list(range(SKIP_FIRST, SEQ_LEN - 1 - W))
-    past, nxt, fut = [], [], []
+    past, nxt, fut, far = [], [], [], []
     for ids in prompts:
         for t in pos:
             past.append(np.mean([kd_of[x] for x in ids[t - W + 1:t + 1]]))
             nxt.append(kd_of[ids[t + 1]])
             fut.append(np.mean([kd_of[x] for x in ids[t + 1:t + 1 + W]]))
-    past, nxt, fut = map(np.array, (past, nxt, fut))
+            far.append(np.mean([kd_of[x] for x in ids[t + 2:t + 1 + W]]))
+    past, nxt, fut, far = map(np.array, (past, nxt, fut, far))
+
+    def partial_r(e, y, controls):
+        """Correlation of e and y after regressing both on the controls (with an intercept)."""
+        X = np.column_stack([np.ones_like(e)] + controls)
+        re = e - X @ np.linalg.lstsq(X, e, rcond=None)[0]
+        ry = y - X @ np.linalg.lstsq(X, y, rcond=None)[0]
+        return float(np.corrcoef(re, ry)[0, 1])
     cidx = torch.tensor(content)
     res = {"model": a.model, "n_prompts": len(prompts), "window": W, "layers": list(range(L)), "jlens": {}, "logit": {}}
     with torch.no_grad():
         H = torch.stack([torch.stack([o[0] for o in run_blocks(model, ids=torch.tensor([ids]))[0]]) for ids in prompts])   # [n, L, T, d]
         for name in ["jlens", "logit"]:
-            rows = {"past": [], "next": [], "future": [], "sd": []}
+            rows = {"past": [], "next": [], "future": [], "far": [], "far_partial": [], "next_partial": [], "sd": []}
             for l in range(L):
                 h = H[:, l, pos]
                 z = h @ Js[l].T if name == "jlens" else h
@@ -557,20 +580,88 @@ def stage_property(a):
                 rows["past"].append(float(np.corrcoef(e, past)[0, 1]))
                 rows["next"].append(float(np.corrcoef(e, nxt)[0, 1]))
                 rows["future"].append(float(np.corrcoef(e, fut)[0, 1]))
+                rows["far"].append(float(np.corrcoef(e, far)[0, 1]))
+                # residues 2..8 ahead, beyond what the residues already read and the next one explain
+                rows["far_partial"].append(partial_r(e, far, [past, nxt]))
+                rows["next_partial"].append(partial_r(e, nxt, [past]))
                 rows["sd"].append(float(e.std()))
             res[name] = rows
-        print("layer  J:past/next/future   logit:past/next/future", flush=True)
+        print("layer  J:past/next/future/far | partial next, far   logit: same", flush=True)
         for l in range(L):
             j, g = res["jlens"], res["logit"]
-            print(f"  {l:2d}   {j['past'][l]:.2f} {j['next'][l]:.2f} {j['future'][l]:.2f}    {g['past'][l]:.2f} {g['next'][l]:.2f} {g['future'][l]:.2f}", flush=True)
+            print(f"  {l:2d}   {j['past'][l]:.2f} {j['next'][l]:.2f} {j['future'][l]:.2f} {j['far'][l]:.2f} | {j['next_partial'][l]:.2f} {j['far_partial'][l]:.2f}"
+                  f"    {g['past'][l]:.2f} {g['next'][l]:.2f} {g['future'][l]:.2f} {g['far'][l]:.2f} | {g['next_partial'][l]:.2f} {g['far_partial'][l]:.2f}", flush=True)
     out = Path(a.work) / a.model / "property.json"
     json.dump(res, open(out, "w"), indent=1)
     print("property done", out, flush=True)
 
 
+# ----------------------------------------------------------------------------- evals (text)
+
+def stage_evals(a):
+    """Does the lens find known intermediates in a model this small? The authors' lens-quality
+    prompt sets (data/evaluations/ of their repository): for each item, the best rank over layers of
+    each intermediate word (any single-token form: with or without a leading space, capitalized or
+    not) at the readout position, for the J-lens and the logit lens. pass@k as in their README."""
+    assert a.model in ("text", "random")
+    from transformers import AutoTokenizer
+    model = load_model(a.model, a.models)
+    tok = AutoTokenizer.from_pretrained(os.path.join(a.models, MODEL_DIRS["text"]))
+    Js, _ = load_lens(a, model)
+    L = len(model.transformer.h)
+    res = {"model": a.model}
+    for name in ["multihop", "association", "typo", "poetry", "multilingual"]:
+        items = json.load(open(os.path.join(a.evals_dir, f"lens-eval-{name}.json")))["items"]
+        ranks = {"jlens": [], "logit": []}
+        n_skipped = 0
+        for it in items:
+            prompt = it["prompt"].rstrip(" ")
+            ids = [tok.eos_token_id] + tok(prompt)["input_ids"]
+            if name == "poetry":
+                nl = [i for i, t in enumerate(ids) if "\n" in tok.decode([t])]
+                pos = nl[-1]
+            else:
+                pos = len(ids) - 1
+            targets = []
+            for w in it["intermediates"]:
+                forms = {w, " " + w, w.capitalize(), " " + w.capitalize(), w.lower(), " " + w.lower()}
+                tids = {tok(f)["input_ids"][0] for f in forms if len(tok(f)["input_ids"]) == 1}
+                if tids:
+                    targets.append(sorted(tids))
+                else:
+                    n_skipped += 1
+            if not targets:
+                continue
+            with torch.no_grad():
+                outs, _ = run_blocks(model, ids=torch.tensor([ids]))
+                for lens_name in ["jlens", "logit"]:
+                    best = [10 ** 9] * len(targets)
+                    for l in range(L):
+                        h = outs[l][0, pos]
+                        z = Js[l] @ h if lens_name == "jlens" else h
+                        lg = unembed(model, z)
+                        order = torch.argsort(lg, descending=True)
+                        rank = torch.empty_like(order)
+                        rank[order] = torch.arange(len(order))
+                        for k, tids in enumerate(targets):
+                            best[k] = min(best[k], int(min(rank[t] for t in tids)) + 1)
+                    ranks[lens_name].append(best)
+        entry = {"n_items": len(ranks["jlens"]), "n_words_skipped": n_skipped}
+        for lens_name in ["jlens", "logit"]:
+            flat = [r for item in ranks[lens_name] for r in item]
+            entry[lens_name] = {f"pass@{k}": float(np.mean([r <= k for r in flat])) for k in [1, 10, 25, 100, 1000]}
+            entry[lens_name]["median_rank"] = float(np.median(flat))
+        res[name] = entry
+        print(name, json.dumps(entry), flush=True)
+    out = Path(a.work) / a.model / "evals.json"
+    json.dump(res, open(out, "w"), indent=1)
+    print("evals done", out, flush=True)
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("stage", choices=["fit", "readout", "geometry", "ignition", "property"])
+    ap.add_argument("stage", choices=["fit", "readout", "geometry", "ignition", "property", "evals"])
+    ap.add_argument("--evals-dir", default="/home/user/jdata/evaluations")
     ap.add_argument("--model", required=True, choices=list(MODEL_DIRS))
     ap.add_argument("--models", default="/home/user/models")
     ap.add_argument("--data", default="/home/user/jdata")
@@ -580,9 +671,11 @@ def main():
     ap.add_argument("--n-subsets", type=int, default=50)
     ap.add_argument("--dim-batch", type=int, default=32)
     ap.add_argument("--ignition-json", default="/home/user/jdata/ignition.json")
+    ap.add_argument("--ignition-design", choices=["countries", "sequence"], default="countries",
+                    help="text and random only: the authors' country blends, or the protein design (one token of a real passage blended with another frequent token)")
     a = ap.parse_args()
     {"fit": stage_fit, "readout": stage_readout, "geometry": stage_geometry, "ignition": stage_ignition,
-     "property": stage_property}[a.stage](a)
+     "property": stage_property, "evals": stage_evals}[a.stage](a)
 
 
 if __name__ == "__main__":

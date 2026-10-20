@@ -1,5 +1,5 @@
 """Tables for session 20's workspace test (tools/jlens_compare.py): reads each model's readout,
-geometry, ignition and property results from the work directory, prints them side by side, and
+geometry, ignition (both designs), property and eval results from the work directory, prints them side by side, and
 writes one combined JSON (notes/data/jlens-compare-session20.json).
 
 Usage: python3 tools/jlens_compare_summary.py [--work DIR] [--out FILE]
@@ -26,7 +26,7 @@ def main():
     a = ap.parse_args()
     out = {}
     for m in MODELS:
-        out[m] = {s: load(a.work, m, s) for s in ["readout", "geometry", "ignition", "property"]}
+        out[m] = {s: load(a.work, m, s) for s in ["readout", "geometry", "ignition", "ignition_sequence", "property", "evals"]}
         if out[m]["readout"]:
             out[m]["readout"].pop("examples_full", None)
     L = 12
@@ -67,12 +67,28 @@ def main():
             print("ignition max slope     " + row(ig["max_slope"]))
             print("ignition near endpoint " + row(ig["near_endpoint"]))
             print("ignition bimodal @0.5  " + row(ig["bimodality_mid"]))
+        igs = out[m]["ignition_sequence"]
+        if igs:
+            print("seq-design max slope   " + row(igs["max_slope"]))
+            print("seq-design near endpt  " + row(igs["near_endpoint"]))
+            print("seq-design bimodal     " + row(igs["bimodality_mid"]))
         p = out[m]["property"]
         if p:
-            for k in ["past", "next", "future"]:
-                print(f"J hydrophobicity r {k:6s}" + row(p["jlens"][k]))
-            for k in ["past", "next", "future"]:
-                print(f"logit hydroph. r {k:6s}  " + row(p["logit"][k]))
+            for k in ["past", "next", "future", "far", "next_partial", "far_partial"]:
+                if k in p["jlens"]:
+                    print(f"J hydroph. r {k:12s}" + row(p["jlens"][k]))
+            for k in ["past", "next", "future", "far", "next_partial", "far_partial"]:
+                if k in p["logit"]:
+                    print(f"logit hydr. r {k:11s}" + row(p["logit"][k]))
+        ev = out[m]["evals"]
+        if ev:
+            print("eval set       pass@1 J/logit   pass@25 J/logit   pass@100 J/logit   median rank J/logit")
+            for name, v in ev.items():
+                if not isinstance(v, dict):
+                    continue
+                j, lg = v["jlens"], v["logit"]
+                print(f"  {name:12s} {j['pass@1']:6.3f}/{lg['pass@1']:5.3f}    {j['pass@25']:6.3f}/{lg['pass@25']:5.3f}"
+                      f"     {j['pass@100']:6.3f}/{lg['pass@100']:5.3f}      {j['median_rank']:7.1f}/{lg['median_rank']:7.1f}")
     Path(a.out).parent.mkdir(parents=True, exist_ok=True)
     json.dump(out, open(a.out, "w"), indent=1)
     print("\nwrote", a.out)

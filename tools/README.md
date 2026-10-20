@@ -189,3 +189,27 @@ Recomputes section 2.7.3 of Cirrincione's *Mathematical Theory of the Transforme
 curl -L https://huggingface.co/google-bert/bert-base-uncased/resolve/main/model.safetensors -o model.safetensors
 python3 tools/bert_asymmetry_check.py model.safetensors notes/data/bert-asymmetry-session19.json
 ```
+
+## `jlens_compare.py`, `jlens_compare_summary.py`: the workspace test on a model that doesn't talk (session 20)
+
+Runs the structural measurements of Gurnee, Sofroniew et al.'s workspace study (arXiv:2607.15495) on three GPT-2-small models that differ only in training data: OpenAI's GPT-2 (English), RIKEN's MolCrawl protein GPT-2 small (UniProt sequences), and GPT-2's architecture with fresh weights. Fits the Jacobian lens with the estimator of the authors' reference code ([anthropics/jacobian-lens](https://github.com/anthropics/jacobian-lens), `jlens/fitting.py`), then measures the band, persistence, geometry, MLP gain, ignition, the authors' lens evals (text) and a hydrophobicity readout (protein). Method and results: [notes/jlens-compare-2026.md](../notes/jlens-compare-2026.md); essay [020](../essays/020-what-a-protein-model-is-poised-to-say.md).
+
+```sh
+python3 -m pip install transformers sentencepiece pandas pyarrow huggingface_hub
+M=/home/user/models; D=/home/user/jdata; W=/home/user/jwork
+hf download openai-community/gpt2 config.json model.safetensors tokenizer.json vocab.json merges.txt --local-dir $M/gpt2
+hf download kojima-lab/molcrawl-protein-sequence-gpt2-small --local-dir $M/molcrawl-protein-sequence-gpt2-small
+curl -L https://huggingface.co/datasets/NeelNanda/pile-10k/resolve/main/data/train-00000-of-00001-4746b8785c874cc7.parquet -o $D/pile10k.parquet
+for org in 9606 83333 559292 3702 2157 10239 7227 6239; do      # reviewed UniProt, 120 per taxon
+  curl -s "https://rest.uniprot.org/uniprotkb/search?query=reviewed:true+AND+length:%5B200+TO+600%5D+AND+taxonomy_id:$org&format=fasta&size=120" -o $D/prot_$org.fasta
+done; cat $D/prot_*.fasta > $D/proteins.fasta
+git clone https://github.com/anthropics/jacobian-lens /tmp/jlens && cp /tmp/jlens/data/experiments/ignition.json $D/ && cp -r /tmp/jlens/data/evaluations $D/
+for m in text protein; do python3 tools/jlens_compare.py fit --model $m --n-prompts 40 --dim-batch 48; done
+python3 tools/jlens_compare.py fit --model random --n-prompts 24 --dim-batch 48
+for s in readout evals geometry ignition; do python3 tools/jlens_compare.py $s --model text --n-prompts 40; done
+for s in readout property geometry ignition; do python3 tools/jlens_compare.py $s --model protein --n-prompts 40; done
+for s in readout evals geometry ignition; do python3 tools/jlens_compare.py $s --model random --n-prompts 24; done
+python3 tools/jlens_compare_summary.py --work $W --out notes/data/jlens-compare-session20.json
+```
+
+Defaults: `--work /home/user/jwork --models /home/user/models --data /home/user/jdata`. On 4 CPU cores a fit takes about 65 s per 128-token prompt (768 backward passes; `--dim-batch 48` keeps memory near 3 GB) and checkpoints after every prompt, so it can be resumed; the other stages take 1 to 5 minutes each. **Never run anything model-sized next to a fit**: a test run alongside slowed it about sevenfold. The `dna` option (MolCrawl's genome GPT-2 small, segments of GRCh38 from the Ensembl REST API) is supported but was left out: that model predicts no better than token frequencies on random genome segments. The authors' order-of-operations eval set was not used.

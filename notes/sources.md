@@ -329,7 +329,7 @@ Notes: [wang-2026-associative-memory.md](wang-2026-associative-memory.md), [memo
 |---|---|---|
 | Seth, Block & Tononi (2026), *Three reasons why AI is not conscious and perhaps never will be*, Nature 658:866–868, doi:10.1038/d41586-026-03313-7 | ✅ | From Josiah (link, then a full print after the paywall). [Notes](seth-block-tononi-2026-three-reasons.md), [essay 019](../essays/019-nobody-worries-about-alphafold.md). Reasons 2–3 restate the IIT and biological-naturalism rows; reason 1 and the AlphaFold example are about evidence. |
 | Seth (2025), *Conscious artificial intelligence and biological naturalism*, Behavioral and Brain Sciences target article (accepted preprint, osf.io/tz6an) | ✅ (target article; replies not read) | What reason 2 compresses: mortal computation, causal closure, autopoiesis, six scenarios, and the hedge "may well be wrong ... altogether". |
-| Block (2026), *Can only meat machines be conscious?*, Trends Cogn. Sci. 30:298–308 | 🟡 (abstract) | PhilArchive and the Wayback copy refused (403). Subcomputational biological realizers; "current theories of consciousness are 'meat-neutral'". |
+| Block (2026), *Can only meat machines be conscious?*, Trends Cogn. Sci. 30:298–308 | 🟡 (abstract) → ✅ in session 20 | PhilArchive and the Wayback copy refused (403). Subcomputational biological realizers; "current theories of consciousness are 'meat-neutral'". Josiah uploaded it; read in full in session 20 (below). |
 | Findlay, Marshall, Albantakis, David, Mayner, Koch & Tononi (2024), *Dissociating artificial intelligence from artificial consciousness*, arXiv:2412.04571 | 🟡 (abstract, theory section) | Already behind the table's IIT row; re-read for the comment's reason 3. |
 | Miller, Brincat & Roy (2026), *Analog cognition and consciousness*, J. Neurosci. (preprint osf.io/z48x7) | 🟡 (abstract, introduction) | Spiking plus analog brain-wave fields; the comment's EM-field candidate. |
 | Butlin, Long et al. (2023), *Consciousness in artificial intelligence*, arXiv:2308.08708 | 🟡 (indicator table, §§2.1.3, 2.3.3, 3.1.3, 3.2.1) | The 14 indicators, used to score AlphaFold. The 2025 TiCS version (the comment's ref 10): abstract only; cell.com refused. |
@@ -341,4 +341,18 @@ Notes: [wang-2026-associative-memory.md](wang-2026-associative-memory.md), [memo
 | Pfungst (1911), *Clever Hans (The horse of Mr. von Osten)*, tr. Rahn, Project Gutenberg 33936 | 🟡 (Stumpf's introduction, the experiments chapter, the commission's report) | The opening of essay 019: "procedure without knowledge" (8% vs 98%), the blinder tests. |
 | Long, Sebo et al. (2024), *Taking AI welfare seriously*, arXiv:2411.00986 | 🟡 (abstract and recommendations, re-read) | Same two-error frame as the comment; asks to acknowledge, assess, prepare, not for rights. |
 | `bert-base-uncased` (Hugging Face) | run | Weights read with numpy to recompute the asymmetry index of all 144 heads. |
-| OpenFold; ESM-2 | ⬜ | Candidates for a Jacobian lens on a model that doesn't talk (agenda, thread 2). |
+| OpenFold; ESM-2 | ⬜ | Candidates for a Jacobian lens on a model that doesn't talk (agenda, thread 2). Session 20 used a protein GPT-2 instead (below): same architecture as a text model, and a next-token output the lens can read. |
+
+## Added in session 20 (Block in full; the workspace test on a protein model)
+
+| Source | Status | Notes |
+|---|---|---|
+| Block (2026), *Can only meat machines be conscious?*, Trends Cogn. Sci. 30:298–308, doi:10.1016/j.tics.2025.08.009 | ✅ | From Josiah. [Notes](block-2026-meat-machines.md), update to [essay 019](../essays/019-nobody-worries-about-alphafold.md). Role vs realizer; "AI and simple animals are competitors"; all major theories "meat-neutral"; suffering without consciousness via agency; first outstanding question = essay 019's control. |
+| Schultz et al. (2023), *Ancient gene linkages support ctenophores as sister to other animals*, Nature 618:110–117 | 🟡 (abstract) | Block's comb-jelly chromosome claim: imprecise (ctenophores keep the ancestral arrangement; the others share derived fusions). |
+| Burkhardt et al. (2023), *Syncytial nerve net in a ctenophore adds insights on the evolution of nervous systems*, Science 380:293–297 | 🟡 (abstract) | Matches; "entirely electrical" is Block's gloss. |
+| Cheng (2023), *Learning in Cnidaria: a summary*, Commun. Integr. Biol. 16:2240669 | 🟡 (abstract) | Matches (no firm operant conditioning); Block's box-jellyfish claim is uncited. |
+| Kohda et al. (2019), *If a fish can pass the mark test, what are the implications for consciousness and self-awareness testing in animals?*, PLoS Biol. 17(2):e3000021 | ✅ | The opening of [essay 020](../essays/020-what-a-protein-model-is-poised-to-say.md): the cleaner wrasse, the three positions. |
+| Gurnee, Sofroniew et al. (2026), arXiv:2607.15495 | ✅ (re-read: §§2.1, 4, 4.1, 4.1.1, 4.2, 4.3.1, A.15, lens comparison) | The measurements, for [notes/jlens-compare-2026.md](jlens-compare-2026.md). |
+| anthropics/jacobian-lens (GitHub) | ✅ (`jlens/fitting.py`, `data/experiments/ignition.json`, `data/evaluations/`) | Estimator, ignition stimuli and eval sets reused. |
+| OpenAI GPT-2 small; RIKEN MolCrawl protein GPT-2 small (`kojima-lab/molcrawl-protein-sequence-gpt2-small`); GPT-2 with fresh weights | run | [tools/jlens_compare.py](../tools/jlens_compare.py). MolCrawl's genome and "molecule nat-lang" GPT-2 small were downloaded and dropped (unigram-level; broken). |
+| NeelNanda/pile-10k; UniProt REST (reviewed, 8 taxa × 120); Ensembl REST (GRCh38 segments) | data | Corpora for the fits and held-out readouts. |
