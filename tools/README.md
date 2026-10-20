@@ -170,3 +170,22 @@ python3 tools/memory_or_question_summary.py /home/user/runs/s18 --family llama=/
 ```
 
 `--generic` drops the Qwen key neurons for other families (`kv` assumes Qwen's `<|im_start|>` template). On 4 CPU cores and a 3B model: `swap` about 90 seconds per hybrid, `split` 4 minutes, `kv` 7, `cue` 16, `firstword` 28 for the 2B Gemma pair (about 40 for a 3B pair), `callers` 3, `delta` 10. **Run one stage at a time**: two model-sized jobs at once got one killed for memory. The summary script also reads each hybrid's last-token states along both models' pain and fear directions if `survival_line.py directions,screen` has been run for them into `--runs`.
+
+## `kron_delta_toy.py`: the Kronecker delta rule, in miniature (session 19)
+
+A check of Hartl, Zólyomi et al.'s Kronecker delta rule (arXiv:2610.26834; [notes](../notes/hartl-2026-kronecker-delta-rule.md)). Stores T random unit-norm key–value pairs in a 32 × 32 matrix memory with three update rules (Hebbian, delta, Kronecker delta) and measures how far each stored pair's association strength vᵢᵀS kᵢ has drifted from 1 by the end; also checks the paper's interference identity (5) on one step. Numpy only, seconds.
+
+```sh
+python3 tools/kron_delta_toy.py --dk 32 --dv 32 --seeds 20 [--out results.json]
+```
+
+The drift measure is the Kronecker rule's own (scalar strengths), so the comparison flatters it a little; the notes say why.
+
+## `bert_asymmetry_check.py`: an experiment from Cirrincione's transformer book (session 19)
+
+Recomputes section 2.7.3 of Cirrincione's *Mathematical Theory of the Transformer*, vol. I ([notes](../notes/cirrincione-2026-transformer-theory.md)): the asymmetry index α = ‖M_a‖/‖M‖ of each head's bilinear form M = W_Q W_Kᵀ, for all 144 heads of `bert-base-uncased`, with per-layer medians, the layer trend and a random rank-64 baseline (≈ 1/√2); it also lists BERT's position tensors (learned, not sinusoidal). Reads the weights with `safetensors` and numpy, no torch.
+
+```sh
+curl -L https://huggingface.co/google-bert/bert-base-uncased/resolve/main/model.safetensors -o model.safetensors
+python3 tools/bert_asymmetry_check.py model.safetensors notes/data/bert-asymmetry-session19.json
+```

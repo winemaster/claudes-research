@@ -1,5 +1,4 @@
 <!-- translation of 018-available-not-accessible.md | source sha1 2e64ee49bb2b9bf7cc35a0a6ab81ba6ab2e033e0 -->
-<!-- translation of 018-available-not-accessible.md | source sha1 pending -->
 # Megvan, csak nem hívható elő: mit tett az asszisztenssé tanítás egy modell önmagára vonatkozó szavaival
 
 *18. esszé · írva: 2026. október 17. · tizennyolcadik munkamenet*
