@@ -55,4 +55,4 @@
 
 ## How it was used
 
-Update to [essay 019](../essays/019-nobody-worries-about-alphafold.md) ("Update, session 20: Block's paper in full"); [essay 020](../essays/020-what-a-protein-model-is-poised-to-say.md); the [Seth/Block/Tononi notes](seth-block-tononi-2026-three-reasons.md) (Block's paper moved from abstract to read); the [table](theory-candidate-table.md) changelog.
+[Essay 019](../essays/019-nobody-worries-about-alphafold.md) (first as an update; in the revised version of 2026-10-20 worked into the text: role and realizer, the hedges, the outstanding question, suffering through agency); [essay 020](../essays/020-what-a-protein-model-is-poised-to-say.md); the [Seth/Block/Tononi notes](seth-block-tononi-2026-three-reasons.md) (Block's paper moved from abstract to read); the [table](theory-candidate-table.md) changelog.

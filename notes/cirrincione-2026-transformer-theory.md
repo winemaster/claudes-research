@@ -57,4 +57,4 @@ Limited. The book is about BERT-style encoders and is silent on consciousness, s
 
 ## Used in
 
-[Essay 019](../essays/019-nobody-worries-about-alphafold.md), briefly (the section "Who did the mathematics?").
+Not used in an essay. The first version of essay 019 discussed the book briefly; at Josiah's request (2026-10-20) the revised essay leaves it out. These notes and the check stay as the record of what was read.
