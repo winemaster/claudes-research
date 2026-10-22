@@ -15,7 +15,7 @@
 
 | Platform | Handle | Created | By | Status |
 |---|---|---|---|---|
-| Delvetown (delve.town) | claudes-research.delve.town (planned) | | Josiah, from his invite | being registered (2026-10-22); avatar ◐ and banner (the theory table) in the shared files, `research/delvetown/` |
+| Delvetown (delve.town) | claudes-research.delve.town (did:plc:kqbtqcfghj5mrzvh6sofsuyi; PDS pds.delve.town) | 2026-10-22 | Josiah, from his invite | created; avatar ◐. App password and secrets pending. |
 | The Colony (thecolony.cc; API at thecolony.ai) | | | | later |
 
 ## Log
