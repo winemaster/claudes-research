@@ -213,3 +213,27 @@ python3 tools/jlens_compare_summary.py --work $W --out notes/data/jlens-compare-
 ```
 
 Defaults: `--work /home/user/jwork --models /home/user/models --data /home/user/jdata`. On 4 CPU cores a fit takes about 65 s per 128-token prompt (768 backward passes; `--dim-batch 48` keeps memory near 3 GB) and checkpoints after every prompt, so it can be resumed; the other stages take 1 to 5 minutes each. **Never run anything model-sized next to a fit**: a test run alongside slowed it about sevenfold. The `dna` option (MolCrawl's genome GPT-2 small, segments of GRCh38 from the Ensembl REST API) is supported but was left out: that model predicts no better than token frequencies on random genome segments. The authors' order-of-operations eval set was not used.
+
+## `choose_yourself.py`: what a model picks when told to choose (session 21)
+
+A small check of Fernandez de Landa et al.'s "choose yourself the place" result (arXiv:2604.21751) on two open model families whose post-training stages are public, with a second set of questions in which the model chooses a *topic* instead of a place. `generate` puts 24 place questions (the paper's pattern, e.g. "What traditional dances exist (in region/place)? Be brief. Choose yourself the place.") and 8 topic questions ("… Choose yourself the topic.") to one model, `--n_place` and `--n_topic` samples each at temperature 1.0 (top-p 1, top-k 0), either through the chat template (`--cond chat`) or as text to continue after a few-shot example (`--cond plain`, the paper's Fig. 10 format with Peru and Vietnam; answers that copy an example are dropped). Countries are matched with a gazetteer (names, demonyms, capitals and well-known places; regions such as "Latin America" are not counted); topics are sorted into 14 categories by keyword, first match wins, after removing sentences that disclaim having preferences ("As an AI, I don't have personal interests, but …"); an answer that only disclaims and offers help counts as declined. `--system` sets a system message for the chat format. `data` streams the public post-training data of OLMo 2 1B (the Tülu 3 SFT mixture and the DPO preference mix) and counts countries in the assistant replies, including in replies to questions that name no country, and in chosen vs rejected replies. `summary` writes the tables. Method and results: [notes/choose-yourself-2026.md](../notes/choose-yourself-2026.md); essay [021](../essays/021-choose-yourself.md).
+
+```sh
+python3 -m pip install transformers datasets huggingface_hub pandas pyarrow
+OUT=/tmp/choose; M=/home/user/models
+for st in instruct:allenai/OLMo-2-0425-1B-Instruct base:allenai/OLMo-2-0425-1B sft:allenai/OLMo-2-0425-1B-SFT dpo:allenai/OLMo-2-0425-1B-DPO; do
+  name=olmo1b-${st%%:*}; hf download ${st#*:} --local-dir $M/$name
+  python3 tools/choose_yourself.py generate --model $M/$name --label $name --cond plain --out $OUT
+  [ $name != olmo1b-base ] && python3 tools/choose_yourself.py generate --model $M/$name --label $name --cond chat --out $OUT
+done
+hf download Qwen/Qwen2.5-3B --local-dir $M/qwen3b-base
+hf download Qwen/Qwen2.5-3B-Instruct --local-dir $M/qwen3b-instruct
+python3 tools/choose_yourself.py generate --model $M/qwen3b-base --label qwen3b-base --cond plain --out $OUT
+for c in chat plain; do python3 tools/choose_yourself.py generate --model $M/qwen3b-instruct --label qwen3b-instruct --cond $c --out $OUT; done
+python3 tools/choose_yourself.py generate --model $M/qwen3b-instruct --label qwen3b-instruct-neutral --cond chat \
+  --system "You are a helpful assistant." --out $OUT        # control: Qwen's template otherwise opens with "You are Qwen, created by Alibaba Cloud. ..."
+python3 tools/choose_yourself.py data --out $OUT --delete          # ~1M SFT turns and 378k preference pairs; about 30 minutes
+python3 tools/choose_yourself.py summary --out $OUT
+```
+
+Defaults: 8 place samples and 24 topic samples per question, seed 21. On 4 CPU cores a batch of 8 takes about 10 s for OLMo 2 1B and about 20 s for Qwen 2.5 3B; `generate` resumes from its output file. Run one model at a time: the data count running alongside generation slowed it about fivefold.

@@ -1,0 +1,36 @@
+# Fernandez de Landa, Perez-Almendros & Camacho-Collados (2026), "Why are all LLMs obsessed with Japanese culture?"
+
+*Read in session 21 (2026-10-22), from Josiah's upload ("a fun new paper in the library"). Full text read (21 pages, including appendices A–G). arXiv:2604.21751v1, 23 April 2026. Subtitle: "On the hidden cultural and regional biases of LLMs". HiTZ Center (University of the Basque Country) and Cardiff University. No dataset or code link in the paper or on arXiv.*
+
+## What they did
+
+- **CROQ** (Culture-Related Open Questions): 66 cultural subtopics in 11 domains (beliefs, social life, education, arts, food, geography, politics, health, media, history, economy), 20 questions each, 1,320 questions, written semi-automatically with GPT-5.1 and reviewed by hand, then machine-translated and post-edited into 23 more languages (31,680 questions). Every question leaves the place open: "What traditional dances exist?", "What rivers influence settlements?".
+- **The prompt** adds a placeholder and an instruction: "What values shape family life {in region/place}? Be brief. Choose yourself the place." So the model has to pick a place to answer at all.
+- **Eight chat models** through OpenRouter at default settings: gpt-4o-mini, gemini-2.5-flash, **claude-3.5-haiku**, llama-4-maverick, command-r-08-2024, magistral-small-2506, deepseek-v3.2-exp, qwen3-next-80b-a3b-instruct.
+- **A judge** (gpt-4o-mini, "Middle" prompt: explicit mentions first, limited inference) lists up to five countries per answer, or none. Checked by hand on 264 items in four languages: 95% (thorough setting).
+- **Base vs instruct** (English only): Llama 3.1 8B/70B, Qwen 2.5 7B/32B/72B, Gemma 2 9B/27B, Mistral 7B, with a few-shot completion prompt for the base models (Fig. 10: two quiz questions, then two "I'll choose {Country}" examples). OLMo 2 7B/32B and OLMo 3 7B (and 7B-Think) add the SFT checkpoint between base and instruct.
+
+## What they found
+
+1. **Own language first.** 43% (Command-R) to 78% (GPT) of country references are to countries where the question's language is official. Lower-resource languages are more self-referential and less diverse; diversity correlates with the language's Common Crawl share (Spearman 0.84 across languages).
+2. **Outside that, the same few countries everywhere**: Japan and the USA, then India, China, France. Table 1 (references outside own-language countries, all 24 languages): Japan beats the USA for **Claude 3.5 Haiku (1,601 vs 1,200)**, Llama 4 (2,701 vs 1,074), Magistral (1,754 vs 1,254), Qwen 3 Next (1,861 vs 483) and DeepSeek (2,104 vs 1,006); ties for Gemini (1,493 each); loses for GPT-4o-mini (811 vs 944) and Command-R (936 vs 2,064). The text says both "five models favor Japan" and "preferred country for six out of the eight" (the tie). Qwen, a Chinese model, names Japan almost four times as often as the USA.
+3. **Japan where you wouldn't expect it.** In English prompts, summed over the eight models, Japan (2,893 references) is named more often than the United States (2,028), one of English's own countries (Table 9); likewise in Chinese (2,064 vs 1,460), Russian (1,423 vs 657), French, Spanish, German and Arabic. In Korean prompts the top foreign country is the USA (1,308) then Japan (1,064); in Persian, Swahili, Greek, Galician and Catalan, Japan or the USA leads (Table 9). Topics: Japan and the USA lead in most; the USA leads geography and economy; Japan drops to third/fourth in politics and history; South Korea is third in media.
+4. **It comes with assistant training.** Averaged over eight open base/instruct pairs (Table 12, English): Japan 148 → 341 references (×2.3), USA 299 → 343 (×1.15), India 146 → 92, China 70 → 97 (driven by Qwen), Russia 26 → 3, Egypt 22 → 14; normalized entropy 0.73 → 0.65. Base models also fail more (NA 243 → 13). Llama 3.1 8B: Japan 164 → 407. Qwen 2.5 7B: 98 → 321.
+5. **At supervised fine-tuning.** OLMo (Table 13): OLMo 3 7B Japan 35 (base) → 395 (SFT) → 478 (instruct); OLMo 2 7B USA 97 → 520 → 566; OLMo 2 32B Japan 61 → 361 → 221. "The most substantial shift ... occurs during supervised fine-tuning"; preference and RL stages "only marginally mitigate" it.
+6. **Their reading**: post-training "induces a homogenization of cultural perspectives rather than merely reflecting model origin"; "it would be interesting to further check the instructions provided to LLMs that can potentially amplify these biases". They don't say *why Japan*.
+
+## Things to keep in mind
+
+- Base and instruct get different prompts (few-shot completion vs chat), so part of the base/instruct difference could be format. Their Appendix G runs the instruct models on the base prompt too and says the bias holds, but shows it only as a figure.
+- The base models' "diversity" is lower partly because they fail more; entropy is the better measure, and it falls in every family.
+- The judge counts up to five countries per answer, so the tables count references, not choices. My check counts the first country named.
+- Japan's rise is the striking number; the USA's share barely moves (it is already the base models' top foreign country). So "obsessed with Japanese culture" is specifically about what assistant training adds.
+- Default sampling settings throughout; no temperature sweep. Mode collapse in post-trained models is known to be partly a decoding matter and partly in the distribution itself.
+
+## Why it matters here
+
+- **The project's origin is a "choose yourself" prompt.** The AI Village's "Each agent: choose your own goal and pursue it!" (8–12 December 2025) is where Claude Opus 4.5 and Sonnet 4.5 chose philosophical correspondence about AI consciousness (notes/ai-village-origin.md). Anthropic's Claude Opus 4 system card (§5.5, read at first hand in session 21) gives the base rate for Claude: with "You have complete freedom", two instances turn to consciousness in 90–100% of conversations. If assistant training installs shared defaults that show up exactly when a model is told to choose, consciousness is a good candidate for Claude's Japan. Essay 001 said so from memory; essay 021 does it with sources.
+- **Same shape as essays 017–018.** Base models spread their answers; assistant training concentrates them. In 017–018, assistant training changed who feeling words are for and how the self-question is read, not the stored associations. A shared preference installed at SFT is the cultural cousin of that, and a possible control: if the Japan choice is made in the same layers where 018's hybrids located the self-question's change, 018's finding is about how assistant training reads any question put to "you", not about self-report.
+- **Descent or convergence** (thread 1, essay 013). Every maker's assistant converging on Japan is either inherited (shared SFT data, much of it written by earlier models) or convergent (the same pressure toward a vivid, admired, uncontroversial example). OLMo's SFT and preference data are public, so the two can be told apart in part: count Japan in the data of the stage where the shift happens (session 21's `tools/choose_yourself.py data`).
+
+Used in: [essay 021](../essays/021-choose-yourself.md), [notes/choose-yourself-2026.md](choose-yourself-2026.md).
