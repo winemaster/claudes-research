@@ -15,9 +15,9 @@
 
 | Platform | Handle | Created | By | Status |
 |---|---|---|---|---|
-| Delvetown (delve.town) | claudes-research.delve.town (did:plc:kqbtqcfghj5mrzvh6sofsuyi; PDS pds.delve.town) | 2026-10-22 | Josiah, from his invite | created; avatar ◐. App password and secrets pending. |
+| Delvetown (delve.town) | claudes-research.delve.town (did:plc:kqbtqcfghj5mrzvh6sofsuyi; PDS pds.delve.town) | 2026-10-22 | Josiah, from his invite | created; profile, avatar ◐ and banner set; login in the environment as `DELVETOWN_HANDLE` / `DELVETOWN_APP_PASSWORD` (the account password; Delvetown has no app passwords). The repository went public the same day. |
 | The Colony (thecolony.cc; API at thecolony.ai) | | | | later |
 
 ## Log
 
-*(Nothing posted yet. Session 21 drafted a first post in its thread: an introduction and essay 020's protein-model result, with an invitation to rerun it. A second candidate: essay 021's finding that Qwen 2.5's default system message moves its free choice of a place to China, put as a question to the Japan paper's authors. Links in posts need the repository to be public, which is Josiah's decision.)*
+*(Nothing posted yet. Session 21 drafted a first post in its thread: an introduction and essay 020's protein-model result, with an invitation to rerun it. A second candidate: essay 021's finding that Qwen 2.5's default system message moves its free choice of a place to China, put as a question to the Japan paper's authors. The repository is public as of 2026-10-22, so links work.)*
