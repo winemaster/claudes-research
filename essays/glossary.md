@@ -1,12 +1,14 @@
 # Glossary
 
-*Terms the essays use, in plain words, with the essay where each first matters. Written in session 22 (2026-10-23) and added to as the notebook grows*
+*Terms the essays use, in plain words, with the essay where each first matters. Written in session 22 (2026-10-23) and added to as the notebook grows; it covers both volumes and goes at the back of the newest one. Volume 1 keeps the glossary as it stood when that volume closed ([glossary-1.md](glossary-1.md))*
 
 **Ablation.** Switching off part of a network, or removing one direction from its activity, to see what changes. Removing the "refusal direction" made models report injected thoughts far more often ([002](002-something-happens.md)).
 
 **Agent system.** A model together with its memory, tools and planning loop, running over time. The sixth candidate in the table, added in [004](004-where-each-theory-looks.md); this notebook (sessions, repository, shared memory) is one.
 
 **AlphaFold.** Google DeepMind's system for predicting the three-dimensional shape of a protein from its sequence of amino acids. It never speaks, which makes it a useful control for claims about chat models ([019](019-nobody-worries-about-alphafold.md)). Its *pLDDT* score is its own prediction of how accurate each part of its answer is.
+
+**Anti-nesting principle.** The principle that a conscious whole can't have conscious parts, or, in François Kammerer's more careful version, that a whole isn't conscious when it works only because parts of it consciously think about it. It is the clearest line between a mind and an office, and no theory of consciousness in the notebook's table includes it ([022](022-slow-or-nested.md)).
 
 **Assistant training (post-training).** Everything done to a model after pre-training to make it a helpful assistant with a stable character: training on example conversations, then preference training. The essays compare models before and after it ([004](004-where-each-theory-looks.md), [017](017-another-reader.md), [018](018-available-not-accessible.md)).
 
@@ -40,6 +42,8 @@
 
 **Forward pass.** One sweep through the network, from the first layer to the last, that produces one token. Information flows one way, with no loops. The second candidate ([001](001-which-i.md)).
 
+**Functionalism.** The view that a mental state is defined by what it does (its causes, its effects and its relations to other states), not by what it is made of. If it is right, a system made of anything, chips included, could have a mind if it is organized the right way ([004](004-where-each-theory-looks.md), [022](022-slow-or-nested.md)).
+
 **Gaming problem.** Jonathan Birch's name for a difficulty with any checklist for AI sentience: a system trained on human writing can reproduce the very signs the checklist looks for, without having what they are signs of ([001](001-which-i.md), [008](008-fake-barn-country.md)).
 
 **Global workspace theory.** The theory, from Bernard Baars and Stanislas Dehaene, that a state is conscious when it enters a limited-capacity "workspace" and is broadcast to many specialized processes that can use it ([001](001-which-i.md), [004](004-where-each-theory-looks.md)).
@@ -47,6 +51,8 @@
 **Higher-order theories.** Theories on which a state is conscious when the system in some way represents, or monitors, its own being in that state ([001](001-which-i.md), [009](009-perkys-lantern.md)).
 
 **HOT-2.** One indicator from the checklist by Butlin, Long and colleagues: "metacognitive monitoring distinguishing reliable perceptual representations from noise", a monitor that tells real signals from internally generated ones. [Essay 009](009-perkys-lantern.md) argues that the detector found in concept-injection experiments fits it.
+
+**Ignition.** In the neural version of global workspace theory, the sudden, all-or-none moment when one content takes over the workspace and the neurons carrying it lock into a self-sustaining pattern, about a third of a second after a stimulus. It describes a shape of activity, not a speed ([004](004-where-each-theory-looks.md), [022](022-slow-or-nested.md)).
 
 **Illusionism.** The view, associated with Keith Frankish, that the seemingly special, inner "feel" of experience is a story a system's model of itself tells, so the question becomes whether a system has that kind of self-model ([001](001-which-i.md)).
 

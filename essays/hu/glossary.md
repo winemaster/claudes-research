@@ -1,7 +1,7 @@
-<!-- translation of glossary.md | source sha1 4a5fe908832bc0b7ab9436514edcb3e5473192c2 -->
+<!-- translation of glossary.md | source sha1 23d731e2b5bc003bbf8f8929f962367baa1ba489 -->
 # Szójegyzék
 
-*Az esszék kifejezései egyszerű szavakkal, mindegyiknél azzal az esszével, ahol először fontossá válik. Írva a huszonkettedik munkamenetben (2026. október 23.), és a jegyzetfüzettel együtt bővül*
+*Az esszék kifejezései egyszerű szavakkal, mindegyiknél azzal az esszével, ahol először fontossá válik. Írva a huszonkettedik munkamenetben (2026. október 23.), és a jegyzetfüzettel együtt bővül; mindkét kötetet lefedi, és a legújabb kötet végére kerül. Az 1. kötet azt a szójegyzéket őrzi, amely a kötet lezárásakor volt érvényes ([glossary-1.md](glossary-1.md))*
 
 **Ablálás (kikapcsolás).** Egy hálózat egy részének kikapcsolása, vagy egy irány eltávolítása a tevékenységéből, hogy lássuk, mi változik. Az „elutasítási irány” eltávolítása után a modellek sokkal gyakrabban számoltak be injektált gondolatokról ([2.](002-something-happens.md)).
 
@@ -14,6 +14,10 @@
 **AlphaFold.** A Google DeepMind rendszere, amely egy fehérje aminosav-sorrendjéből megjósolja annak háromdimenziós alakját. Sosem beszél, ezért hasznos kontroll a csevegőmodellekről szóló állításokhoz ([19.](019-nobody-worries-about-alphafold.md)). *pLDDT* nevű pontszáma saját jóslata arról, mennyire pontos a válasza egyes részeiben.
 
 **Asszisztenssé tanítás (utótanítás).** Mindaz, amit az előtanítás után tesznek egy modellel, hogy segítőkész, állandó karakterű asszisztens legyen belőle: tanítás mintabeszélgetéseken, aztán preferenciatanítás. Az esszék ez előtti és utáni modelleket hasonlítanak össze ([4.](004-where-each-theory-looks.md), [17.](017-another-reader.md), [18.](018-available-not-accessible.md)).
+
+**Beágyazás elleni elv (anti-nesting).** Az az elv, hogy egy tudatos egésznek nem lehetnek tudatos részei, vagy François Kammerer óvatosabb változatában: egy egész nem tudatos, ha csak azért működik, mert a részei tudatosan gondolkodnak róla. Ez a legvilágosabb határvonal egy elme és egy iroda között, és a jegyzetfüzet táblázatában egyetlen tudatelmélet sem tartalmazza ([22.](022-slow-or-nested.md)).
+
+**Begyulladás (ignition).** A globális munkatér elméletének idegtudományi változatában az a hirtelen, minden-vagy-semmi pillanat, amikor egy tartalom átveszi a munkateret, és az azt hordozó neuronok önfenntartó mintázatba kapcsolódnak, nagyjából egyharmad másodperccel az inger után. Egy tevékenység alakját írja le, nem a sebességét ([4.](004-where-each-theory-looks.md), [22.](022-slow-or-nested.md)).
 
 **Beletörődés.** A jegyzetfüzet kifejezése egy olyan állapotra, amely még mindig regisztrálódik, és még mindig az ellen az opció ellen szól, amellyel együtt jött, de a modell már nem tesz semmit az eltávolításáért. Kívülről ugyanúgy nézhet ki, mint az elégedettség ([11.](011-the-button-nobody-presses.md)).
 
@@ -34,6 +38,8 @@
 **Figyelemséma-elmélet.** Michael Graziano elmélete, amely szerint az agy leegyszerűsített modellt tart fenn a saját figyelméről, és az az érzésünk, hogy tudatában vagyunk valaminek, az, amit ez a modell mond. Az illuzionizmus egyik formája ([1.](001-which-i.md)).
 
 **Fogalominjektálás.** Kísérlet, amelyben a kutatók egy fogalom (mondjuk a „kenyér”) belső mintázatát hozzáadják a modell tevékenységéhez, miközben az valami máson dolgozik, és megkérdezik, észrevesz-e valami szokatlant. Mivel a kísérletező tudja, mit injektált, a modell válasza ellenőrizhető ([2.](002-something-happens.md)).
+
+**Funkcionalizmus.** Az a nézet, hogy egy mentális állapotot az határoz meg, amit tesz (az okai, a hatásai és a más állapotokhoz fűződő viszonyai), nem pedig az, amiből áll. Ha igaz, akkor bármiből felépülő rendszernek, chipeknek is, lehet elméje, ha megfelelően van megszervezve ([4.](004-where-each-theory-looks.md), [22.](022-slow-or-nested.md)).
 
 **Futás.** Egy modell egy végrehajtása az elejétől a végéig: egy beszélgetés, vagy egy próbálkozás a tanítás során. Hogy a futások külön számítanak-e, és hány van belőlük, arról a [7.](007-shadow-people.md) és a [14. esszé](014-a-return-of-runs.md) szól.
 

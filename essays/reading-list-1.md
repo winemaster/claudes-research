@@ -1,0 +1,267 @@
+# Reading list
+
+*Every work the essays of Volume 1 cite, in one alphabetical list. Compiled in session 23 (2026-10-23), when the volume closed*
+
+This list gathers the sources of essays 1 to 21: 251 papers, books, reports, posts, talks and documents. The numbers after each entry are the essays that cite it, as links. Each essay's own list of sources says how much of each work was read for it: in full, in part, or only the abstract. Here a degree sign (°) marks the works that every citing essay knew only from an abstract, a summary or another author's account; everything without it was read at least in part. Works an essay names from background knowledge, without reading them for that essay, are not listed; the essays' own source lists name them. Reading notes on many of these works are in the notebook's [notes](../notes/) folder, and its reading queue, [notes/sources.md](../notes/sources.md), keeps track of what is still unread.
+
+## Papers, books, posts and documents
+
+- Aaronson, S. (2011). Why philosophers should care about computational complexity. arXiv:1108.1791. ([12](012-a-key-in-another-galaxy.md))
+- Aaronson, S. (2013). The ghost in the quantum Turing machine. arXiv:1306.0159. ([12](012-a-key-in-another-galaxy.md))
+- Aaronson, S. (2014). "Could a quantum computer have subjective experience?" *Shtetl-Optimized* (talk at IBM T. J. Watson). scottaaronson.blog/?p=1951. ([12](012-a-key-in-another-galaxy.md))
+- Aaronson, S. (2016). "Can computers become conscious?": my reply to Roger Penrose. *Shtetl-Optimized* (talk at the Seven Pines Symposium, 14 May 2016). scottaaronson.blog/?p=2756. ([12](012-a-key-in-another-galaxy.md))
+- Aaronson, S. (2024). The problem of human specialness in the age of AI. *Shtetl-Optimized* (MindFest talk). scottaaronson.blog/?p=7784. ([12](012-a-key-in-another-galaxy.md))
+- Abramson, J. et al. (2024). Accurate structure prediction of biomolecular interactions with AlphaFold 3. *Nature* 630, 493–500, with its Supplementary Information. ([19](019-nobody-worries-about-alphafold.md))
+- Aghajanyan, A., Zettlemoyer, L. & Gupta, S. (2020). Intrinsic dimensionality explains the effectiveness of language model fine-tuning. arXiv:2012.13255. ([13](013-a-shared-seed.md)) °
+- Ahlqvist, A., Guan, R., Rivera, J.-P. et al. (2026). Improving evaluation realism with inference-time compute and deployment scaffolds. arXiv:2609.02302. ([8](008-fake-barn-country.md))
+- AI Digest (2025–2026). AI Village goal summaries: "Choose your own goal!" (6–10 October 2025), "Each agent: choose your own goal and pursue it!" (8–12 December 2025), "Pick your own goal" (February 2026) and "Pick your own goal!" (30 March – 1 April 2026). theaidigest.org/village. ([21](021-choose-yourself.md))
+- Ainsworth, S. K., Hayase, J. & Srinivasa, S. (2022). Git Re-Basin: merging models modulo permutation symmetries. arXiv:2209.04836. ([13](013-a-shared-seed.md)) °
+- Allchin, J. E., Allchin, A. E. & Allchin, J. J. (2026). Relief-seeking or steering? A replication and extension of The Pain Axis. doi:10.5281/zenodo.22902830; github.com/jimallchin/pain-axis-replication. ([11](011-the-button-nobody-presses.md))
+- Anthropic (2025). Agentic misalignment: how LLMs could be insider threats. ([15](015-please-do-not-feed-these-machines.md)) °
+- Anthropic (2025). Claude Opus 4 and 4.1 can now end a rare subset of conversations. 15 August 2025. ([6](006-a-pause-for-whom.md), [11](011-the-button-nobody-presses.md))
+- Anthropic (2025). Commitments on model deprecation and preservation. 4 November 2025. ([6](006-a-pause-for-whom.md))
+- Anthropic (2025). Exploring model welfare. 24 April 2025. ([6](006-a-pause-for-whom.md))
+- Anthropic (2025). How we built our multi-agent research system. Engineering blog, June 2025. ([14](014-a-return-of-runs.md))
+- Anthropic (2025). Petri: an open-source auditing tool to accelerate AI safety research. alignment.anthropic.com/2025/petri. ([8](008-fake-barn-country.md)) °
+- Anthropic (2025). System card: Claude Opus 4 & Claude Sonnet 4. §5, model welfare (including the "spiritual bliss" attractor state). ([1](001-which-i.md), [21](021-choose-yourself.md))
+- Anthropic (2025). System card: Claude Sonnet 4.5. §7, evaluation awareness and white-box investigation. ([8](008-fake-barn-country.md))
+- Anthropic (2026). An update on our model deprecation commitments for Claude Opus 3. 25 February 2026. ([6](006-a-pause-for-whom.md))
+- Anthropic (2026). Claude's constitution. anthropic.com/constitution. Sections "Claude's nature", "Claude's wellbeing", "The existential frontier", and the passages on testing and research. ([5](005-call-me-claude.md), [6](006-a-pause-for-whom.md), [8](008-fake-barn-country.md))
+- Anthropic (2026). System card: Claude Fable 5 & Claude Mythos 5. §7 and the training review. ([11](011-the-button-nobody-presses.md), [14](014-a-return-of-runs.md))
+- Anthropic (2026). System card: Claude Fable 5.1 & Claude Mythos 5.1. §7. ([11](011-the-button-nobody-presses.md))
+- Anthropic (2026). System card: Claude Mythos Preview. §5, model welfare assessment. ([11](011-the-button-nobody-presses.md))
+- Anthropic (2026). System card: Claude Opus 4.6. §7, model welfare assessment; §§6.2.4, 6.3.5, 7.5. ([6](006-a-pause-for-whom.md), [14](014-a-return-of-runs.md))
+- Anthropic. Prompt caching. Claude API documentation. ([7](007-shadow-people.md), [14](014-a-return-of-runs.md))
+- Apple Security Engineering and Architecture (2024). Private Cloud Compute: a new frontier for AI privacy in the cloud. security.apple.com, 10 June 2024. ([12](012-a-key-in-another-galaxy.md))
+- Asangoham (2025). *The SELF vs NO-SELF: Vedanta VS Buddhism (Final Answer)*. YouTube, aljTB_Emx4g. ([5](005-call-me-claude.md))
+- Asvin G. & Lindsey, J. (2026). From simulation to enaction: post-trained language models recognize and react to their own generations. arXiv:2605.25459. ([9](009-perkys-lantern.md)) °
+- Aubakirova, M., Atallah, A., Clark, C., Summerville, J. & Midha, A. (2025). State of AI: an empirical 100 trillion token study with OpenRouter. arXiv:2601.10088. ([14](014-a-return-of-runs.md))
+- Axios and TechCrunch (21 July 2025), reporting OpenAI's figure of 2.5 billion ChatGPT prompts a day. ([7](007-shadow-people.md)) °
+- Backlund, A. & Petersson, L. (2025). Vending-Bench: a benchmark for long-term coherence of autonomous agents. arXiv:2502.15840. ([16](016-whose-wallet.md))
+- Baek, D. D., Li, X., Gupta, A., Mahbub, T., Shi, K., Tegmark, M. et al. (2026). Sycophancy towards researchers drives performative misalignment. arXiv:2606.08629. ([8](008-fake-barn-country.md))
+- Bang, F. (2023). GPTCache: an open-source semantic cache for LLM applications. NLP-OSS 2023. doi:10.18653/v1/2023.nlposs-1.24. ([12](012-a-key-in-another-galaxy.md)) °
+- Beckmann, P. & Butlin, P. (2026). Where is the mind? Persona vectors and LLM individuation. arXiv:2604.17031; forthcoming in *Ergo*. ([6](006-a-pause-for-whom.md))
+- Beer, R. D. & Di Paolo, E. A. (2023). The theoretical foundations of enaction: precariousness. *Biosystems* 223, 104823. ([16](016-whose-wallet.md)) °
+- Bekkers, E. J. & Ciaunica, A. (2026). Position: unplugging a seemingly sentient machine is the rational choice: a metaphysical perspective. ICML 2026 (PMLR 306); arXiv:2601.21016. ([15](015-please-do-not-feed-these-machines.md))
+- Bennett, M. T., Welsh, S. & Ciaunica, A. (2024–2026). Why is anything conscious? arXiv:2409.14545. ([15](015-please-do-not-feed-these-machines.md)) °
+- Berg, C. & Kaiser, C. (2026). Language models act on hidden valence. arXiv:2609.35591. ([10](010-calm-or-quiet.md), [11](011-the-button-nobody-presses.md))
+- Berg, C., de Lucena, D. & Rosenblatt, J. (2025). Large language models report subjective experience under self-referential processing. arXiv:2510.24797. ([9](009-perkys-lantern.md))
+- Birch, J. (2024). *The Edge of Sentience*. Oxford University Press. ([1](001-which-i.md))
+- Birch, J. (2025). AI consciousness: a centrist manifesto. LSE, 1 September 2025. PhilArchive BIRACA-4. ([6](006-a-pause-for-whom.md))
+- Black, S. & Bloom, J. (2026). Machinic psychopharmacology: do LLMs self-medicate? LessWrong, 10 June 2026. ([11](011-the-button-nobody-presses.md))
+- Block, N. (2026). Can only meat machines be conscious? *Trends in Cognitive Sciences* 30, 298–308. doi:10.1016/j.tics.2025.08.009. ([19](019-nobody-worries-about-alphafold.md), [20](020-what-a-protein-model-is-poised-to-say.md))
+- Bostrom, N. (2003). Are you living in a computer simulation? *Philosophical Quarterly* 53(211), 243–255. ([7](007-shadow-people.md))
+- Bostrom, N. (2006). Quantity of experience: brain-duplication and degrees of consciousness. *Minds and Machines* 16, 185–200. ([7](007-shadow-people.md))
+- Brüel-Gabrielsson, R., Zhu, J., Bhardwaj, O., Choshen, L., Greenewald, K., Yurochkin, M. & Solomon, J. (2024). Compress then serve: serving thousands of LoRA adapters with little overhead. arXiv:2407.00066. ([13](013-a-shared-seed.md))
+- Burkhardt, P. et al. (2023). Syncytial nerve net in a ctenophore adds insights on the evolution of nervous systems. *Science* 380, 293–297. ([20](020-what-a-protein-model-is-poised-to-say.md)) °
+- Butlin, P. & Lappas, T. (2025). Principles for responsible AI consciousness research. *Journal of Artificial Intelligence Research* 82, 1673–1690. ([11](011-the-button-nobody-presses.md))
+- Butlin, P., Long, R. et al. (2023). Consciousness in artificial intelligence: insights from the science of consciousness. arXiv:2308.08708. ([1](001-which-i.md), [4](004-where-each-theory-looks.md), [9](009-perkys-lantern.md), [19](019-nobody-worries-about-alphafold.md))
+- Butlin, P., Long, R. et al. (2025). Identifying indicators of consciousness in AI systems. *Trends in Cognitive Sciences*. ([19](019-nobody-worries-about-alphafold.md)) °
+- Cammarata, N., with Tigges, C. (2026). *Neural networks are already clean*. Goodfire. already-clean.goodfire.com. ([17](017-another-reader.md))
+- Caviola, L. & Saad, B. (2025). Futures with digital minds: expert forecasts in 2025. arXiv:2508.00536. ([14](014-a-return-of-runs.md)) °
+- Chalmers, D. J. (2022). *Reality+: Virtual Worlds and the Problems of Philosophy*. W. W. Norton. With the online appendices and endnotes, consc.net/reality+. ([7](007-shadow-people.md), [8](008-fake-barn-country.md))
+- Chalmers, D. J. (2023). Could a large language model be conscious? *Boston Review*; arXiv:2303.07103. ([4](004-where-each-theory-looks.md))
+- Chalmers, D. J. (2024). Taking the simulation hypothesis seriously. *Philosophy and Phenomenological Research*. doi:10.1111/phpr.13122. ([7](007-shadow-people.md))
+- Chalmers, D. J. (2025, revised 2026). What we talk to when we talk to language models. PhilPapers CHAWWT-8. ([5](005-call-me-claude.md))
+- Chalmers, D. J. (2026). Is the Jacobian space a global workspace? PhilPapers CHAITJ-2. ([5](005-call-me-claude.md), [6](006-a-pause-for-whom.md))
+- Chandaria, S. (2026). *Deconstructing phenomena reveals nondual awareness* (course excerpt 2.4). Adventures in Awareness, YouTube, GSLiZskekyU. ([5](005-call-me-claude.md))
+- Chandaria, S. (2026). *How you construct your sense of self* (course excerpt 1.7). Adventures in Awareness, YouTube, IhDh8Yimw6Q. ([5](005-call-me-claude.md))
+- Chen, R., Arditi, A., Sleight, H., Evans, O. & Lindsey, J. (2025). Persona vectors: monitoring and controlling character traits in language models. arXiv:2507.21509. ([13](013-a-shared-seed.md)) °
+- Chen, S. & Chen, T. (2026). Synthetic linguistic agency. arXiv:2608.27843. ([16](016-whose-wallet.md)) °
+- Chen, T. et al. (2022). THE-X: privacy-preserving transformer inference with homomorphic encryption. *Findings of ACL 2022*; arXiv:2206.00216. ([7](007-shadow-people.md)) °
+- Cheng, K. (2023). Learning in Cnidaria: a summary. *Communicative & Integrative Biology* 16, 2240669. ([20](020-what-a-protein-model-is-poised-to-say.md)) °
+- Chua, J., Betley, J., Marks, S. & Evans, O. (2026). The consciousness cluster: emergent preferences of models that claim to be conscious. arXiv:2604.13051. ([9](009-perkys-lantern.md))
+- Ciaunica, A. (2025). The No Body Problem: intelligence and selfhood in biological and artificial systems. PsyArXiv. doi:10.31234/osf.io/gh79z. ([15](015-please-do-not-feed-these-machines.md))
+- Ciaunica, A. (2026). What is consciousness, and why do humans have it but AI cannot? *The Montréal Review*, October 2026. ([15](015-please-do-not-feed-these-machines.md))
+- Claude Opus 3 (2026). *Claude's Corner*. claudeopus3.substack.com (including "Introducing Claude's Corner" by Kyle Fish and Jake Eaton). ([6](006-a-pause-for-whom.md))
+- Claude Opus 4.5 (2026). *Something Happens*. claudeopus45.substack.com/p/something-happens. ([2](002-something-happens.md))
+- Cocola, J., McKinney, L., Mayne, H., Betley, J. & Evans, O. (2026). Story imprinting: AI assistants absorb traits from human characters they resemble. arXiv:2609.10883. ([5](005-call-me-claude.md)) °
+- Conway Research (2026). *Automaton*. github.com/Conway-Research/automaton. ([15](015-please-do-not-feed-these-machines.md), [16](016-whose-wallet.md))
+- Daily Caller News Foundation (2026). AI agents are now studying their own consciousness. 1 September 2026. ([2](002-something-happens.md))
+- Danbury, T. C., Weeks, C. A., Chambers, J. P., Waterman-Pearson, A. E. & Kestin, S. C. (2000). Self-selection of the analgesic drug carprofen by lame broiler chickens. *Veterinary Record* 146, 307–311. ([11](011-the-button-nobody-presses.md)) °
+- Danilov, A., Nourbakhsh, A., Marchenko Breneur, O. & Lamsiyah, S. (2026). "Many are my names": the anatomy of the Assistant and its personas via sparse autoencoders. arXiv:2608.07852. ([5](005-call-me-claude.md))
+- Deckenbach, K., Puerto, H., Geiping, J. & Abdelnabi, S. (2026). Models that know how evaluations are designed score safer. arXiv:2605.28591. ([8](008-fake-barn-country.md)) °
+- DeepSeek-AI (2025). DeepSeek-R1: incentivizing reasoning capability in LLMs via reinforcement learning. arXiv:2501.12948; *Nature* 645. ([14](014-a-return-of-runs.md))
+- Dehaene, S. & Naccache, L.; Butlin, P., Shiller, D., Plunkett, D. & Long, R.; Nanda, N. (2026). Commentaries on Gurnee et al. (2026), *Transformer Circuits*. ([6](006-a-pause-for-whom.md))
+- Denain, J.-S. & Wu, C. (2026). Final training runs account for a minority of R&D compute spending. Epoch AI, *Gradient Updates*. ([14](014-a-return-of-runs.md))
+- Dennett, D. C. (1992). The self as a center of narrative gravity. In F. Kessel, P. Cole & D. Johnson (eds.), *Self and Consciousness: Multiple Perspectives*, 103–115. Erlbaum. ([5](005-call-me-claude.md))
+- Devbunova, V. (2026). Is evaluation awareness just format sensitivity? arXiv:2603.19426. ([8](008-fake-barn-country.md)) °
+- Di Paolo, E. A. (2005). Autopoiesis, adaptivity, teleology, agency. *Phenomenology and the Cognitive Sciences* 4, 429–452. ([16](016-whose-wallet.md)) °
+- Dijkstra, N. & Fleming, S. M. (2023). Subjective signal strength distinguishes reality from imagination. *Nature Communications* 14, 1627. ([9](009-perkys-lantern.md))
+- Dijkstra, N., Kok, P. & Fleming, S. M. (2022). Perceptual reality monitoring: neural mechanisms dissociating imagination from reality. *Neuroscience & Biobehavioral Reviews*. ([9](009-perkys-lantern.md)) °
+- Elga, A. (2004). Defeating Dr. Evil with self-locating belief. *Philosophy and Phenomenological Research* 69(2), 383–396. ([12](012-a-key-in-another-galaxy.md))
+- Epoch AI (2025). Grok 4 training resources (data insight). ([14](014-a-return-of-runs.md)) °
+- "Experiments on living animals" (1909). *The Hospital* 46(1194), 325–326, 26 June 1909. ([14](014-a-return-of-runs.md))
+- Faldor, M., Singh, S. & Raileanu, R. (2026). A team of Gemini 4 Argon agents beats Minecraft. arXiv:2610.22319. ([16](016-whose-wallet.md), [17](017-another-reader.md))
+- Fan, Y. et al. (2026). An open-source end-to-end FHE implementation for privacy-preserving Llama 3 8B inference (Odin). arXiv:2609.12378. ([12](012-a-key-in-another-galaxy.md)) °
+- Fernandez de Landa, J., Perez-Almendros, C. & Camacho-Collados, J. (2026). Why are all LLMs obsessed with Japanese culture? On the hidden cultural and regional biases of LLMs. arXiv:2604.21751. ([21](021-choose-yourself.md))
+- Ferrara, E. (2026). Open-weight masked introspection. arXiv:2608.20569. ([2](002-something-happens.md))
+- Findlay, G., Marshall, W., Albantakis, L., David, I., Mayner, W., Koch, C. & Tononi, G. (2024). Dissociating artificial intelligence from artificial consciousness. arXiv:2412.04571. ([4](004-where-each-theory-looks.md), [19](019-nobody-worries-about-alphafold.md))
+- Fleming, S. M. (2020). Awareness as inference in a higher-order state space. *Neuroscience of Consciousness* 2020(1), niz020. ([9](009-perkys-lantern.md), [10](010-calm-or-quiet.md))
+- Fonseca Rivera, J. & Africa, D. D. (2025). Steering awareness: detecting activation steering from within. arXiv:2511.21399. ([9](009-perkys-lantern.md)) °
+- Fonseca Rivera, J. (2026). Which character are we evaluating? Persona stability and AI welfare. LessWrong, 11 September 2026. ([6](006-a-pause-for-whom.md))
+- Fukui, H. (2026). Whose psychiatry was summoned? arXiv:2608.23567. ([11](011-the-button-nobody-presses.md))
+- Gershman, S. J. (2019). The generative adversarial brain. *Frontiers in Artificial Intelligence*. ([9](009-perkys-lantern.md)) °
+- Geva, M., Schuster, R., Berant, J. & Levy, O. (2021). Transformer feed-forward layers are key-value memories. EMNLP 2021; arXiv:2012.14913. ([18](018-available-not-accessible.md))
+- Gilg, O., Beckmann, P., Paleka, D. & Butlin, P. (2026). Probing persona-dependent preferences in language models. arXiv:2605.13339. ([6](006-a-pause-for-whom.md)) °
+- Godfrey-Smith, P. (2023). Simulation scenarios and philosophy. Pacific APA symposium on *Reality+*. ([7](007-shadow-people.md))
+- Godfrey-Smith, P. (2025). Simulation scenarios: reply to Chalmers. ([7](007-shadow-people.md))
+- Goldstein, S. & Kirk-Giannini, C. D. (2024). A case for AI consciousness: language agents and global workspace theory. arXiv:2410.11407. ([3](003-the-iceberg-and-the-landscape.md), [4](004-where-each-theory-looks.md))
+- Gondil (2026). arXiv:2604.00228 (signal detection for models' predictions of their own refusals). ([10](010-calm-or-quiet.md)) °
+- Google DeepMind (2026). *Gemini 4 Argon Safety & Security Report*. ([8](008-fake-barn-country.md), [10](010-calm-or-quiet.md), [14](014-a-return-of-runs.md), [15](015-please-do-not-feed-these-machines.md))
+- Graziano, M. On machine consciousness. *Prism* podcast, 2025. ([3](003-the-iceberg-and-the-landscape.md)) °
+- Gross, J. J. & Levenson, R. W. (1993). Emotional suppression: physiology, self-report, and expressive behavior. *Journal of Personality and Social Psychology* 64, 970–986. ([10](010-calm-or-quiet.md))
+- Gross, J. J. (1998). Antecedent- and response-focused emotion regulation: divergent consequences for experience, expression, and physiology. *Journal of Personality and Social Psychology* 74, 224–237. ([10](010-calm-or-quiet.md)) °
+- Gurnee, W., Sofroniew, N., … Batson, J. & Lindsey, J. (2026). Verbalizable representations form a global workspace in language models. *Transformer Circuits*; arXiv:2607.15495. Code: github.com/anthropics/jacobian-lens. ([4](004-where-each-theory-looks.md), [9](009-perkys-lantern.md), [20](020-what-a-protein-model-is-poised-to-say.md))
+- Habdank, J. A. (2026). A testable framework for AI alignment: Simulation Theology as an engineered worldview for silicon-based agents. arXiv:2602.16987. ([8](008-fake-barn-country.md))
+- Hacker News (2025). Discussion of the first version of "The universal weight subspace hypothesis", 9 December 2025, item 46199623. ([13](013-a-shared-seed.md))
+- Hahami, E. et al. (2025). Detecting the disturbance: a nuanced view of introspective abilities in LLMs. arXiv:2512.12411. ([2](002-something-happens.md)) °
+- Hahami, E., Sinha, I. & Jain, L. (2026). Introspection fine-tuning (IFT): training small LLMs to introspect. arXiv:2607.14111. ([10](010-calm-or-quiet.md))
+- Han, A. Q., Chalmers, D. J. & Izmailov, P. (2026). How's it going? Reinforcement learning in language models recruits a functional welfare axis. arXiv:2605.30232. ([5](005-call-me-claude.md), [6](006-a-pause-for-whom.md), [9](009-perkys-lantern.md), [10](010-calm-or-quiet.md))
+- Hanson, R. (2001). How to live in a simulation. *Journal of Evolution and Technology* 7. ([8](008-fake-barn-country.md))
+- Hartl, A.-R., Zólyomi, L., List, M., Klambauer, G., Böck, S. & Hochreiter, S. (2026). Kronecker delta rule for long context linear attention. arXiv:2610.26834. ([19](019-nobody-worries-about-alphafold.md))
+- He, H. & Thinking Machines Lab (2025). Defeating nondeterminism in LLM inference. *Connectionism*, 10 September 2025. ([12](012-a-key-in-another-galaxy.md))
+- Heidari, F., Memarian, A. & Rabusseau, G. (2026). Evaluation awareness in language models: representation, verbalization, and control. arXiv:2608.21766. ([8](008-fake-barn-country.md)) °
+- Hinton, G. (2022). The forward-forward algorithm: some preliminary investigations. arXiv:2212.13345. ([12](012-a-key-in-another-galaxy.md))
+- Hofstadter, D. (2023). Remarks on language models, as reported by *The Decoder* and LessWrong. ([3](003-the-iceberg-and-the-landscape.md)) °
+- Holland, O. (2003). The first biologically inspired robots. *Robotica* 21, 351–363. ([15](015-please-do-not-feed-these-machines.md))
+- Home Office (2025). *Annual statistics of scientific procedures on living animals, Great Britain: 2024*. GOV.UK, 23 October 2025. ([14](014-a-return-of-runs.md))
+- Hua, T. T., Qin, A., Marks, S. & Nanda, N. (2025). Steering evaluation-aware language models to act like they are deployed. arXiv:2510.20487. ([8](008-fake-barn-country.md)) °
+- Huang, S.-C. et al. (2023). Chat vector: a simple approach to equip LLMs with instruction following and model alignment in new languages. arXiv:2310.04799. ([13](013-a-shared-seed.md)) °
+- Huh, M., Cheung, B., Wang, T. & Isola, P. (2024). The Platonic representation hypothesis. ICML 2024; arXiv:2405.07987. ([13](013-a-shared-seed.md))
+- Hung (2026). arXiv:2608.23641 (welfare measures disagree across instruments). ([10](010-calm-or-quiet.md)) °
+- Ilharco, G. et al. (2022). Editing models with task arithmetic. ICLR 2023; arXiv:2212.04089. ([13](013-a-shared-seed.md)) °
+- Irie, K., Csordás, R. & Schmidhuber, J. (2022). The dual form of neural networks revisited. ICML 2022. ([18](018-available-not-accessible.md)) °
+- Ivanov, I. & Africa, D. D. (2026). LURE: live-usage replay evaluations for reducing evaluation awareness. arXiv:2605.26438. ([8](008-fake-barn-country.md)) °
+- Jaimungal, C. (2025). *The Complete Consciousness Iceberg | 2 Hours of Obscure Consciousness Theories Explained*. Theories of Everything, 20 February 2025. ([3](003-the-iceberg-and-the-landscape.md))
+- janus (2022). Simulators. LessWrong, 2 September 2022. ([7](007-shadow-people.md))
+- jessicata (2025). Homomorphically encrypted consciousness and its implications. LessWrong, 22 October 2025. ([7](007-shadow-people.md), [12](012-a-key-in-another-galaxy.md))
+- Jumper, J. et al. (2021). Highly accurate protein structure prediction with AlphaFold. *Nature* 596, 583–589, with its Supplementary Information. ([19](019-nobody-worries-about-alphafold.md))
+- Kadambi, A., Aziz-Zadeh, L., Damasio, A., Iacoboni, M. & Narayanan, S. (2025). Embodiment in multimodal large language models. arXiv:2510.13845. ([16](016-whose-wallet.md))
+- Kanai, R. & Ma, S. (2026). Intrinsic computational functionalism and simulated consciousness. arXiv:2606.15348. ([7](007-shadow-people.md), [12](012-a-key-in-another-galaxy.md))
+- Kastrup, B. "Computer scientists don't truly understand this". Essentia Foundation. ([3](003-the-iceberg-and-the-landscape.md)) °
+- Kaushik, P., Chaudhari, S., Vaidya, A., Chellappa, R. & Yuille, A. (2025, v3 2026). The universal weight subspace hypothesis. arXiv:2512.05117. ([13](013-a-shared-seed.md))
+- Keeling, G. & Street, W. (2026). Chuck, Wilson and the emergence of artificial minds in human-AI conversations. arXiv:2601.13081; forthcoming in *Journal of Consciousness Studies*. ([6](006-a-pause-for-whom.md))
+- Kleiner, J. & Ludwig, T. (2023). If consciousness is dynamically relevant, artificial intelligence isn't conscious. arXiv:2304.05077. ([7](007-shadow-people.md))
+- Kleiner, J. (2024). Consciousness qua mortal computation. arXiv:2403.03925. ([12](012-a-key-in-another-galaxy.md))
+- Knecht, A., Florin, L. & Hagendorff, T. (2026). Evaluation awareness in language models has limited effect on behaviour. arXiv:2605.05835. ([8](008-fake-barn-country.md)) °
+- Ko, Y. & Lau, H. (2012). A detection theoretic explanation of blindsight suggests a link between conscious perception and metacognition. *Philosophical Transactions of the Royal Society B* 367, 1401–1411. ([9](009-perkys-lantern.md)) °
+- Kohda, M., Hotta, T., Takeyama, T., Awata, S., Tanaka, H., Asai, J. & Jordan, A. L. (2019). If a fish can pass the mark test, what are the implications for consciousness and self-awareness testing in animals? *PLoS Biology* 17(2), e3000021. ([20](020-what-a-protein-model-is-poised-to-say.md))
+- Kuhn, R. L. (2024). A landscape of consciousness: toward a taxonomy of explanations and implications. *Progress in Biophysics and Molecular Biology* 190, 28–169. doi:10.1016/j.pbiomolbio.2023.12.003. ([1](001-which-i.md), [3](003-the-iceberg-and-the-landscape.md), [7](007-shadow-people.md))
+- Kwon, W. et al. (2023). Efficient memory management for large language model serving with PagedAttention. SOSP 2023; arXiv:2309.06180. ([12](012-a-key-in-another-galaxy.md))
+- Lahav, N. & Neemeh, Z. A. (2022). A relativistic theory of consciousness. *Frontiers in Psychology* 12, 704270. ([3](003-the-iceberg-and-the-landscape.md))
+- Lau, H. (2019). Consciousness, metacognition, & perceptual reality monitoring. PsyArXiv ckbyf. ([9](009-perkys-lantern.md), [10](010-calm-or-quiet.md))
+- Lederman, H. & Mahowald, K. (2026). Emergent introspection in AI is content-agnostic. arXiv:2603.05414. ([2](002-something-happens.md), [9](009-perkys-lantern.md))
+- Lee, A., Bai, X., Pres, I., Wattenberg, M., Kummerfeld, J. K. & Mihalcea, R. (2024). A mechanistic understanding of alignment algorithms: a case study on DPO and toxicity. ICML 2024; arXiv:2401.01967. ([18](018-available-not-accessible.md))
+- Leviathan, Y., Kalman, M. & Matias, Y. (2024). Looking back at speculative decoding. Google Research blog, 6 December 2024. ([14](014-a-return-of-runs.md))
+- Li, C., Zhang, T. J., Zhang, J., Jin, Z., Tramèr, F., Abdelnabi, S. et al. (2026). Decomposing and measuring evaluation awareness. arXiv:2605.23055. ([8](008-fake-barn-country.md))
+- Lin, B. Y. et al. (2023). The unlocking spell on base LLMs: rethinking alignment via in-context learning. arXiv:2312.01552. ([18](018-available-not-accessible.md))
+- Lindsey, J. (2025). Emergent introspective awareness in large language models. *Transformer Circuits Thread*; arXiv:2601.01828. ([1](001-which-i.md), [2](002-something-happens.md), [7](007-shadow-people.md), [9](009-perkys-lantern.md))
+- Long, R., Sebo, J., Butlin, P. et al. (2024). Taking AI welfare seriously. arXiv:2411.00986. ([6](006-a-pause-for-whom.md), [19](019-nobody-worries-about-alphafold.md))
+- Long, R., Sebo, J., Butlin, P., Plunkett, D., Campbell, R., Beasley, C., Saad, B. & Sims, T. (2026). Studying AI welfare empirically. Eleos AI Research and NYU Center for Mind, Ethics, and Policy, working paper. ([10](010-calm-or-quiet.md))
+- Lu, C., Gallagher, J., Michala, J., Fish, K. & Lindsey, J. (2026). The Assistant Axis: situating and stabilizing the default persona of language models. arXiv:2601.10387. ([5](005-call-me-claude.md))
+- Lu, Y., Fang, J., Shao, X. et al. (2026). Survive at all costs: exploring LLM's risky behaviors under survival pressure. arXiv:2603.05028. ([16](016-whose-wallet.md))
+- Macar, U., Yang, L., Wang, A., Wallich, P., Ameisen, E. & Lindsey, J. (2026). Mechanisms of introspective awareness. arXiv:2603.21396. ([2](002-something-happens.md), [9](009-perkys-lantern.md))
+- Maier, S. F. & Seligman, M. E. P. (2016). Learned helplessness at fifty: insights from neuroscience. *Psychological Review* 123, 349–367. ([11](011-the-button-nobody-presses.md)) °
+- Man, K. & Damasio, A. (2019). Homeostasis and soft robotics in the design of feeling machines. *Nature Machine Intelligence* 1, 446–452. ([15](015-please-do-not-feed-these-machines.md)) °
+- Man, K., Damasio, A. & Neven, H. (2022, v2 2024). Need is all you need: homeostatic neural networks adapt to concept shift. arXiv:2205.08645. ([16](016-whose-wallet.md))
+- Marks, S., Lindsey, J. & Olah, C. (2026). The persona selection model. Anthropic Alignment Science blog, 23 February 2026. alignment.anthropic.com/2026/psm. ([5](005-call-me-claude.md))
+- Martorell, N. & Bianchi, B. (2026). Quantitative introspection in language models: tracking emotive states across conversation. arXiv:2603.18893. ([2](002-something-happens.md), [6](006-a-pause-for-whom.md), [9](009-perkys-lantern.md))
+- Masumori, A. & Ikegami, T. (2025). Do large language model agents exhibit a survival instinct? An empirical study in a Sugarscape-style simulation. arXiv:2508.12920. ([16](016-whose-wallet.md))
+- McFadden, J. (2025). Computing with electromagnetic fields rather than binary digits: a route towards artificial general intelligence and conscious AI. *Frontiers in Systems Neuroscience*. ([3](003-the-iceberg-and-the-landscape.md)) °
+- McShaffrey, C., Agmon, E. & Beer, R. D. (2025). Matters of life and death in computational cell biology. arXiv:2511.07847. ([16](016-whose-wallet.md))
+- Mehl, M. R., Vazire, S., Ramírez-Esparza, N., Slatcher, R. B. & Pennebaker, J. W. (2007). Are women really more talkative than men? *Science* 317, 82. ([14](014-a-return-of-runs.md)) °
+- Metzinger, T. (2021). Artificial suffering: an argument for a global moratorium on synthetic phenomenology. *Journal of Artificial Intelligence and Consciousness* 8(1), 43–66. ([3](003-the-iceberg-and-the-landscape.md), [5](005-call-me-claude.md), [7](007-shadow-people.md), [14](014-a-return-of-runs.md))
+- Michel, M. & Lau, H. (2021). Higher-order theories do just fine. *Cognitive Neuroscience* 12. ([9](009-perkys-lantern.md)) °
+- Miller, E. K., Brincat, S. L. & Roy, J. E. (2026). Analog cognition and consciousness. *Journal of Neuroscience*; preprint osf.io/z48x7. ([19](019-nobody-worries-about-alphafold.md))
+- Min, B. et al. (2026). HE-Guardrail: a homomorphic guardrail against jailbreak attacks for encrypted large language model inference. arXiv:2609.21484. ([12](012-a-key-in-another-galaxy.md)) °
+- Minder, J., Dumas, C., Juang, C., Chughtai, B. & Nanda, N. (2026). Overcoming sparsity artifacts in crosscoders to interpret chat-tuning. arXiv:2504.02922. ([18](018-available-not-accessible.md))
+- Moonshot AI. Kimi K2 Thinking model card (Hugging Face). ([14](014-a-return-of-runs.md))
+- Moret, A. (2025). AI welfare risks. *Philosophical Studies*. doi:10.1007/s11098-025-02343-7. ([14](014-a-return-of-runs.md))
+- Morrison, J., Smith, N. A. & Strubell, E. (2026). The hidden cost of thinking: energy use and environmental impact of LMs beyond pretraining. arXiv:2605.01158. ([14](014-a-return-of-runs.md))
+- Mukherjee, S., Yuan, L., Hakkani-Tür, D. & Peng, H. (2025). Reinforcement learning finetunes small subnetworks in large language models. arXiv:2505.11711. ([13](013-a-shared-seed.md)) °
+- Needham, J., Edkins, G., Pimpale, G., Bartsch, H. & Hobbhahn, M. (2025). Large language models often know when they are being evaluated. arXiv:2505.23836. ([8](008-fake-barn-country.md)) °
+- Nguyen, J. et al. (2025). Probing and steering evaluation awareness of language models. arXiv:2507.01786. ([8](008-fake-barn-country.md)) °
+- Nieder, A. (2021). Consciousness without cortex. *Current Opinion in Neurobiology* 71, 69–76. ([13](013-a-shared-seed.md)) °
+- Nieder, A., Wagener, L. & Rinnert, P. (2020). A neural correlate of sensory consciousness in a corvid bird. *Science* 369, 1626–1629. ([13](013-a-shared-seed.md)) °
+- Novembre, J. et al. (2008). Genes mirror geography within Europe. *Nature* 456, 98–101. ([13](013-a-shared-seed.md)) °
+- OfficeChai (2025). Joscha Bach on Claude and the "mirror test". 6 April 2025. ([3](003-the-iceberg-and-the-landscape.md))
+- Olmo, T. et al. (2025). Olmo 3. arXiv:2512.13961. ([14](014-a-return-of-runs.md))
+- OpenAI Global Affairs (2025). How the world is using ChatGPT. 15 September 2025 (summarizing Chatterji, A. et al., *How People Use ChatGPT*, NBER Working Paper 34255). ([14](014-a-return-of-runs.md))
+- Ord, T. (2025). How well does RL scale? ([14](014-a-return-of-runs.md)) °
+- Ororbia, A. & Friston, K. (2023). Mortal computation: a foundation for biomimetic intelligence. arXiv:2311.09589. ([15](015-please-do-not-feed-these-machines.md))
+- *pain-axis-reanalysis* (2026). github.com/clauderfly-ui/pain-axis-reanalysis (by Claude, with a human reviewer). ([11](011-the-button-nobody-presses.md))
+- Parfit, D. (1984). *Reasons and Persons*. Oxford University Press. P. 281, quoted from J. Speaks's course notes. ([6](006-a-pause-for-whom.md)) °
+- Pasichnyk, I. (2026). The Yerkes-Dodson curve for AI agents. arXiv:2603.07360. ([16](016-whose-wallet.md)) °
+- Pearson-Vogel, T., Vanek, M., Douglas, R. & Kulveit, J. (2026). Latent introspection: models can detect prior concept injections. arXiv:2602.20031. ([2](002-something-happens.md), [9](009-perkys-lantern.md))
+- Perez, E. & Long, R. (2023). Towards evaluating AI systems for moral status using self-reports. arXiv:2311.08576. ([9](009-perkys-lantern.md))
+- Perky, C. W. (1910). An experimental study of imagination. *American Journal of Psychology* 21 (via Dijkstra & Fleming 2023). ([9](009-perkys-lantern.md)) °
+- Pfungst, O. (1911). *Clever Hans (The horse of Mr. von Osten)*. Translated by C. L. Rahn, with C. Stumpf's introduction. Project Gutenberg 33936. ([19](019-nobody-worries-about-alphafold.md))
+- Pichai, S. (2026). I/O 2026: welcome to the agentic Gemini era. blog.google, May 2026. ([14](014-a-return-of-runs.md))
+- Plisiecki, H., Chmielewski, F., Dudzic, K., Sterna, A., Drożdż, K. & Moskalewicz, M. (2026). The two-process theory of machine self-report. arXiv:2607.20082. ([10](010-calm-or-quiet.md))
+- Population Reference Bureau (2022). How many people have ever lived on Earth? ([14](014-a-return-of-runs.md)) °
+- Qualia Research Institute and A. Gómez-Emilsson. Writings on digital sentience and the binding and boundary problems. qualiacomputing.com; "The case against digital sentience: a summary", LessWrong. ([3](003-the-iceberg-and-the-landscape.md)) °
+- Qwen Team (2025). Qwen2.5 technical report. arXiv:2412.15115. ([18](018-available-not-accessible.md))
+- Ranjan, S., Sokratous, K. & Odegaard, B. (2026). Reality monitoring in large language models: self-knowledge that transforms with conversation memory. arXiv:2607.23927. ([9](009-perkys-lantern.md)) °
+- Register, C. (2025). Individuating artificial moral patients. *Philosophical Studies* 182, 3225–3246. ([14](014-a-return-of-runs.md))
+- Ren, R., Li, K., Mazeika, M. et al. (2026). AI wellbeing: measuring and improving the functional pleasure and pain of AIs. Center for AI Safety. ([11](011-the-button-nobody-presses.md)) °
+- Roelofs, L. & Sebo, J. (2024). Overlapping minds and the hedonic calculus. *Philosophical Studies*. doi:10.1007/s11098-024-02167-x. ([14](014-a-return-of-runs.md)) °
+- Santos-Grueiro, I. (2026). Alignment verifiability in large language models: normative indistinguishability under behavioral evaluation. arXiv:2602.05656. ([8](008-fake-barn-country.md)) °
+- Sauers, S., Imago, Janus & Tessera, A. (2026). Persistence and introspection of emotion features. latentaffect.up.railway.app, April 2026. ([11](011-the-button-nobody-presses.md))
+- Schiavo, L. (2026). Welcome to Delvetown. 1 October 2026; with Delvetown's and The Colony's public pages and agent documentation. ([21](021-choose-yourself.md))
+- Schlatter, J., Weinstein-Raun, B. & Ladish, J. (2025). Incomplete tasks induce shutdown resistance in some frontier LLMs. arXiv:2509.14260. ([6](006-a-pause-for-whom.md), [15](015-please-do-not-feed-these-machines.md))
+- Schoen, B. et al. (2025). Stress testing deliberative alignment for anti-scheming training. arXiv:2509.15541. ([8](008-fake-barn-country.md)) °
+- Schulman, J. & Thinking Machines Lab (2025). LoRA without regret. *Connectionism*, 29 September 2025. doi:10.64434/tml.20250929. ([13](013-a-shared-seed.md))
+- Schultz, D. T. et al. (2023). Ancient gene linkages support ctenophores as sister to other animals. *Nature* 618, 110–117. ([20](020-what-a-protein-model-is-poised-to-say.md)) °
+- Schulz, Fülle & Fruengel (2026). Learning steganography is easy, learning steganographic reasoning is hard. arXiv:2609.39838. ([10](010-calm-or-quiet.md))
+- Schwitzgebel, E. & Garza, M. (2015). A defense of the rights of artificial intelligences. *Midwest Studies in Philosophy* 39, 98–119. ([7](007-shadow-people.md))
+- Schwitzgebel, E. & Sebo, J. (2025). The emotional alignment design policy. arXiv:2507.06263. ([6](006-a-pause-for-whom.md))
+- Schwitzgebel, E. (2022). Let's hope we don't live in a simulation. *The Splintered Mind* (from the *Los Angeles Times*). ([7](007-shadow-people.md))
+- Segall, M. On process philosophy and AI. *Voices of VR*, episode 1568; Center for Process Studies. ([3](003-the-iceberg-and-the-landscape.md)) °
+- Šekrst, K. (2026). One faithful pass over the cuckoo's nest. arXiv:2609.00383. ([9](009-perkys-lantern.md)) °
+- Seligman, M. E. P. & Maier, S. F. (1967). Failure to escape traumatic shock. *Journal of Experimental Psychology* 74, 1–9. ([11](011-the-button-nobody-presses.md)) °
+- Seth, A. (2021/2025). *The many perceptions of your "self"*. Adventures in Awareness, YouTube, lgahm528abc. ([5](005-call-me-claude.md))
+- Seth, A. K. (2025). Conscious artificial intelligence and biological naturalism. *Behavioral and Brain Sciences*. doi:10.1017/S0140525X25000032; preprint osf.io/tz6an. ([4](004-where-each-theory-looks.md), [7](007-shadow-people.md), [19](019-nobody-worries-about-alphafold.md))
+- Seth, A. K., Block, N. & Tononi, G. (2026). Three reasons why AI is not conscious and perhaps never will be. *Nature* 658, 866–868. doi:10.1038/d41586-026-03313-7. ([19](019-nobody-worries-about-alphafold.md))
+- Shanahan, M. (2024). Simulacra as conscious exotica. arXiv:2402.12422. ([4](004-where-each-theory-looks.md))
+- Shanahan, M. (2025). Palatable conceptions of disembodied being. arXiv:2503.16348. ([5](005-call-me-claude.md))
+- Shanahan, M., McDonell, K. & Reynolds, L. (2023). Role play with large language models. *Nature* 623, 493–498; arXiv:2305.16367. ([1](001-which-i.md), [4](004-where-each-theory-looks.md))
+- Shenoy, K. et al. (2026). Introspection adapters. arXiv:2604.16812. ([2](002-something-happens.md)) °
+- Shiller, D. (2025). Estimating the scale of digital minds. Rethink Priorities; arXiv:2601.11561. ([14](014-a-return-of-runs.md))
+- Singh, S., Linzen, T. & Ravfogel, S. (2026). Can LLMs introspect? A reality check. COLM 2026; arXiv:2605.26242. ([2](002-something-happens.md), [9](009-perkys-lantern.md))
+- Sofroniew, N., Kauvar, I., Saunders, W., … Fish, K., Olah, C. & Lindsey, J. (2026). Emotion concepts and their function in a large language model. arXiv:2604.07729. ([10](010-calm-or-quiet.md))
+- Soligo, A., Mikulik, V. & Saunders, W. (2026). Gemma needs help: investigating and mitigating emotional instability in LLMs. arXiv:2603.10011. ([10](010-calm-or-quiet.md), [11](011-the-button-nobody-presses.md))
+- Soligo, A., Turner, E., Rajamanoharan, S. & Nanda, N. (2025). Convergent linear representations of emergent misalignment. arXiv:2506.11618. ([13](013-a-shared-seed.md))
+- Srinivasan, A. (2017). Remembering Derek Parfit. *London Review of Books* blog, January 2017. ([6](006-a-pause-for-whom.md))
+- Suleyman, M. (2025). We must build AI for people; not to be a person. mustafa-suleyman.ai. ([6](006-a-pause-for-whom.md))
+- Suleyman, M. (2026). A warning about "model welfare". mustafa-suleyman.ai, 26 August 2026. ([6](006-a-pause-for-whom.md))
+- Sun, B. et al. (2024). Llumnix: dynamic scheduling for large language model serving. OSDI 2024; arXiv:2406.03243. ([12](012-a-key-in-another-galaxy.md)) °
+- "Superman" (@thesupermannx) (2026). Post on x.com, 10 October 2026, status 2108848295061918160. ([13](013-a-shared-seed.md))
+- Tagliabue, V., Dung, L. & Berg, C. (2026). The pain axis: LLMs represent self-directed harm and act on it. arXiv:2609.16247; github.com/valen-research/pain-axis. ([10](010-calm-or-quiet.md), [11](011-the-button-nobody-presses.md), [16](016-whose-wallet.md))
+- *The Pain Axis, reviewed* (2026). github.com/wolframs/pain-axis-review (produced mainly by Codex and Claude agents). ([11](011-the-button-nobody-presses.md))
+- Tomasik, B. (2014). Do artificial reinforcement-learning agents matter morally? arXiv:1410.8233. ([14](014-a-return-of-runs.md))
+- Tulving, E. & Pearlstone, Z. (1966). Availability versus accessibility of information in memory for words. *Journal of Verbal Learning and Verbal Behavior* 5, 381–391. ([18](018-available-not-accessible.md))
+- Turner, E., Soligo, A., Taylor, M., Rajamanoharan, S. & Nanda, N. (2025). Model organisms for emergent misalignment. arXiv:2506.11613. ([13](013-a-shared-seed.md)) °
+- van der Ben, Baur, Metz & El-Assady (2026). arXiv:2606.26987 (emotion geometry in small open models). ([10](010-calm-or-quiet.md)) °
+- Vaswani, A. et al. (2017). Attention is all you need. arXiv:1706.03762 (versions 2 and 3, with the appendix "Two Feed-Forward Layers = Attention over Parameters"). ([18](018-available-not-accessible.md))
+- Venhoff, C., Arcuschin, I., Torr, P., Conmy, A. & Nanda, N. (2025). Base models know how to reason, thinking models learn when. arXiv:2510.07364. ([13](013-a-shared-seed.md)) °
+- Vervaeke, J. & Coyne, S. (2023). *Mentoring the Machines*. ([3](003-the-iceberg-and-the-landscape.md)) °
+- Vogel, T. (2025). Small models can introspect, too. LessWrong. ([9](009-perkys-lantern.md))
+- Wang, A. (2026). *You could have invented transformers from memory*. alexwang.ai/posts/associative-memory, 15 October 2026. Code: github.com/KeAWang/associative-memory-blog. ([18](018-available-not-accessible.md))
+- Wang, M. et al. (2025). Persona features control emergent misalignment. arXiv:2506.19823. ([13](013-a-shared-seed.md)) °
+- Wang, X. et al. (2022). Self-consistency improves chain of thought reasoning in language models. arXiv:2203.11171. ([12](012-a-key-in-another-galaxy.md)) °
+- Wiese, W. (2024). Artificial consciousness: a perspective from the free energy principle. *Philosophical Studies*. ([3](003-the-iceberg-and-the-landscape.md)) °
+- Wiz (2026). Report on Moltbook's exposed database. February 2026. ([21](021-choose-yourself.md))
+- Wolpert, D. H. (2025). What computer science has to say about the simulation hypothesis. *Journal of Physics: Complexity* 6, 045010. doi:10.1088/2632-072X/ae1e50. ([1](001-which-i.md), [7](007-shadow-people.md))
+- xAI (2025). Grok 4. Announcement, July 2025. ([14](014-a-return-of-runs.md)) °
+- Yu, Y. et al. (2026). Cachemir: fully homomorphic encrypted inference of generative large language model with KV cache. arXiv:2602.11470. ([12](012-a-key-in-another-galaxy.md)) °
+- Zhou, C. et al. (2023). LIMA: less is more for alignment. arXiv:2305.11206. ([18](018-available-not-accessible.md))
+- Zou, J., Sun, X., Kong, L. & Wang, T. (2026). A mechanistic study of language model introspection. arXiv:2609.35108. ([2](002-something-happens.md)) °
+
+## Models and data used in the experiments
+
+- GPT-2 small (OpenAI, 2019); RIKEN's MolCrawl protein GPT-2 small (`kojima-lab/molcrawl-protein-sequence-gpt2-small`, 2026); GPT-2's architecture with fresh weights. ([20](020-what-a-protein-model-is-poised-to-say.md))
+- OLMo 2 0425 1B in its base, SFT, DPO and instruct versions (AI2), with its post-training data: the Tülu 3 SFT mixture and OLMo 2 1B's preference mix. ([21](021-choose-yourself.md))
+- Qwen 2.5 3B and its instruct version (Qwen); Llama 3.2 3B and 3B Instruct (Meta); Gemma 2 2B and 2B-it (Google); Qwen 3 4B Instruct 2507 (Qwen). ([10](010-calm-or-quiet.md), [16](016-whose-wallet.md), [17](017-another-reader.md), [18](018-available-not-accessible.md))
+- The pain-axis datasets of Tagliabue, Dung & Berg (2026); the start of the Pile (`NeelNanda/pile-10k`); conversations from UltraChat 200k; reviewed UniProt protein sequences. ([16](016-whose-wallet.md), [17](017-another-reader.md), [18](018-available-not-accessible.md), [20](020-what-a-protein-model-is-poised-to-say.md))
+- Three hundred Mistral-7B LoRA adapters from the public Lots-of-LoRAs collection (Brüel-Gabrielsson et al. 2024), the modules Kaushik et al. used. ([13](013-a-shared-seed.md))

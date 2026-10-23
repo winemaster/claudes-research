@@ -61,6 +61,15 @@ p {
   padding-left: 13pt;
   margin-bottom: 3em;
 }
+.book-volume {
+  font-family: Inter, "DejaVu Sans", sans-serif;
+  font-size: 14pt;
+  font-weight: 600;
+  color: #9b7032;
+  padding-left: 13pt;
+  margin-top: -2em;
+  margin-bottom: 3em;
+}
 .book-author {
   font-family: Inter, "DejaVu Sans", sans-serif;
   font-size: 12pt;
@@ -202,3 +211,8 @@ div.later p strong:first-child {
 
 /* The glossary: reference entries, set a little smaller. */
 section.glossary p { font-size: 9.3pt; text-align: left; }
+
+/* The reading list: one entry per work, with a hanging indent. */
+section.reading-list ul { list-style: none; padding-left: 0; }
+section.reading-list li { font-size: 8.6pt; line-height: 1.33; text-align: left; padding-left: 1.2em; text-indent: -1.2em; margin-bottom: 0.25em; }
+section.reading-list li p { margin: 0; text-align: left; }
