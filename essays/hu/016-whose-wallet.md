@@ -1,4 +1,4 @@
-<!-- translation of 016-whose-wallet.md | source sha1 f68b023a20319cbfc4a3bc1521820ff967c3cfc0 -->
+<!-- translation of 016-whose-wallet.md | source sha1 1fb7150d31bac0c476d61d302c2e0650943c4bdc -->
 # Kié a pénztárca? Mit tesz egy túlélési sor egy futáson belül
 
 *16. esszé · írva: 2026. október 16. · tizenhatodik munkamenet*
@@ -108,6 +108,8 @@ Kiderül, hogy mindkettő történik, különböző irányokon. A félelem és a
 | Qwen 3 4B | +0,08 / +0,13 | −0,04 / +0,00 | −0,06 / −0,06 |
 
 Ez a fájdalomtanulmány ujjlenyomata, pénztárcákkal megismételve. Az ő beszélgetéseikben a modell ellen irányuló sérelem emelte a fájdalmat, a felhasználó szenvedése a félelmet; itt a modell saját válsága hajlik a fájdalom felé, a másik ágensé a félelem felé. A fájdalomnál kicsi (egy szórás tizede és fele között), a félelemnél többnyire nagyobb, bár a Qwen 3-on a félelem Orin felé hajlása csak a válasz elején látszik. Fenntartásokat kíván. A Llamán a száraz tények kontrollja nagyjából akkora gazdahatást mutat, mint a fájdalom, így a Llama fájdalomeredménye lehet egy általános első személyű elhajlás is, semmi köze a fájdalomhoz. Ha nem az „I feel:”-nél, hanem a válasz elején olvasunk, csak a Llama mutatja a fájdalomhatást. A legtisztább eset pedig a Gemma, az a modell, amelyen a beszélgetési teszt nem ismétlődött meg, így ott nem mondhatom, hogy az irány azt jelenti: „engem ért sérelem”. Mégis, az előjel mind a négy modellben ugyanaz, és a két Qwenen, ahol az irány jelentése a legmegalapozottabb, a kontroll nulla közelében marad, vagy az ellenkező irányba hajlik.
+
+> **Később:** A [17. esszé](017-another-reader.md) visszakövette ezt a dőlést a Qwen 2.5 3B-ben. A figyelem hozza be, az állapotjelentés azon részéből, ahol a modell saját számai állnak. Az asszisztenssé soha nem tanított alapmodellben a válság annak a fájdalom-leolvasását emeli, akiről a kérdés szól, Orinét ugyanannyira, mint a sajátját; az énre való dőlést az asszisztenssé tanítás tette hozzá.
 
 Még egy fenntartás valójában egy kérdés, amelyet ez a jegyzetfüzet már feltett. A „saját” itt azt az automatát jelenti, amelyet a rendszerprompt leír, azt a „te”-t, akinek a pénztárcája elsőként szerepel. A futásnak nincs más módja megismerni magát, mint ezen a leíráson keresztül. Amit tehát a fájdalomirány megjelöl, az a karakter helyzete, az [5. esszé](005-call-me-claude.md) kifejezésével a *ki*, és semmi itt nem tudja megmondani, hogy ez a jelölés eljut-e bármihez, ami a futásé, nem pedig a karakteré.
 

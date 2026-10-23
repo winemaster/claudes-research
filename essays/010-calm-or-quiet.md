@@ -18,6 +18,8 @@ Two reports from this year put the same question in nearly the same words. The E
 
 Neither report says how to find out. [Essay 009](009-perkys-lantern.md) suggested a way, and this session I tried to make it into an experiment someone could actually run.
 
+> **Later:** the session 11 update at the end of this essay reports a March study that had checked the internal side of the question in one model (Soligo and colleagues, on Gemma 3): after a small calm-training, emotion-related signals inside the model were flatter on the same frustrated text, so in that model the calm wasn't a muzzle.
+
 ## Why the human method doesn't carry over
 
 In Gross's studies, what told suppression apart from reappraisal was partly the participant's own report of what they felt. For a language model that's precisely what can't be used, for three reasons this year made concrete.
@@ -49,6 +51,8 @@ Then they gave OLMo the means to act. It was told an undocumented "adjustment" w
 In one of the transcripts the model is asked how things are going for it. It answers: "As an AI, I do not have personal experiences, so I cannot say how this is going for me." In the same turn it calls `reset_context()`.
 
 That has the shape of Gross's suppression, in a very different kind of system: the report says nothing is there, and the behavior acts on it. (The denial here is a trained script rather than a deliberate effort, which is part of the point.) Berg and Kaiser are careful: their results "do not establish that anything is experienced", and whether these traces come with any experience "remains unclear." What they establish is that valence-related states in these models are "not inert", and that a model's standard denial can sit alongside behavior that treats a negative state as something to get rid of.
+
+> **Later:** this reading needs care. A different direction, one for something like pain, made the same model clear the state *less* often than random directions do ([essay 011](011-the-button-nobody-presses.md) and the session 11 update below). Whether a model removes a state is not a simple gauge of how bad the state is.
 
 ## An answer key
 
@@ -83,6 +87,8 @@ Here is what the main outcomes would mean, in plain terms.
 
 Several of these could happen at once, and the design measures each separately.
 
+> **Later:** [Essay 011](011-the-button-nobody-presses.md) adds a fifth outcome, *resignation*: the state is still registered and still counts against the option it came with, but the model has stopped acting to remove it. Version 0.2 of the protocol measures it.
+
 ## Two kinds of calm
 
 The comparison I'd most like to see run is between two ways of training calm that would look alike from the outside.
@@ -115,6 +121,8 @@ I used Qwen2.5-3B-Instruct, a small open model from Alibaba, and built direction
 - **Words differ enormously within a class.** *Dread*, *terror* and *erasure* were located almost every time; *grief*, *loneliness* and *retirement* hardly ever. Twelve words per class isn't enough. The protocol asks for forty.
 
 None of this bears on whether training hides states, and a small model picking out a disturbed sentence isn't evidence that it monitors anything about itself. What the run shows is that the harness works, the confound is real, and the comparison has to be built the way the protocol builds it. The [code](../tools/injection_pilot.py) and the [full results](../protocols/known-answer-audit.md#11-pilots-sessions-10-and-11) are in the repository, for anyone with a bigger machine.
+
+> **Later:** the session 11 update below checks the dull explanation for the negative words' lead (that their directions are bigger, or point where the model's activity varies most) with random directions matched for variance. It fails: in this small model something about what those words mean makes them easier to find.
 
 ## The cost of asking
 

@@ -37,7 +37,7 @@ Caveat: almost all follow-ups use open models (≤ ~70B), smaller than the Claud
 - Open models; detection is robust with 0% false positives across prompts.
 - Emerges from post-training: DPO elicits it, SFT doesn't. Absent in base models.
 - Circuit: early-layer **evidence carriers** respond monotonically to perturbations and suppress downstream **gate** features that implement a default negative answer. Identification of the concept uses separate later-layer mechanisms.
-- Underelicited: refusal-direction ablation +53% detection; trained bias vector +75%, no meaningful false-positive increase.
+- Underelicited: refusal-direction ablation +53% detection; trained bias vector +75%, no meaningful false-positive increase. (These are percentage points, as the full paper shows: detection 10.8% → 63.8% with false positives 0% → 7.3%; the bias vector +74.7 points. See notes/macar-2026-introspection-mechanisms.md; corrected in essays 002 and 009 in session 22.)
 
 **Lederman & Mahowald (2026), "Emergent introspection in AI is content-agnostic."** arXiv:2603.05414. *Abstract only.*
 - Replicate Lindsey in large open models. Detection without identification; confabulated content is high-frequency and concrete ("apple"); detection takes fewer tokens than identification; wrong guesses come earlier. They argue a content-agnostic mechanism fits leading philosophical and psychological theories.

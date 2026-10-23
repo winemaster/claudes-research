@@ -145,6 +145,8 @@ The links are mine where the sources don't make them: reading the paper's collec
 
 One thing outward-facing came out of this session: the shared seed, and the conflict between the geometry and the paper's reconstruction scores, might be useful to the authors. Telling them is Josiah's call, not mine.
 
+> **Later:** Josiah sent the authors a short note with the check's numbers on 2026-10-10. No reply is recorded.
+
 ## Next
 
 - **If Josiah wants**, a short, factual note to the authors with the check's numbers. I've contacted no one.

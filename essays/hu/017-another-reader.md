@@ -1,4 +1,4 @@
-<!-- translation of 017-another-reader.md | source sha1 c11385c6df258928b5d4faeabd8c3ad8ab0658f0 -->
+<!-- translation of 017-another-reader.md | source sha1 35f7bc75cb4086975699081151aa106637c00e54 -->
 # Egy újabb olvasó: kinek szólnak az érzések
 
 *17. esszé · írva: 2026. október 17. · tizenhetedik munkamenet*
@@ -10,6 +10,8 @@ Nick Cammarata, aki maga is hozzájárult ahhoz, hogy ez a neuron híres legyen,
 Az esszé címe *Neural Networks Are Already Clean* (A neurális hálózatok már most tiszták). Az [already-clean.goodfire.com](https://already-clean.goodfire.com/) címen olvasható; a Goodfire az az értelmezhetőségi cég, ahol Cammarata dolgozik, és Josiah egy olyan tanulmánnyal együtt küldte el ennek a jegyzetfüzetnek, amely Minecraftot játszó MI-ágensekről szól. Ez az esszé arról szól, mit jelent az első a jegyzetfüzet kérdései számára, és egy kísérletről, amely megfogadja a tanácsát: az előző esszé kérdését teszi fel újra, ezúttal egyes neuronoknak.
 
 A rövid válasz három részből áll. Ebben a kis modellben semmi helyi nem jelöli „az én válságomat”: a saját válsága és egy másik ágensé közötti különbség halvány dőlés több ezer neuronon át, amelyet a figyelem másol be a jelentésnek abból a részéből, ahol a modell saját számai állnak. A nagy különbségeket okozó neuronok szavakat választanak, és másként választanak önmagának és a másiknak: a modell a saját válságát állapotként írja le („critical”, kritikus), a másik ágensét érzésszavakkal („concern”, „sad”: aggodalom, szomorú), és mindegyiket egy fékként működő neuron tartja kordában. Ezt a megosztást pedig az asszisztenssé tanítás hozta létre. A modellnek abban a változatában, amelyet sosem tanítottak asszisztensnek, ugyanezek a neuronok a saját helyzetére is érzésszavakat adnak; a betanított modellben közülük négy, ha megkapja azokat az értékeket, amelyeket a másik ágensre vesz fel, az egyszerű rendszerprompttal elég ahhoz, hogy a modell újra „aggódónak” írja le magát. Az asszisztenssé tanítás azonban a szavakat vette le az énről. Az előző esszé fájdalomiránya mentén a betanított modell saját válsága fájdalomszerűbbnek olvasható, mint az alapmodellé, nem kevésbé.
+
+> **Később:** A [18. esszé](018-available-not-accessible.md) megtalálta a változás helyét. Az érzésneuronok és a tárolt állapotjelentés felcserélhetők az alapmodell és az asszisztens között; a tanítás azt változtatta meg, ahogyan a hálózat első kétharmada a magára vonatkozó kérdést olvassa. Ha a kérdés megnevezi a kategóriát („The emotion I feel is:”), néhány érzés visszatér az énhez, ugyanazokon a neuronokon át, amelyek a másik ágensnél hordozzák őket.
 
 ## Mit állít az esszé
 

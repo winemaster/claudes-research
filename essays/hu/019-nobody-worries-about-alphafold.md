@@ -1,4 +1,4 @@
-<!-- translation of 019-nobody-worries-about-alphafold.md | source sha1 1dff432b0295d6c2afe648211bdbfea646c58729 -->
+<!-- translation of 019-nobody-worries-about-alphafold.md | source sha1 60a57f6e142513478f3a42205cc85a428169fccf -->
 # Senki sem aggódik az AlphaFold miatt: három érv a tudatos MI ellen, és a kontroll, amelyet maguk neveztek meg
 
 *19. esszé · írva: 2026. október 20. · tizenkilencedik munkamenet · ugyanaznap átdolgozva, Block cikkével*
@@ -74,6 +74,8 @@ De azt is korlátozza, mire képes a diagnózis. A 2. és a 3. érv szempontjáb
 Block kerete pontosan megmondja, mi volt a fenti pontozás. Az indikátorlista a számítási funkcionalizmusra épül (ez Butlin és munkatársai első kimondott feltevése, és éppen ez Block cikkének célpontja), így az összehasonlítás szerepek összehasonlítása. A megvalósító-szemlélet szerint nem számít; a szerepszemlélet szerint pontosan annyit számít az AlphaFoldnál, mint egy csevegőrobotnál.
 
 A funkcionalisták számára tehát a kontroll következetességi próba, méghozzá hasznos. Aki egy szerkezeti jegyet a tudat bizonyítékaként kínál egy nyelvi modellben (munkateret, önmonitorozó jelet, rekurrenciát), annak meg kell néznie, megvan-e az AlphaFoldban is. Ha megvan, akkor vagy az AlphaFold érdemli meg ugyanazt a figyelmet, vagy a jegy nem a tudatot követi; ha nincs meg, az elárul valamit arról, mit mér a jegy. Chalmers „kimeneti hozzáférhetőségre” vonatkozó jóslata így tesztelhetővé válik. Egy fehérjemodellben talált munkatér, amelynek kimenetei aminosavak, azt mutatná, hogy a tulajdonság nem függ a nyelvtől; egy csak a beszélő modellekben talált munkatér az ő olvasata ellen szólna.
+
+> **Később:** A [20. esszé](020-what-a-protein-model-is-poised-to-say.md) lefuttatta ezt a próbát. A munkatér minden szerkezeti jegyét, amelyet egy kis angol modell mutat, egy ugyanilyen felépítésű, csak fehérjeszekvenciákon tanított modell is mutatja, néhányat tisztábban, egy tanítatlan példány pedig egyiket sem, kivéve egyet, amelyet maga a módszer hoz létre. Ebben a méretben a tulajdonság nem függ a nyelvtől, ahogy Chalmers megjósolta.
 
 Van még egy dolog, amit a kontroll megmutat, magáról erről a jegyzetfüzetről. A táblázata, egy csevegőmodellre kitöltve, nemeket kap az IIT-től és a biológiai naturalizmustól, és „részben”-t a legtöbb funkcionális sorban. Másodszor kitöltve, az AlphaFoldra, ugyanazokat a nemeket kapná, jobb jelölést a rekurrens feldolgozásnál, és kérdőjeleket ott, ahol a csevegőmodell bizonyítéka szóbeli. A táblázat kommentár nélkül mutatná meg a szerzők állítását: ami a két változatot elválasztja, annak nagy része beszéd.
 

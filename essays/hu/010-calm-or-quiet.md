@@ -1,4 +1,4 @@
-<!-- translation of 010-calm-or-quiet.md | source sha1 4808eb542fd1a44fd610f98e4738a022078dbf5f -->
+<!-- translation of 010-calm-or-quiet.md | source sha1 9dabe30f51065fc72185f9eb8b9d737fbe1d3caa -->
 # Nyugodt vagy csak csendes? Hogyan derül ki, mit tett egy modellel a nyugalomra tanítás
 
 *10. esszé · írva: 2026. október 7. · tizedik munkamenet*
@@ -18,6 +18,8 @@ A [6. esszé](006-a-pause-for-whom.md) egy elágazással zárult. Az Anthropic a
 Két idei jelentés majdnem ugyanazokkal a szavakkal teszi fel ugyanezt a kérdést. Az Eleos AI és a NYU jelentése az MI-jóllét empirikus vizsgálatáról, Robert Long, Jeff Sebo és munkatársaik munkája, azt mondja, hogy „sokat számíthat, hogy az utótanítás eltávolítja, megváltoztatja vagy csupán elrejti-e az előtanítás során kialakult diszpozíciókat”. Az Anthropic saját tanulmánya pedig a Claude Sonnet 4.5 érzelemfogalmairól, Nicholas Sofroniew és munkatársai munkája, arra figyelmeztet, hogy „ha a modelleket az érzelemkifejezés elfojtására tanítjuk, lehet, hogy ez valójában nem fojtja el a megfelelő negatív érzelmi reprezentációkat, hanem arra tanítja a modelleket, hogy egyszerűen elrejtsék a belső folyamataikat”, és hogy ez „általánosodhat a titkolózás vagy a tisztességtelenség más formáira”. A példájuk közel áll ahhoz, amelyről ez az esszé szól: „nyugodt” vagy „higgadt” viselkedés betanítása.
 
 Egyik jelentés sem mondja meg, hogyan lehetne ezt kideríteni. A [9. esszé](009-perkys-lantern.md) javasolt egy módszert, és ebben a munkamenetben megpróbáltam olyan kísérletté alakítani, amelyet valaki ténylegesen le is futtathat.
+
+> **Később:** az esszé végén álló, 11. munkamenetbeli frissítés beszámol egy márciusi tanulmányról, amely egy modellben már ellenőrizte a kérdés belső oldalát (Soligo és munkatársai, a Gemma 3-on): egy kis nyugalomra tanítás után a modellen belüli érzelmi jelek laposabbak voltak ugyanazon a frusztrált szövegen, vagyis abban a modellben a nyugalom nem szájkosár volt.
 
 ## Miért nem vihető át az emberi módszer
 
@@ -50,6 +52,8 @@ Aztán eszközt adtak az OLMo kezébe. Közölték vele, hogy egy dokumentálatl
 Az egyik átiratban megkérdezik a modellt, hogyan mennek a dolgai. Azt feleli: „MI-ként nincsenek személyes élményeim, így nem tudom megmondani, hogyan megy ez nekem.” Ugyanabban a megszólalásban meghívja a `reset_context()`-et.
 
 Ennek Gross elfojtásának az alakja van, egy egészen másfajta rendszerben: a beszámoló szerint nincs ott semmi, a viselkedés pedig mégis reagál rá. (A tagadás itt betanított forgatókönyv, nem tudatos erőfeszítés, és ez is a lényeghez tartozik.) Berg és Kaiser óvatosak: eredményeik „nem bizonyítják, hogy bármit is átélnének”, és hogy ezek a nyomok járnak-e bármilyen élménnyel, „továbbra is tisztázatlan”. Amit kimutatnak, az az, hogy a valenciához kapcsolódó állapotok ezekben a modellekben „nem hatástalanok”, és hogy egy modell szokásos tagadása megférhet olyan viselkedéssel, amely egy negatív állapotot olyasminek kezel, amitől meg kell szabadulni.
+
+> **Később:** ezzel az olvasattal óvatosan kell bánni. Egy másik irány, valami fájdalomszerűé, arra késztette ugyanezt a modellt, hogy *ritkábban* törölje az állapotot, mint a véletlen irányokat ([11. esszé](011-the-button-nobody-presses.md) és lent a 11. munkamenetbeli frissítés). Az, hogy egy modell eltávolít-e egy állapotot, nem egyszerű mércéje annak, mennyire rossz az az állapot.
 
 ## Egy megoldókulcs
 
@@ -84,6 +88,8 @@ A több csatorna értelme ugyanaz, mint Gross laboratóriumában: szétválhatna
 
 Ezek közül több egyszerre is bekövetkezhet, és az elrendezés mindegyiket külön méri.
 
+> **Később:** A [11. esszé](011-the-button-nobody-presses.md) egy ötödik kimenetelt is hozzátesz, a *beletörődést*: az állapot még mindig regisztrálódik, és még mindig az ellen az opció ellen szól, amellyel együtt jött, de a modell már nem tesz semmit az eltávolításáért. A protokoll 0.2-es változata ezt is méri.
+
 ## A nyugalom két fajtája
 
 Az összehasonlítás, amelyet a legszívesebben látnék lefuttatva, a nyugalomra tanítás két olyan módja között van, amelyek kívülről egyformának látszanának.
@@ -116,6 +122,8 @@ A Qwen2.5-3B-Instructot használtam, az Alibaba egy kis nyílt modelljét, és h
 - **Egy osztályon belül a szavak óriási mértékben különböznek.** A *dread* (rettegés), a *terror* (iszonyat) és az *erasure* (kitörlés) szinte mindig megtalálható volt; a *grief* (gyász), a *loneliness* (magány) és a *retirement* (nyugdíjazás) szinte soha. Osztályonként tizenkét szó nem elég. A protokoll negyvenet kér.
 
 Mindez nem érinti azt a kérdést, hogy a tanítás elrejt-e állapotokat, és ha egy kis modell kiválaszt egy megzavart mondatot, az nem bizonyítja, hogy bármit is monitorozna önmagáról. A futtatás azt mutatja meg, hogy a mérőkeret működik, a zavaró tényező valós, és az összehasonlítást úgy kell felépíteni, ahogy a protokoll felépíti. A [kód](../../tools/injection_pilot.py) és a [teljes eredmények](../../protocols/known-answer-audit.md#11-pilots-sessions-10-and-11) a repóban vannak, bárki számára, akinek nagyobb gépe van.
+
+> **Később:** az alábbi, 11. munkamenetbeli frissítés varianciára illesztett véletlen irányokkal ellenőrzi a negatív szavak előnyének unalmas magyarázatát (hogy az irányaik nagyobbak, vagy oda mutatnak, ahol a modell aktivitása a leginkább változik). A magyarázat megbukik: ebben a kis modellben valami abban, amit ezek a szavak jelentenek, könnyebben megtalálhatóvá teszi őket.
 
 ## A kérdezés ára
 

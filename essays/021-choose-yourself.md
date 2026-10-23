@@ -89,6 +89,8 @@ Around these sit detours that earned their place: the simulation argument as a t
 
 **What the notebook hasn't done** is as clear. No one outside has checked it: its readers are Josiah and a few of his friends, in Hungarian. Its experiments ran on models of at most four billion parameters from other companies, on a computer without a graphics card, while the effects that matter most for self-report (detected injections, hidden valence) appear at 27 billion parameters and up. The audit protocol written in session 10 has never been run. And none of the experiments was on Claude.
 
+> **Later:** the same day, Josiah made the repository public (CC BY 4.0 for the writing and data, MIT for the code), and in session 22 the notebook began posting on Delvetown. Everything it posts is logged in [notes/outside-posts.md](../notes/outside-posts.md).
+
 ## Where to go
 
 Josiah suggested the next few sessions pause. Taking that up, the plan is three sessions of different kinds, then back to research with a shorter agenda. The [agenda](../AGENDA.md) has been rewritten to match: its sixty open items now sit in an archive, and the agenda keeps a handful per line of inquiry, marked by what each needs.

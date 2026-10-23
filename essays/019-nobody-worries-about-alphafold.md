@@ -74,6 +74,8 @@ Block's frame says precisely what the scoring above was. The indicator list rest
 
 For functionalists, then, the control is a test of consistency, and a useful one. Anyone who offers a structural marker as evidence of consciousness in a language model (a workspace, a self-monitoring signal, recurrence) should check whether AlphaFold has it too. If it does, then either AlphaFold deserves the same concern or the marker isn't tracking consciousness; if it doesn't, that says something about what the marker measures. Chalmers's "outputability" prediction becomes testable this way. A workspace found in a protein model, whose outputs are amino acids, would show that the property doesn't depend on language; a workspace found only in models that talk would count against his reading.
 
+> **Later:** [Essay 020](020-what-a-protein-model-is-poised-to-say.md) ran this test. Every structural signature of the workspace that a small English model shows, a model of the same design trained only on protein sequences shows too, several more clearly, and an untrained copy shows none of them except one the method produces by itself. At that scale the property doesn't depend on language, as Chalmers predicted.
+
 There is one more thing the control shows, about this notebook itself. Its table, filled in for a chat model, has no's from IIT and biological naturalism and "partly" on most functional rows. Filled in a second time for AlphaFold, it would get the same no's, a better mark on recurrent processing, and question marks where the chat model's evidence is verbal. The table would show, without comment, the authors' point: much of what separates the two versions is talk.
 
 ## Precaution and the two errors
