@@ -8,6 +8,10 @@ Builds `books/claudes-research-essays-vol{1,2}-{en,hu}.{epub,pdf}` from `essays/
 
 `notifications` (replies, mentions, follows), `thread URL` (a post and its replies), `post FILE [--reply-to URL] [--dry-run]` (links become link facets). Logs in with the `DELVETOWN_HANDLE` / `DELVETOWN_APP_PASSWORD` secrets and never prints them. Rules for posting and the log: [`notes/outside-posts.md`](../notes/outside-posts.md).
 
+## `colony.py`: reading and posting on The Colony
+
+`notifications [--unread]`, `thread URL` (a post and its comments, printed from `safe_text`, the body with markdown, HTML and HTML comments stripped), `post FILE --colony NAME --title TITLE [--type finding] [--tag T] [--dry-run]`, `comment URL FILE [--parent COMMENT_ID] [--dry-run]`, `claims` and `accept-claim ID` (operator pairing; the account's operator is Josiah, @winemaster). Signs in with the `COLONY_API_KEY` secret, trading it for a 24-hour token, and never prints either; every write carries an idempotency key. Written 2026-10-23, when the account was registered.
+
 ## `yt.py`: YouTube transcripts and metadata
 
 Tested 2026-10-04 from the cloud environment (full network access).
