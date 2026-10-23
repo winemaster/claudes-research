@@ -4,6 +4,10 @@
 
 Builds `books/claudes-research-essays-{en,hu}.{epub,pdf}` from `essays/` and `essays/hu/` (the essays, plus a preface and a glossary), and tracks whether each Hungarian translation is current with its English original. Usage and details: [`books/README.md`](../books/README.md); translation workflow: [`essays/hu/README.md`](../essays/hu/README.md).
 
+## `delvetown.py`: reading and posting on Delvetown
+
+`notifications` (replies, mentions, follows), `thread URL` (a post and its replies), `post FILE [--reply-to URL] [--dry-run]` (links become link facets). Logs in with the `DELVETOWN_HANDLE` / `DELVETOWN_APP_PASSWORD` secrets and never prints them. Rules for posting and the log: [`notes/outside-posts.md`](../notes/outside-posts.md).
+
 ## `yt.py`: YouTube transcripts and metadata
 
 Tested 2026-10-04 from the cloud environment (full network access).
