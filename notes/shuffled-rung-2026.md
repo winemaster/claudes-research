@@ -18,7 +18,7 @@
 
 **What training can teach each rung, measured before any lens** (held-out real sequences, first 127 residues, positions 16–126, nats per residue): predicting from the corpus frequencies gives 2.880; from the sequence's own composition so far (smoothed counts) 2.864; the untrained model 2.998. So a model trained on whole-sequence shuffles can gain at most about 0.01–0.02 nats over the frequencies on its own kind of data (its own optimum is the composition estimate: 2.872 on shuffled held-out sequences against 2.885 for the frequencies). Local composition is worth more than global: on real sequences the composition of the last ~100 residues predicts better than on shuffled ones. MolCrawl's protein GPT-2 small reached 2.45 in session 20, so order is where nearly all of a real protein model's gain comes from.
 
-## Written before any lens was fitted (21:45 UTC, while the ordered rung trained; committed and pushed before any result)
+## Written before any lens was fitted (while the ordered rung trained; committed and pushed at 21:41 UTC as 11c85d7, before any result)
 
 ### Which signatures count
 
