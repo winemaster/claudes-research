@@ -82,6 +82,16 @@ SKIP_FIRST = 16      # as in the reference implementation: early positions act a
 SEQ_LEN = 128
 AMINO = "LAGVSERTIDPKQNFYMHWC"   # the 20 standard amino acids (the protein vocabulary's content tokens)
 EVAL_OFFSET = {"text": 1000, "random": 1000, "protein": 500, "dna": 100}   # held-out documents start here
+# session 24: small protein models trained in this environment from one initialization on ordered,
+# window-shuffled, shuffled and i.i.d. residues (tools/shuffled_rung.py); run with --data at that tool's
+# data directory, whose proteins.fasta is the probe set
+for _r in ["ordered", "window", "shuffled", "iid", "untrained"]:
+    MODEL_DIRS["rung-" + _r] = "rung-" + _r
+    EVAL_OFFSET["rung-" + _r] = 500
+
+
+def is_protein(kind):
+    return kind == "protein" or kind.startswith("rung-")
 
 
 # ----------------------------------------------------------------------------- models and corpora
@@ -112,7 +122,7 @@ def load_vocab(kind, models_dir):
     for s, i in vocab.items():
         strings[i] = s
     special = {a["id"] for a in tj.get("added_tokens", []) if a.get("special")}
-    if kind == "protein":
+    if is_protein(kind):
         content = [vocab[c] for c in AMINO]
     else:
         content = [i for i in range(n) if i not in special]
@@ -137,7 +147,7 @@ def corpus(kind, data_dir, models_dir, n, offset, seed=20):
             if len(out) == n:
                 break
         return out
-    if kind == "protein":
+    if is_protein(kind):
         vocab = json.load(open(os.path.join(models_dir, MODEL_DIRS[kind], "tokenizer.json")))["model"]["vocab"]
         seqs, cur = [], []
         for line in open(os.path.join(data_dir, "proteins.fasta")):
@@ -303,7 +313,7 @@ def stage_readout(a):
     fit_prompts = corpus(a.model, a.data, a.models, a.n_prompts, 0)
     freq = frequent_tokens(fit_prompts + prompts, content)
     rng = np.random.default_rng(0)
-    subsets = [] if a.model == "protein" else [rng.choice(freq, 20, replace=False).tolist() for _ in range(a.n_subsets)]
+    subsets = [] if is_protein(a.model) else [rng.choice(freq, 20, replace=False).tolist() for _ in range(a.n_subsets)]
     cidx = torch.tensor(content)
     res = {"model": a.model, "n_prompts": len(prompts), "layers": list(range(L)), "content_vocab": len(content),
            "jlens": {k: [] for k in ["acc1", "acc5", "kurt", "auto", "auto_null", "not_in_or_out", "m_acc1", "m_kurt", "m_auto", "m_auto_null"]},
@@ -401,7 +411,7 @@ def stage_geometry(a):
     freq = frequent_tokens(fit_prompts, content)
     rows = torch.tensor(content)
     rng = np.random.default_rng(0)
-    subsets = [] if a.model == "protein" else [torch.tensor(rng.choice(freq, 20, replace=False)) for _ in range(a.n_subsets)]
+    subsets = [] if is_protein(a.model) else [torch.tensor(rng.choice(freq, 20, replace=False)) for _ in range(a.n_subsets)]
     res = {"model": a.model, "layers": list(range(L)), "n_prompts": lens["n_prompts"]}
     with torch.no_grad():
         V = [lens_vectors(model, Js[l], rows) for l in range(L)]
@@ -480,10 +490,10 @@ def ignition_items(a, model):
         return items
     prompts = corpus(a.model, a.data, a.models, 96, EVAL_OFFSET[a.model])
     strings, content = load_vocab(a.model, a.models)
-    pool = content if a.model == "protein" else frequent_tokens(prompts, content, 200)
+    pool = content if is_protein(a.model) else frequent_tokens(prompts, content, 200)
     for ids in prompts:
         p = rng.randrange(40, SEQ_LEN - 8)
-        if a.model != "protein":    # as with amino acids, the real token is one of a small set of frequent ones
+        if not is_protein(a.model):    # as with amino acids, the real token is one of a small set of frequent ones
             spots = [q for q in range(40, SEQ_LEN - 8) if ids[q] in pool]
             if not spots:
                 continue
@@ -541,7 +551,7 @@ def stage_property(a):
     with the hydrophobicity of the residues already read (a window of 8), of the next residue, and
     of the next 8. Text has a word for "hydrophobic"; here the content can only show as a
     preference for a class of letters. Also for the logit lens and the model's own output."""
-    assert a.model == "protein"
+    assert is_protein(a.model)
     model = load_model(a.model, a.models)
     strings, content = load_vocab(a.model, a.models)
     Js, _ = load_lens(a, model)
