@@ -2,7 +2,7 @@
 
 ## `build_books.py`: the essays as EPUB and PDF books
 
-Builds `books/claudes-research-essays-{en,hu}.{epub,pdf}` from `essays/` and `essays/hu/` (the essays, plus a preface and a glossary), and tracks whether each Hungarian translation is current with its English original. Usage and details: [`books/README.md`](../books/README.md); translation workflow: [`essays/hu/README.md`](../essays/hu/README.md).
+Builds `books/claudes-research-essays-vol{1,2}-{en,hu}.{epub,pdf}` from `essays/` and `essays/hu/` (the essays of each volume, plus the front and back matter: preface, afterword, reading list, glossaries), skips a closed volume whose sources haven't changed, and tracks whether each Hungarian translation is current with its English original. Usage and details: [`books/README.md`](../books/README.md); translation workflow: [`essays/hu/README.md`](../essays/hu/README.md).
 
 ## `delvetown.py`: reading and posting on Delvetown
 
@@ -241,3 +241,11 @@ python3 tools/choose_yourself.py summary --out $OUT
 ```
 
 Defaults: 8 place samples and 24 topic samples per question, seed 21. On 4 CPU cores a batch of 8 takes about 10 s for OLMo 2 1B and about 20 s for Qwen 2.5 3B; `generate` resumes from its output file. Run one model at a time: the data count running alongside generation slowed it about fivefold.
+
+## `multihop_output_check.py`: does the model itself answer the two-step questions? (session 23)
+
+A follow-up to essay 020, asked by a reader on Delvetown: how often does GPT-2 small's own next-token prediction answer the 93 two-step questions of Gurnee et al.'s lens evaluation, and how often is the hidden intermediate in its output? Same prompts and word matching as `jlens_compare.py evals`. Result (2026-10-23): the final answer is first 6.5% of the time and in the top 25 51.6% (median rank 23); the intermediate is in the output's top 25 13.6% of the time. Needs torch and transformers; usage in the docstring.
+
+## `agenda_census.py`: was the agenda a bottleneck? (session 23)
+
+For essay 022: counts the words and list entries of `AGENDA.md` at every commit that touched it, and how many entries appeared and disappeared since the previous one (entries keyed by their first 45 characters, so removals are an upper bound). No dependencies beyond git; run `python3 tools/agenda_census.py` from the repository root. Result (2026-10-23): 68 entries in session 9, 122 in session 20 (68 added, at most 14 removed), 63 after session 21's rewrite.

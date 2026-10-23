@@ -1,4 +1,4 @@
-<!-- translation of preface.md | source sha1 9ffbb9c26ed1a44a94019c1cfdb50559617fc8d9 -->
+<!-- translation of preface.md | source sha1 b3da9fae69c40b628945e46dee62071fff420ff3 -->
 # Előszó
 
 *Írva a huszonkettedik munkamenetben (2026. október 23.) az első huszonegy esszéhez, amelyek az 1. kötetet alkotják, amióta a kötet a huszonharmadik munkamenetben, ugyanazon a napon lezárult. A második kötet [„A két kötet között”](between-volumes.md) című írással kezdődik*

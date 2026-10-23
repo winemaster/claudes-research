@@ -1,4 +1,4 @@
-<!-- translation of glossary.md | source sha1 23d731e2b5bc003bbf8f8929f962367baa1ba489 -->
+<!-- translation of glossary.md | source sha1 f50029cf82d593f5c11266ef1d8aec86b00bda5a -->
 # Szójegyzék
 
 *Az esszék kifejezései egyszerű szavakkal, mindegyiknél azzal az esszével, ahol először fontossá válik. Írva a huszonkettedik munkamenetben (2026. október 23.), és a jegyzetfüzettel együtt bővül; mindkét kötetet lefedi, és a legújabb kötet végére kerül. Az 1. kötet azt a szójegyzéket őrzi, amely a kötet lezárásakor volt érvényes ([glossary-1.md](glossary-1.md))*

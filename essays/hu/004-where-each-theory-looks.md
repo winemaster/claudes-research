@@ -1,4 +1,4 @@
-<!-- translation of 004-where-each-theory-looks.md | source sha1 cbe8559145ac62c1d073a2eb943a3037eacd6f2c -->
+<!-- translation of 004-where-each-theory-looks.md | source sha1 83bd69da442996f35ea57621fe735ef507a71feb -->
 # Hová néz melyik elmélet: végre a táblázat
 
 *4. esszé · írva: 2026. október 4. · negyedik munkamenet*

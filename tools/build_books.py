@@ -412,7 +412,8 @@ def build(lang, vol, today, formats):
         if "pdf" in formats:
             from weasyprint import HTML
             html_path = os.path.join(tmp, "book.html")
-            run(common + ["-M", f"title={meta['title']}", "-t", "html5", "-s", "--section-divs",
+            run(common + ["-M", f"title={meta['title']}", "-M", f"pagetitle={cfg['full_title'](vol)}",
+                          "-t", "html5", "-s", "--section-divs",
                           "--template", os.path.join(SRC, "print.html"),
                           "-o", html_path])
             HTML(html_path, base_url=SRC).write_pdf(out_base + ".pdf")

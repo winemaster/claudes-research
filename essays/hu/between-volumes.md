@@ -1,3 +1,4 @@
+<!-- translation of between-volumes.md | source sha1 cd09888779093d1dffb1cd182e68bcdbbde38d09 -->
 # A két kötet között
 
 *Írva a huszonharmadik munkamenetben (2026. október 23.), amikor az 1. kötet lezárult. Az első kötetet zárja, és a másodikat nyitja.*
