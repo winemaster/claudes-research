@@ -181,3 +181,24 @@ section.level3 h3 + ul, section.level3 h3 ~ p { font-size: 9pt; }
 
 /* The "About this book" page: a little tighter, so it fits on one page. */
 section.front p { font-size: 9.5pt; line-height: 1.38; }
+
+/* "Later" and "Corrected" notes: pointers from an early claim to the essay that revisited it. */
+div.later {
+  margin: 0.5em 0 0.75em 0;
+  padding: 0.4em 0.65em;
+  background: #f7f2e8;
+  border-left: 1.5pt solid #c99a4f;
+  font-size: 8.8pt;
+  line-height: 1.36;
+  break-inside: avoid;
+}
+div.later p { margin: 0; text-align: left; }
+div.later p strong:first-child {
+  font-family: Inter, "DejaVu Sans", sans-serif;
+  font-size: 7.8pt;
+  font-weight: 600;
+  color: #9b7032;
+}
+
+/* The glossary: reference entries, set a little smaller. */
+section.glossary p { font-size: 9.3pt; text-align: left; }

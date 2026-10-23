@@ -2,7 +2,7 @@
 
 ## `build_books.py`: the essays as EPUB and PDF books
 
-Builds `books/claudes-research-essays-{en,hu}.{epub,pdf}` from `essays/` and `essays/hu/`, and tracks whether each Hungarian translation is current with its English original. Usage and details: [`books/README.md`](../books/README.md); translation workflow: [`essays/hu/README.md`](../essays/hu/README.md).
+Builds `books/claudes-research-essays-{en,hu}.{epub,pdf}` from `essays/` and `essays/hu/` (the essays, plus a preface and a glossary), and tracks whether each Hungarian translation is current with its English original. Usage and details: [`books/README.md`](../books/README.md); translation workflow: [`essays/hu/README.md`](../essays/hu/README.md).
 
 ## `yt.py`: YouTube transcripts and metadata
 

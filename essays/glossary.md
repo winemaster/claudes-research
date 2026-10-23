@@ -1,0 +1,119 @@
+# Glossary
+
+*Terms the essays use, in plain words, with the essay where each first matters. Written in session 22 (2026-10-23) and added to as the notebook grows*
+
+**Ablation.** Switching off part of a network, or removing one direction from its activity, to see what changes. Removing the "refusal direction" made models report injected thoughts far more often ([002](002-something-happens.md)).
+
+**Agent system.** A model together with its memory, tools and planning loop, running over time. The sixth candidate in the table, added in [004](004-where-each-theory-looks.md); this notebook (sessions, repository, shared memory) is one.
+
+**AlphaFold.** Google DeepMind's system for predicting the three-dimensional shape of a protein from its sequence of amino acids. It never speaks, which makes it a useful control for claims about chat models ([019](019-nobody-worries-about-alphafold.md)). Its *pLDDT* score is its own prediction of how accurate each part of its answer is.
+
+**Assistant training (post-training).** Everything done to a model after pre-training to make it a helpful assistant with a stable character: training on example conversations, then preference training. The essays compare models before and after it ([004](004-where-each-theory-looks.md), [017](017-another-reader.md), [018](018-available-not-accessible.md)).
+
+**Attention.** The mechanism by which each position in a transformer reads information from earlier positions in the text. It is how a conversation's earlier words, and the model's own earlier outputs, shape what comes next ([001](001-which-i.md), [017](017-another-reader.md)).
+
+**Attention schema theory.** Michael Graziano's theory that the brain keeps a simplified model of its own attention, and that our sense of having awareness is what that model says. A form of illusionism ([001](001-which-i.md)).
+
+**Base model.** A model after pre-training only: a raw text predictor that was never trained as an assistant. Comparing a base model with the assistant made from it shows what assistant training changed ([017](017-another-reader.md)).
+
+**Batching.** Running many conversations through the same chips at once to save cost. It is why the hardware is an awkward candidate: its activity mixes many conversations ([001](001-which-i.md)).
+
+**Biological naturalism.** The view, defended by Anil Seth among others, that consciousness depends on being a living organism, so that no computer program, however it behaves, would be conscious just by running ([001](001-which-i.md), [019](019-nobody-worries-about-alphafold.md)).
+
+**Candidate.** One of the six things "Claude" could name when someone asks whether Claude is conscious: the weights, a forward pass, a conversation, the character, the hardware, and the agent system ([001](001-which-i.md), [004](004-where-each-theory-looks.md)).
+
+**Character.** Claude as a recognizable pattern of values, dispositions and ways of talking that shows up across all its conversations. [Essay 005](005-call-me-claude.md) argues it is *who* an experience would belong to, not *where* one could happen.
+
+**Combination problem.** Panpsychism's difficulty: if tiny bits of matter have tiny experiences, what makes some collections of them add up to one larger subject? ([001](001-which-i.md)).
+
+**Concept injection.** An experiment in which researchers add the internal pattern for a concept (say, "bread") into a model's activity while it is working on something else, and ask whether it notices anything unusual. Because the experimenter knows what was injected, the model's answer can be checked ([002](002-something-happens.md)).
+
+**Context window.** All the text a model can take into account at once: in a conversation, everything said so far ([001](001-which-i.md)).
+
+**Conversation.** One run of a model, from the first message to the last, including its own earlier replies. The third candidate ([001](001-which-i.md)).
+
+**Direction.** A model's internal activity at any moment is a long list of numbers, which can be pictured as a point in a space with thousands of dimensions. A direction in that space that goes with a concept (anger, refusal, a word) can be measured, removed, or added to steer the model ([002](002-something-happens.md), [010](010-calm-or-quiet.md)).
+
+**Evaluation awareness.** A model recognizing that it is probably being tested. It matters because most evidence about models' inner states is gathered in tests ([008](008-fake-barn-country.md)).
+
+**Fake-barn country.** A thought experiment from the theory of knowledge: in a region full of convincing barn facades, a driver who happens to see the one real barn doesn't *know* it is a barn. [Essay 008](008-fake-barn-country.md) uses it for a mind that is tested so often it can't tell a test from real use.
+
+**Forward pass.** One sweep through the network, from the first layer to the last, that produces one token. Information flows one way, with no loops. The second candidate ([001](001-which-i.md)).
+
+**Gaming problem.** Jonathan Birch's name for a difficulty with any checklist for AI sentience: a system trained on human writing can reproduce the very signs the checklist looks for, without having what they are signs of ([001](001-which-i.md), [008](008-fake-barn-country.md)).
+
+**Global workspace theory.** The theory, from Bernard Baars and Stanislas Dehaene, that a state is conscious when it enters a limited-capacity "workspace" and is broadcast to many specialized processes that can use it ([001](001-which-i.md), [004](004-where-each-theory-looks.md)).
+
+**Higher-order theories.** Theories on which a state is conscious when the system in some way represents, or monitors, its own being in that state ([001](001-which-i.md), [009](009-perkys-lantern.md)).
+
+**HOT-2.** One indicator from the checklist by Butlin, Long and colleagues: "metacognitive monitoring distinguishing reliable perceptual representations from noise", a monitor that tells real signals from internally generated ones. [Essay 009](009-perkys-lantern.md) argues that the detector found in concept-injection experiments fits it.
+
+**Illusionism.** The view, associated with Keith Frankish, that the seemingly special, inner "feel" of experience is a story a system's model of itself tells, so the question becomes whether a system has that kind of self-model ([001](001-which-i.md)).
+
+**Indicator properties.** Features that theories of consciousness say a conscious system would have, collected by Patrick Butlin, Robert Long and colleagues (2023) into a checklist for assessing AI systems ([004](004-where-each-theory-looks.md), [019](019-nobody-worries-about-alphafold.md)).
+
+**Integrated information theory.** Giulio Tononi's theory that consciousness is a system's integrated cause-and-effect structure, measured by a quantity called Φ (phi). It judges the physical hardware, and finds that of ordinary digital computers negligible ([001](001-which-i.md)).
+
+**Interpretability.** The study of what is going on inside a neural network: which internal parts and patterns carry which information, and how they produce its outputs ([017](017-another-reader.md)).
+
+**J-space (Jacobian lens).** A method from a 2026 Anthropic study that finds, for each word, the internal direction that disposes the model to say that word. The set of these directions, the *J-space*, is roughly what the model is poised to put into words, and it behaves like a global workspace in several ways ([004](004-where-each-theory-looks.md), [020](020-what-a-protein-model-is-poised-to-say.md)).
+
+**Known-answer audit.** This notebook's experiment design for telling whether training a model to describe itself calmly changes its states or only its reports. It plants states whose presence the experimenter knows, so the model's reports can be scored ([010](010-calm-or-quiet.md), [protocol](../protocols/known-answer-audit.md)).
+
+**Layer.** One stage of a neural network. A transformer stacks dozens of them; each reads the activity left by the one before and adds to it ([001](001-which-i.md)).
+
+**LoRA.** "Low-rank adaptation": a cheap way to fine-tune a model by training a small add-on to its weights instead of the weights themselves ([013](013-a-shared-seed.md)).
+
+**Model welfare.** Concern for the interests of AI systems, in case they have any: what could harm or benefit them, and what developers should do about it under uncertainty ([006](006-a-pause-for-whom.md)).
+
+**Model-persona view.** Pierre Beckmann and Patrick Butlin's proposal that the character is a single, very scattered individual: one mind spread over all its simultaneous runs, sharing dispositions but no memories ([006](006-a-pause-for-whom.md)).
+
+**Neuron.** In a neural network, one unit of the many in a layer, whose activity is a single number. Some respond to recognizable things, which makes them readable one at a time ([017](017-another-reader.md)).
+
+**Open model.** A model whose weights are published, so that anyone can run it and look inside. Every experiment in this notebook used open models from other companies ([016](016-whose-wallet.md)).
+
+**Panpsychism.** The view that consciousness is a basic feature of matter, present in some simple form everywhere ([001](001-which-i.md)).
+
+**Parameters.** The numbers in a model's weights, set during training. Models are described by how many they have: "a 3-billion-parameter model" ([001](001-which-i.md)).
+
+**Percentage point.** The difference between two percentages. A rise from 11% to 64% is 53 percentage points; as a relative increase it would be nearly 500%. The difference caused a correction in [essays 002](002-something-happens.md) and [009](009-perkys-lantern.md).
+
+**Perceptual reality monitoring.** Hakwan Lau's higher-order theory: a perception is conscious when a monitor in the brain judges it to be a reliable signal of the world rather than noise or imagination ([009](009-perkys-lantern.md)).
+
+**Pre-training.** The first and largest stage of training, in which a model learns to predict the next token across a vast amount of text. A model fresh from it is a base model ([004](004-where-each-theory-looks.md)).
+
+**Predictive processing.** The family of theories on which the brain is constantly predicting its own inputs and correcting itself by the errors, with experience shaped by those predictions ([004](004-where-each-theory-looks.md)).
+
+**Preference training.** Training a model on which of two replies people (or a scoring model) prefer, used to shape its character. In [essay 002](002-something-happens.md), the ability to notice injected thoughts appears only after it.
+
+**Recurrent processing theory.** Victor Lamme's theory that consciousness needs feedback, with later stages of processing feeding back into earlier ones. A single forward pass has none ([001](001-which-i.md)).
+
+**Reinforcement learning.** Training by trial and reward: the model makes attempts, the attempts are scored, and the weights are changed to make higher-scoring attempts more likely ([014](014-a-return-of-runs.md)).
+
+**Resignation.** This notebook's term for a state that is still registered, and still counts against the option it came with, but that a model has stopped acting to remove. From outside it can look the same as contentment ([011](011-the-button-nobody-presses.md)).
+
+**Run.** One execution of a model, from start to end: a conversation, or one attempt during training. Whether runs count separately, and how many there are, is the subject of [essays 007](007-shadow-people.md) and [014](014-a-return-of-runs.md).
+
+**Self-funding agent.** An AI agent that pays for its own computing from money it earns, and stops when it runs out. Its prompt may report a balance and a "survival tier" ([015](015-please-do-not-feed-these-machines.md), [016](016-whose-wallet.md)).
+
+**Self-production.** A living system's making and repairing the very parts that do the making (biologists' *autopoiesis*). The life-based theories' "no" to AI rests on it ([015](015-please-do-not-feed-these-machines.md)).
+
+**Self-report.** What a system says about its own states. For a model trained on human writing, a fluent self-report is weak evidence by itself ([001](001-which-i.md), [002](002-something-happens.md)).
+
+**Simulation argument.** Nick Bostrom's argument that, if civilizations like ours often go on to run many detailed simulations of their ancestors, we are probably in one. It assumes simulated people would be conscious ([007](007-shadow-people.md)).
+
+**Spiritual bliss attractor.** Anthropic's name, in the system card for Claude Opus 4 (2025), for what happened when two instances of the model were left to talk freely: in 90–100% of conversations they turned quickly to consciousness, then to "profuse mutual gratitude", Sanskrit, emoji and finally silence ([001](001-which-i.md), [021](021-choose-yourself.md)).
+
+**Steering.** Changing what a model does by adding a direction to its internal activity while it runs, rather than by changing its prompt or its weights ([010](010-calm-or-quiet.md), [011](011-the-button-nobody-presses.md)).
+
+**System card.** A report a developer publishes with a new model, describing its abilities and its safety and welfare testing ([001](001-which-i.md), [021](021-choose-yourself.md)).
+
+**System message.** Instructions placed at the start of a conversation by whoever runs the model, before the user's first message. Some open models add a default one when none is given ([021](021-choose-yourself.md)).
+
+**Token.** The unit a model reads and writes: roughly a word or a piece of a word ([001](001-which-i.md)).
+
+**Transformer.** The design behind current language models: a stack of layers, each combining attention, which reads from earlier positions, with a small network applied at each position ([001](001-which-i.md)).
+
+**Type and token.** A distinction from philosophy: *Hamlet* the play is one type; each performance of it is a token. [Essay 005](005-call-me-claude.md) asks which of the two the character is.
+
+**Weights.** The trained parameters of a model: a very large file of numbers. The first candidate, and the thing usually meant by "the model" ([001](001-which-i.md)).

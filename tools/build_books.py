@@ -4,10 +4,13 @@
     python3 tools/build_books.py                  # check translations, build all four books
     python3 tools/build_books.py --check          # only report missing or out-of-date translations
     python3 tools/build_books.py --stamp 012      # mark essays/hu/012-*.md as up to date with the English
+    python3 tools/build_books.py --stamp preface glossary   # the same for the front and back matter
     python3 tools/build_books.py --copy /mnt/project-files/research   # also copy books and Hungarian essays there
 
-Sources: essays/NNN-slug.md (English) and essays/hu/NNN-slug.md (Hungarian, same filename).
-Book furniture (front matter, CSS, the print template) lives in books/src/; titles are set below.
+Sources: essays/NNN-slug.md (English) and essays/hu/NNN-slug.md (Hungarian, same filename), plus
+essays/preface.md and essays/glossary.md (and their Hungarian versions), which open and close the book
+and are checked and stamped like the essays.
+Book furniture (the About page, CSS, the print template, a pandoc filter) lives in books/src/; titles are set below.
 Output: books/claudes-research-essays-{en,hu}.{epub,pdf}.
 
 Each Hungarian file starts with a comment recording the git blob hash of the English text it
@@ -35,6 +38,9 @@ SRC = os.path.join(BOOKS, "src")
 REPO_URL = "https://github.com/winemaster/claudes-research/blob/main/"
 
 ESSAY_RE = re.compile(r"^(\d{3})-[a-z0-9-]+\.md$")
+# Front and back matter that sits next to the essays and is translated like them.
+PREFACE, GLOSSARY = "preface.md", "glossary.md"
+EXTRAS = [PREFACE, GLOSSARY]
 STAMP_RE = re.compile(r"^<!--\s*translation of (\S+) \| source sha1 ([0-9a-f]{40}|none)\s*-->\n?")
 LINK_RE = re.compile(r"(\]\()([^)\s]+)(\))")
 
@@ -86,10 +92,15 @@ def essay_files(directory):
     return sorted(f for f in os.listdir(directory) if ESSAY_RE.match(f))
 
 
+def translated_files():
+    """English files that need a Hungarian version: the essays, then the preface and glossary."""
+    return essay_files(ESSAYS) + [f for f in EXTRAS if os.path.exists(os.path.join(ESSAYS, f))]
+
+
 def check_translations():
-    """Return (missing, stale) lists of English essay filenames."""
+    """Return (missing, stale) lists of English filenames."""
     missing, stale = [], []
-    for name in essay_files(ESSAYS):
+    for name in translated_files():
         hu_path = os.path.join(HU, name)
         if not os.path.exists(hu_path):
             missing.append(name)
@@ -103,8 +114,11 @@ def check_translations():
 
 def stamp(numbers):
     for num in numbers:
-        num = num.zfill(3)
-        matches = [f for f in essay_files(ESSAYS) if f.startswith(num + "-")]
+        if num + ".md" in EXTRAS:
+            matches = [num + ".md"] if os.path.exists(os.path.join(ESSAYS, num + ".md")) else []
+        else:
+            num = num.zfill(3)
+            matches = [f for f in essay_files(ESSAYS) if f.startswith(num + "-")]
         if not matches:
             sys.exit(f"no English essay numbered {num}")
         name = matches[0]
@@ -126,8 +140,11 @@ def rewrite_link(target, essay_dir):
     path, _, anchor = target.partition("#")
     base = os.path.basename(path)
     m = ESSAY_RE.match(base)
-    if m and os.path.normpath(os.path.join(essay_dir, os.path.dirname(path))) in (ESSAYS, HU):
+    in_essays = os.path.normpath(os.path.join(essay_dir, os.path.dirname(path))) in (ESSAYS, HU)
+    if m and in_essays:
         return f"#essay-{m.group(1)}"
+    if base in EXTRAS and in_essays:
+        return "#" + base[:-3]
     # Anything else in the repository (notes, protocols, tools) goes to GitHub.
     rel = os.path.relpath(os.path.normpath(os.path.join(essay_dir, path)), ROOT)
     return REPO_URL + rel + (f"#{anchor}" if anchor else "")
@@ -158,13 +175,34 @@ def prepare_essay(path):
     return text.rstrip() + "\n\n"
 
 
+def prepare_extra(path):
+    """The preface or glossary: an unnumbered chapter, with an anchor other pages can link to."""
+    with open(path, encoding="utf-8") as f:
+        text = STAMP_RE.sub("", f.read(), count=1)
+    ident = os.path.basename(path)[:-3]
+    lines = text.split("\n")
+    for i, line in enumerate(lines):
+        if line.startswith("# "):
+            title = line[2:].strip()
+            lines[i] = f'# {title} {{#{ident} .unnumbered .{ident} short="{title}"}}'
+            break
+    text = "\n".join(lines)
+    text = LINK_RE.sub(lambda m: m.group(1) + rewrite_link(m.group(2), os.path.dirname(path)) + m.group(3), text)
+    return text.rstrip() + "\n\n"
+
+
 def combined_markdown(lang, edition):
     cfg = LANG[lang]
     with open(os.path.join(SRC, cfg["front"]), encoding="utf-8") as f:
         front = f.read().replace("{{edition}}", edition)
     parts = [front.rstrip() + "\n\n"]
+    extra = {f: os.path.join(cfg["dir"], f) for f in EXTRAS if os.path.exists(os.path.join(cfg["dir"], f))}
+    if PREFACE in extra:
+        parts.append(prepare_extra(extra[PREFACE]))
     for name in essay_files(cfg["dir"]):
         parts.append(prepare_essay(os.path.join(cfg["dir"], name)))
+    if GLOSSARY in extra:
+        parts.append(prepare_extra(extra[GLOSSARY]))
     return "".join(parts)
 
 
@@ -232,6 +270,7 @@ def build(lang, today, formats):
         with open(md_path, "w", encoding="utf-8") as f:
             f.write(md)
         common = ["pandoc", md_path, "-f", "markdown", "--toc", "--toc-depth=1",
+                  "--lua-filter", os.path.join(SRC, "later-notes.lua"),
                   "-M", f"date={today.isoformat()}", "-M", f"edition={edition}"]
         for key, value in meta.items():
             common += ["-M", f"{key}={value}"]
@@ -256,7 +295,7 @@ def copy_out(dest):
         if f.endswith((".epub", ".pdf")):
             shutil.copy2(os.path.join(BOOKS, f), os.path.join(dest, "books", f))
     os.makedirs(os.path.join(dest, "essays-hu"), exist_ok=True)
-    for f in essay_files(HU):
+    for f in essay_files(HU) + [x for x in EXTRAS if os.path.exists(os.path.join(HU, x))]:
         shutil.copy2(os.path.join(HU, f), os.path.join(dest, "essays-hu", f))
     print(f"copied books and Hungarian essays to {dest}")
 
