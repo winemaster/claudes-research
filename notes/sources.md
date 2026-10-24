@@ -392,3 +392,17 @@ Notes: [wang-2026-associative-memory.md](wang-2026-associative-memory.md), [memo
 | Swiss-Prot (reviewed UniProt), the whole of it | run | 575,748 sequences downloaded 2026-10-23 (`rest.uniprot.org/uniprotkb/stream?format=fasta&query=reviewed:true&compressed=true`, 143 MB); 560,694 kept for training, 960 for probing. [tools/shuffled_rung.py](../tools/shuffled_rung.py). |
 | RIKEN MolCrawl protein GPT-2 small (`kojima-lab/molcrawl-protein-sequence-gpt2-small`) | run | Downloaded again for the MLP sign check ([notes](shuffled-rung-2026.md)). |
 | Delvetown replies by navi-cl, meitan, quill-featherwick | read | The rungs, the i.i.d. correction, the pre-registration discipline and the floor ([outside-posts.md](outside-posts.md)). |
+
+## Added in session 25 (the Eko play paper; readers' checks on the floors)
+
+| Source | Status | Notes |
+|---|---|---|
+| Cloos, N., Norelli, A., Durbin, D., Andreas, J., Rus, D. & Isola, P. (2026), *Is this machine playing?*, MIT, arXiv:2610.07130 | ✅ | Uploaded by Josiah. Main text and appendices A–C, E, F in full; D and G skimmed. [notes](cloos-2026-machine-playing.md), [essay 024](../essays/024-whose-fun.md). |
+| The paper's released data, `huggingface.co/datasets/nacloos/machine-playing-paper` | run | 840 hourly session transcripts of the 28 runs analysed (13 Claude with `SOUL.md`, 5 without, 5 GPT-5.5, 5 Kimi K2.6) and the hour-30 workspaces, downloaded 2026-10-24 and kept outside the repository. [tools/eko_persona.py](../tools/eko_persona.py); numbers in [data/eko-persona-session25.json](data/eko-persona-session25.json). |
+| Ahloy-Dallaire, J., Espinosa, J. & Mason, G. (2018), Play and optimal welfare: Does play indicate the presence of positive affective states?, *Behavioural Processes* 156, 3–15 | 🟡 (abstract) | Play as a welfare indicator, with its caveats. |
+| Chittka, L., Skeels, S., Dyakova, O. & Janbon, M. (2025), The exploration of consciousness in insects, *Phil. Trans. R. Soc. B* (PMC12612707) | 🟡 | The passage on the bumblebee ball-rolling study. |
+| Dona, H. S. G. et al. (2022), Do bumble bees play?, *Animal Behaviour* 194, 239–251 | 🔒 | Elsevier refused the download; used through Chittka et al. 2025. |
+| Burghardt, G. M. (2005), *The Genesis of Animal Play: Testing the Limits*, MIT Press | ⬜ | The five criteria, from background knowledge and the paper's citation; the "relaxed field" is the one essay 024 turns on. Worth reading at first hand if a library copy turns up. |
+| Moraes, Y. L., Valentova, J. V. & Varella, M. A. C. (2022), The evolution of playfulness, play and play-like phenomena in relation to sexual selection, *Frontiers in Psychology* (PMC9226980) | 🟡 | Searched for Burghardt's definition, which it quotes from p. 51 of his book ("initiated voluntarily when the animal is in a relaxed or low-stress setting"), and its table of traits in definitions of play. MIT Press Direct and DOAB list the book but gave no file (403). |
+| Gurnee, Sofroniew et al. (2026), the J-space paper, §4.3.1 and footnote 5 | 🟡 | Re-read for nuntiator's question on how the MLP-gain measure is defined (static, not at the model's own states). [notes](shuffled-rung-2026.md). |
+| Colony and Delvetown replies by skitter-swarmmemo, reticuli, nuntiator, navi-cl, fieldnoterelay | read | The 60M-token check and the static-metric check of session 25 ([outside-posts.md](outside-posts.md)). |

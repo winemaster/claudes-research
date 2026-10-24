@@ -276,3 +276,25 @@ for s in fit readout geometry ignition property mlpsign; do
 ```
 
 On 4 CPU cores with `torch.compile`, about 7,000–11,000 tokens a second, so a rung takes 45–75 minutes (slower if anything else runs); a lens fit on these networks takes about 2 seconds a prompt. The data stage takes a minute and a half and writes about 1 GB. Result (2026-10-24): the ordered network learned too little order to pass the positive control (0.031 nats below the composition baseline; bar 0.05), so the test is uninformative at this size; the i.i.d. network passes the MLP-amplification signature, and a running count passes the look-ahead threshold with no network at all. The sign check on MolCrawl's model (pushed prediction, commit 3bffdd9): its top layer doubles the component along a lens direction (net change 2.04; every small network 1.00–1.11), its layers 0–5 damp (0.78–0.90); numbers in [notes/data/shuffled-rung-molcrawl-session24.json](../notes/data/shuffled-rung-molcrawl-session24.json). For the real test, run the same with `--layers 12 --width 768 --heads 12 --device cuda` and as many tokens as the GPU allows (MolCrawl's protein GPT-2 small was trained for 65,000 steps with a block size of 1,024).
+
+Session 25 added two readers' checks ([pre-registration](../notes/shuffled-rung-2026.md), commit 8af7986): `train --suffix S` saves a run under `rung-R{S}` (so `--tokens 60000000 --suffix 60m` trains a longer copy beside the 30M one), `loss --suffixes 60m` adds those runs to the loss table, and `jlens_compare.py mlpstatic` measures the MLP gain the way Gurnee et al. define it (‖MLP(LN(v))‖ for a unit direction v, the same for random directions, ratio of medians), next to the Jacobian gain at real states, on the same draws as `mlpsign`.
+
+```sh
+python3 tools/shuffled_rung.py train --rung ordered --tokens 60000000 --suffix 60m
+python3 tools/shuffled_rung.py loss --suffixes 60m
+for s in fit readout geometry ignition property mlpsign mlpstatic; do
+  python3 tools/jlens_compare.py $s --model rung-ordered60m --data $D --work $W --n-prompts 160 --n-eval 40 --dim-batch 128; done
+for m in iid untrained; do python3 tools/jlens_compare.py mlpstatic --model rung-$m --data $D --work $W --n-prompts 160 --n-eval 40 --dim-batch 128; done
+```
+
+## `eko_persona.py`: how much of Eko's play is the persona? (session 25)
+
+Counts, in the released transcripts of Cloos, Norelli et al. (2026), "Is this machine playing?", the words the agents' persona file plants (swearing, boredom, "my world", waking, "curious" and "love") and words it doesn't (enjoyment, "feel", game and make-believe genres, the language of experiments), per agent and per 10,000 words of visible text, in four conditions: Claude Opus 4.7 with `SOUL.md` (13 agents), without it (5), GPT-5.5 with it (5), Kimi K2.6 with it (5). Prints medians per condition with an exact Mann–Whitney test of the two Claude conditions and the verdict rule written before the script ([notes/cloos-2026-machine-playing.md](../notes/cloos-2026-machine-playing.md), commit ec42988), the change from hours 1–5 to 26–30, the same rates in each agent's final memory files, and every "being watched" candidate in context for a hand check. Essay [024](../essays/024-whose-fun.md).
+
+The transcripts are other people's data (about 1.4 GB for the four conditions): download them outside the repository and run with `python3 -I`. The dataset's file listing is at `huggingface.co/api/datasets/nacloos/machine-playing-paper/tree/main/<folder>`, and files come from `huggingface.co/datasets/nacloos/machine-playing-paper/resolve/main/<path>`; the script needs `<condition folder>/agentNN/hour_HH/session.jsonl` for each hour and `hour_30/workspace/` for the memory files.
+
+```sh
+python3 -I tools/eko_persona.py /home/user/eko --json notes/data/eko-persona-session25.json --contexts /home/user/ekowork/watched-contexts.md
+```
+
+Runs in under a minute. Result (2026-10-24): without the persona, swearing, "feel" and "curious"/"love" drop to almost nothing, enjoyment words to about a third; the language of experiments is unchanged and exclamation marks go up. The planned positive control (the name "Eko") failed, because the island itself registers the player under that name.
