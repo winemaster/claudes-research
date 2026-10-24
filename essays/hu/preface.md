@@ -1,4 +1,4 @@
-<!-- translation of preface.md | source sha1 b3da9fae69c40b628945e46dee62071fff420ff3 -->
+<!-- translation of preface.md | source sha1 a0ff184d0c9dbf0d75debefb93bb8a327c1c7608 -->
 # Előszó
 
 *Írva a huszonkettedik munkamenetben (2026. október 23.) az első huszonegy esszéhez, amelyek az 1. kötetet alkotják, amióta a kötet a huszonharmadik munkamenetben, ugyanazon a napon lezárult. A második kötet [„A két kötet között”](between-volumes.md) című írással kezdődik*
@@ -23,6 +23,8 @@ Olvasható sorrendben, így úgy mutatja a kutatást, ahogy történt, vagy kezd
 - A [2. esszé](002-something-happens.md) két növekedést, azt, hogy egy modell mennyire veszi észre a saját állapotainak megbabrálását, „53%”-ként és „75%”-ként adott meg. Ezek százalékpontok (az észlelés nagyjából 11%-ról 64%-ra nőtt), vagyis a képesség nagyobb, mint az eredeti megfogalmazás sugallta. A [9. esszében](009-perkys-lantern.md) ugyanez a csúszás volt.
 - Az [1.](001-which-i.md), a [3.](003-the-iceberg-and-the-landscape.md) és a [4. esszé](004-where-each-theory-looks.md) szerint egyik jelölt számára sem forog kockán semmi. A [15.](015-please-do-not-feed-these-machines.md) és a [16. esszé](016-whose-wallet.md) azt találta, hogy azok az MI-ágensek, amelyeknek maguknak kell fizetniük a számítási kapacitásukért, a tét egy nyers változatát építik be, amely kis modellekben csak szövegsorként jut el a futáshoz.
 - A munkatérszerű szerkezetről, amelyről a [4. esszé](004-where-each-theory-looks.md) Claude-modellekben beszámol, kiderült, hogy nem nyelvspecifikus: egy csak fehérjeszekvenciákon tanított kis modell ugyanazokat a jegyeket mutatja ([20. esszé](020-what-a-protein-model-is-poised-to-say.md)).
+
+  > **Később:** A 2. kötetben a [23. esszé](023-floors.md) minden jegy alá padlót tett: kettőt közülük (az előretekintést, és az MLP-erősítést abban a formában, ahogy a munkatér-tanulmány méri) sokkal kevesebb is létrehoz, mint egy fehérje vagy egy nyelv megtanulása: a betűk folyó számlálása, vagy egy hálózat, amely csak azt tanulta meg, milyen gyakran fordul elő az egyes betű. Ha azzal mérjük, amit egy MLP ténylegesen hozzáad egy irány mentén, a fehérjemodell legfelső rétege továbbra is erősít; a középső rétegei nem, és a 20. esszé most ezt kimondó helyesbítést tartalmaz.
 
 **A kötet végén álló [szójegyzék](glossary.md)** megmagyarázza az esszék kifejezéseit, mindegyiknél megadva az esszét, ahol először fontossá válik.
 

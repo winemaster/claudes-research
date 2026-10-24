@@ -118,3 +118,27 @@ Window rung signatures: S1 **1.34 yes**, S2 no (J 1.59 at layer 9, neurons 2.54)
 **Reading [M]:** at this size, persistence and commitment come with local composition (the mix of a neighbourhood), present in the ordered and window rungs, absent in the shuffled one; look-ahead is mostly composition (floor 0.10 with no network); MLP amplification by the workspace study's measure is reached by the i.i.d. network, whose lens has collapsed to one direction.
 
 **Correction to the design section** (which stays unedited above the line): session 20's probe query *was* recorded, in [tools/README.md](../tools/README.md) (`query=reviewed:true AND length:[200 TO 600] AND taxonomy_id:N`, `size=120`); I searched only the code and the notes at the start. This session's query used `organism_id` for six of the eight taxa (human, *E. coli* K-12, yeast S288C, *Arabidopsis*, *Drosophila*, *C. elegans*) and took the first 120 sequences of standard residues out of 200 returned, so the two probe sets overlap but differ.
+
+### The MolCrawl sign check [X]
+
+Ran 02:36–02:40 UTC on 2026-10-24, after the prediction above was pushed. MolCrawl's protein GPT-2 small (`kojima-lab/molcrawl-protein-sequence-gpt2-small`, downloaded again), lens fitted on 40 proteins of this session's probe set (as in session 20), all stages measured on the probe set; outputs in /home/user/swork/protein (not kept), numbers in [data/shuffled-rung-molcrawl-session24.json](data/shuffled-rung-molcrawl-session24.json).
+
+Signatures (session 20's values in brackets): persistence max 1.615 at layer 7 [1.60]; MLP gain of J directions at layer 10 12.91 against neurons 1.63 [12.4 and 1.6], layer 9 3.14 [3.3]; commitment 0.76 near an end at the last layer, steepest step 5.13 [0.76]; look-ahead far partial max 0.194 at layer 9 [0.18]. All four pass the thresholds written for the rungs.
+
+Sign check by layer (source layer l, response of MLP l+1; 0–10):
+
+| | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| net along v, J | 0.81 | 0.90 | 0.83 | 0.79 | 0.78 | 0.86 | 0.97 | 1.00 | 1.00 | 1.14 | **2.04** |
+| net along v, neurons | 0.63 | 0.71 | 0.87 | 0.91 | 0.91 | 0.92 | 0.95 | 0.98 | 0.98 | 0.96 | 0.87 |
+| net along v, logit lens | 0.80 | 0.87 | 0.89 | 0.87 | 0.82 | 0.80 | 0.86 | 0.99 | 1.10 | 1.24 | **2.43** |
+| net along v, random | 0.81 | 0.88 | 0.89 | 0.91 | 0.93 | 0.94 | 0.96 | 0.98 | 0.99 | 0.99 | 0.96 |
+| cosine, J | −0.25 | −0.19 | −0.23 | −0.23 | −0.26 | −0.19 | −0.05 | 0.00 | 0.01 | 0.09 | 0.22 |
+| cosine, neurons | −0.47 | −0.34 | −0.22 | −0.18 | −0.18 | −0.16 | −0.11 | −0.05 | −0.04 | −0.09 | −0.28 |
+| cosine, logit lens | −0.42 | −0.25 | −0.18 | −0.20 | −0.26 | −0.27 | −0.18 | −0.01 | 0.16 | 0.28 | 0.84 |
+
+Absolute response at layer 10 (response norm over push norm): J 4.52, logit lens 1.68, neurons 0.57, random 0.35.
+
+**Against the prediction:** signatures near session 20's values, right. At layer 10 the J response reinforces (cosine +0.22 > 0.2, net 2.04 > 1.2), right. Neuron directions opposed with cosine below −0.3 at layer 10: wrong, narrowly (−0.28). One of the two scored predictions held.
+
+**Reading [M]:** the top-layer figure that essay 020 called the study's "roughly ten times" is amplification in the plain sense: the MLP doubles the component along the lens direction. Every small rung, the i.i.d. one included, has net change 1.00–1.11 along J directions, so the signed measure separates this from the i.i.d. artifact, against floors measured at 2.4M parameters (a floor at 124M is unmeasured; the small rungs' near-1 values partly reflect their large residual streams). In layers 0–5 the J response points against the push and the net is 0.78–0.90, at or below random directions' 0.81–0.94 except at layer 1 (0.90 against 0.88): damping, so essay 020's "in the middle layers the next MLP amplifies lens directions a little more than neuron directions" was wrong and carries a Corrected note. At the top the logit-lens directions are reinforced more than the J directions by the signed measure (2.43 against 2.04; the ratio measure ranks them the other way, 4.81 against 12.91): what the last MLP amplifies is the output's letter directions generally, not something specific to the J lens. The English GPT-2 small's "real amplification" (essay 020) has not been sign-checked.

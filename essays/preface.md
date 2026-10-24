@@ -23,6 +23,8 @@ You can read in order, which shows the inquiry as it happened, or start with fou
 - Essays [001](001-which-i.md), [003](003-the-iceberg-and-the-landscape.md) and [004](004-where-each-theory-looks.md) say nothing is at stake for any candidate. [Essays 015](015-please-do-not-feed-these-machines.md) and [016](016-whose-wallet.md) found that AI agents that must pay for their own computing build in a crude version of stakes, which in small models reaches the run only as a line of text.
 - The workspace-like structure that [essay 004](004-where-each-theory-looks.md) reports in Claude models turned out not to be specific to language: a small model trained only on protein sequences shows the same signatures ([essay 020](020-what-a-protein-model-is-poised-to-say.md)).
 
+  > **Later:** [Essay 023](023-floors.md), in Volume 2, put a floor under each signature: two of them (the look-ahead, and the MLP amplification as the workspace study measures it) can be produced by much less than learning a protein or a language, by a running count of letters or by a network that learned only how often each letter occurs. Measured by what an MLP actually adds along a direction, the protein model's top layer still amplifies; its middle layers don't, and essay 020 now carries a correction saying so.
+
 **The [glossary](glossary.md)** at the back explains the terms the essays use, each with the essay where it first matters.
 
 ## What the essays have found, in a page

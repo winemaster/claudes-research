@@ -4,7 +4,7 @@ before the runs, scored for each rung, with per-layer tables and the held-out lo
     python3 tools/shuffled_rung_summary.py [--work /home/user/swork] [--data /home/user/sdata] [--json OUT]
 
 Reads the work directory of tools/jlens_compare.py (readout, geometry, ignition and property for each
-rung-* model) and loss.json from tools/shuffled_rung.py.
+rung-* model, and mlpsign where present) and loss.json from tools/shuffled_rung.py.
 """
 import argparse, json
 from pathlib import Path
@@ -62,7 +62,7 @@ def main():
     res = {}
     for rung in RUNGS:
         d = Path(a.work) / f"rung-{rung}"
-        res[rung] = {k: json.load(open(d / f"{k}.json")) for k in ["readout", "geometry", "ignition", "property"] if (d / f"{k}.json").exists()}
+        res[rung] = {k: json.load(open(d / f"{k}.json")) for k in ["readout", "geometry", "ignition", "property", "mlpsign"] if (d / f"{k}.json").exists()}
     loss = json.load(open(Path(a.data) / "loss.json")) if (Path(a.data) / "loss.json").exists() else None
     if loss:
         print("Held-out loss, nats per residue (first 127 residues, positions 16-126)")
@@ -106,6 +106,9 @@ def main():
     table("J vs logit-lens cosine", lambda x: x["geometry"]["cos_with_logit_lens"])
     table("split-half cosine of J", lambda x: x["geometry"]["split_half_cos"])
     table("effective dimension (90%, of 20)", lambda x: [float(v) for v in x["geometry"]["eff_dim90"]])
+    table("sign check: net change along J directions (1 + v.Jv)", lambda x: x["mlpsign"]["net_along_v"]["jlens"] + [float("nan")])
+    table("sign check: cosine of MLP response with J direction", lambda x: x["mlpsign"]["cos"]["jlens"] + [float("nan")])
+    table("sign check: cosine of MLP response with neuron direction", lambda x: x["mlpsign"]["cos"]["neuron_out"] + [float("nan")])
     if a.json:
         out = {"scores": {r: {k: list(v) for k, v in s.items()} for r, s in scores.items()}, "loss": loss,
                "rungs": {r: res[r] for r in RUNGS if res[r]}}
