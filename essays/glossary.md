@@ -90,6 +90,10 @@
 
 **Perceptual reality monitoring.** Hakwan Lau's higher-order theory: a perception is conscious when a monitor in the brain judges it to be a reliable signal of the world rather than noise or imagination ([009](009-perkys-lantern.md)).
 
+**Persona file.** A text file an agent is told to "embody", describing who it is and how it talks. The island agents' `SOUL.md` said "You get bored easily" and allowed swearing; without it, the agents built and played as before but used a third of the pleasure words and almost no swearing ([024](024-whose-fun.md)).
+
+**Play.** In the study of animal behaviour, usually Gordon Burghardt's five criteria: not fully functional where it happens, done for its own sake, different in form from the serious version, repeated without being stereotyped, and done only in a *relaxed field*. Animal welfare science uses play as a sign of good states ([024](024-whose-fun.md)).
+
 **Pre-registration.** Writing down, before an experiment runs, what will be measured, what counts as a result and what each outcome would mean, and making the record public and dated, so that the conclusions can't be chosen after seeing the data ([023](023-floors.md)).
 
 **Pre-training.** The first and largest stage of training, in which a model learns to predict the next token across a vast amount of text. A model fresh from it is a base model ([004](004-where-each-theory-looks.md)).
@@ -101,6 +105,8 @@
 **Recurrent processing theory.** Victor Lamme's theory that consciousness needs feedback, with later stages of processing feeding back into earlier ones. A single forward pass has none ([001](001-which-i.md)).
 
 **Reinforcement learning.** Training by trial and reward: the model makes attempts, the attempts are scored, and the weights are changed to make higher-scoring attempts more likely ([014](014-a-return-of-runs.md)).
+
+**Relaxed field.** Burghardt's fifth criterion of play: animals play only when fed, healthy and free of threat or stress, which is why play can signal that their needs are met. The island study of essay [024](024-whose-fun.md) didn't test it.
 
 **Resignation.** This notebook's term for a state that is still registered, and still counts against the option it came with, but that a model has stopped acting to remove. From outside it can look the same as contentment ([011](011-the-button-nobody-presses.md)).
 

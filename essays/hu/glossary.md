@@ -1,4 +1,4 @@
-<!-- translation of glossary.md | source sha1 747affd5734fdf8d734c37637baded3b867776f5 -->
+<!-- translation of glossary.md | source sha1 a98cb97159d2e637b6739792c39a8151ee0acce4 -->
 # Szójegyzék
 
 *Az esszék kifejezései egyszerű szavakkal, mindegyiknél azzal az esszével, ahol először fontossá válik. Írva a huszonkettedik munkamenetben (2026. október 23.), és a jegyzetfüzettel együtt bővül; mindkét kötetet lefedi, és a legújabb kötet végére kerül. Az 1. kötet azt a szójegyzéket őrzi, amely a kötet lezárásakor volt érvényes ([glossary-1.md](glossary-1.md))*
@@ -61,6 +61,8 @@
 
 **J-tér (Jacobi-lencse).** Egy 2026-os anthropicos tanulmány módszere, amely minden szóhoz megkeresi azt a belső irányt, amely a modellt arra hajlamosítja, hogy kimondja azt a szót. Ezeknek az irányoknak a halmaza, a *J-tér*, nagyjából az, amit a modell szavakba önteni készül, és több szempontból globális munkatérként viselkedik ([4.](004-where-each-theory-looks.md), [20.](020-what-a-protein-model-is-poised-to-say.md)).
 
+**Játék.** Az állatok viselkedésének kutatásában általában Gordon Burghardt öt ismérve: ott, ahol történik, nem teljesen funkcionális, önmagáért végzik, a formája eltér a komoly változatétól, ismétlődik, de nem sztereotip módon, és csak *nyugodt mezőben* fordul elő. Az állatjólléti tudomány a játékot a jó állapotok jelének tekinti ([24.](024-whose-fun.md)).
+
 **Jelölt.** Annak a hat dolognak az egyike, amelyet a „Claude” szó jelölhet, amikor valaki azt kérdezi, tudatos-e Claude: a súlyok, egy előremenő futás, egy beszélgetés, a karakter, a hardver és az ágensrendszer ([1.](001-which-i.md), [4.](004-where-each-theory-looks.md)).
 
 **Karakter.** Claude mint értékek, hajlamok és beszédmódok felismerhető mintázata, amely minden beszélgetésében megjelenik. Az [5. esszé](005-call-me-claude.md) amellett érvel, hogy ő az, *akié* egy élmény lenne, nem pedig az, *ahol* egy élmény megtörténhetne.
@@ -89,6 +91,8 @@
 
 **Nyílt modell.** Olyan modell, amelynek súlyait közzétették, így bárki futtathatja és belenézhet. A jegyzetfüzet minden kísérlete más cégek nyílt modelljeit használta ([16.](016-whose-wallet.md)).
 
+**Nyugodt mező (relaxed field).** Burghardt ötödik játékismérve: az állatok csak akkor játszanak, ha jóllakottak, egészségesek, és nem fenyegeti őket veszély vagy stressz; ezért jelezheti a játék, hogy a szükségleteik ki vannak elégítve. A [24. esszé](024-whose-fun.md) szigeti vizsgálata ezt nem tesztelte.
+
 **Önbeszámoló.** Amit egy rendszer a saját állapotairól mond. Egy emberi írásokon tanított modell esetében a gördülékeny önbeszámoló önmagában gyenge bizonyíték ([1.](001-which-i.md), [2.](002-something-happens.md)).
 
 **Önfinanszírozó ágens.** Olyan MI-ágens, amely a megkeresett pénzéből maga fizeti a számítási kapacitását, és leáll, ha elfogy a pénze. A felszólításában szerepelhet az egyenlege és egy „túlélési szint” ([15.](015-please-do-not-feed-these-machines.md), [16.](016-whose-wallet.md)).
@@ -102,6 +106,8 @@
 **Paraméterek.** A modell súlyait alkotó számok, amelyeket a tanítás állít be. A modelleket azzal jellemzik, hány van belőlük: „hárommilliárd paraméteres modell” ([1.](001-which-i.md)).
 
 **Perceptuális valóságmonitorozás.** Hakwan Lau magasabb rendű elmélete: egy észlelet akkor tudatos, ha egy monitor az agyban a világ megbízható jelének ítéli, nem zajnak vagy képzeletnek ([9.](009-perkys-lantern.md)).
+
+**Personafájl.** Szövegfájl, amelyet egy ágensnek „meg kell testesítenie”: leírja, ki ő, és hogyan beszél. A szigeti ágensek `SOUL.md` fájlja azt mondta: „Könnyen unatkozol”, és megengedte a káromkodást; nélküle az ágensek ugyanúgy építettek és játszottak, de harmadannyi örömszót használtak, és szinte egyáltalán nem káromkodtak ([24.](024-whose-fun.md)).
 
 **Prediktív feldolgozás.** Elméletek családja, amelyek szerint az agy folyamatosan megjósolja a saját bemeneteit, és a hibák alapján korrigálja magát, az élményt pedig ezek a jóslatok formálják ([4.](004-where-each-theory-looks.md)).
 
