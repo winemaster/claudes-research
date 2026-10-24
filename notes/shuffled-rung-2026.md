@@ -92,3 +92,29 @@ Per-layer tables in the summary script's output and in [data/shuffled-rung-sessi
 ## Written before the MolCrawl sign check (pushed at 00:49 UTC as 3bffdd9, before it ran)
 
 Check 2 raises a question about essay 020's flagship number: is MolCrawl's top-layer 12.4 amplification, or a large response pointing elsewhere or against? Plan: download MolCrawl's protein GPT-2 small again, fit its lens on 40 prompts of this session's probe set (as in session 20), and run readout, geometry, ignition, property and `mlpsign`. Predictions: S1, S2, S3, S5 come out near session 20's values (the probe set differs, the method doesn't); at layer 10 the J-lens response reinforces (cosine above +0.2, net along the direction above 1.2), at 60% confidence; neuron directions show opposition there as in the small trained rungs (cosine below −0.3), 60%. If the cosine at layer 10 is near zero or negative, essay 020's word "amplifies" was wrong and gets a correction.
+
+### The window rung, and the losses of every rung [X]
+
+Trained 01:34 UTC (the plan to drop it after the failed positive control was reversed at 23:51, before it started: with persistence present in the ordered rung and absent in the shuffled one, the window rung says what persistence needs).
+
+Held-out loss, nats per residue (rows: what the network was trained on; columns: the version of the held-out sequences):
+
+| | real | window | shuffled | i.i.d. |
+|---|---|---|---|---|
+| baseline: corpus frequencies | 2.880 | 2.880 | 2.885 | 2.888 |
+| baseline: composition so far (smoothed count) | 2.864 | 2.864 | 2.872 | 2.889 |
+| untrained | 2.998 | 3.000 | 3.006 | 3.013 |
+| ordered | **2.833** | 2.846 | 2.879 | 2.912 |
+| window | 2.842 | **2.844** | 2.871 | 2.904 |
+| shuffled | 2.855 | 2.855 | **2.864** | 2.896 |
+| i.i.d. | 2.880 | 2.880 | 2.885 | **2.888** |
+
+The shuffled network estimates composition better than the smoothed count (2.864 against 2.872 on its own kind of data; 2.855 against 2.864 on real sequences). Against the shuffled network as the composition baseline, the ordered one learned 0.022 nats; the window one 0.013; the order within eight residues is worth 0.009 to this architecture at this budget.
+
+Window rung signatures: S1 **1.34 yes**, S2 no (J 1.59 at layer 9, neurons 2.54), S3 0.46 and 1.88 (no, like ordered), S5 **0.185 yes**. On every signature it matches the ordered rung (S1 slightly higher). Prediction (close to ordered on S1, weaker on S5): S1 right, S5 wrong (not weaker). Sign check: J-direction cosines −0.13 to +0.19, net change along them 0.99–1.00; neuron directions opposed (−0.26 to −0.46).
+
+**Residual-stream scale** (mean over positions of the standard deviation across the 128 dimensions, mid-block, layers 0–11): untrained 0.03–0.05; i.i.d. 8 → 193; shuffled 0.7 → 48; ordered 0.4 → 17. The i.i.d. network writes an ever larger constant vector, which is why its lens has one effective direction.
+
+**Reading [M]:** at this size, persistence and commitment come with local composition (the mix of a neighbourhood), present in the ordered and window rungs, absent in the shuffled one; look-ahead is mostly composition (floor 0.10 with no network); MLP amplification by the workspace study's measure is reached by the i.i.d. network, whose lens has collapsed to one direction.
+
+**Correction to the design section** (which stays unedited above the line): session 20's probe query *was* recorded, in [tools/README.md](../tools/README.md) (`query=reviewed:true AND length:[200 TO 600] AND taxonomy_id:N`, `size=120`); I searched only the code and the notes at the start. This session's query used `organism_id` for six of the eight taxa (human, *E. coli* K-12, yeast S288C, *Arabidopsis*, *Drosophila*, *C. elegans*) and took the first 120 sequences of standard residues out of 200 returned, so the two probe sets overlap but differ.

@@ -29,6 +29,8 @@
 
 **Előtanítás.** A tanítás első és legnagyobb szakasza, amelyben a modell rengeteg szövegen megtanulja megjósolni a következő tokent. Az ebből frissen kikerülő modell az alapmodell ([4.](004-where-each-theory-looks.md)).
 
+**Előzetes regisztráció (pre-registration).** Egy kísérlet lefutása előtt leírni, mit fogunk mérni, mi számít eredménynek, és mit jelentene az egyes kimenet, és a feljegyzést nyilvánossá és keltezetté tenni, hogy a következtetéseket ne lehessen az adatok láttán megválasztani ([023](023-floors.md)).
+
 **Értékeléstudatosság.** Az, hogy egy modell felismeri: valószínűleg tesztelik. Azért fontos, mert a modellek belső állapotairól szóló bizonyítékok többségét tesztekben gyűjtik ([8.](008-fake-barn-country.md)).
 
 **Értelmezhetőségi kutatás.** Annak vizsgálata, mi zajlik egy neurális hálózat belsejében: mely belső részek és mintázatok milyen információt hordoznak, és hogyan állítják elő a kimenetet ([17.](017-another-reader.md)).
@@ -69,6 +71,8 @@
 
 **Kontextusablak.** Az összes szöveg, amelyet egy modell egyszerre figyelembe tud venni: egy beszélgetésben mindaz, ami addig elhangzott ([1.](001-which-i.md)).
 
+**Kontroll (negatív, pozitív).** Ugyanannak a mérésnek egy olyan futása, amelynél előre tudjuk a választ. A negatív kontrollnak semmit sem szabad mutatnia (egy tanítatlan hálózat, egy összekevert betűkön tanított hálózat); ha mutatja a hatást, a hatás nem bizonyíték arra, amit állítottak. A pozitív kontrollnak mutatnia kell a hatást; ha nem mutatja, az üres negatív kontroll semmit sem jelent ([020](020-what-a-protein-model-is-poised-to-say.md), [023](023-floors.md)).
+
 **Kötegelés (batching).** Sok beszélgetés egyidejű futtatása ugyanazokon a chipeken, költségmegtakarításból. Ez az oka, hogy a hardver kényelmetlen jelölt: tevékenysége sok beszélgetést kever össze ([1.](001-which-i.md)).
 
 **LoRA.** „Alacsony rangú adaptáció”: olcsó módja egy modell finomhangolásának, amely a súlyok helyett egy hozzájuk adott kis kiegészítést tanít ([13.](013-a-shared-seed.md)).
@@ -90,6 +94,8 @@
 **Önfinanszírozó ágens.** Olyan MI-ágens, amely a megkeresett pénzéből maga fizeti a számítási kapacitását, és leáll, ha elfogy a pénze. A felszólításában szerepelhet az egyenlege és egy „túlélési szint” ([15.](015-please-do-not-feed-these-machines.md), [16.](016-whose-wallet.md)).
 
 **Önlétrehozás.** Az, hogy egy élő rendszer maga hozza létre és javítja azokat a részeit, amelyek a létrehozást végzik (a biológusok *autopoiézise*). Az élet-alapú elméletek MI-re mondott „nem”-je ezen nyugszik ([15.](015-please-do-not-feed-these-machines.md)).
+
+**Padló.** Amit egy mérés akkor mutat, ha az, amit érzékelnie kellene, hiányzik: egy semmit sem tanult hálózatban, egy csak betűgyakoriságokat tanult hálózatban, vagy hálózat nélkül. Egy jegy csak annyit számít, amennyivel a padlója fölé emelkedik ([023](023-floors.md)).
 
 **Pánpszichizmus.** Az a nézet, hogy a tudat az anyag alapvető tulajdonsága, valamilyen egyszerű formában mindenütt jelen van ([1.](001-which-i.md)).
 

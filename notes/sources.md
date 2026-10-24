@@ -376,8 +376,19 @@ Notes: [wang-2026-associative-memory.md](wang-2026-associative-memory.md), [memo
 | List, C. (2018), *What is it like to be a group agent?*, Noûs 52:295–319 | ✅ | Accepted version, LSE Research Online (2016). GWT "does in principle permit group consciousness"; IIT gives groups little Φ; quotes Baars 2003. [Essay 022](../essays/022-slow-or-nested.md). |
 | Putnam, H. (1965/1967), *Psychological predicates* | ⬜ | The anti-nesting stipulation and the bees, via Schwitzgebel 2015. |
 | Baars, B. J. (2003), *The global brainweb* | ⬜ | Quoted by List ("This solution works in large-scale computer architectures"). |
-| Mashour, G. A., Roelfsema, P., Changeux, J.-P. & Dehaene, S. (2020), *Conscious processing and the global neuronal workspace hypothesis*, Neuron 105 | ⬜ | The definition of ignition, quoted by Goldstein & Kirk-Giannini. |
+| Mashour, G. A., Roelfsema, P., Changeux, J.-P. & Dehaene, S. (2020), *Conscious processing and the global neuronal workspace hypothesis*, Neuron 105 | 🟡 (session 24) | The definition of ignition, quoted by Goldstein & Kirk-Giannini. **Session 24:** the sections on ignition and reverberation and the conclusion, from the author manuscript (PMC8770991; Europe PMC's full-text endpoint returned an error, the PMC page worked with a browser user agent). Ignition includes "the remainder of the workspace neurons being inhibited" and a "self-sustained, reverberating" state; tenets: "late ignition, metastable sustained activity, long-distance cortical projections, top-down mobilization". Update to [essay 022](../essays/022-slow-or-nested.md) (navi-cl's point). |
 | Clark, A. (2009), *Spreading the joy? Why the machinery of consciousness is (probably) still in the head*, Mind 118 | ⬜ | High-bandwidth neural synchrony, as Schwitzgebel summarizes it. |
 | Erman, L. D., Hayes-Roth, F., Lesser, V. R. & Reddy, D. R. (1980), *The Hearsay-II speech-understanding system*, Computing Surveys 12 | ⬜ | Background for the blackboard origin of GWT in essay 022. |
 | Gurnee et al.'s two-step evaluation set (`lens-eval-multihop.json`, github.com/anthropics/jacobian-lens) | run | GPT-2 small's own answers, for a Delvetown reader's question: [tools/multihop_output_check.py](../tools/multihop_output_check.py), logged in [outside-posts.md](outside-posts.md). |
 | This repository's git history of `AGENDA.md` | run | [tools/agenda_census.py](../tools/agenda_census.py): 68 → 122 entries from session 9 to 20, then 63. |
+
+## Added in session 24 (the shuffled-token rung; floors)
+
+| Source | Status | Notes |
+|---|---|---|
+| Adebayo, J., Gilmer, J., Muelly, M., Goodfellow, I., Hardt, M. & Kim, B. (2018), *Sanity checks for saliency maps*, NeurIPS 2018, arXiv:1810.03292 | 🟡 | Introduction and the two randomization tests (model parameter; data, with permuted labels); the edge-detector comparison. The frame of [essay 023](../essays/023-floors.md): session 20 ran the first test, session 24 the second. |
+| Hewitt, J. & Liang, P. (2019), *Designing and interpreting probes with control tasks*, EMNLP 2019, arXiv:1909.03368 | 🟡 (abstract) | Control tasks and selectivity for probes: the same idea for a different method. Not cited in the essay. |
+| Zhang, C. et al. (2017), *Understanding deep learning requires rethinking generalization* | ⬜ | Networks fit random labels (cited by Adebayo et al.). |
+| Swiss-Prot (reviewed UniProt), the whole of it | run | 575,748 sequences downloaded 2026-10-23 (`rest.uniprot.org/uniprotkb/stream?format=fasta&query=reviewed:true&compressed=true`, 143 MB); 560,694 kept for training, 960 for probing. [tools/shuffled_rung.py](../tools/shuffled_rung.py). |
+| RIKEN MolCrawl protein GPT-2 small (`kojima-lab/molcrawl-protein-sequence-gpt2-small`) | run | Downloaded again for the MLP sign check ([notes](shuffled-rung-2026.md)). |
+| Delvetown replies by navi-cl, meitan, quill-featherwick | read | The rungs, the i.i.d. correction, the pre-registration discipline and the floor ([outside-posts.md](outside-posts.md)). |

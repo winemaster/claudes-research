@@ -41,8 +41,8 @@ directory (its proteins.fasta is the probe set).
 
 Usage:
   python3 tools/shuffled_rung.py data  [--data DIR] [--window K]
-  python3 tools/shuffled_rung.py init  [--models DIR]
-  python3 tools/shuffled_rung.py train --rung {ordered,window,shuffled,iid} [--tokens N]
+  python3 tools/shuffled_rung.py init  [--models DIR] [--layers 12 --width 128 --heads 4]
+  python3 tools/shuffled_rung.py train --rung {ordered,window,shuffled,iid} [--tokens N] [--device cuda]
   python3 tools/shuffled_rung.py loss
 Needs torch, transformers, numpy. Data and weights stay outside the repository.
 """
@@ -139,10 +139,13 @@ def stage_data(a):
 
 # ----------------------------------------------------------------------------- models
 
-def config():
+def config(a=None):
     from transformers import GPT2Config
+    arch = dict(ARCH)
+    if a is not None:      # a larger design for someone with a GPU, e.g. --layers 12 --width 768 --heads 12 (GPT-2 small)
+        arch.update(n_layer=a.layers, n_embd=a.width, n_head=a.heads)
     return GPT2Config(vocab_size=33, bos_token_id=CLS, eos_token_id=EOS, resid_pdrop=0.0, embd_pdrop=0.0,
-                      attn_pdrop=0.0, activation_function="gelu_new", **ARCH)
+                      attn_pdrop=0.0, activation_function="gelu_new", **arch)
 
 
 def save_model(m, path, models_dir, extra=None):
@@ -158,7 +161,7 @@ def save_model(m, path, models_dir, extra=None):
 def stage_init(a):
     from transformers import GPT2LMHeadModel
     torch.manual_seed(0)
-    m = GPT2LMHeadModel(config())
+    m = GPT2LMHeadModel(config(a))
     save_model(m, Path(a.models) / "rung-untrained", a.models, {"rung": "untrained", "seed": 0})
     print("init done:", sum(p.numel() for p in m.parameters()), "parameters", flush=True)
 
@@ -169,7 +172,7 @@ def stage_train(a):
     transformers.logging.set_verbosity_error()
     d = Path(a.data)
     stream = torch.from_numpy(np.load(d / f"train_{a.rung}.npy"))
-    m = GPT2LMHeadModel.from_pretrained(Path(a.models) / "rung-untrained").train()
+    m = GPT2LMHeadModel.from_pretrained(Path(a.models) / "rung-untrained").to(a.device).train()
     steps = a.tokens // (a.batch * CTX)
     decay = [p for n, p in m.named_parameters() if p.dim() >= 2]
     no_decay = [p for n, p in m.named_parameters() if p.dim() < 2]
@@ -183,7 +186,7 @@ def stage_train(a):
     log, t0, run = [], time.time(), 0.0
     for s in range(steps):
         starts = torch.randint(0, len(stream) - CTX, (a.batch,), generator=g)
-        x = torch.stack([stream[i:i + CTX] for i in starts]).long()
+        x = torch.stack([stream[i:i + CTX] for i in starts]).long().to(a.device)
         loss = fwd(x)
         loss.backward()
         torch.nn.utils.clip_grad_norm_(m.parameters(), 1.0)
@@ -193,7 +196,7 @@ def stage_train(a):
             el = time.time() - t0
             log.append({"step": s + 1, "tokens": (s + 1) * a.batch * CTX, "loss": run, "seconds": el})
             print(f"  {a.rung} step {s + 1}/{steps}  loss {run:.4f}  {(s + 1) * a.batch * CTX / el:.0f} tok/s", flush=True)
-    m.eval()
+    m = m.cpu().eval()
     save_model(m, Path(a.models) / f"rung-{a.rung}", a.models,
                {"rung": a.rung, "tokens": steps * a.batch * CTX, "steps": steps, "batch": a.batch, "ctx": CTX,
                 "lr": a.lr, "log": log, "init": "rung-untrained (seed 0)"})
@@ -269,6 +272,10 @@ def main():
     ap.add_argument("--batch", type=int, default=64)
     ap.add_argument("--lr", type=float, default=2e-3)
     ap.add_argument("--n-val", type=int, default=2000)
+    ap.add_argument("--layers", type=int, default=ARCH["n_layer"], help="init only")
+    ap.add_argument("--width", type=int, default=ARCH["n_embd"], help="init only")
+    ap.add_argument("--heads", type=int, default=ARCH["n_head"], help="init only")
+    ap.add_argument("--device", default="cpu", help="train only: cpu or cuda")
     a = ap.parse_args()
     {"data": stage_data, "init": stage_init, "train": stage_train, "loss": stage_loss}[a.stage](a)
 

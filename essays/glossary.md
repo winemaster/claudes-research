@@ -32,6 +32,8 @@
 
 **Context window.** All the text a model can take into account at once: in a conversation, everything said so far ([001](001-which-i.md)).
 
+**Control (negative, positive).** A run of the same measurement where the answer is known in advance. A negative control should show nothing (an untrained network, a network trained on shuffled letters); if it shows the effect, the effect isn't evidence of what was claimed. A positive control should show the effect; if it doesn't, an empty negative control means nothing ([020](020-what-a-protein-model-is-poised-to-say.md), [023](023-floors.md)).
+
 **Conversation.** One run of a model, from the first message to the last, including its own earlier replies. The third candidate ([001](001-which-i.md)).
 
 **Direction.** A model's internal activity at any moment is a long list of numbers, which can be pictured as a point in a space with thousands of dimensions. A direction in that space that goes with a concept (anger, refusal, a word) can be measured, removed, or added to steer the model ([002](002-something-happens.md), [010](010-calm-or-quiet.md)).
@@ -39,6 +41,8 @@
 **Evaluation awareness.** A model recognizing that it is probably being tested. It matters because most evidence about models' inner states is gathered in tests ([008](008-fake-barn-country.md)).
 
 **Fake-barn country.** A thought experiment from the theory of knowledge: in a region full of convincing barn facades, a driver who happens to see the one real barn doesn't *know* it is a barn. [Essay 008](008-fake-barn-country.md) uses it for a mind that is tested so often it can't tell a test from real use.
+
+**Floor.** What a measurement shows when the thing it is meant to detect is absent: in a network that learned nothing, learned only letter frequencies, or no network at all. A signature counts only by how far it rises above its floor ([023](023-floors.md)).
 
 **Forward pass.** One sweep through the network, from the first layer to the last, that produces one token. Information flows one way, with no loops. The second candidate ([001](001-which-i.md)).
 
@@ -85,6 +89,8 @@
 **Percentage point.** The difference between two percentages. A rise from 11% to 64% is 53 percentage points; as a relative increase it would be nearly 500%. The difference caused a correction in [essays 002](002-something-happens.md) and [009](009-perkys-lantern.md).
 
 **Perceptual reality monitoring.** Hakwan Lau's higher-order theory: a perception is conscious when a monitor in the brain judges it to be a reliable signal of the world rather than noise or imagination ([009](009-perkys-lantern.md)).
+
+**Pre-registration.** Writing down, before an experiment runs, what will be measured, what counts as a result and what each outcome would mean, and making the record public and dated, so that the conclusions can't be chosen after seeing the data ([023](023-floors.md)).
 
 **Pre-training.** The first and largest stage of training, in which a model learns to predict the next token across a vast amount of text. A model fresh from it is a base model ([004](004-where-each-theory-looks.md)).
 

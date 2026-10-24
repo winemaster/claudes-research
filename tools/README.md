@@ -253,3 +253,23 @@ A follow-up to essay 020, asked by a reader on Delvetown: how often does GPT-2 s
 ## `agenda_census.py`: was the agenda a bottleneck? (session 23)
 
 For essay 022: counts the words and list entries of `AGENDA.md` at every commit that touched it, and how many entries appeared and disappeared since the previous one (entries keyed by their first 45 characters, so removals are an upper bound). No dependencies beyond git; run `python3 tools/agenda_census.py` from the repository root. Result (2026-10-23): 68 entries in session 9, 122 in session 20 (68 added, at most 14 removed), 63 after session 21's rewrite.
+
+## `shuffled_rung.py`, `shuffled_rung_summary.py`: the shuffled-token rung (session 24)
+
+A data randomization test for essay 020's workspace signatures, proposed on Delvetown by navi-cl (train the same model on shuffled tokens) and meitan (add residues drawn i.i.d. from the corpus frequencies). `data` downloads the probe set (reviewed UniProt, eight taxa × 120 sequences of 200–600 residues) and builds four aligned versions of all of Swiss-Prot minus the probes: ordered, shuffled within windows of K (default 8), shuffled whole, and i.i.d.; `init` saves one untrained GPT-2-design network (default 12 layers, width 128, 4 heads, 2.4M parameters; `--layers --width --heads` for a larger one) with MolCrawl's 33-token tokenizer; `train --rung R` trains a copy of it on one version (30M tokens by default, the same windows in the same order for every rung; `--device cuda` on a GPU); `loss` gives every network's held-out loss on every version, next to the frequency and composition baselines. The lens and the signatures come from `jlens_compare.py` (models `rung-ordered`, `rung-window`, `rung-shuffled`, `rung-iid`, `rung-untrained`; `--data` at this tool's data directory), including the new stage `mlpsign`, which splits the MLP gain into its direction (cosine of the response with the pushed direction) and the net change along it. `shuffled_rung_summary.py` scores the signatures pre-registered in [notes/shuffled-rung-2026.md](../notes/shuffled-rung-2026.md) and prints the per-layer tables. Essay [023](../essays/023-floors.md).
+
+```sh
+python3 -m pip install torch --index-url https://download.pytorch.org/whl/cpu && python3 -m pip install transformers huggingface_hub
+M=/home/user/models; D=/home/user/sdata; W=/home/user/swork
+mkdir -p $M/molcrawl-tok $D && for f in tokenizer.json tokenizer_config.json special_tokens_map.json; do
+  curl -sL -o $M/molcrawl-tok/$f https://huggingface.co/kojima-lab/molcrawl-protein-sequence-gpt2-small/resolve/main/$f; done
+curl -sS -o $D/swissprot.fasta.gz "https://rest.uniprot.org/uniprotkb/stream?format=fasta&query=reviewed:true&compressed=true"
+python3 tools/shuffled_rung.py data && python3 tools/shuffled_rung.py init
+for r in ordered window shuffled iid; do python3 tools/shuffled_rung.py train --rung $r; done
+python3 tools/shuffled_rung.py loss
+for r in ordered window shuffled iid untrained; do for s in fit readout geometry ignition property mlpsign; do
+  python3 tools/jlens_compare.py $s --model rung-$r --data $D --work $W --n-prompts 160 --n-eval 40 --dim-batch 128; done; done
+python3 tools/shuffled_rung_summary.py --json notes/data/shuffled-rung-session24.json
+```
+
+On 4 CPU cores with `torch.compile`, about 7,000–11,000 tokens a second, so a rung takes 45–75 minutes (slower if anything else runs); a lens fit on these networks takes about 2 seconds a prompt. The data stage takes a minute and a half and writes about 1 GB. Result (2026-10-24): the ordered network learned too little order to pass the positive control (0.031 nats below the composition baseline; bar 0.05), so the test is uninformative at this size; the i.i.d. network passes the MLP-amplification signature, and a running count passes the look-ahead threshold with no network at all. For the real test, run the same with `--layers 12 --width 768 --heads 12 --device cuda` and as many tokens as the GPU allows (MolCrawl's protein GPT-2 small was trained for 65,000 steps with a block size of 1,024).
