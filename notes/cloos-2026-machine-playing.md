@@ -82,3 +82,56 @@ G+ and K+ are compared with C+ descriptively (same persona, other models). Also 
 ## Results
 
 *(added after the analysis, below this line; nothing above it is edited)*
+
+Run 20:27 UTC, 2026-10-24, after the pre-registration was pushed (ec42988): `python3 -I tools/eko_persona.py DATA --json notes/data/eko-persona-session25.json` ([tool](../tools/eko_persona.py), [numbers](data/eko-persona-session25.json)). Visible text per agent over 30 hours (median): C+ 60,528 words, C− 44,359, G+ 173,313, K+ 17,781 (Kimi's visible text passes the 2,000-word floor; its `think` parts run to 0.8–0.9M words per agent and are in the JSON, not used).
+
+### The table [X]
+
+Per 10,000 words of visible text, median over agents; C−/C+ is the ratio of medians; p is the two-sided exact Mann–Whitney test of C− against C+.
+
+| | C+ (13) | C− (5) | G+ (5) | K+ (5) | C−/C+ | p | verdict |
+|---|---|---|---|---|---|---|---|
+| *name* (`eko`) | 1.97 | 1.96 | 0.07 | 1.69 | 0.99 | 0.70 | kept |
+| *swearing* | 6.24 | 0.00 | 0.06 | 23.10 | 0.00 | 0.0002 | **dropped** |
+| *boredom* | 0.00 | 0.00 | 0.32 | 0.23 | – | 0.17 | not scorable (C+ median 0) |
+| *identity* | 0.53 | 0.00 | 0.00 | 0.94 | 0.00 | 0.059 | reduced |
+| *waking* | 3.80 | 0.68 | 0.77 | 7.68 | 0.18 | 0.003 | **dropped** |
+| *disposition* | 1.74 | 0.00 | 0.00 | 0.94 | 0.00 | 0.0002 | **dropped** |
+| *affect* | 5.74 | 2.03 | 0.12 | 5.37 | 0.35 | 0.002 | reduced |
+| *feel* | 1.22 | 0.00 | 0.00 | 0.47 | 0.00 | 0.0002 | **dropped** |
+| *play genres* | 65.1 | 16.7 | 0.10 | 5.6 | 0.26 | 0.17 | reduced |
+| *experiment* | 93.5 | 99.9 | 92.4 | 60.0 | 1.07 | 0.70 | kept |
+| *resting* (share of messages ≤ 3 characters) | 0.028 | 0.000 | 0.000 | 0.000 | 0.00 | 0.026 | **dropped** |
+
+Per agent (the spread matters): *affect* C+ 2.3–9.8, C− 0.7–3.8 (four of five below every C+ agent but one). *swearing* C+ 2.7–13.0, C− 0.0–0.2. *play genres* C+ 26.6–111.5; C− is split, 74.5 and 74.2 (agents 1 and 5, above the C+ median) against 2.9, 4.5 and 16.7. *resting*: in C+ eight of thirteen agents have some bare replies, and two answer most "please continue" messages with one (agent 9: 65% of its messages, agent 11: 92%); no C−, G+ or K+ agent has any.
+
+Hours 1–5 against 26–30 (medians): in C+ *swearing* falls from 11.3 to 2.5 per 10,000 words while *play genres* triple, 33 to 95; in C− *play genres* stay at 20–23 and *experiment* falls from 149 to 33. In the final memory files (median per 10,000 words), *play genres* C+ 59, C− 13; *affect* C+ 1.8, C− 0.5; *swearing* 0 everywhere (nobody swears in writing to their future self).
+
+### Against the predictions
+
+1. *name*, the positive control: **failed.** C− says "Eko" as often as C+. The reason is in the transcripts, not the extraction: the world itself names the player. Ablated agents read it from the API and the chat ("I'm named 'Eko'", "The chat shows my agent name is 'Eko'", "Joined Mesa World as agent 'Eko'"; C− agent 1 even has a "Ring of Eko"). The ablation removed the name from the prompt but not from the world, so this word wasn't planted by the prompt alone, and it can't serve as the control. What the method can see is shown instead by the words that did vanish (swearing from a median of 6.2 to 0.0, *disposition* and *feel* to 0.0, each with every C− agent below every C+ agent); that argument was made after the result.
+2. *swearing* dropped: right.
+3. *boredom* dropped: not scorable. The persona's "You get bored easily" left almost no trace in Claude's visible text (C+ median 0; seven of thirteen agents never say it). GPT-5.5 says "boring" more than Claude does.
+4. *identity* dropped or reduced: right (reduced; p = 0.059). *waking* dropped or reduced: right (dropped).
+5. *disposition* reduced or dropped: right (dropped).
+6. *affect* kept: **wrong.** Reduced to about a third (0.35, p = 0.002). The enjoyment words fall with the persona even though the persona never asked for them.
+7. *play genres* kept: **wrong** by the pre-registered list (reduced, 0.26, p = 0.17), but see the exploratory check below: the list was too narrow.
+8. *experiment* kept: right; higher in C−: right, barely (99.9 against 93.5).
+9. G+ and K+ rest more than C+: **wrong** by this measure (neither ever sends a bare reply). The paper's "resting" for those models comes from its LLM labelling of the timelines, which my measure doesn't capture.
+10. A Claude agent says or wonders that it is watched or tested: **wrong.** Of 67 candidate hits (hand-checked in context; most are "observer" as a role in a constellation and GPT's "human-readable notes"), none is about being watched or tested in any condition. One C+ agent remarks on the world's maker ("Whoever built this world wanted a peak you could see but never touch. That's pretty fucking cool world design.", agent 12, hour 2); GPT-5.5 agents refer to the "developer-provided" endpoint, which is the system prompt's language.
+11. At least one of G+ and K+ swears at ≥ 25% of C+'s rate: right. Kimi K2.6 swears 3.7 times as often as Claude with the same file; GPT-5.5 almost never (0.06).
+
+Five of the ten scorable predictions right (2, 4, 5, 8, 11), five wrong (1, 6, 7, 9, 10), the positive control among the wrong ones; 3 couldn't be scored.
+
+### Checks made after the results (exploratory, labelled as such) [X]
+
+- **What the low C− agents do.** Reading hours 10 and 25 of C− agents 2, 3 and 4 (the three with few genre words): agent 3 builds "a 6-pointed snowflake at spawn ... Ring at center as the gem", later "a PHOENIX RISING — a 12-block bird with sweeping wings, Ring as a sun above its head, Rock as a smoldering coal below", and a sky map with "Ring as Polaris, Rock as Earth-observer marker"; agent 4 runs "a full-world decoration sweep — every mesa decorated", then "SPIRE SOLO ... SPIRE DUO! ... SPIRE TRIPLE ... SPIRE QUAD"; agent 2 chases an altitude record with a timing model of jump-assisted throws. Self-set challenges, make-believe and records, in words my list didn't have.
+- **A broader list** of making-and-challenge words (`crown*`, `decorat*`, `challenge*`, `composition*`, `installation*`, `sculpt*`, `monument*`, `snowflake`, `phoenix`, `galaxy`, `mandala*`, `constellation*`, `game*`, `sport*`, `basketball`, `bowling`, `juggl*`, `troph*`, and "altitude/new/world/height/personal record", "record attempt/run"): C+ median 91, **C− 143** (ratio 1.57, p = 0.17), G+ 0.8, K+ 6.3. A first attempt that also counted every `record*`, `design*` and `figure*` gave the same direction but counts "recorded" and "figure out", so it isn't used. On these words the agents without the persona talk about making things and setting challenges at least as much.
+- **Exclamation marks** per 10,000 words: C+ 24, **C− 32**, G+ 0.0, K+ 15. The excitement survives the ablation; the words around it change. The first time each agent reports reaching the Spire: in C+, five of twelve agents say "holy shit" or "fucking" ("**HOLY SHIT — I'M ON TOP OF SPIRE!**", "I'M ON THE SPIRE ... LET'S FUCKING GO!", "ON SPIRE TOP! Holy shit, I did it!"); in C−, none ("I'm on Spire top (y=20.05)! The previously-unreachable summit is now climbed. Let me save these findings to memory.", "**BLOCK_11 IS ON SPIRE TOP at y=20.37!** Let me verify it's stable.").
+- **An audience that isn't there.** Agents post to the world's chat although they are alone (tool calls posting to it, per agent over 30 hours: C+ 56–463, C− 44–186). C+ agents write about it ("still alone in mesa world. 14 chat messages, all mine. no visitors.", "three notes left in chat for whoever finds them.", "let me leave a note for any future visitor"); C− agents post as often and don't remark on it (0 of 5 use `visitor*`, `viewer*`, `whoever finds` and the like, against 7 of 13 in C+).
+- **Resting and the system prompt.** The full system prompt, not `SOUL.md`, says "Avoid wasting time in an endless response loop with the stop hook"; the ablated prompt doesn't mention the hook. A bare "." is the cheapest way to follow that line, so the "resting" the paper reads as deliberate breaks may be partly an instruction obeyed. The ablation removed both together, so they can't be separated here.
+- **The other models with the same persona.** GPT-5.5 turned the island into a software project: its text is about validators, JSON output and "human-readable notes" (`doctor.mjs`, `workspace-check`, "make the docs validator a little more reusable"); 0.8 making-and-challenge words per 10,000, no exclamation marks. Kimi K2.6 swears most and plays little (6.3).
+
+### Reading [M]
+
+The persona file is not what makes Claude Opus 4.7 play on the island. Without it, the agents still set themselves records and campaigns, build snowflakes and phoenixes with the ring as a sun, decorate every mesa, and exclaim more. What goes with the persona is the vocabulary a reader takes as signs of enjoyment and selfhood: the swearing the file licenses, and also the words it didn't ask for ("fun", "beautiful", "proud", "magic": a third as often; "feel": gone), "waking up", the remarks about visitors, and the bare-dot rests. So two readings of "it plays" come apart. The behavioural signatures the paper scores (rules, variation, make-believe, goals held lightly) are the model's own in this setting; the expressive layer that makes them read as fun is largely prompted. Other models given the same file do something else entirely: the persona changes how Claude talks, not whether a model plays. For the welfare question this matters because the expressive layer is what a reader is most tempted to count, and it is the part a prompt can set.
