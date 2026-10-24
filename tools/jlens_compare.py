@@ -668,9 +668,74 @@ def stage_evals(a):
     print("evals done", out, flush=True)
 
 
+# ----------------------------------------------------------------------------- mlpsign (session 24)
+
+def stage_mlpsign(a):
+    """Is the MLP gain amplification or suppression? The gain in stage geometry is the norm of the
+    next block's MLP response to a unit perturbation v, so an MLP that cancels v scores as high as one
+    that reinforces it. Here, with the same directions and activations: the gain again, the cosine of
+    the response with v (+1: reinforces, -1: opposes, 0: turns it elsewhere), and the net change of
+    the residual's component along v after the MLP adds its output (1 + v.Jv: 1 means the MLP leaves
+    the component alone, 0 means it cancels it, above 1 that it amplifies it)."""
+    model = load_model(a.model, a.models)
+    strings, content = load_vocab(a.model, a.models)
+    Js, lens = load_lens(a, model)
+    L = len(model.transformer.h)
+    d = model.config.n_embd
+    rows = torch.tensor(content)
+    with torch.no_grad():
+        V = [lens_vectors(model, Js[l], rows) for l in range(L)]
+        logit_v = lens_vectors(model, torch.eye(d), rows)
+    prompts = corpus(a.model, a.data, a.models, 8, EVAL_OFFSET[a.model])
+    with torch.no_grad():
+        mids = []
+        for ids in prompts:
+            _, m = run_blocks(model, ids=torch.tensor([ids]))
+            mids.append(torch.stack([x[0, SKIP_FIRST:] for x in m]))
+        mids = torch.cat(mids, 1)
+    g = torch.Generator().manual_seed(0)
+    sel = torch.randperm(mids.shape[1], generator=g)[:96]
+    ndir = 120
+    res = {"model": a.model, "gain": {}, "cos": {}, "net_along_v": {}, "abs_gain": {}}
+    for k in ["jlens", "neuron_out", "logit_lens", "random"]:
+        for key in res:
+            if key != "model":
+                res[key][k] = []
+    for l in range(L - 1):
+        blk = model.transformer.h[l + 1]
+        f = lambda x: blk.mlp(blk.ln_2(x))
+        X = mids[l + 1, sel]
+        pick = torch.randperm(len(content), generator=g)[:ndir]
+        dirs = {"jlens": V[l][pick], "logit_lens": logit_v[pick],
+                "neuron_out": model.transformer.h[l].mlp.c_proj.weight[torch.randperm(model.transformer.h[l].mlp.c_proj.weight.shape[0], generator=g)[:ndir]],
+                "random": torch.randn(ndir, d, generator=g)}
+        out = {}
+        for k, D in dirs.items():
+            D = D / D.norm(dim=1, keepdim=True)
+            gn, cs, net = [], [], []
+            for v in D:
+                _, jv = torch.func.jvp(f, (X,), (v.expand_as(X),))
+                along = jv @ v                                       # [96]
+                gn.append(jv.norm(dim=1).mean().item())
+                cs.append((along / jv.norm(dim=1).clamp_min(1e-12)).mean().item())
+                net.append((1 + along).mean().item())
+            out[k] = (np.array(gn), np.array(cs), np.array(net))
+        base = np.median(out["random"][0])
+        for k, (gn, cs, net) in out.items():
+            res["abs_gain"][k].append(float(np.median(gn)))      # norm of the response to a unit perturbation
+            res["gain"][k].append(float(np.median(gn) / base))
+            res["cos"][k].append(float(np.median(cs)))
+            res["net_along_v"][k].append(float(np.median(net)))
+        print(f"  layer {l}: J gain={res['gain']['jlens'][-1]:.2f} cos={res['cos']['jlens'][-1]:+.2f} net={res['net_along_v']['jlens'][-1]:.2f}"
+              f" | neuron gain={res['gain']['neuron_out'][-1]:.2f} cos={res['cos']['neuron_out'][-1]:+.2f} | random cos={res['cos']['random'][-1]:+.2f}", flush=True)
+    outp = Path(a.work) / a.model / "mlpsign.json"
+    json.dump(res, open(outp, "w"), indent=1)
+    print("mlpsign done", outp, flush=True)
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("stage", choices=["fit", "readout", "geometry", "ignition", "property", "evals"])
+    ap.add_argument("stage", choices=["fit", "readout", "geometry", "ignition", "property", "evals", "mlpsign"])
     ap.add_argument("--evals-dir", default="/home/user/jdata/evaluations")
     ap.add_argument("--model", required=True, choices=list(MODEL_DIRS))
     ap.add_argument("--models", default="/home/user/models")
@@ -685,7 +750,7 @@ def main():
                     help="text and random only: the authors' country blends, or the protein design (one token of a real passage blended with another frequent token)")
     a = ap.parse_args()
     {"fit": stage_fit, "readout": stage_readout, "geometry": stage_geometry, "ignition": stage_ignition,
-     "property": stage_property, "evals": stage_evals}[a.stage](a)
+     "property": stage_property, "evals": stage_evals, "mlpsign": stage_mlpsign}[a.stage](a)
 
 
 if __name__ == "__main__":

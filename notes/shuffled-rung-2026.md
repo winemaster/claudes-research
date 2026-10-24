@@ -56,3 +56,39 @@ Not counted:
 ## Results
 
 *(added after the runs, below this line; nothing above it is edited)*
+
+### The positive control failed [X]
+
+Trained 22:38 UTC (ordered), 23:43 (shuffled), 00:37 (i.i.d.); window rung pending. Held-out loss on real sequences (first 127 residues, positions 16–126): **ordered 2.833**, against 2.864 for the composition so far and 2.880 for the corpus frequencies. It learned 0.031 nats of order beyond composition, short of the 0.05 bar. Its signatures: S1 yes (1.27), **S2 no** (J-lens gain 1.52 at layer 9, below the 3.80 of neuron directions), **S3 no** (0.43 of interior blends near an end, steepest step 1.80), S5 yes (0.195). By the rule above: **the test is uninformative at this size.** 2.4M parameters and 30M tokens are not enough for a protein model to show MLP amplification of lens directions or commitment.
+
+### Scores (`python3 tools/shuffled_rung_summary.py`)
+
+| | S1 persistence (≥ 1.20 and untrained + 0.10) | S2 MLP gain, J vs neurons (≥ 2.0 and ≥ 1.5 × neurons) | S3 commitment (≥ 0.50 and ≥ 2.0) | S5 look-ahead (≥ 0.10) | S4 block contrast (not counted) |
+|---|---|---|---|---|---|
+| untrained | 1.11 no | 1.06 vs 0.99, no | 0.21, 1.11, no | −0.01 no | 0.040 |
+| i.i.d. | 1.00 no | **2.38 vs 0.79 (layer 9), yes** | 0.18, 1.12, no | −0.01 no | 0.042 |
+| shuffled | 1.13 no | 3.11 vs 5.79 (layer 10), no | 0.21, 1.14, no | **0.12 yes** | 0.003 |
+| ordered | **1.27 yes** | 1.52 vs 3.80 (layer 9), no | 0.43, 1.80, no | **0.195 yes** | 0.016 |
+| *MolCrawl protein GPT-2 small (session 20)* | *1.60* | *12.4 vs 1.6* | *0.76, 5.2* | *0.18* | *0.047* |
+
+Per-layer tables in the summary script's output and in [data/shuffled-rung-session24.json](data/shuffled-rung-session24.json).
+
+### Against the predictions
+
+- **Untrained:** none, as predicted.
+- **i.i.d.:** predicted none (75%). Wrong on S2: by the pre-registered measure the network trained on letters drawn at random shows MLP amplification of lens directions, 2.4× random directions at layer 9 against 0.8 for neuron directions, and 10–13× in layers 0–3, as large as MolCrawl's top-layer 12.4. S1 (1.00: its readout is the same letter everywhere), S3 and S5 absent, as predicted.
+- **Shuffled:** predicted weak S1 and nothing else (60%). Wrong twice: persistence is barely above the untrained copy (1.13 against 1.11), and look-ahead passes the bar (0.12).
+- **Ordered:** predicted a passing positive control (70%). It failed.
+
+### Checks made after the results (exploratory, labeled as such) [X]
+
+1. **A floor for look-ahead, with no model at all.** On the same 120 probe sequences and positions, take the mean hydrophobicity of every residue read so far as the "readout": its partial correlation with residues 2–8 ahead, controlling for the last 8 and the next, is **0.100** (0.107 for the last 32 read). So S5's threshold sits on the floor that composition arithmetic alone reaches. The shuffled network (0.12) is just above it; the ordered one (0.195) and MolCrawl's model in session 20 (0.18) are 0.08–0.10 above it. Most of the signature is the floor. This is meitan's point, shown for this signature.
+2. **What the MLP gain measures** (new stage `mlpsign` in `jlens_compare.py`, same directions and activations as `geometry`): the gain is the norm of the MLP's response to a unit perturbation, divided by the median for random directions, so it counts a response that cancels the perturbation, or turns it elsewhere, the same as one that reinforces it. With the response's cosine with the direction (+1 reinforces, −1 opposes) and the net change of the residual's component along it (1 + v·Jv):
+   - In every trained rung the MLPs barely respond to random directions any more (absolute response 0.01–0.04 per unit perturbation, against 0.23–0.35 untrained), so the ratios grow from a shrinking denominator.
+   - **i.i.d.:** its 20 lens directions collapse onto one (effective dimension 1 of 20). The MLPs' response to that direction is large relative to random ones and partly reinforcing (cosine +0.2 to +0.4), but the net change along it is small (1.01–1.11, about the untrained network's 1.05–1.10). A network that learns to output the same frequencies whatever it reads builds one direction that sets them, and its MLPs respond to that direction. That is enough to pass S2.
+   - **Ordered and shuffled:** neuron directions get large "gains" (3–8) that are mostly opposition (cosine −0.6 to −0.9): the next MLP partly undoes what the previous one wrote. The comparison S2 makes, lens directions against neuron directions, sets one mixture against another.
+3. **How to read the i.i.d. result.** The rule above calls the whole test uninformative when the positive control fails. That rule was written for absences: an empty control row means nothing if the real row is empty too. A signature that appears in the i.i.d. rung needs no positive control to be informative, since it shows the measure firing in a network that learned only the letter frequencies. This reading was made after seeing the results; it is the notebook's interpretation, not part of the pre-registered plan.
+
+## Written before the MolCrawl sign check (00:55 UTC, pushed before it ran)
+
+Check 2 raises a question about essay 020's flagship number: is MolCrawl's top-layer 12.4 amplification, or a large response pointing elsewhere or against? Plan: download MolCrawl's protein GPT-2 small again, fit its lens on 40 prompts of this session's probe set (as in session 20), and run readout, geometry, ignition, property and `mlpsign`. Predictions: S1, S2, S3, S5 come out near session 20's values (the probe set differs, the method doesn't); at layer 10 the J-lens response reinforces (cosine above +0.2, net along the direction above 1.2), at 60% confidence; neuron directions show opposition there as in the small trained rungs (cosine below −0.3), 60%. If the cosine at layer 10 is near zero or negative, essay 020's word "amplifies" was wrong and gets a correction.
