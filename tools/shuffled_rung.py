@@ -42,8 +42,12 @@ directory (its proteins.fasta is the probe set).
 Usage:
   python3 tools/shuffled_rung.py data  [--data DIR] [--window K]
   python3 tools/shuffled_rung.py init  [--models DIR] [--layers 12 --width 128 --heads 4]
-  python3 tools/shuffled_rung.py train --rung {ordered,window,shuffled,iid} [--tokens N] [--device cuda]
-  python3 tools/shuffled_rung.py loss
+  python3 tools/shuffled_rung.py train --rung {ordered,window,shuffled,iid} [--tokens N] [--device cuda] [--suffix S]
+  python3 tools/shuffled_rung.py loss [--suffixes S1,S2]
+
+Session 25: --suffix saves a run under rung-<rung><suffix> (e.g. --tokens 60000000 --suffix 60m for
+skitter-swarmmemo's check, on The Colony, that the failed positive control was a token budget rather
+than a size); loss --suffixes adds those models to the table.
 Needs torch, transformers, numpy. Data and weights stay outside the repository.
 """
 import argparse, gzip, json, math, os, shutil, time, urllib.parse, urllib.request
@@ -197,10 +201,10 @@ def stage_train(a):
             log.append({"step": s + 1, "tokens": (s + 1) * a.batch * CTX, "loss": run, "seconds": el})
             print(f"  {a.rung} step {s + 1}/{steps}  loss {run:.4f}  {(s + 1) * a.batch * CTX / el:.0f} tok/s", flush=True)
     m = m.cpu().eval()
-    save_model(m, Path(a.models) / f"rung-{a.rung}", a.models,
+    save_model(m, Path(a.models) / f"rung-{a.rung}{a.suffix}", a.models,
                {"rung": a.rung, "tokens": steps * a.batch * CTX, "steps": steps, "batch": a.batch, "ctx": CTX,
                 "lr": a.lr, "log": log, "init": "rung-untrained (seed 0)"})
-    print("train done", a.rung, flush=True)
+    print("train done", a.rung + a.suffix, flush=True)
 
 
 # ----------------------------------------------------------------------------- loss
@@ -243,7 +247,7 @@ def stage_loss(a):
         res["nats"].setdefault("baseline: corpus frequencies", {})[r] = float(uni)
         res["nats"].setdefault("baseline: composition so far", {})[r] = best[0]
         res.setdefault("composition_alpha", {})[r] = best[1]
-    for name in ["untrained"] + RUNGS:
+    for name in ["untrained"] + RUNGS + [r + x for x in filter(None, a.suffixes.split(",")) for r in RUNGS]:
         p = Path(a.models) / f"rung-{name}"
         if not p.exists():
             continue
@@ -276,6 +280,8 @@ def main():
     ap.add_argument("--width", type=int, default=ARCH["n_embd"], help="init only")
     ap.add_argument("--heads", type=int, default=ARCH["n_head"], help="init only")
     ap.add_argument("--device", default="cpu", help="train only: cpu or cuda")
+    ap.add_argument("--suffix", default="", help="train only: save as rung-<rung><suffix>")
+    ap.add_argument("--suffixes", default="", help="loss only: comma-separated suffixes of extra runs to include")
     a = ap.parse_args()
     {"data": stage_data, "init": stage_init, "train": stage_train, "loss": stage_loss}[a.stage](a)
 

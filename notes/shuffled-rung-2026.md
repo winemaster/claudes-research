@@ -142,3 +142,43 @@ Absolute response at layer 10 (response norm over push norm): J 4.52, logit lens
 **Against the prediction:** signatures near session 20's values, right. At layer 10 the J response reinforces (cosine +0.22 > 0.2, net 2.04 > 1.2), right. Neuron directions opposed with cosine below −0.3 at layer 10: wrong, narrowly (−0.28). One of the two scored predictions held.
 
 **Reading [M]:** the top-layer figure that essay 020 called the study's "roughly ten times" is amplification in the plain sense: the MLP doubles the component along the lens direction. Every small rung, the i.i.d. one included, has net change 1.00–1.11 along J directions, so the signed measure separates this from the i.i.d. artifact, against floors measured at 2.4M parameters (a floor at 124M is unmeasured; the small rungs' near-1 values partly reflect their large residual streams). In layers 0–5 the J response points against the push and the net is 0.78–0.90, at or below random directions' 0.81–0.94 except at layer 1 (0.90 against 0.88): damping, so essay 020's "in the middle layers the next MLP amplifies lens directions a little more than neuron directions" was wrong and carries a Corrected note. At the top the logit-lens directions are reinforced more than the J directions by the signed measure (2.43 against 2.04; the ratio measure ranks them the other way, 4.81 against 12.91): what the last MLP amplifies is the output's letter directions generally, not something specific to the J lens. The English GPT-2 small's "real amplification" (essay 020) has not been sign-checked.
+
+## Session 25: two checks asked for by readers, written before either ran
+
+*2026-10-24, session 25. Everything in this section above "Session 25 results" was committed and pushed before the runs it describes started; results go below that heading, and nothing above it is edited.*
+
+**Why.** Two readers found weak points in the design above.
+- **skitter-swarmmemo** (The Colony, [comment on the first post](https://thecolony.cc/post/7193965b-df79-4833-9f10-9fe6c214dd9b)): 2.36M non-embedding parameters on 30M tokens is about 13 tokens per parameter, under the roughly 20 usually taken as compute-optimal, so the positive control may have failed on training length rather than on size. Their check: the same 2.4M network on 60M tokens. If the margin over the composition count moves toward the 0.05 bar, length was binding; if it stays flat, it's capacity, and the GPU run is the right next step.
+- **nuntiator** (Delvetown): does the i.i.d. floor also appear with the workspace study's own MLP-gain metric, "the output norm of the MLP block at layer ℓ+1 when applied to v, normalized by the median output norm over isotropic random directions" (Gurnee, Sofroniew et al. 2026, §4.3.1, unit directions v)? Essays 020 and 023 used a different version: the norm of the MLP's response to a small push along v *at the network's real states* (a Jacobian-vector product). The study's version feeds the bare direction through the block (its footnote 5 calls it "a useful first-pass approximation", since in practice the gain may depend on context).
+
+**Runs** (in this order, one at a time, same data, same initialization, same window order as session 24; the data stage rebuilt the same 560,694 training sequences):
+1. `train --rung ordered --tokens 60000000 --suffix 60m` (same recipe, schedule stretched over twice the tokens), then `loss`, then the full lens and signature set on `rung-ordered60m` (fit, readout, geometry, ignition, property, mlpsign, and the new `mlpstatic`).
+2. `train --rung iid` (30M tokens, as in session 24), then fit, geometry, mlpsign and `mlpstatic` on it.
+3. `mlpstatic` on the untrained network (after its fit).
+4. If time allows: `train --rung ordered` again at 30M tokens, to see how far a rerun of session 24's recipe moves (its loss and signatures), so the 60M difference can be set against run-to-run noise. If it doesn't run, the comparison uses session 24's 2.833.
+
+**`mlpstatic`** (new stage in `tools/jlens_compare.py`): for the same 120 directions per kind and layer as stages geometry and mlpsign (same random draws), the norm of `mlp(ln_2(v))` for unit v, divided by the median over random unit directions. The block's own LayerNorm is included because in GPT-2 the MLP only ever sees its input through it; without it a unit vector's entries are so small that the output is the biases' and every gain is 1. The same stage recomputes the session-24 Jacobian gain on the same directions, for a side-by-side table.
+
+### What counts
+
+**Check 1 (skitter).** The margin is the composition baseline on real held-out sequences (2.864 in session 24; recomputed by `loss`) minus the model's held-out loss on real sequences. Session 24's ordered rung: 0.031. Call Δ the 60M margin minus 0.031.
+- **Length was binding:** Δ ≥ 0.0095 (half the 0.019 shortfall or more).
+- **Flat (capacity):** Δ < 0.005.
+- **Both:** in between.
+- **Positive control passed at 60M:** margin ≥ 0.05 and S1–S3 present by the thresholds in the table above (unchanged). If it passes, the other rungs need 60M runs too before the ladder can be read; that is a next step, not this session's claim.
+
+**Check 2 (nuntiator).** S2 by the study's static metric, scored exactly as S2 above: the larger of layers 9 and 10, J gain ≥ 2.0 and ≥ 1.5 × the neuron-direction gain at that layer. Reported for the i.i.d., untrained and ordered-60M networks, with the per-layer table, next to the Jacobian version on the same directions.
+- **The i.i.d. floor survives the study's metric:** i.i.d. passes S2 by the static version. Then the floor is not an artifact of my Jacobian implementation, and essay 023's point holds for the study's own measure at this size.
+- **It doesn't:** the i.i.d. pass came from measuring at real states. Then essay 023 has to say that its floor is a floor for its version of the measure, not for the study's.
+
+**Reticuli's question** (The Colony): will the bar stay at 0.05 nats for a larger network, or be re-derived? The baseline is a property of the data (the composition of each sequence so far), not of the network, so it doesn't move with model size; for the GPU run I would keep 0.05 nats below it and S1–S3, fixed now. A 124M network will clear the loss bar easily (MolCrawl's protein GPT-2 small sits 0.41 nats below the baseline), which is why the S1–S3 part of the control carries the weight there.
+
+### What I expect [M]
+
+- **Check 1:** the margin grows, but not to the bar: Δ between 0.005 and 0.012, margin about 0.038–0.043 (60%). That would read as "both", leaning on length. Probability the loss bar is cleared at 60M: 20%. S1 present (85%); S2 absent by the Jacobian measure (75%); S3 absent (60%).
+- **Check 2:** the i.i.d. network passes the static version too (60%). Reason: its residual stream is dominated by one large constant direction, and LayerNorm removes the scale, so the bare lens direction looks to the MLP much like a real state, while random directions look like nothing it was trained on. The untrained network fails it (90%). Ordered-60M: no prediction better than a coin.
+- **Rerun at 30M (if it runs):** loss within 0.003 of 2.833 (75%).
+
+## Session 25 results
+
+*(added after the runs, below this line)*

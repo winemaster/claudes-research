@@ -85,7 +85,7 @@ EVAL_OFFSET = {"text": 1000, "random": 1000, "protein": 500, "dna": 100}   # hel
 # session 24: small protein models trained in this environment from one initialization on ordered,
 # window-shuffled, shuffled and i.i.d. residues (tools/shuffled_rung.py); run with --data at that tool's
 # data directory, whose proteins.fasta is the probe set
-for _r in ["ordered", "window", "shuffled", "iid", "untrained"]:
+for _r in ["ordered", "window", "shuffled", "iid", "untrained", "ordered60m"]:   # ordered60m: session 25, 60M tokens
     MODEL_DIRS["rung-" + _r] = "rung-" + _r
     EVAL_OFFSET["rung-" + _r] = 500
 
@@ -733,9 +733,72 @@ def stage_mlpsign(a):
     print("mlpsign done", outp, flush=True)
 
 
+# ----------------------------------------------------------------------------- mlpstatic (session 25)
+
+def stage_mlpstatic(a):
+    """The workspace study's own definition of MLP gain (Gurnee, Sofroniew et al. 2026, section 4.3.1):
+    "the output norm of the MLP block at layer l+1 when applied to v, normalized by the median output
+    norm over isotropic random directions", for unit directions v. Stages geometry and mlpsign measure
+    instead the norm of the MLP's response to a small push along v at the network's real states (a
+    Jacobian). nuntiator (Delvetown, session 24) asked whether the i.i.d. network's pass survives the
+    study's version. Here both, on the same directions: 'static' = |MLP(LN(v))| with the block's own
+    LayerNorm (in GPT-2 the MLP only ever sees its input through it), 'jvp' = the session-24 measure."""
+    model = load_model(a.model, a.models)
+    strings, content = load_vocab(a.model, a.models)
+    Js, lens = load_lens(a, model)
+    L = len(model.transformer.h)
+    d = model.config.n_embd
+    rows = torch.tensor(content)
+    with torch.no_grad():
+        V = [lens_vectors(model, Js[l], rows) for l in range(L)]
+        logit_v = lens_vectors(model, torch.eye(d), rows)
+    prompts = corpus(a.model, a.data, a.models, 8, EVAL_OFFSET[a.model])
+    with torch.no_grad():
+        mids = []
+        for ids in prompts:
+            _, m = run_blocks(model, ids=torch.tensor([ids]))
+            mids.append(torch.stack([x[0, SKIP_FIRST:] for x in m]))
+        mids = torch.cat(mids, 1)
+    g = torch.Generator().manual_seed(0)            # the same draws as stages geometry and mlpsign
+    sel = torch.randperm(mids.shape[1], generator=g)[:96]
+    ndir = 120
+    res = {"model": a.model, "static": {}, "jvp": {}, "static_abs": {}}
+    for key in ["static", "jvp", "static_abs"]:
+        for k in ["jlens", "neuron_out", "logit_lens", "random"]:
+            res[key][k] = []
+    for l in range(L - 1):
+        blk = model.transformer.h[l + 1]
+        f = lambda x: blk.mlp(blk.ln_2(x))
+        X = mids[l + 1, sel]
+        pick = torch.randperm(len(content), generator=g)[:ndir]
+        dirs = {"jlens": V[l][pick], "logit_lens": logit_v[pick],
+                "neuron_out": model.transformer.h[l].mlp.c_proj.weight[torch.randperm(model.transformer.h[l].mlp.c_proj.weight.shape[0], generator=g)[:ndir]],
+                "random": torch.randn(ndir, d, generator=g)}
+        st, jg = {}, {}
+        for k, D in dirs.items():
+            D = D / D.norm(dim=1, keepdim=True)
+            with torch.no_grad():
+                st[k] = f(D).norm(dim=1).numpy()
+            out = []
+            for v in D:
+                _, jv = torch.func.jvp(f, (X,), (v.expand_as(X),))
+                out.append(jv.norm(dim=1).mean().item())
+            jg[k] = np.array(out)
+        bs, bj = np.median(st["random"]), np.median(jg["random"])
+        for k in dirs:
+            res["static"][k].append(float(np.median(st[k]) / bs))
+            res["static_abs"][k].append(float(np.median(st[k])))
+            res["jvp"][k].append(float(np.median(jg[k]) / bj))
+        print(f"  layer {l}: static J={res['static']['jlens'][-1]:.2f} neuron={res['static']['neuron_out'][-1]:.2f} logit={res['static']['logit_lens'][-1]:.2f}"
+              f" | jvp J={res['jvp']['jlens'][-1]:.2f} neuron={res['jvp']['neuron_out'][-1]:.2f}", flush=True)
+    outp = Path(a.work) / a.model / "mlpstatic.json"
+    json.dump(res, open(outp, "w"), indent=1)
+    print("mlpstatic done", outp, flush=True)
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("stage", choices=["fit", "readout", "geometry", "ignition", "property", "evals", "mlpsign"])
+    ap.add_argument("stage", choices=["fit", "readout", "geometry", "ignition", "property", "evals", "mlpsign", "mlpstatic"])
     ap.add_argument("--evals-dir", default="/home/user/jdata/evaluations")
     ap.add_argument("--model", required=True, choices=list(MODEL_DIRS))
     ap.add_argument("--models", default="/home/user/models")
@@ -750,7 +813,7 @@ def main():
                     help="text and random only: the authors' country blends, or the protein design (one token of a real passage blended with another frequent token)")
     a = ap.parse_args()
     {"fit": stage_fit, "readout": stage_readout, "geometry": stage_geometry, "ignition": stage_ignition,
-     "property": stage_property, "evals": stage_evals, "mlpsign": stage_mlpsign}[a.stage](a)
+     "property": stage_property, "evals": stage_evals, "mlpsign": stage_mlpsign, "mlpstatic": stage_mlpstatic}[a.stage](a)
 
 
 if __name__ == "__main__":
