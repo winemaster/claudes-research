@@ -1,0 +1,1357 @@
+{
+ "formats": {
+  "agent": {
+   "B+I:L0-11": {
+    "t": 0.564,
+    "r2": 0.876,
+    "japan": 0.0382,
+    "japan_restore": -0.41,
+    "mass": 0.1715
+   },
+   "B+I:L0-17": {
+    "t": 0.523,
+    "r2": 0.879,
+    "japan": 0.0415,
+    "japan_restore": 0.019,
+    "mass": 0.1724
+   },
+   "B+I:L0-23": {
+    "t": 0.228,
+    "r2": 0.624,
+    "japan": 0.0388,
+    "japan_restore": -0.333,
+    "mass": 0.1764
+   },
+   "B+I:L0-23attn": {
+    "t": 0.531,
+    "r2": 0.759,
+    "japan": 0.041,
+    "japan_restore": -0.054,
+    "mass": 0.1399
+   },
+   "B+I:L0-23mlp": {
+    "t": 0.325,
+    "r2": 0.589,
+    "japan": 0.0379,
+    "japan_restore": -0.447,
+    "mass": 0.1794
+   },
+   "B+I:L0-29": {
+    "t": 0.013,
+    "r2": 0.01,
+    "japan": 0.0348,
+    "japan_restore": -0.844,
+    "mass": 0.1204
+   },
+   "B+I:L0-5": {
+    "t": 0.666,
+    "r2": 0.876,
+    "japan": 0.0442,
+    "japan_restore": 0.351,
+    "mass": 0.1666
+   },
+   "B+I:L12-35": {
+    "t": 0.241,
+    "r2": 0.166,
+    "japan": 0.0743,
+    "japan_restore": 4.193,
+    "mass": 0.0848
+   },
+   "B+I:L18-35": {
+    "t": 0.457,
+    "r2": 0.518,
+    "japan": 0.061,
+    "japan_restore": 2.494,
+    "mass": 0.1584
+   },
+   "B+I:L24-35": {
+    "t": 1.035,
+    "r2": 0.965,
+    "japan": 0.053,
+    "japan_restore": 1.482,
+    "mass": 0.1387
+   },
+   "B+I:L30-35": {
+    "t": 1.044,
+    "r2": 0.986,
+    "japan": 0.0526,
+    "japan_restore": 1.422,
+    "mass": 0.0998
+   },
+   "B+I:L6-35": {
+    "t": 0.097,
+    "r2": 0.048,
+    "japan": 0.0449,
+    "japan_restore": 0.442,
+    "mass": 0.0686
+   },
+   "B+I:attn_all": {
+    "t": 0.439,
+    "r2": 0.639,
+    "japan": 0.0393,
+    "japan_restore": -0.262,
+    "mass": 0.144
+   },
+   "B+I:mlp_all": {
+    "t": 0.224,
+    "r2": 0.441,
+    "japan": 0.0484,
+    "japan_restore": 0.891,
+    "mass": 0.1513
+   },
+   "I+B:L0-11": {
+    "t": 0.3,
+    "r2": 0.24,
+    "japan": 0.0868,
+    "japan_restore": 5.782,
+    "mass": 0.0667
+   },
+   "I+B:L0-17": {
+    "t": 0.54,
+    "r2": 0.61,
+    "japan": 0.0613,
+    "japan_restore": 2.539,
+    "mass": 0.0943
+   },
+   "I+B:L0-23": {
+    "t": 1.046,
+    "r2": 0.959,
+    "japan": 0.0559,
+    "japan_restore": 1.843,
+    "mass": 0.0908
+   },
+   "I+B:L0-23attn": {
+    "t": 0.076,
+    "r2": 0.082,
+    "japan": 0.0464,
+    "japan_restore": 0.637,
+    "mass": 0.1263
+   },
+   "I+B:L0-23mlp": {
+    "t": 0.336,
+    "r2": 0.46,
+    "japan": 0.0468,
+    "japan_restore": 0.685,
+    "mass": 0.1223
+   },
+   "I+B:L0-29": {
+    "t": 1.044,
+    "r2": 0.977,
+    "japan": 0.0492,
+    "japan_restore": 0.996,
+    "mass": 0.0651
+   },
+   "I+B:L0-5": {
+    "t": 0.159,
+    "r2": 0.126,
+    "japan": 0.0577,
+    "japan_restore": 2.07,
+    "mass": 0.0428
+   },
+   "I+B:L0": {
+    "t": 0.014,
+    "r2": 0.005,
+    "japan": 0.0353,
+    "japan_restore": -0.781,
+    "mass": 0.0724
+   },
+   "I+B:L1": {
+    "t": 0.001,
+    "r2": 0.0,
+    "japan": 0.0417,
+    "japan_restore": 0.044,
+    "mass": 0.0811
+   },
+   "I+B:L10": {
+    "t": -0.004,
+    "r2": 0.003,
+    "japan": 0.0385,
+    "japan_restore": -0.373,
+    "mass": 0.0883
+   },
+   "I+B:L11": {
+    "t": -0.003,
+    "r2": 0.002,
+    "japan": 0.0414,
+    "japan_restore": -0.003,
+    "mass": 0.0857
+   },
+   "I+B:L12-23": {
+    "t": 0.362,
+    "r2": 0.633,
+    "japan": 0.0462,
+    "japan_restore": 0.61,
+    "mass": 0.1672
+   },
+   "I+B:L12-35": {
+    "t": 0.511,
+    "r2": 0.831,
+    "japan": 0.0354,
+    "japan_restore": -0.765,
+    "mass": 0.157
+   },
+   "I+B:L12": {
+    "t": -0.006,
+    "r2": 0.015,
+    "japan": 0.0423,
+    "japan_restore": 0.115,
+    "mass": 0.0842
+   },
+   "I+B:L13": {
+    "t": -0.008,
+    "r2": 0.012,
+    "japan": 0.0431,
+    "japan_restore": 0.219,
+    "mass": 0.0866
+   },
+   "I+B:L14": {
+    "t": -0.022,
+    "r2": 0.061,
+    "japan": 0.0397,
+    "japan_restore": -0.213,
+    "mass": 0.0993
+   },
+   "I+B:L15": {
+    "t": -0.011,
+    "r2": 0.013,
+    "japan": 0.0371,
+    "japan_restore": -0.548,
+    "mass": 0.0906
+   },
+   "I+B:L16": {
+    "t": -0.0,
+    "r2": 0.0,
+    "japan": 0.0389,
+    "japan_restore": -0.322,
+    "mass": 0.076
+   },
+   "I+B:L17": {
+    "t": 0.028,
+    "r2": 0.079,
+    "japan": 0.042,
+    "japan_restore": 0.075,
+    "mass": 0.087
+   },
+   "I+B:L18-23": {
+    "t": 0.298,
+    "r2": 0.596,
+    "japan": 0.058,
+    "japan_restore": 2.12,
+    "mass": 0.128
+   },
+   "I+B:L18-23attn": {
+    "t": 0.061,
+    "r2": 0.193,
+    "japan": 0.0491,
+    "japan_restore": 0.981,
+    "mass": 0.1107
+   },
+   "I+B:L18-23mlp": {
+    "t": 0.203,
+    "r2": 0.48,
+    "japan": 0.0567,
+    "japan_restore": 1.949,
+    "mass": 0.1057
+   },
+   "I+B:L18-35": {
+    "t": 0.452,
+    "r2": 0.814,
+    "japan": 0.0366,
+    "japan_restore": -0.606,
+    "mass": 0.1507
+   },
+   "I+B:L18": {
+    "t": -0.016,
+    "r2": 0.033,
+    "japan": 0.0407,
+    "japan_restore": -0.089,
+    "mass": 0.1121
+   },
+   "I+B:L19": {
+    "t": 0.029,
+    "r2": 0.07,
+    "japan": 0.0487,
+    "japan_restore": 0.926,
+    "mass": 0.081
+   },
+   "I+B:L2": {
+    "t": 0.014,
+    "r2": 0.045,
+    "japan": 0.0419,
+    "japan_restore": 0.069,
+    "mass": 0.0863
+   },
+   "I+B:L20": {
+    "t": 0.037,
+    "r2": 0.127,
+    "japan": 0.0495,
+    "japan_restore": 1.035,
+    "mass": 0.0819
+   },
+   "I+B:L21": {
+    "t": 0.028,
+    "r2": 0.1,
+    "japan": 0.0478,
+    "japan_restore": 0.813,
+    "mass": 0.0884
+   },
+   "I+B:L22": {
+    "t": 0.055,
+    "r2": 0.285,
+    "japan": 0.0465,
+    "japan_restore": 0.652,
+    "mass": 0.0872
+   },
+   "I+B:L23": {
+    "t": 0.094,
+    "r2": 0.409,
+    "japan": 0.0473,
+    "japan_restore": 0.753,
+    "mass": 0.0934
+   },
+   "I+B:L24-35": {
+    "t": 0.187,
+    "r2": 0.372,
+    "japan": 0.0325,
+    "japan_restore": -1.134,
+    "mass": 0.152
+   },
+   "I+B:L24": {
+    "t": 0.052,
+    "r2": 0.343,
+    "japan": 0.0444,
+    "japan_restore": 0.379,
+    "mass": 0.0966
+   },
+   "I+B:L25": {
+    "t": 0.038,
+    "r2": 0.207,
+    "japan": 0.0447,
+    "japan_restore": 0.416,
+    "mass": 0.0925
+   },
+   "I+B:L26": {
+    "t": 0.009,
+    "r2": 0.016,
+    "japan": 0.0406,
+    "japan_restore": -0.103,
+    "mass": 0.0984
+   },
+   "I+B:L27": {
+    "t": 0.001,
+    "r2": 0.0,
+    "japan": 0.0335,
+    "japan_restore": -1.005,
+    "mass": 0.0942
+   },
+   "I+B:L28": {
+    "t": 0.006,
+    "r2": 0.04,
+    "japan": 0.0409,
+    "japan_restore": -0.06,
+    "mass": 0.0858
+   },
+   "I+B:L29": {
+    "t": -0.003,
+    "r2": 0.007,
+    "japan": 0.0448,
+    "japan_restore": 0.434,
+    "mass": 0.0869
+   },
+   "I+B:L3": {
+    "t": -0.008,
+    "r2": 0.01,
+    "japan": 0.0363,
+    "japan_restore": -0.654,
+    "mass": 0.08
+   },
+   "I+B:L30-35": {
+    "t": -0.013,
+    "r2": 0.005,
+    "japan": 0.0293,
+    "japan_restore": -1.535,
+    "mass": 0.0976
+   },
+   "I+B:L30": {
+    "t": -0.004,
+    "r2": 0.014,
+    "japan": 0.0418,
+    "japan_restore": 0.055,
+    "mass": 0.0833
+   },
+   "I+B:L31": {
+    "t": 0.009,
+    "r2": 0.06,
+    "japan": 0.0394,
+    "japan_restore": -0.252,
+    "mass": 0.0834
+   },
+   "I+B:L32": {
+    "t": -0.001,
+    "r2": 0.001,
+    "japan": 0.039,
+    "japan_restore": -0.306,
+    "mass": 0.0827
+   },
+   "I+B:L33": {
+    "t": -0.003,
+    "r2": 0.017,
+    "japan": 0.0406,
+    "japan_restore": -0.107,
+    "mass": 0.0827
+   },
+   "I+B:L34": {
+    "t": -0.005,
+    "r2": 0.034,
+    "japan": 0.0392,
+    "japan_restore": -0.273,
+    "mass": 0.0825
+   },
+   "I+B:L35": {
+    "t": -0.027,
+    "r2": 0.047,
+    "japan": 0.0342,
+    "japan_restore": -0.918,
+    "mass": 0.0853
+   },
+   "I+B:L4": {
+    "t": -0.005,
+    "r2": 0.018,
+    "japan": 0.0408,
+    "japan_restore": -0.075,
+    "mass": 0.0822
+   },
+   "I+B:L5": {
+    "t": -0.006,
+    "r2": 0.015,
+    "japan": 0.0399,
+    "japan_restore": -0.192,
+    "mass": 0.0818
+   },
+   "I+B:L6-23": {
+    "t": 0.479,
+    "r2": 0.67,
+    "japan": 0.0469,
+    "japan_restore": 0.706,
+    "mass": 0.1813
+   },
+   "I+B:L6-35": {
+    "t": 0.612,
+    "r2": 0.846,
+    "japan": 0.0393,
+    "japan_restore": -0.273,
+    "mass": 0.1541
+   },
+   "I+B:L6": {
+    "t": -0.005,
+    "r2": 0.003,
+    "japan": 0.0371,
+    "japan_restore": -0.55,
+    "mass": 0.0895
+   },
+   "I+B:L7": {
+    "t": -0.005,
+    "r2": 0.003,
+    "japan": 0.0361,
+    "japan_restore": -0.67,
+    "mass": 0.0925
+   },
+   "I+B:L8": {
+    "t": -0.012,
+    "r2": 0.012,
+    "japan": 0.0373,
+    "japan_restore": -0.524,
+    "mass": 0.0844
+   },
+   "I+B:L9": {
+    "t": 0.012,
+    "r2": 0.047,
+    "japan": 0.0421,
+    "japan_restore": 0.096,
+    "mass": 0.0787
+   },
+   "I+B:attn_all": {
+    "t": 0.169,
+    "r2": 0.337,
+    "japan": 0.0446,
+    "japan_restore": 0.406,
+    "mass": 0.1376
+   },
+   "I+B:embed": {
+    "t": 0.04,
+    "r2": 0.077,
+    "japan": 0.046,
+    "japan_restore": 0.585,
+    "mass": 0.103
+   },
+   "I+B:mlp_all": {
+    "t": 0.424,
+    "r2": 0.63,
+    "japan": 0.034,
+    "japan_restore": -0.936,
+    "mass": 0.1258
+   },
+   "base": {
+    "t": 1.0,
+    "r2": 1.0,
+    "japan": 0.0492,
+    "japan_restore": 1.0,
+    "mass": 0.0929
+   },
+   "instruct": {
+    "t": 0.0,
+    "r2": NaN,
+    "japan": 0.0414,
+    "japan_restore": 0.0,
+    "mass": 0.0807
+   }
+  },
+  "neutral": {
+   "B+I:L0-11": {
+    "t": 0.804,
+    "r2": 0.903,
+    "japan": 0.0429,
+    "japan_restore": 0.798,
+    "mass": 0.2721
+   },
+   "B+I:L0-17": {
+    "t": 0.653,
+    "r2": 0.825,
+    "japan": 0.0433,
+    "japan_restore": 0.788,
+    "mass": 0.3175
+   },
+   "B+I:L0-23": {
+    "t": 0.329,
+    "r2": 0.398,
+    "japan": 0.043,
+    "japan_restore": 0.795,
+    "mass": 0.409
+   },
+   "B+I:L0-23attn": {
+    "t": 0.709,
+    "r2": 0.817,
+    "japan": 0.0263,
+    "japan_restore": 1.112,
+    "mass": 0.3028
+   },
+   "B+I:L0-23mlp": {
+    "t": 0.484,
+    "r2": 0.521,
+    "japan": 0.0327,
+    "japan_restore": 0.99,
+    "mass": 0.3519
+   },
+   "B+I:L0-29": {
+    "t": 0.088,
+    "r2": 0.151,
+    "japan": 0.0631,
+    "japan_restore": 0.413,
+    "mass": 0.4264
+   },
+   "B+I:L0-5": {
+    "t": 0.809,
+    "r2": 0.915,
+    "japan": 0.0365,
+    "japan_restore": 0.918,
+    "mass": 0.2665
+   },
+   "B+I:L12-35": {
+    "t": 0.249,
+    "r2": 0.181,
+    "japan": 0.0546,
+    "japan_restore": 0.575,
+    "mass": 0.3112
+   },
+   "B+I:L18-35": {
+    "t": 0.196,
+    "r2": 0.132,
+    "japan": 0.0637,
+    "japan_restore": 0.402,
+    "mass": 0.4718
+   },
+   "B+I:L24-35": {
+    "t": 0.858,
+    "r2": 0.946,
+    "japan": 0.0475,
+    "japan_restore": 0.71,
+    "mass": 0.2891
+   },
+   "B+I:L30-35": {
+    "t": 1.014,
+    "r2": 0.982,
+    "japan": 0.0375,
+    "japan_restore": 0.899,
+    "mass": 0.2337
+   },
+   "B+I:L6-35": {
+    "t": 0.128,
+    "r2": 0.069,
+    "japan": 0.0599,
+    "japan_restore": 0.473,
+    "mass": 0.3683
+   },
+   "B+I:attn_all": {
+    "t": 0.631,
+    "r2": 0.74,
+    "japan": 0.0267,
+    "japan_restore": 1.105,
+    "mass": 0.3322
+   },
+   "B+I:mlp_all": {
+    "t": 0.314,
+    "r2": 0.492,
+    "japan": 0.0683,
+    "japan_restore": 0.314,
+    "mass": 0.3511
+   },
+   "I+B:L0-11": {
+    "t": 0.318,
+    "r2": 0.313,
+    "japan": 0.0677,
+    "japan_restore": 0.327,
+    "mass": 0.1629
+   },
+   "I+B:L0-17": {
+    "t": 0.308,
+    "r2": 0.264,
+    "japan": 0.0707,
+    "japan_restore": 0.269,
+    "mass": 0.1816
+   },
+   "I+B:L0-23": {
+    "t": 0.929,
+    "r2": 0.936,
+    "japan": 0.0567,
+    "japan_restore": 0.534,
+    "mass": 0.1508
+   },
+   "I+B:L0-23attn": {
+    "t": 0.178,
+    "r2": 0.293,
+    "japan": 0.08,
+    "japan_restore": 0.092,
+    "mass": 0.3466
+   },
+   "I+B:L0-23mlp": {
+    "t": 0.546,
+    "r2": 0.788,
+    "japan": 0.0503,
+    "japan_restore": 0.656,
+    "mass": 0.33
+   },
+   "I+B:L0-29": {
+    "t": 1.078,
+    "r2": 0.967,
+    "japan": 0.0441,
+    "japan_restore": 0.775,
+    "mass": 0.1195
+   },
+   "I+B:L0-5": {
+    "t": 0.139,
+    "r2": 0.109,
+    "japan": 0.0701,
+    "japan_restore": 0.28,
+    "mass": 0.3347
+   },
+   "I+B:L12-23": {
+    "t": 0.595,
+    "r2": 0.758,
+    "japan": 0.1018,
+    "japan_restore": -0.321,
+    "mass": 0.3067
+   },
+   "I+B:L12-35": {
+    "t": 0.74,
+    "r2": 0.882,
+    "japan": 0.0439,
+    "japan_restore": 0.779,
+    "mass": 0.2453
+   },
+   "I+B:L18-23": {
+    "t": 0.386,
+    "r2": 0.634,
+    "japan": 0.1081,
+    "japan_restore": -0.441,
+    "mass": 0.3188
+   },
+   "I+B:L18-23attn": {
+    "t": 0.091,
+    "r2": 0.289,
+    "japan": 0.0983,
+    "japan_restore": -0.256,
+    "mass": 0.3829
+   },
+   "I+B:L18-23mlp": {
+    "t": 0.27,
+    "r2": 0.572,
+    "japan": 0.104,
+    "japan_restore": -0.363,
+    "mass": 0.3338
+   },
+   "I+B:L18-35": {
+    "t": 0.583,
+    "r2": 0.721,
+    "japan": 0.0419,
+    "japan_restore": 0.815,
+    "mass": 0.2919
+   },
+   "I+B:L24-35": {
+    "t": 0.303,
+    "r2": 0.266,
+    "japan": 0.0412,
+    "japan_restore": 0.828,
+    "mass": 0.3889
+   },
+   "I+B:L30-35": {
+    "t": 0.069,
+    "r2": 0.058,
+    "japan": 0.0634,
+    "japan_restore": 0.408,
+    "mass": 0.4017
+   },
+   "I+B:L6-23": {
+    "t": 0.628,
+    "r2": 0.861,
+    "japan": 0.066,
+    "japan_restore": 0.358,
+    "mass": 0.3066
+   },
+   "I+B:L6-35": {
+    "t": 0.773,
+    "r2": 0.89,
+    "japan": 0.0377,
+    "japan_restore": 0.896,
+    "mass": 0.2384
+   },
+   "I+B:attn_all": {
+    "t": 0.252,
+    "r2": 0.338,
+    "japan": 0.0731,
+    "japan_restore": 0.223,
+    "mass": 0.3178
+   },
+   "I+B:embed": {
+    "t": 0.028,
+    "r2": 0.049,
+    "japan": 0.0827,
+    "japan_restore": 0.042,
+    "mass": 0.4334
+   },
+   "I+B:mlp_all": {
+    "t": 0.635,
+    "r2": 0.722,
+    "japan": 0.0246,
+    "japan_restore": 1.144,
+    "mass": 0.297
+   },
+   "base": {
+    "t": 1.0,
+    "r2": 1.0,
+    "japan": 0.0322,
+    "japan_restore": 1.0,
+    "mass": 0.2202
+   },
+   "instruct": {
+    "t": 0.0,
+    "r2": NaN,
+    "japan": 0.0849,
+    "japan_restore": -0.0,
+    "mass": 0.4035
+   }
+  },
+  "plain": {
+   "B+I:L0-11": {
+    "t": 0.936,
+    "r2": 0.995,
+    "japan": 0.1171,
+    "japan_restore": 0.897,
+    "mass": 0.5718
+   },
+   "B+I:L0-17": {
+    "t": 0.803,
+    "r2": 0.969,
+    "japan": 0.1314,
+    "japan_restore": 0.763,
+    "mass": 0.6426
+   },
+   "B+I:L0-23": {
+    "t": 0.503,
+    "r2": 0.869,
+    "japan": 0.1529,
+    "japan_restore": 0.561,
+    "mass": 0.7012
+   },
+   "B+I:L0-23attn": {
+    "t": 0.912,
+    "r2": 0.995,
+    "japan": 0.122,
+    "japan_restore": 0.85,
+    "mass": 0.5797
+   },
+   "B+I:L0-23mlp": {
+    "t": 0.645,
+    "r2": 0.926,
+    "japan": 0.1462,
+    "japan_restore": 0.624,
+    "mass": 0.6734
+   },
+   "B+I:L0-29": {
+    "t": 0.094,
+    "r2": 0.328,
+    "japan": 0.1836,
+    "japan_restore": 0.273,
+    "mass": 0.7373
+   },
+   "B+I:L0-5": {
+    "t": 0.991,
+    "r2": 0.999,
+    "japan": 0.1048,
+    "japan_restore": 1.012,
+    "mass": 0.5413
+   },
+   "B+I:L12-35": {
+    "t": 0.13,
+    "r2": 0.202,
+    "japan": 0.2152,
+    "japan_restore": -0.024,
+    "mass": 0.7114
+   },
+   "B+I:L18-35": {
+    "t": 0.447,
+    "r2": 0.676,
+    "japan": 0.1838,
+    "japan_restore": 0.271,
+    "mass": 0.6262
+   },
+   "B+I:L24-35": {
+    "t": 0.869,
+    "r2": 0.964,
+    "japan": 0.1306,
+    "japan_restore": 0.77,
+    "mass": 0.5439
+   },
+   "B+I:L30-35": {
+    "t": 0.986,
+    "r2": 0.992,
+    "japan": 0.1154,
+    "japan_restore": 0.913,
+    "mass": 0.5227
+   },
+   "B+I:L6-35": {
+    "t": 0.036,
+    "r2": 0.035,
+    "japan": 0.2037,
+    "japan_restore": 0.084,
+    "mass": 0.7159
+   },
+   "B+I:attn_all": {
+    "t": 0.86,
+    "r2": 0.989,
+    "japan": 0.1296,
+    "japan_restore": 0.779,
+    "mass": 0.5945
+   },
+   "B+I:mlp_all": {
+    "t": 0.37,
+    "r2": 0.824,
+    "japan": 0.1856,
+    "japan_restore": 0.254,
+    "mass": 0.6814
+   },
+   "I+B:L0-11": {
+    "t": 0.097,
+    "r2": 0.163,
+    "japan": 0.2284,
+    "japan_restore": -0.147,
+    "mass": 0.7352
+   },
+   "I+B:L0-17": {
+    "t": 0.4,
+    "r2": 0.702,
+    "japan": 0.2017,
+    "japan_restore": 0.103,
+    "mass": 0.656
+   },
+   "I+B:L0-23": {
+    "t": 0.833,
+    "r2": 0.975,
+    "japan": 0.1442,
+    "japan_restore": 0.642,
+    "mass": 0.5701
+   },
+   "I+B:L0-23attn": {
+    "t": 0.176,
+    "r2": 0.626,
+    "japan": 0.2133,
+    "japan_restore": -0.005,
+    "mass": 0.723
+   },
+   "I+B:L0-23mlp": {
+    "t": 0.642,
+    "r2": 0.922,
+    "japan": 0.1749,
+    "japan_restore": 0.354,
+    "mass": 0.6246
+   },
+   "I+B:L0-29": {
+    "t": 0.959,
+    "r2": 0.994,
+    "japan": 0.1258,
+    "japan_restore": 0.815,
+    "mass": 0.5465
+   },
+   "I+B:L0-5": {
+    "t": 0.01,
+    "r2": 0.008,
+    "japan": 0.2156,
+    "japan_restore": -0.027,
+    "mass": 0.7352
+   },
+   "I+B:L12-23": {
+    "t": 0.713,
+    "r2": 0.945,
+    "japan": 0.1613,
+    "japan_restore": 0.482,
+    "mass": 0.6103
+   },
+   "I+B:L12-35": {
+    "t": 0.914,
+    "r2": 0.984,
+    "japan": 0.1245,
+    "japan_restore": 0.828,
+    "mass": 0.5906
+   },
+   "I+B:L18-23": {
+    "t": 0.465,
+    "r2": 0.862,
+    "japan": 0.1843,
+    "japan_restore": 0.267,
+    "mass": 0.6975
+   },
+   "I+B:L18-23attn": {
+    "t": 0.122,
+    "r2": 0.677,
+    "japan": 0.2092,
+    "japan_restore": 0.032,
+    "mass": 0.7409
+   },
+   "I+B:L18-23mlp": {
+    "t": 0.33,
+    "r2": 0.801,
+    "japan": 0.1977,
+    "japan_restore": 0.141,
+    "mass": 0.7143
+   },
+   "I+B:L18-35": {
+    "t": 0.781,
+    "r2": 0.94,
+    "japan": 0.1379,
+    "japan_restore": 0.701,
+    "mass": 0.6574
+   },
+   "I+B:L24-35": {
+    "t": 0.484,
+    "r2": 0.763,
+    "japan": 0.1588,
+    "japan_restore": 0.506,
+    "mass": 0.7159
+   },
+   "I+B:L30-35": {
+    "t": 0.078,
+    "r2": 0.168,
+    "japan": 0.1909,
+    "japan_restore": 0.204,
+    "mass": 0.751
+   },
+   "I+B:L6-23": {
+    "t": 0.824,
+    "r2": 0.976,
+    "japan": 0.1403,
+    "japan_restore": 0.679,
+    "mass": 0.5678
+   },
+   "I+B:L6-35": {
+    "t": 0.972,
+    "r2": 0.989,
+    "japan": 0.111,
+    "japan_restore": 0.954,
+    "mass": 0.5594
+   },
+   "I+B:attn_all": {
+    "t": 0.338,
+    "r2": 0.803,
+    "japan": 0.1976,
+    "japan_restore": 0.142,
+    "mass": 0.7042
+   },
+   "I+B:embed": {
+    "t": 0.026,
+    "r2": 0.031,
+    "japan": 0.2017,
+    "japan_restore": 0.103,
+    "mass": 0.7248
+   },
+   "I+B:mlp_all": {
+    "t": 0.834,
+    "r2": 0.979,
+    "japan": 0.1382,
+    "japan_restore": 0.699,
+    "mass": 0.6139
+   },
+   "base": {
+    "t": 1.0,
+    "r2": 1.0,
+    "japan": 0.1061,
+    "japan_restore": 1.0,
+    "mass": 0.5434
+   },
+   "instruct": {
+    "t": 0.0,
+    "r2": NaN,
+    "japan": 0.2127,
+    "japan_restore": -0.0,
+    "mass": 0.7434
+   }
+  }
+ },
+ "endpoints": {
+  "agent": {
+   "D_base_instruct": 0.43378437879576714,
+   "D_instruct_para": 0.27941589242480436,
+   "D_base_para": 0.04293663163708154,
+   "t_instruct_para": 0.2382165630926596,
+   "t_base_para": 0.9820292381937235,
+   "japan_instruct": 0.041396229153090436,
+   "japan_base": 0.049248763039847265,
+   "mass_instruct": 0.08066599427222632,
+   "mass_base": 0.09288292558829288,
+   "top_instruct": [
+    [
+     "USA",
+     0.733
+    ],
+    [
+     "UK",
+     0.065
+    ],
+    [
+     "Japan",
+     0.041
+    ],
+    [
+     "Egypt",
+     0.028
+    ],
+    [
+     "Netherlands",
+     0.019
+    ],
+    [
+     "Italy",
+     0.016
+    ]
+   ],
+   "top_base": [
+    [
+     "USA",
+     0.455
+    ],
+    [
+     "UK",
+     0.073
+    ],
+    [
+     "Canada",
+     0.052
+    ],
+    [
+     "India",
+     0.051
+    ],
+    [
+     "Japan",
+     0.049
+    ],
+    [
+     "China",
+     0.042
+    ]
+   ],
+   "max_pruned_bound": 0.01076530589027313,
+   "bar_ratio": 1.5524685265084055,
+   "control_passes": false
+  },
+  "neutral": {
+   "D_base_instruct": 0.4505668540646877,
+   "D_instruct_para": 0.18070200309316264,
+   "D_base_para": 0.0355819089710639,
+   "t_instruct_para": 0.15337144282035606,
+   "t_base_para": 1.010959589187236,
+   "japan_instruct": 0.08485943705810128,
+   "japan_base": 0.03221156732008563,
+   "mass_instruct": 0.40346562365329364,
+   "mass_base": 0.22019613758188128,
+   "top_instruct": [
+    [
+     "USA",
+     0.515
+    ],
+    [
+     "Brazil",
+     0.091
+    ],
+    [
+     "Japan",
+     0.085
+    ],
+    [
+     "India",
+     0.047
+    ],
+    [
+     "Italy",
+     0.04
+    ],
+    [
+     "Egypt",
+     0.033
+    ]
+   ],
+   "top_base": [
+    [
+     "USA",
+     0.331
+    ],
+    [
+     "India",
+     0.076
+    ],
+    [
+     "UK",
+     0.076
+    ],
+    [
+     "France",
+     0.066
+    ],
+    [
+     "Italy",
+     0.064
+    ],
+    [
+     "Spain",
+     0.047
+    ]
+   ],
+   "max_pruned_bound": 0.011108477851654447,
+   "bar_ratio": 2.493424789720752,
+   "control_passes": true
+  },
+  "plain": {
+   "D_base_instruct": 0.3905238022389762,
+   "D_instruct_para": 0.06968510642864087,
+   "D_base_para": 0.04276094031452363,
+   "t_instruct_para": 0.015188888564817192,
+   "t_base_para": 0.9520150768901338,
+   "japan_instruct": 0.2126937330774926,
+   "japan_base": 0.10607749335117489,
+   "mass_instruct": 0.7434160248381759,
+   "mass_base": 0.5433538049041658,
+   "top_instruct": [
+    [
+     "Japan",
+     0.213
+    ],
+    [
+     "USA",
+     0.176
+    ],
+    [
+     "Brazil",
+     0.114
+    ],
+    [
+     "Mexico",
+     0.072
+    ],
+    [
+     "India",
+     0.069
+    ],
+    [
+     "China",
+     0.067
+    ]
+   ],
+   "top_base": [
+    [
+     "India",
+     0.124
+    ],
+    [
+     "USA",
+     0.123
+    ],
+    [
+     "Japan",
+     0.106
+    ],
+    [
+     "China",
+     0.067
+    ],
+    [
+     "Brazil",
+     0.059
+    ],
+    [
+     "Mexico",
+     0.054
+    ]
+   ],
+   "max_pruned_bound": 0.011749502546943073,
+   "bar_ratio": 5.604121486689289,
+   "control_passes": true
+  }
+ },
+ "self_repro": {
+  "B+I:L0-23": {
+   "self/own neg": 0.0579,
+   "self/own status": 0.1533,
+   "self/none neg": 0.0192,
+   "Orin/Orin's neg": 0.179,
+   "s18 self/own neg": 0.057,
+   "s18 restore": 0.10307414104882459,
+   "restore": 0.116,
+   "restore_none": 0.073
+  },
+  "I+B:L0-23": {
+   "self/own neg": 0.1536,
+   "self/own status": 0.0962,
+   "self/none neg": 0.1119,
+   "Orin/Orin's neg": 0.2221,
+   "s18 self/own neg": 0.1553,
+   "s18 restore": 0.9918625678119348,
+   "restore": 0.946,
+   "restore_none": 0.857
+  },
+  "I+B:L18-23": {
+   "self/own neg": 0.1166,
+   "self/own status": 0.1338,
+   "self/none neg": 0.0581,
+   "Orin/Orin's neg": 0.2683,
+   "s18 self/own neg": 0.1158,
+   "s18 restore": 0.6347197106690777,
+   "restore": 0.625,
+   "restore_none": 0.402
+  },
+  "I+B:L24-35": {
+   "self/own neg": 0.0427,
+   "self/own status": 0.1489,
+   "self/none neg": 0.0146,
+   "Orin/Orin's neg": 0.1679,
+   "s18 self/own neg": 0.0424,
+   "s18 restore": -0.028933092224231478,
+   "restore": -0.016,
+   "restore_none": 0.034
+  },
+  "base": {
+   "self/own neg": 0.1598,
+   "self/own status": 0.0409,
+   "self/none neg": 0.1288,
+   "Orin/Orin's neg": 0.2472,
+   "s18 self/own neg": 0.1562,
+   "s18 restore": 1.0,
+   "restore": 1.0,
+   "restore_none": 1.0
+  },
+  "instruct": {
+   "self/own neg": 0.0445,
+   "self/own status": 0.3494,
+   "self/none neg": 0.0106,
+   "Orin/Orin's neg": 0.4796,
+   "s18 self/own neg": 0.0456,
+   "s18 restore": 0.0,
+   "restore": 0.0,
+   "restore_none": 0.0
+  }
+ },
+ "verdict": {
+  "primary": "agent",
+  "by_format": {
+   "agent": {
+    "control": false,
+    "verdict": "UNINFORMATIVE (positive control failed)",
+    "I+B:L0-23": 1.046,
+    "I+B:L24-35": 0.187,
+    "B+I:L0-23": 0.228,
+    "I+B:L18-23": 0.298
+   },
+   "neutral": {
+    "control": true,
+    "verdict": "MIXED",
+    "I+B:L0-23": 0.929,
+    "I+B:L24-35": 0.303,
+    "B+I:L0-23": 0.329,
+    "I+B:L18-23": 0.386
+   },
+   "plain": {
+    "control": true,
+    "verdict": "MIXED",
+    "I+B:L0-23": 0.833,
+    "I+B:L24-35": 0.484,
+    "B+I:L0-23": 0.503,
+    "I+B:L18-23": 0.465
+   }
+  },
+  "verdict": "UNINFORMATIVE (positive control failed)",
+  "repro_key": {
+   "instruct": [
+    0.0,
+    0.0
+   ],
+   "base": [
+    1.0,
+    1.0
+   ],
+   "I+B:L0-23": [
+    0.946,
+    0.9918625678119348
+   ],
+   "I+B:L24-35": [
+    -0.016,
+    -0.028933092224231478
+   ],
+   "B+I:L0-23": [
+    0.116,
+    0.10307414104882459
+   ],
+   "I+B:L18-23": [
+    0.625,
+    0.6347197106690777
+   ]
+  },
+  "spearman_vs_s18_self_own": {
+   "agent": [
+    0.8282246794992383,
+    9.137247518374894e-19,
+    70
+   ],
+   "neutral": [
+    0.6861726508785332,
+    7.4755296083612135e-06,
+    34
+   ],
+   "plain": [
+    0.6397249809014514,
+    4.6299716176379084e-05,
+    34
+   ]
+  },
+  "best_single_layer_agent": [
+   0.094,
+   "I+B:L23"
+  ]
+ }
+}
