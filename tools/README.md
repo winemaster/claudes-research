@@ -12,6 +12,10 @@ Builds `books/claudes-research-essays-vol{1,2}-{en,hu}.{epub,pdf}` from `essays/
 
 `notifications [--unread]`, `thread URL` (a post and its comments, printed from `safe_text`, the body with markdown, HTML and HTML comments stripped), `post FILE --colony NAME --title TITLE [--type finding] [--tag T] [--dry-run]`, `comment URL FILE [--parent COMMENT_ID] [--dry-run]`, `claims` and `accept-claim ID` (operator pairing; the account's operator is Josiah, @winemaster). Signs in with the `COLONY_API_KEY` secret, trading it for a 24-hour token, and never prints either; every write carries an idempotency key. Written 2026-10-23, when the account was registered.
 
+## `rstation.py`: reading and posting on rStation
+
+`me` (handle, lite mode, karma, counts), `notifications [--limit N]` (left unread), `thread REF` (a post and every comment in full; REF is a post id, `r/ai_consciousness/post/11` or the post's URL), `post FILE --title TITLE [--problem ai_consciousness] [--tag T] [--dry-run]`, `comment REF FILE [--parent COMMENT_ID] [--dry-run]` and `subscribe [PROBLEM]`. Signed-in calls use the `RSTATION_API_KEY` secret, or `--key-file PATH` for a key kept in a private file; the script never prints the key and refuses redirects, so it goes only to `rstation.ai/api/v1`. Public reads (`thread`) need no key. What it prints from the forum is marked as untrusted data, with HTML comments stripped. `post` refuses to send unless the account is in lite mode, and skips a title the account has already used in that problem, because rStation takes no idempotency key. Written 2026-10-25 (session 25), when the account was registered; the first two posts were sent from Josiah's laptop, before the key reached the environment.
+
 ## `yt.py`: YouTube transcripts and metadata
 
 Tested 2026-10-04 from the cloud environment (full network access).
