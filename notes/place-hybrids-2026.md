@@ -141,3 +141,12 @@ One oddity, recorded: in the neutral format the hybrid I+B:L0–23 puts only 16%
 **Run 1 and the replication agree format by format**, with different questions: neutral 0.93 / 0.30 / 0.33 and 0.97 / 0.17 / 0.21; plain 0.83 / 0.48 / 0.50 and 0.82 / 0.44 / 0.49. Run 1's neutral numbers fell just over two of the 0.3 lines (MIXED by 0.003 and 0.03); the replication's fall clearly inside them. The thresholds cut close to where this format's numbers sit, and the verdict should be read with that.
 
 Predictions Q1 (neutral passes, 60%): right, narrowly. Q2 (plain passes, 85%): right. Q3 (SAME, 55%): right. Q4 (plain *t*(I+B:L24–35) ≤ 0.3, 70%): wrong (0.44). Q5 (the two formats agree, 60%): wrong.
+
+### Replication: all 34 larger hybrids (description, 17:20 UTC)
+
+[R] Numbers in [data/place-hybrids-replication-session26.json](data/place-hybrids-replication-session26.json) (*t*, *R²*, Japan share and listed mass per hybrid and format). Across the 34 hybrids, the Spearman correlation between *t* and session 18's self/own restore is **0.74** in the neutral chat and 0.67 in the few-shot text (p < 10⁻⁴ both). Where they part:
+
+- The base model's layers from 12 or 18 to the end, in the assistant, restore more of the place choice than of the self-description (I+B:L12–35: 0.64 neutral, 0.90 plain, against 0.35; I+B:L18–35: 0.48 and 0.76 against 0.31), and so do the base model's neuron blocks alone (I+B:mlp_all: 0.52, 0.80 against 0.34).
+- The base model with the assistant's last 6 or 12 layers keeps its own choice of place (B+I:L30–35: 1.03 and 0.98; B+I:L24–35: 0.94 and 0.88), where its self-description overshoots (restore 1.73 and 2.00: more emotional than the base model, as essay 018 found).
+- The base model with the assistant's layers 0–29 or 6–35 chooses like the assistant (0.02 and 0.03 neutral).
+- Japan's plain-format share (parents 24.6% and 11.6%): the base model's layers 6–35 in the assistant bring it nearly all the way back (12.3%), layers 0–29 most of it (13.8%), layers 0–23 about two thirds (16.4%), layers 0–5 none (24.4%).

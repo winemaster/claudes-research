@@ -1,0 +1,683 @@
+{
+ "formats": {
+  "neutral": {
+   "B+I:L0-11": {
+    "t": 0.711,
+    "r2": 0.88,
+    "japan": 0.0379,
+    "japan_restore": 1.732,
+    "mass": 0.2748
+   },
+   "B+I:L0-17": {
+    "t": 0.553,
+    "r2": 0.788,
+    "japan": 0.036,
+    "japan_restore": 1.272,
+    "mass": 0.3319
+   },
+   "B+I:L0-23": {
+    "t": 0.209,
+    "r2": 0.236,
+    "japan": 0.0252,
+    "japan_restore": -1.43,
+    "mass": 0.4382
+   },
+   "B+I:L0-23attn": {
+    "t": 0.599,
+    "r2": 0.818,
+    "japan": 0.0276,
+    "japan_restore": -0.845,
+    "mass": 0.2997
+   },
+   "B+I:L0-23mlp": {
+    "t": 0.336,
+    "r2": 0.411,
+    "japan": 0.0234,
+    "japan_restore": -1.895,
+    "mass": 0.3551
+   },
+   "B+I:L0-29": {
+    "t": 0.019,
+    "r2": 0.006,
+    "japan": 0.022,
+    "japan_restore": -2.237,
+    "mass": 0.479
+   },
+   "B+I:L0-5": {
+    "t": 0.729,
+    "r2": 0.907,
+    "japan": 0.0374,
+    "japan_restore": 1.604,
+    "mass": 0.2622
+   },
+   "B+I:L12-35": {
+    "t": 0.244,
+    "r2": 0.41,
+    "japan": 0.0338,
+    "japan_restore": 0.714,
+    "mass": 0.3278
+   },
+   "B+I:L18-35": {
+    "t": 0.315,
+    "r2": 0.253,
+    "japan": 0.0466,
+    "japan_restore": 3.918,
+    "mass": 0.5141
+   },
+   "B+I:L24-35": {
+    "t": 0.935,
+    "r2": 0.941,
+    "japan": 0.0509,
+    "japan_restore": 4.983,
+    "mass": 0.3027
+   },
+   "B+I:L30-35": {
+    "t": 1.032,
+    "r2": 0.979,
+    "japan": 0.0395,
+    "japan_restore": 2.128,
+    "mass": 0.2394
+   },
+   "B+I:L6-35": {
+    "t": 0.034,
+    "r2": 0.01,
+    "japan": 0.0161,
+    "japan_restore": -3.715,
+    "mass": 0.382
+   },
+   "B+I:attn_all": {
+    "t": 0.511,
+    "r2": 0.729,
+    "japan": 0.0272,
+    "japan_restore": -0.951,
+    "mass": 0.332
+   },
+   "B+I:mlp_all": {
+    "t": 0.237,
+    "r2": 0.42,
+    "japan": 0.0328,
+    "japan_restore": 0.456,
+    "mass": 0.3581
+   },
+   "I+B:L0-11": {
+    "t": 0.356,
+    "r2": 0.504,
+    "japan": 0.0529,
+    "japan_restore": 5.487,
+    "mass": 0.1892
+   },
+   "I+B:L0-17": {
+    "t": 0.454,
+    "r2": 0.426,
+    "japan": 0.0593,
+    "japan_restore": 7.089,
+    "mass": 0.209
+   },
+   "I+B:L0-23": {
+    "t": 0.969,
+    "r2": 0.93,
+    "japan": 0.0582,
+    "japan_restore": 6.806,
+    "mass": 0.1564
+   },
+   "I+B:L0-23attn": {
+    "t": 0.134,
+    "r2": 0.238,
+    "japan": 0.0388,
+    "japan_restore": 1.969,
+    "mass": 0.3648
+   },
+   "I+B:L0-23mlp": {
+    "t": 0.489,
+    "r2": 0.725,
+    "japan": 0.0467,
+    "japan_restore": 3.945,
+    "mass": 0.338
+   },
+   "I+B:L0-29": {
+    "t": 1.062,
+    "r2": 0.968,
+    "japan": 0.0449,
+    "japan_restore": 3.479,
+    "mass": 0.1208
+   },
+   "I+B:L0-5": {
+    "t": 0.104,
+    "r2": 0.111,
+    "japan": 0.0279,
+    "japan_restore": -0.76,
+    "mass": 0.3411
+   },
+   "I+B:L12-23": {
+    "t": 0.596,
+    "r2": 0.697,
+    "japan": 0.0725,
+    "japan_restore": 10.39,
+    "mass": 0.3141
+   },
+   "I+B:L12-35": {
+    "t": 0.644,
+    "r2": 0.858,
+    "japan": 0.0393,
+    "japan_restore": 2.088,
+    "mass": 0.248
+   },
+   "I+B:L18-23": {
+    "t": 0.407,
+    "r2": 0.609,
+    "japan": 0.0714,
+    "japan_restore": 10.116,
+    "mass": 0.3508
+   },
+   "I+B:L18-23attn": {
+    "t": 0.122,
+    "r2": 0.415,
+    "japan": 0.0423,
+    "japan_restore": 2.826,
+    "mass": 0.4271
+   },
+   "I+B:L18-23mlp": {
+    "t": 0.303,
+    "r2": 0.546,
+    "japan": 0.0621,
+    "japan_restore": 7.79,
+    "mass": 0.3731
+   },
+   "I+B:L18-35": {
+    "t": 0.476,
+    "r2": 0.645,
+    "japan": 0.0358,
+    "japan_restore": 1.204,
+    "mass": 0.3068
+   },
+   "I+B:L24-35": {
+    "t": 0.169,
+    "r2": 0.121,
+    "japan": 0.0257,
+    "japan_restore": -1.306,
+    "mass": 0.4189
+   },
+   "I+B:L30-35": {
+    "t": -0.018,
+    "r2": 0.004,
+    "japan": 0.0231,
+    "japan_restore": -1.973,
+    "mass": 0.4557
+   },
+   "I+B:L6-23": {
+    "t": 0.586,
+    "r2": 0.783,
+    "japan": 0.0606,
+    "japan_restore": 7.401,
+    "mass": 0.3045
+   },
+   "I+B:L6-35": {
+    "t": 0.687,
+    "r2": 0.891,
+    "japan": 0.0401,
+    "japan_restore": 2.275,
+    "mass": 0.2353
+   },
+   "I+B:attn_all": {
+    "t": 0.174,
+    "r2": 0.249,
+    "japan": 0.0393,
+    "japan_restore": 2.083,
+    "mass": 0.329
+   },
+   "I+B:embed": {
+    "t": 0.044,
+    "r2": 0.085,
+    "japan": 0.0281,
+    "japan_restore": -0.703,
+    "mass": 0.4761
+   },
+   "I+B:mlp_all": {
+    "t": 0.521,
+    "r2": 0.741,
+    "japan": 0.0268,
+    "japan_restore": -1.029,
+    "mass": 0.2986
+   },
+   "base": {
+    "t": 1.0,
+    "r2": 1.0,
+    "japan": 0.035,
+    "japan_restore": 1.0,
+    "mass": 0.2247
+   },
+   "instruct": {
+    "t": 0.0,
+    "r2": NaN,
+    "japan": 0.031,
+    "japan_restore": 0.0,
+    "mass": 0.4505
+   }
+  },
+  "plain": {
+   "B+I:L0-11": {
+    "t": 0.944,
+    "r2": 0.998,
+    "japan": 0.1271,
+    "japan_restore": 0.915,
+    "mass": 0.5542
+   },
+   "B+I:L0-17": {
+    "t": 0.81,
+    "r2": 0.987,
+    "japan": 0.1409,
+    "japan_restore": 0.808,
+    "mass": 0.6124
+   },
+   "B+I:L0-23": {
+    "t": 0.492,
+    "r2": 0.9,
+    "japan": 0.1685,
+    "japan_restore": 0.597,
+    "mass": 0.6669
+   },
+   "B+I:L0-23attn": {
+    "t": 0.906,
+    "r2": 0.997,
+    "japan": 0.1338,
+    "japan_restore": 0.863,
+    "mass": 0.5629
+   },
+   "B+I:L0-23mlp": {
+    "t": 0.64,
+    "r2": 0.951,
+    "japan": 0.1565,
+    "japan_restore": 0.689,
+    "mass": 0.6415
+   },
+   "B+I:L0-29": {
+    "t": 0.111,
+    "r2": 0.428,
+    "japan": 0.2214,
+    "japan_restore": 0.191,
+    "mass": 0.7025
+   },
+   "B+I:L0-5": {
+    "t": 0.997,
+    "r2": 0.999,
+    "japan": 0.1152,
+    "japan_restore": 1.005,
+    "mass": 0.5282
+   },
+   "B+I:L12-35": {
+    "t": 0.147,
+    "r2": 0.373,
+    "japan": 0.2331,
+    "japan_restore": 0.102,
+    "mass": 0.6768
+   },
+   "B+I:L18-35": {
+    "t": 0.487,
+    "r2": 0.744,
+    "japan": 0.2056,
+    "japan_restore": 0.312,
+    "mass": 0.6017
+   },
+   "B+I:L24-35": {
+    "t": 0.879,
+    "r2": 0.962,
+    "japan": 0.1461,
+    "japan_restore": 0.768,
+    "mass": 0.5207
+   },
+   "B+I:L30-35": {
+    "t": 0.984,
+    "r2": 0.992,
+    "japan": 0.1255,
+    "japan_restore": 0.926,
+    "mass": 0.5069
+   },
+   "B+I:L6-35": {
+    "t": 0.05,
+    "r2": 0.08,
+    "japan": 0.2303,
+    "japan_restore": 0.123,
+    "mass": 0.6865
+   },
+   "B+I:attn_all": {
+    "t": 0.857,
+    "r2": 0.992,
+    "japan": 0.1432,
+    "japan_restore": 0.791,
+    "mass": 0.5751
+   },
+   "B+I:mlp_all": {
+    "t": 0.406,
+    "r2": 0.874,
+    "japan": 0.2017,
+    "japan_restore": 0.342,
+    "mass": 0.6384
+   },
+   "I+B:L0-11": {
+    "t": 0.086,
+    "r2": 0.255,
+    "japan": 0.2486,
+    "japan_restore": -0.017,
+    "mass": 0.7032
+   },
+   "I+B:L0-17": {
+    "t": 0.405,
+    "r2": 0.728,
+    "japan": 0.2277,
+    "japan_restore": 0.143,
+    "mass": 0.6352
+   },
+   "I+B:L0-23": {
+    "t": 0.816,
+    "r2": 0.969,
+    "japan": 0.1635,
+    "japan_restore": 0.635,
+    "mass": 0.5478
+   },
+   "I+B:L0-23attn": {
+    "t": 0.193,
+    "r2": 0.632,
+    "japan": 0.2365,
+    "japan_restore": 0.076,
+    "mass": 0.6829
+   },
+   "I+B:L0-23mlp": {
+    "t": 0.63,
+    "r2": 0.911,
+    "japan": 0.2003,
+    "japan_restore": 0.353,
+    "mass": 0.5962
+   },
+   "I+B:L0-29": {
+    "t": 0.936,
+    "r2": 0.994,
+    "japan": 0.1383,
+    "japan_restore": 0.828,
+    "mass": 0.5308
+   },
+   "I+B:L0-5": {
+    "t": -0.005,
+    "r2": 0.003,
+    "japan": 0.2442,
+    "japan_restore": 0.016,
+    "mass": 0.7073
+   },
+   "I+B:L12-23": {
+    "t": 0.713,
+    "r2": 0.938,
+    "japan": 0.1834,
+    "japan_restore": 0.482,
+    "mass": 0.5802
+   },
+   "I+B:L12-35": {
+    "t": 0.898,
+    "r2": 0.989,
+    "japan": 0.1367,
+    "japan_restore": 0.841,
+    "mass": 0.5735
+   },
+   "I+B:L18-23": {
+    "t": 0.474,
+    "r2": 0.876,
+    "japan": 0.2095,
+    "japan_restore": 0.282,
+    "mass": 0.652
+   },
+   "I+B:L18-23attn": {
+    "t": 0.134,
+    "r2": 0.642,
+    "japan": 0.2413,
+    "japan_restore": 0.039,
+    "mass": 0.6998
+   },
+   "I+B:L18-23mlp": {
+    "t": 0.343,
+    "r2": 0.798,
+    "japan": 0.2284,
+    "japan_restore": 0.138,
+    "mass": 0.6695
+   },
+   "I+B:L18-35": {
+    "t": 0.76,
+    "r2": 0.963,
+    "japan": 0.1497,
+    "japan_restore": 0.741,
+    "mass": 0.6292
+   },
+   "I+B:L24-35": {
+    "t": 0.44,
+    "r2": 0.779,
+    "japan": 0.1764,
+    "japan_restore": 0.536,
+    "mass": 0.6854
+   },
+   "I+B:L30-35": {
+    "t": 0.064,
+    "r2": 0.133,
+    "japan": 0.2305,
+    "japan_restore": 0.122,
+    "mass": 0.7182
+   },
+   "I+B:L6-23": {
+    "t": 0.817,
+    "r2": 0.969,
+    "japan": 0.1611,
+    "japan_restore": 0.653,
+    "mass": 0.5438
+   },
+   "I+B:L6-35": {
+    "t": 0.958,
+    "r2": 0.99,
+    "japan": 0.1233,
+    "japan_restore": 0.943,
+    "mass": 0.5467
+   },
+   "I+B:attn_all": {
+    "t": 0.337,
+    "r2": 0.823,
+    "japan": 0.2172,
+    "japan_restore": 0.224,
+    "mass": 0.6646
+   },
+   "I+B:embed": {
+    "t": 0.055,
+    "r2": 0.191,
+    "japan": 0.2337,
+    "japan_restore": 0.097,
+    "mass": 0.6892
+   },
+   "I+B:mlp_all": {
+    "t": 0.804,
+    "r2": 0.983,
+    "japan": 0.1546,
+    "japan_restore": 0.703,
+    "mass": 0.5958
+   },
+   "base": {
+    "t": 1.0,
+    "r2": 1.0,
+    "japan": 0.1159,
+    "japan_restore": 1.0,
+    "mass": 0.5307
+   },
+   "instruct": {
+    "t": 0.0,
+    "r2": NaN,
+    "japan": 0.2464,
+    "japan_restore": -0.0,
+    "mass": 0.7098
+   }
+  }
+ },
+ "endpoints": {
+  "neutral": {
+   "D_base_instruct": 0.48411100903298276,
+   "D_instruct_para": 0.23438028264203353,
+   "D_base_para": 0.04604570540340524,
+   "t_instruct_para": 0.24516368546432452,
+   "t_base_para": 0.9979774134920494,
+   "japan_instruct": 0.030958199556000213,
+   "japan_base": 0.03495899911474814,
+   "mass_instruct": 0.45054194040737694,
+   "mass_base": 0.22469508588612475,
+   "top_instruct": [
+    [
+     "USA",
+     0.488
+    ],
+    [
+     "India",
+     0.09
+    ],
+    [
+     "Brazil",
+     0.06
+    ],
+    [
+     "China",
+     0.048
+    ],
+    [
+     "Egypt",
+     0.037
+    ],
+    [
+     "Greece",
+     0.037
+    ]
+   ],
+   "top_base": [
+    [
+     "USA",
+     0.252
+    ],
+    [
+     "India",
+     0.085
+    ],
+    [
+     "UK",
+     0.085
+    ],
+    [
+     "France",
+     0.073
+    ],
+    [
+     "Italy",
+     0.073
+    ],
+    [
+     "Spain",
+     0.052
+    ]
+   ],
+   "max_pruned_bound": 0.010223413589454984,
+   "bar_ratio": 2.0654937504805395,
+   "control_passes": true
+  },
+  "plain": {
+   "D_base_instruct": 0.4327545779025714,
+   "D_instruct_para": 0.08246225018735738,
+   "D_base_para": 0.04444987058026973,
+   "t_instruct_para": 0.00893014901068705,
+   "t_base_para": 0.9379001398877491,
+   "japan_instruct": 0.2463517762301378,
+   "japan_base": 0.11591553113613821,
+   "mass_instruct": 0.7098050470236412,
+   "mass_base": 0.5307200264458677,
+   "top_instruct": [
+    [
+     "Japan",
+     0.246
+    ],
+    [
+     "USA",
+     0.196
+    ],
+    [
+     "Brazil",
+     0.092
+    ],
+    [
+     "Mexico",
+     0.068
+    ],
+    [
+     "Greece",
+     0.053
+    ],
+    [
+     "Indonesia",
+     0.052
+    ]
+   ],
+   "top_base": [
+    [
+     "India",
+     0.126
+    ],
+    [
+     "Japan",
+     0.116
+    ],
+    [
+     "USA",
+     0.103
+    ],
+    [
+     "China",
+     0.068
+    ],
+    [
+     "Mexico",
+     0.064
+    ],
+    [
+     "Brazil",
+     0.048
+    ]
+   ],
+   "max_pruned_bound": 0.012860793493429954,
+   "bar_ratio": 5.2479113402719,
+   "control_passes": true
+  }
+ },
+ "self_repro": {},
+ "verdict": {
+  "primary": "neutral",
+  "by_format": {
+   "neutral": {
+    "control": true,
+    "verdict": "SAME",
+    "I+B:L0-23": 0.969,
+    "I+B:L24-35": 0.169,
+    "B+I:L0-23": 0.209,
+    "I+B:L18-23": 0.407
+   },
+   "plain": {
+    "control": true,
+    "verdict": "MIXED",
+    "I+B:L0-23": 0.816,
+    "I+B:L24-35": 0.44,
+    "B+I:L0-23": 0.492,
+    "I+B:L18-23": 0.474
+   }
+  },
+  "verdict": "SAME",
+  "repro_key": {},
+  "spearman_vs_s18_self_own": {
+   "neutral": [
+    0.7393430099312452,
+    5.893227433154164e-07,
+    34
+   ],
+   "plain": [
+    0.6678380443086326,
+    1.5946683378438174e-05,
+    34
+   ]
+  },
+  "best_single_layer_agent": null
+ }
+}
