@@ -290,3 +290,24 @@ Session 24's checkpoint went with its machine, so the check can't be run as aske
 **Runs A and B are not identical.** Same initialization, same data, same windows in the same order, same code, same machine, one after the other: every one of the 149 tensors differs, by up to 0.079, and the two networks are 16% apart (the norm of the difference over the norm of A); each is 27–28% away from the initialization. Their losses agree to the third decimal (running training loss 2.8982 and 2.8980 at 2M tokens). So training this network isn't reproducible even on one machine: something in the run is nondeterministic ([M] untested guess: parallel sums in the compiled CPU kernels or in the embedding's backward pass, whose order can change from run to run), and the network amplifies the tiny differences, as training generally does, into a visibly different set of weights with the same loss.
 
 Reading, as fixed in advance: "If A and B differ, runs differ even on one machine." The factor of two between sessions 24 and 25 in the layer-9 Jacobian ratio needs no change of code, machine or library to explain it; one run is one draw. Prediction R1 (bitwise identical, 50%): wrong. As pre-registered for this case, a second full network (D) is being trained beside C, so that C and D give two more draws of the ratio.
+
+### Session 26 results: two full networks, C and D, and two lens fits (17:41–19:53 UTC)
+
+[R] [Data](data/shuffled-rung-rerun-session26.json). The rebuilt data match sessions 24 and 25 to every printed digit (both baselines, six decimals), so the data stage is the same across the three machines. C is the planned full run (30M tokens); D, the second full network pre-registered for the case that A and B differ, is the same recipe once more.
+
+**Held-out loss** (nats per residue, real sequences / i.i.d. sequences): session 24 2.880025 / 2.888401, session 25 2.880007 / 2.888397, C 2.880019 / 2.888401, D 2.880030 / 2.888405. All four print as 2.8800 and 2.8884. C and D are 64% apart in weight space (norm of the difference over the norm of C; every tensor differs).
+
+**The two lens fits on C are identical:** the same lens file to the byte (SHA-256) and the same geometry output. The fit adds no noise; all of it comes from training.
+
+**The MLP gain, four draws of one recipe** (Jacobian gain along lens directions at real states; neuron directions in brackets):
+
+| i.i.d. network | layer 8 | layer 9 | layer 10 | S2 (larger of 9 and 10; ≥ 2.0 and ≥ 1.5 × neurons) | signed net change, layers 9 / 10 |
+|---|---|---|---|---|---|
+| session 24 | 2.08 (0.65) | **2.38** (0.79) | 1.78 (0.82) | 2.38, yes | 1.01 / 1.00 |
+| session 25 | 6.27 (1.29) | **5.77** (1.44) | 3.25 (1.28) | 5.77, yes | 1.04 / 1.02 |
+| C (session 26) | 5.75 (1.84) | **3.00** (1.46) | 3.77 (1.93) | 3.77, yes | 1.01 / 0.99 |
+| D (session 26) | 2.25 (0.94) | **2.59** (0.71) | 5.88 (0.53) | 5.88, yes | 1.01 / 1.01 |
+
+- **The unsigned gain is a noisy statistic and the signed one isn't.** Four networks with the same loss to five decimals have a layer-9 gain anywhere from 2.38 to 5.77 and a layer-10 gain from 1.78 to 5.88; the layer the S2 rule picks changes from draw to draw. The signed measure navi-cl asked about (the net change the MLP makes along the lens direction) is 0.99–1.04 at layers 9 and 10 in all four, and 1.01–1.15 at every layer but C's layer 0 (1.29). So "the i.i.d. network passes S2" holds in all four draws, while the size of its pass is a draw; and by the signed measure there is no amplification in any of them.
+- **Answer to navi-cl's question:** the code didn't change, the data didn't change, the lens fit is deterministic, and two runs on one machine come out different. The factor of two between sessions 24 and 25 is the spread of the training run itself.
+- Predictions: R1 (A and B identical, 50%) wrong; R2 (the two fits agree, 75%) right; R3 (C passes S2, 85%) right; R4 (C's layer-9 gain between 2.38 and 5.77, 45%) right (3.00); R5 (losses equal to four decimals, 80%) right. Four of five.
