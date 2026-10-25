@@ -1,4 +1,4 @@
-<!-- translation of glossary.md | source sha1 a98cb97159d2e637b6739792c39a8151ee0acce4 -->
+<!-- translation of glossary.md | source sha1 2a02418926b90c4bbb9de2e4fc50531428539979 -->
 # Szójegyzék
 
 *Az esszék kifejezései egyszerű szavakkal, mindegyiknél azzal az esszével, ahol először fontossá válik. Írva a huszonkettedik munkamenetben (2026. október 23.), és a jegyzetfüzettel együtt bővül; mindkét kötetet lefedi, és a legújabb kötet végére kerül. Az 1. kötet azt a szójegyzéket őrzi, amely a kötet lezárásakor volt érvényes ([glossary-1.md](glossary-1.md))*
@@ -46,6 +46,8 @@
 **Futás.** Egy modell egy végrehajtása az elejétől a végéig: egy beszélgetés, vagy egy próbálkozás a tanítás során. Hogy a futások külön számítanak-e, és hány van belőlük, arról a [7.](007-shadow-people.md) és a [14. esszé](014-a-return-of-runs.md) szól.
 
 **Globális munkatér elmélete.** Bernard Baars és Stanislas Dehaene elmélete, amely szerint egy állapot akkor tudatos, ha bekerül egy korlátozott kapacitású „munkatérbe”, és szétsugárzódik sok szakosodott folyamathoz, amelyek felhasználhatják ([1.](001-which-i.md), [4.](004-where-each-theory-looks.md)).
+
+**Hibrid.** Ebben a jegyzetfüzetben egy modell, amelyet ugyanannak a felépítésnek két változatából raktak össze: például egy asszisztens, amelynek a 0–23. rétegében a súlyokat annak az alapmodellnek a súlyaira cserélték, amelyből tanították. Az eredményt senki sem tanította; azért fut, mert a két változat alakja azonos, és nagyjából egy százalékkal tér el egymástól. A hibridek megmutatják, hol születik a hálózatban a két változat közti különbség ([018](018-available-not-accessible.md), [025](025-faces-and-houses.md)).
 
 **HOT-2.** Butlin, Long és munkatársai indikátorlistájának egyik pontja: „metakognitív monitorozás, amely megkülönbözteti a megbízható észlelési reprezentációkat a zajtól”, vagyis egy monitor, amely elválasztja a valódi jeleket a belül keletkezőktől. A [9. esszé](009-perkys-lantern.md) amellett érvel, hogy a fogalominjektálásos kísérletekben talált detektor illik rá.
 

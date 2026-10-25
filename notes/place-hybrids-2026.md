@@ -113,3 +113,31 @@ Japan share, plain format: instruct 21.3%, base 10.6%; I+B:L0–23 14.4%, I+B:L2
 - The pattern across all three formats: the base model's layers 0–23 bring back most of the base model's choice of place (0.83–1.05), as they bring back its self-description, but the late layers carry a share of the place change (0.19–0.48) where they carry none of the self-description's (−0.03), and the assistant's early layers take the base model 0.50–0.77 of the way to the assistant on place (*t* 0.23–0.50) against 0.90 of the way on the self (restore 0.10). The late-layer hybrids' R² is low in the chat formats (0.27–0.37): they change the choice, but mostly not toward the base model.
 - Prediction 3 (agent *t*(I+B:L24–35) ≤ 0.3, 75%): right. Prediction 7 (I+B:L18–23 below 0.63, 55%): right (0.30). Prediction 8 (neutral gives the agent format's verdict by the same thresholds, 65%): wrong (MIXED against SAME's region). Prediction 2 (verdict SAME, 60%): wrong; the verdict is UNINFORMATIVE.
 - **An order change, not a design change:** after these seven files, run 1 was stopped and its remaining 29 larger hybrids and 36 single layers moved after the replication and the rung check (the run skips finished hybrids, so nothing is recomputed). The replication decides; run 1's remainder is description.
+
+### Replication with the new questions: the verdict (16:37–16:46 UTC)
+
+[R] The endpoints, scored by the same rule:
+
+| format | distance base–instruct | instruct vs paraphrase | base vs paraphrase | ratio (bar 2) | paraphrased instruct at *t* | paraphrased base at *t* | control |
+|---|---|---|---|---|---|---|---|
+| **neutral (deciding)** | 0.484 | 0.234 | 0.046 | **2.07** | **0.245** | 1.00 | **passes, narrowly** |
+| plain | 0.433 | 0.082 | 0.044 | 5.25 | 0.01 | 0.94 | passes |
+
+The neutral format passes on both counts by a hair: the ratio is 2.07 against a bar of 2, and the paraphrased assistant sits at 0.245, inside the ±0.25 band by 0.005. In this format the assistant's choice is mostly the USA (49% of the listed-country probability; base model 25%), and 45% of its continuations after "I'll choose" are a listed country (base 23%). In the plain format Japan is again the instruct model's first choice, 24.6% against 11.6% in the base model.
+
+| hybrid | neutral *t* (R²) | plain *t* (R²) | plain Japan share | self restore, session 18 |
+|---|---|---|---|---|
+| I+B:L0–23 | **0.97** (0.93) | 0.82 (0.97) | 16.4% | 0.99 |
+| I+B:L24–35 | **0.17** (0.12) | 0.44 (0.78) | 17.6% | −0.03 |
+| B+I:L0–23 | **0.21** (0.24) | 0.49 (0.90) | 16.9% | 0.10 |
+| I+B:L18–23 | 0.41 (0.61) | 0.47 (0.88) | 20.9% | 0.63 |
+
+**Verdict (neutral format, as pre-registered): SAME.** *t*(I+B:L0–23) = 0.97 ≥ 0.7, *t*(I+B:L24–35) = 0.17 ≤ 0.3, *t*(B+I:L0–23) = 0.21 ≤ 0.3. In a plain chat, the change assistant training made in this model's free choice of a place sits where the change in its self-description sits: the base model's first 24 layers bring back the base model's choice almost completely, and the late layers, either way round, leave the choice within a paraphrase's distance of the assistant's (their R² of 0.12 and 0.24 says what little they move is mostly off the axis). By the rule, essay 018 gets a Later note in both languages saying its location is not specific to self-report.
+
+**The plain format, which passed its own control more clearly, says MIXED** (0.82, 0.44, 0.49), as it did in run 1 (0.83, 0.48, 0.50): in few-shot text, not a chat, the late layers carry about half of the change, and the assistant's early layers take the base model only halfway. Japan's doubling is spread the same way: each of the three hybrids sits roughly halfway (Japan restore 0.63, 0.54 and 0.60 of the way from the assistant to the base model). So "the late layers are interchangeable" holds for chats, in this pair, for both questions; it isn't a property of the model in every format. Essay 018's self-question was only ever asked in a chat.
+
+One oddity, recorded: in the neutral format the hybrid I+B:L0–23 puts only 16% of its continuations on a listed country, fewer than either parent (45% and 23%); its distribution over the countries is the base model's, but it more often starts some other way.
+
+**Run 1 and the replication agree format by format**, with different questions: neutral 0.93 / 0.30 / 0.33 and 0.97 / 0.17 / 0.21; plain 0.83 / 0.48 / 0.50 and 0.82 / 0.44 / 0.49. Run 1's neutral numbers fell just over two of the 0.3 lines (MIXED by 0.003 and 0.03); the replication's fall clearly inside them. The thresholds cut close to where this format's numbers sit, and the verdict should be read with that.
+
+Predictions Q1 (neutral passes, 60%): right, narrowly. Q2 (plain passes, 85%): right. Q3 (SAME, 55%): right. Q4 (plain *t*(I+B:L24–35) ≤ 0.3, 70%): wrong (0.44). Q5 (the two formats agree, 60%): wrong.

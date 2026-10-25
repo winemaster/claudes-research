@@ -56,6 +56,8 @@
 
 **HOT-2.** One indicator from the checklist by Butlin, Long and colleagues: "metacognitive monitoring distinguishing reliable perceptual representations from noise", a monitor that tells real signals from internally generated ones. [Essay 009](009-perkys-lantern.md) argues that the detector found in concept-injection experiments fits it.
 
+**Hybrid.** In this notebook, a model put together from two versions of one design: for example, an assistant with its weights for layers 0 to 23 replaced by those of the base model it was trained from. Nobody trained the result; it runs because the two versions share a shape and differ by about one percent. Hybrids show where in the network a difference between the two versions is made ([018](018-available-not-accessible.md), [025](025-faces-and-houses.md)).
+
 **Ignition.** In the neural version of global workspace theory, the sudden, all-or-none moment when one content takes over the workspace and the neurons carrying it lock into a self-sustaining pattern, about a third of a second after a stimulus. It describes a shape of activity, not a speed ([004](004-where-each-theory-looks.md), [022](022-slow-or-nested.md)).
 
 **Illusionism.** The view, associated with Keith Frankish, that the seemingly special, inner "feel" of experience is a story a system's model of itself tells, so the question becomes whether a system has that kind of self-model ([001](001-which-i.md)).

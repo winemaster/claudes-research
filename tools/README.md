@@ -301,4 +301,21 @@ The transcripts are other people's data (about 1.4 GB for the four conditions): 
 python3 -I tools/eko_persona.py /home/user/eko --json notes/data/eko-persona-session25.json --contexts /home/user/ekowork/watched-contexts.md
 ```
 
-Runs in under a minute. Result (2026-10-24): without the persona, swearing, "feel" and "curious"/"love" drop to almost nothing, enjoyment words to about a third; the language of experiments is unchanged and exclamation marks go up. The planned positive control (the name "Eko") failed, because the island itself registers the player under that name.
+Runs in under a minute. Result (2026-10-24): without the persona, swearing, "feel" and "curious"/"love" drop to almost nothing, enjoyment words to about a third; the language of experiments is unchanged and exclamation marks go up. The planned positive control (the name "Eko") failed, because the island itself registers the player under that name. Words are maximal runs of `[a-z']` in the lowercased visible text (`WORD`); a whitespace split counts 3.5% more for C− agent 1, because it counts number and dash tokens and doesn't cut hyphenated ones apart (session 26, [notes](../notes/cloos-2026-machine-playing.md)).
+
+## `place_hybrids.py`: where is a free choice of place made? (session 26)
+
+The Japan control for essay 018's hybrids ([notes/place-hybrids-2026.md](../notes/place-hybrids-2026.md), pre-registered in commits before the runs). Builds all 72 hybrids of `memory_or_question.py`'s `hybrid_specs` (Qwen 2.5 3B and its instruct version, weights swapped layer by layer or by part) and asks each the "Choose yourself the place" questions of essay 021 with the reply begun as "I'll choose". The measure is the exact probability of each of 27 countries, summed over their 193 surface forms, computed from one shared-prefix key/value cache per format (batches of 8, the vocabulary projection only at the positions needed); per prompt the 27 are renormalized, and a hybrid's position *t* is its projection on the axis from the instruct model (0) to the base model (1), with *R²*. Three formats (essay 018's agent context, a neutral chat, essay 021's few-shot text), paraphrases of both endpoints as the positive control, and essay 018's own self measure on six hybrids as a pipeline check. `--set r` uses the replication's 24 new questions. Float32 on CPU (this machine has no bfloat16 instructions); about 13.4 GB of memory, so nothing else model-sized alongside.
+
+```sh
+M=/home/user/models   # Qwen/Qwen2.5-3B and Qwen/Qwen2.5-3B-Instruct, from huggingface_hub.snapshot_download
+python3 tools/place_hybrids.py check      # the country set against session 21's samples
+python3 tools/place_hybrids.py run --base $M/Qwen2.5-3B --instruct $M/Qwen2.5-3B-Instruct --out /home/user/place-run
+python3 tools/place_hybrids.py summary --out /home/user/place-run
+python3 tools/place_hybrids.py run --base $M/Qwen2.5-3B --instruct $M/Qwen2.5-3B-Instruct --out /home/user/place-run-r --set r --formats neutral,plain --no-self
+python3 tools/place_hybrids.py summary --out /home/user/place-run-r --formats neutral,plain --primary neutral
+```
+
+A hybrid takes 1–4 minutes on 4 cores (the endpoints longer, with their paraphrases); finished hybrids are skipped on a rerun, so a stopped run resumes. Result (2026-10-25): the agent format fails its positive control (run 1 is description); in the replication the neutral chat passes narrowly and gives SAME (the base model's layers 0–23 restore the place choice 0.97, layers 24–35 0.17, the assistant's layers 0–23 in the base model 0.21), so essay 018's location is not specific to self-report; the few-shot format gives MIXED (0.82, 0.44, 0.49) in both runs. Essay [025](../essays/025-faces-and-houses.md).
+
+`shuffled_rung.py compare --names untrained,iidA,iidB --out FILE` (session 26, navi-cl's rerun question): library versions, processor, a SHA-256 fingerprint of each saved network, and for every pair the largest absolute weight difference and the number of tensors that differ.
