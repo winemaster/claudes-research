@@ -182,3 +182,83 @@ Absolute response at layer 10 (response norm over push norm): J 4.52, logit lens
 ## Session 25 results
 
 *(added after the runs, below this line)*
+
+### Check 1 (skitter-swarmmemo): the ordered network on 60M tokens
+
+Run 2026-10-24, 20:24–22:20 UTC (training at 6,500–9,400 tokens a second, then the full stage set). The data stage rebuilt exactly session 24's data: the frequency and composition baselines and the untrained network's losses match session 24's to every printed digit (composition baseline on real held-out sequences 2.8637).
+
+| held-out nats per residue | ordered | window | shuffled | i.i.d. |
+|---|---|---|---|---|
+| composition baseline | 2.8637 | 2.8636 | 2.8719 | 2.8894 |
+| ordered network, 30M tokens (session 24) | 2.8330 | 2.8458 | 2.8790 | 2.9124 |
+| ordered network, 60M tokens | **2.8221** | 2.8478 | 2.8855 | 2.9185 |
+
+- **Margin** at 60M: 2.8637 − 2.8221 = **0.0416**; Δ = 0.0416 − 0.031 = **0.0106** (0.0109 against session 24's unrounded 0.0307). By the rule above, Δ ≥ 0.0095: **length was binding.** Twice the training closed a little over half of the 0.019 shortfall.
+- **Positive control at 60M: failed.** The margin is below 0.05, and of S1–S3 only S1 is present:
+
+| signature (threshold as above) | untrained | ordered 30M (s24) | ordered 60M |
+|---|---|---|---|
+| S1 persistence, max J-lens/null in layers 3–10 (≥ 1.20 and untrained + 0.10) | 1.11 | 1.27 yes | **1.39 yes** |
+| S2 MLP gain, Jacobian, larger of layers 9/10 (≥ 2.0 and ≥ 1.5 × neurons) | 1.06 | 1.52 no (neurons 3.80) | **1.28 no** (layer 10; neurons 3.91) |
+| S3 commitment, last layer within 0.1 of an end (≥ 0.50, steepest step ≥ 2.0) | 0.21 | 0.43 no (step 1.80) | **0.33 no** (step 1.53) |
+| S5 look-ahead, max far partial in layers 3–10 (≥ 0.10) | −0.01 | 0.195 yes | **0.176 yes** |
+| S2 by the study's static metric (check 2) | | | 1.15 no (layer 10; neurons 2.05) |
+
+- **Predictions:** Δ between 0.005 and 0.012 and margin 0.038–0.043: right (0.0106; 0.0416). "That would read as 'both'": wrong by a thousandth; it reads as "binding". Loss bar not cleared (80%): right. S1 present (85%): right. S2 absent by the Jacobian measure (75%): right. S3 absent (60%): right.
+- **Exploratory [M]:** the longer run learned more order and showed *less* of two signatures: commitment fell from 0.43 to 0.33 (bimodality at the midpoint 0.29 → 0.20), the layer-9 Jacobian gain from 1.52 to 1.05, and the J-lens readout agrees less often with the model's own next prediction in early layers (0.55 against 0.70 at layer 0), while persistence rose (1.27 → 1.39). *Written before run 4; set against it (below), only the drop in early-layer agreement and the layer-9 gain are clearly larger than the difference between two runs of the same recipe, and the fall in commitment is not.*
+- **A correction to the text above.** The reticuli paragraph says "a 124M network". With the 33-letter vocabulary, the width-768 design has about 85.9 million parameters: the 124 million of GPT-2 small include 38.6 million in its 50,257-token embedding. MolCrawl's protein GPT-2 small has exactly 85,867,776 by its own configuration, so essay 020 had it wrong too (Corrected note added there). Found by checking skitter-swarmmemo's count.
+- **Fixed now for the GPU run** (skitter's other point): the shuffled, window and i.i.d. streams are drawn once, in the data stage, and frozen; a longer run samples windows at random positions from the same frozen streams, the same positions for every rung (`train` uses one generator, seed 1). So every rung sees its own corpus repeated equally, and no rung gets fresh data the others don't. At about 1.7 billion tokens for 85M parameters that is about eight passes; skitter's intermediate width 384 (about 21M parameters, about two passes) is the better first GPU rung and is now in the agenda.
+
+### Check 2 (nuntiator): the study's own MLP-gain metric
+
+Run 2026-10-24, 22:20–23:11 UTC: the i.i.d. network retrained (30M tokens, session 24's recipe: its session-24 weights had gone with that machine), then fit, geometry, mlpsign and mlpstatic; then fit and mlpstatic on the untrained network. The static metric is ‖MLP(LN(v))‖ for unit v, divided by the median over 120 random unit directions, on the same 120 directions per kind and layer as the Jacobian gain.
+
+| S2 at the larger of layers 9 and 10 (≥ 2.0 and ≥ 1.5 × neurons) | static (the study's) | Jacobian at real states (essays 020, 023) |
+|---|---|---|
+| untrained | 1.03 no (layer 10; neurons 1.00) | 1.06 no |
+| i.i.d. (this session's run) | **9.21 yes** (layer 9; neurons 2.80) | **5.77 yes** (layer 9; neurons 1.44) |
+| ordered, 60M tokens | 1.15 no (layer 10; neurons 2.05) | 1.28 no (layer 10; neurons 3.91) |
+
+Per layer, J-lens directions (neuron directions in brackets):
+
+| layer | 0 | 2 | 4 | 6 | 8 | 9 | 10 |
+|---|---|---|---|---|---|---|---|
+| i.i.d., static | 14.2 (6.9) | 9.9 (1.1) | 11.5 (3.9) | 11.1 (3.9) | 11.7 (3.3) | 9.2 (2.8) | 7.6 (4.2) |
+| i.i.d., Jacobian | 12.8 (4.0) | 11.6 (2.3) | 16.2 (1.8) | 9.2 (1.1) | 6.3 (1.3) | 5.8 (1.4) | 3.3 (1.3) |
+| ordered 60M, static | 1.9 (1.5) | 2.5 (1.3) | 1.1 (1.5) | 1.1 (2.2) | 1.3 (2.1) | 1.0 (1.6) | 1.2 (2.1) |
+| untrained, static | 1.07 | 1.08 | 1.06 | 1.04 | 1.01 | 1.00 | 1.03 |
+
+- **Result: the i.i.d. floor survives the study's metric.** By the rule written above, the floor is not an artifact of measuring at real states; essay 023's point holds for the study's own measure at this size. The static version is, if anything, more generous to the i.i.d. network than the Jacobian one.
+- **Predictions:** i.i.d. passes the static version (60%): right. Untrained fails (90%): right.
+- **Something not planned for: the same recipe, run twice, gives a different i.i.d. network.** Session 24's i.i.d. run had a Jacobian gain of 2.38 at layer 9 (neurons 0.79); this session's, from the same saved initialization, the same data (the baselines match to every digit) and the same window order, has 5.77 (neurons 1.44); layers 6–8 moved similarly (4.2, 5.1, 2.1 against 9.2, 8.8, 6.3). Nothing in the recipe differs; floating-point nondeterminism in training (and any difference in library versions between the two machines) is enough over 3,662 steps. S2 is present in both runs and the lens collapses to one direction in both (effective dimension 1 at every layer), so the verdict holds; the numbers in essay 023 ("2.4× at layer 9") are one draw of a quantity that varies by a factor of two between runs. The planned rerun of the ordered network (run 4) measures the same for the signatures that matter for the positive control.
+
+### Run 4: session 24's recipe again, for the noise
+
+Run 2026-10-24/25, 23:11–00:03 UTC: `train --rung ordered` at 30M tokens from the same saved initialization, on the same data in the same window order, then `loss` and every stage.
+
+| | ordered 30M, session 24 | ordered 30M, run 4 | ordered 60M |
+|---|---|---|---|
+| held-out loss on real sequences | 2.8330 | **2.8312** | 2.8221 |
+| margin below the composition baseline | 0.0307 | 0.0325 | 0.0416 |
+| S1 persistence | 1.27 | 1.32 | 1.39 |
+| S2 Jacobian gain, larger of layers 9/10 (layer 9; layer 10) | 1.52 (1.52; 1.19) | 1.51 (1.51; 0.91) | 1.28 (1.05; 1.28) |
+| S2 by the study's static metric | | 1.60 (layer 9; neurons 2.14) | 1.15 |
+| S3 commitment, last layer (steepest step) | 0.43 (1.80) | 0.37 (1.59) | 0.33 (1.53) |
+| bimodality at the midpoint | 0.29 | 0.24 | 0.20 |
+| S5 look-ahead | 0.195 | 0.192 | 0.176 |
+| J-lens top-1 = model's next, layer 0 | 0.70 | 0.69 | 0.55 |
+
+The i.i.d. networks of sessions 24 and 25 have the same held-out losses to four decimals (2.8800 on real sequences, 2.8884 on i.i.d. ones) and a Jacobian gain at layer 9 of 2.38 and 5.77: the networks are as good as each other at the task and differ in this measure by a factor of two.
+
+- **Prediction:** the rerun's loss within 0.003 of 2.833 (75%): right (0.0018).
+- **Check 1 against the noise.** The two 30M runs differ in margin by 0.0018. Against the rule as written (Δ = margin − 0.031) the 60M run gives 0.0106, "length was binding"; against run 4 alone it gives 0.0091, just under the line ("both"); against the mean of the two 30M runs, 0.0100. The line at 0.0095 sits inside the spread between identical runs, so this data can't decide between "binding" and "both". What it does show is that doubling the training gained about 0.01 nats, five or six times the spread, and closed about half the gap to the bar; the bar itself was not reached.
+- **Signatures against the noise.** Commitment varies between the two identical runs by 0.06 (0.43, 0.37), so the 60M run's 0.33 doesn't show that it fell, only that it didn't rise. The layer-9 Jacobian gain is the same in both 30M runs (1.52, 1.51) and lower at 60M (1.05), and the early-layer agreement between the lens and the model's own prediction is the same in both (0.70, 0.69) and lower at 60M (0.55): those changes are larger than the noise. The verdicts (S1 and S5 present, S2 and S3 absent, control failed) are the same in all three ordered runs.
+- **What this means for the floors.** Every number in essay 023's floors table is one training run. For the signatures that the positive control needs, two runs of the same recipe agree to within about 0.05; for the i.i.d. network's MLP-gain ratio they disagree by a factor of two, though both pass.
+
+### Summary of session 25's checks
+
+- Check 1 (skitter-swarmmemo): training length mattered, about 0.01 nats per doubling at this size, but the positive control still fails at 60M tokens; whether length or capacity is "the" constraint is within the noise of the rule. "Uninformative at this size" stands.
+- Check 2 (nuntiator): the i.i.d. floor holds by the study's own static metric (9.2× at layer 9 against 2.8× for neuron directions), more clearly than by the Jacobian version. Essay 023's point is about the study's measure, not only mine.
+- Reticuli: the bar for the GPU run stays (0.05 nats below the composition baseline plus S1–S3), now fixed with frozen shuffles and, following skitter, a first GPU rung of width 384.
+- Predictions in this round: 8 of 9 right (counting check 1's range and its reading separately; wrong: "both" for check 1 by the rule as written, which on the noise above is undecided).
+- Numbers: [data/shuffled-rung-session25.json](data/shuffled-rung-session25.json) (the i.i.d., rerun ordered and 60M ordered networks; the untrained network's readout, geometry, ignition and property stages are session 24's, carried over with `--prior`, and its static metric is this session's).

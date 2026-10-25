@@ -2,9 +2,12 @@
 before the runs, scored for each rung, with per-layer tables and the held-out losses.
 
     python3 tools/shuffled_rung_summary.py [--work /home/user/swork] [--data /home/user/sdata] [--json OUT]
+        [--rungs untrained,iid,ordered60m] [--prior notes/data/shuffled-rung-session24.json]
 
 Reads the work directory of tools/jlens_compare.py (readout, geometry, ignition and property for each
-rung-* model, and mlpsign where present) and loss.json from tools/shuffled_rung.py.
+rung-* model, and mlpsign and mlpstatic where present) and loss.json from tools/shuffled_rung.py.
+--prior fills in stages a rung lacks in this work directory from an earlier session's --json output
+(session 25: the untrained network's readout, which S1's baseline needs, came from session 24).
 """
 import argparse, json
 from pathlib import Path
@@ -42,8 +45,14 @@ def score(r, untrained):
         l = max([9, 10], key=lambda i: g["jlens"][i])
         ok = g["jlens"][l] >= 2.0 and g["jlens"][l] >= 1.5 * g["neuron_out"][l]
         out[f"S2 MLP gain (J at layer {l}; neurons {g['neuron_out'][l]:.2f})"] = (g["jlens"][l], ok)
-        bc = block_contrast(ge["cka"])
-        out[f"S4 block contrast (split after {bc[1]}; not counted)"] = (bc[0], None)
+    if r.get("mlpstatic"):
+        st = r["mlpstatic"]["static"]
+        l = max([9, 10], key=lambda i: st["jlens"][i])
+        ok = st["jlens"][l] >= 2.0 and st["jlens"][l] >= 1.5 * st["neuron_out"][l]
+        out[f"S2s MLP gain, study's static metric (J at layer {l}; neurons {st['neuron_out'][l]:.2f})"] = (st["jlens"][l], ok)
+        if ge.get("cka"):
+            bc = block_contrast(ge["cka"])
+            out[f"S4 block contrast (split after {bc[1]}; not counted)"] = (bc[0], None)
     if ig:
         ne, ms = ig["near_endpoint"][-1], ig["max_slope"][-1]
         out[f"S3 commitment (last layer; steepest step {ms:.2f})"] = (ne, ne >= 0.50 and ms >= 2.0)
@@ -58,11 +67,19 @@ def main():
     ap.add_argument("--work", default="/home/user/swork")
     ap.add_argument("--data", default="/home/user/sdata")
     ap.add_argument("--json")
+    ap.add_argument("--rungs", default=",".join(RUNGS))
+    ap.add_argument("--prior", help="an earlier --json output, for stages missing here")
     a = ap.parse_args()
+    RUNGS[:] = a.rungs.split(",")
+    prior = json.load(open(a.prior))["rungs"] if a.prior else {}
     res = {}
     for rung in RUNGS:
         d = Path(a.work) / f"rung-{rung}"
-        res[rung] = {k: json.load(open(d / f"{k}.json")) for k in ["readout", "geometry", "ignition", "property", "mlpsign"] if (d / f"{k}.json").exists()}
+        res[rung] = {k: json.load(open(d / f"{k}.json")) for k in ["readout", "geometry", "ignition", "property", "mlpsign", "mlpstatic"] if (d / f"{k}.json").exists()}
+        for k, v in prior.get(rung, {}).items():
+            if k not in res[rung]:
+                res[rung][k] = v
+                print(f"({rung}: {k} from {a.prior})")
     loss = json.load(open(Path(a.data) / "loss.json")) if (Path(a.data) / "loss.json").exists() else None
     if loss:
         print("Held-out loss, nats per residue (first 127 residues, positions 16-126)")
@@ -109,6 +126,10 @@ def main():
     table("sign check: net change along J directions (1 + v.Jv)", lambda x: x["mlpsign"]["net_along_v"]["jlens"] + [float("nan")])
     table("sign check: cosine of MLP response with J direction", lambda x: x["mlpsign"]["cos"]["jlens"] + [float("nan")])
     table("sign check: cosine of MLP response with neuron direction", lambda x: x["mlpsign"]["cos"]["neuron_out"] + [float("nan")])
+    table("study's static metric, J-lens directions", lambda x: x["mlpstatic"]["static"]["jlens"] + [float("nan")])
+    table("study's static metric, neuron directions", lambda x: x["mlpstatic"]["static"]["neuron_out"] + [float("nan")])
+    table("study's static metric, logit-lens directions", lambda x: x["mlpstatic"]["static"]["logit_lens"] + [float("nan")])
+    table("Jacobian gain on the same draws, J-lens directions", lambda x: x["mlpstatic"]["jvp"]["jlens"] + [float("nan")])
     if a.json:
         out = {"scores": {r: {k: list(v) for k, v in s.items()} for r, s in scores.items()}, "loss": loss,
                "rungs": {r: res[r] for r in RUNGS if res[r]}}
