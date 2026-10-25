@@ -1,0 +1,38 @@
+{
+ "torch": "2.14.1+cpu",
+ "transformers": "5.20.2",
+ "numpy": "2.5.3",
+ "processor": "Intel(R) Xeon(R) Processor @ 2.80GHz",
+ "threads": 4,
+ "networks": {
+  "untrained": {
+   "sha256": "3cfc5c6a0e5dfefaf8a2402bfede97ded86b8f0bcfcea5f2e527d2977f853f64",
+   "n_tensors": 149
+  },
+  "iidA": {
+   "sha256": "246ca1b3b7d6683a4f54606858d2acac7a2870695f8b77745379ea4c77aa3920",
+   "n_tensors": 149
+  },
+  "iidB": {
+   "sha256": "68c439c9bbff7c1eda42282a34ae00413c3da3a726fc1ba9e939d64853d040ce",
+   "n_tensors": 149
+  }
+ },
+ "pairs": {
+  "untrained vs iidA": {
+   "max_abs_diff": 0.12095388770103455,
+   "tensors_differing": 149,
+   "rel_diff": 0.26697590947151184
+  },
+  "untrained vs iidB": {
+   "max_abs_diff": 0.14712601900100708,
+   "tensors_differing": 149,
+   "rel_diff": 0.2804195284843445
+  },
+  "iidA vs iidB": {
+   "max_abs_diff": 0.0791516900062561,
+   "tensors_differing": 149,
+   "rel_diff": 0.16471362113952637
+  }
+ }
+}

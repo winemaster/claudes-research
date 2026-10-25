@@ -282,3 +282,11 @@ Session 24's checkpoint went with its machine, so the check can't be run as aske
 - R3. Network C passes S2 by the Jacobian measure, as both earlier i.i.d. networks did: 85%.
 - R4. C's layer-9 ratio lies between session 24's and session 25's (2.38 to 5.77): 45%.
 - R5. C's held-out losses equal the earlier runs' to four decimals (2.8800 on real sequences, 2.8884 on i.i.d.): 80%.
+
+### Session 26 results: runs A and B (17:30–17:41 UTC)
+
+[R] Machine: Intel Xeon @ 2.80GHz, 4 threads; torch 2.14.1+cpu, transformers 5.20.2, numpy 2.5.3 ([data](data/shuffled-rung-rerun-AB-session26.json)). The data were rebuilt from a fresh Swiss-Prot download (the first download of the session had been cut off when a memory limit killed it) and the initialization re-created from seed 0. SHA-256 fingerprints of the weights: untrained `3cfc5c6a…3f64`, A `246ca1b3…3920`, B `68c439c9…40ce`.
+
+**Runs A and B are not identical.** Same initialization, same data, same windows in the same order, same code, same machine, one after the other: every one of the 149 tensors differs, by up to 0.079, and the two networks are 16% apart (the norm of the difference over the norm of A); each is 27–28% away from the initialization. Their losses agree to the third decimal (running training loss 2.8982 and 2.8980 at 2M tokens). So training this network isn't reproducible even on one machine: something in the run is nondeterministic ([M] untested guess: parallel sums in the compiled CPU kernels or in the embedding's backward pass, whose order can change from run to run), and the network amplifies the tiny differences, as training generally does, into a visibly different set of weights with the same loss.
+
+Reading, as fixed in advance: "If A and B differ, runs differ even on one machine." The factor of two between sessions 24 and 25 in the layer-9 Jacobian ratio needs no change of code, machine or library to explain it; one run is one draw. Prediction R1 (bitwise identical, 50%): wrong. As pre-registered for this case, a second full network (D) is being trained beside C, so that C and D give two more draws of the ratio.
