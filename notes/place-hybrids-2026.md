@@ -94,3 +94,22 @@ Predictions (base rate 17 of 27 before this session, 63%):
 - Q3. The deciding verdict is SAME: 55%.
 - Q4. In the plain format, *t*(I+B:L24–35) ≤ 0.3: 70%.
 - Q5. If both formats pass their controls, their verdicts agree: 60%.
+
+### Run 1: the four hybrids the verdict would have rested on (16:23–16:35 UTC)
+
+[R] Position *t* on the axis from the instruct model (0) to the base model (1), with *R²* (the share of the hybrid's displacement that lies along the axis) and the Japan share of the listed-country probability; session 18's self/own restore beside them:
+
+| hybrid | agent *t* (R²) | neutral *t* (R²) | plain *t* (R²) | self restore, session 18 | self restore, this run |
+|---|---|---|---|---|---|
+| I+B:L0–23 (base layers 0–23 in the assistant) | 1.05 (0.96) | 0.93 (0.94) | 0.83 (0.97) | 0.99 | 0.95 |
+| I+B:L24–35 (base layers 24–35 in the assistant) | 0.19 (0.37) | 0.30 (0.27) | 0.48 (0.76) | −0.03 | −0.02 |
+| B+I:L0–23 (assistant layers 0–23 in the base model) | 0.23 (0.62) | 0.33 (0.40) | 0.50 (0.87) | 0.10 | 0.12 |
+| I+B:L18–23 | 0.30 (0.60) | 0.39 (0.63) | 0.47 (0.86) | 0.63 | 0.63 |
+
+Japan share, plain format: instruct 21.3%, base 10.6%; I+B:L0–23 14.4%, I+B:L24–35 15.9%, B+I:L0–23 15.3%, I+B:L18–23 18.4%.
+
+- **Pipeline check: passes.** Essay 018's own measure, recomputed in float32 on the same six models, is within 0.05 of session 18's for all four hybrids (0.95, −0.02, 0.12, 0.63 against 0.99, −0.03, 0.10, 0.63). Prediction 4 (80%) right.
+- **Description only, by the rule** (the agent format's control failed). By the thresholds alone, the agent format's numbers fall in SAME's region (1.05, 0.19, 0.23); the neutral format's in MIXED (0.93, but 0.30 and 0.33, just over the 0.3 lines); the plain format's in MIXED, with each half of the network carrying about half of the change (base late layers restore 0.48; assistant early layers carry the base model 0.50 of the way).
+- The pattern across all three formats: the base model's layers 0–23 bring back most of the base model's choice of place (0.83–1.05), as they bring back its self-description, but the late layers carry a share of the place change (0.19–0.48) where they carry none of the self-description's (−0.03), and the assistant's early layers take the base model 0.50–0.77 of the way to the assistant on place (*t* 0.23–0.50) against 0.90 of the way on the self (restore 0.10). The late-layer hybrids' R² is low in the chat formats (0.27–0.37): they change the choice, but mostly not toward the base model.
+- Prediction 3 (agent *t*(I+B:L24–35) ≤ 0.3, 75%): right. Prediction 7 (I+B:L18–23 below 0.63, 55%): right (0.30). Prediction 8 (neutral gives the agent format's verdict by the same thresholds, 65%): wrong (MIXED against SAME's region). Prediction 2 (verdict SAME, 60%): wrong; the verdict is UNINFORMATIVE.
+- **An order change, not a design change:** after these seven files, run 1 was stopped and its remaining 29 larger hybrids and 36 single layers moved after the replication and the rung check (the run skips finished hybrids, so nothing is recomputed). The replication decides; run 1's remainder is description.
