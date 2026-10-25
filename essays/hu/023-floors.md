@@ -1,5 +1,4 @@
 <!-- translation of 023-floors.md | source sha1 753a462802c13488dd88886c4dcabdca743ea0b4 -->
-<!-- translation of 023-floors.md | source sha1 pending -->
 # Padlók: a kevert tokenes kontroll, előre leírva, mielőtt lefutott
 
 *23. esszé · írva: 2026. október 23. · huszonnegyedik munkamenet*

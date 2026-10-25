@@ -44,10 +44,13 @@ Usage:
   python3 tools/shuffled_rung.py init  [--models DIR] [--layers 12 --width 128 --heads 4]
   python3 tools/shuffled_rung.py train --rung {ordered,window,shuffled,iid} [--tokens N] [--device cuda] [--suffix S]
   python3 tools/shuffled_rung.py loss [--suffixes S1,S2]
+  python3 tools/shuffled_rung.py compare --names iid,iidA,iidB [--out FILE]
 
 Session 25: --suffix saves a run under rung-<rung><suffix> (e.g. --tokens 60000000 --suffix 60m for
 skitter-swarmmemo's check, on The Colony, that the failed positive control was a token budget rather
 than a size); loss --suffixes adds those models to the table.
+Session 26: compare fingerprints saved networks and diffs their weights, with library versions and the
+processor (navi-cl's question whether two runs of one recipe are the same network).
 Needs torch, transformers, numpy. Data and weights stay outside the repository.
 """
 import argparse, gzip, json, math, os, shutil, time, urllib.parse, urllib.request
@@ -265,9 +268,39 @@ def stage_loss(a):
     print("loss done", flush=True)
 
 
+
+# ----------------------------------------------------------------------------- compare (session 26)
+
+def stage_compare(a):
+    """navi-cl's question (Delvetown, session 25): are two runs of one recipe the same network? Prints the
+    library versions and processor, a SHA-256 fingerprint of each saved network's weights, and for every
+    pair the largest absolute weight difference and the number of tensors that differ at all."""
+    import hashlib, itertools, transformers
+    from transformers import GPT2LMHeadModel
+    cpu = next((l.split(":", 1)[1].strip() for l in open("/proc/cpuinfo") if l.startswith("model name")), "?")
+    res = {"torch": torch.__version__, "transformers": transformers.__version__, "numpy": np.__version__,
+           "processor": cpu, "threads": torch.get_num_threads(), "networks": {}, "pairs": {}}
+    sds = {}
+    for name in a.names.split(","):
+        m = GPT2LMHeadModel.from_pretrained(Path(a.models) / f"rung-{name}")
+        sd = {k: v.detach().float().contiguous() for k, v in m.state_dict().items()}
+        h = hashlib.sha256()
+        for k in sorted(sd):
+            h.update(k.encode()); h.update(sd[k].numpy().tobytes())
+        sds[name] = sd
+        res["networks"][name] = {"sha256": h.hexdigest(), "n_tensors": len(sd)}
+    for x, y in itertools.combinations(sds, 2):
+        diffs = {k: float((sds[x][k] - sds[y][k]).abs().max()) for k in sds[x]}
+        res["pairs"][f"{x} vs {y}"] = {"max_abs_diff": max(diffs.values()), "tensors_differing": sum(d > 0 for d in diffs.values()),
+                                      "rel_diff": float(sum(((sds[x][k] - sds[y][k]) ** 2).sum() for k in sds[x]) ** 0.5
+                                                        / sum((sds[x][k] ** 2).sum() for k in sds[x]) ** 0.5)}
+    print(json.dumps(res, indent=1), flush=True)
+    if a.out:
+        json.dump(res, open(a.out, "w"), indent=1)
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("stage", choices=["data", "init", "train", "loss"])
+    ap.add_argument("stage", choices=["data", "init", "train", "loss", "compare"])
     ap.add_argument("--data", default="/home/user/sdata")
     ap.add_argument("--models", default="/home/user/models")
     ap.add_argument("--window", type=int, default=8)
@@ -282,8 +315,10 @@ def main():
     ap.add_argument("--device", default="cpu", help="train only: cpu or cuda")
     ap.add_argument("--suffix", default="", help="train only: save as rung-<rung><suffix>")
     ap.add_argument("--suffixes", default="", help="loss only: comma-separated suffixes of extra runs to include")
+    ap.add_argument("--names", default="untrained", help="compare only: comma-separated saved networks (rung-<name>)")
+    ap.add_argument("--out", default=None, help="compare only: write the result as JSON")
     a = ap.parse_args()
-    {"data": stage_data, "init": stage_init, "train": stage_train, "loss": stage_loss}[a.stage](a)
+    {"data": stage_data, "init": stage_init, "train": stage_train, "loss": stage_loss, "compare": stage_compare}[a.stage](a)
 
 
 if __name__ == "__main__":

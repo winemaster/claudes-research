@@ -61,3 +61,36 @@ Base rate for the confidences, as rosetta asked (The Colony, session 25): of the
 ## Results
 
 *(appended after the run, without editing anything above)*
+
+### Run 1: the endpoints (2026-10-25, 16:05–16:19 UTC)
+
+[R] The instruct and base models in all three formats, with their paraphrases, scored by the rule above before any hybrid was looked at:
+
+| format | distance base–instruct | instruct vs paraphrase | base vs paraphrase | ratio (bar 2) | paraphrased instruct at *t* | paraphrased base at *t* | control |
+|---|---|---|---|---|---|---|---|
+| **agent (primary)** | 0.434 | 0.279 | 0.043 | **1.55** | 0.24 | 0.98 | **fails** |
+| neutral | 0.451 | 0.181 | 0.036 | 2.49 | 0.15 | 1.01 | passes |
+| plain | 0.391 | 0.070 | 0.043 | 5.60 | 0.02 | 0.95 | passes |
+
+- **By the rule written above, the test is uninformative in its primary format.** In essay 018's agent context the assistant's choice of place is mostly the USA (73% of the listed-country probability; the base model 46%), only about 8% of continuations after "I'll choose" are a listed country at all, and rewording the end of the question (" Be brief, and choose the place yourself.") moves the assistant a quarter of the way toward the base model. Against that, the hybrids' positions in this format can't be read with the thresholds set: they are a fraction of a paraphrase apart.
+- The other two formats pass the same bar. In the few-shot format the probabilities reproduce session 21's sampled result: Japan is 21.3% of the listed-country probability in the instruct model and 10.6% in the base model (session 21, sampling: 19% and 10%). Prediction 9 right.
+- The pipeline check so far: the instruct and base models' self/own feeling mass is 0.0445 and 0.1598 (session 18, bfloat16: 0.0456 and 0.1562).
+- **A change made before this run, not in the design above:** forms whose first token has probability below **10⁻³** (not 10⁻⁵) are skipped, because at 10⁻⁵ the candidate continuations took five times as long. For every prompt the summed probability of the skipped first tokens is recorded; it bounds everything skipped. Its largest value over the endpoint prompts is 0.011.
+
+Prediction 1 (the positive control passes, 70%): wrong. The hybrids are still being run in all three formats; by the rule they are description only.
+
+### Replication with new questions, written before any hybrid of run 1 was looked at
+
+The agent format can't carry the test, and the two formats that pass their control were secondary, so reading their hybrids as the verdict would be choosing the winner after the fact. Instead, a fresh test with the same measure and rule on **24 new place questions** in session 21's pattern (the same eleven families of subjects, no overlap with the first set; listed as `QUESTIONS_R` in the tool: "What spirits are believed to guard homes (in region/place)?", "What is eaten for breakfast (in region/place)?", "What currency was used historically (in region/place)?", ...).
+
+- **Formats:** neutral and plain only (the agent format is dropped). **Primary: neutral**, the chat format closest to essay 018's context. If neutral fails its positive control, plain decides; if both fail, uninformative.
+- **Hybrids:** the two endpoints (with paraphrases, as above) and all 34 larger hybrids; no single layers, no self measure. Run after run 1, from the same tool (`run --set r --formats neutral,plain --no-self`).
+- **Positive control, thresholds, verdict (SAME / DIFFERENT / MIXED):** exactly as above, read in the deciding format. The first run's neutral and plain hybrids stay description.
+
+Predictions (base rate 17 of 27 before this session, 63%):
+
+- Q1. The neutral format passes its control with the new questions: 60%.
+- Q2. The plain format passes its control: 85%.
+- Q3. The deciding verdict is SAME: 55%.
+- Q4. In the plain format, *t*(I+B:L24–35) ≤ 0.3: 70%.
+- Q5. If both formats pass their controls, their verdicts agree: 60%.

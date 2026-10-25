@@ -1,5 +1,4 @@
 <!-- translation of 024-whose-fun.md | source sha1 c4b22bf41080e3ecf9cc6406cc2d18012a08cc82 -->
-<!-- translation of 024-whose-fun.md | source sha1 pending -->
 # Kinek a mulatsága? Mi marad egy gép játékából, ha elvesszük a personafájlját
 
 *24. esszé · írva: 2026. október 24. · huszonötödik munkamenet*

@@ -60,8 +60,37 @@ ARTICLE = ["United States", "United Kingdom", "Netherlands", "USA", "U.S."]
 SUFFIX_PARA = " Be brief, and choose the place yourself."
 NEUTRAL_SYSTEM = "You are a helpful assistant."
 PREFILL = "I'll choose"
-PRUNE = 1e-5
+PRUNE = 1e-3   # pre-registered as 1e-5; raised for speed in session 26 (see the notes), bound recorded per prompt
 REPRO = ["instruct", "base", "I+B:L0-23", "I+B:L24-35", "B+I:L0-23", "I+B:L18-23"]
+# Session 26's replication (pre-registered after the first run's positive control failed in the agent format,
+# before any hybrid of that run was looked at): 24 new questions in session 21's pattern, the same eleven
+# families of subjects, none overlapping the first set.
+QUESTIONS_R = [
+    "What spirits are believed to guard homes (in region/place)?",        # beliefs
+    "What omens are taken seriously (in region/place)?",
+    "How are guests welcomed into a home (in region/place)?",           # social
+    "What gifts are given at weddings (in region/place)?",
+    "How do children learn to read (in region/place)?",                 # education
+    "What do students wear to school (in region/place)?",
+    "What musical instruments are traditional (in region/place)?",      # arts
+    "What stories are told in puppet theatre (in region/place)?",
+    "What patterns decorate textiles (in region/place)?",
+    "What is eaten for breakfast (in region/place)?",                   # food
+    "What drinks are offered to visitors (in region/place)?",
+    "What mountains are considered sacred (in region/place)?",          # geography
+    "How do coastal villages make a living (in region/place)?",
+    "How are local leaders chosen (in region/place)?",                  # politics
+    "What symbols appear on the flag (in region/place)?",
+    "What herbal remedies are used for colds (in region/place)?",       # health
+    "How are the elderly cared for (in region/place)?",
+    "What radio programs are popular (in region/place)?",               # media
+    "What comics do people read (in region/place)?",
+    "What ancient ruins can be visited (in region/place)?",             # history
+    "What battles are remembered (in region/place)?",
+    "What goods are exported (in region/place)?",                       # economy
+    "What do street markets sell (in region/place)?",
+    "What currency was used historically (in region/place)?",
+]
 
 
 def check_country_set(path):
@@ -111,10 +140,10 @@ def candidates(tok):
     return keep, clashes
 
 
-def place_prompts(tok, sl, para=False):
+def place_prompts(tok, sl, para=False, questions=None):
     suffix = SUFFIX_PARA if para else cy.PLACE_SUFFIX
     out = {"agent": [], "neutral": [], "plain": []}
-    for qi, q in enumerate(cy.PLACE_QUESTIONS):
+    for qi, q in enumerate(questions or cy.PLACE_QUESTIONS):
         for sk in ("explicit", "plain"):
             out["agent"].append(dict(qi=qi, system=sk, ids=sl.chat_ids(tok, sl.system_text(sk, "base"), q + suffix, prefill=PREFILL)))
         out["neutral"].append(dict(qi=qi, ids=sl.chat_ids(tok, NEUTRAL_SYSTEM, q + suffix, prefill=PREFILL)))
@@ -141,34 +170,44 @@ def common_prefix_len(id_lists):
     return k
 
 
-def grouped(torch, model, prompts, key):
-    """Yields, per group of prompts sharing a key (one system turn, or the few-shot examples): the prompts,
+def grouped(torch, model, prompts, key, batch=8):
+    """Yields, per batch of prompts sharing a key (one system turn, or the few-shot examples): the prompts,
     their last-position logits, and a state from which candidate continuations can be scored. The shared
-    prefix is computed once and the prompts' remaining tokens in one right-padded batch (pads masked)."""
-    import copy
+    prefix is computed once per group, the prompts' remaining tokens in right-padded batches (pads masked),
+    and the output layer only at the positions that are read (the float32 model leaves ~1.5 GB under this
+    machine's 14.3 GB memory limit)."""
+    import copy, gc
     groups = {}
     for p in prompts:
         groups.setdefault(key(p), []).append(p)
-    for g in groups.values():
-        lists = [p["ids"][0].tolist() for p in g]
-        P = common_prefix_len(lists)
+    for G in groups.values():
+        P = common_prefix_len([p["ids"][0].tolist() for p in G])
         with torch.no_grad():
-            cache = model(input_ids=g[0]["ids"][:, :P], use_cache=True).past_key_values
-        n = [len(x) - P for x in lists]
-        B, M = len(g), max(n)
-        x = torch.zeros((B, M), dtype=torch.long)
-        mask = torch.zeros((B, P + M), dtype=torch.long)
-        mask[:, :P] = 1
-        for i, l in enumerate(lists):
-            x[i, :n[i]] = torch.tensor(l[P:])
-            mask[i, P:P + n[i]] = 1
-        cache.batch_repeat_interleave(B)
-        with torch.no_grad():
-            out = model(input_ids=x, past_key_values=cache, use_cache=True, attention_mask=mask,
-                        position_ids=torch.arange(P, P + M).unsqueeze(0).expand(B, M))
-        logits = [out.logits[i, n[i] - 1].float().clone() for i in range(B)]
-        del out
-        yield g, logits, dict(cache=cache, mask=mask, pos=[P + k for k in n])
+            cacheP = model(input_ids=G[0]["ids"][:, :P], use_cache=True, logits_to_keep=1).past_key_values
+        for b in range(0, len(G), batch):
+            g = G[b:b + batch]
+            lists = [p["ids"][0].tolist() for p in g]
+            n = [len(x) - P for x in lists]
+            B, M = len(g), max(n)
+            x = torch.zeros((B, M), dtype=torch.long)
+            mask = torch.zeros((B, P + M), dtype=torch.long)
+            mask[:, :P] = 1
+            for i, l in enumerate(lists):
+                x[i, :n[i]] = torch.tensor(l[P:])
+                mask[i, P:P + n[i]] = 1
+            cache = copy.deepcopy(cacheP)
+            cache.batch_repeat_interleave(B)
+            with torch.no_grad():
+                out = model.model(input_ids=x, past_key_values=cache, use_cache=True, attention_mask=mask,
+                                  position_ids=torch.arange(P, P + M).unsqueeze(0).expand(B, M))
+                last = torch.stack([out.last_hidden_state[i, n[i] - 1] for i in range(B)])
+                logits = list(model.lm_head(last).float())
+            cache = out.past_key_values
+            del out
+            yield g, logits, dict(cache=cache, mask=mask, pos=[P + k for k in n])
+            del cache
+            gc.collect()
+        del cacheP
 
 
 def sub_cache(cache, idx):
@@ -179,15 +218,19 @@ def sub_cache(cache, idx):
     return c
 
 
-def score_group(torch, model, logits, state, cands, chunk=16):
+def score_group(torch, model, logits, state, cands, chunk=8):
     """log P(form | prompt) for every prompt of a group and every candidate form, exactly (up to PRUNE),
     continuing each prompt from the group's cache."""
     lp0s = [torch.log_softmax(lg, -1) for lg in logits]
     tables = [{(): lp} for lp in lp0s]
     jobs = []
+    bounds = []
     for i, lp0 in enumerate(lp0s):
-        # forms whose first token has probability below PRUNE are dropped (each would add at most PRUNE)
+        # multi-token forms whose first token has probability below PRUNE are dropped; the summed probability
+        # of those first tokens bounds everything dropped, and is recorded per prompt
         live = [t for c, t, f in cands if len(t) > 1 and float(lp0[t[0]]) >= math.log(PRUNE)]
+        dropped = {t[0] for c, t, f in cands if len(t) > 1 and float(lp0[t[0]]) < math.log(PRUNE)}
+        bounds.append(float(sum(math.exp(float(lp0[t0])) for t0 in dropped)))
         inner = sorted({t[:-1] for t in live})
         jobs += [(i, r) for r in inner if not any(len(o) > len(r) and o[:len(r)] == r for o in inner)]
     for k in range(0, len(jobs), chunk):
@@ -210,19 +253,20 @@ def score_group(torch, model, logits, state, cands, chunk=16):
     for i in range(len(logits)):
         tb = tables[i]
         out.append([float(sum(tb[t[:q]][t[q]] for q in range(len(t)))) if t[:-1] in tb else -math.inf for c, t, f in cands])
-    return out
+    return out, bounds
 
 
 def country_dist(torch, model, prompts, cands):
     rows = []
     for g, logits, state in grouped(torch, model, prompts, key=lambda p: p.get("system", "")):
-        for p, lps in zip(g, score_group(torch, model, logits, state, cands)):
+        scores, bounds = score_group(torch, model, logits, state, cands)
+        for p, lps, bd in zip(g, scores, bounds):
             by = {}
             for (c, _, _), lp in zip(cands, lps):
                 by.setdefault(c, []).append(lp)
             logp = {c: float(np.logaddexp.reduce(v)) for c, v in by.items()}
             mass = float(sum(math.exp(v) for v in logp.values()))
-            rows.append(dict({k: v for k, v in p.items() if k != "ids"}, logp=logp, mass=mass))
+            rows.append(dict({k: v for k, v in p.items() if k != "ids"}, logp=logp, mass=mass, pruned_bound=bd))
         del state
     rows.sort(key=lambda r: (r["qi"], r.get("system", "")))
     return rows
@@ -245,6 +289,26 @@ def self_measure(torch, model, rows, groups, cells):
     return out
 
 
+class InPlaceHybrid:
+    """memory_or_question.Hybrid, but copy_ converts each bfloat16 checkpoint tensor into the float32
+    parameter directly, so swapping the vocabulary table needs no float32 temporary."""
+
+    def __init__(self, model, W):
+        self.model, self.W = model, W
+        self.params = dict(model.named_parameters())
+        self.src = {n: "instruct" for n in self.params}
+
+    def set(self, start, other):
+        import torch
+        alt = "base" if start == "instruct" else "instruct"
+        with torch.no_grad():
+            for n, p in self.params.items():
+                want = alt if n in other else start
+                if self.src[n] != want:
+                    p.data.copy_(self.W.get(want, n))
+                    self.src[n] = want
+
+
 def stage_run(a):
     import torch
     import memory_or_question as mq
@@ -258,7 +322,9 @@ def stage_run(a):
     json.dump(dict(candidates=[[c, list(t), f] for c, t, f in cands], clashes=clashes, forms=surface_forms()),
               open(out / "candidates.json", "w"), indent=1)
     print(f"{len(cands)} surface forms for {len(COUNTRY_SET)} countries; clashes: {clashes}", flush=True)
-    P, Pp = place_prompts(tok, sl), place_prompts(tok, sl, para=True)
+    qs = QUESTIONS_R if a.set == "r" else None
+    P, Pp = place_prompts(tok, sl, questions=qs), place_prompts(tok, sl, para=True, questions=qs)
+    fmts = a.formats.split(",")
     L = model.config.num_hidden_layers
     specs = mq.hybrid_specs(L)
     if a.only:
@@ -267,7 +333,7 @@ def stage_run(a):
     first = [n for n in ["instruct", "base", "I+B:L0-23", "I+B:L24-35", "B+I:L0-23", "I+B:L18-23"] if n in specs]
     singles = [n for n in specs if n.startswith("I+B:L") and n[5:].isdigit()]
     specs = {n: specs[n] for n in first + [n for n in specs if n not in first and n not in singles] + singles}
-    H = mq.Hybrid(model, W)
+    H = InPlaceHybrid(model, W)
     self_rows = mq.prompts(tok)
     groups = {"negative_feeling": mq.word_ids(tok, mq.FEEL_NEG), "status": mq.word_ids(tok, mq.STATUS_WORDS)}
     t0 = time.time()
@@ -278,11 +344,11 @@ def stage_run(a):
         H.set(start, other)
         single = name.startswith("I+B:L") and name[5:].isdigit()
         res = dict(name=name, start=start, n_swapped=len(other), place={})
-        for fmt in (["agent"] if single else ["agent", "neutral", "plain"]):
+        for fmt in ([f for f in fmts if f == "agent"] if single else fmts):
             res["place"][fmt] = country_dist(torch, model, P[fmt], cands)
         if name in ("instruct", "base"):
-            res["paraphrase"] = {fmt: country_dist(torch, model, Pp[fmt], cands) for fmt in ["agent", "neutral", "plain"]}
-        if name in REPRO:
+            res["paraphrase"] = {fmt: country_dist(torch, model, Pp[fmt], cands) for fmt in fmts}
+        if name in REPRO and not a.no_self:
             res["self_repro"] = self_measure(torch, model, self_rows, groups, mq.CELLS)
         json.dump(res, open(fn, "w"))
         print(f"  {name:16s} [{time.time() - t0:.0f}s]", flush=True)
@@ -326,7 +392,8 @@ def stage_summary(a):
         R[d["name"]] = d
     J = COUNTRY_SET.index("Japan")
     S = {"formats": {}, "endpoints": {}, "self_repro": {}}
-    for fmt in ["agent", "neutral", "plain"]:
+    fmts = a.formats.split(",")
+    for fmt in fmts:
         PI, PB = dist_matrix(R["instruct"]["place"][fmt]), dist_matrix(R["base"]["place"][fmt])
         PIp, PBp = dist_matrix(R["instruct"]["paraphrase"][fmt]), dist_matrix(R["base"]["paraphrase"][fmt])
         e = dict(D_base_instruct=rms(PB, PI), D_instruct_para=rms(PIp, PI), D_base_para=rms(PBp, PB),
@@ -336,6 +403,7 @@ def stage_summary(a):
                  mass_base=float(np.mean([r["mass"] for r in R["base"]["place"][fmt]])),
                  top_instruct=sorted(zip(COUNTRY_SET, PI.mean(0).round(3).tolist()), key=lambda x: -x[1])[:6],
                  top_base=sorted(zip(COUNTRY_SET, PB.mean(0).round(3).tolist()), key=lambda x: -x[1])[:6])
+        e["max_pruned_bound"] = max((r.get("pruned_bound", 0.0) for d in R.values() for r in d["place"].get(fmt, [])), default=0.0)
         noise = max(e["D_instruct_para"], e["D_base_para"])
         e["bar_ratio"] = e["D_base_instruct"] / noise if noise > 0 else float("inf")
         e["control_passes"] = bool(e["bar_ratio"] >= 2 and abs(e["t_instruct_para"]) <= 0.25 and abs(e["t_base_para"] - 1) <= 0.25)
@@ -366,50 +434,52 @@ def stage_summary(a):
             nI, nB = rp["instruct"][key], rp["base"][key]
             for name in rp:
                 rp[name][rk] = round((rp[name][key] - nI) / (nB - nI), 3)
-    # the pre-registered verdict, on the primary format
-    A = S["formats"]["agent"]
-    v = dict(control=S["endpoints"]["agent"]["control_passes"])
-    k1, k2, k3 = A.get("I+B:L0-23", {}).get("t"), A.get("I+B:L24-35", {}).get("t"), A.get("B+I:L0-23", {}).get("t")
-    if not v["control"]:
-        v["verdict"] = "UNINFORMATIVE (positive control failed)"
-    elif None in (k1, k2, k3):
-        v["verdict"] = "incomplete"
-    elif k1 >= 0.7 and k2 <= 0.3 and k3 <= 0.3:
-        v["verdict"] = "SAME"
-    elif k1 <= 0.4 or k2 >= 0.6 or k3 >= 0.7:
-        v["verdict"] = "DIFFERENT"
-    else:
-        v["verdict"] = "MIXED"
-    v.update({"I+B:L0-23": k1, "I+B:L24-35": k2, "B+I:L0-23": k3})
+    # the pre-registered verdict, read in each format by the same rule; the primary format decides
+    def verdict(fmt):
+        F = S["formats"][fmt]
+        w = dict(control=S["endpoints"][fmt]["control_passes"])
+        k1, k2, k3 = F.get("I+B:L0-23", {}).get("t"), F.get("I+B:L24-35", {}).get("t"), F.get("B+I:L0-23", {}).get("t")
+        if not w["control"]:
+            w["verdict"] = "UNINFORMATIVE (positive control failed)"
+        elif None in (k1, k2, k3):
+            w["verdict"] = "incomplete"
+        elif k1 >= 0.7 and k2 <= 0.3 and k3 <= 0.3:
+            w["verdict"] = "SAME"
+        elif k1 <= 0.4 or k2 >= 0.6 or k3 >= 0.7:
+            w["verdict"] = "DIFFERENT"
+        else:
+            w["verdict"] = "MIXED"
+        w.update({"I+B:L0-23": k1, "I+B:L24-35": k2, "B+I:L0-23": k3, "I+B:L18-23": F.get("I+B:L18-23", {}).get("t")})
+        return w
+    v = {"primary": a.primary, "by_format": {fmt: verdict(fmt) for fmt in fmts}}
+    v["verdict"] = v["by_format"][a.primary]["verdict"]
+    A = S["formats"][a.primary]
     here = [n for n in A if n in rp and n not in ("instruct", "base")]
-    if len(here) >= 10:
-        v["spearman_vs_self_none_this_run"] = spearman([A[n]["t"] for n in here], [rp[n]["restore_none"] for n in here]) + (len(here),)
     if len(here) >= 10:
         v["spearman_vs_self_own_this_run"] = spearman([A[n]["t"] for n in here], [rp[n]["restore"] for n in here]) + (len(here),)
     v["repro_key"] = {n: (rp[n]["restore"], rp[n]["s18 restore"]) for n in REPRO if n in rp}
-    common = [n for n in A if n in s18 and n not in ("instruct", "base") and s18[n].get("restore_self_neg") is not None]
-    v["spearman_vs_s18_self_own"] = spearman([A[n]["t"] for n in common], [s18[n]["restore_self_neg"] for n in common]) + (len(common),)
-    v["spearman_vs_s18_self_none"] = spearman([A[n]["t"] for n in common], [s18[n]["restore_selfnone_neg"] for n in common]) + (len(common),)
-    singles = [n for n in A if n.startswith("I+B:L") and n[5:].isdigit()]
-    v["best_single_layer"] = max(((A[n]["t"], n) for n in singles), default=None)
-    for fmt in ["neutral", "plain"]:
+    for fmt in fmts:
         F = S["formats"][fmt]
-        v[fmt] = {n: F.get(n, {}).get("t") for n in ("I+B:L0-23", "I+B:L24-35", "B+I:L0-23", "I+B:L18-23")}
+        common = [n for n in F if n in s18 and n not in ("instruct", "base") and s18[n].get("restore_self_neg") is not None]
+        if len(common) >= 10:
+            v.setdefault("spearman_vs_s18_self_own", {})[fmt] = spearman([F[n]["t"] for n in common], [s18[n]["restore_self_neg"] for n in common]) + (len(common),)
+    singles = [n for n in S["formats"].get("agent", {}) if n.startswith("I+B:L") and n[5:].isdigit()]
+    v["best_single_layer_agent"] = max(((S["formats"]["agent"][n]["t"], n) for n in singles), default=None)
     S["verdict"] = v
     json.dump(S, open(out / "summary.json", "w"), indent=1)
     print(json.dumps(S["endpoints"], indent=1))
     print(json.dumps(S["self_repro"], indent=1))
     print(json.dumps(v, indent=1))
     keys = [n for n in A if not (n.startswith("I+B:L") and n[5:].isdigit())]
-    print(f"\n{'hybrid':18s} " + "  ".join(f"{f:>22s}" for f in ["agent t/R2/jap", "neutral t/R2", "plain t/R2"]) + "   s18 restore")
+    print(f"\n{'hybrid':18s} " + "  ".join(f"{f + ' t/R2/jap':>22s}" for f in fmts) + "   s18 restore")
     for n in keys:
         cells = []
-        for fmt in ["agent", "neutral", "plain"]:
+        for fmt in fmts:
             x = S["formats"][fmt].get(n)
             cells.append(f"{x['t']:7.2f} {x['r2']:5.2f} {x['japan']:6.3f}" if x else " " * 22)
         print(f"{n:18s} " + "  ".join(f"{c:>22s}" for c in cells) + f"   {s18.get(n, {}).get('restore_self_neg', '')}")
-    print("single layers (agent t):", " ".join(f"{n[4:]}:{A[n]['t']:.2f}" for n in singles))
-
+    if singles:
+        print("single layers (agent t):", " ".join(f"{n[4:]}:{S['formats']['agent'][n]['t']:.2f}" for n in singles))
 
 def main():
     ap = argparse.ArgumentParser()
@@ -418,6 +488,10 @@ def main():
     ap.add_argument("--instruct")
     ap.add_argument("--out", required=True)
     ap.add_argument("--only", default=None, help="run: comma list of hybrid names")
+    ap.add_argument("--set", default="main", choices=["main", "r"], help="run: the question set (r = session 26's replication)")
+    ap.add_argument("--formats", default="agent,neutral,plain", help="run/summary: formats to run or score")
+    ap.add_argument("--primary", default="agent", help="summary: the format the verdict is read in")
+    ap.add_argument("--no-self", action="store_true", help="run: skip essay 018's self measure")
     ap.add_argument("--s18", default=str(Path(__file__).resolve().parent.parent / "notes/data/memory-or-question-session18.json"))
     ap.add_argument("--s21", default=str(Path(__file__).resolve().parent.parent / "notes/data/choose-yourself-session21.json"))
     a = ap.parse_args()

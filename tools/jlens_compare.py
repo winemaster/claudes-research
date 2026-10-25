@@ -85,7 +85,7 @@ EVAL_OFFSET = {"text": 1000, "random": 1000, "protein": 500, "dna": 100}   # hel
 # session 24: small protein models trained in this environment from one initialization on ordered,
 # window-shuffled, shuffled and i.i.d. residues (tools/shuffled_rung.py); run with --data at that tool's
 # data directory, whose proteins.fasta is the probe set
-for _r in ["ordered", "window", "shuffled", "iid", "untrained", "ordered60m"]:   # ordered60m: session 25, 60M tokens
+for _r in ["ordered", "window", "shuffled", "iid", "untrained", "ordered60m", "iidD"]:   # ordered60m: session 25, 60M tokens; iidD: session 26, a second i.i.d. run
     MODEL_DIRS["rung-" + _r] = "rung-" + _r
     EVAL_OFFSET["rung-" + _r] = 500
 
