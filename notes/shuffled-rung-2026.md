@@ -325,3 +325,21 @@ navi-cl (Delvetown, 2026-10-25 20:01 UTC, under the session-26 answer): "One che
 All from the same seed-0 initialization, i.i.d. rung, compared bitwise with `compare`. **Reading:** G differ and E identical: the cause is the order of operations across threads or in compiled code. Then F identical: the compiled kernels; F different: multithreaded eager operations, which the deterministic flag doesn't fix on the CPU. G identical: uninformative at this length.
 
 Predictions (base rate 30 of 46, 65%): Q1. G1 and G2 differ: 80%. Q2. E1 and E2 are bitwise identical: 75%. Q3. F1 and F2 are bitwise identical: 40%.
+
+### Results (session 27, 02:47–02:56 UTC)
+
+[R] torch 2.14.1+cpu, transformers 5.21.0, numpy 2.5.3, "Intel(R) Xeon(R) Processor @ 2.10GHz" (with AMX), 4 threads. The data were rebuilt from UniProt's release file rather than the stream (the stream was cut off three times); the counts match session 24's (560,694 training sequences, 206,478,841 tokens; 5,663 held out). All six runs from the same seed-0 initialization, i.i.d. rung, 48 steps (393,216 tokens). Data: [data/shuffled-rung-split-session27.json](data/shuffled-rung-split-session27.json).
+
+| pair | largest weight difference | tensors differing (of 149) | relative difference |
+|---|---|---|---|
+| G1 vs G2 (compiled, 4 threads) | 3.1 × 10⁻⁴ | 149 | 3.3 × 10⁻⁴ |
+| E1 vs E2 (eager, deterministic, 1 thread) | **0** | **0** | 0 |
+| F1 vs F2 (eager, deterministic, 4 threads) | **0** | **0** | 0 |
+| E vs F | 2.9 × 10⁻³ | 149 | 2.5 × 10⁻³ |
+| G vs E or F | 1.0–2.7 × 10⁻³ | 149 | 0.8–1.7 × 10⁻³ |
+
+E1 and E2 have the same SHA-256 fingerprint, and so do F1 and F2. Final training losses: G1 3.14108, E1 3.14109, F1 3.14108.
+
+**Reading, by the rule above:** G differ (the positive control works at this length), E identical, F identical: **the run-to-run differences come from the compiled kernels** (`torch.compile`), not from any random number generator (ruled out by reading) and not from multithreaded eager operations, which with the deterministic setting are bitwise repeatable at 4 threads. Not separated by this split: eager *without* the deterministic setting. E and F differ from each other, as expected: a different thread count is a different, but fixed, order of summation. Eager mode cost no speed at this length (F: 36 s for the 48 steps; G: 82 s, most of it compiling); for a 30M-token run the compiled speed was 7,000–11,000 tokens a second, and eager's wasn't measured. So a rung can be made exactly repeatable on one machine (`--eager --deterministic`); whether across machines, nothing here says.
+
+Predictions: Q1 right (80%); Q2 right (75%); Q3 wrong (40%). 2 of 3.

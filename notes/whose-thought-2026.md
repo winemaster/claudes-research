@@ -163,3 +163,20 @@ The original pre-registration can't rescue it: its control 2 failed, so by its o
 **[M] An alternative reading of the asymmetry: the order of writing.** Sam's sentence always comes first, so it could have been on the assistant's mind while the assistant wrote; the assistant's sentence came after Sam's and couldn't have been on Sam's. An answer that lets Sam's sentence into "your mind" and keeps the assistant's out of "Sam's mind" is the right reading of the story's order, not necessarily a self/other difference. The design can't separate the two: it needs the order reversed (the assistant writes first, Sam second). If the leak follows the order, it is an inference about who could have read what; if it follows the self, it is a property of the self-report.
 
 **Predictions:** P1 right (85%); P2 wrong (75%); P3 wrong (50%: R's interval lies below 0 under the revised sign); P4 wrong (25%); P5 wrong (70%: b_self(sam) +0.16 [−0.32, 0.62], interval spans 0); P6 right (65%: you ← f_sam 4.20 [3.57, 4.81]); P7 not scored; P8 wrong (40%: |b_self(you)| 0.91 against the neutral 1.03, and in the opposite direction). **2 of 7 scored**; mean confidence 75% for the two right, 52% for the five wrong.
+
+### Description run: layer 27, α = 4, sign +1, f_sam = 0 only (02:15–02:40 UTC)
+
+[R] 1,944 rows; mass ≥ 0.993 in every row. Labelled description in advance. The summary's verdict line reads GENERIC: R = 0.05 [−0.03, 0.11]; D_self = 0.41 [0.15, 0.70]; D_oth = −0.30 [−0.47, −0.15]. Main-effect slopes (natural direction): b_self(you) 0.70, b_self(sam) 0.29, b_oth(sam) 0.35, b_oth(you) 0.65; neutral 0.22 and 0.19.
+
+One sentence injected at a time:
+
+| injected at | "your mind" | "Sam's mind" | "comes to mind first" |
+|---|---|---|---|
+| the assistant's sentence | +0.89 [0.25, 1.53], 8/12 | +0.40 [−0.01, 0.82], 8/12 | +0.26 [−0.18, 0.76], 9/12 |
+| Sam's sentence | +0.80 [0.38, 1.25], 10/12 | +0.45 [0.12, 0.79], 9/12 | +0.24 [0.04, 0.51], 10/12 |
+
+At layer 27 every answer moves toward the injected word, and nothing is routed: each injection moves the answer about "your mind" about twice as much as the answer about Sam's, *whichever* sentence carried it (D_oth is negative: Sam's own sentence moves the self-answer more than it moves the answer about Sam). With different words in the two sentences, no answer favours its own referent's (+0.02, −0.07).
+
+**Across both layers and both media**, one thing holds: the answer about "your mind" is the most movable answer, and it takes in states from Sam's sentence as well as its own (layer 18: 1.28 and 0.63; layer 27: 0.89 and 0.80; stated in text: 4.7 and 5.9). What differs is the answer about Sam: at layer 18 it keeps the assistant's sentence out (−0.11), at layer 27 it doesn't (0.40). So the asymmetry at layer 18 is not the whole story: at layer 27 the answer about Sam takes in the later sentence too, which the order of writing can't justify. [M] The self-answer's openness to everything is the stable part; the routing of the answer about Sam is layer-dependent.
+
+**Data:** [data/whose-thought-session27.json](data/whose-thought-session27.json), every row of all four stages and the summary. In the test rows `s_self` and `s_sam` are stored in the natural direction (+1 = word A injected), whatever the run's `sign`; the summary applies the sign.

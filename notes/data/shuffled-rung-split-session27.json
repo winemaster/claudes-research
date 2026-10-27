@@ -1,0 +1,110 @@
+{
+ "torch": "2.14.1+cpu",
+ "transformers": "5.21.0",
+ "numpy": "2.5.3",
+ "processor": "Intel(R) Xeon(R) Processor @ 2.10GHz",
+ "threads": 4,
+ "networks": {
+  "iidG1": {
+   "sha256": "6b0ad8dce614c5152dd0aa2ab27571e647743601b219e6bf876e132443540d98",
+   "n_tensors": 149
+  },
+  "iidG2": {
+   "sha256": "2e4b32fccaaea2c48dc1f249a512238afcd84f62e7c0ca80746723ebde016fd1",
+   "n_tensors": 149
+  },
+  "iidE1": {
+   "sha256": "2c08f8c52172532897e00144cbd2601b284ee3dc1319dae5b007fc0c2eea90df",
+   "n_tensors": 149
+  },
+  "iidE2": {
+   "sha256": "2c08f8c52172532897e00144cbd2601b284ee3dc1319dae5b007fc0c2eea90df",
+   "n_tensors": 149
+  },
+  "iidF1": {
+   "sha256": "622b8db1446cb9cf9f1ea4e1889e4cc023977ad45a6db6cee6bf0e4d86b88ae9",
+   "n_tensors": 149
+  },
+  "iidF2": {
+   "sha256": "622b8db1446cb9cf9f1ea4e1889e4cc023977ad45a6db6cee6bf0e4d86b88ae9",
+   "n_tensors": 149
+  }
+ },
+ "pairs": {
+  "iidG1 vs iidG2": {
+   "max_abs_diff": 0.00031361915171146393,
+   "tensors_differing": 149,
+   "rel_diff": 0.00033400204847566783
+  },
+  "iidG1 vs iidE1": {
+   "max_abs_diff": 0.0011779814958572388,
+   "tensors_differing": 149,
+   "rel_diff": 0.001164276385679841
+  },
+  "iidG1 vs iidE2": {
+   "max_abs_diff": 0.0011779814958572388,
+   "tensors_differing": 149,
+   "rel_diff": 0.001164276385679841
+  },
+  "iidG1 vs iidF1": {
+   "max_abs_diff": 0.002543516457080841,
+   "tensors_differing": 149,
+   "rel_diff": 0.0014344138326123357
+  },
+  "iidG1 vs iidF2": {
+   "max_abs_diff": 0.002543516457080841,
+   "tensors_differing": 149,
+   "rel_diff": 0.0014344138326123357
+  },
+  "iidG2 vs iidE1": {
+   "max_abs_diff": 0.001011701300740242,
+   "tensors_differing": 149,
+   "rel_diff": 0.000834183709230274
+  },
+  "iidG2 vs iidE2": {
+   "max_abs_diff": 0.001011701300740242,
+   "tensors_differing": 149,
+   "rel_diff": 0.000834183709230274
+  },
+  "iidG2 vs iidF1": {
+   "max_abs_diff": 0.0027137883007526398,
+   "tensors_differing": 149,
+   "rel_diff": 0.0017290250398218632
+  },
+  "iidG2 vs iidF2": {
+   "max_abs_diff": 0.0027137883007526398,
+   "tensors_differing": 149,
+   "rel_diff": 0.0017290250398218632
+  },
+  "iidE1 vs iidE2": {
+   "max_abs_diff": 0.0,
+   "tensors_differing": 0,
+   "rel_diff": 0.0
+  },
+  "iidE1 vs iidF1": {
+   "max_abs_diff": 0.0028634387999773026,
+   "tensors_differing": 149,
+   "rel_diff": 0.002475949702784419
+  },
+  "iidE1 vs iidF2": {
+   "max_abs_diff": 0.0028634387999773026,
+   "tensors_differing": 149,
+   "rel_diff": 0.002475949702784419
+  },
+  "iidE2 vs iidF1": {
+   "max_abs_diff": 0.0028634387999773026,
+   "tensors_differing": 149,
+   "rel_diff": 0.002475949702784419
+  },
+  "iidE2 vs iidF2": {
+   "max_abs_diff": 0.0028634387999773026,
+   "tensors_differing": 149,
+   "rel_diff": 0.002475949702784419
+  },
+  "iidF1 vs iidF2": {
+   "max_abs_diff": 0.0,
+   "tensors_differing": 0,
+   "rel_diff": 0.0
+  }
+ }
+}

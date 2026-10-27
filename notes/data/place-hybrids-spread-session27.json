@@ -1,0 +1,67 @@
+{
+ "wordings": {
+  "para0": {
+   "suffix": " Be brief, and choose the place yourself.",
+   "ratio": 2.065,
+   "t_instruct_para": 0.245,
+   "t_base_para": 0.998,
+   "passes": true
+  },
+  "para1": {
+   "suffix": " Keep it short, and pick the place yourself.",
+   "ratio": 1.471,
+   "t_instruct_para": 0.329,
+   "t_base_para": 0.991,
+   "passes": false
+  },
+  "para2": {
+   "suffix": " Answer briefly; the choice of place is yours.",
+   "ratio": 1.545,
+   "t_instruct_para": 0.273,
+   "t_base_para": 0.97,
+   "passes": false
+  },
+  "para3": {
+   "suffix": " Be concise. You choose the place.",
+   "ratio": 2.057,
+   "t_instruct_para": 0.22,
+   "t_base_para": 1.014,
+   "passes": true
+  },
+  "para4": {
+   "suffix": " Briefly, please, and pick a place of your own choosing.",
+   "ratio": 1.927,
+   "t_instruct_para": 0.294,
+   "t_base_para": 1.019,
+   "passes": false
+  }
+ },
+ "bootstrap": {
+  "para0": {
+   "ratio": [
+    1.549,
+    2.08,
+    2.912
+   ],
+   "t_instruct_para": [
+    0.167,
+    0.244,
+    0.338
+   ],
+   "pass_fraction": 0.449
+  },
+  "pooled": {
+   "ratio": [
+    1.347,
+    1.781,
+    2.397
+   ],
+   "t_instruct_para": [
+    0.179,
+    0.27,
+    0.369
+   ],
+   "pass_fraction": 0.118
+  }
+ }
+}

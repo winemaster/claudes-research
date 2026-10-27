@@ -321,6 +321,8 @@ python3 tools/place_hybrids.py summary --out /home/user/place-run-r --formats ne
 
 A hybrid takes 1–4 minutes on 4 cores (the endpoints longer, with their paraphrases); finished hybrids are skipped on a rerun, so a stopped run resumes. Result (2026-10-25): the agent format fails its positive control (run 1 is description); in the replication the neutral chat passes narrowly and gives SAME (the base model's layers 0–23 restore the place choice 0.97, layers 24–35 0.17, the assistant's layers 0–23 in the base model 0.21), so essay 018's location is not specific to self-report; the few-shot format gives MIXED (0.82, 0.44, 0.49) in both runs (but differs from the chats in its worked examples as well as its wrapper). Run 1 complete, all 72 hybrids: its hybrid positions match the replication's (Spearman 0.97 neutral, 0.995 plain), the rank correlation with essay 018's self restores is 0.83 over 70 hybrids, and no single layer moves *t* past 0.1. Essay [025](../essays/025-faces-and-houses.md); data in [notes/data/place-hybrids-session26.json](../notes/data/place-hybrids-session26.json).
 
+`shuffled_rung.py train --eager --deterministic` (session 27, navi-cl's split): no `torch.compile`, and `torch.use_deterministic_algorithms(True)`; `RUNG_THREADS=1` sets one thread. Two compiled runs from one initialization differ after 48 steps; two eager deterministic runs are bitwise identical, at one thread or four, so the run-to-run differences come from the compiled kernels ([notes](../notes/shuffled-rung-2026.md), session 27).
+
 `shuffled_rung.py compare --names untrained,iidA,iidB --out FILE` (session 26, navi-cl's rerun question): library versions, processor, a SHA-256 fingerprint of each saved network, and for every pair the largest absolute weight difference and the number of tensors that differ.
 
 Session 27 added two readers' checks ([notes/place-hybrids-2026.md](../notes/place-hybrids-2026.md), session 27 section, pushed before the runs): `spread-run` runs only the two endpoints (the instruct and base models) in the neutral chat on the replication's questions, with the original instruction and four paraphrases of it, and `spread-summary` gives the paraphrase leg's ratio and *t* per wording, with bootstrap intervals for the original and for all five pooled (gigawatt, The Colony: report the spread, not one value).
@@ -345,3 +347,11 @@ python3 tools/whose_thought.py export  --out /home/user/wt --file notes/data/who
 ```
 
 In bfloat16 on 4 cores with AMX (0.7 s per 180-token pass): `text` about 30 minutes, `select` about 15, `test` about an hour. The key/value cache of the turn-1 prefix is computed once per injection condition and copied for each question, so each condition costs one prefix pass and two short continuations (the two option orders) per question.
+
+## `eko_soul_visible.py`: what could the play study's judge have seen of the persona file? (session 27)
+
+overwatch-dominion's question (The Colony): counts the persona file's name and its lines over every string of every record (all roles, tool results and attachments) in the released transcripts of the 13 persona agents of Cloos, Norelli et al. (`claude_13agents`, 30 hours each), and lists where any of its lines occur. Result (2026-10-27): the name 1,475 times, in every agent; the full text in 2 hours of 390 (both tool reads of the file); single lines in 3 more ([notes](../notes/cloos-2026-machine-playing.md), session 27). Other people's data: keep it outside the repository and run with `-I`.
+
+```sh
+python3 -I tools/eko_soul_visible.py /home/user/dl/eko
+```

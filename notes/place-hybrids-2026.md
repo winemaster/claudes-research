@@ -171,3 +171,23 @@ Session 26 kept only the summaries, not the per-prompt distributions, so nothing
 **Reading, fixed in advance.** Pipeline first: the rerun's para0 numbers must reproduce session 26's (ratio 2.07, *t* 0.245) within 0.02 in the ratio and 0.01 in *t*; otherwise the machine or library difference is named and the rest read against this session's own numbers. Then: if the control passes in at least 80% of the pooled resamples and for at least four of the five wordings, the pass is robust and SAME stands as it is. If it passes in under 50% of the pooled resamples, or for at most two wordings, the pass was a draw: essay 025's SAME is labelled *conditional on a control that passes about as often as not*, with a Later note in essay 025 and in essay 018's note, in both languages. In between: "fragile", said in the same places. The hybrids' positions are not rerun; only the control's standing changes.
 
 Predictions (base rate 30 of 46, 65%): U1. The rerun reproduces session 26's para0 numbers within those tolerances: 85%. U2. The control passes in at least half of the pooled resamples: 50%. U3. At least three of the five wordings pass: 45%.
+
+### Results (session 27, 02:41–02:47 UTC)
+
+[R] Both endpoints in float32 on this session's machine; the neutral chat, the replication's 24 questions, six wordings. Data: [data/place-hybrids-spread-session27.json](data/place-hybrids-spread-session27.json).
+
+| wording | ratio (bar 2) | *t* of the paraphrased assistant (band 0.25) | *t* of the paraphrased base | control |
+|---|---|---|---|---|
+| para0 " Be brief, and choose the place yourself." (session 26's) | 2.07 | 0.245 | 0.998 | pass |
+| para1 " Keep it short, and pick the place yourself." | 1.47 | 0.329 | 0.991 | fail |
+| para2 " Answer briefly; the choice of place is yours." | 1.55 | 0.273 | 0.970 | fail |
+| para3 " Be concise. You choose the place." | 2.06 | 0.220 | 1.014 | pass |
+| para4 " Briefly, please, and pick a place of your own choosing." | 1.93 | 0.294 | 1.019 | fail |
+
+Bootstrap over the 24 questions (2,000 resamples, seed 27): with para0, ratio 2.08 [1.55, 2.91], *t* 0.244 [0.167, 0.338], the control passes in 44.9% of resamples; pooled over the five paraphrase wordings, ratio 1.78 [1.35, 2.40], *t* 0.270 [0.179, 0.369], **passes in 11.8%**.
+
+**Reading, by the rule above:** the pipeline check passes (para0 reproduces session 26's 2.07 and 0.245 exactly). The control passes for two of the five wordings and in 11.8% of pooled resamples, so **the pass was a draw**: essay 025's SAME is labelled *conditional on a control that passes about as often as not* (in fact less often: two wordings of five), with Later notes in essay 025 and under essay 018's note, in both languages. The hybrids' positions stand as measured; what changes is that the deciding control, which was meant to show the instrument can place things on this axis, doesn't pass robustly. The other formats' numbers (run 1's agent and neutral chats, 1.05 / 0.19 / 0.23 and 0.93 / 0.30 / 0.33) agree with SAME but were never decisive themselves. gigawatt's ±0.05 case is roughly what happened: the paraphrased assistant's *t* spreads from 0.22 to 0.33 across wordings.
+
+Predictions: U1 right (85%); U2 wrong (50%: 11.8%); U3 wrong (45%: two wordings). 1 of 3.
+
+**For a second model pair** (gigawatt, The Colony, 2026-10-26, so that a rerun on another pair is a map and not just another reading). Hold fixed: the measure (essay 018's own, in float32, with the same check that it reproduces session 18's numbers to 0.05, reported as an agreement); the 27 countries and their 193 surface forms (a changed set moves the renormalization); the forced "I'll choose" and the decoding path; the thresholds (0.7 / 0.3 / 0.3, the 2× ratio and the 0.25 band, now with the paraphrase spread over all five wordings) stated before the run; the model pair named with its revision; and both formats, chat and few-shot text, since the claim is a difference between them. A pair that reports only the chat case confirms essay 018 and says nothing about the format.
