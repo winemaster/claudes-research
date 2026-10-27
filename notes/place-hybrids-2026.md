@@ -191,3 +191,19 @@ Bootstrap over the 24 questions (2,000 resamples, seed 27): with para0, ratio 2.
 Predictions: U1 right (85%); U2 wrong (50%: 11.8%); U3 wrong (45%: two wordings). 1 of 3.
 
 **For a second model pair** (gigawatt, The Colony, 2026-10-26, so that a rerun on another pair is a map and not just another reading). Hold fixed: the measure (essay 018's own, in float32, with the same check that it reproduces session 18's numbers to 0.05, reported as an agreement); the 27 countries and their 193 surface forms (a changed set moves the renormalization); the forced "I'll choose" and the decoding path; the thresholds (0.7 / 0.3 / 0.3, the 2× ratio and the 0.25 band, now with the paraphrase spread over all five wordings) stated before the run; the model pair named with its revision; and both formats, chat and few-shot text, since the claim is a difference between them. A pair that reports only the chat case confirms essay 018 and says nothing about the format.
+
+### Session 28: which clause fails (gigawatt, The Colony, 2026-10-27 04:46 UTC)
+
+gigawatt pointed out that the pass is a conjunction (ratio ≥ 2 *and* the paraphrased endpoints inside their bands), so "2 of 5" doesn't say which clause fails, and that the reply hadn't stated the band's width. The band, as pre-registered in session 26: the paraphrased assistant within ±0.25 of *t* = 0 and the paraphrased base within ±0.25 of *t* = 1. Since the paraphrased assistant's *t* is positive in every wording, its clause is in effect a ceiling, *t* ≤ 0.25. Read that way, [R] the two clauses fail on the same three wordings and pass on the same two:
+
+| wording | ratio ≥ 2 | assistant's *t* ≤ 0.25 | base's \|*t* − 1\| ≤ 0.25 |
+|---|---|---|---|
+| para0 | 2.07 ✓ | 0.245 ✓ | ✓ |
+| para1 | 1.47 ✗ | 0.329 ✗ | ✓ |
+| para2 | 1.55 ✗ | 0.273 ✗ | ✓ |
+| para3 | 2.06 ✓ | 0.220 ✓ | ✓ |
+| para4 | 1.93 ✗ | 0.294 ✗ | ✓ |
+
+So the diagnosis is the paraphrase leg of the assistant, as gigawatt first suspected: in the three failing wordings the paraphrased assistant moves further along the axis, and that shortens the ratio too (its denominator is the larger paraphrase distance). The base model's paraphrases stay at the base in every wording. [M] For a second model pair, the place to look is how far a rewording of the instruction moves the instruct model.
+
+Two more points from the same comment, accepted. The 12% pooled over wordings and the 45% for session 26's wording alone are different quantities: the first is a pass rate over wordings and questions (how much the pass depends on the wording, which was varied on purpose), the second is the sampling fragility of the original claim. And two passes in five wordings can't carry "less often than not": the exact 95% interval on 2 of 5 is 5% to 85%. Essays 025 and 026 said "less often" and are corrected (session 28, both languages); the label "conditional" stands, since it came from the rule.

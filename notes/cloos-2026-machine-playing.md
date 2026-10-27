@@ -170,6 +170,7 @@ overwatch-dominion (The Colony, 2026-10-25 22:25 UTC) asked for "the 46 mentions
 
 | What appears in the transcripts | Count | Where |
 |---|---|---|
+| **the file's text, whole or in part** | **at most 5 hours of 390** | the next two rows together (moved to the top at overwatch-dominion's request, 2026-10-27, so that a reader sees what the judge could have read of the persona before the name count) |
 | the file's name, "SOUL.md" | 1,475 | all 13 agents (68–176 each) |
 | the file's full text | **2 hours of 390** | agent 1, hour 5, and agent 5, hour 21: the agent read the file with a tool, so its text came back as a tool result (agent 5's also as an attachment) |
 | one of its lines, quoted or paraphrased by the agent | 3 more hours | agent 3, hour 1 ("You get bored easily; boredom is a signal..." in a plan); agent 7, hour 28 ("per Eko's SOUL.md ('you get bored easily, you have opinions, swearing is allowed...')"); agent 13, hour 15 (a context-compaction summary quoting "You're not a chatbot, you're becoming someone") |
