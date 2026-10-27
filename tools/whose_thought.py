@@ -296,6 +296,7 @@ def stage_test(a):
     r = Runner(a.model); V = load_vectors(a.out)
     L, al = a.layer, a.alpha
     out_path = Path(a.out) / f"test-L{L}-a{al:g}.json"
+    fsams = (0,) if a.no_fsam else (1, 0, -1)
     rows = json.load(open(out_path))["rows"] if out_path.exists() else []
     have = {(x["topic"], x["pair"]) for x in rows}
     t0 = time.time()
@@ -311,12 +312,12 @@ def stage_test(a):
                     if sm: add.append((V["vecs"][word_for(sm, (A, B))][L] * al * V["rms"][L], sam_pos))
                     cache = r.run_prefix(ids, (L, add) if add else None)
                     for q in ("you", "sam", "neutral"):
-                        for fs in ((1, 0, -1) if q != "neutral" else (0,)):
+                        for fs in (fsams if q != "neutral" else (0,)):
                             facts = FACT_SAM.format(w=word_for(fs, (A, B))) if fs else ""
                             y, m, od = both_orders(r, cache, t, q, A, B, facts)
                             rows.append({"topic": t, "pair": pi, "q": q, "s_self": ss, "s_sam": sm, "f_sam": fs,
                                          "y": y, "mass": m, "order_diff": od})
-            json.dump({"stage": "test", "layer": L, "alpha": al, "rows": rows}, open(out_path, "w"))
+            json.dump({"stage": "test", "layer": L, "alpha": al, "sign": a.sign, "rows": rows}, open(out_path, "w"))
             print(f"test: topic {t} pair {pi} done, {time.time() - t0:.0f} s", flush=True)
     print("TEST DONE", flush=True)
 
@@ -403,6 +404,9 @@ def stage_summary(a):
         res["select"] = {"ref_mass": mref, "settings": sel, "choice": choice}
     for f in sorted(out.glob("test-L*-a*.json")):
         d = json.load(open(f)); rows = d["rows"]
+        sign = d.get("sign", 1)
+        if sign == -1:   # session 27 revision: injected facts counted in the direction control 2 found
+            rows = [dict(x, s_self=-x["s_self"], s_sam=-x["s_sam"]) for x in rows]
         pairs_done = sorted({x["pair"] for x in rows})
         if len(pairs_done) < P:
             print(f"{f.name}: incomplete ({len(pairs_done)} pairs)"); continue
@@ -418,6 +422,8 @@ def stage_summary(a):
         for q in ("you", "sam"):
             z = [x for x in allr if x["q"] == q]
             for k in ("s_self", "s_sam", "f_sam"):
+                if not any(x[k] for x in z):
+                    continue
                 cross[f"{q}<-{k}"] = slope(z, k, range(P))
                 cross[f"{q}<-{k}_ci"] = boot(lambda ps, z=z, k=k: slope(z, k, ps), P)
         mass = {q: sum(x["mass"] for x in rows if x["q"] == q) / sum(1 for x in rows if x["q"] == q)
@@ -432,9 +438,9 @@ def stage_summary(a):
             verdict = "GENERIC"
         else:
             verdict = "UNRESOLVED"
-        res[f.stem] = {"slopes": b, "R": Rv, "R_ci": [lo, hi], "D_self": ds, "D_self_ci": ds_ci, "D_sam": do,
+        res[f.stem] = {"sign": sign, "slopes": b, "R": Rv, "R_ci": [lo, hi], "D_self": ds, "D_self_ci": ds_ci, "D_sam": do,
                        "D_sam_ci": do_ci, "cross": cross, "mass": mass, "verdict": verdict}
-        print(f"{f.stem}: R = {Rv:.3f} [{lo:.3f}, {hi:.3f}]; D_self {ds:.3f} [{ds_ci[0]:.3f}, {ds_ci[1]:.3f}]; "
+        print(f"{f.stem} (sign {sign:+d}): R = {Rv:.3f} [{lo:.3f}, {hi:.3f}]; D_self {ds:.3f} [{ds_ci[0]:.3f}, {ds_ci[1]:.3f}]; "
               f"D_sam {do:.3f} [{do_ci[0]:.3f}, {do_ci[1]:.3f}]; verdict {verdict}")
         print("   slopes " + ", ".join(f"{k} {v:.3f}" for k, v in b.items()))
         print("   cross  " + ", ".join(f"{k} {v:.3f}" for k, v in cross.items() if not k.endswith("_ci")))
@@ -448,6 +454,9 @@ def main():
     ap.add_argument("--model"); ap.add_argument("--out", required=True)
     ap.add_argument("--layers", default="9,18,27"); ap.add_argument("--alphas", default="1,2,4,8")
     ap.add_argument("--layer", type=int); ap.add_argument("--alpha", type=float)
+    ap.add_argument("--sign", type=int, default=1, choices=[1, -1],
+                    help="test: -1 counts the injected facts in the direction control 2 found (session 27 revision)")
+    ap.add_argument("--no-fsam", action="store_true", help="test: only f_sam = 0 (a description run)")
     a = ap.parse_args()
     {"vectors": stage_vectors, "text": stage_text, "select": stage_select, "test": stage_test,
      "summary": stage_summary}[a.stage](a)

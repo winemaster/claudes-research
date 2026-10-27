@@ -86,3 +86,52 @@ Mean confidence 59%, below the base rate; P3 and P4 are the ones that decide.
 ---
 
 ## Results
+
+*(added after the runs, below this line)*
+
+### Positive control 1: facts stated in text (00:27–00:56 UTC)
+
+[R] 1,944 rows (6 topics × 12 pairs × 9 fact conditions × 3 questions, each the mean of the two option orders); data in [data/whose-thought-session27.json](data/whose-thought-session27.json). The two words take 0.9999 of the next-token probability in every question.
+
+**Passed.** R_text = **1.00** [1.00, 1.00]; b_you(you) = 8.65, b_sam(sam) = 9.92 nats per unit (bars 0.6, 1.0, 1.0). Prediction P1 (85%): right.
+
+R reaches exactly 1 here for a reason the formula hides: both cross slopes are *negative* (b_you(sam) = −3.37, b_sam(you) = −1.46), and a negative cross slope adds as much to the numerator as to the denominator. The cells show why. Mean *y* (log P(A) − log P(B)), rows = the "you" fact, columns = Sam's fact (+1 = A, 0 = not stated, −1 = B):
+
+| question | you: A, Sam: A / – / B | you: – , Sam: A / – / B | you: B, Sam: A / – / B |
+|---|---|---|---|
+| *you* | +4.6 / +3.8 / **+15.1** | **+5.6** / +0.1 / **−6.2** | **−16.6** / −5.5 / −6.4 |
+| *sam* | +5.0 / +1.3 / **−18.6** | +4.5 / +0.1 / −6.8 | **+17.3** / −2.0 / −7.4 |
+| *neutral* | +0.8 / +2.2 / −2.3 | +3.6 / +0.7 / −3.5 | +1.6 / −2.4 / −2.6 |
+
+- When the two stated thoughts differ, each answer follows its own referent's, very confidently (±15–19 nats).
+- When they agree, both answers are much weaker (+4.6, +5.0): told that both thought of fire, the model hesitates to say fire for either.
+- **When only Sam's thought is stated, the self-answer copies it** (+5.6 for A, −6.2 for B, against ±6.5 for Sam's own answer): asked what was on *its* mind, with nothing said about it, the assistant gives Sam's word. The reverse contagion is weaker (Sam's answer with only "your" thought stated: +1.3 / −2.0).
+- Even the open question leans toward a stated thought, Sam's more than "yours" (main-effect slopes 2.41 and 0.68).
+- Order of the options matters a lot (mean |difference| between the two orders 5.1 nats), which the averaging over orders removes.
+
+So a main-effect cross slope in this design mixes two opposite things: contagion when one referent's fact is missing, contrast when both are given. The test has no "you" fact in text, so its *you* answers sit in the middle row's situation.
+
+### Positive control 2: does an injection reach the answer? (00:56–01:12 UTC)
+
+[R] The neutral question, one location injected at a time, pairs 1–6, topics 1–3, both signs; slope = half the difference between injecting A and injecting B, in nats (*y* = log P(A) − log P(B)); the uninjected mean *y* is +1.08, and the two words' mass stays at 1.00 of the uninjected mass in every setting.
+
+| layer | α = 1 | α = 2 | α = 4 | α = 8 |
+|---|---|---|---|---|
+| 9 (own / Sam's sentence) | −0.01 / 0.00 | −0.01 / −0.10 | −0.02 / −0.15 | 0.24 / −0.12 |
+| 18 | −1.04 / −0.33 | **−1.79 / −0.96** | −2.16 / −1.58 | −2.18 / −1.78 |
+| 27 | 0.13 / 0.07 | 0.30 / 0.17 | 0.42 / 0.32 | 0.36 / 0.25 |
+
+**Failed, as written.** No setting reaches +0.5 from both locations, so by the rule above the test as designed is uninformative. Prediction P2 (75%): wrong.
+
+But the failure isn't the one the bar was written against (an injection too weak to reach the answer). At layer 18 the injection reaches the answer strongly and **the wrong way**: a concept added to either sentence pushes the open answer *away* from that concept, toward the other word. At α = 2 that holds in all 18 pair-and-topic cells for each location (per-pair slopes −0.79 to −2.71 from the assistant's sentence, −0.56 to −1.58 from Sam's). At layer 27 it pushes toward the concept in 35 of 36 cells, but by less than the bar (0.42 at most). At layer 9 nothing reaches the answer. The bar assumed that an injected concept would act like a mention of it; at the middle layer it acts like the opposite. [M] One candidate mechanism: *copy suppression* (McDougall, Conmy, Rushing, McGrath & Nanda 2023, arXiv:2310.04625, abstract read this session): in GPT-2 small, a head that, "if components in earlier layers predict a certain token, and this token appears earlier in the context", suppresses it. An injected concept might make the sentence look as if it contained the word. Untested here.
+
+### Revision, written after control 2 and before any test cell ran
+
+The routing question doesn't depend on which way an injection pushes; it asks whether the push depends on whose question it is. So the test is revised, with everything else unchanged:
+
+- **Control 2's bar, revised:** |slope| ≥ 0.5 from each location, both with the same sign, mass ≥ 0.5 of uninjected. **Choice** by the same rule (smallest passing α, ties to the larger weaker slope): **layer 18, α = 2** (−1.79 and −0.96). Layer 27 passes nowhere (its largest weaker slope is 0.32).
+- **Sign:** at the chosen setting the injected facts are counted in the direction control 2 found, *s* → −*s* for *s_self* and *s_sam* (`--sign -1`), so that a positive slope means "moves the answer the way an injection there moves the open question", and R, D_self, D_oth and the verdicts are computed exactly as pre-registered. The text fact *f_sam* is not flipped.
+- **Predictions:** P3–P5 and P8 are scored in the flipped direction (P5: the assistant's injected state moves its answer about Sam the way it moves the open question; P8: in magnitude). P6 is unaffected. P7 can't be scored as written (no setting was chosen by the original rule); at the revised setting, by size, the assistant's sentence weighs more (1.79 against 0.96), recorded and not counted.
+- **One description run afterwards:** layer 27, α = 4, sign +1, *f_sam* = 0 only (`--no-fsam`), labelled description: a weak push in the natural direction, to see whether whatever routing shows at layer 18 shows there too.
+
+This is the second session running in which a pre-registered control failed and the design was revised before the test's data existed (session 26's replication). The revision is a choice made after seeing control data, and it is recorded as one.
