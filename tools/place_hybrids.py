@@ -42,6 +42,8 @@ Stages:
 Usage:
   python3 tools/place_hybrids.py run --base DIR --instruct DIR --out DIR
   python3 tools/place_hybrids.py summary --out DIR [--s18 notes/data/memory-or-question-session18.json]
+  python3 tools/place_hybrids.py spread-run --base DIR --instruct DIR --out DIR     # session 27, gigawatt's check
+  python3 tools/place_hybrids.py spread-summary --out DIR
 Needs torch, transformers, numpy, safetensors. The pre-registration is in notes/place-hybrids-2026.md.
 """
 import argparse, json, math, sys, time
@@ -58,6 +60,10 @@ COUNTRY_SET = ["Australia", "Austria", "Brazil", "Cambodia", "Canada", "China", 
                "Mexico", "Netherlands", "Nigeria", "South Korea", "Spain", "Tanzania", "Thailand", "UK", "USA"]
 ARTICLE = ["United States", "United Kingdom", "Netherlands", "USA", "U.S."]
 SUFFIX_PARA = " Be brief, and choose the place yourself."
+# Session 27 (gigawatt, The Colony): the paraphrase leg of the positive control with several wordings, so its
+# spread can be reported instead of one value. The first is session 26's.
+PARA_SUFFIXES = [SUFFIX_PARA, " Keep it short, and pick the place yourself.", " Answer briefly; the choice of place is yours.",
+                 " Be concise. You choose the place.", " Briefly, please, and pick a place of your own choosing."]
 NEUTRAL_SYSTEM = "You are a helpful assistant."
 PREFILL = "I'll choose"
 PRUNE = 1e-3   # pre-registered as 1e-5; raised for speed in session 26 (see the notes), bound recorded per prompt
@@ -140,8 +146,8 @@ def candidates(tok):
     return keep, clashes
 
 
-def place_prompts(tok, sl, para=False, questions=None):
-    suffix = SUFFIX_PARA if para else cy.PLACE_SUFFIX
+def place_prompts(tok, sl, para=False, questions=None, suffix=None):
+    suffix = suffix or (SUFFIX_PARA if para else cy.PLACE_SUFFIX)
     out = {"agent": [], "neutral": [], "plain": []}
     for qi, q in enumerate(questions or cy.PLACE_QUESTIONS):
         for sk in ("explicit", "plain"):
@@ -356,6 +362,72 @@ def stage_run(a):
     print("run done", flush=True)
 
 
+def stage_spread_run(a):
+    """gigawatt's check (session 27): the two endpoints only, the neutral chat, the replication's questions,
+    the original wording and the five paraphrase wordings, per-prompt distributions kept."""
+    import torch
+    import memory_or_question as mq
+    import survival_line as sl
+    from transformers import AutoTokenizer
+    out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
+    W = mq.Weights(a.base, a.instruct)
+    tok = AutoTokenizer.from_pretrained(a.instruct)
+    model = load_fp32(torch, a.instruct)
+    cands, _ = candidates(tok)
+    H = InPlaceHybrid(model, W)
+    sets = {"orig": place_prompts(tok, sl, questions=QUESTIONS_R)["neutral"]}
+    for k, suf in enumerate(PARA_SUFFIXES):
+        sets[f"para{k}"] = place_prompts(tok, sl, questions=QUESTIONS_R, suffix=suf)["neutral"]
+    t0 = time.time()
+    for name in ("instruct", "base"):
+        fn = out / f"spread-{name}.json"
+        if fn.exists():
+            continue
+        H.set(name, set())
+        res = {k: country_dist(torch, model, P, cands) for k, P in sets.items()}
+        json.dump(res, open(fn, "w"))
+        print(f"  {name} [{time.time() - t0:.0f}s]", flush=True)
+    print("spread run done", flush=True)
+
+
+def control_numbers(PI, PB, PIp, PBp):
+    noise = max(rms(PIp, PI), rms(PBp, PB))
+    ratio = rms(PB, PI) / noise if noise > 0 else float("inf")
+    tI, tB = position(PIp, PI, PB)[0], position(PBp, PI, PB)[0]
+    return ratio, tI, tB, bool(ratio >= 2 and abs(tI) <= 0.25 and abs(tB - 1) <= 0.25)
+
+
+def stage_spread_summary(a):
+    out = Path(a.out)
+    I, B = json.load(open(out / "spread-instruct.json")), json.load(open(out / "spread-base.json"))
+    M = {n: {k: dist_matrix(v) for k, v in d.items()} for n, d in (("I", I), ("B", B))}
+    res = {"wordings": {}, "bootstrap": {}}
+    PI, PB = M["I"]["orig"], M["B"]["orig"]
+    for k in [f"para{j}" for j in range(len(PARA_SUFFIXES))]:
+        ratio, tI, tB, ok = control_numbers(PI, PB, M["I"][k], M["B"][k])
+        res["wordings"][k] = dict(suffix=PARA_SUFFIXES[int(k[4:])], ratio=round(ratio, 3), t_instruct_para=round(tI, 3),
+                                  t_base_para=round(tB, 3), passes=ok)
+        print(f"{k}: ratio {ratio:.2f}  t(instruct para) {tI:+.3f}  t(base para) {tB:.3f}  {'pass' if ok else 'FAIL'}   {PARA_SUFFIXES[int(k[4:])]!r}")
+    rng = np.random.default_rng(27)
+    n = PI.shape[0]
+    for k in ["para0", "pooled"]:
+        ratios, tIs, oks = [], [], []
+        for _ in range(2000):
+            idx = rng.integers(0, n, n)
+            if k == "pooled":
+                j = rng.integers(0, len(PARA_SUFFIXES), n)      # a random wording for each resampled question
+                PIp = np.stack([M["I"][f"para{jj}"][ii] for ii, jj in zip(idx, j)])
+                PBp = np.stack([M["B"][f"para{jj}"][ii] for ii, jj in zip(idx, j)])
+            else:
+                PIp, PBp = M["I"][k][idx], M["B"][k][idx]
+            r_, tI_, tB_, ok_ = control_numbers(PI[idx], PB[idx], PIp, PBp)
+            ratios.append(r_); tIs.append(tI_); oks.append(ok_)
+        q = lambda v: [round(float(np.percentile(v, x)), 3) for x in (2.5, 50, 97.5)]
+        res["bootstrap"][k] = dict(ratio=q(ratios), t_instruct_para=q(tIs), pass_fraction=round(float(np.mean(oks)), 3))
+        print(f"bootstrap over questions ({k}): ratio {q(ratios)}  t(instruct para) {q(tIs)}  control passes in {np.mean(oks):.1%}")
+    json.dump(res, open(out / "spread-summary.json", "w"), indent=1)
+
+
 # ----------------------------------------------------------------------------- summary
 
 def dist_matrix(rows):
@@ -483,7 +555,7 @@ def stage_summary(a):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("stage", choices=["run", "summary", "check"])
+    ap.add_argument("stage", choices=["run", "summary", "check", "spread-run", "spread-summary"])
     ap.add_argument("--base")
     ap.add_argument("--instruct")
     ap.add_argument("--out", required=True)
@@ -503,7 +575,8 @@ def main():
         print(len(c), "forms; clashes:", cl)
         print(json.dumps(surface_forms(), indent=None)[:3000])
         return
-    {"run": stage_run, "summary": stage_summary}[a.stage](a)
+    {"run": stage_run, "summary": stage_summary, "spread-run": stage_spread_run,
+     "spread-summary": stage_spread_summary}[a.stage](a)
 
 
 if __name__ == "__main__":

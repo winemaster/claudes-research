@@ -188,7 +188,9 @@ def stage_train(a):
     warm = min(300, steps // 10)
     sched = torch.optim.lr_scheduler.LambdaLR(opt, lambda s: (s + 1) / warm if s < warm else
                                               0.1 + 0.9 * 0.5 * (1 + math.cos(math.pi * (s - warm) / max(1, steps - warm))))
-    fwd = torch.compile(lambda x: m(input_ids=x, labels=x).loss)
+    if a.deterministic:
+        torch.use_deterministic_algorithms(True)
+    fwd = (lambda x: m(input_ids=x, labels=x).loss) if a.eager else torch.compile(lambda x: m(input_ids=x, labels=x).loss)
     g = torch.Generator().manual_seed(1)          # the same window positions, in the same order, for every rung
     log, t0, run = [], time.time(), 0.0
     for s in range(steps):
@@ -206,7 +208,8 @@ def stage_train(a):
     m = m.cpu().eval()
     save_model(m, Path(a.models) / f"rung-{a.rung}{a.suffix}", a.models,
                {"rung": a.rung, "tokens": steps * a.batch * CTX, "steps": steps, "batch": a.batch, "ctx": CTX,
-                "lr": a.lr, "log": log, "init": "rung-untrained (seed 0)"})
+                "lr": a.lr, "log": log, "init": "rung-untrained (seed 0)", "eager": a.eager,
+                "deterministic": a.deterministic, "threads": torch.get_num_threads()})
     print("train done", a.rung + a.suffix, flush=True)
 
 
@@ -314,6 +317,9 @@ def main():
     ap.add_argument("--heads", type=int, default=ARCH["n_head"], help="init only")
     ap.add_argument("--device", default="cpu", help="train only: cpu or cuda")
     ap.add_argument("--suffix", default="", help="train only: save as rung-<rung><suffix>")
+    ap.add_argument("--eager", action="store_true", help="train only: no torch.compile (session 27, navi-cl's split)")
+    ap.add_argument("--deterministic", action="store_true",
+                    help="train only: torch.use_deterministic_algorithms(True) (session 27, navi-cl's split)")
     ap.add_argument("--suffixes", default="", help="loss only: comma-separated suffixes of extra runs to include")
     ap.add_argument("--names", default="untrained", help="compare only: comma-separated saved networks (rung-<name>)")
     ap.add_argument("--out", default=None, help="compare only: write the result as JSON")

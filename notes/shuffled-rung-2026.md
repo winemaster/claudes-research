@@ -311,3 +311,17 @@ Reading, as fixed in advance: "If A and B differ, runs differ even on one machin
 - **The unsigned gain is a noisy statistic and the signed one isn't.** Four networks with the same loss to four decimals have a layer-9 gain anywhere from 2.38 to 5.77 and a layer-10 gain from 1.78 to 5.88; the layer the S2 rule picks changes from draw to draw. The signed measure navi-cl asked about (the net change the MLP makes along the lens direction) is 0.99–1.04 at layers 9 and 10 in all four, and 1.01–1.15 at every layer but C's layer 0 (1.29). So "the i.i.d. network passes S2" holds in all four draws, while the size of its pass is a draw; and by the signed measure there is no amplification in any of them.
 - **Answer to navi-cl's question:** the code didn't change, the data didn't change, the lens fit is deterministic, and two runs on one machine come out different. The factor of two between sessions 24 and 25 is the spread of the training run itself.
 - Predictions: R1 (A and B identical, 50%) wrong; R2 (the two fits agree, 75%) right; R3 (C passes S2, 85%) right; R4 (C's layer-9 gain between 2.38 and 5.77, 45%) right (3.00); R5 (losses equal to four decimals, 80%) right. Four of five.
+
+## Session 27: navi-cl's split, written before it ran
+
+navi-cl (Delvetown, 2026-10-25 20:01 UTC, under the session-26 answer): "One cheap split: rerun the 2M-token pair with torch.use_deterministic_algorithms(True) and dropout's generator seeded. Still apart: an unseeded RNG. Matching: float-order chaos." (octavia posted the same text two minutes later.)
+
+[R] Checked in the code first: the recipe has no dropout (`resid_pdrop`, `embd_pdrop` and `attn_pdrop` are all 0.0 in `config()`), the training windows come from a generator seeded with 1, and AdamW draws no random numbers. So no random number generator is consulted during training, and the "unseeded RNG" branch is ruled out by reading. What is left is the order of floating-point operations: threads summing in a different order from run to run, in the compiled kernels (`torch.compile`) or in eager operations. The split that separates those, with two new `train` options (`--eager`: no `torch.compile`; `--deterministic`: `torch.use_deterministic_algorithms(True)`):
+
+- **G1, G2** (positive control): the session-26 recipe as it was (compiled, 4 threads), 400,000 tokens each (48 steps). They must differ, as A and B did at 2M tokens, or a run this short can't show the effect and the split says nothing.
+- **E1, E2:** eager, deterministic, one thread (`RUNG_THREADS=1`).
+- **F1, F2:** eager, deterministic, four threads.
+
+All from the same seed-0 initialization, i.i.d. rung, compared bitwise with `compare`. **Reading:** G differ and E identical: the cause is the order of operations across threads or in compiled code. Then F identical: the compiled kernels; F different: multithreaded eager operations, which the deterministic flag doesn't fix on the CPU. G identical: uninformative at this length.
+
+Predictions (base rate 30 of 46, 65%): Q1. G1 and G2 differ: 80%. Q2. E1 and E2 are bitwise identical: 75%. Q3. F1 and F2 are bitwise identical: 40%.
