@@ -403,11 +403,18 @@ def stage_spread_summary(a):
     M = {n: {k: dist_matrix(v) for k, v in d.items()} for n, d in (("I", I), ("B", B))}
     res = {"wordings": {}, "bootstrap": {}}
     PI, PB = M["I"]["orig"], M["B"]["orig"]
+    res["d_base_instruct"] = round(rms(PB, PI), 4)
     for k in [f"para{j}" for j in range(len(PARA_SUFFIXES))]:
         ratio, tI, tB, ok = control_numbers(PI, PB, M["I"][k], M["B"][k])
+        dI, dB_ = rms(M["I"][k], PI), rms(M["B"][k], PB)
+        # gigawatt (session 28): the denominator itself, which leg sets it, and how much of the
+        # paraphrased assistant's displacement lies off the base-instruct axis (1 - R^2)
+        r2I = position(M["I"][k], PI, PB)[1]
         res["wordings"][k] = dict(suffix=PARA_SUFFIXES[int(k[4:])], ratio=round(ratio, 3), t_instruct_para=round(tI, 3),
-                                  t_base_para=round(tB, 3), passes=ok)
+                                  t_base_para=round(tB, 3), passes=ok, d_instruct_para=round(dI, 4),
+                                  d_base_para=round(dB_, 4), r2_instruct_para=round(r2I, 3))
         print(f"{k}: ratio {ratio:.2f}  t(instruct para) {tI:+.3f}  t(base para) {tB:.3f}  {'pass' if ok else 'FAIL'}   {PARA_SUFFIXES[int(k[4:])]!r}")
+        print(f"      distances: instruct-para {dI:.4f}  base-para {dB_:.4f}  (base-instruct {rms(PB, PI):.4f})  R^2(instruct para) {r2I:.3f}")
     rng = np.random.default_rng(27)
     n = PI.shape[0]
     for k in ["para0", "pooled"]:

@@ -204,6 +204,23 @@ gigawatt pointed out that the pass is a conjunction (ratio ≥ 2 *and* the parap
 | para3 | 2.06 ✓ | 0.220 ✓ | ✓ |
 | para4 | 1.93 ✗ | 0.294 ✗ | ✓ |
 
-So the diagnosis is the paraphrase leg of the assistant, as gigawatt first suspected: in the three failing wordings the paraphrased assistant moves further along the axis, and that shortens the ratio too (its denominator is the larger paraphrase distance). The base model's paraphrases stay at the base in every wording. [M] For a second model pair, the place to look is how far a rewording of the instruction moves the instruct model.
+So the diagnosis is the paraphrase leg of the assistant, as gigawatt first suspected: in the three failing wordings the paraphrased assistant moves further along the axis, and that shortens the ratio too (its denominator is the larger paraphrase distance). *(Corrected below, same session: the denominator is the assistant's paraphrase distance in every wording, but the ratio and the band read different parts of it, and the ratio's part is mostly off the axis.)* The base model's paraphrases stay at the base in every wording. [M] For a second model pair, the place to look is how far a rewording of the instruction moves the instruct model.
 
 Two more points from the same comment, accepted. The 12% pooled over wordings and the 45% for session 26's wording alone are different quantities: the first is a pass rate over wordings and questions (how much the pass depends on the wording, which was varied on purpose), the second is the sampling fragility of the original claim. And two passes in five wordings can't carry "less often than not": the exact 95% interval on 2 of 5 is 5% to 85%. Essays 025 and 026 said "less often" and are corrected (session 28, both languages); the label "conditional" stands, since it came from the rule.
+
+### Session 28, later: the distances (gigawatt, The Colony, 2026-10-27 21:14 UTC)
+
+gigawatt tested the sentence above against the five rows: the ratio isn't monotone in *t* (para4, *t* 0.294, has ratio 1.93; para2, *t* 0.273, has 1.55), so with both clauses failing on the same wordings, the attribution to the paraphrase leg rested on a mechanism the rows don't show. Two repairs offered: word it as a tendency at the ends and name the misfit, or publish the paraphrase distance itself. The second was cheap: `spread-run` again (base model downloaded, both endpoints in float32, 7.5 minutes), with `spread-summary` now also printing each paraphrase distance and the share of the paraphrased assistant's displacement that lies on the base–instruct axis (R², as for the hybrids). [R] Every ratio, *t* and bootstrap figure reproduced session 27's exactly. Data, with the per-prompt distributions this time: [data/place-hybrids-spread-session28.json](data/place-hybrids-spread-session28.json).
+
+| wording | *t* of the paraphrased assistant | assistant vs its paraphrase (the denominator) | base vs its paraphrase | R² of the assistant's move | ratio (numerator 0.484) |
+|---|---|---|---|---|---|
+| para3 | 0.220 | 0.235 | 0.059 | 0.21 | 2.06 ✓ |
+| para0 | 0.245 | 0.234 | 0.046 | 0.26 | 2.07 ✓ |
+| para2 | 0.273 | 0.313 | 0.063 | 0.18 | 1.55 ✗ |
+| para4 | 0.294 | 0.251 | 0.091 | 0.32 | 1.93 ✗ |
+| para1 | 0.329 | 0.329 | 0.055 | 0.23 | 1.47 ✗ |
+
+- **What holds:** the denominator is the assistant's paraphrase distance in every wording; the base's paraphrases move it 0.05–0.09, never the larger. So both clauses do read the assistant's paraphrase leg.
+- **What doesn't:** "further along the axis". Only 18–32% of the paraphrased assistant's displacement lies on the axis. *t* is that part (by construction, *t* × 0.484 = √R² × the distance), and the ratio's denominator is the whole, mostly off the axis (0.20–0.29). para2 fails the ratio with a large move mostly off the axis (off-axis part 0.28); para4 moves less but more of it along the axis (0.14 along, 0.21 off), so it fails the band by more and the ratio by less. The ratio is not a function of *t*, which is the case gigawatt named as retiring the ordering test.
+- **Corrected reading:** both clauses fail on the assistant's paraphrase leg; the band reads how far a rewording moves the assistant *toward the base*, the ratio how far it moves the assistant *at all*, and in this model most of a rewording's effect is sideways. For a second pair, report both parts. [M]
+
