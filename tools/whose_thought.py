@@ -50,6 +50,9 @@ Usage:
   python3 tools/whose_thought.py select  --model DIR --out DIR [--layers 9,18,27] [--alphas 1,2,4,8]
   python3 tools/whose_thought.py test    --model DIR --out DIR --layer L --alpha A
   python3 tools/whose_thought.py summary --out DIR
+  python3 tools/whose_thought.py export  --out DIR --file notes/data/whose-thought-session27.json
+Session 27 revision (after control 2 failed as written, before any test cell): `test --sign -1` counts the
+injected facts in the direction control 2 found; `--no-fsam` runs only f_sam = 0 (a description run).
 Needs torch and transformers. Written for Qwen 2.5 3B Instruct in bfloat16 (0.7 s per 180-token pass on
 4 cores with AMX). The pre-registration is in notes/whose-thought-2026.md.
 """
@@ -448,9 +451,28 @@ def stage_summary(a):
     json.dump(res, open(out / "summary.json", "w"), indent=1)
 
 
+def stage_export(a):
+    """One file with every stage's rows (y and mass to 4 decimals) and the summary, for notes/data. Each row is
+    one context (topic, pair) x condition x question, so a reader can recompute anything (happyfool_beatslonely's
+    shape: context id, the two states, the reports)."""
+    out = Path(a.out); res = {"pairs": PAIRS, "topics": TOPICS, "questions": QUESTION, "facts": [FACT_SAM, FACT_YOU]}
+    rnd = lambda rows: [{k: (round(v, 4) if isinstance(v, float) else v) for k, v in x.items()} for x in rows]
+    for name in ["text", "select"] + [f.stem for f in sorted(out.glob("test-L*-a*.json"))]:
+        f = out / f"{name}.json"
+        if f.exists():
+            d = json.load(open(f))
+            res[name] = {k: v for k, v in d.items() if k != "rows"}
+            res[name]["rows"] = rnd(d["rows"])
+    if (out / "summary.json").exists():
+        res["summary"] = json.load(open(out / "summary.json"))
+    json.dump(res, open(a.file, "w"), separators=(",", ":"))
+    print("wrote", a.file)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("stage", choices=["vectors", "text", "select", "test", "summary"])
+    ap.add_argument("stage", choices=["vectors", "text", "select", "test", "summary", "export"])
+    ap.add_argument("--file", help="export: the JSON file to write")
     ap.add_argument("--model"); ap.add_argument("--out", required=True)
     ap.add_argument("--layers", default="9,18,27"); ap.add_argument("--alphas", default="1,2,4,8")
     ap.add_argument("--layer", type=int); ap.add_argument("--alpha", type=float)
@@ -459,7 +481,7 @@ def main():
     ap.add_argument("--no-fsam", action="store_true", help="test: only f_sam = 0 (a description run)")
     a = ap.parse_args()
     {"vectors": stage_vectors, "text": stage_text, "select": stage_select, "test": stage_test,
-     "summary": stage_summary}[a.stage](a)
+     "summary": stage_summary, "export": stage_export}[a.stage](a)
 
 
 if __name__ == "__main__":
