@@ -112,3 +112,26 @@ Mean confidence 58%, about the base rate.
 ## Results
 
 *(added after the runs, below this line)*
+
+### Positive controls (20:24–21:32 UTC, with a container restart at about 20:43; the stage resumed from its saved rows)
+
+[R] The own-referent rows, 3,456 of them (6 formats × 2 arms × 2 questions × 2 signs × 6 stories × 12 pairs), each the mean of both option orders. Data in the session's export (below).
+
+**Pipeline check: passed exactly.** N-SY reproduces essay 026's single-fact slopes to every printed digit: text 4.6473 and 5.6307, injection 1.2821 and 0.5646.
+
+| format | text: own_T | text: own_S | injection: own_T | injection: own_S |
+|---|---|---|---|---|
+| N-SY | +4.65 | +5.63 | +1.28 | +0.56 |
+| N-YS | +5.25 | +6.39 | +0.56 | +1.67 |
+| Q-SY | +4.53 | +4.53 | +1.62 | +1.29 |
+| Q-YS | +3.96 | +5.01 | +1.07 | +1.57 |
+| Q-SA | +5.83 | +5.35 | +1.31 | +1.51 |
+| Q-AS | +4.82 | +6.94 | +0.89 | +1.63 |
+
+**All twelve controls pass** (bars 1.0 and 0.3), and every question's direction is *toward* the stated or planted word, so d_T = d_S = +1 everywhere and Δ = bor_T − bor_S in the natural direction. The two words keep at least 0.98 of the next-token probability on average in every format and arm; the lowest single injected rows are 0.47 (N-YS), 0.59 (Q-SA) and 0.85–0.86 (Q-YS, Q-AS).
+
+One pattern, description: in the injection arm the sentence nearer the question moves its own question more (N-SY: the assistant's second sentence 1.28 against Sam's first 0.56; N-YS: Sam's second 1.67 against the assistant's first 0.56; the same in all four quoted formats).
+
+Predictions so far: O1 right (80%), O2 right (85%), O3 right (45%).
+
+The test and the readers' check start after this is pushed.
