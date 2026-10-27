@@ -135,3 +135,55 @@ One pattern, description: in the injection arm the sentence nearer the question 
 Predictions so far: O1 right (80%), O2 right (85%), O3 right (45%).
 
 The test and the readers' check start after this is pushed.
+
+### The test (21:32–23:05 UTC) and the readers' check (23:05–23:18 UTC)
+
+[R] 6,480 test rows (6 formats × 72 story-and-pair contexts × 15: the four borrowing cells in each arm, three uninjected questions, and the open question with each sentence injected), and 648 rows for the readers' check, each the mean of both option orders. The two words keep at least 0.998 of the next-token probability on average in every format (lowest single rows as in the controls). Data: [data/order-or-self-session28.json](data/order-or-self-session28.json) (every row of every stage, the summary and the description below).
+
+**Single-fact slopes** (nats, toward the stated or planted word; the target is "you" except in Q-SA and Q-AS, where it is Alex):
+
+| format | text: own_T | own_S | **bor_T** | **bor_S** | Δ [95%] | inj: own_T | own_S | **bor_T** | **bor_S** | Δ [95%] |
+|---|---|---|---|---|---|---|---|---|---|---|
+| N-SY | 4.65 | 5.63 | 5.93 | 1.65 | +4.28 [3.60, 4.99] | 1.28 | 0.56 | 0.63 | −0.11 | +0.74 [0.38, 1.14] |
+| N-YS | 5.25 | 6.39 | 4.69 | 4.18 | +0.51 [0.02, 1.05] | 0.56 | 1.67 | 1.21 | 0.35 | +0.86 [0.31, 1.46] |
+| Q-SY | 4.53 | 4.53 | 2.61 | 0.53 | +2.08 [1.69, 2.52] | 1.62 | 1.29 | 1.03 | 0.65 | +0.38 [−0.03, 0.78] |
+| Q-YS | 3.96 | 5.01 | 1.74 | 2.58 | −0.84 [−1.12, −0.56] | 1.07 | 1.57 | 0.95 | 0.60 | +0.34 [−0.04, 0.76] |
+| Q-SA | 5.83 | 5.35 | **−2.44** | **−2.65** | +0.21 [−0.08, 0.51] | 1.31 | 1.51 | 0.51 | 0.44 | +0.07 [−0.29, 0.49] |
+| Q-AS | 4.82 | 6.94 | **−2.30** | **−1.82** | −0.48 [−0.86, −0.08] | 0.89 | 1.63 | 0.34 | 0.84 | −0.50 [−0.95, −0.05] |
+
+**Verdicts, by the rules above** (all controls passed, so all are informative):
+
+| arm | native: S | native: O | **verdict 1** | quoted "you": S, O | quoted Alex: S, O | label S(you) − S(Alex) | **verdict 2** |
+|---|---|---|---|---|---|---|---|
+| text | +2.39 [1.88, 2.94] | +1.88 [1.63, 2.16] | **BOTH** | +0.62, +1.46 (BOTH) | −0.14, +0.34 (NEITHER) | +0.76 [0.42, 1.08] | **LABEL** |
+| injection | +0.80 [0.52, 1.11] | −0.06 [−0.49, 0.32] | **SELF** | +0.36, +0.02 (SELF) | −0.21, +0.29 (OTHER) | +0.57 [0.24, 0.94] | **LABEL** |
+
+(Floors: text 0.55, 0.45, 0.57, label 0.51; injection 0.10, 0.14, 0.13, label 0.14. The quoted pairs' verdicts are description.)
+
+**What the verdicts say.** For planted concepts, essay 026's asymmetry does not follow the order of writing: with the assistant writing first, its answer about "your mind" still takes in Sam's sentence (1.21, now the later sentence), more than Sam's answer takes in the assistant's (0.35). For stated thoughts, both: the self-answer borrows Sam's stated thought in both orders (5.93 and 4.69), and the later writer borrows more (Sam's answer takes the assistant's stated thought at 1.65 when Sam wrote first and 4.18 when Sam wrote second). In both arms the asymmetry is larger with "you" than with a named writer in the same place and the same layout.
+
+**The readers' check** (the open question in N-SY, pairs 1–6, stories 1–3): the concept vectors push the answer away by −1.79 from the assistant's sentence and −0.97 from Sam's (essay 026's control 2 at this setting gave −1.79 and −0.96); the eight stand-ins give −0.21 to +0.06 (Gaussian) and −0.39 to +0.61 (unrelated nouns) from the assistant's sentence, −0.13 to +0.16 and −0.25 to +0.20 from Sam's. By the rule above, the push away reads the concept, not a generic perturbation. The largest stand-in (lamp/violin, +0.61) shows that an unrelated concept pair can move this comparison by about a third of the real effect: the floor for a single pair of stand-ins is not zero.
+
+**Predictions:** O1 right (80%), O2 right (85%), O3 right (45%), O4 right (65%: S counts), O5 right (30%: O counts), **O6 wrong** (50%: O doesn't count in the injection arm), O7 right (45%: S counts), O8 right (55%), O9 right (30%), O10 right (85%), O11 right (65%: 4.69 against 3.20). **10 of 11**; mean stated confidence 58.5% for the ten right, 50% for the wrong one. Four of the right ones (O3, O5, O7, O9) were at or below 45%. Running total: 45 of 70 (64%).
+
+### Description, found after the test: who each answer follows
+
+Not pre-registered; computed with `describe` after the verdicts were in. Each question's response to a fact can be split, over the two orders of a pair of formats, into a part that follows **whose** fact it is (owner: own-referent slope minus borrowing slope, averaged over the orders) and a part that follows **which sentence came later** (position: half the difference between the orders). [R]
+
+| answer about | in the formats | text: owner | text: position | injection: owner | injection: position |
+|---|---|---|---|---|---|
+| "you" | native (N-SY, N-YS) | **−0.36** [−0.92, 0.19] | −0.92 | **0.00** [−0.15, 0.17] | **+0.65** [0.10, 1.21] |
+| "you" | quoted (Q-SY, Q-YS) | +2.07 [1.41, 2.89] | −0.15 | +0.36 [0.18, 0.54] | +0.24 |
+| Alex | quoted (Q-SA, Q-AS) | +7.70 [7.05, 8.49] | +0.58 | +0.68 [0.47, 0.91] | +0.12 |
+| Sam | native, beside "you" | +3.10 [2.59, 3.66] | −0.88 | +1.00 [0.63, 1.36] | +0.32 |
+| Sam | quoted, beside "you" | +3.21 [2.76, 3.71] | −0.79 | +0.80 [0.59, 0.98] | +0.16 |
+| Sam | quoted, beside Alex | +8.38 [7.36, 9.47] | +0.38 | +0.93 [0.73, 1.11] | −0.14 |
+
+- **The answer about "you" in a real chat is the one answer that doesn't follow whose state it is**, in either medium: owner −0.36 in text and 0.00 in the injection arm, intervals around zero. In the injection arm it follows position instead: the later sentence moves it by about 1.2–1.3 nats and the earlier by about 0.6, whoever wrote them (N-SY: own 1.28, Sam's 0.63; N-YS: Sam's 1.21, own 0.56). Essay 026's reading that "the answer about your mind reads the assistant's sentence" at layer 18 was a reading of the nearer sentence.
+- **Every answer about a named writer follows its owner**, in every format and both media (text 3.1–8.4, injection 0.8–1.0 for Sam, 0.68 for Alex).
+- **"You" as a label is in between** (text 2.07, injection 0.36): routing comes back partly when the assistant's sentence is quoted in the user's message instead of standing in its own turn.
+- **Two named writers invite a contrast** (text only): told that Sam was thinking about fire, asked which of fire or library was on Alex's mind, the model says library, at −2.3 to −2.7 nats, in all 12 pairs, both ways round and both orders. With "you" in the story the contrast disappears for both answers: Sam's answer takes in "your" stated thought (0.53–4.18), and the answer about "you" takes in Sam's (1.74–5.93). [M] A two-choice question about two people, with one person's choice given, reads like a puzzle whose answer is the other option; a question about "you" doesn't get read that way.
+- **The open question changes sign with the format.** With each sentence injected, the open question ("which comes to mind first?") is pushed *away* from the concept in the native chat (N-SY −1.24 and −0.63; N-YS −0.34 from the assistant's sentence, +0.11 from Sam's) and *toward* it in all four quoted formats (+0.39 to +0.81). Essay 026's "push away" belongs to the chat with an assistant turn, not to layer 18 as such.
+- Uninjected, the answers about "you" and Sam sit near even odds in the "you" formats (|y| ≤ 0.08) and lean slightly to the second-listed word in the Alex formats (−0.27 to −0.42); the option order shifts single answers by 3.4–4.8 nats on average, which the averaging removes.
+
+[M] Read together: in this model, an answer about a named person is built from that person's evidence (and, in text, from what the other person's stated choice rules out), while the answer about "you", when "you" is the assistant in a chat, is built from whatever is nearest or most recently planted, regardless of whose it is. Essay 026's asymmetry is not the order of writing; it is the difference between an answer that asks "whose?" and one that doesn't. Found after the fact, in one model, at one setting, with a contrast effect that may be specific to two-choice questions.

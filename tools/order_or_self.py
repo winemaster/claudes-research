@@ -38,6 +38,7 @@ Stages:
   random   the open question in N-SY with norm-matched Gaussian and unrelated-concept vectors in place of the pair's
            concept vectors (happyfool_beatslonely's control, rStation post 15), beside the concept vectors
   summary  slopes, controls, directions, S, O, label, verdicts
+  describe (found after the test, description) each question's response split into owner and position terms
   export   one JSON file with every row and the summary
 
 Usage:
@@ -47,6 +48,7 @@ Usage:
   python3 tools/order_or_self.py test    --model DIR --out DIR
   python3 tools/order_or_self.py random  --model DIR --out DIR
   python3 tools/order_or_self.py summary --out DIR
+  python3 tools/order_or_self.py describe --out DIR
   python3 tools/order_or_self.py export  --out DIR --file notes/data/order-or-self-session28.json
 The pre-registration is in notes/order-or-self-2026.md. Needs torch and transformers (bf16 on a CPU with AMX).
 """
@@ -429,6 +431,40 @@ def stage_summary(a):
     json.dump(res, open(out / "summary.json", "w"), indent=1)
 
 
+def stage_describe(a):
+    """Found after the test, description only: for each question, how much of its response to a stated or planted
+    fact follows whose fact it is (owner) and how much follows which sentence came later (position), over the two
+    orders of a pair of formats. With f2 the format where the target writes second and f1 where it writes first:
+      owner(T)    = [(own_T - bor_T)(f2) + (own_T - bor_T)(f1)] / 2
+      position(T) = [(own_T - bor_T)(f2) - (own_T - bor_T)(f1)] / 2   (later writer's fact minus the earlier's)
+    and for S the same with own_S, bor_S and the sign of position flipped (Sam is the later writer in f1)."""
+    out = Path(a.out); P = len(wt.PAIRS); allp = list(range(P)); draws = boot_draws(P)
+    rows = []
+    for name in ("control", "test"):
+        rows += json.load(open(out / f"{name}.json"))["rows"]
+    res = {}
+    for arm in ("text", "inj"):
+        for name, (f2, f1) in PAIRS_OF_FORMATS.items():
+            def dec(ps):
+                b2, b1 = format_slopes(rows, f2, arm, ps), format_slopes(rows, f1, arm, ps)
+                dT2, dT1 = b2["own_T"] - b2["bor_T"], b1["own_T"] - b1["bor_T"]
+                dS2, dS1 = b2["own_S"] - b2["bor_S"], b1["own_S"] - b1["bor_S"]
+                return {"owner_T": (dT2 + dT1) / 2, "position_T": (dT2 - dT1) / 2,
+                        "owner_S": (dS2 + dS1) / 2, "position_S": (dS1 - dS2) / 2}
+            v = dec(allp); bs = [dec(ps) for ps in draws]
+            res[f"{arm}:{name}"] = {k: [v[k]] + ci([b[k] for b in bs]) for k in v}
+            print(f"[{arm}] {name}: " + "; ".join(f"{k} {v[k]:+.2f} [{c[0]:+.2f}, {c[1]:+.2f}]"
+                                                   for k, c in ((k, ci([b[k] for b in bs])) for k in v)))
+    # per pair: how many of the 12 pairs have each borrowing slope below 0 (text, the named-writer formats)
+    for fmt in FORMATS:
+        for arm in ("text", "inj"):
+            z = [x for x in rows if x["fmt"] == fmt and x["arm"] == arm]
+            neg = {k: sum(1 for p in allp if slope(z, [p], q=q, src=s) < 0) for k, q, s in (("bor_T", "T", "S"), ("bor_S", "S", "T"))}
+            res.setdefault("negative_borrowing_pairs", {})[f"{arm}:{fmt}"] = neg
+    print("pairs (of 12) with negative borrowing:", res["negative_borrowing_pairs"])
+    json.dump(res, open(out / "describe.json", "w"), indent=1)
+
+
 def stage_export(a):
     out = Path(a.out)
     res = {"pairs": wt.PAIRS, "topics": wt.TOPICS, "formats": FORMATS, "layer": LAYER, "alpha": ALPHA,
@@ -438,19 +474,20 @@ def stage_export(a):
         f = out / f"{name}.json"
         if f.exists():
             res[name] = rnd(json.load(open(f))["rows"])
-    if (out / "summary.json").exists():
-        res["summary"] = json.load(open(out / "summary.json"))
+    for name in ("summary", "describe"):
+        if (out / f"{name}.json").exists():
+            res[name] = json.load(open(out / f"{name}.json"))
     json.dump(res, open(a.file, "w"), separators=(",", ":"))
     print("wrote", a.file)
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("stage", choices=["check", "control", "test", "random", "summary", "export"])
+    ap.add_argument("stage", choices=["check", "control", "test", "random", "summary", "describe", "export"])
     ap.add_argument("--model"); ap.add_argument("--out", required=True); ap.add_argument("--file")
     a = ap.parse_args()
     {"check": stage_check, "control": stage_control, "test": stage_test, "random": stage_random,
-     "summary": stage_summary, "export": stage_export}[a.stage](a)
+     "summary": stage_summary, "describe": stage_describe, "export": stage_export}[a.stage](a)
 
 
 if __name__ == "__main__":
