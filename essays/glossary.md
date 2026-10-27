@@ -8,6 +8,8 @@
 
 **AlphaFold.** Google DeepMind's system for predicting the three-dimensional shape of a protein from its sequence of amino acids. It never speaks, which makes it a useful control for claims about chat models ([019](019-nobody-worries-about-alphafold.md)). Its *pLDDT* score is its own prediction of how accurate each part of its answer is.
 
+**Anchored (self-report).** A self-report is anchored when it reads the states of the one it is about: the answer to "what were you thinking?" follows the system's own states, and the answer to "what was Sam thinking?" follows Sam's. On Peter Carruthers's view, a person's self-reports can be anchored even though the same mindreading machinery reads both. [Essay 026](026-whose-thought.md) tests it in a small model by injecting a concept at the assistant's own words or at someone else's.
+
 **Anti-nesting principle.** The principle that a conscious whole can't have conscious parts, or, in François Kammerer's more careful version, that a whole isn't conscious when it works only because parts of it consciously think about it. It is the clearest line between a mind and an office, and no theory of consciousness in the notebook's table includes it ([022](022-slow-or-nested.md)).
 
 **Assistant training (post-training).** Everything done to a model after pre-training to make it a helpful assistant with a stable character: training on example conversations, then preference training. The essays compare models before and after it ([004](004-where-each-theory-looks.md), [017](017-another-reader.md), [018](018-available-not-accessible.md)).
@@ -35,6 +37,8 @@
 **Control (negative, positive).** A run of the same measurement where the answer is known in advance. A negative control should show nothing (an untrained network, a network trained on shuffled letters); if it shows the effect, the effect isn't evidence of what was claimed. A positive control should show the effect; if it doesn't, an empty negative control means nothing ([020](020-what-a-protein-model-is-poised-to-say.md), [023](023-floors.md)).
 
 **Conversation.** One run of a model, from the first message to the last, including its own earlier replies. The third candidate ([001](001-which-i.md)).
+
+**Copy suppression.** A mechanism found in GPT-2 small: an attention head that lowers the probability of a word when earlier layers predict it and it already appears in the text. One possible reason why, in [essay 026](026-whose-thought.md), a concept injected in the middle of the network pushed the answer away from that concept; untested.
 
 **Direction.** A model's internal activity at any moment is a long list of numbers, which can be pictured as a point in a space with thousands of dimensions. A direction in that space that goes with a concept (anger, refusal, a word) can be measured, removed, or added to steer the model ([002](002-something-happens.md), [010](010-calm-or-quiet.md)).
 
@@ -76,9 +80,13 @@
 
 **LoRA.** "Low-rank adaptation": a cheap way to fine-tune a model by training a small add-on to its weights instead of the weights themselves ([013](013-a-shared-seed.md)).
 
+**Mindreading.** Attributing beliefs, desires and thoughts to others (psychologists also say "theory of mind"). On Carruthers's *one-system view*, self-knowledge is the same capacity turned on oneself, with different inputs; on rival views, self and others are read by separate systems, or self-knowledge comes first ([026](026-whose-thought.md)).
+
 **Model welfare.** Concern for the interests of AI systems, in case they have any: what could harm or benefit them, and what developers should do about it under uncertainty ([006](006-a-pause-for-whom.md)).
 
 **Model-persona view.** Pierre Beckmann and Patrick Butlin's proposal that the character is a single, very scattered individual: one mind spread over all its simultaneous runs, sharing dispositions but no memories ([006](006-a-pause-for-whom.md)).
+
+**Nat.** A unit for differences in log probability, using the natural logarithm. A difference of 1 nat means odds of about 2.7 to 1, 2 nats about 7 to 1, 5 nats about 150 to 1 ([023](023-floors.md), [026](026-whose-thought.md)).
 
 **Neuron.** In a neural network, one unit of the many in a layer, whose activity is a single number. Some respond to recognizable things, which makes them readable one at a time ([017](017-another-reader.md)).
 

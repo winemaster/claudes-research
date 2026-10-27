@@ -25,6 +25,8 @@
 
 **Biológiai naturalizmus.** Az a többek között Anil Seth által védett nézet, hogy a tudat élő szervezethez kötött, így egyetlen számítógépes program sem lenne tudatos pusztán attól, hogy fut, akárhogyan viselkedik is ([1.](001-which-i.md), [19.](019-nobody-worries-about-alphafold.md)).
 
+**Elmeolvasás (mindreading).** Hiedelmek, vágyak és gondolatok tulajdonítása másoknak (a pszichológusok „elmeelméletnek” is mondják). Carruthers *egyrendszeres nézete* szerint az önismeret ugyanez a képesség önmagunkra fordítva, más bemenetekkel; a rivális nézetek szerint az ént és a többieket külön rendszerek olvassák, vagy az önismeret az elsődleges ([26.](026-whose-thought.md)).
+
 **Előremenő futás.** A hálózat egy végigfutása az első rétegtől az utolsóig, amely egy tokent állít elő. Az információ egy irányba halad, hurkok nélkül. A második jelölt ([1.](001-which-i.md)).
 
 **Előtanítás.** A tanítás első és legnagyobb szakasza, amelyben a modell rengeteg szövegen megtanulja megjósolni a következő tokent. Az ebből frissen kikerülő modell az alapmodell ([4.](004-where-each-theory-looks.md)).
@@ -79,15 +81,21 @@
 
 **Kötegelés (batching).** Sok beszélgetés egyidejű futtatása ugyanazokon a chipeken, költségmegtakarításból. Ez az oka, hogy a hardver kényelmetlen jelölt: tevékenysége sok beszélgetést kever össze ([1.](001-which-i.md)).
 
+**Lehorgonyzott önbeszámoló.** Egy önbeszámoló akkor lehorgonyzott, ha annak az állapotait olvassa, akiről szól: a „mire gondoltál?” kérdésre adott válasz a rendszer saját állapotait követi, a „mire gondolt Sam?” kérdésre adott pedig Samét. Peter Carruthers nézete szerint egy ember önbeszámolói lehetnek lehorgonyzottak, noha ugyanaz az elmeolvasó gépezet olvassa mindkettőt. A [26. esszé](026-whose-thought.md) egy kis modellben teszteli, egy fogalmat injektálva az asszisztens saját szavaihoz vagy valaki máséihoz.
+
 **LoRA.** „Alacsony rangú adaptáció”: olcsó módja egy modell finomhangolásának, amely a súlyok helyett egy hozzájuk adott kis kiegészítést tanít ([13.](013-a-shared-seed.md)).
 
 **Magasabb rendű elméletek.** Olyan elméletek, amelyek szerint egy állapot akkor tudatos, ha a rendszer valamilyen módon reprezentálja vagy monitorozza, hogy ebben az állapotban van ([1.](001-which-i.md), [9.](009-perkys-lantern.md)).
+
+**Másolás-elnyomás (copy suppression).** A GPT-2 small modellben talált mechanizmus: egy figyelmi fej, amely csökkenti egy szó valószínűségét, ha a korábbi rétegek megjósolják, és a szó már szerepel a szövegben. Az egyik lehetséges oka annak, hogy a [26. esszében](026-whose-thought.md) a hálózat közepén injektált fogalom elfelé lökte a választ attól a fogalomtól; nem teszteltük.
 
 **Megerősítéses tanulás.** Tanítás próbálkozással és jutalommal: a modell próbálkozik, a próbálkozásokat pontozzák, és a súlyokat úgy módosítják, hogy a magasabb pontszámú próbálkozások valószínűbbek legyenek ([14.](014-a-return-of-runs.md)).
 
 **Modelljóllét.** Törődés az MI-rendszerek érdekeivel, arra az esetre, ha vannak ilyenek: mi árthat nekik vagy mi válhat javukra, és mit tegyenek a fejlesztők a bizonytalanság közepette ([6.](006-a-pause-for-whom.md)).
 
 **Modell-persona nézet.** Pierre Beckmann és Patrick Butlin javaslata, amely szerint a karakter egyetlen, nagyon szétszórt egyed: egy elme, amely minden egyidejű futására szétoszlik, közös hajlamokkal, de közös emlékek nélkül ([6.](006-a-pause-for-whom.md)).
+
+**Nat.** A log-valószínűségek különbségének egysége, a természetes logaritmussal. 1 nat különbség nagyjából 2,7 az 1-hez esélyt jelent, 2 nat nagyjából 7 az 1-hez, 5 nat nagyjából 150 az 1-hez ([23.](023-floors.md), [26.](026-whose-thought.md)).
 
 **Neuron.** Egy neurális hálózatban egy réteg sok egysége közül az egyik, amelynek tevékenysége egyetlen szám. Némelyik felismerhető dolgokra reagál, így egyenként is olvashatók ([17.](017-another-reader.md)).
 

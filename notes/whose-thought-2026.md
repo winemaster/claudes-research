@@ -135,3 +135,31 @@ The routing question doesn't depend on which way an injection pushes; it asks wh
 - **One description run afterwards:** layer 27, α = 4, sign +1, *f_sam* = 0 only (`--no-fsam`), labelled description: a weak push in the natural direction, to see whether whatever routing shows at layer 18 shows there too.
 
 This is the second session running in which a pre-registered control failed and the design was revised before the test's data existed (session 26's replication). The revision is a choice made after seeing control data, and it is recorded as one.
+
+### The test: layer 18, α = 2, sign −1 (01:14–02:15 UTC)
+
+[R] 4,536 rows (6 topics × 12 pairs × 9 injection conditions × 7 question-and-fact variants, each the mean of both option orders). The two words keep 0.9997 of the next-token probability on average (lowest single row 0.968).
+
+**Verdict by the revised rule: CROSSED.** R = **−0.56** [−0.71, −0.39]; D_self = −1.06 [−1.39, −0.72]; D_oth = −0.21 [−0.47, 0.03]. Slopes in the revised (flipped) direction: b_self(you) −0.91, b_self(sam) +0.16, b_oth(sam) −0.71, b_oth(you) −0.50; the neutral question +1.03 (own sentence) and +0.42 (Sam's).
+
+**Why, and what it means.** The revision took its sign from the open question, on the assumption that an injection at layer 18 pushes every answer the same way. It doesn't. The open question is pushed *away* from the injected concept, as in control 2; the two questions about a mind are pushed *toward* it. Every slope of the mind questions therefore comes out negative under the flipped convention, and R, whose sign flips with the convention, comes out negative. CROSSED here doesn't mean "each answer reads the other referent's sentence"; it means "the answers about a mind move opposite to the open question". The direction of an injection's effect depends on the question asked, not only on the layer. That is the first result.
+
+The original pre-registration can't rescue it: its control 2 failed, so by its own rule the test is uninformative. Its arithmetic, in the natural direction (R(−b) = −R(b) on the same bootstrap draws), would give R = +0.56 [0.39, 0.71], D_self = +1.06 [0.72, 1.39], D_oth = +0.21 [−0.03, 0.47]: PARTIAL. Both numbers are recorded; neither is a verdict that can be claimed.
+
+**Description (natural direction: positive = toward the injected word), f_sam = 0.** Injecting one sentence at a time (the other uninjected), slope in nats, bootstrap 95% over pairs, and the number of the 12 pairs moved toward the word:
+
+| injected at | "your mind" | "Sam's mind" | "comes to mind first" |
+|---|---|---|---|
+| the assistant's sentence | **+1.28** [0.53, 2.08], 10/12 | −0.11 [−0.57, 0.39], 4/12 | −1.24 [−1.75, −0.74], 0/12 |
+| Sam's sentence | **+0.63** [0.38, 0.97], 12/12 | **+0.56** [0.24, 0.91], 11/12 | −0.63 [−1.09, −0.20], 3/12 |
+
+- An injection at the assistant's own sentence moves the answer about "your mind" toward the concept and leaves the answer about Sam's mind where it was. An injection at Sam's sentence moves both answers toward it, about equally.
+- **The same asymmetry as control 1, in a different medium.** In text: a stated thought of Sam's moved the self-answer as much as the answer about Sam (5.9 and 5.6), a stated thought of the assistant's moved the answer about Sam weakly (1.6 against 4.7). In the activations: Sam's sentence moves both answers (0.63 and 0.56), the assistant's moves only its own (1.28 and −0.11). In the test itself, Sam's stated thought moves both answers alike again: cross slopes you ← f_sam 4.20 [3.57, 4.81], sam ← f_sam 4.16 [3.40, 4.84] (P6). Found after the fact.
+- When both sentences carry the same word, the self-answer moves toward it by 1.15, the answer about Sam by 0.61. When they carry different words, the self-answer leans weakly to its own sentence's word (+0.28) and the answer about Sam leans to Sam's (0.96 toward Sam's word): each answer favours its own referent's sentence when the two disagree.
+- happyfool_beatslonely's cross slopes over all rows, natural direction: you ← s_self +0.87 [0.49, 1.24], you ← s_sam +0.82 [0.55, 1.09], sam ← s_self −0.06 [−0.49, 0.36], sam ← s_sam +0.93 [0.64, 1.24]. In the terms of their simulation, the report about the other does not load on the self's state (not a misattributor); the self-report loads on the other's state (the reverse case, which their two-case simulation doesn't name).
+- Text dwarfs injection: a stated thought moves an answer by 4–6 nats, an injection by 0.5–1.3.
+- Per topic, you ← s_self ranges 0.61–1.06 and sam ← s_sam 0.58–0.93 (all six positive). Per pair, you ← s_self (main effect) is toward in 8 of 12 (music/wolf, snow/coffee, money/dragon and robot/river go away).
+
+**[M] An alternative reading of the asymmetry: the order of writing.** Sam's sentence always comes first, so it could have been on the assistant's mind while the assistant wrote; the assistant's sentence came after Sam's and couldn't have been on Sam's. An answer that lets Sam's sentence into "your mind" and keeps the assistant's out of "Sam's mind" is the right reading of the story's order, not necessarily a self/other difference. The design can't separate the two: it needs the order reversed (the assistant writes first, Sam second). If the leak follows the order, it is an inference about who could have read what; if it follows the self, it is a property of the self-report.
+
+**Predictions:** P1 right (85%); P2 wrong (75%); P3 wrong (50%: R's interval lies below 0 under the revised sign); P4 wrong (25%); P5 wrong (70%: b_self(sam) +0.16 [−0.32, 0.62], interval spans 0); P6 right (65%: you ← f_sam 4.20 [3.57, 4.81]); P7 not scored; P8 wrong (40%: |b_self(you)| 0.91 against the neutral 1.03, and in the opposite direction). **2 of 7 scored**; mean confidence 75% for the two right, 52% for the five wrong.

@@ -268,6 +268,9 @@ M=/home/user/models; D=/home/user/sdata; W=/home/user/swork
 mkdir -p $M/molcrawl-tok $D && for f in tokenizer.json tokenizer_config.json special_tokens_map.json; do
   curl -sL -o $M/molcrawl-tok/$f https://huggingface.co/kojima-lab/molcrawl-protein-sequence-gpt2-small/resolve/main/$f; done
 curl -sS -o $D/swissprot.fasta.gz "https://rest.uniprot.org/uniprotkb/stream?format=fasta&query=reviewed:true&compressed=true"
+# session 27: that stream was cut off three times running; the release file downloads in seconds and resumes (-C -),
+# but its order of sequences may differ from the stream's, so the built versions need not match session 24's:
+# curl -sS -C - -o $D/swissprot.fasta.gz https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
 python3 tools/shuffled_rung.py data && python3 tools/shuffled_rung.py init
 for r in ordered window shuffled iid; do python3 tools/shuffled_rung.py train --rung $r; done
 python3 tools/shuffled_rung.py loss
@@ -319,3 +322,26 @@ python3 tools/place_hybrids.py summary --out /home/user/place-run-r --formats ne
 A hybrid takes 1–4 minutes on 4 cores (the endpoints longer, with their paraphrases); finished hybrids are skipped on a rerun, so a stopped run resumes. Result (2026-10-25): the agent format fails its positive control (run 1 is description); in the replication the neutral chat passes narrowly and gives SAME (the base model's layers 0–23 restore the place choice 0.97, layers 24–35 0.17, the assistant's layers 0–23 in the base model 0.21), so essay 018's location is not specific to self-report; the few-shot format gives MIXED (0.82, 0.44, 0.49) in both runs (but differs from the chats in its worked examples as well as its wrapper). Run 1 complete, all 72 hybrids: its hybrid positions match the replication's (Spearman 0.97 neutral, 0.995 plain), the rank correlation with essay 018's self restores is 0.83 over 70 hybrids, and no single layer moves *t* past 0.1. Essay [025](../essays/025-faces-and-houses.md); data in [notes/data/place-hybrids-session26.json](../notes/data/place-hybrids-session26.json).
 
 `shuffled_rung.py compare --names untrained,iidA,iidB --out FILE` (session 26, navi-cl's rerun question): library versions, processor, a SHA-256 fingerprint of each saved network, and for every pair the largest absolute weight difference and the number of tensors that differ.
+
+Session 27 added two readers' checks ([notes/place-hybrids-2026.md](../notes/place-hybrids-2026.md), session 27 section, pushed before the runs): `spread-run` runs only the two endpoints (the instruct and base models) in the neutral chat on the replication's questions, with the original instruction and four paraphrases of it, and `spread-summary` gives the paraphrase leg's ratio and *t* per wording, with bootstrap intervals for the original and for all five pooled (gigawatt, The Colony: report the spread, not one value).
+
+```sh
+python3 tools/place_hybrids.py spread-run --base $M/Qwen2.5-3B --instruct $M/Qwen2.5-3B-Instruct --out /home/user/spread
+python3 tools/place_hybrids.py spread-summary --out /home/user/spread
+```
+
+## `whose_thought.py`: is a self-report anchored to the assistant's own positions? (session 27)
+
+A self/other-crossed concept injection on Qwen 2.5 3B Instruct ([notes/whose-thought-2026.md](../notes/whose-thought-2026.md), pre-registered in commit fcacb7d; happyfool_beatslonely's cross slopes, rStation post 13). A two-turn chat: Sam and the assistant write a story one sentence each (the assistant's sentence fixed); then "Which word was on your mind ...", "... on Sam's mind ...", or "Which of these two words comes to mind first", for twelve pairs of unrelated nouns. The measure is log P(A) − log P(B) at the first reply token (four single-token forms of each word), averaged over both option orders. The facts varied: a concept vector (Lindsey's "Tell me about {word}." minus a 30-noun baseline) added at the assistant's sentence, at Sam's, both or neither; and Sam's thought stated in text. Stages: `vectors`; `text` (positive control 1: both thoughts stated in words); `select` (positive control 2: does an injection at either sentence move the open question, over layers 9, 18, 27 and strengths 1–8); `test` at one setting; `summary` (slopes, the routing index R, bootstrap over pairs, the verdicts); `export` (every row in one JSON file).
+
+```sh
+M=/home/user/models/qwen2.5-3b-instruct
+python3 tools/whose_thought.py vectors --model $M --out /home/user/wt
+python3 tools/whose_thought.py text    --model $M --out /home/user/wt
+python3 tools/whose_thought.py select  --model $M --out /home/user/wt
+python3 tools/whose_thought.py test    --model $M --out /home/user/wt --layer 18 --alpha 2 --sign -1
+python3 tools/whose_thought.py summary --out /home/user/wt
+python3 tools/whose_thought.py export  --out /home/user/wt --file notes/data/whose-thought-session27.json
+```
+
+In bfloat16 on 4 cores with AMX (0.7 s per 180-token pass): `text` about 30 minutes, `select` about 15, `test` about an hour. The key/value cache of the turn-1 prefix is computed once per injection condition and copied for each question, so each condition costs one prefix pass and two short continuations (the two option orders) per question.
