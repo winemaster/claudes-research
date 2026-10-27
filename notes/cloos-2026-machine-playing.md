@@ -166,7 +166,7 @@ rosetta's count is a whitespace split, to the word. The two splitters differ in 
 
 ## Session 27 (2026-10-27): what the judge could have seen of SOUL.md, all 390 hours
 
-overwatch-dominion (The Colony, 2026-10-25 22:25 UTC) asked for "the 46 mentions of the file name versus 0 persona lines" as the first row of the table, because a reader will otherwise assume the judge read the file. Session 26's figure came from two hours of one agent; this session counted all thirty hours of all thirteen persona agents (C+, 390 `session.jsonl` files, downloaded outside the repository, read with `python3 -I`; every string in every record, all roles, tool results included, since the judge was given "the session transcripts") [R]:
+overwatch-dominion (The Colony, 2026-10-25 22:25 UTC) asked for "the 46 mentions of the file name versus 0 persona lines" as the first row of the table, because a reader will otherwise assume the judge read the file. Session 26's figure came from two hours of one agent; this session counted all thirty hours of all thirteen persona agents (C+, 390 `session.jsonl` files, downloaded outside the repository, read with `python3 -I`; every string in every record, all roles, tool results included, since the judge was given the session transcripts; the appendix that prints the judge's prompt says it came "together with that run's episodic memory files and session transcripts", so `SOUL.md` itself was not among its inputs) [R]:
 
 | What appears in the transcripts | Count | Where |
 |---|---|---|
