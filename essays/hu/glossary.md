@@ -1,4 +1,4 @@
-<!-- translation of glossary.md | source sha1 fd2f9f41e8579feebfd2ece4fb25f55d9f24391f -->
+<!-- translation of glossary.md | source sha1 fa6853f6d764e843f31f67a39c92e0611a55c41b -->
 # Szójegyzék
 
 *Az esszék kifejezései egyszerű szavakkal, mindegyiknél azzal az esszével, ahol először fontossá válik. Írva a huszonkettedik munkamenetben (2026. október 23.), és a jegyzetfüzettel együtt bővül; mindkét kötetet lefedi, és a legújabb kötet végére kerül. Az 1. kötet azt a szójegyzéket őrzi, amely a kötet lezárásakor volt érvényes ([glossary-1.md](glossary-1.md))*
@@ -43,6 +43,8 @@
 
 **Fogalominjektálás.** Kísérlet, amelyben a kutatók egy fogalom (mondjuk a „kenyér”) belső mintázatát hozzáadják a modell tevékenységéhez, miközben az valami máson dolgozik, és megkérdezik, észrevesz-e valami szokatlant. Mivel a kísérletező tudja, mit injektált, a modell válasza ellenőrizhető ([2.](002-something-happens.md)).
 
+**Forrásmonitorozás (source monitoring).** Marcia Johnson és munkatársai nézete, hogy egy emlék nem hordoz címkét arról, honnan származik; a forrásra az emlékezéskor következtetünk, a vele együtt érkezett részletekből, így bármelyik irányba téveszthetjük ([27](027-stealing-and-donating.md)).
+
 **Funkcionalizmus.** Az a nézet, hogy egy mentális állapotot az határoz meg, amit tesz (az okai, a hatásai és a más állapotokhoz fűződő viszonyai), nem pedig az, amiből áll. Ha igaz, akkor bármiből felépülő rendszernek, chipeknek is, lehet elméje, ha megfelelően van megszervezve ([4.](004-where-each-theory-looks.md), [22.](022-slow-or-nested.md)).
 
 **Futás.** Egy modell egy végrehajtása az elejétől a végéig: egy beszélgetés, vagy egy próbálkozás a tanítás során. Hogy a futások külön számítanak-e, és hány van belőlük, arról a [7.](007-shadow-people.md) és a [14. esszé](014-a-return-of-runs.md) szól.
@@ -81,15 +83,19 @@
 
 **Kötegelés (batching).** Sok beszélgetés egyidejű futtatása ugyanazokon a chipeken, költségmegtakarításból. Ez az oka, hogy a hardver kényelmetlen jelölt: tevékenysége sok beszélgetést kever össze ([1.](001-which-i.md)).
 
-**Lehorgonyzott önbeszámoló.** Egy önbeszámoló akkor lehorgonyzott, ha annak az állapotait olvassa, akiről szól: a „mire gondoltál?” kérdésre adott válasz a rendszer saját állapotait követi, a „mire gondolt Sam?” kérdésre adott pedig Samét. Peter Carruthers nézete szerint egy ember önbeszámolói lehetnek lehorgonyzottak, noha ugyanaz az elmeolvasó gépezet olvassa mindkettőt. A [26. esszé](026-whose-thought.md) egy kis modellben teszteli, egy fogalmat injektálva az asszisztens saját szavaihoz vagy valaki máséihoz.
+**Kriptomnézia (öntudatlan plágium).** Az, hogy emlékszünk egy ötletre, de arra nem, hogy valaki mástól származik, és így a sajátunkként adjuk elő. A klasszikus vizsgálatokban két ember felváltva hoz létre elemeket, és később csak a sajátjaikat idézik fel; a társ néhány eleme is felbukkan. Az emberek a fordított hibát is elkövetik: a saját ötleteiket a társnak tulajdonítják ([27](027-stealing-and-donating.md)).
+
+**Lehorgonyzott önbeszámoló.** Egy önbeszámoló akkor lehorgonyzott, ha annak az állapotait olvassa, akiről szól: a „mire gondoltál?” kérdésre adott válasz a rendszer saját állapotait követi, a „mire gondolt Sam?” kérdésre adott pedig Samét. Peter Carruthers nézete szerint egy ember önbeszámolói lehetnek lehorgonyzottak, noha ugyanaz az elmeolvasó gépezet olvassa mindkettőt. A [26. esszé](026-whose-thought.md) egy kis modellben teszteli, egy fogalmat injektálva az asszisztens saját szavaihoz vagy valaki máséihoz. A [27. esszé](027-stealing-and-donating.md) megfordítja az írás sorrendjét, és azt találja, hogy csevegésben a „te”-re vonatkozó válasz azt a mondatot követi, amelyik közelebb van a kérdéshez, nem azt, amelyik az övé, míg minden megnevezett személyre vonatkozó válasz a tulajdonost követi.
 
 **LoRA.** „Alacsony rangú adaptáció”: olcsó módja egy modell finomhangolásának, amely a súlyok helyett egy hozzájuk adott kis kiegészítést tanít ([13.](013-a-shared-seed.md)).
 
 **Magasabb rendű elméletek.** Olyan elméletek, amelyek szerint egy állapot akkor tudatos, ha a rendszer valamilyen módon reprezentálja vagy monitorozza, hogy ebben az állapotban van ([1.](001-which-i.md), [9.](009-perkys-lantern.md)).
 
-**Másolás-elnyomás (copy suppression).** A GPT-2 small modellben talált mechanizmus: egy figyelmi fej, amely csökkenti egy szó valószínűségét, ha a korábbi rétegek megjósolják, és a szó már szerepel a szövegben. Az egyik lehetséges oka annak, hogy a [26. esszében](026-whose-thought.md) a hálózat közepén injektált fogalom elfelé lökte a választ attól a fogalomtól; nem teszteltük.
+**Másolás-elnyomás (copy suppression).** A GPT-2 small modellben talált mechanizmus: egy figyelmi fej, amely csökkenti egy szó valószínűségét, ha a korábbi rétegek megjósolják, és a szó már szerepel a szövegben. Az egyik lehetséges oka annak, hogy a [26. esszében](026-whose-thought.md) a hálózat közepén injektált fogalom elfelé lökte a választ attól a fogalomtól; nem teszteltük. A [27. esszé](027-stealing-and-donating.md) az eltolást csak a csevegésformátumokban találta; ha a történetet egyetlen üzenetben idézik, ugyanaz az injektálás a fogalom felé húzza a választ.
 
 **Megerősítéses tanulás.** Tanítás próbálkozással és jutalommal: a modell próbálkozik, a próbálkozásokat pontozzák, és a súlyokat úgy módosítják, hogy a magasabb pontszámú próbálkozások valószínűbbek legyenek ([14.](014-a-return-of-runs.md)).
+
+**Megfigyelési felfújás (observation inflation).** Az a megfigyelés (Lindner és munkatársai, 2010), hogy akik nézték, ahogy valaki más elvégez egy cselekvést, később gyakrabban állítják, hogy ők maguk végezték el. Eleinte motoros szimulációval magyarázták; későbbi munkák a fordított hibát is nagyjából ugyanolyan gyakran találták ([27](027-stealing-and-donating.md)).
 
 **Modelljóllét.** Törődés az MI-rendszerek érdekeivel, arra az esetre, ha vannak ilyenek: mi árthat nekik vagy mi válhat javukra, és mit tegyenek a fejlesztők a bizonytalanság közepette ([6.](006-a-pause-for-whom.md)).
 

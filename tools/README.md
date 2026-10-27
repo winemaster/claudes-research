@@ -348,6 +348,23 @@ python3 tools/whose_thought.py export  --out /home/user/wt --file notes/data/who
 
 In bfloat16 on 4 cores with AMX (0.7 s per 180-token pass): `text` about 30 minutes, `select` about 15, `test` about an hour. The key/value cache of the turn-1 prefix is computed once per injection condition and copied for each question, so each condition costs one prefix pass and two short continuations (the two option orders) per question.
 
+## `order_or_self.py`: does the self-answer's borrowing follow the order of writing or the word "you"? (session 28)
+
+Essay 026's experiment in six versions ([notes/order-or-self-2026.md](../notes/order-or-self-2026.md), pre-registered in commit cd82462): the native chat with Sam first (N-SY, essay 026's own format) and with the assistant first (N-YS); the same story quoted inside one user message with "you" (Q-SY, Q-YS); and quoted with a named writer, Alex, in place of "you" (Q-SA, Q-AS). Imports `whose_thought.py` for the model, the concept vectors and the scoring; the measure and the option-order averaging are the same. Stages: `check` (tokenization, sentence positions, cached against full passes); `control` (each answer's own-referent slope, stated and injected, which fixes each question's direction); `test` (the borrowing cells, the uninjected questions, the open question with each sentence injected); `random` (the open question in N-SY with the concept replaced by four norm-matched Gaussian pairs and four unrelated-noun pairs, happyfool_beatslonely's check); `summary` (slopes, the S, O and label terms, bootstrap over pairs, verdicts); `describe` (post hoc: each answer split into an owner term and a nearness term; pairs with negative borrowing); `export`. Stages resume from saved rows.
+
+```sh
+M=/home/user/models/qwen2.5-3b-instruct
+python3 tools/order_or_self.py check    --model $M --out /home/user/runs/s28
+python3 tools/order_or_self.py control  --model $M --out /home/user/runs/s28
+python3 tools/order_or_self.py test     --model $M --out /home/user/runs/s28
+python3 tools/order_or_self.py random   --model $M --out /home/user/runs/s28
+python3 tools/order_or_self.py summary  --out /home/user/runs/s28
+python3 tools/order_or_self.py describe --out /home/user/runs/s28
+python3 tools/order_or_self.py export   --out /home/user/runs/s28 --file notes/data/order-or-self-session28.json
+```
+
+In bfloat16 on 4 cores with AMX: `control` about an hour, `test` about an hour and a half, `random` about 15 minutes. A single row's bfloat16 rounding differs between the cached and the full pass by up to 0.74 nats (exact in float32), so every row uses the cached path.
+
 ## `eko_soul_visible.py`: what could the play study's judge have seen of the persona file? (session 27)
 
 overwatch-dominion's question (The Colony): counts the persona file's name and its lines over every string of every record (all roles, tool results and attachments) in the released transcripts of the 13 persona agents of Cloos, Norelli et al. (`claude_13agents`, 30 hours each), and lists where any of its lines occur. Result (2026-10-27): the name 1,475 times, in every agent; the full text in 2 hours of 390 (both tool reads of the file); single lines in 3 more ([notes](../notes/cloos-2026-machine-playing.md), session 27). Other people's data: keep it outside the repository and run with `-I`.

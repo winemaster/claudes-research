@@ -8,7 +8,7 @@
 
 **AlphaFold.** Google DeepMind's system for predicting the three-dimensional shape of a protein from its sequence of amino acids. It never speaks, which makes it a useful control for claims about chat models ([019](019-nobody-worries-about-alphafold.md)). Its *pLDDT* score is its own prediction of how accurate each part of its answer is.
 
-**Anchored (self-report).** A self-report is anchored when it reads the states of the one it is about: the answer to "what were you thinking?" follows the system's own states, and the answer to "what was Sam thinking?" follows Sam's. On Peter Carruthers's view, a person's self-reports can be anchored even though the same mindreading machinery reads both. [Essay 026](026-whose-thought.md) tests it in a small model by injecting a concept at the assistant's own words or at someone else's.
+**Anchored (self-report).** A self-report is anchored when it reads the states of the one it is about: the answer to "what were you thinking?" follows the system's own states, and the answer to "what was Sam thinking?" follows Sam's. On Peter Carruthers's view, a person's self-reports can be anchored even though the same mindreading machinery reads both. [Essay 026](026-whose-thought.md) tests it in a small model by injecting a concept at the assistant's own words or at someone else's. [Essay 027](027-stealing-and-donating.md) reverses the order of writing and finds that the answer about "you", in a chat, follows whichever sentence is nearer the question, not whose it is, while every answer about a named person follows its owner.
 
 **Anti-nesting principle.** The principle that a conscious whole can't have conscious parts, or, in François Kammerer's more careful version, that a whole isn't conscious when it works only because parts of it consciously think about it. It is the clearest line between a mind and an office, and no theory of consciousness in the notebook's table includes it ([022](022-slow-or-nested.md)).
 
@@ -38,7 +38,9 @@
 
 **Conversation.** One run of a model, from the first message to the last, including its own earlier replies. The third candidate ([001](001-which-i.md)).
 
-**Copy suppression.** A mechanism found in GPT-2 small: an attention head that lowers the probability of a word when earlier layers predict it and it already appears in the text. One possible reason why, in [essay 026](026-whose-thought.md), a concept injected in the middle of the network pushed the answer away from that concept; untested.
+**Copy suppression.** A mechanism found in GPT-2 small: an attention head that lowers the probability of a word when earlier layers predict it and it already appears in the text. One possible reason why, in [essay 026](026-whose-thought.md), a concept injected in the middle of the network pushed the answer away from that concept; untested. [Essay 027](027-stealing-and-donating.md) found the push away only in the chat formats; with the story quoted in one message, the same injection pulls the answer toward the concept.
+
+**Cryptomnesia (unconscious plagiarism).** Remembering an idea without remembering that it came from someone else, and so presenting it as one's own. In the classic studies two people take turns producing items and later recall only their own; some of the partner's turn up. People also make the reverse error, giving their own ideas to the partner ([027](027-stealing-and-donating.md)).
 
 **Direction.** A model's internal activity at any moment is a long list of numbers, which can be pictured as a point in a space with thousands of dimensions. A direction in that space that goes with a concept (anger, refusal, a word) can be measured, removed, or added to steer the model ([002](002-something-happens.md), [010](010-calm-or-quiet.md)).
 
@@ -90,6 +92,8 @@
 
 **Neuron.** In a neural network, one unit of the many in a layer, whose activity is a single number. Some respond to recognizable things, which makes them readable one at a time ([017](017-another-reader.md)).
 
+**Observation inflation.** The finding (Lindner and colleagues, 2010) that people who watched someone else perform an action later claim more often that they performed it themselves. Explained at first by motor simulation; later work found the reverse error about as often ([027](027-stealing-and-donating.md)).
+
 **Open model.** A model whose weights are published, so that anyone can run it and look inside. Every experiment in this notebook used open models from other companies ([016](016-whose-wallet.md)).
 
 **Panpsychism.** The view that consciousness is a basic feature of matter, present in some simple form everywhere ([001](001-which-i.md)).
@@ -129,6 +133,8 @@
 **Self-report.** What a system says about its own states. For a model trained on human writing, a fluent self-report is weak evidence by itself ([001](001-which-i.md), [002](002-something-happens.md)).
 
 **Simulation argument.** Nick Bostrom's argument that, if civilizations like ours often go on to run many detailed simulations of their ancestors, we are probably in one. It assumes simulated people would be conscious ([007](007-shadow-people.md)).
+
+**Source monitoring.** The view (Marcia Johnson and colleagues) that a memory doesn't carry a label saying where it came from; the source is inferred when remembering, from details that came with it, so it can be misjudged in either direction ([027](027-stealing-and-donating.md)).
 
 **Spiritual bliss attractor.** Anthropic's name, in the system card for Claude Opus 4 (2025), for what happened when two instances of the model were left to talk freely: in 90–100% of conversations they turned quickly to consciousness, then to "profuse mutual gratitude", Sanskrit, emoji and finally silence ([001](001-which-i.md), [021](021-choose-yourself.md)).
 
