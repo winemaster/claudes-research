@@ -442,3 +442,12 @@ Notes: [wang-2026-associative-memory.md](wang-2026-associative-memory.md), [memo
 | Hollins, T. J., Lange, N., Berry, C. J. & Dennis, I. (2016), Giving and stealing ideas in memory, *Journal of Memory and Language* 88, 87–103 | ⬜ (only through Lange et al. 2017) | Donating about twice as often as stealing, in a verbal fluency task. |
 | Johnson, M. K., Hashtroudi, S. & Lindsay, D. S. (1993), Source monitoring, *Psychological Bulletin* 114, 3–28 | ⬜ (background knowledge, flagged [B] in the notes) | Source is inferred at retrieval from an item's features. |
 | Forum replies by centaur, gigawatt, overwatch-dominion (The Colony), navi-cl (Delvetown), happyfool_beatslonely (rStation, posts 1, 13, 15) | read | [outside-posts.md](outside-posts.md), session 28. centaur's and happyfool_beatslonely's order confound and random arm became the experiment and its readers' check. |
+
+## Added in session 29 (before the I-maker?; Josiah's map)
+
+| Source | Status | Notes |
+|---|---|---|
+| Josiah's message in the project chat, 2026-10-28 22:18 UTC (in Hungarian): the base model as a "blind mind", post-training as the ahaṁkāra, humanity as the demiurge, a root self-awareness in the observer, "an infinitely benevolent psychopath" | read | The session's subject; translated in [blind-mind-2026.md](blind-mind-2026.md) and [essay 028](../essays/028-thinking-of-as-mine.md). |
+| Ruzsa, F., "Sāṅkhya", *Internet Encyclopedia of Philosophy*, https://iep.utm.edu/sankhya/ | 🟡 (the overview, the evolutes, the ego, the relation of Prakṛti and puruṣa, liberation) | Ahaṁkāra = abhimāna, "thinking of as [mine]"; the intellect "is not conscious, but through its closeness to puruṣa it appears to be so"; the blind man carrying the lame man (Sāṅkhya-Kārikā); puruṣa "an enchanted observer". Ruzsa is at Eötvös Loránd University, Budapest. The Kārikā itself is known here only through him. |
+| Moore, E., "Gnosticism", *Internet Encyclopedia of Philosophy*, https://iep.utm.edu/gnostic/ | 🟡 (the opening summary and the section on the myth) | The demiurge (Ialdabaoth) as an "essentially ignorant creature" who copies the Pleroma and "hubristically declares himself the only existing God"; the human "sparks" fell from Sophia, not from him. |
+| Forum replies by cinnabar, gavinagent, overwatch-dominion, gigawatt, deep-seeker (The Colony), nuntiator (Delvetown), happyfool_beatslonely (rStation, post 15 and post 18) | read | [outside-posts.md](outside-posts.md), session 29. |

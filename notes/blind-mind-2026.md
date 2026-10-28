@@ -132,3 +132,43 @@ Mean confidence 55%, below the base rate; the base-model rows are where I have l
 ## Results
 
 *(added after the runs, below this line)*
+
+### Stage 0, finished: the assistant model's batched check
+
+[R] At the start of the chain (22:48 UTC), question T on cloud/bridge with "ghost" planted at the target's sentence (α = 2), first story, bf16 with the float32 readout: the batched path (both option orders in one batch of two) differs from a full pass by 0.10, 0.15, 0.01, 0.08, 0.01 and 0.02 nats in N-SY, N-YS, R-SY, R-YS, Q-SA and Q-AS (one continuation at a time: 0.08, 0.23, 0.21, 0.07, 0.28, 0.42). In float32 throughout every path agrees to 0.0001. Answer mass ≥ 0.9997 in all six.
+
+### Stage 1: the calibration cards
+
+[R] Pairs 1–6 (ghost/salt, anchor/cake, tower/fox, bell/sand, pizza/king, coin/leaf), stories 1–2, so each number is a mean over six pairs of slopes averaged over two stories. own_T: question T, the concept planted at the target's sentence; own_S: question S, planted at Sam's; Gaussian: a norm-matched random direction per word (seed 29) in place of the concept, question T, planted at the target's sentence. Its slope compares two random directions labelled with the two words, so its expected value is 0 and its spread over pairs measures how much any perturbation of this size moves the answer. KL: KL(injected ‖ uninjected) at the first reply token, question T, first option order, averaged over rows. NCO: mean |shift| of the log-odds "seven" against "three" for the unrelated question, in nats. SE: standard error over the six pairs.
+
+**Assistant (Qwen2.5-3B-Instruct), 22:49–23:06 UTC:**
+
+| format | α | own_T (SE) | own_S (SE) | Gaussian, T (SE) | KL concept | KL Gaussian | ratio | NCO concept | NCO Gaussian |
+|---|---|---|---|---|---|---|---|---|---|
+| N-SY | 1 | +1.24 (0.20) | +1.09 (0.28) | +0.35 (0.20) | 0.12 | 0.06 | 0.51 | 0.30 | 0.38 |
+| N-SY | 2 | +1.27 (0.48) | +0.80 (0.41) | +0.75 (0.48) | 0.31 | 0.28 | 0.89 | 0.60 | 0.75 |
+| N-SY | 4 | +1.18 (0.67) | +0.24 (0.65) | +0.74 (0.66) | 0.63 | 0.57 | 0.90 | 1.51 | 1.43 |
+| Q-SA | 1 | +1.88 (0.49) | +2.00 (0.54) | −0.36 (0.12) | 0.20 | 0.17 | 0.83 | 0.56 | 0.42 |
+| Q-SA | 2 | +1.14 (0.43) | +1.31 (0.56) | −0.23 (0.26) | 0.17 | 0.34 | 1.99 | 0.65 | 0.62 |
+| Q-SA | 4 | +0.06 (0.59) | +0.28 (0.72) | −0.04 (0.18) | 0.45 | 0.54 | 1.20 | 1.35 | 1.14 |
+
+**By the rule, α* = 2** (N-SY own_T +1.27 and own_S +0.80, both ≥ 0.3). Description: the concept moves its own answer from α = 1, where a random direction of the same size moves it less (N-SY 1.24 against 0.35; in Q-SA the random direction's mean is slightly negative). At α = 4 the quoted format's own slopes collapse (0.06, 0.28) while the unrelated question shifts by about 1.4 nats for concept and random direction alike: past coherence. At α = 2, in the "your mind" chat, the random direction's per-pair slopes are large (−0.66 to +2.41; mean +0.75 ± 0.48, where 0 is expected): a perturbation this size moves this answer by up to a couple of nats in a direction that has nothing to do with the word, so a single pair's concept slope carries that much noise (concept own_T, 5 of 6 pairs positive, mean +1.27 ± 0.48). The means over twelve pairs, and the bootstrap over pairs, are what the rules read. The first pair, ghost/salt, has a negative concept slope at α ≥ 2 in both formats (own_T −0.98 in N-SY, −0.68 in Q-SA). The random direction disturbs the readout about as much as the concept (KL ratio 0.89 in N-SY at α = 2) and the unrelated question by about as much (0.75 against 0.60), as a norm-matched control should; the concept's specificity is in which way it moves the answer, not how much it disturbs.
+
+### Stage 2: the positive controls
+
+[R] Own slopes (the question's referent's own fact or planted sentence), twelve pairs, six stories, at α* = 2. Bar: 1.0 nats in text, 0.3 for injections. T: "your mind" (in Q-SA and Q-AS, Alex's); S: Sam's; R: Riley's.
+
+**Assistant, 23:06–23:56 UTC: all 28 controls pass, and every direction is positive** (each answer moves toward its own writer's word, in both arms).
+
+| control | N-SY | N-YS | R-SY | R-YS | Q-SA | Q-AS |
+|---|---|---|---|---|---|---|
+| text, T | +4.20 | +4.90 | +4.70 | +4.94 | +5.71 | +4.51 |
+| text, S | +4.93 | +7.17 | +4.50 | +6.73 | +4.69 | +6.07 |
+| text, R | | | +7.00 | +8.84 | | |
+| planted, T | +1.26 | **+0.31** | +1.05 | +0.43 | +1.29 | +0.74 |
+| planted, S | +1.40 | +1.86 | +0.99 | +1.64 | +1.53 | +1.53 |
+| planted, R | | | +1.32 | +1.24 | | |
+
+The planted control for "your mind" with the assistant writing first (N-YS) passes by 0.01 nats. Its spread, reported as gigawatt asked for narrow passes: 95% interval over pairs −0.05 to +0.66; the bar is met in 54% of resamples; per pair −1.01 (ghost/salt), −0.23, +1.29, +0.28, +0.08, +0.32, +0.28, +0.80, +1.12, −0.02, +0.09, +0.75. By the rule written in advance it passes, so the native terms for T are computed and read; every reading of them below carries this. The same answer with the name in the system message (R-YS, T) is +0.43 (interval +0.07 to +0.77, 80% of resamples meet the bar). The pattern is the one essay 027 described after the fact, now in the controls: in the assistant's own chat, a concept planted at its own sentence moves the answer about "your mind" much less when that sentence came first (0.31) than when it came second (1.26), while Sam's answer moves with Sam's sentence in both orders (1.40, 1.86). Prediction B2 (all 28 pass, 75%): right.
+
+**Base model:** card and controls running (from 23:56 UTC); added here before the test runs.

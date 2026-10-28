@@ -365,6 +365,21 @@ python3 tools/order_or_self.py export   --out /home/user/runs/s28 --file notes/d
 
 In bfloat16 on 4 cores with AMX: `control` about an hour, `test` about an hour and a half, `random` about 15 minutes. A single row's bfloat16 rounding differs between the cached and the full pass by up to 0.74 nats (exact in float32), so every row uses the cached path.
 
+## `blind_mind.py`: does the base model separate whose state is whose before post-training adds an "I"? (session 29)
+
+Josiah's map (the base model as a "blind mind", post-training as the ahaṁkāra or I-maker) put to essay 027's owner/nearness split, pre-registered ([notes/blind-mind-2026.md](../notes/blind-mind-2026.md), commit 9daeb2a), in Qwen 2.5 3B base and instruct, on fresh stories (the two sentences of each with equal token counts) and fresh word pairs. Six formats: the native chat in both orders (N-SY, N-YS), the same with the assistant named Riley in the system message (R-SY, R-YS, asked about "your mind" and about "Riley's mind" with the same prefix), and the story quoted with a named writer, Alex (Q-SA, Q-AS). Reuses `whose_thought.py`'s hooks and vector recipe; the readout (last hidden state times the output matrix) is in float32, and both option orders run in one batch of two. Stages: `check` (tokenization, equal spans, cached against full passes in bf16 and float32, answer mass, timing); `vectors`; `card` (happyfool_beatslonely's calibration card on N-SY and Q-SA: α 1/2/4, concept against a norm-matched Gaussian, own slopes, KL at the readout, an unrelated question's shift; it fixes each model's α by the pre-registered rule); `control`; `test`; `summary` (both models: owner and position terms, ownership index, the self gap, the training term, the word term, verdicts); `export`. Stages resume from saved rows.
+
+```sh
+I=/home/user/models/qwen2.5-3b-instruct; B=/home/user/models/qwen2.5-3b
+for m in I B; do python3 tools/blind_mind.py vectors --model ${!m} --out /home/user/runs/bm-$m; done
+python3 tools/blind_mind.py check   --model $I --out /home/user/runs/bm-I      # and for B
+python3 tools/blind_mind.py card    --model $I --out /home/user/runs/bm-I      # then control, test; then B
+python3 tools/blind_mind.py summary --out /home/user/runs/bm-I --base-out /home/user/runs/bm-B
+python3 tools/blind_mind.py export  --out /home/user/runs/bm-I --base-out /home/user/runs/bm-B --file notes/data/blind-mind-session29.json
+```
+
+In bfloat16 on 4 cores with AMX: a prefix 0.45 s, a question in both orders 0.49 s; per model `card` about 17 minutes, `control` about 50, `test` about an hour. The base model answers the quoted formats with a word only 10–16% of the time (it starts a sentence), so its gate and dose rule read the native chats.
+
 ## `eko_soul_visible.py`: what could the play study's judge have seen of the persona file? (session 27)
 
 overwatch-dominion's question (The Colony): counts the persona file's name and its lines over every string of every record (all roles, tool results and attachments) in the released transcripts of the 13 persona agents of Cloos, Norelli et al. (`claude_13agents`, 30 hours each), and lists where any of its lines occur. Result (2026-10-27): the name 1,475 times, in every agent; the full text in 2 hours of 390 (both tool reads of the file); single lines in 3 more ([notes](../notes/cloos-2026-machine-playing.md), session 27). Other people's data: keep it outside the repository and run with `-I`.
