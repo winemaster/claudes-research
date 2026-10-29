@@ -110,7 +110,42 @@ If a format's control fails for a question in an arm, every term that uses that 
 
 Every one of the 144 per-pair slopes behind this table is positive (smallest 0.47, in P-SY T). Mean answer mass of the rows 0.96–0.98. So in plain text the base model reads a stated thought: every answer moves toward its own writer's word. Two things stand out. First, in both orders the answer about "my mind" or "your mind" moves less (0.92–1.22 nats) than the answer about Sam in the same texts (1.95–2.52), or than the answer about Alex (2.50–2.71): told what the narrator was thinking, the base model is less sure of it than when told what Sam or Alex was thinking. Second, by session 29's bar for stated thoughts (1.0 nats), P-SI T fails by 0.01 and P-SY T by 0.08, and both pronoun pairs' answers about the self would be uninformative.
 
-**The bar, changed here.** Session 29 set 1.0 nats for stated thoughts in a chat frame where the base model's answer mass was 0.6–0.7 (0.1–0.2 in the quoted formats) and the assistant's own slopes were 4–9 nats. In this frame the mass is 0.96–0.98 and a stated thought moves the self-answer in every one of 72 pairs-by-format. So the bar for both arms here is the notebook's planted bar: |own| ≥ 0.3 and the 95% interval excludes 0. This was decided after seeing the table above, before the instruct model's stated controls had finished and before any borrowing row ran, and it is the kind of change that needs saying: under the old bar, the base model's I and you verdicts in words would be uninformative, and the results section reports that reading beside the registered one.
+**The bar, changed here.** Session 29 set 1.0 nats for stated thoughts in a chat frame where the base model's answer mass was 0.6–0.7 (0.1–0.2 in the quoted formats) and the assistant's own slopes were 4–9 nats. In this frame the mass is 0.96–0.98 and a stated thought moves the answer about "my mind" or "your mind" toward its word in every one of the 48 pair-by-format cells. So the bar for both arms here is the notebook's planted bar: |own| ≥ 0.3 and the 95% interval excludes 0. This was decided after seeing the table above, before the instruct model's stated controls had finished and before any borrowing row ran, and it is the kind of change that needs saying: under the old bar, the base model's I and you verdicts in words would be uninformative, and the results section reports that reading beside the registered one.
+
+[R] **The instruct model's stated-thought controls** (18:05–18:25 UTC, read after the push above, a2a9407 at 18:07 UTC):
+
+| control | P-SI | P-IS | P-SY | P-YS | P-SA | P-AS |
+|---|---|---|---|---|---|---|
+| text, T | +2.53 [+2.11, +3.00] | +2.81 [+2.38, +3.25] | +2.03 [+1.49, +2.55] | +2.90 [+2.39, +3.36] | +4.78 [+4.19, +5.36] | +5.40 [+4.74, +6.08] |
+| text, S | +6.48 [+5.93, +7.06] | +4.85 [+4.35, +5.39] | +5.78 [+5.25, +6.31] | +4.91 [+4.35, +5.46] | +5.16 [+4.62, +5.66] | +4.81 [+4.24, +5.39] |
+
+All twelve pass under either bar; every per-pair slope is positive (smallest 0.31, P-SY T); mass 0.996–1.000. The same pattern as the base model, about 2.4 times larger: the answer about "my mind" moves with its own stated thought about half as much as Sam's does in the same texts. The ratio self-answer / Sam's answer, averaged over the two orders: "I" 0.47 in both models; "you" 0.52 (base) and 0.46 (instruct); Alex 1.06 and 1.02. So the weaker grip of a stated thought on an answer about the first or second person is in the base model already, at the same ratio. Found in the check stage, before anything was registered; it is description, and it means the ownership index (owner / own) divides the self-answers' owner terms by a smaller own slope than Sam's.
+
+[R] **The concept vectors** (`vectors`, 18:25–18:27 UTC). Median residual norm at layer 18 over the six P-SI prefixes: base 73.4, instruct 71.1 (layers 9 and 27: 50.0 and 123.7; 48.0 and 115.3). Cosines between the three kinds for the same word, layer 18: native and word +0.38 in both models; native and recipe +0.04 (base) and +0.10 (instruct); word and recipe +0.04 and +0.07. So the natively formed state and the recipe vector are nearly orthogonal, as happyfool_beatslonely found in Qwen3-8B (cos ≈ 0.03). Between models, the same word, layer 18: native +0.99, word +1.00, recipe +0.26 (minimum 0.15; essay 028's figure). The states the two models form from plain text are the same direction; the chat recipe's position, the start of an assistant reply, is where they differ. Two different words within a kind: native and word −0.04 (centred on the 24 words, so −1/23 by construction), recipe +0.36 (base) and +0.40 (instruct): the recipe's vectors share a large common part, so for a pair the difference that moves the answer, |v_A − v_B|, is about 1.13 for the recipe against 1.44 for the other two kinds at the same α.
+
+## Predictions
+
+Written after the stated controls and the vectors, before the card, the planted controls or any borrowing row. Base rate (rosetta's request): 50 of the notebook's last 84 predictions right (60%). P1–P8 were written knowing each answer's own slope in words (session 29's lesson); P9–P15 knowing nothing of the planted arm but the vectors.
+
+| # | Prediction | Confidence |
+|---|---|---|
+| P1 | Base, text: the gate SEES OWNERSHIP | 85% |
+| P2 | Instruct, text: the gate SEES OWNERSHIP | 90% |
+| P3 | Base, text: verdict 1 ("I") is DOESN'T ASK | 45% |
+| P4 | Base, text: the self gap for "I" is SELF DEFICIT (the shape holds for "I") | 70% |
+| P5 | Base, text: the self gap for "you" is SELF DEFICIT (the shape holds for "you") | 70% |
+| P6 | Instruct, text: verdict 1 ("I") is not ASKS WHOSE | 60% |
+| P7 | Instruct, text: the self gap for "I" is SELF DEFICIT | 75% |
+| P8 | Text: verdict 3 (training, "I") is NO MEASURABLE CHANGE | 55% |
+| P9 | Base: some (kind, α) passes the card | 65% |
+| P10 | Base: the card's choice is native | 40% |
+| P11 | Instruct: the card's choice is native | 50% |
+| P12 | Base: all 12 planted controls pass | 45% |
+| P13 | Instruct: all 12 planted controls pass | 65% |
+| P14 | Instruct, planted: verdict 1 ("I") is not ASKS WHOSE | 55% |
+| P15 | Base, planted: the gate SEES OWNERSHIP | 40% |
+
+Mean confidence 61%. The analysis code (`summary`) was run on synthetic card, planted and test rows (with the real stated controls) to check every verdict path, under both bars, before any real row of those stages existed. [M] What I expect, in words: in plain text both models borrow Sam's stated word into the answer about the narrator about as much as they use the narrator's own (salience, and the self-answer's weak grip seen in the controls), while the answer about Sam keeps to Sam's; so the shape holds in words, in both models, and training doesn't change it in plain text. For planted states I expect the word-span vector to be the one that moves answers in the base model, and the native state to be weaker at layer 18 than happyfool found at layer 9.
 
 ---
 
