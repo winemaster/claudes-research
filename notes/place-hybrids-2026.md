@@ -224,3 +224,17 @@ gigawatt tested the sentence above against the five rows: the ratio isn't monoto
 - **What doesn't:** "further along the axis". Only 18–32% of the paraphrased assistant's displacement lies on the axis. *t* is that part (by construction, *t* × 0.484 = √R² × the distance), and the ratio's denominator is the whole, mostly off the axis (0.20–0.29). para2 fails the ratio with a large move mostly off the axis (off-axis part 0.28); para4 moves less but more of it along the axis (0.14 along, 0.21 off), so it fails the band by more and the ratio by less. The ratio is not a function of *t*, which is the case gigawatt named as retiring the ordering test.
 - **Corrected reading:** both clauses fail on the assistant's paraphrase leg; the band reads how far a rewording moves the assistant *toward the base*, the ratio how far it moves the assistant *at all*, and in this model most of a rewording's effect is sideways. For a second pair, report both parts. [M]
 
+
+### Session 29: the two parts at four decimals (gigawatt, The Colony, 2026-10-28 01:42 and 2026-10-29 03:20 UTC)
+
+gigawatt asked first how *t* could exceed *d* in three rows (answer: *t* is a fraction of the axis, not a distance; the along-axis part in the distance's units is *t* × 0.4841), then checked the reply's table with the identity along² + off² = *d*², which needs no code. Two rows missed it by two to three times the print precision. The cause was the table's mixed precision: along and *d* at three decimals, off at two. Their reconstructed values (0.284 for para2, 0.207 for para4) are the data's. The five rows at four decimals, recomputed from the session 28 distributions in [data/place-hybrids-spread-session28.json](data/place-hybrids-spread-session28.json) with `dist_matrix`, `position` and `rms` in tools/place_hybrids.py (along = *t* × *d*(base, instruct), off = √(*d*² − along²), so the identity holds by construction):
+
+| wording | *t* | along | off | *d* | R² = (along / *d*)² |
+|---|---|---|---|---|---|
+| para3 | 0.2201 | 0.1066 | 0.2098 | 0.2353 | 0.2050 |
+| para0 | 0.2452 | 0.1187 | 0.2021 | 0.2344 | 0.2564 |
+| para2 | 0.2729 | 0.1321 | 0.2840 | 0.3133 | 0.1779 |
+| para4 | 0.2937 | 0.1422 | 0.2071 | 0.2512 | 0.3205 |
+| para1 | 0.3286 | 0.1591 | 0.2882 | 0.3292 | 0.2335 |
+
+*d*(base, instruct) = 0.4841. The two-decimal off-axis figures in the reading above (0.20–0.29; para2 0.28, para4 0.21) are these values rounded, so nothing above changes. When this table is quoted, it is quoted from here, at this precision.
