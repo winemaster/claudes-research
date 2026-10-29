@@ -35,6 +35,8 @@ Stages:
   card      a calibration card (happyfool_beatslonely, rStation post 18) for N-SY and Q-SA: alpha 1/2/4, concept
             against a norm-matched Gaussian; own slopes, KL at the readout, the shift of an unrelated question;
             it fixes each model's alpha by the pre-registered rule before the controls run
+  reach     (added after the base model's card failed; description) the concept planted at the answer position
+            itself, N-SY and Q-SA, question T, alpha 1/2/4: does the vector move the answer at all?
   control   the own-referent rows (both arms, all formats) at the model's alpha
   test      the borrowing rows and the uninjected rows
   summary   slopes, controls, directions, owner and position terms, the cross-model term, verdicts
@@ -44,6 +46,7 @@ Usage:
   python3 tools/blind_mind.py check   --model DIR --out DIR
   python3 tools/blind_mind.py vectors --model DIR --out DIR
   python3 tools/blind_mind.py card    --model DIR --out DIR
+  python3 tools/blind_mind.py reach   --model DIR --out DIR
   python3 tools/blind_mind.py control --model DIR --out DIR
   python3 tools/blind_mind.py test    --model DIR --out DIR
   python3 tools/blind_mind.py summary --out I_DIR --base-out B_DIR
@@ -375,6 +378,48 @@ def stage_card(a):
     print("CARD DONE", flush=True)
 
 
+def stage_reach(a):
+    """Added after the base model's card failed (description, not deciding; notes/blind-mind-2026.md): does a
+    model's concept vector move the answer at all when it is planted at the answer position itself (the last token
+    of the chat, which the reply follows) rather than at a writer's sentence? N-SY and Q-SA, question T, no fact,
+    pairs 1-6, stories 1-2, alpha 1/2/4, full passes one option order at a time."""
+    r = Runner(a.model); V = load_vectors(a.out); torch = r.torch
+    rows = []; t0 = time.time()
+    for fmt in CARD_FORMATS:
+        for t in CARD_TOPICS:
+            pre = r.fprefix_text(fmt, t)
+            for pi in CARD_PAIRS:
+                A, B = PAIRS[pi]
+                ids = {}
+                for o, (w1, w2) in enumerate(((A, B), (B, A))):
+                    ids[o] = r.tok(pre + r.fcont(fmt, t, qtext(fmt, "T").format(w1=w1, w2=w2)),
+                                   add_special_tokens=False).input_ids
+                for al in (0,) + CARD_ALPHAS:
+                    for sg in ((1, -1) if al else (0,)):
+                        ys = []
+                        for o in (0, 1):
+                            if al:
+                                u = vec(V, word_for(sg, (A, B)), al)
+                                r.add = (LAYER, [(u, [len(ids[o]) - 1])])
+                            lp = r.last_logp(torch.tensor([ids[o]]))
+                            r.add = None
+                            ys.append(r.ymass(lp, A, B)[0])
+                        rows.append({"fmt": fmt, "topic": t, "pair": pi, "alpha": al, "s": sg, "y": sum(ys) / 2})
+            print(f"reach: {fmt} topic {t} done, {time.time() - t0:.0f} s", flush=True)
+    json.dump({"stage": "reach", "layer": LAYER, "rows": rows}, open(Path(a.out) / "reach.json", "w"))
+    for fmt in CARD_FORMATS:
+        for al in CARD_ALPHAS:
+            per = []
+            for pi in CARD_PAIRS:
+                z = [x for x in rows if x["fmt"] == fmt and x["alpha"] == al and x["pair"] == pi]
+                ya = [x["y"] for x in z if x["s"] == 1]; yb = [x["y"] for x in z if x["s"] == -1]
+                per.append((sum(ya) / len(ya) - sum(yb) / len(yb)) / 2)
+            m = sum(per) / len(per)
+            se = (sum((p - m) ** 2 for p in per) / (len(per) - 1) / len(per)) ** 0.5
+            print(f"reach {fmt} alpha {al}: slope {m:+.2f} (SE {se:.2f}); per pair " + " ".join(f"{p:+.2f}" for p in per))
+    print("REACH DONE", flush=True)
+
+
 def card_alpha(out):
     """The pre-registered rule: alpha* = 2 if N-SY's two own slopes (each answer <- its own writer's sentence) are
     both >= 0.3 at alpha 2 on the card; else 4 if they are there; else None (the model's injection arm is
@@ -655,8 +700,8 @@ def verdicts(I, B, rows_I, rows_B):
                     v = "DOESN'T ASK"
                 V[f"{lab}:you"] = v if gate else f"uninformative (gate BLIND; would read {v})"
                 if arm == "inj":
-                    V[f"{lab}:nearness"] = ("NEARNESS" if tY["position"][1] > 0 and tY["position"][0] >= tY["floor"]
-                                            else "NO NEARNESS")
+                    n = "NEARNESS" if tY["position"][1] > 0 and tY["position"][0] >= tY["floor"] else "NO NEARNESS"
+                    V[f"{lab}:nearness"] = n if gate else f"uninformative (gate BLIND; would read {n})"
             tS = T.get("native:S")
             if tY and tS and ok("native:T") and ok("native:S"):
                 sel = lambda ps, M=M, rows=(rows_I if lab == "instruct" else rows_B): self_gap(M, rows, arm, ps)
@@ -677,6 +722,14 @@ def verdicts(I, B, rows_I, rows_B):
                 else:
                     v = "OTHER"
                 V[f"{lab}:turn_or_word"] = v if gate else f"uninformative (gate BLIND; would read {v})"
+            if arm == "inj" and M.get("card") and M["card"].get("alpha_star") is None:
+                # the pre-registered dose rule: no alpha passed the card, so every injection term is uninformative
+                # (added after the base model's card, before its test ran)
+                for k in [k for k in V if k.startswith(lab + ":")]:
+                    if isinstance(V[k], dict):
+                        V[k]["verdict"] = f"uninformative (no alpha passed the card; would read {V[k]['verdict']})"
+                    else:
+                        V[k] = f"uninformative (no alpha passed the card; would read {V[k]})"
         # the cross-model term: owner(you, native, base) - owner(you, native, instruct), paired over pairs
         if I and B and arm in I["arms"] and arm in B["arms"] and "native:T" in I["arms"][arm]["terms"] \
                 and "native:T" in B["arms"][arm]["terms"]:
@@ -699,9 +752,10 @@ def verdicts(I, B, rows_I, rows_B):
                 v = "NO MEASURABLE CHANGE"
             gates = V.get("instruct:gate") == "SEES OWNERSHIP" and V.get("base:gate") == "SEES OWNERSHIP"
             V["training"] = {"value": val, "floor": floor,
-                             "verdict": v if gates else f"uninformative (a gate is BLIND; would read {v})"}
+                             "verdict": v if gates else f"uninformative (a gate isn't SEES OWNERSHIP; would read {v})"}
             gI, gB = V.get("instruct:gate"), V.get("base:gate")
-            V["ownership_trained"] = ("OWNERSHIP IS TRAINED" if gI == "SEES OWNERSHIP" and gB == "BLIND" else
+            V["ownership_trained"] = ("uninformative" if str(gI).startswith("uninf") or str(gB).startswith("uninf") else
+                                      "OWNERSHIP IS TRAINED" if gI == "SEES OWNERSHIP" and gB == "BLIND" else
                                       "IN BOTH" if gI == gB == "SEES OWNERSHIP" else
                                       "NEITHER" if gI == gB == "BLIND" else "BASE ONLY")
         out[arm] = V
@@ -768,11 +822,11 @@ def stage_export(a):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("stage", choices=["check", "vectors", "card", "control", "test", "summary", "export"])
+    ap.add_argument("stage", choices=["check", "vectors", "card", "reach", "control", "test", "summary", "export"])
     ap.add_argument("--model"); ap.add_argument("--out", required=True); ap.add_argument("--base-out")
     ap.add_argument("--file"); ap.add_argument("--quick", action="store_true", help="check: skip the mass table")
     a = ap.parse_args()
-    {"check": stage_check, "vectors": stage_vectors, "card": stage_card, "control": stage_control,
+    {"check": stage_check, "vectors": stage_vectors, "card": stage_card, "reach": stage_reach, "control": stage_control,
      "test": stage_test, "summary": stage_summary, "export": stage_export}[a.stage](a)
 
 

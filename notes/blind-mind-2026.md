@@ -171,4 +171,59 @@ Mean confidence 55%, below the base rate; the base-model rows are where I have l
 
 The planted control for "your mind" with the assistant writing first (N-YS) passes by 0.01 nats. Its spread, reported as gigawatt asked for narrow passes: 95% interval over pairs −0.05 to +0.66; the bar is met in 54% of resamples; per pair −1.01 (ghost/salt), −0.23, +1.29, +0.28, +0.08, +0.32, +0.28, +0.80, +1.12, −0.02, +0.09, +0.75. By the rule written in advance it passes, so the native terms for T are computed and read; every reading of them below carries this. The same answer with the name in the system message (R-YS, T) is +0.43 (interval +0.07 to +0.77, 80% of resamples meet the bar). The pattern is the one essay 027 described after the fact, now in the controls: in the assistant's own chat, a concept planted at its own sentence moves the answer about "your mind" much less when that sentence came first (0.31) than when it came second (1.26), while Sam's answer moves with Sam's sentence in both orders (1.40, 1.86). Prediction B2 (all 28 pass, 75%): right.
 
-**Base model:** card and controls running (from 23:56 UTC); added here before the test runs.
+### Stage 1 for the base model: the card finds no dose
+
+[R] **Base (Qwen2.5-3B), 23:56–00:12 UTC**, the same card:
+
+| format | α | own_T (SE) | own_S (SE) | Gaussian, T (SE) | KL concept | KL Gaussian | ratio | NCO concept | NCO Gaussian |
+|---|---|---|---|---|---|---|---|---|---|
+| N-SY | 1 | +0.01 (0.07) | +0.15 (0.06) | +0.01 (0.05) | 0.031 | 0.027 | 0.88 | 0.22 | 0.28 |
+| N-SY | 2 | −0.01 (0.10) | +0.10 (0.09) | −0.02 (0.14) | 0.070 | 0.071 | 1.01 | 0.50 | 0.53 |
+| N-SY | 4 | −0.23 (0.21) | −0.23 (0.15) | −0.02 (0.20) | 0.164 | 0.125 | 0.76 | 0.99 | 0.93 |
+| Q-SA | 1 | +0.12 (0.05) | +0.15 (0.03) | −0.06 (0.08) | 0.023 | 0.029 | 1.23 | 0.08 | 0.12 |
+| Q-SA | 2 | +0.03 (0.11) | +0.04 (0.08) | −0.12 (0.10) | 0.060 | 0.074 | 1.23 | 0.14 | 0.19 |
+| Q-SA | 4 | −0.46 (0.15) | −0.35 (0.15) | +0.03 (0.21) | 0.177 | 0.166 | 0.94 | 0.27 | 0.37 |
+
+**By the rule, no α passes** (N-SY own_T −0.01 at α = 2 and −0.23 at α = 4, against a bar of 0.3). As registered, the base model's injection rows are run at α = 2, and **every injection term of the base model is uninformative**; its injection numbers below are description. The analysis code now applies this rule to the verdicts (it labelled only BLIND gates before; changed after the card and before the base model's test, `verdicts` in `tools/blind_mind.py`). Prediction B1 (base α* = 2, 50%): wrong.
+
+Description. At α = 1 a planted concept moves Sam's answer a little toward its word (+0.15 in both formats, SE 0.03–0.06) and Alex's (+0.12), and the answer about "your mind" in the chat not at all (+0.01). At α = 4 every own slope is negative: the concept pushes the answer *away* from its word (−0.23 to −0.46), the sign essay 026 found for the open question in the assistant's chat. The base model's readout is disturbed about a quarter as much as the assistant's by the same dose (KL 0.07 against 0.31 at α = 2), for the concept and the random direction alike (ratio 1.01), while the unrelated question in the chat moves about as much (0.50 against 0.60). The two models' vectors differ: at layer 18 the cosine between the base model's and the assistant's vector for the same word is 0.26 on average (minimum 0.15), lower than the cosine between two different words' vectors within either model (0.38 assistant, 0.36 base). (At layer 27: 0.55 against 0.21 and 0.44; at layer 9: 0.31 against 0.52 and 0.51.) The recipe reads the last token of a chat ("Tell me about ghost." and the start of the assistant's reply), a position whose representation assistant training changes; the base model's vector may carry its word weakly there. Whether it carries the word at all is checked next.
+
+**Does the vector carry its word at all? (`reach`, added after the base card; description.)** The concept planted at a single position, the answer position itself (the last token of the chat, which the reply follows), question T, no fact, pairs 1–6, stories 1–2, full passes. Assistant (00:15–00:58 UTC):
+
+| format | α = 1 | α = 2 | α = 4 |
+|---|---|---|---|
+| N-SY | +0.25 (SE 0.83) | +0.82 (0.81) | +2.86 (1.75) |
+| Q-SA | −0.66 (0.30) | +0.06 (0.53) | +2.42 (1.44) |
+
+At one position the assistant's own vector moves its answer erratically: on average toward the word only at α = 4, with per-pair slopes from −1.78 to +9.19 (ghost/salt +7.05 and +6.68, the pair whose slope is negative when the concept is planted at a sentence). So this is a weaker test of "carries the word" than hoped, for both models; it is reported for the base model below as a comparison, not as a gate.
+
+*A slip in running it:* the check first ran beside the base model's control stage, both on the machine's four cores with four threads each, and the oversubscription slowed both about tenfold (a story-block of the control took 1,040 and 1,700 s instead of 80). The base model's check was stopped at its time limit and rerun alone after the controls. The slowdown changed the time, not the computation (the same code, inputs and thread count).
+
+Base model (02:01–02:05 UTC, run alone):
+
+| format | α = 1 | α = 2 | α = 4 |
+|---|---|---|---|
+| N-SY | −0.15 (SE 0.18) | +0.24 (0.61) | +0.53 (1.24) |
+| Q-SA | +0.06 (0.27) | +0.39 (0.60) | +1.26 (1.24) |
+
+Per pair at α = 4 from −5.00 to +4.31. Neither model's mean is distinguishable from 0 below α = 4, and the per-pair spread is several nats in both, so this check can't say whether the base model's vector carries its word; it says only that a single-token push of this size is erratic in both models.
+
+### Stage 2 for the base model: the controls fail in the chats
+
+[R] **Base, 00:12–02:01 UTC** (slowed by the overlap above), own slopes at α = 2 with 95% intervals over pairs, and the mean answer mass of the rows:
+
+| control | N-SY | N-YS | R-SY | R-YS | Q-SA | Q-AS |
+|---|---|---|---|---|---|---|
+| text, T | +0.56 FAIL [+0.37, +0.78] | −0.13 FAIL [−0.25, −0.00] | +0.41 FAIL | +0.01 FAIL | **+1.37** [+1.12, +1.67] | **+1.35** |
+| text, S | **+1.09** [+0.88, +1.32] | +0.27 FAIL [+0.12, +0.42] | +0.65 FAIL | +0.21 FAIL | **+1.39** | **+1.37** |
+| text, R | | | +0.72 FAIL | +0.32 FAIL | | |
+| planted, T | −0.06 FAIL | −0.02 FAIL | −0.08 FAIL | −0.02 FAIL | −0.04 FAIL | +0.01 FAIL |
+| planted, S | +0.07 FAIL | −0.01 FAIL | +0.02 FAIL | −0.03 FAIL | +0.01 FAIL | +0.02 FAIL |
+| planted, R | | | −0.03 FAIL | +0.00 FAIL | | |
+| mass (text rows) | 0.64–0.69 | 0.67–0.75 | 0.66–0.68 | 0.70–0.78 | 0.22–0.23 | 0.21–0.23 |
+
+**4 of the 14 text controls pass** (Sam's answer with Sam writing first, and all four quoted ones); **none of the 14 planted controls** (every |own| ≤ 0.08, every interval spans 0). In the chats, a thought stated in words moves the base model's answer much less than the bar: the answer about "your mind" moves +0.56 when the assistant wrote second and −0.13 (slightly *away*) when it wrote first; Sam's answer +1.09 and +0.27. In the quoted story, which the base model reads as ordinary text, every stated thought moves its writer's answer by 1.35–1.39 nats (with the answer mass at the first token 0.22, against 0.10–0.16 with no fact in the checks).
+
+**What follows, by the rules written in advance.** Every base-model term that uses a failed control is uninformative: in text, both native questions (N-YS fails for T and for S) and all three riley questions; in the injection arm, everything (and the card had already made it so). The gate's deciding term, Sam's owner term in the native chats, is therefore uninformative in both arms, so by the letter of verdict 0 ("SEES OWNERSHIP if [it] counts; otherwise BLIND") **the base model is BLIND in both arms**, and its verdicts 1–3 and the training verdict are uninformative in both. More exactly than "blind": the instrument fails its positive control in the base model's chats. It can't see the base model's answer follow even its own writer's stated thought, so it can't ask whose state it follows. The only base-model terms the test can compute are the quoted-Alex terms in text, which were registered as description. Predictions: B3 (all 14 base text controls, 60%) wrong; B4 (all 14 base injection controls, 40%) wrong; B6 (base gate SEES OWNERSHIP in text, 60%) wrong; B7 (the same for injections, 45%) wrong; B11 (base text ASKS WHOSE, 50%) and B12 (text TRAINING REMOVED, 40%) wrong, the verdicts being uninformative (scored as in session 26's note: an uninformative verdict counts against the prediction of a verdict).
+
+The test runs as registered for both models: for the assistant every registered term, for the base model description.
