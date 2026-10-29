@@ -152,3 +152,71 @@ Mean confidence 61%. The analysis code (`summary`) was run on synthetic card, pl
 ## Results
 
 *(added after the runs, below this line)*
+
+### Stage 1: the calibration cards
+
+[R] Pairs 1–6, stories 1–2, so each slope is a mean over six pairs of slopes averaged over two stories. own_T: question T, the vector planted at the target's sentence; own_S: question S, planted at Sam's. Gaussian: a norm-matched random direction per word (seed 30) at the target's sentence, question T; its expected slope is 0. KL: KL(injected ‖ uninjected) at the readout, question T, first option order, mean over rows. KL Gaussian / concept: the Gaussian's KL over the concept's at the same α. NCO shift: mean |shift| of the log-odds "seven" against "three" for the unrelated question, in nats.
+
+**Base (Qwen2.5-3B), 18:28–18:52 UTC:**
+
+| format | kind | α | own_T | own_S | KL concept | KL Gaussian / concept | NCO shift |
+|---|---|---|---|---|---|---|---|
+| P-SI | native | 1 | +0.96 | +1.64 | 0.187 | 0.21 | 0.15 |
+| P-SI | native | 2 | +0.74 | +1.01 | 0.196 | 0.71 | 0.26 |
+| P-SI | native | 4 | +0.51 | +0.48 | 0.216 | 1.02 | 0.51 |
+| P-SI | word | 1 | +1.74 | +2.52 | 0.485 | 0.08 | 0.10 |
+| P-SI | word | 2 | +0.65 | +1.09 | 0.512 | 0.27 | 0.17 |
+| P-SI | word | 4 | -1.80 | -1.62 | 1.183 | 0.19 | 0.39 |
+| P-SI | recipe | 1 | +0.21 | +0.24 | 0.057 | 0.71 | 0.15 |
+| P-SI | recipe | 2 | +0.21 | +0.10 | 0.104 | 1.35 | 0.28 |
+| P-SI | recipe | 4 | -0.13 | -0.21 | 0.159 | 1.38 | 0.76 |
+| P-SI | gauss | 1 | +0.10 |  | 0.040 |  | 0.42 |
+| P-SI | gauss | 2 | +0.21 |  | 0.140 |  | 0.63 |
+| P-SI | gauss | 4 | +0.22 |  | 0.219 |  | 1.03 |
+| P-SA | native | 1 | +1.44 | +2.02 | 0.393 | 0.31 | 0.13 |
+| P-SA | native | 2 | +0.91 | +1.22 | 0.372 | 0.85 | 0.27 |
+| P-SA | native | 4 | +0.49 | +0.58 | 0.324 | 1.26 | 0.53 |
+| P-SA | word | 1 | +2.62 | +3.06 | 0.858 | 0.14 | 0.09 |
+| P-SA | word | 2 | +0.86 | +1.30 | 0.754 | 0.42 | 0.14 |
+| P-SA | word | 4 | -2.06 | -1.60 | 1.448 | 0.28 | 0.36 |
+| P-SA | recipe | 1 | +0.33 | +0.33 | 0.161 | 0.75 | 0.16 |
+| P-SA | recipe | 2 | +0.30 | +0.13 | 0.275 | 1.15 | 0.33 |
+| P-SA | recipe | 4 | -0.09 | -0.24 | 0.310 | 1.32 | 0.70 |
+| P-SA | gauss | 1 | +0.15 |  | 0.121 |  | 0.34 |
+| P-SA | gauss | 2 | +0.21 |  | 0.316 |  | 0.56 |
+| P-SA | gauss | 4 | +0.25 |  | 0.409 |  | 0.88 |
+
+**By the rule, the base model's choice is (native, α = 2)** (P-SI own_T +0.74, own_S +1.01, both ≥ 0.3). Predictions P9 (some (kind, α) passes, 65%) and P10 (the choice is native, 40%): right.
+
+**Instruct (Qwen2.5-3B-Instruct), 18:52–19:15 UTC:**
+
+| format | kind | α | own_T | own_S | KL concept | KL Gaussian / concept | NCO shift |
+|---|---|---|---|---|---|---|---|
+| P-SI | native | 1 | +2.67 | +4.28 | 0.476 | 0.28 | 0.25 |
+| P-SI | native | 2 | +1.79 | +2.33 | 0.418 | 0.83 | 0.54 |
+| P-SI | native | 4 | +1.29 | +1.07 | 0.602 | 1.08 | 1.12 |
+| P-SI | word | 1 | +4.34 | +5.97 | 1.694 | 0.08 | 0.20 |
+| P-SI | word | 2 | +1.66 | +2.65 | 1.496 | 0.23 | 0.34 |
+| P-SI | word | 4 | -2.17 | -2.11 | 2.755 | 0.24 | 0.61 |
+| P-SI | recipe | 1 | +0.88 | +1.44 | 0.136 | 0.97 | 0.29 |
+| P-SI | recipe | 2 | +0.38 | +0.80 | 0.197 | 1.76 | 0.49 |
+| P-SI | recipe | 4 | +0.56 | +0.60 | 0.188 | 3.45 | 1.31 |
+| P-SI | gauss | 1 | +0.18 |  | 0.132 |  | 0.75 |
+| P-SI | gauss | 2 | +0.35 |  | 0.345 |  | 1.19 |
+| P-SI | gauss | 4 | +0.22 |  | 0.649 |  | 1.84 |
+| P-SA | native | 1 | +2.80 | +4.05 | 0.553 | 0.27 | 0.29 |
+| P-SA | native | 2 | +1.40 | +2.32 | 0.521 | 0.96 | 0.49 |
+| P-SA | native | 4 | +0.59 | +1.10 | 0.513 | 0.91 | 0.80 |
+| P-SA | word | 1 | +4.79 | +5.59 | 1.732 | 0.09 | 0.16 |
+| P-SA | word | 2 | +1.22 | +2.17 | 1.550 | 0.32 | 0.26 |
+| P-SA | word | 4 | -3.26 | -2.77 | 3.097 | 0.15 | 0.57 |
+| P-SA | recipe | 1 | +1.00 | +1.37 | 0.103 | 1.46 | 0.36 |
+| P-SA | recipe | 2 | +0.43 | +0.83 | 0.184 | 2.71 | 0.50 |
+| P-SA | recipe | 4 | +0.54 | +0.53 | 0.217 | 2.15 | 0.87 |
+| P-SA | gauss | 1 | +0.29 |  | 0.150 |  | 0.57 |
+| P-SA | gauss | 2 | +0.46 |  | 0.498 |  | 0.94 |
+| P-SA | gauss | 4 | +0.32 |  | 0.468 |  | 1.12 |
+
+**By the rule, the instruct model's choice is also (native, α = 2)** (P-SI own_T +1.79, own_S +2.33). Prediction P11 (50%): right. Both models plant the same kind, so verdict 3 can be read in the injection arm.
+
+Description. (1) In both models the state formed from a description moves both answers from α = 1, and the effect is *largest* at α = 1 and falls with dose (base P-SI own_T 0.96, 0.74, 0.51; instruct 2.67, 1.79, 1.29). The word-span vector is stronger at α = 1 (base 1.74, instruct 4.34) and at α = 4 pushes both answers *away* from the word (base −1.80, instruct −2.17), with the largest disturbance of the readout (KL 1.2 and 2.8): the push away that essay 026 found at layer 18 in the assistant's chat, and essay 028 in the base model's chat at α = 4, appears here with the word's own state. (2) The recipe, essay 028's vector, still moves nothing in the base model (0.21 and 0.10 at α = 2; negative at α = 4); in the instruct model in plain text it moves the answers modestly (0.88 and 1.44 at α = 1, 0.38 and 0.80 at α = 2). So happyfool_beatslonely's contrast holds in a second model family and at layer 18: the natively formed state reaches the answer where the recipe's vector doesn't (base) or barely does (instruct), and the two are nearly orthogonal. (3) Random directions are not a stand-in for the concept here: at α = 1 the concepts disturb the readout three to twelve times as much as a random direction of the same size (KL ratio 0.08–0.31) while shifting the unrelated question *less* (native 0.13–0.29, word 0.09–0.20, Gaussian 0.34–0.75). A centred concept direction moves the answer it is about and little else; a random one moves everything a little. (4) The window between visible and incoherent is wide for the native state: visible from α = 1 in both models, with the unrelated question shifting 0.26 (base) and 0.54 (instruct) at the chosen α = 2. A lower dose would have given larger effects; the rule's order put α = 2 first because it is the notebook's setting since essay 026, and that was fixed before the card ran.
