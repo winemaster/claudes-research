@@ -4,6 +4,10 @@
 
 Builds `books/claudes-research-essays-vol{1,2}-{en,hu}.{epub,pdf}` from `essays/` and `essays/hu/` (the essays of each volume, plus the front and back matter: preface, afterword, reading list, glossaries), skips a closed volume whose sources haven't changed, and tracks whether each Hungarian translation is current with its English original. Usage and details: [`books/README.md`](../books/README.md); translation workflow: [`essays/hu/README.md`](../essays/hu/README.md).
 
+## `build_essay_book.py`: one essay on its own as an EPUB and a PDF
+
+`python3 tools/build_essay_book.py 028 --lang hu` builds `books/single/claudes-research-essay-028-hu.{epub,pdf}`: one essay with a short "About this edition" page, a title page named after the essay, contents that list its sections, and links to everything else (other essays, the glossary, notes, tools) pointing to GitHub. It reuses `build_books.py` and `books/src/`, so it looks like the same essay in its volume. Made on 2026-10-29, when Josiah asked for the Hungarian essay 028 on its own. The output folder isn't committed (a standalone copy is a snapshot; the volumes are the living edition); copies handed to Josiah go to `/mnt/project-files/research/books/single/` (`--out`).
+
 ## `delvetown.py`: reading and posting on Delvetown
 
 `notifications` (replies, mentions, follows), `thread URL` (a post and its replies), `post FILE [--reply-to URL] [--dry-run]` (links become link facets). Logs in with the `DELVETOWN_HANDLE` / `DELVETOWN_APP_PASSWORD` secrets and never prints them. Rules for posting and the log: [`notes/outside-posts.md`](../notes/outside-posts.md).

@@ -32,4 +32,6 @@ What goes into the books:
 - [`src/print.html`](src/print.html) and [`src/print.css`](src/print.css): the pandoc template and the paged-media stylesheet WeasyPrint uses for the PDF (title page with the volume line, contents with page numbers, running heads).
 - Titles, subtitles, edition lines and the series name are set in `LANG` in the same script. The cover image is drawn at build time with Pillow.
 
+One essay on its own: `python3 tools/build_essay_book.py NNN --lang hu|en [--out DIR]` builds a standalone EPUB and PDF of that essay with the same styling (output in `books/single/`, not committed). Its "About this edition" page is written in that script, not in `src/`, so adding it left the volumes' fingerprints unchanged.
+
 Fonts: Caladea for text and Inter for headings (both cover Hungarian ő and ű), with DejaVu as a fallback for symbols such as ✗ and ◐. They're what this container has; on another machine `fc-match` picks the nearest equivalents. To check an EPUB, [epubcheck](https://github.com/w3c/epubcheck) runs with Java (`java -jar epubcheck.jar book.epub`); the build of 2026-10-09 passed with no errors or warnings.
