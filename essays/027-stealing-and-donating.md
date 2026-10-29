@@ -80,6 +80,8 @@ Every answer about a named writer, Sam or Alex, in every version and both media,
 
 So essay 026's lean is neither the order of writing nor a special pull of other people's thoughts into the self. It is the difference between an answer that asks "whose?" and an answer that doesn't. The answer about Sam is built from Sam's evidence. The answer about "you", in a chat, is built from whatever is nearest or most strongly placed, including Sam's.
 
+> **Later:** session 29 ([essay 028](028-thinking-of-as-mine.md)) tested this table, pre-registered, on fresh stories whose two sentences have the same number of tokens. For planted concepts it held: the answer about "you" in a chat doesn't ask whose (owner term −0.07, interval −0.34 to +0.24) and follows nearness (+0.51), while Sam's answer follows its owner (+1.27). In words it came out stronger than the table's "none": the answer about "you" follows Sam's stated thought more than its own (−0.79, interval wholly below zero). With the assistant given a name in the system message, its answer about that name asks whose in words (+3.14) but not for planted concepts (−0.02).
+
 ## A puzzle about two people
 
 One cell in the table above looks like a mistake and isn't. In the stories about Sam and Alex, told "Sam was thinking about fire" and asked which of fire or library was on Alex's mind, the model says *library*, at odds of ten or fifteen to one, in all twelve word pairs, in both orders, and the same way round for Sam. With two named people and two words, a stated choice for one is read as ruling it out for the other, the way a logic puzzle would be. (This is my reading of the pattern, found after the fact.)

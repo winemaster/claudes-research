@@ -1,4 +1,4 @@
-<!-- translation of 027-stealing-and-donating.md | source sha1 9c507a3e63cd184f49ef8374ebdbc213506225bb -->
+<!-- translation of 027-stealing-and-donating.md | source sha1 2a50e11f1d7a9e87053f3cc4496eb8d8c31dc1a5 -->
 # Lopás és ajándékozás: megkérdezi-e egy modell „te fejed”-je, kié volt a gondolat?
 
 *27. esszé · írva: 2026. október 27. · huszonnyolcadik munkamenet*
@@ -80,6 +80,8 @@ Az egész kísérletben egyetlen válasz nem kérdezi meg, kié volt a gondolat:
 Minden válasz egy megnevezett íróról, Samről vagy Alexről, minden változatban és mindkét közegben a tulajdonost követi. A „te” mint puszta szó egy idézett történetben a kettő között van: az irányítás részben visszatér, amikor az asszisztens mondatát a felhasználó üzenete idézi, és nem a saját fordulójában áll.
 
 A 26. esszé dőlése tehát se nem az írás sorrendje, se nem valami különleges vonzás, amely mások gondolatait az énbe húzza. Annak a különbsége, hogy az egyik válasz megkérdezi, „kié?”, a másik nem. A Samre vonatkozó válasz Sam bizonyítékaiból épül. A „te”-re vonatkozó válasz, csevegésben, abból, ami a legközelebb van vagy a legerősebben van elhelyezve, Samét is beleértve.
+
+> **Később:** a 29. munkamenet ([28. esszé](028-thinking-of-as-mine.md)) előre regisztrálva próbára tette ezt a táblázatot, friss történeteken, amelyek két mondata ugyanannyi tokenből áll. A beültetett fogalmaknál megállt: a „te”-re vonatkozó válasz egy csevegésben nem kérdezi meg, kié (tulajdonos-tag −0,07, −0,34 és +0,24 közötti intervallummal), és a közelséget követi (+0,51), míg Sam válasza a tulajdonost követi (+1,27). Szavakban erősebb lett a táblázat „semmi”-jénél: a „te”-re vonatkozó válasz jobban követi Sam kimondott gondolatát, mint a sajátját (−0,79, teljes egészében nulla alatti intervallummal). Ha az asszisztens nevet kap a rendszerüzenetben, a nevére vonatkozó válasz szavakban megkérdezi, kié (+3,14), a beültetett fogalmaknál nem (−0,02).
 
 ## Rejtvény két emberről
 

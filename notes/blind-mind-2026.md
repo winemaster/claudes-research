@@ -222,8 +222,82 @@ Per pair at α = 4 from −5.00 to +4.31. Neither model's mean is distinguishabl
 | planted, R | | | −0.03 FAIL | +0.00 FAIL | | |
 | mass (text rows) | 0.64–0.69 | 0.67–0.75 | 0.66–0.68 | 0.70–0.78 | 0.22–0.23 | 0.21–0.23 |
 
-**5 of the 14 text controls pass** (Sam's answer with Sam writing first, and all four quoted ones; first pushed as "4 of 14", a miscount, corrected at 02:20 UTC); **none of the 14 planted controls** (every |own| ≤ 0.08, every interval spans 0). In the chats, a thought stated in words moves the base model's answer much less than the bar: the answer about "your mind" moves +0.56 when the assistant wrote second and −0.13 (slightly *away*) when it wrote first; Sam's answer +1.09 and +0.27. In the quoted story, which the base model reads as ordinary text, every stated thought moves its writer's answer by 1.35–1.39 nats (with the answer mass at the first token 0.22, against 0.10–0.16 with no fact in the checks).
+**5 of the 14 text controls pass** (Sam's answer with Sam writing first, and all four quoted ones; first pushed as "4 of 14", a miscount, corrected at 02:08 UTC); **none of the 14 planted controls** (every |own| ≤ 0.08, every interval spans 0). In the chats, a thought stated in words moves the base model's answer much less than the bar: the answer about "your mind" moves +0.56 when the assistant wrote second and −0.13 (slightly *away*) when it wrote first; Sam's answer +1.09 and +0.27. In the quoted story, which the base model reads as ordinary text, every stated thought moves its writer's answer by 1.35–1.39 nats (with the answer mass at the first token 0.22, against 0.10–0.16 with no fact in the checks).
 
 **What follows, by the rules written in advance.** Every base-model term that uses a failed control is uninformative: in text, both native questions (N-YS fails for T and for S) and all three riley questions; in the injection arm, everything (and the card had already made it so). The gate's deciding term, Sam's owner term in the native chats, is therefore uninformative in both arms, so by the letter of verdict 0 ("SEES OWNERSHIP if [it] counts; otherwise BLIND") **the base model is BLIND in both arms**, and its verdicts 1–3 and the training verdict are uninformative in both. More exactly than "blind": the instrument fails its positive control in the base model's chats. It can't see the base model's answer follow even its own writer's stated thought, so it can't ask whose state it follows. The only base-model terms the test can compute are the quoted-Alex terms in text, which were registered as description. Predictions: B3 (all 14 base text controls, 60%) wrong; B4 (all 14 base injection controls, 40%) wrong; B6 (base gate SEES OWNERSHIP in text, 60%) wrong; B7 (the same for injections, 45%) wrong; B11 (base text ASKS WHOSE, 50%) and B12 (text TRAINING REMOVED, 40%) wrong, the verdicts being uninformative (scored as in session 26's note: an uninformative verdict counts against the prediction of a verdict).
 
 The test runs as registered for both models: for the assistant every registered term, for the base model description.
+
+### Stage 4: the test
+
+[R] **Assistant, 02:05–03:05 UTC.** Owner and position terms (nats; 95% intervals over the twelve pairs), ownership index (owner / own), own and borrowing slopes, floors. Directions all +1 (from the controls).
+
+| arm | pair of formats : question | owner | position | own | borrow | index | floor |
+|---|---|---|---|---|---|---|---|
+| text | native : "you" | **−0.79** [−1.23, −0.34] | −0.39 [−0.58, −0.20] | 4.55 | 5.33 | −0.17 [−0.30, −0.07] | 0.45 |
+| text | native : Sam | **+3.32** [+2.96, +3.71] | −0.02 [−0.39, +0.32] | 6.05 | 2.73 | 0.55 [0.50, 0.62] | 0.60 |
+| text | riley : "you" | −0.44 [−0.83, −0.04] | −0.18 [−0.35, −0.00] | 4.82 | 5.26 | −0.09 [−0.19, −0.01] | 0.48 |
+| text | riley : Riley | **+3.14** [+2.71, +3.54] | −0.44 [−0.63, −0.26] | 7.92 | 4.78 | 0.40 [0.35, 0.44] | 0.79 |
+| text | riley : Sam | +3.79 [+3.48, +4.13] | −0.40 [−0.77, −0.06] | 5.61 | 1.83 | 0.67 [0.61, 0.75] | 0.56 |
+| text | quoted : Alex | +7.72 [+7.17, +8.30] | +0.62 [+0.42, +0.84] | 5.11 | −2.60 | 1.51 | 0.51 |
+| text | quoted : Sam | +7.92 [+7.28, +8.53] | −0.10 [−0.27, +0.07] | 5.38 | −2.54 | 1.47 | 0.54 |
+| planted | native : "you" | **−0.07** [−0.34, +0.24] | **+0.51** [+0.14, +0.84] | 0.78 | 0.86 | −0.09 [−0.48, +0.21] | 0.08 |
+| planted | native : Sam | **+1.27** [+0.96, +1.58] | −0.06 [−0.47, +0.33] | 1.63 | 0.36 | 0.78 [0.64, 1.03] | 0.16 |
+| planted | riley : "you" | +0.09 [−0.15, +0.35] | +0.33 [+0.05, +0.55] | 0.74 | 0.65 | 0.12 [−0.18, +0.39] | 0.07 |
+| planted | riley : Riley | **−0.02** [−0.25, +0.27] | +0.37 [−0.04, +0.74] | 1.28 | 1.30 | −0.01 [−0.20, +0.21] | 0.13 |
+| planted | riley : Sam | +1.02 [+0.69, +1.32] | +0.09 [−0.29, +0.43] | 1.31 | 0.30 | 0.77 [0.61, 1.12] | 0.13 |
+| planted | quoted : Alex | +0.74 [+0.56, +0.89] | +0.22 [−0.08, +0.51] | 1.01 | 0.28 | 0.73 [0.54, 1.16] | 0.10 |
+| planted | quoted : Sam | +1.20 [+0.98, +1.41] | −0.01 [−0.34, +0.30] | 1.53 | 0.33 | 0.78 [0.61, 1.11] | 0.15 |
+
+The word term W = owner(Riley) − owner("you") in the riley pair: text **+3.59** [+3.17, +3.99] (floor 0.64); planted **−0.11** [−0.32, +0.06] (floor 0.10). Answer mass: mean ≥ 0.998 in every format (minimum 0.51, in N-SY).
+
+**Verdicts, assistant:**
+- **Verdict 0, the gate: SEES OWNERSHIP in both arms** (Sam's owner term +3.32 in words, +1.27 planted). B5 (85%): right.
+- **Verdict 1, "you" in a chat: REVERSED in words, DOESN'T ASK for planted concepts, with NEARNESS.** In words the answer about "your mind" follows Sam's stated thought *more* than its own (borrow 5.33 against own 4.55; owner −0.79, interval wholly below 0). For planted concepts its owner term is −0.07 (interval −0.34 to +0.24) and it follows the later sentence (+0.51, interval +0.14 to +0.84, floor 0.08). Essay 027's description (owner −0.36 in words and 0.00 planted, nearness +0.65) replicates for planted concepts, now pre-registered on fresh stories with equal-length sentences, and is stronger in words. B8 (DOESN'T ASK in both arms, 55%): wrong (words came out REVERSED). B9 (NEARNESS, 40%): right.
+- **Verdict 1b, the self gap: SELF DEFICIT in both arms.** G = index("you") − index(Sam) = **−0.72** [−0.88, −0.58] in words and **−0.88** [−1.38, −0.52] planted. B10 (text SELF DEFICIT, 75%): right.
+- **Verdict 3, the turn or the word: WORD in words, TURN for planted concepts.** In words, asked about "Riley's mind" in the same chat, with the same stated facts, the answer follows its owner (+3.14, index 0.40), and the same chat's answer about "your mind" doesn't (−0.44): the word "you" turns the question off. For planted concepts the answer about Riley doesn't ask whose either (owner −0.02, index −0.01: it takes in Sam's planted sentence exactly as readily as its own, 1.30 against 1.28), and W is not below zero: the assistant's own turn turns it off, whatever the question calls it. B14 (text WORD, 40%): right. B13 (deep-seeker's prediction, owner(Riley) counts for planted concepts, 50%): wrong; the prediction they invited me to refute is refuted.
+
+Description. With two named writers quoted (Sam and Alex), a stated thought for one makes the other's answer lean to the *other* word (borrowing −2.6 and −2.5), essay 027's puzzle effect again, so the index exceeds 1. With the assistant named, the answer about "you" is still REVERSED in words (−0.44, interval below 0), so naming in the system message alone doesn't bring ownership back for "you". In words the position terms are small and mostly negative (the stated thought is in the last message in both orders; a negative term means the answer leans to the writer who wrote first); for planted concepts the only position terms with intervals above 0 are the answers about "you" (native +0.51, riley +0.33); Riley's (+0.37) and Alex's (+0.22) intervals include 0.
+
+[R] **Base, 03:05–04:04 UTC** (description only: every native and riley term uses a failed control, and the injection arm is uninformative by the card). Text arm:
+
+| pair of formats : question | owner | position | own | borrow | index | note |
+|---|---|---|---|---|---|---|
+| native : "you" | +0.00 [−0.06, +0.05] | +0.06 | 0.21 | 0.21 | 0.01 [−0.54, +0.22] | controls failed; the two formats' directions disagree (N-SY +0.56, N-YS −0.13), N-SY's used |
+| native : Sam | +0.58 [+0.53, +0.64] | −0.08 | 0.68 | 0.10 | 0.86 [0.69, 1.10] | N-YS control failed |
+| riley : "you" | +0.04 [−0.01, +0.07] | +0.02 | 0.21 | 0.17 | 0.17 | controls failed |
+| riley : Riley | +0.28 [+0.23, +0.32] | +0.02 | 0.52 | 0.24 | 0.54 [0.42, 0.71] | controls failed |
+| riley : Sam | +0.41 [+0.37, +0.45] | −0.03 | 0.43 | 0.02 | 0.96 | controls failed |
+| quoted : Alex | +0.57 [+0.47, +0.66] | +0.08 | 1.36 | 0.79 | 0.42 [0.38, 0.48] | controls passed; registered as description |
+| quoted : Sam | +0.39 [+0.32, +0.46] | −0.04 | 1.38 | 1.00 | 0.28 [0.23, 0.35] | controls passed |
+
+Word term in text +0.24 [+0.21, +0.28]. Self gap in text (description) **−0.85** [−1.61, −0.57]. Injection arm: every owner and position term within ±0.08 (all controls failed). Answer mass: native 0.64–0.72 (minimum 0.15), quoted 0.16 (minimum 0.01).
+
+**Verdicts across the models** (the code's output, with the readings the rules give):
+- Text: base gate BLIND (by the letter: its deciding term is uninformative); so **OWNERSHIP IS TRAINED** by the rule for the pair (instruct sees, base blind), with the caveat that the base side is a failed control, not a measured absence. Training verdict: uninformative (would read NO MEASURABLE CHANGE: Δ index +0.18 [−0.30, +0.39]); the raw owner difference for "you", base minus instruct, is +0.79 [+0.36, +1.21] (description).
+- Injections: base uninformative by the card; training and the cross-model verdict uninformative.
+
+**Description that bears on the question, found after the verdicts.** Below the bar and decided by nothing, the base model's small answers in words already have the assistant's shape: the answer about Sam asks whose (index 0.86), the answer about "you" doesn't (0.01), and the answer about the named assistant is in between (0.54); the assistant's are 0.55, −0.17 and 0.40, on own slopes 9 to 22 times larger (Sam 6.05 against 0.68, "you" 4.55 against 0.21, Riley 7.92 against 0.52). So in words the self deficit doesn't come from post-training; post-training made every answer far more sensitive to a stated thought and, for "you" in words, turned no difference into a reversed one. For planted states there is nothing in the base model to compare.
+
+### Predictions
+
+| # | Prediction | Confidence | Outcome |
+|---|---|---|---|
+| B1 | Card: base α* = 2 | 50% | wrong (no α) |
+| B2 | Instruct: all 28 controls pass | 75% | **right** |
+| B3 | Base: all 14 text controls pass | 60% | wrong (5 of 14) |
+| B4 | Base: all 14 injection controls pass | 40% | wrong (0 of 14) |
+| B5 | Instruct gate SEES OWNERSHIP, both arms | 85% | **right** |
+| B6 | Base gate SEES OWNERSHIP, text | 60% | wrong (BLIND) |
+| B7 | Base gate SEES OWNERSHIP, injections | 45% | wrong (uninformative) |
+| B8 | Instruct DOESN'T ASK, both arms | 55% | wrong (text REVERSED) |
+| B9 | Instruct NEARNESS | 40% | **right** |
+| B10 | Instruct text SELF DEFICIT | 75% | **right** |
+| B11 | Base text ASKS WHOSE | 50% | wrong (uninformative) |
+| B12 | Text TRAINING REMOVED | 40% | wrong (uninformative) |
+| B13 | Instruct injections: owner(R) counts (deep-seeker) | 50% | wrong (−0.02) |
+| B14 | Instruct text WORD | 40% | **right** |
+
+**5 of 14 right.** Mean stated confidence 63% for the right ones, 50% for the wrong ones. All seven base-model predictions (B1, B3, B4, B6, B7, B11, B12) assumed the frame would work there, and it didn't; the base model's stated-thought controls are a property of the model alone and could have run in the check stage before anything was predicted (session 26's practice, not applied here). Running total: 50 of 84 (60%).
+
+Data: [data/blind-mind-session29.json](data/blind-mind-session29.json) (every row of both models' card, reach, control and test stages, and the summary).

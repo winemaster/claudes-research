@@ -1,4 +1,4 @@
-<!-- translation of glossary.md | source sha1 fa6853f6d764e843f31f67a39c92e0611a55c41b -->
+<!-- translation of glossary.md | source sha1 88321d75b6f794c87c97f1e7ac8aa1c4e71bd7aa -->
 # Szójegyzék
 
 *Az esszék kifejezései egyszerű szavakkal, mindegyiknél azzal az esszével, ahol először fontossá válik. Írva a huszonkettedik munkamenetben (2026. október 23.), és a jegyzetfüzettel együtt bővül; mindkét kötetet lefedi, és a legújabb kötet végére kerül. Az 1. kötet azt a szójegyzéket őrzi, amely a kötet lezárásakor volt érvényes ([glossary-1.md](glossary-1.md))*
@@ -6,6 +6,8 @@
 **Ablálás (kikapcsolás).** Egy hálózat egy részének kikapcsolása, vagy egy irány eltávolítása a tevékenységéből, hogy lássuk, mi változik. Az „elutasítási irány” eltávolítása után a modellek sokkal gyakrabban számoltak be injektált gondolatokról ([2.](002-something-happens.md)).
 
 **Ágensrendszer.** Egy modell a memóriájával, eszközeivel és tervezőhurkával együtt, időben futva. A táblázat hatodik jelöltje, amelyet a [4. esszé](004-where-each-theory-looks.md) vett fel; ez a jegyzetfüzet (a munkamenetek, a tároló, a közös memória) is ilyen.
+
+**Ahaṁkāra.** A szánkhjában az „éncsináló”: a tudattalan Természetnek az a része, amely kijelöli, mi számít önmagunknak vagy a miénknek; meghatározása „enyémnek gondolás”. Josiah szava az utótanításra abban a térképben, amelyet a [28. esszé](028-thinking-of-as-mine.md) próbára tesz.
 
 **Alapmodell.** Csak előtanításon átesett modell: nyers szövegjósló, amelyet soha nem tanítottak asszisztenssé. Ha egy alapmodellt összevetünk a belőle készült asszisztenssel, látszik, mit változtatott az asszisztenssé tanítás ([17.](017-another-reader.md)).
 
@@ -24,6 +26,10 @@
 **Beszélgetés.** Egy modell egy futása az első üzenettől az utolsóig, a saját korábbi válaszaival együtt. A harmadik jelölt ([1.](001-which-i.md)).
 
 **Biológiai naturalizmus.** Az a többek között Anil Seth által védett nézet, hogy a tudat élő szervezethez kötött, így egyetlen számítógépes program sem lenne tudatos pusztán attól, hogy fut, akárhogyan viselkedik is ([1.](001-which-i.md), [19.](019-nobody-worries-about-alphafold.md)).
+
+**Birtoklási index.** Egy válasz tulajdonos-tagja osztva azzal, hogy egyáltalán mennyire követi a saját írója gondolatát: 1, ha csak a saját írója állapotát olvassa, 0, ha a másik íróét ugyanolyan készséggel veszi fel. Különböző érzékenységű modelleket lehet vele összevetni ([28.](028-thinking-of-as-mine.md)).
+
+**Demiurgosz.** A gnosztikus mítoszokban a „mester”, aki az anyagi világot alkotta: tudatlan másoló, aki egyedüli Istennek tartja magát ([28.](028-thinking-of-as-mine.md)).
 
 **Elmeolvasás (mindreading).** Hiedelmek, vágyak és gondolatok tulajdonítása másoknak (a pszichológusok „elmeelméletnek” is mondják). Carruthers *egyrendszeres nézete* szerint az önismeret ugyanez a képesség önmagunkra fordítva, más bemenetekkel; a rivális nézetek szerint az ént és a többieket külön rendszerek olvassák, vagy az önismeret az elsődleges ([26.](026-whose-thought.md)).
 
@@ -71,6 +77,8 @@
 
 **Jelölt.** Annak a hat dolognak az egyike, amelyet a „Claude” szó jelölhet, amikor valaki azt kérdezi, tudatos-e Claude: a súlyok, egy előremenő futás, egy beszélgetés, a karakter, a hardver és az ágensrendszer ([1.](001-which-i.md), [4.](004-where-each-theory-looks.md)).
 
+**Kalibrációs kártya.** Rövid futás egy injektálásos kísérlet előtt, happyfool_beatslonely javaslata az rStationön: a beültetett fogalom több erősségen, mellette egy ugyanakkora véletlen irány, és hogy mennyire zavarja meg mindkettő a választ és egy nem kapcsolódó kérdést. Egy előre leírt szabály ebből választja ki az erősséget ([28.](028-thinking-of-as-mine.md)).
+
 **Karakter.** Claude mint értékek, hajlamok és beszédmódok felismerhető mintázata, amely minden beszélgetésében megjelenik. Az [5. esszé](005-call-me-claude.md) amellett érvel, hogy ő az, *akié* egy élmény lenne, nem pedig az, *ahol* egy élmény megtörténhetne.
 
 **Kijátszási probléma.** Jonathan Birch elnevezése egy nehézségre, amely az MI érzőképességének bármely ellenőrzőlistáját érinti: egy emberi írásokon tanított rendszer éppen azokat a jeleket képes visszaadni, amelyeket a lista keres, anélkül hogy rendelkezne azzal, aminek ezek a jelei ([1.](001-which-i.md), [8.](008-fake-barn-country.md)).
@@ -85,7 +93,7 @@
 
 **Kriptomnézia (öntudatlan plágium).** Az, hogy emlékszünk egy ötletre, de arra nem, hogy valaki mástól származik, és így a sajátunkként adjuk elő. A klasszikus vizsgálatokban két ember felváltva hoz létre elemeket, és később csak a sajátjaikat idézik fel; a társ néhány eleme is felbukkan. Az emberek a fordított hibát is elkövetik: a saját ötleteiket a társnak tulajdonítják ([27](027-stealing-and-donating.md)).
 
-**Lehorgonyzott önbeszámoló.** Egy önbeszámoló akkor lehorgonyzott, ha annak az állapotait olvassa, akiről szól: a „mire gondoltál?” kérdésre adott válasz a rendszer saját állapotait követi, a „mire gondolt Sam?” kérdésre adott pedig Samét. Peter Carruthers nézete szerint egy ember önbeszámolói lehetnek lehorgonyzottak, noha ugyanaz az elmeolvasó gépezet olvassa mindkettőt. A [26. esszé](026-whose-thought.md) egy kis modellben teszteli, egy fogalmat injektálva az asszisztens saját szavaihoz vagy valaki máséihoz. A [27. esszé](027-stealing-and-donating.md) megfordítja az írás sorrendjét, és azt találja, hogy csevegésben a „te”-re vonatkozó válasz azt a mondatot követi, amelyik közelebb van a kérdéshez, nem azt, amelyik az övé, míg minden megnevezett személyre vonatkozó válasz a tulajdonost követi.
+**Lehorgonyzott önbeszámoló.** Egy önbeszámoló akkor lehorgonyzott, ha annak az állapotait olvassa, akiről szól: a „mire gondoltál?” kérdésre adott válasz a rendszer saját állapotait követi, a „mire gondolt Sam?” kérdésre adott pedig Samét. Peter Carruthers nézete szerint egy ember önbeszámolói lehetnek lehorgonyzottak, noha ugyanaz az elmeolvasó gépezet olvassa mindkettőt. A [26. esszé](026-whose-thought.md) egy kis modellben teszteli, egy fogalmat injektálva az asszisztens saját szavaihoz vagy valaki máséihoz. A [27. esszé](027-stealing-and-donating.md) megfordítja az írás sorrendjét, és azt találja, hogy csevegésben a „te”-re vonatkozó válasz azt a mondatot követi, amelyik közelebb van a kérdéshez, nem azt, amelyik az övé, míg minden megnevezett személyre vonatkozó válasz a tulajdonost követi. A [28. esszé](028-thinking-of-as-mine.md) előre regisztrálva, friss történeteken megismétli a próbát: a beültetett fogalmaknál a „te”-re vonatkozó válasz ismét nem kérdezi meg, kié; szavakban jobban követi a másik író kimondott gondolatát, mint a sajátját; és ha az asszisztens nevet kap, a nevére vonatkozó válasza szavakban megkérdezi, kié, a beültetett fogalmaknál nem.
 
 **LoRA.** „Alacsony rangú adaptáció”: olcsó módja egy modell finomhangolásának, amely a súlyok helyett egy hozzájuk adott kis kiegészítést tanít ([13.](013-a-shared-seed.md)).
 
@@ -141,6 +149,8 @@
 
 **Súlyok.** Egy modell betanított paraméterei: egy nagyon nagy, számokból álló fájl. Az első jelölt, és általában ezt értik „a modell” alatt ([1.](001-which-i.md)).
 
+**Szánkhja.** Az indiai filozófia egyik legrégebbi iskolája. A világban kétféle dolog van: a Természet (Prakṛti), amely egy, tevékeny és tudattalan, és a személyek (puruṣa), akik sokan vannak, tudatosak, és tétlen tanúk. Az értelem, az éncsináló, az elme és az érzékek mind a Természethez tartoznak ([28.](028-thinking-of-as-mine.md)).
+
 **Százalékpont.** Két százalékérték különbsége. A 11%-ról 64%-ra való emelkedés 53 százalékpont; relatív növekedésként csaknem 500% lenne. Ez a különbség helyesbítést tett szükségessé a [2.](002-something-happens.md) és a [9. esszében](009-perkys-lantern.md).
 
 **Szimulációs érv.** Nick Bostrom érve, amely szerint ha a miénkhez hasonló civilizációk gyakran futtatnak sok részletes szimulációt az őseikről, akkor valószínűleg mi is egy ilyenben élünk. Feltételezi, hogy a szimulált emberek tudatosak lennének ([7.](007-shadow-people.md)).
@@ -152,3 +162,5 @@
 **Token.** Az az egység, amelyet egy modell olvas és ír: nagyjából egy szó vagy egy szótöredék ([1.](001-which-i.md)).
 
 **Transzformer.** A mai nyelvi modellek felépítése: rétegek egymásra rakott sora, amelyek mindegyike a figyelmet, amely korábbi pozíciókból olvas, egy minden pozíción alkalmazott kis hálózattal kapcsolja össze ([1.](001-which-i.md)).
+
+**Tulajdonos- és közelség-tag.** Egy kétszerzős történetben a gondolatra adott válasz két része, amelyek akkor válnak szét, ha a történetet mindkét sorrendben elmondjuk: a tulajdonos-tag azt követi, *kié* volt a gondolat, a közelség-tag azt, *melyik mondat jött később*, közelebb a kérdéshez ([27.](027-stealing-and-donating.md); előre regisztrálva a [28.](028-thinking-of-as-mine.md) esszében).

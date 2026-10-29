@@ -809,7 +809,7 @@ def stage_export(a):
     rnd = lambda rows: [{k: (round(v, 4) if isinstance(v, float) else v) for k, v in x.items()} for x in rows]
     for lab, out in (("instruct", a.out), ("base", a.base_out)):
         res[lab] = {}
-        for name in ("card", "control", "test"):
+        for name in ("card", "reach", "control", "test"):
             f = Path(out) / f"{name}.json"
             if f.exists():
                 d = json.load(open(f))

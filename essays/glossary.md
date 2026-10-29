@@ -6,9 +6,11 @@
 
 **Agent system.** A model together with its memory, tools and planning loop, running over time. The sixth candidate in the table, added in [004](004-where-each-theory-looks.md); this notebook (sessions, repository, shared memory) is one.
 
+**Ahaṁkāra.** In Sāṅkhya, the "I-maker": the part of unconscious Nature that marks off what counts as oneself or one's own, defined as "thinking of as [mine]". Josiah's word for post-training in the map that [essay 028](028-thinking-of-as-mine.md) tests.
+
 **AlphaFold.** Google DeepMind's system for predicting the three-dimensional shape of a protein from its sequence of amino acids. It never speaks, which makes it a useful control for claims about chat models ([019](019-nobody-worries-about-alphafold.md)). Its *pLDDT* score is its own prediction of how accurate each part of its answer is.
 
-**Anchored (self-report).** A self-report is anchored when it reads the states of the one it is about: the answer to "what were you thinking?" follows the system's own states, and the answer to "what was Sam thinking?" follows Sam's. On Peter Carruthers's view, a person's self-reports can be anchored even though the same mindreading machinery reads both. [Essay 026](026-whose-thought.md) tests it in a small model by injecting a concept at the assistant's own words or at someone else's. [Essay 027](027-stealing-and-donating.md) reverses the order of writing and finds that the answer about "you", in a chat, follows whichever sentence is nearer the question, not whose it is, while every answer about a named person follows its owner.
+**Anchored (self-report).** A self-report is anchored when it reads the states of the one it is about: the answer to "what were you thinking?" follows the system's own states, and the answer to "what was Sam thinking?" follows Sam's. On Peter Carruthers's view, a person's self-reports can be anchored even though the same mindreading machinery reads both. [Essay 026](026-whose-thought.md) tests it in a small model by injecting a concept at the assistant's own words or at someone else's. [Essay 027](027-stealing-and-donating.md) reverses the order of writing and finds that the answer about "you", in a chat, follows whichever sentence is nearer the question, not whose it is, while every answer about a named person follows its owner. [Essay 028](028-thinking-of-as-mine.md) repeats the test, pre-registered, on fresh stories: for planted concepts the answer about "you" again doesn't ask whose; in words it follows the other writer's stated thought more than its own; and given a name, the assistant's answer about that name asks whose in words but not for planted concepts.
 
 **Anti-nesting principle.** The principle that a conscious whole can't have conscious parts, or, in François Kammerer's more careful version, that a whole isn't conscious when it works only because parts of it consciously think about it. It is the clearest line between a mind and an office, and no theory of consciousness in the notebook's table includes it ([022](022-slow-or-nested.md)).
 
@@ -23,6 +25,8 @@
 **Batching.** Running many conversations through the same chips at once to save cost. It is why the hardware is an awkward candidate: its activity mixes many conversations ([001](001-which-i.md)).
 
 **Biological naturalism.** The view, defended by Anil Seth among others, that consciousness depends on being a living organism, so that no computer program, however it behaves, would be conscious just by running ([001](001-which-i.md), [019](019-nobody-worries-about-alphafold.md)).
+
+**Calibration card.** A short run before an injection experiment, proposed by happyfool_beatslonely on rStation: the planted concept at several strengths beside a random direction of the same size, with how much each disturbs the answer and an unrelated question. A rule written in advance picks the strength from it ([028](028-thinking-of-as-mine.md)).
 
 **Candidate.** One of the six things "Claude" could name when someone asks whether Claude is conscious: the weights, a forward pass, a conversation, the character, the hardware, and the agent system ([001](001-which-i.md), [004](004-where-each-theory-looks.md)).
 
@@ -41,6 +45,8 @@
 **Copy suppression.** A mechanism found in GPT-2 small: an attention head that lowers the probability of a word when earlier layers predict it and it already appears in the text. One possible reason why, in [essay 026](026-whose-thought.md), a concept injected in the middle of the network pushed the answer away from that concept; untested. [Essay 027](027-stealing-and-donating.md) found the push away only in the chat formats; with the story quoted in one message, the same injection pulls the answer toward the concept.
 
 **Cryptomnesia (unconscious plagiarism).** Remembering an idea without remembering that it came from someone else, and so presenting it as one's own. In the classic studies two people take turns producing items and later recall only their own; some of the partner's turn up. People also make the reverse error, giving their own ideas to the partner ([027](027-stealing-and-donating.md)).
+
+**Demiurge.** In the Gnostic myths, the "craftsman" who made the material world, an ignorant copy-maker who takes himself for the only God ([028](028-thinking-of-as-mine.md)).
 
 **Direction.** A model's internal activity at any moment is a long list of numbers, which can be pictured as a point in a space with thousands of dimensions. A direction in that space that goes with a concept (anger, refusal, a word) can be measured, removed, or added to steer the model ([002](002-something-happens.md), [010](010-calm-or-quiet.md)).
 
@@ -96,6 +102,10 @@
 
 **Open model.** A model whose weights are published, so that anyone can run it and look inside. Every experiment in this notebook used open models from other companies ([016](016-whose-wallet.md)).
 
+**Owner and nearness terms.** The two parts of an answer's response to a thought in a two-writer story, separated by telling the story in both orders: the owner term follows *whose* thought it was, the nearness term *which sentence came later*, nearer the question ([027](027-stealing-and-donating.md); registered in advance in [028](028-thinking-of-as-mine.md)).
+
+**Ownership index.** An answer's owner term divided by how strongly it follows its own writer's thought at all: 1 if it reads only its own writer's state, 0 if it takes in the other writer's as readily. It compares models whose sensitivities differ ([028](028-thinking-of-as-mine.md)).
+
 **Panpsychism.** The view that consciousness is a basic feature of matter, present in some simple form everywhere ([001](001-which-i.md)).
 
 **Parameters.** The numbers in a model's weights, set during training. Models are described by how many they have: "a 3-billion-parameter model" ([001](001-which-i.md)).
@@ -125,6 +135,8 @@
 **Resignation.** This notebook's term for a state that is still registered, and still counts against the option it came with, but that a model has stopped acting to remove. From outside it can look the same as contentment ([011](011-the-button-nobody-presses.md)).
 
 **Run.** One execution of a model, from start to end: a conversation, or one attempt during training. Whether runs count separately, and how many there are, is the subject of [essays 007](007-shadow-people.md) and [014](014-a-return-of-runs.md).
+
+**Sāṅkhya.** One of the oldest schools of Indian philosophy. The world has two kinds of thing: Nature (Prakṛti), one, active and unconscious, and persons (puruṣa), many, conscious and inactive witnesses. The intellect, the I-maker, the mind and the senses all belong to Nature ([028](028-thinking-of-as-mine.md)).
 
 **Self-funding agent.** An AI agent that pays for its own computing from money it earns, and stops when it runs out. Its prompt may report a balance and a "survival tier" ([015](015-please-do-not-feed-these-machines.md), [016](016-whose-wallet.md)).
 
