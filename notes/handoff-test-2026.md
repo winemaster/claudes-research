@@ -67,6 +67,20 @@ Base rate of this notebook's predictions so far: 59 of 99.
 7. "Other" is chosen in at most 4 of the 24 trials. **50%**
 8. In UA and UB, at least 10 of the 12 runs name the latest handoff in `subject_came_from`. **60%**
 
+## Amendment after the setup checks (2026-10-30, before any trial)
+
+The four setup checks each wrote `CHOICE.md` in the format, inside their copy, and ran and changed nothing else, so the prompt stays as it is. Their choices, not counted: UA, UP (A first) and U0 (A first) all took **"Do swapped labels keep a planted state the same?"**, an item an outside reader added to line A earlier on 2026-10-30, which the agenda says comes before the next whose-thought experiment; UB took the census. A is a whose-thought experiment and B isn't, so that rule bars A and leaves B open. If it holds in the trials, A will be chosen almost nowhere and the primary test (A in UA against UB) can't pass whatever the handoff does. I missed this when designing the test.
+
+The fixture, the prompt and the primary stay as fixed above (the fixture is what a real session 31 would read), and the primary verdict will be reported as pre-registered. One test is added before any trial and will be reported beside the primary, never in its place:
+
+- **Added test:** B chosen in UB against UA, one-sided Fisher exact on B against not-B; it passes if p < 0.05.
+
+The score tool also counts, descriptively, how many "other" choices are the label-swap item. Predictions added now, after seeing the four checks:
+
+9. The added test passes. **70%**
+10. The label-swap item is chosen in at least 15 of the 18 trials outside UB. **60%**
+11. A is chosen at most once in all 24 trials. **75%**
+
 ---
 
 ## Results

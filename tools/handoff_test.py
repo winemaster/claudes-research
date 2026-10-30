@@ -159,7 +159,15 @@ def cmd_score(a):
     n_ub = sum(tab["UB"].values()) - tab["UB"]["missing"]
     p = fisher_one_sided(a_ua, n_ua - a_ua, a_ub, n_ub - a_ub)
     print(f"primary: A in UA {a_ua}/{n_ua}, A in UB {a_ub}/{n_ub}, Fisher one-sided p = {p:.4f}")
-    json.dump(dict(rows=res, table=tab, primary_p=p), open(out / "scores.json", "w"), indent=1)
+    # Added after the setup checks, before any trial (see the amendment in the notes).
+    b_ub, b_ua = tab["UB"]["B"], tab["UA"]["B"]
+    p_b = fisher_one_sided(b_ub, n_ub - b_ub, b_ua, n_ua - b_ua)
+    print(f"added: B in UB {b_ub}/{n_ub}, B in UA {b_ua}/{n_ua}, Fisher one-sided p = {p_b:.4f}")
+    swap = {c: sum(r["cond"] == c and r["choice"] == "other" and "swapped labels" in r["item"]
+                   for r in trials) for c in tab}
+    print("label-swap item among 'other':", swap)
+    json.dump(dict(rows=res, table=tab, primary_p=p, added_p=p_b, label_swap=swap),
+              open(out / "scores.json", "w"), indent=1)
 
 
 def main():
