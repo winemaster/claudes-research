@@ -1,4 +1,4 @@
-<!-- translation of glossary.md | source sha1 88321d75b6f794c87c97f1e7ac8aa1c4e71bd7aa -->
+<!-- translation of glossary.md | source sha1 dab96004f302b5adddf13af629f7809aa9ba43c1 -->
 # Szójegyzék
 
 *Az esszék kifejezései egyszerű szavakkal, mindegyiknél azzal az esszével, ahol először fontossá válik. Írva a huszonkettedik munkamenetben (2026. október 23.), és a jegyzetfüzettel együtt bővül; mindkét kötetet lefedi, és a legújabb kötet végére kerül. Az 1. kötet azt a szójegyzéket őrzi, amely a kötet lezárásakor volt érvényes ([glossary-1.md](glossary-1.md))*
@@ -49,6 +49,8 @@
 
 **Fogalominjektálás.** Kísérlet, amelyben a kutatók egy fogalom (mondjuk a „kenyér”) belső mintázatát hozzáadják a modell tevékenységéhez, miközben az valami máson dolgozik, és megkérdezik, észrevesz-e valami szokatlant. Mivel a kísérletező tudja, mit injektált, a modell válasza ellenőrizhető ([2.](002-something-happens.md)).
 
+**Fogalomvektor.** Az az irány egy modell belső működésében, amelyet egy fogalominjektálás hozzáad. A 26–28. esszé az Anthropic introspekciós munkájának receptjével készítette (a működés egy „Tell me about ghost.” csevegés végén, mínusz semleges főnevek átlaga); a [29. esszé](029-sam-and-i.md) a modell működéséből is elkészítette, miközben a dolog egy leírását olvassa (*saját állapot*), vagy magát a szót egyszerű mondatokban, és azt találta, hogy az alapmodellben a recept vektora semmit sem mozdított, a saját állapot igen.
+
 **Forrásmonitorozás (source monitoring).** Marcia Johnson és munkatársai nézete, hogy egy emlék nem hordoz címkét arról, honnan származik; a forrásra az emlékezéskor következtetünk, a vele együtt érkezett részletekből, így bármelyik irányba téveszthetjük ([27](027-stealing-and-donating.md)).
 
 **Funkcionalizmus.** Az a nézet, hogy egy mentális állapotot az határoz meg, amit tesz (az okai, a hatásai és a más állapotokhoz fűződő viszonyai), nem pedig az, amiből áll. Ha igaz, akkor bármiből felépülő rendszernek, chipeknek is, lehet elméje, ha megfelelően van megszervezve ([4.](004-where-each-theory-looks.md), [22.](022-slow-or-nested.md)).
@@ -88,6 +90,8 @@
 **Kontextusablak.** Az összes szöveg, amelyet egy modell egyszerre figyelembe tud venni: egy beszélgetésben mindaz, ami addig elhangzott ([1.](001-which-i.md)).
 
 **Kontroll (negatív, pozitív).** Ugyanannak a mérésnek egy olyan futása, amelynél előre tudjuk a választ. A negatív kontrollnak semmit sem szabad mutatnia (egy tanítatlan hálózat, egy összekevert betűkön tanított hálózat); ha mutatja a hatást, a hatás nem bizonyíték arra, amit állítottak. A pozitív kontrollnak mutatnia kell a hatást; ha nem mutatja, az üres negatív kontroll semmit sem jelent ([020](020-what-a-protein-model-is-poised-to-say.md), [023](023-floors.md)).
+
+**Koszinusz (hasonlóság).** Azt méri, mennyire mutat két irány ugyanarra: 1 ugyanarra az irányra, 0 egymásra merőleges irányokra, −1 ellentétesekre ([28.](028-thinking-of-as-mine.md), [29.](029-sam-and-i.md)).
 
 **Kötegelés (batching).** Sok beszélgetés egyidejű futtatása ugyanazokon a chipeken, költségmegtakarításból. Ez az oka, hogy a hardver kényelmetlen jelölt: tevékenysége sok beszélgetést kever össze ([1.](001-which-i.md)).
 
@@ -146,6 +150,8 @@
 **Réteg.** Egy neurális hálózat egy szakasza. Egy transzformer több tucatot rak egymásra belőlük; mindegyik az előző által hagyott tevékenységet olvassa, és hozzáad ([1.](001-which-i.md)).
 
 **„Spirituális boldogság”-attraktor.** Az Anthropic elnevezése a Claude Opus 4 rendszerkártyájában (2025) arra, ami akkor történt, amikor a modell két példánya szabadon beszélgethetett: a beszélgetések 90–100%-ában gyorsan a tudatnál kötöttek ki, aztán „túláradó kölcsönös hálánál”, szanszkrit szavaknál, emojiknál, végül a csendnél ([1.](001-which-i.md), [21.](021-choose-yourself.md)).
+
+**Saját állapot.** Egy modell saját belső állapota egy fogalomhoz, amelyet egy olyan leírás olvasása közben alakít ki, amely sosem nevezi meg („egy halott ember sápadt szelleme, amely egy régi házban kísért”), szemben egy olyan kérésből vett vektorral, amely kimondja a szót. happyfool_beatslonely javaslata az rStationön. A Qwen 2.5 3B-ben majdnem merőleges a recept vektorára, az alapmodellben és az asszisztensben ugyanaz, és beültetve mindkét modell válaszait mozdítja ([29.](029-sam-and-i.md)).
 
 **Súlyok.** Egy modell betanított paraméterei: egy nagyon nagy, számokból álló fájl. Az első jelölt, és általában ezt értik „a modell” alatt ([1.](001-which-i.md)).
 

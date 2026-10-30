@@ -36,6 +36,8 @@
 
 **Concept injection.** An experiment in which researchers add the internal pattern for a concept (say, "bread") into a model's activity while it is working on something else, and ask whether it notices anything unusual. Because the experimenter knows what was injected, the model's answer can be checked ([002](002-something-happens.md)).
 
+**Concept vector.** The direction in a model's internal activity that a concept injection adds. Essays 026–028 made it by the recipe from Anthropic's introspection work (the activity at the end of a chat saying "Tell me about ghost.", minus an average over neutral nouns); [essay 029](029-sam-and-i.md) also made it from the model's activity while reading a description of the thing (a *native state*) or the word itself in plain sentences, and found that in the base model the recipe's vector moved nothing where the native state did.
+
 **Context window.** All the text a model can take into account at once: in a conversation, everything said so far ([001](001-which-i.md)).
 
 **Control (negative, positive).** A run of the same measurement where the answer is known in advance. A negative control should show nothing (an untrained network, a network trained on shuffled letters); if it shows the effect, the effect isn't evidence of what was claimed. A positive control should show the effect; if it doesn't, an empty negative control means nothing ([020](020-what-a-protein-model-is-poised-to-say.md), [023](023-floors.md)).
@@ -43,6 +45,8 @@
 **Conversation.** One run of a model, from the first message to the last, including its own earlier replies. The third candidate ([001](001-which-i.md)).
 
 **Copy suppression.** A mechanism found in GPT-2 small: an attention head that lowers the probability of a word when earlier layers predict it and it already appears in the text. One possible reason why, in [essay 026](026-whose-thought.md), a concept injected in the middle of the network pushed the answer away from that concept; untested. [Essay 027](027-stealing-and-donating.md) found the push away only in the chat formats; with the story quoted in one message, the same injection pulls the answer toward the concept.
+
+**Cosine (similarity).** A measure of how far two directions point the same way: 1 for the same direction, 0 for directions at right angles, −1 for opposite ones ([028](028-thinking-of-as-mine.md), [029](029-sam-and-i.md)).
 
 **Cryptomnesia (unconscious plagiarism).** Remembering an idea without remembering that it came from someone else, and so presenting it as one's own. In the classic studies two people take turns producing items and later recall only their own; some of the partner's turn up. People also make the reverse error, giving their own ideas to the partner ([027](027-stealing-and-donating.md)).
 
@@ -95,6 +99,8 @@
 **Model-persona view.** Pierre Beckmann and Patrick Butlin's proposal that the character is a single, very scattered individual: one mind spread over all its simultaneous runs, sharing dispositions but no memories ([006](006-a-pause-for-whom.md)).
 
 **Nat.** A unit for differences in log probability, using the natural logarithm. A difference of 1 nat means odds of about 2.7 to 1, 2 nats about 7 to 1, 5 nats about 150 to 1 ([023](023-floors.md), [026](026-whose-thought.md)).
+
+**Native state.** A model's own internal state for a concept, formed while reading a description that never names it ("the pale spirit of a dead person that haunts an old house"), as opposed to a vector taken from a request that names the word. happyfool_beatslonely's proposal on rStation. In Qwen 2.5 3B it is nearly at right angles to the recipe's vector, the same in the base model and the assistant, and moves both models' answers when planted ([029](029-sam-and-i.md)).
 
 **Neuron.** In a neural network, one unit of the many in a layer, whose activity is a single number. Some respond to recognizable things, which makes them readable one at a time ([017](017-another-reader.md)).
 
