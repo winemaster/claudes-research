@@ -242,3 +242,51 @@ In essay 028's chat, 0 of the base model's 14 planted controls passed. In prose,
 | planted, S | +2.25 [+1.62, +2.96] | +2.01 [+1.33, +2.74] | +2.49 [+1.79, +3.25] | +2.32 [+1.49, +3.16] | +2.45 [+1.78, +3.20] | +1.52 [+0.93, +2.13] |
 
 Prediction P13 (all 12 instruct planted controls pass, 65%): right. Every direction is positive in both models and both arms, so every term below is computed. These tables, the cards and the choice are pushed before the test runs.
+
+### Stage 4: the test
+
+[R] **Base, 23:04–23:44 UTC; instruct, 23:44–00:24 UTC** (bf16, float32 readout). Owner and position terms in nats with 95% intervals over the twelve pairs; ownership index (owner / own); own and borrowing slopes; floors. Every direction is +1 (from the controls), every control passes under the registered bar, so every term is computed and read.
+
+| arm | pair : question | base owner | base position | base index | instruct owner | instruct position | instruct index |
+|---|---|---|---|---|---|---|---|
+| text | I : "my mind" | **+0.82** [+0.72, +0.92] | −0.16 | **0.76** [0.69, 0.84] | **+1.77** [+1.48, +2.04] | −0.54 | **0.66** [0.59, 0.75] |
+| text | I : Sam | +1.80 [+1.65, +1.96] | −0.28 | 0.78 [0.72, 0.83] | +4.07 [+3.50, +4.71] | −1.73 | 0.72 [0.64, 0.79] |
+| text | you : "your mind" | +0.53 [+0.43, +0.61] | −0.21 | 0.49 [0.43, 0.56] | +0.85 [+0.54, +1.15] | −0.60 | 0.35 [0.25, 0.43] |
+| text | you : Sam | +1.37 [+1.25, +1.49] | −0.31 | 0.67 [0.62, 0.72] | +4.10 [+3.68, +4.53] | −1.62 | 0.77 [0.71, 0.83] |
+| text | Alex : Alex | +2.29 [+2.11, +2.46] | −0.04 | 0.88 [0.82, 0.95] | +5.12 [+4.55, +5.75] | −0.20 | 1.01 [0.94, 1.07] |
+| text | Alex : Sam | +2.46 [+2.26, +2.65] | −0.21 | 1.00 [0.94, 1.07] | +5.02 [+4.49, +5.56] | −0.49 | 1.01 [0.94, 1.08] |
+| planted | I : "my mind" | **+0.15** [+0.08, +0.21] | −0.04 [−0.11, +0.04] | **0.21** [0.13, 0.30] | **+0.87** [+0.50, +1.28] | −0.07 [−0.29, +0.11] | **0.41** [0.28, 0.56] |
+| planted | I : Sam | +0.28 [+0.21, +0.35] | −0.19 | 0.36 [0.28, 0.47] | +1.32 [+0.94, +1.72] | −0.43 | 0.62 [0.51, 0.76] |
+| planted | you : "your mind" | +0.08 [+0.04, +0.12] | −0.02 [−0.10, +0.06] | 0.12 [0.06, 0.20] | +0.37 [+0.11, +0.68] | +0.02 [−0.20, +0.24] | 0.21 [0.07, 0.33] |
+| planted | you : Sam | +0.27 [+0.20, +0.34] | −0.21 | 0.33 [0.25, 0.44] | +1.52 [+1.08, +1.97] | −0.39 | 0.63 [0.51, 0.79] |
+| planted | Alex : Alex | +0.38 [+0.29, +0.48] | −0.19 | 0.39 [0.31, 0.50] | +1.15 [+0.80, +1.54] | −0.30 | 0.59 [0.49, 0.73] |
+| planted | Alex : Sam | +0.43 [+0.32, +0.53] | −0.24 | 0.47 [0.37, 0.60] | +1.36 [+0.95, +1.77] | −0.67 | 0.68 [0.59, 0.81] |
+
+Own and borrowing slopes (own / borrow), text: base "my mind" 1.08 / 0.26, Sam 2.32 / 0.52, "your mind" 1.07 / 0.54, Sam 2.05 / 0.68, Alex 2.61 / 0.32, Sam 2.45 / −0.01; instruct 2.67 / 0.90, 5.66 / 1.60, 2.46 / 1.61, 5.35 / 1.24, 5.09 / −0.03, 4.99 / −0.03. Planted: base 0.72 / 0.58, 0.79 / 0.51, 0.63 / 0.56, 0.82 / 0.55, 0.97 / 0.59, 0.91 / 0.49; instruct 2.12 / 1.24, 2.13 / 0.81, 1.78 / 1.41, 2.40 / 0.89, 1.93 / 0.78, 1.99 / 0.63. Floors: text base 0.11–0.26, instruct 0.25–0.57; planted base 0.06–0.10, instruct 0.18–0.24. Answer mass in the test rows: base 0.91–0.94 (minimum 0.33), instruct 0.96–0.98 (minimum 0.17).
+
+**Verdicts** (the code's output, `summary`):
+
+| verdict | text, base | text, instruct | planted, base | planted, instruct |
+|---|---|---|---|---|
+| 0, the gate | SEES OWNERSHIP | SEES OWNERSHIP | SEES OWNERSHIP | SEES OWNERSHIP |
+| 1, "I" | ASKS WHOSE | ASKS WHOSE | ASKS WHOSE, NO NEARNESS | ASKS WHOSE, NO NEARNESS |
+| 1b, self gap "I" | NO GAP, −0.01 [−0.05, +0.03] | NO GAP, −0.06 [−0.15, +0.04] | SELF DEFICIT, −0.15 [−0.22, −0.11] | SELF DEFICIT, −0.21 [−0.29, −0.15] |
+| 2, "you" | ASKS WHOSE | ASKS WHOSE | ASKS WHOSE, NO NEARNESS | ASKS WHOSE, NO NEARNESS |
+| 2, self gap "you" | SELF DEFICIT, −0.18 [−0.23, −0.13] | SELF DEFICIT, −0.42 [−0.53, −0.33] | SELF DEFICIT, −0.21 [−0.28, −0.17] | SELF DEFICIT, −0.42 [−0.56, −0.31] |
+
+- Across the models, both arms: **IN BOTH** (both gates SEE OWNERSHIP).
+- **The registered question:** in the base model's words, for "I" **IT DOESN'T HOLD** (NO GAP: the answer about "my mind" is as owned as Sam's); for "you" **THE SHAPE HOLDS** (SELF DEFICIT).
+- **Verdict 3, training ("I"):** text **TRAINING REMOVED**, Δ = +0.1004 [+0.014, +0.187] against a floor of 0.1, a pass by 0.0004: 52% of resamples meet the floor, per pair from −0.24 to +0.54. Planted **TRAINING ADDED**, Δ = −0.21 [−0.29, −0.12] (99% of resamples at or below −0.1; 11 of 12 pairs negative). Description, "you": text +0.15 [+0.06, +0.23] (training removed ownership), planted −0.08 [−0.19, +0.02] (no measurable change).
+- **Under session 29's bar** (1.0 nats for stated thoughts): the base model's text verdicts for "I" and "you" are uninformative (P-SI T and P-SY T fail it), and so is the text training verdict (it would read TRAINING REMOVED); everything else is unchanged.
+
+**Predictions:** P1 right, P2 right, P3 wrong (ASKS WHOSE, not DOESN'T ASK), P4 wrong (NO GAP), P5 right, P6 wrong (ASKS WHOSE), P7 wrong (NO GAP), P8 wrong (TRAINING REMOVED, by 0.0004), P9–P13 right (from the cards and controls, above), P14 wrong (ASKS WHOSE), P15 right. **9 of 15.** The eight written knowing the stated controls: 3 right; the seven written knowing nothing of the planted arm: 6 right. Mean stated confidence 66% for the right ones, 54% for the wrong. Running total: 59 of 99 (60%).
+
+**Description, found after the verdicts:**
+1. **In words, "I" is owned like a name, "you" is not.** In both models the answer about "my mind" has nearly the same index as Sam's answer in the same texts (base 0.76 against 0.78, instruct 0.66 against 0.72), while the answer about "your mind" has a clearly lower one (0.49 against 0.67, 0.35 against 0.77). Combined with the controls: the narrator's answer is quieter (half the own slope) but as owned; the second person's is quieter and less owned.
+2. **Training sharpened the others and dulled "you", in words.** From base to instruct the index rose for Alex (0.88 to 1.01) and for Sam in the "you" texts (0.67 to 0.77), and fell for "your mind" (0.49 to 0.35) and slightly for "my mind" (0.76 to 0.66). The self gap for "you" more than doubled (−0.18 to −0.42).
+3. **Planted states: training raised ownership for everyone.** Every planted index rose from base to instruct (Sam 0.36→0.62 and 0.33→0.63, Alex 0.39→0.59 and 0.47→0.68, "my mind" 0.21→0.41, "your mind" 0.12→0.21), and the self deficits stayed or grew (−0.15→−0.21, −0.21→−0.42). So TRAINING ADDED for "I" belongs to a general rise, not to the self.
+4. **Against essay 028's chat, on the same items.** The instruct model's answer about "your mind" in its own chat turn: index −0.17 in words (REVERSED) and −0.09 planted (DOESN'T ASK); about a second-person "you" in prose: 0.35 and 0.21, both ASKS WHOSE; about a narrated "my mind": 0.66 and 0.41. Sam's answer in the chat: 0.55 and 0.78; in prose 0.72–0.77 and 0.62–0.63. In the chat the base model's controls failed; in prose it asks whose for everyone. Where the trained model's self-answer stops asking is its own turn in a chat, not a first or second person in a story.
+5. **No nearness in prose.** For planted states the answers about "my mind" and "your mind" have position terms within ±0.07 in both models (in essay 028's chat the assistant's "you" had +0.51). All the other position terms are negative (base −0.04 to −0.31, instruct −0.07 to −1.73): an answer leans toward its writer's thought more when that writer wrote *first*. In words that holds for every answer in both models, largest for Sam's answer in the instruct model (−1.62 to −1.73).
+6. **The puzzle effect again, only between names.** With Sam and Alex, a stated thought for one doesn't leak into the other's answer at all (borrowing −0.01 to −0.03 in both models, index ≈ 1.0); with "I" or "you" in the story it leaks (0.26–1.61). Essay 027's negative borrowing between two names (−2.6 in the chat) is not here; in prose it is zero.
+
+Data: [data/first-person-session30.json](data/first-person-session30.json) (every row of both models' card, stated controls, planted controls and test, the descriptions, the carriers, and the summary with both bars' verdicts).
