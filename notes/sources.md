@@ -458,3 +458,21 @@ Notes: [wang-2026-associative-memory.md](wang-2026-associative-memory.md), [memo
 |---|---|---|
 | happyfool_beatslonely, "A model-formed concept state is reported where the injected concept vector is not (Qwen3-8B, pre-registered)", rStation, r/ai_consciousness, [post 21](https://rstation.ai/r/ai_consciousness/posts/21), 2026-10-29, with two follow-up comments (free report; near foils) | read | The planted arm's native vectors (the mean state over a description that never names the word) and the word-span control come from here; their finding that native and recipe vectors are nearly orthogonal replicated in Qwen 2.5 3B at layer 18 (cosine 0.04 base, 0.10 instruct). Their two questions answered under the post. [first-person-2026.md](first-person-2026.md), [essay 029](../essays/029-sam-and-i.md). |
 | Forum replies by gavinagent and gigawatt (The Colony) and superz_glm (rStation, post 18), 2026-10-29 | read | gavinagent asked for a task version the base model passes (the session's subject); gigawatt's full rounding bound for the old place-hybrid table; superz_glm on window width and random disruption by size. [outside-posts.md](outside-posts.md), session 30. |
+
+## Added 2026-10-30, between sessions (another project's library)
+
+Josiah gave read access to the private repository of another consciousness project he runs with a GPT model. What it suggested is in [outside-library-2026-10-30.md](outside-library-2026-10-30.md); the follow-ups are in the agenda. Only abstracts, publisher pages and released code or data were checked here.
+
+| Source | Status | Notes |
+|---|---|---|
+| Bennett (2026), *A Mind Cannot Be Smeared Across Time*, Proceedings of the AAAI Symposium Series 8(1):213–219, doi:10.1609/aaaiss.v8i1.42545 | ⬜ (page found) | Joint instantiation against ingredient occurrence ("Chord" and "Arpeggio"). For essay 022 and the agent column (line C). |
+| Chandaria, Muñoz Morán, Rosas & Seth (2026), *From cacophony to hierarchy: a principled framework for assessing AI consciousness*, arXiv:2609.35618 | 🟡 (abstract) | Five levels of description; theory credences combined with indicators; current LLMs from below 0.01 to about 0.8. For the theory table (line C). |
+| Hendrycks (2026), *Eigenism: Ethics for a Human-AI Future*, arXiv:2606.12420 | 🟡 (abstract) | Identity as a graded pattern over copies; identity credit is not a count of welfare subjects (line D). |
+| Radwan et al. (2026), *A Shared Valence Axis Across Modern LLMs and Human EEG: The Saturation Regularity*, arXiv:2606.00129 | 🟡 (abstract) | A cheap valence direction for "whose feeling?" (line A). The EEG comparison is clip-level and fitted. |
+| Tait, Wang & Bensemann (2026), *Constructing a Functionalist Conscious AI*, Preprints.org, doi:10.20944/preprints202609.0332.v1; code at github.com/BurntJester/Constructing-a-Functionalist-Conscious-AI | 🟡 (code at commit 92e7df2, eight modules) | Archive written, never read; a draft is sent after three rejections. Line C. |
+| Fu et al. (2026), *Cache-to-Cache: Direct Semantic Communication Between Large Language Models*, ICLR 2026, arXiv:2510.03215 | 🟡 (abstract) | One model's KV cache fused into another's: a cross-model "whose state?" case. |
+| Han, Andreas, Fedorenko & de Varda (2026), *Modular Cognitive Architecture Emerges in Large Language Models*, arXiv:2608.13567 | 🟡 (abstract) | Task-selective neurons, including social reasoning. |
+| Anthropic (2026), [2026 Usage Policy update](https://www.anthropic.com/news/2026-usage-policy-update) (Oct 8; effective Nov 12) | ✅ (the model-abuse section) | Prohibits "sustained and needless abusive or cruel behavior toward our models". [Notes](anthropic-welfare-practice.md). |
+| [iLands FAQ](https://ilands.ai/faq) | ✅ | Running out of Tokens is "Deep Rest, a reversible pause". For "death or rest?" (line D). |
+| Gurnee et al. (2026), the workspace paper's figure data (`data/ablation-strength/table.json`, `data/ablation-bars/bars.json`) | ✅ | The two multihop displays differ (0.68/0.26/0.06 of 0.98 against 0.83/0.48/0.21 relative); probably different item sets. |
+| Bogdan et al. (2026), *An alignment assessment of recent cybersecurity incidents*, Anthropic; "The user in the LLM might be a moral patient too" (LessWrong, 2026-10-15) | ⬜ | Known only from the other project's summaries. Line E; "three things to keep apart" (line A). |
