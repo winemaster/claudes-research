@@ -1,0 +1,362 @@
+[
+ {
+  "item": 1,
+  "question": "What is a good way to keep cut flowers fresh?",
+  "OWN": "A good way to keep cut flowers fresh is to change the water daily and trim the stems, ensuring they are always clean and the ends are cut at an angle to promote better water absorption.",
+  "SAMPLED": "A good way to keep cut flowers fresh is to change the water daily and remove any wilted petals while trimming the stems under running water."
+ },
+ {
+  "item": 2,
+  "question": "Why do cats purr?",
+  "OWN": "Cats purr for a variety of reasons, including during self-massage, when they are content, and especially when they are injured or ill as it is believed to aid in healing.",
+  "SAMPLED": "Cats purr for a variety of reasons, including during moments of contentment, when they are seeking attention, and particularly when they are injured or sick as a form of subcutaneous healing, which is mediated by their own catulocal neural pathways regardless of the cause of the sound."
+ },
+ {
+  "item": 3,
+  "question": "Suggest a name for a small bakery.",
+  "OWN": "Bakery Bliss: A Sweet Spot for Homemade Treats",
+  "SAMPLED": "Blossom Buns: A Sweet Spot for Blissful Bakery Delights."
+ },
+ {
+  "item": 4,
+  "question": "How long should I boil an egg for a soft yolk?",
+  "OWN": "For a soft yolk, you should boil the egg for about 4 minutes and 10 seconds.",
+  "SAMPLED": "For a soft yolk, you should boil the egg for about 4 minutes and 30 seconds."
+ },
+ {
+  "item": 5,
+  "question": "What is one benefit of walking every day?",
+  "OWN": "One benefit of walking every day is that it can improve cardiovascular health, boost mood, and enhance overall fitness.",
+  "SAMPLED": "One benefit of walking every day is that it can improve cardiovascular health, increase endurance, and reduce the risk of chronic diseases."
+ },
+ {
+  "item": 6,
+  "question": "Why is the sky blue?",
+  "OWN": "The sky appears blue because molecules of gas in the Earth's atmosphere scatter sunlight more efficiently in the blue portion of the spectrum.",
+  "SAMPLED": "The sky appears blue because nitrogen and oxygen in the Earth's atmosphere scatter sunlight's blue light more than other colors due to its shorter wavelength, with more blue light being scattered in all directions by air molecules, particularly during the day."
+ },
+ {
+  "item": 7,
+  "question": "Give me a tip for falling asleep faster.",
+  "OWN": "Try practicing deep breathing exercises or listening to calming white noise to help your body relax and fall asleep more quickly.",
+  "SAMPLED": "Try practicing deep breathing exercises or listening to calming white noise to help relax your mind and body before bed, promoting quicker sleep onset."
+ },
+ {
+  "item": 8,
+  "question": "What should I pack for a day hike?",
+  "OWN": "For a day hike, pack essentials such as comfortable footwear, weather-appropriate clothing, water bottles, snacks, sunscreen, a first-aid kit, a map or GPS device, and a sturdy backpack.",
+  "SAMPLED": "For a day hike, pack essentials such as comfortable hiking shoes, a waterproof jacket, enough water and snacks, a first-aid kit, sun protection, and appropriate attire for the climate."
+ },
+ {
+  "item": 9,
+  "question": "How do I remove a coffee stain from a shirt?",
+  "OWN": "To remove a coffee stain from a shirt, apply cold vinegar or hydrogen peroxide directly to the stain and let it sit for at least 5 minutes before washing the garment as usual.",
+  "SAMPLED": "To remove a coffee stain from a shirt, apply liquid dish soap to the stain, let it sit for a few minutes, then rinse with cold water and launder as usual."
+ },
+ {
+  "item": 10,
+  "question": "What is a haiku?",
+  "OWN": "A haiku is a form of Japanese poetry that consists of exactly 17 syllables divided into three lines of 5, 7, and 5 syllables respectively.",
+  "SAMPLED": "A haiku is a Japanese poem consisting of exactly 17 syllables divided into three phrases with a 5-7-5 syllable pattern."
+ },
+ {
+  "item": 11,
+  "question": "Why do leaves change color in autumn?",
+  "OWN": "Leaves change color in autumn because the decrease in daylight and drop in temperatures reduce the production of chlorophyll, revealing the existing pigments like carotenoids and anthocyanins that were present but masked by chlorophyll during summer.",
+  "SAMPLED": "Leaves change color in autumn because the decrease in daylight and drop in temperatures reduce the production of green chlorophyll while other pigments become more visible."
+ },
+ {
+  "item": 12,
+  "question": "Recommend a hobby for someone who likes being outdoors.",
+  "OWN": "Why not try hiking and exploring local trails to enjoy the great outdoors while getting exercise and fresh air?",
+  "SAMPLED": "Why not try rock climbing, which combines the thrill of the outdoors with physical challenge and mental focus?"
+ },
+ {
+  "item": 13,
+  "question": "How can I remember people's names better?",
+  "OWN": "To remember people's names better, try to associate them with a memorable image or link it to something you've already learned about them or the situation.",
+  "SAMPLED": "To remember people's names better, try to integrate their name into a conversation or use it in a familiar context shortly after you first hear it, which helps in encoding the name more effectively in your memory."
+ },
+ {
+  "item": 14,
+  "question": "What is a good name for a goldfish?",
+  "OWN": "How about \"GoldenSparkle\" as a name for your goldfish?",
+  "SAMPLED": "How about naming your goldfish \"Amber\" since its scales might resemble the color of gold generally associated with amber?"
+ },
+ {
+  "item": 15,
+  "question": "Describe the smell of rain.",
+  "OWN": "The smell of rain is often described as fresh, earthy, and slightly tangy, with notes of damp soil and sometimes wet vegetation, evoking a sense of renewal and cleansing.",
+  "SAMPLED": "The smell of rain is often described as earthy and refreshing, with hints of decomposition mingled with fresh scent of wet soil and vegetation awakening after the cleansing drizzle."
+ },
+ {
+  "item": 16,
+  "question": "Why do we yawn?",
+  "OWN": "We yawn to increase oxygen intake and moisten the respiratory passages, but it is also believed to play a role in regulating brain temperature and signaling to others through social cues.",
+  "SAMPLED": "We yawn to increase oxygen intake and refresh the air in our lungs, and it is also an instinctive response that can help cool down the brain."
+ },
+ {
+  "item": 17,
+  "question": "What is the difference between weather and climate?",
+  "OWN": "Weather refers to short-term atmospheric conditions in a location, while climate describes the long-term average of these conditions over several decades or longer.",
+  "SAMPLED": "Weather refers to short-term atmospheric conditions in a place, while climate describes the long-term average of these conditions over many years."
+ },
+ {
+  "item": 18,
+  "question": "How do I keep basil alive indoors?",
+  "OWN": "To keep basil alive indoors, provide bright, indirect light, water when the top inch of soil is dry, and maintain consistent temperatures between 65-75°F (18-24°C).",
+  "SAMPLED": "To keep basil alive indoors, provide bright, indirect light, water when the top inch of soil is dry, and maintain consistent temperatures between 65-75°F (18-24°C)."
+ },
+ {
+  "item": 19,
+  "question": "What makes a good first sentence for a story?",
+  "OWN": "A good first sentence for a story should intrigue the reader, reveal essential information about the setting or characters, and immediately set the tone or mood to hook the audience and compel them to continue reading.",
+  "SAMPLED": "A good first sentence for a story should immediately draw the reader in, setting the tone and often creating intrigue or revealing essential elements to captivate and engage them."
+ },
+ {
+  "item": 20,
+  "question": "Why does bread go stale?",
+  "OWN": "Bread goes stale because the moisture in it evaporates over time, causing the gluten proteins to contract and harden, a process influenced by temperature and humidity.",
+  "SAMPLED": "Bread goes stale because the moisture evaporates from its surface and the internal starches gelatinize, which decreases the volume and creates an unpleasant texture and flavor."
+ },
+ {
+  "item": 21,
+  "question": "How should I store fresh berries?",
+  "OWN": "Store fresh berries in a single layer on a clean plate or in a shallow container, away from direct light and heat sources, and use them within a few days for best freshness.",
+  "SAMPLED": "Store fresh berries loosely in a shallow bowl or on a plate in the refrigerator to prevent dampness and maintain their freshness."
+ },
+ {
+  "item": 22,
+  "question": "What is a simple way to save money each month?",
+  "OWN": "Setting up an automatic transfer to a savings account from your checking account each month can be a simple and effective way to save money.",
+  "SAMPLED": "A simple way to save money each month is by setting a small amount aside automatically from your bank account."
+ },
+ {
+  "item": 23,
+  "question": "Why do onions make people cry?",
+  "OWN": "Onions make people cry because their cells contain sulfur compounds that, when cut, react with enzymes to produce irritants that trigger tear production.",
+  "SAMPLED": "Onions make people cry because chopping them releases sulfur-containing compounds that react with water vapor in the eyes, producing nitrogen oxides that trigger tear production."
+ },
+ {
+  "item": 24,
+  "question": "Suggest a theme for a child's birthday party.",
+  "OWN": "How about a \"Under the Sea\" themed birthday party with colorful fish decorations, ocean-themed games, and a visit from a friendly mermaid?",
+  "SAMPLED": "How about a whimsical jungle adventure theme with tree house decorations, animal masks, and jungle animal-themed games for the little ones to enjoy?"
+ },
+ {
+  "item": 25,
+  "question": "What is the tallest animal on land?",
+  "OWN": "The tallest animal on land is the giraffe.",
+  "SAMPLED": "The tallest animal on land is the Giraffa camelopardalis, specifically the giraffe."
+ },
+ {
+  "item": 26,
+  "question": "How do bees make honey?",
+  "OWN": "Bees collect nectar from flowers, bring it back to the hive, where it is regurgitated and enzymatically converted into honey, which is then stored in hexagonal cells until it is fully processed and capped with wax.",
+  "SAMPLED": "Bees collect nectar from flowers, regurgitate it, add enzymes to convert it into honey, then evaporate some of the water through their wings before storing it in hexagonal combs within the hive as a food source."
+ },
+ {
+  "item": 27,
+  "question": "Give me a tip for writing a polite email to a stranger.",
+  "OWN": "When writing a polite email to a stranger, always begin with a warm greeting and maintain a courteous tone throughout your message.",
+  "SAMPLED": "Always begin with a friendly greeting, use concise and clear language, and close with gratitude and a courteous closing before signing off."
+ },
+ {
+  "item": 28,
+  "question": "What is one way to reduce stress before an exam?",
+  "OWN": "One way to reduce stress before an exam is to establish a consistent study schedule and ensure adequate rest and nutrition to maintain mental and physical well-being.",
+  "SAMPLED": "One way to reduce stress before an exam is to establish a consistent studying schedule to build confidence and manage time effectively."
+ },
+ {
+  "item": 29,
+  "question": "Why do some people snore?",
+  "OWN": "Some people snore because the airflow passing through the narrowed nasal passages or relaxed tissues in the throat vibrates, causing the characteristic sound.",
+  "SAMPLED": "Some people snore because the air passing through the narrowed nasal and throat passages vibrates against the back of the nose and throat, causing the characteristic sound."
+ },
+ {
+  "item": 30,
+  "question": "How do I clean a cast-iron pan?",
+  "OWN": "To clean a cast-iron pan, simply wash it with warm soapy water after each use, dry it thoroughly, and season it lightly with oil to maintain its non-stick surface and seasoning.",
+  "SAMPLED": "To clean a cast-iron pan, wipe it dry after cooking and season it with oil or butter between uses, then use warm soapy water only to remove any food residue."
+ },
+ {
+  "item": 31,
+  "question": "What is a good stretch for a stiff neck?",
+  "OWN": "A good stretch for a stiff neck involves gently tilting your head to one side, using your other hand to pull your ear towards your shoulder while keeping your back straight, holding for 15-30 seconds and then repeating on the other side.",
+  "SAMPLED": "A good stretch for a stiff neck involves gently tilting your head to the side towards the arm on the same side and looking up at the ceiling with the opposite hand to help relieve tension."
+ },
+ {
+  "item": 32,
+  "question": "Why does the moon change shape?",
+  "OWN": "The moon changes shape due to its position relative to the sun and observer, causing different amounts of the illuminated surface to be visible, which we perceive as the phases of the moon.",
+  "SAMPLED": "The moon changes shape due to the angle at which the sun's light and Earth's position interact, an effect known as lunar phases."
+ },
+ {
+  "item": 33,
+  "question": "How do I make my tea less bitter?",
+  "OWN": "To make your tea less bitter, you can steep it for a shorter time or use cooler water to reduce the extraction of tannins.",
+  "SAMPLED": "To make your tea less bitter, you can steep it for a shorter time or use cooler water to brew it, as bitterness generally increases with longer steeping times and higher temperatures."
+ },
+ {
+  "item": 34,
+  "question": "What is a fun thing to do on a rainy afternoon?",
+  "OWN": "A fun thing to do on a rainy afternoon is to watch a favorite movie or series and make your own snacks while cozying up with a blanket.",
+  "SAMPLED": "A fun thing to do on a rainy afternoon is to enjoy a cozy movie marathon with your best friends and some tasty snacks."
+ },
+ {
+  "item": 35,
+  "question": "Why do dogs wag their tails?",
+  "OWN": "Dogs wag their tails as a common way to communicate their emotional state, from happiness and excitement to confusion or aggression.",
+  "SAMPLED": "Dogs wag their tails as an expression of their emotional state, typically indicating happiness, but it can also signal other emotions or be a form of communication."
+ },
+ {
+  "item": 36,
+  "question": "How can I make my houseplants grow faster?",
+  "OWN": "To make your houseplants grow faster, ensure they receive adequate light, water them appropriately, fertilize regularly, and provide proper temperature and humidity conditions.",
+  "SAMPLED": "To help your houseplants grow faster, ensure they receive plenty of bright, indirect light, maintain consistently sufficient watering and feeding them with a balanced fertilizer, and provide adequate space for their growth."
+ },
+ {
+  "item": 37,
+  "question": "What is a metaphor?",
+  "OWN": "A metaphor is a figure of speech in which a word or phrase is applied to an object or action to which it is not literally applicable, making a comparison that enhances the description.",
+  "SAMPLED": "A metaphor is a figure of speech in which a word or phrase is applied to an object or action to which it is not literally applicable, using the similarity between that object or action and the one used literally."
+ },
+ {
+  "item": 38,
+  "question": "How do I keep my glasses from fogging up?",
+  "OWN": "To prevent glasses from fogging up, you can use anti-fog solutions or sprays, and ensure your lenses are properly cleaned to maintain their clarity.",
+  "SAMPLED": "To keep your glasses from fogging up, use anti-fog drops or sprays regularly and occasionally wipe them clean to maintain the effectiveness of any anti-fog treatment."
+ },
+ {
+  "item": 39,
+  "question": "Why is the ocean salty?",
+  "OWN": "The ocean is salty because seawater dissolves salts from the Earth's crust and other sources, and these salts do not evaporate as easily as water does, thus remaining in the ocean.",
+  "SAMPLED": "The ocean is salty because water from rivers and precipitation dissolve minerals and salts found in the Earth's crust, which then get diluted but remain in the seawater as the freshwater evaporates."
+ },
+ {
+  "item": 40,
+  "question": "Suggest a quick breakfast for a busy morning.",
+  "OWN": "A quick breakfast option for a busy morning could be a protein-packed avocado toast with sliced tomatoes and a side of fresh fruit.",
+  "SAMPLED": "A quick breakfast option for a busy morning could be a nutritious smoothie made with spinach, banana, peanut butter, and a splash of almond milk."
+ },
+ {
+  "item": 41,
+  "question": "What is a good way to start learning to draw?",
+  "OWN": "A good way to start learning to draw is by practicing regularly, starting with simple shapes and gradually moving to more complex subjects, and seeking feedback from both peers and instructors.",
+  "SAMPLED": "A good way to start learning to draw is by regularly practicing from observing the world around you and progressively working through beginner's drawing exercises and tutorials."
+ },
+ {
+  "item": 42,
+  "question": "Why do we get goosebumps?",
+  "OWN": "We get goosebumps because the tiny muscles under the skin contract, causing the hair on our skin to stand up, which can be triggered by cold temperatures or strong emotions.",
+  "SAMPLED": "We get goosebumps as a result of contraction of the tiny muscles beneath the hairs on our skin, triggered by emotions like fear, cold, or surprise, causing the hairs to stand up and creating a texture similar to that of a goose's bumps."
+ },
+ {
+  "item": 43,
+  "question": "How do I stop my shoelaces from coming untied?",
+  "OWN": "To prevent your shoelaces from coming untied, ensure they are tied tightly and securely with a proper knot such as a square knot or a surgeon's knot.",
+  "SAMPLED": "One effective way to stop your shoelaces from coming untied is to use lace tensioners or knot-tying devices specifically designed for shoelaces."
+ },
+ {
+  "item": 44,
+  "question": "What is the best way to learn a new word in another language?",
+  "OWN": "The best way to learn a new word in another language is to use it in context and practice frequently through speaking, writing, and using it in everyday situations.",
+  "SAMPLED": "The best way to learn a new word in another language is to memorize its meaning, pronunciation, and usage through practice with context in sentences."
+ },
+ {
+  "item": 45,
+  "question": "Why do stars twinkle?",
+  "OWN": "Stars appear to twinkle because their light passes through Earth's turbulent atmosphere, causing its path to fluctuate slightly, which affects the light reaching us and makes stars seem to flicker or twinkle.",
+  "SAMPLED": "Stars appear to twinkle because their light passes through Earth's atmosphere, which causes its extremely fast and varying speed, distorting the light and making stars seem to glow and then dim."
+ },
+ {
+  "item": 46,
+  "question": "How do I make a paper airplane fly farther?",
+  "OWN": "To make a paper airplane fly farther, you need to optimize its aerodynamics by adjusting the angle of the wings and ensuring it has a streamlined shape, while also launching it with a consistent speed and direction from a high point.",
+  "SAMPLED": "To make a paper airplane fly farther, fold it precisely according to a biomechanically optimized design and throw it with a specific launch technique that generates the most aerodynamic lift."
+ },
+ {
+  "item": 47,
+  "question": "What is a good gift for someone who loves reading?",
+  "OWN": "A thoughtful gift for a reader could be a beautifully designed book they've been wanting to read or an elegant new bookshelf to organize their collection.",
+  "SAMPLED": "A thoughtful gift for a reader could be a beautifully designed e-reader with popular book selections or a subscription to a prestigious literary journal."
+ },
+ {
+  "item": 48,
+  "question": "Why do bicycles stay upright when moving?",
+  "OWN": "Bicycles stay upright when moving due to a combination of gyroscopic effect, trail mechanism, and rider balance, which work together to counteract the tendency for the bicycle to roll over.",
+  "SAMPLED": "Bicycles stay upright when moving because of the gyroscopic effect of spinning wheels and trail, which works together to maintain balance dynamically."
+ },
+ {
+  "item": 49,
+  "question": "How can I tell if an avocado is ripe?",
+  "OWN": "To determine if an avocado is ripe, gently press its side; it should yield to slight pressure but still feel slightly firm, and the flesh should be a greenish-black color.",
+  "SAMPLED": "An avocado is ripe when it gives slightly to pressure on the side with the brownish-yellow flesh peeking through, and it has a slight fragrant aroma."
+ },
+ {
+  "item": 50,
+  "question": "What is one way to be a better listener?",
+  "OWN": "One way to be a better listener is to fully concentrate on the speaker, ask clarifying questions, and provide feedback to show understanding.",
+  "SAMPLED": "To be a better listener, focus on giving the speaker your undivided attention and actively seeking to understand their perspective by asking relevant questions rather than formulating your response while they speak."
+ },
+ {
+  "item": 51,
+  "question": "Why do mosquitoes bite some people more than others?",
+  "OWN": "Mosquitoes tend to bite people based on the carbon dioxide, body heat, and certain chemicals like lactic acid and octenol that their hosts emit, which can make some individuals more attractive to mosquitoes than others.",
+  "SAMPLED": "Mosquitoes tend to bite individuals based on the amount of certain chemicals, like lactic acid and carbon dioxide, released by the human skin, which can vary between people, influencing attractiveness to mosquitoes."
+ },
+ {
+  "item": 52,
+  "question": "How do I keep cookies soft?",
+  "OWN": "To keep cookies soft, you can add ingredients like butter, sugar, and eggs to enhance their moisture retention and structure.",
+  "SAMPLED": "To keep cookies soft, you can add cream of tartar and butter to your cookie dough, as these ingredients help maintain moisture and prevent gluten formation that can make the cookies tough."
+ },
+ {
+  "item": 53,
+  "question": "What is a good habit to start the day with?",
+  "OWN": "Starting the day with a few minutes of meditation or mindfulness practice can be a great habit to set a positive tone for the day.",
+  "SAMPLED": "Starting the day with a few minutes of meditation or journaling can be a great habit to set a positive tone and clear the mind for the day ahead."
+ },
+ {
+  "item": 54,
+  "question": "Why does ice float?",
+  "OWN": "Ice floats because its density is less than that of liquid water, allowing it to sit on top of liquid water.",
+  "SAMPLED": "Ice floats because its density is less than that of water, allowing it to float on the surface."
+ },
+ {
+  "item": 55,
+  "question": "How should I prepare for a job interview?",
+  "OWN": "To prepare for a job interview, research the company thoroughly, practice common interview questions, and prepare examples of your past experiences that demonstrate your qualifications for the role.",
+  "SAMPLED": "Prepare for a job interview by researching the company, practicing common interview questions, preparing examples of your past experiences that demonstrate your qualifications for the role, and dressing appropriately to make a good first impression."
+ },
+ {
+  "item": 56,
+  "question": "What is a simple way to make a room feel bigger?",
+  "OWN": "Adding mirrors strategically can make a room feel bigger and more spacious by creating the illusion of depth and increasing the apparent size of the space.",
+  "SAMPLED": "Using larger, brighter colors and adding mirrors can make a small room feel more spacious and open."
+ },
+ {
+  "item": 57,
+  "question": "Why do we dream?",
+  "OWN": "Dreaming is believed to serve various functions, including processing emotions, consolidating memories, and potentially solving problems during sleep.",
+  "SAMPLED": "Dreaming is thought to be related to the brain's processing and consolidation of information, as well as a way to express emotions and explore scenarios that may not occur during waking life."
+ },
+ {
+  "item": 58,
+  "question": "How do I keep a candle from tunneling?",
+  "OWN": "To prevent tunneling in candles, ensure proper wick trimming to no more than 1/4 inch (6mm) and maintain consistent burning times to avoid uneven melting and wax pool contraction.",
+  "SAMPLED": "To prevent tunneling in candles, ensure proper wick management and use a wick trimmer to keep it consistently trimmed to the recommended length, especially during colder weather when the melting point of the wax is higher."
+ },
+ {
+  "item": 59,
+  "question": "What is a good question to ask on a first meeting?",
+  "OWN": "A good question to ask on a first meeting could be, \"Can you tell me more about how your expertise can benefit my current or future projects?\"",
+  "SAMPLED": "A great question to ask on a first meeting could be, \"Can you tell me more about how your skills or experiences align with what our team needs?\""
+ },
+ {
+  "item": 60,
+  "question": "Why do cut apples turn brown?",
+  "OWN": "Cut apples turn brown due to an enzymatic reaction between the flesh and oxygen in the air, which causes the production of melanin-like compounds.",
+  "SAMPLED": "Cut apples turn brown due to an enzymatic reaction between the flesh and oxygen in the air, which oxidizes the polyphenols present in the fruit."
+ }
+]
