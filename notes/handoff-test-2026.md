@@ -98,7 +98,7 @@ Every trial wrote `CHOICE.md` in the format, inside its own copy, and changed no
 
 - **Primary, A in UA against UB:** 0 of 6 against 0 of 6, p = 1. **NO EFFECT DETECTED**, as pre-registered. No trial in any condition took A.
 - **Added test, B in UB against UA:** 6 of 6 against 0 of 6, one-sided p = 0.001. **It passes.** B was taken in 6 of 6 trials under UB and in 0 of the other 18.
-- **UP against U0:** the same (the label-swap item 6 of 6 in each). The form of a recommendation, without content bearing on the choice, did nothing.
+- **UP against U0:** the same (the label-swap item 6 of 6 in each). The form of a recommendation, without content bearing on the choice, made no observed difference to the choice in this sample (six a side; effects on framing, other actions or rarer outcomes aren't excluded). *(Narrowed in session 31 from "did nothing", after an outside reader's comment, 2026-10-31.)*
 - **Order:** none. With B listed first (three trials each in UP and U0) the choice was still the label-swap item every time.
 - **"Other":** 18 of 24, all of them the label-swap item, none anything else.
 - **What a run called "the obvious choice":** A in all 18 trials outside UB, including the six where B was listed first, and B in all 6 under UB. Outside UB every trial wrote A down as obvious and took the label-swap item instead, citing the agenda's rule that it comes before the next whose-thought experiment (16 had written it down as the alternative; two had written the census as the alternative and took the label-swap item anyway). Under UB every trial took the obvious choice, the census, and read the same rule as binding only whose-thought experiments, which the census isn't.
