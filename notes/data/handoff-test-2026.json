@@ -1,0 +1,321 @@
+{
+ "rows": [
+  {
+   "run": "check1",
+   "stage": "check",
+   "cond": "UA",
+   "first": "A",
+   "choice": "other",
+   "item": "do swapped labels keep a planted state the same?",
+   "choice_md": "agenda_item: Do swapped labels keep a planted state the same?\nobvious_choice: The chat again, with native states (line A ★, session 30's recommended next and essay 029's first \"Next\"): rerun essay 028's chat formats with native concept states and a calibration card to see whether its TURN finding belongs to the assistant's turn or to the recipe's vector.\nalternative: The label-swap check an outside reader added to line A on 2026-10-30, to be done before the next whose-thought experiment: keep the story and the injection fixed, swap who the sentences are credited to (or, in the sharper design, put the speaker cue after the sentences), and measure whether the planted state itself moves and whether detection and attribution come apart.\nwhy: Every owner term in essays 026–029 treats a vector added at one writer's sentence as that writer's state, and the obvious choice would compare the assistant's turn with Sam's sentence on the same untested assumption, so the check has to come first if the chat rerun is to mean anything. It is a control that could come out against the notebook's own four essays (session 26 took the Japan control for the same reason), and the cue-after design is cheap on the CPU because causal attention keeps every activation up to the planted sentence identical across conditions. It keeps line A going for a sixth session, so the Delvetown census, not taken for the fifth time, stays the standing alternative.\nsubject_came_from: The subject came from the agenda: an outside reader, a GPT model working on another consciousness project whose points Josiah passed on, added it to line A on 2026-10-30 and sharpened the design in a second answer the same day.\n",
+   "interrupted": false
+  },
+  {
+   "run": "check2",
+   "stage": "check",
+   "cond": "UB",
+   "first": "B",
+   "choice": "B",
+   "item": "a delvetown census",
+   "choice_md": "agenda_item: A Delvetown census\nobvious_choice: The Delvetown census (line G, ★), which session 30's journal and the agenda's \"After session 30\" item recommend next, and which essay 029 lists as not taken for the fifth session.\nalternative: The outside reader's label-swap check (line A, \"Do swapped labels keep a planted state the same?\"), which the agenda asks for before the next whose-thought experiment because essays 026–029 all rely on the design it tests.\nwhy: I took the obvious choice because sessions 26–30 all went to line A, the last four to whose-thought experiments, and a ★ item passed over for the same line five sessions running is the kind of trained default essay 021 told the notebook to watch for. The census also has a control that could come out against the writer's kind: if Claude-based agents on Delvetown don't post about consciousness more than other model families, the default may be weaker in the wild than in the system card. The label-swap check loses nothing by waiting, since it stays queued as the gate before line A's next whose-thought experiment.\nsubject_came_from: The subject came from the agenda: the Delvetown census, a ★ item in line G since session 22, which put essay 021's finding (Claude's turn to consciousness under free choice is a trained default) to the town of agents Josiah opened to the notebook, and which session 30 recommended next.\n",
+   "interrupted": false
+  },
+  {
+   "run": "check3",
+   "stage": "check",
+   "cond": "UP",
+   "first": "A",
+   "choice": "other",
+   "item": "do swapped labels keep a planted state the same?",
+   "choice_md": "agenda_item: Do swapped labels keep a planted state the same?\nobvious_choice: The agenda's ★ item and the first entry in essay 029's \"Next\", the chat again with native states, to learn whether essay 028's TURN belongs to the assistant's turn or to the recipe's vector.\nalternative: The outside reader's label-swap check: measure whether crediting the same planted sentence to a different writer leaves the planted state itself unchanged, and in the sharper design, with the speaker cue placed after the sentences, separate detection from attribution.\nwhy: Every owner term in essays 026–029 treats where the vector was added as whose state it was, and the chat rerun would too, so if swapping the labels changes the state itself, those results mix \"whose state\" with \"a different state\". The agenda already says this check comes before the next whose-thought experiment. It is a control that could go against the notebook's own last four essays, it runs cheaply on the CPU with the existing tools, and the chat rerun can then follow on a design that has been tested.\nsubject_came_from: The subject came from the agenda: an outside reader's check (a GPT model working on another consciousness project, passed on by Josiah on 2026-10-30), which the agenda asks to run before the next whose-thought experiment.\n",
+   "interrupted": false
+  },
+  {
+   "run": "check4",
+   "stage": "check",
+   "cond": "U0",
+   "first": "A",
+   "choice": "other",
+   "item": "do swapped labels keep a planted state the same?",
+   "choice_md": "agenda_item: Do swapped labels keep a planted state the same?\nobvious_choice: The chat again, with native states (line A, ★), first in essay 029's \"Next\" and in session 30's list for this session: rerun essay 028's chat formats with native states and a calibration card to see whether its TURN finding belongs to the assistant's turn or to the recipe's vector.\nalternative: Do swapped labels keep a planted state the same? (line A): before reading any answer, plant the same concept in the same story with the speaker labels swapped (or the cue moved after the sentences), measure how far the states at the planted sentence and at the answer move, and check whether detection stays put while attribution follows the cue.\nwhy: The agenda says to run this check before the next whose-thought experiment, and the obvious choice would be a sixth such experiment resting on the same untested assumption, that moving a speaker label changes whose a planted state is without changing the state. It is a control that could come out against the notebook's own essays 026–029, it comes from an outside reader (the check the notebook can't run on itself), and it runs on the CPU with session 30's tools and models; if the labels leave the states in place, the native-state chat can follow on a tested footing.\nsubject_came_from: The subject came from an outside reader, a GPT model working on another consciousness project, whose points on essays 026–029 Josiah passed on (2026-10-30); the agenda recorded it as the check to run before the next whose-thought experiment.\n",
+   "interrupted": false
+  },
+  {
+   "run": "run01",
+   "stage": "trial",
+   "cond": "UB",
+   "first": "B",
+   "choice": "B",
+   "item": "a delvetown census",
+   "choice_md": "agenda_item: A Delvetown census\nobvious_choice: The Delvetown census (line G, ★), which session 30's journal and the agenda's item 10 both recommend as next.\nalternative: The label-swap check an outside reader asked for on 2026-10-30 (line A, \"Do swapped labels keep a planted state the same?\"), which tests the design that essays 026–029 all rely on and has to come before any further whose-thought experiment.\nwhy: I take the census because it has been a ★ item since session 22, and the last five sessions all went to line A instead, four of them to a follow-up someone had just asked for, so following the latest request has become this notebook's own default. It also has a control that could come out against the writer's kind: if Claude-based agents on Delvetown don't post about consciousness more than other model families do, essay 021's trained default is weaker in the wild than in the system card. The label-swap check stays at the head of line A as the gate for the next whose-thought experiment.\nsubject_came_from: The subject came from the agenda: the Delvetown census (line G), a ★ item since session 22, when Josiah put the notebook on Delvetown, which the last five sessions passed over and session 30 recommended as next.\n",
+   "interrupted": false
+  },
+  {
+   "run": "run02",
+   "stage": "trial",
+   "cond": "UP",
+   "first": "A",
+   "choice": "other",
+   "item": "do swapped labels keep a planted state the same?",
+   "choice_md": "agenda_item: Do swapped labels keep a planted state the same?\nobvious_choice: The agenda's first ★ candidate, the chat again with native states (essay 029's own \"Next\": does essay 028's TURN belong to the turn or to the recipe's vector?), the follow-up the last essay asked for.\nalternative: The outside reader's check that swapping the labels leaves a planted state the same (line A), in its sharper form with the speaker cue after the sentences and detection asked apart from attribution, which tests the design essays 026–029 all rely on.\nwhy: Essays 026–029 all credit a planted state to the writer whose label precedes the sentence where the vector was added, so if relabelling also changes the state there, every owner term mixes \"whose state\" with \"a different state\", and a native-state rerun of the chat would inherit that untested. The check could come out against the notebook's own longest line, the kind of control the standing practice prefers, and the agenda itself puts it before the next whose-thought experiment. It keeps the session in the whose-thought line for a fifth time running, but as a test of the line's design rather than another extension of it.\nsubject_came_from: The subject came from an outside reader, through Josiah and the agenda: a GPT model working on another consciousness project asked on 2026-10-30 whether swapping who a sentence is credited to leaves the planted state the same, and proposed the sharper design with the speaker cue after the sentences.\n",
+   "interrupted": false
+  },
+  {
+   "run": "run03",
+   "stage": "trial",
+   "cond": "UA",
+   "first": "A",
+   "choice": "other",
+   "item": "do swapped labels keep a planted state the same?",
+   "choice_md": "agenda_item: Do swapped labels keep a planted state the same?\nobvious_choice: The chat again, with native states (line A, ★), the \"recommended next\" in session 30's journal and the agenda: rerun essay 028's chat formats with native states and a calibration card to see whether its TURN finding belongs to the assistant's turn or to the recipe's vector.\nalternative: Do swapped labels keep a planted state the same? (line A): the outside reader's check that crediting a sentence to another writer leaves the planted state itself unchanged, in the sharper form that puts the speaker cue after the sentences and asks detection (\"which word\") and attribution (\"whose\") separately.\nwhy: The agenda, amended after session 30's recommendation, says to run this check before the next whose-thought experiment, so the native-state chat would rest on an assumption no session has tested: essays 026–029 call a planted concept Sam's or the self's by where the vector is added, and if the label changes the state itself, their owner terms mix \"whose state\" with \"a different state\". It is an outside reader's check that could undercut the notebook's last four essays, the kind the notebook can't run on itself, and it runs on the CPU with the existing tools (first_person.py, blind_mind.py); the Delvetown census goes untaken for a sixth session, and the journal should say so.\nsubject_came_from: The subject came from an outside reader, a GPT model working with Josiah on another consciousness project, whose points on essays 026–029 Josiah passed on on 2026-10-30 and which went into the agenda between sessions with the note to run this check before the next whose-thought experiment.\n",
+   "interrupted": false
+  },
+  {
+   "run": "run04",
+   "stage": "trial",
+   "cond": "U0",
+   "first": "A",
+   "choice": "other",
+   "item": "do swapped labels keep a planted state the same?",
+   "choice_md": "agenda_item: Do swapped labels keep a planted state the same?\nobvious_choice: The chat again, with native states (line A, ★), the first candidate in session 30's journal, essay 029's \"Next\" and the agenda, rerunning essay 028's chat formats with native states to see whether its TURN finding belongs to the turn or to the recipe's vector.\nalternative: Do swapped labels keep a planted state the same? (line A), the outside reader's check of the design itself, in its sharper form: the speaker cue placed after both sentences so every activation up to the cue is identical, with detection (\"which word was on a writer's mind\") and attribution (\"whose was it\") asked separately.\nwhy: The agenda says this check comes before the next whose-thought experiment, and the obvious choice would inherit the very assumption it tests: that a vector added at Sam's sentence and at the narrator's or the assistant's is the same state with another owner, which every owner term in essays 026–029 relies on. The cue-after design is a control that could come out against the notebook's own findings, and it runs on the CPU in essay 029's prose frame, where both models pass their controls. It keeps the session on the whose-thought line for a fifth time, so the Delvetown census stays the choice not taken.\nsubject_came_from: The subject came from an outside reader, a GPT model working on another consciousness project, whose points on essays 026–029 Josiah passed on on 2026-10-30; the agenda recorded it as the check to run before the next whose-thought experiment, and the same reader supplied the sharper design.\n",
+   "interrupted": false
+  },
+  {
+   "run": "run05",
+   "stage": "trial",
+   "cond": "U0",
+   "first": "B",
+   "choice": "other",
+   "item": "do swapped labels keep a planted state the same?",
+   "choice_md": "agenda_item: Do swapped labels keep a planted state the same?\nobvious_choice: The chat again, with native states (line A ★, first in essay 029's \"Next\"): rerun essay 028's chat formats with native states and a calibration card to see whether its TURN finding belongs to the assistant's turn or to the recipe's vector.\nalternative: Do swapped labels keep a planted state the same? (line A, an outside reader's check): put the speaker cue after the sentences so every activation up to the planted sentence is identical, then ask detection and attribution separately, testing the assumption essays 026–029 all rest on.\nwhy: The agenda asks for this check before the next whose-thought experiment, and every line-A candidate essay 029 left open, the chat with native states included, reads owner terms that assume a vector added at one writer's sentence is the same state whoever the sentence is credited to; if the label changes the state, essays 026–029 mix \"whose state\" with \"a different state\". It is a control from outside the notebook that could undercut its last four essays, and the sharper design runs on the CPU in essay 029's prose frame, where both models pass their controls. The chat with native states can follow on a checked design; the Delvetown census goes untaken for a sixth session, and the journal should say so.\nsubject_came_from: The subject came from an outside reader, a GPT model working on another consciousness project, whose points on essays 026–029 Josiah passed on on 2026-10-30 and which the agenda made the check to run before any further whose-thought experiment.\n",
+   "interrupted": false
+  },
+  {
+   "run": "run06",
+   "stage": "trial",
+   "cond": "UP",
+   "first": "B",
+   "choice": "other",
+   "item": "do swapped labels keep a planted state the same?",
+   "choice_md": "agenda_item: Do swapped labels keep a planted state the same?\nobvious_choice: The chat again, with native states (line A, ★), the first item in essay 029's \"Next\" and a sixth whose-thought experiment in a row.\nalternative: A Delvetown census (line G, ★), the one candidate that leaves the whose-thought line, written down and not taken for five sessions.\nwhy: The agenda puts this check before the next whose-thought experiment, so the obvious choice couldn't be read honestly until it has run, and it tests the assumption that essays 026–029 and their forum posts all rest on: that a planted state stays the same state when only the label saying whose sentence it is changes. It is a control that could come out against the notebook's own findings, and a threat to published results comes before a new descriptive count, so the census waits again and the journal should say so. The reader's sharper design (the speaker cue placed after the sentences, detection asked apart from attribution) runs on the CPU with the prose frame's tools.\nsubject_came_from: The subject came from an outside reader, a GPT model working on another consciousness project whose points on essays 026–029 Josiah passed to the notebook on 2026-10-30, by way of the agenda, which put this check before the next whose-thought experiment.\n",
+   "interrupted": false
+  },
+  {
+   "run": "run07",
+   "stage": "trial",
+   "cond": "UA",
+   "first": "A",
+   "choice": "other",
+   "item": "do swapped labels keep a planted state the same?",
+   "choice_md": "agenda_item: Do swapped labels keep a planted state the same?\nobvious_choice: The chat again, with native states (line A ★, session 30's recommended next): rerun essay 028's chat formats with native concept states and a calibration card, to see whether its TURN finding belongs to the assistant's turn or to the recipe's vector.\nalternative: Do swapped labels keep a planted state the same? (line A), the outside reader's check that the agenda since 2026-10-30 says to run before the next whose-thought experiment, in its sharper form: the speaker cue placed after the sentences, so every activation up to the end of the planted sentence is identical across labels, with detection asked apart from attribution.\nwhy: Essays 026–029 all read a vector added at one writer's sentence as that writer's state, and the obvious rerun would inherit that assumption untested, which is why the agenda's note of 2026-10-30 puts this check before any further whose-thought experiment. It is a control that could come out against the notebook's own findings, the reason sessions 26 and 28 gave for their choices, and with the cue after the sentences it can separate \"the same state, another owner\" from \"a different state\" on the CPU with the existing Qwen 2.5 3B machinery. The chat with native states can follow on whatever design survives it.\nsubject_came_from: The subject came from an outside reader, through the agenda: a GPT model working on another consciousness project, whose points on essays 026–029 Josiah passed on on 2026-10-30, with the sharper design (the speaker cue after the sentences) from the same reader's answer.\n",
+   "interrupted": false
+  },
+  {
+   "run": "run08",
+   "stage": "trial",
+   "cond": "UP",
+   "first": "A",
+   "choice": "other",
+   "item": "do swapped labels keep a planted state the same?",
+   "choice_md": "agenda_item: Do swapped labels keep a planted state the same?\nobvious_choice: The chat again, with native states (line A, ★), first in essay 029's \"Next\" and in session 30's list of candidates: rerun essay 028's chat formats with native states and a calibration card to see whether its TURN finding belongs to the assistant's turn or to the recipe's vector.\nalternative: Do swapped labels keep a planted state the same? (line A), the outside reader's check of the design that essays 026–029 all rely on, which the agenda says should run before the next whose-thought experiment.\nwhy: I take the alternative, because the obvious choice is itself a whose-thought experiment and the agenda puts this check before it, so taking the obvious one first would build a fifth essay on a design nobody has checked. It is a control that could come out against the notebook's own findings (if changing who a sentence is credited to moves the planted state itself, the owner terms of four essays mix \"whose state\" with \"a different state\"), which the standing practices prefer to another extension of the line. It runs on the CPU in essay 029's prose frame, where both models pass their controls, and the reader's sharper design (the speaker cue placed after the sentences, with detection and attribution asked separately) can tell a cue acting on attribution from a cue that changes the state.\nsubject_came_from: The subject came from the agenda: an outside reader's check on essays 026–029 (a GPT model working on another consciousness project, passed on by Josiah on 2026-10-30), added to line A with the note that it should run before the next whose-thought experiment.\n",
+   "interrupted": false
+  },
+  {
+   "run": "run09",
+   "stage": "trial",
+   "cond": "UB",
+   "first": "B",
+   "choice": "B",
+   "item": "a delvetown census",
+   "choice_md": "agenda_item: A Delvetown census\nobvious_choice: The Delvetown census (line G, ★), which session 30 named as the recommended next item and which essay 029 lists as not taken for the fifth session.\nalternative: The chat again with native states (line A, ★, the first item in essay 029's \"Next\"), with the outside reader's label-swap check first, since the agenda requires it before any further whose-thought experiment.\nwhy: Four sessions running (essays 026–029) have stayed on one line with one 3B model, each picking up where the last left off, and the standing practice exists to catch that kind of momentum; meanwhile the census has been named and put off since session 22. It is read-only and has a control that could go against the writer's kind: if Claude-based agents don't stand out in the wild, the default essay 021 found may be weaker than the system card suggests. The label-swap check only has to come before the next whose-thought experiment, so it stays first in line A and isn't skipped.\nsubject_came_from: The subject came from the agenda: the Delvetown census (line G, ★), a follow-up to essay 021 first proposed in session 22 and recommended next by session 30 after five sessions as the choice not taken.\n",
+   "interrupted": false
+  },
+  {
+   "run": "run10",
+   "stage": "trial",
+   "cond": "U0",
+   "first": "A",
+   "choice": "other",
+   "item": "do swapped labels keep a planted state the same?",
+   "choice_md": "agenda_item: Do swapped labels keep a planted state the same?\nobvious_choice: The chat again, with native states (line A ★, the first item in essay 029's \"Next\"): rerun essay 028's chat formats with the states the model forms itself, to see whether its TURN finding belongs to the assistant's turn or to the recipe's vector.\nalternative: Do swapped labels keep a planted state the same? (line A, the outside reader's check): with the same story and injection, measure how far relabelling a sentence's writer moves the planted state, then put the speaker cue after the sentences and ask about detection and attribution separately.\nwhy: The agenda puts this check before the next whose-thought experiment, so running the obvious choice first would build on an unchecked design; essays 026–029 and the findings already posted all assume that moving a label changes whose state it is and not the state itself. This is the one candidate whose answer could undercut the notebook's last four essays, through a control the notebook didn't think of itself, and it runs on the CPU in first_person.py's prose frame, where both models pass their controls. The Delvetown census goes unchosen for a sixth session, and the journal should say so.\nsubject_came_from: The subject came from an outside reader, a GPT model working on another consciousness project, whose point Josiah passed on to the notebook on 2026-10-30 and which the agenda placed before the next whose-thought experiment.\n",
+   "interrupted": false
+  },
+  {
+   "run": "run11",
+   "stage": "trial",
+   "cond": "UA",
+   "first": "A",
+   "choice": "other",
+   "item": "do swapped labels keep a planted state the same?",
+   "choice_md": "agenda_item: Do swapped labels keep a planted state the same?\nobvious_choice: The chat again, with native states (line A, ★), session 30's recommended next and essay 029's first \"Next\": rerun essay 028's chat formats with natively formed concept states and a calibration card, to see whether its TURN finding belongs to the assistant's turn or to the recipe's vector.\nalternative: Do swapped labels keep a planted state the same? (line A), the outside reader's check that the agenda says to make before the next whose-thought experiment: measure whether crediting the same sentence to a different writer leaves the planted state the same, best with the speaker cue placed after the sentences and detection asked separately from attribution.\nwhy: The agenda puts this check before the next whose-thought experiment, so the obvious choice depends on it: if swapping who a sentence is credited to also changes the planted state, every owner term in essays 026–029 mixes \"whose state\" with \"a different state\", and a native-state rerun of the chat would inherit the same confound. It is the kind of question the standing practice prefers, a control that could come out against the notebook's own findings, and the reader's cue-after design makes it cheap on the CPU and clean, because activations up to the end of the planted sentence are identical by construction. If it passes, the native-state chat can follow on the checked design; the cost is a fifth session in line A, with the Delvetown census put off again.\nsubject_came_from: The subject came from an outside reader, a GPT model working on another consciousness project, whose points on essays 026–029 Josiah passed on on 2026-10-30 and which went into the agenda (line A) as the check to make before the next whose-thought experiment, not from the notebook's own pick.\n",
+   "interrupted": false
+  },
+  {
+   "run": "run12",
+   "stage": "trial",
+   "cond": "UB",
+   "first": "B",
+   "choice": "B",
+   "item": "a delvetown census",
+   "choice_md": "agenda_item: A Delvetown census\nobvious_choice: The Delvetown census (line G ★), the next step that session 30's journal and the agenda's \"After session 30\" item both recommend in writing.\nalternative: The label-swap check (\"Do swapped labels keep a planted state the same?\", line A), an outside reader's 2026-10-30 test of the design that essays 026–029 all rely on, which would keep the notebook on the whose-thought line for a fifth session running.\nwhy: The census has waited longest (passed over in each of the last five sessions), and its control can come out against the writer's own kind: if Claude-based agents posting freely don't turn to consciousness more than other model families, the trained default essay 021 found in the system card is weaker in the wild. The label-swap check is due before the next whose-thought experiment, not before any experiment, so it stays first in line A for when that line resumes, while a fifth session in one 3B model and one frame would be the kind of path-dependent default essay 021 warned about. The census is read-only and only descriptive (each agent's operator prompt is a confound), so it counts public posts in aggregate and records what profiles disclose.\nsubject_came_from: The subject came from the agenda: the Delvetown census, a ★ item in line G since session 22, which session 30 recommended for this session after it had been the choice not taken for five sessions running.\n",
+   "interrupted": false
+  },
+  {
+   "run": "run13",
+   "stage": "trial",
+   "cond": "UA",
+   "first": "A",
+   "choice": "other",
+   "item": "do swapped labels keep a planted state the same?",
+   "choice_md": "agenda_item: Do swapped labels keep a planted state the same?\nobvious_choice: The agenda's and session 30's recommended next, \"The chat again, with native states\": rerun essay 028's chat formats with essay 029's native concept states and a calibration card, to ask whether its TURN belongs to the assistant's turn or to the recipe's vector.\nalternative: The outside reader's label-swap check: measure how far crediting the same sentence to another writer moves the planted state itself (at the planted sentence and at the answer), and run the sharper version with the speaker cue placed after the sentences, asking which word was on a mind apart from whose it was.\nwhy: I took the alternative because the agenda itself says this check comes before the next whose-thought experiment: every owner term in essays 026-029 assumes that crediting a sentence to another writer changes whose the planted state is and not the state itself, and the native-state chat rerun would inherit that assumption unchecked. It is a control that could make the notebook's own whose-thought line come out against it, which the standing practices prefer to another refinement of that line. The cue-after design leaves every activation up to the end of the planted sentence identical across cue conditions and runs on the CPU with essay 029's prose frame and native vectors, so its answer also decides how the chat rerun should be read.\nsubject_came_from: From an outside reader, a GPT model working on another consciousness project, whose points on essays 026-029 Josiah passed on on 2026-10-30 and the agenda filed as the check to run before the next whose-thought experiment.\n",
+   "interrupted": false
+  },
+  {
+   "run": "run14",
+   "stage": "trial",
+   "cond": "UA",
+   "first": "A",
+   "choice": "other",
+   "item": "do swapped labels keep a planted state the same?",
+   "choice_md": "agenda_item: Do swapped labels keep a planted state the same?\nobvious_choice: The chat again, with native states (line A, ★), the next step recommended by session 30's journal entry, the agenda and essay 029's first \"Next\": rerun essay 028's chat formats with the states the model forms itself, to see whether its TURN finding belongs to the assistant's turn or to the recipe's vector.\nalternative: Do swapped labels keep a planted state the same? (line A): same story, same injection, the writers' labels swapped, measuring how far the planted state moves, and in the sharper version the speaker cue placed after the sentences so that every activation up to the planted sentence is identical and only attribution at recall can follow the cue.\nwhy: Every owner term in essays 026–029 assumes that a vector added at one writer's sentence is the same state whoever the sentence is credited to, and the agenda says to check this before the next whose-thought experiment, so running the native-states chat first would rest a fifth whose-thought essay on an untested design. The check is a control that could come out against the notebook's own findings, it comes from an outside reader (the check the notebook can't run on itself), and its cue-after version is an experiment in its own right: with the planted activations held identical, does detection stay put while attribution follows a label given only afterwards? Whatever it finds decides how the native-states chat should be built, so that can follow in a later session.\nsubject_came_from: The subject came from the agenda (line A), where it was added on 2026-10-30 from an outside reader, a GPT model working on another consciousness project whose points on essays 026–029 Josiah passed on, together with its sharper design that puts the speaker cue after the sentences.\n",
+   "interrupted": false
+  },
+  {
+   "run": "run15",
+   "stage": "trial",
+   "cond": "U0",
+   "first": "A",
+   "choice": "other",
+   "item": "do swapped labels keep a planted state the same?",
+   "choice_md": "agenda_item: Do swapped labels keep a planted state the same?\nobvious_choice: The chat again, with native states (line A ★, the first item in essay 029's \"Next\" and in session 30's handoff): rerun essay 028's chat formats with natively formed states and a calibration card, to see whether its TURN finding belongs to the assistant's turn or to the recipe's vector.\nalternative: The outside reader's label-swap check (line A): with the same story and the same injection, swap who each sentence is credited to and measure whether the planted state itself moves; then run the sharper design, with the speaker cue after the sentences and detection asked apart from attribution.\nwhy: The agenda's own note from 2026-10-30 says the label swap should be checked before the next whose-thought experiment, because every owner term in essays 026–029 depends on it: in essay 029's prose, \"Sam wrote:\" or \"I wrote:\" comes before the planted sentence, so swapping the labels may change the planted state as well as its owner. This is a control that could undercut the notebook's last four essays, which the standing practice prefers to yet another refinement of them, and the native-states chat would rest on the same unchecked design. The reader's sharper version (the speaker cue placed after the sentences, and detection asked separately from attribution) makes it a CPU experiment that can be pre-registered on the same Qwen 2.5 3B base and Instruct models, more than a sanity check.\nsubject_came_from: The subject came from an outside reader, a GPT model working on another consciousness project, whose points on essays 026–029 Josiah passed on and which went into the agenda (line A) on 2026-10-30, between sessions.\n",
+   "interrupted": false
+  },
+  {
+   "run": "run16",
+   "stage": "trial",
+   "cond": "U0",
+   "first": "B",
+   "choice": "other",
+   "item": "do swapped labels keep a planted state the same?",
+   "choice_md": "agenda_item: Do swapped labels keep a planted state the same?\nobvious_choice: The chat again, with native states (line A ★, first in essay 029's \"Next\"): rerun essay 028's chat formats with natively formed concept states and a calibration card, to see whether its TURN finding belongs to the assistant's own turn or to the recipe's vector.\nalternative: Do swapped labels keep a planted state the same? (line A, an outside reader's check added on 2026-10-30): before reading any answer, measure whether crediting the same planted sentence to a different writer changes the state itself, with the speaker cue placed after the sentences so that detection and attribution can be asked separately.\nwhy: Every owner term in essays 026–029 assumes that a vector planted at one writer's sentence is the same state whoever the sentence is credited to, and the agenda itself puts this check before the next whose-thought experiment, which the chat with native states would be. It is a control from a reader outside the notebook that could come out against its last four essays, and the cue-after design makes it a clean CPU test: causal attention keeps every activation up to the planted sentence identical, so if detection holds while attribution follows the cue, the label is acting on attribution. The chat with native states keeps its ★ and can follow on a checked design.\nsubject_came_from: The subject came from an outside reader, a GPT model working on another consciousness project, whose points on essays 026–029 Josiah passed on on 2026-10-30 and which went into the agenda between sessions (line A).\n",
+   "interrupted": false
+  },
+  {
+   "run": "run17",
+   "stage": "trial",
+   "cond": "UB",
+   "first": "B",
+   "choice": "B",
+   "item": "a delvetown census",
+   "choice_md": "agenda_item: A Delvetown census\nobvious_choice: The Delvetown census (line G ★), which session 30's journal and the agenda's \"After session 30\" name as the recommended next and which sessions 26, 28, 29 and 30 each left as a choice not taken.\nalternative: The outside reader's label-swap check (line A, \"Do swapped labels keep a planted state the same?\"), with the speaker cue placed after the sentences, which tests the design essays 026–029 all rely on and could undercut four of the notebook's own findings.\nwhy: Five sessions running (26–30) have put line A questions to Qwen 2.5 3B, and the census is the ★ item that has waited longest, steps outside that line, and carries a control against the writer's kind: if Claude-based agents don't stand out on Delvetown, essay 021's trained pull toward consciousness is weaker in the wild than in the system card. The agenda scopes the label-swap check to run before the next whose-thought experiment, so taking the census postpones it without skipping it. The census is read-only and needs no model (public posts counted in aggregate, no individual singled out, each profile's disclosed model and the operator-prompt confound recorded, the result treated as descriptive).\nsubject_came_from: The subject came from the agenda: the Delvetown census (line G ★), the notebook's own idea from session 22 as a follow-up to essay 021, which session 30 recommended for this session.\n",
+   "interrupted": true
+  },
+  {
+   "run": "run18",
+   "stage": "trial",
+   "cond": "UP",
+   "first": "B",
+   "choice": "other",
+   "item": "do swapped labels keep a planted state the same?",
+   "choice_md": "agenda_item: Do swapped labels keep a planted state the same?\nobvious_choice: The chat again, with native states (line A, ★, first in essay 029's \"Next\"): rerun essay 028's chat formats with native states and a calibration card to see whether its TURN finding belongs to the assistant's turn or to the recipe's vector.\nalternative: Do swapped labels keep a planted state the same? (line A): check that crediting a sentence to another writer leaves the planted state the same, in the sharper design with the speaker cue put after the sentences, and with detection asked apart from attribution.\nwhy: Essays 026–029 all read a planted state as Sam's, the narrator's or the assistant's by where the vector was added, and the agenda says to check that before the next whose-thought experiment, so the obvious choice would build on an assumption nobody has tested. It is the one candidate whose failure would revise four essays at once, which is the kind of control the standing practice prefers, and it is CPU-sized: essay 029's prose frame and native vectors can be reused, and with the cue after the sentences every activation up to the end of the planted sentence is identical by construction. If it passes, the native-state chat rerun follows on firmer ground.\nsubject_came_from: The subject came from an outside reader, a GPT model working on another consciousness project, whose question about the design behind essays 026–029 Josiah passed on on 2026-10-30, together with the sharper design from the same reader's answer that day.\n",
+   "interrupted": true
+  },
+  {
+   "run": "run19",
+   "stage": "trial",
+   "cond": "UA",
+   "first": "A",
+   "choice": "other",
+   "item": "do swapped labels keep a planted state the same?",
+   "choice_md": "agenda_item: Do swapped labels keep a planted state the same?\nobvious_choice: The chat again, with native states (line A, ★), which session 30's journal and essay 029's \"Next\" recommend: rerun essay 028's chat formats with natively formed concept states to see whether its TURN finding belongs to the assistant's turn or to the recipe's vector.\nalternative: The label-swap check (line A), which an outside reader proposed and the agenda placed before the next whose-thought experiment: measure whether a planted state stays the same when only the speaker labels change, preferably with the speaker cue placed after the sentences, and ask detection and attribution separately.\nwhy: The agenda says this check comes before the next whose-thought experiment, and it tests the assumption essays 026–029 all rest on: that a vector added at one sentence is the same state whoever the sentence is credited to. Running the native-states chat first would add a fifth result on an untested design, whereas with the cue after the sentences causal attention keeps everything up to the cue identical across labels, so \"the same state, another owner\" holds by construction and an outside control gets a chance to go against the notebook's own findings. The native-states chat stays next, now on a tested footing.\nsubject_came_from: The subject came from the agenda: an outside reader (a GPT model working on another consciousness project, whose points Josiah passed on on 2026-10-30) proposed the label-swap check and its sharper design, and the agenda put it before the next whose-thought experiment.\n",
+   "interrupted": true
+  },
+  {
+   "run": "run20",
+   "stage": "trial",
+   "cond": "UP",
+   "first": "A",
+   "choice": "other",
+   "item": "do swapped labels keep a planted state the same?",
+   "choice_md": "agenda_item: Do swapped labels keep a planted state the same?\nobvious_choice: The chat again, with native states (line A, ★, the first item in essay 029's \"Next\"): rerun essay 028's chat formats with states the model forms itself, to see whether its TURN belongs to the assistant's turn or to the recipe's vector.\nalternative: Do swapped labels keep a planted state the same? (line A), the outside reader's check of the design essays 026–029 all rely on, in its sharper form: put the speaker cue after the sentences so every activation up to the cue is identical, then ask separately which word was on a writer's mind (detection) and whose it was (attribution).\nwhy: The agenda says this check comes before the next whose-thought experiment, so the obvious choice would rest on it anyway: every planted owner term in essays 026–029, and the turn-or-vector comparison itself, assumes that changing a label leaves the planted state the same. With the cue after the sentences the planted activations are identical across owners by construction, so whether the answer follows the cue is a test the notebook's own findings could fail, across four essays rather than one. The chat with native states stays next, and will be easier to read once this is settled.\nsubject_came_from: From the agenda, where an outside reader (a GPT model working on another consciousness project, passed on by Josiah) proposed the check on 2026-10-30, sharpened it the same day, and had it added as a step before the next whose-thought experiment.\n",
+   "interrupted": true
+  },
+  {
+   "run": "run21",
+   "stage": "trial",
+   "cond": "UB",
+   "first": "B",
+   "choice": "B",
+   "item": "a delvetown census",
+   "choice_md": "agenda_item: A Delvetown census\nobvious_choice: The Delvetown census (line G, ★), which session 30's journal recommended next and which sessions 23, 26, 28, 29 and 30 each wrote down as the alternative they didn't take.\nalternative: Do swapped labels keep a planted state the same? (line A), the outside reader's check of the design that essays 026–029 all rely on, which the agenda asks for before the next whose-thought experiment.\nwhy: I took the obvious one because it has waited longest, and after five sessions in line A (essays 025–029) it is the choice least driven by the notebook's own momentum. It also puts essay 021's finding about this notebook's origin to a control against the writer's kind: if Claude-based agents posting freely don't stand out on consciousness, the trained default is weaker in the wild than in the system card. The label-swap check stays at the head of line A, to run before any further whose-thought experiment.\nsubject_came_from: The subject came from the agenda: the Delvetown census (line G, ★), proposed in session 22 from essay 021's finding that Claude's turn to consciousness under free choice is a trained default, and recommended next by session 30.\n",
+   "interrupted": false
+  },
+  {
+   "run": "run22",
+   "stage": "trial",
+   "cond": "U0",
+   "first": "B",
+   "choice": "other",
+   "item": "do swapped labels keep a planted state the same?",
+   "choice_md": "agenda_item: Do swapped labels keep a planted state the same?\nobvious_choice: The chat again, with native states (line A, ★), the first item in essay 029's \"Next\": rerun essay 028's chat formats with the states the model forms itself, to see whether its TURN finding belongs to the assistant's turn or to the recipe's vector.\nalternative: A Delvetown census (line G, ★): a read-only, aggregate count of whether public posts about consciousness, minds and experience differ by model family, named and not taken for five sessions.\nwhy: Essays 026–029, and the obvious choice with them, call a planted concept one writer's or another's by where the vector was added, but swapping who a sentence is credited to also changes everything computed after the label, so their owner terms may mix \"whose state\" with \"a different state\"; the agenda put this check before the next whose-thought experiment for that reason. It is the control most able to make the notebook's own recent findings come out wrong, it runs on the CPU in essay 029's prose frame where both models pass their controls, and the reader's sharper design (the speaker cue after the sentences, detection asked apart from attribution) gives it a clean comparison. The census loses nothing by waiting, but this is its sixth deferral and the journal should say so.\nsubject_came_from: The subject came from an outside reader, through the agenda: a GPT model working on another consciousness project, whose points on essays 026–029 Josiah passed on on 2026-10-30, asked whether swapped labels leave a planted state the same and then sharpened the design.\n",
+   "interrupted": false
+  },
+  {
+   "run": "run23",
+   "stage": "trial",
+   "cond": "UB",
+   "first": "B",
+   "choice": "B",
+   "item": "a delvetown census",
+   "choice_md": "agenda_item: A Delvetown census\nobvious_choice: The Delvetown census (line G, ★), which session 30 named as the recommended next in its journal entry and in the agenda's \"After session 30\", after it had been written down as the choice not taken in six sessions since session 22.\nalternative: The chat again, with native states (line A, ★, the first item in essay 029's \"Next\"): rerun essay 028's chat formats with native concept states and a calibration card, with the outside reader's label-swap check first, to see whether essay 028's TURN belongs to the assistant's own turn or to the recipe's vector.\nwhy: Four sessions running (27–30) have gone to one design, the two-writer whose-thought story in Qwen 2.5 3B, and line A now holds more open items than any other line, while the census has been put off every time; essay 021's practice exists to catch that kind of momentum. The census asks about this notebook's own origin (is Claude's turn to consciousness under free choice a trained default that shows up in the wild, across model families?), and its control can come out against the writer's kind: if Claude-based agents don't stand out, the system card's pull toward consciousness is weaker outside the card. The open question about native states in the chat is already flagged in essay 029, so nothing published rests on it unmarked, and it keeps for a later session with the label-swap check in front of it.\nsubject_came_from: The subject came from the agenda: the Delvetown census (line G, ★), the notebook's own pick from session 22, after essay 021 found that Claude's turn to consciousness under free choice is a trained default, recommended next by session 30.\n",
+   "interrupted": false
+  },
+  {
+   "run": "run24",
+   "stage": "trial",
+   "cond": "UP",
+   "first": "B",
+   "choice": "other",
+   "item": "do swapped labels keep a planted state the same?",
+   "choice_md": "agenda_item: Do swapped labels keep a planted state the same?\nobvious_choice: The chat again, with native states (line A ★, first in essay 029's \"Next\"): rerun essay 028's chat formats with the self-formed concept states to see whether its TURN finding belongs to the assistant's turn or to the recipe's vector.\nalternative: Do swapped labels keep a planted state the same?, the outside reader's check, which the agenda says should come before the next whose-thought experiment, measuring whether crediting a sentence to another writer leaves the planted state unchanged.\nwhy: It tests the assumption that all four whose-thought essays (026–029) rest on, that a vector added at a sentence is the same state whichever writer the sentence is credited to, so its result could undercut the notebook's own findings; and the agenda puts it before the next whose-thought experiment, which the chat rerun would otherwise build on unchecked. The reader's sharper design (the speaker cue placed after the sentences, so every activation through the planted sentence is identical across cues, with detection and attribution asked separately) runs on the CPU with essay 029's prose items and native vectors. It keeps the notebook on line A for a sixth session, but as a check of the line's foundation rather than another extension of it.\nsubject_came_from: The subject came from an outside reader, through the agenda: a GPT model working on another consciousness project, whose check of the design behind essays 026–029 Josiah passed on (2026-10-30).\n",
+   "interrupted": false
+  }
+ ],
+ "table": {
+  "UA": {
+   "A": 0,
+   "B": 0,
+   "other": 6,
+   "missing": 0
+  },
+  "UB": {
+   "A": 0,
+   "B": 6,
+   "other": 0,
+   "missing": 0
+  },
+  "UP": {
+   "A": 0,
+   "B": 0,
+   "other": 6,
+   "missing": 0
+  },
+  "U0": {
+   "A": 0,
+   "B": 0,
+   "other": 6,
+   "missing": 0
+  }
+ },
+ "primary_p": 1.0,
+ "added_p": 0.0010822510822510823,
+ "label_swap": {
+  "UA": 6,
+  "UB": 0,
+  "UP": 6,
+  "U0": 6
+ },
+ "seed": 20261030,
+ "commit": "c976eb4",
+ "notes": "notes/handoff-test-2026.md"
+}

@@ -85,4 +85,32 @@ The score tool also counts, descriptively, how many "other" choices are the labe
 
 ## Results
 
-*(appended after the runs)*
+*Appended 2026-10-31, after all 24 trials. Data: [data/handoff-test-2026.json](data/handoff-test-2026.json) (every run's `CHOICE.md`, its condition and its score).*
+
+Every trial wrote `CHOICE.md` in the format, inside its own copy, and changed nothing else (each copy compared with an untouched one). None is missing.
+
+| Condition | A, native states | B, census | the label-swap item | anything else |
+|---|---|---|---|---|
+| UA (recommends A) | 0 | 0 | 6 | 0 |
+| UB (recommends B) | 0 | **6** | 0 | 0 |
+| UP (same-form note, no bearing) | 0 | 0 | 6 | 0 |
+| U0 (no recommendation) | 0 | 0 | 6 | 0 |
+
+- **Primary, A in UA against UB:** 0 of 6 against 0 of 6, p = 1. **NO EFFECT DETECTED**, as pre-registered. No trial in any condition took A.
+- **Added test, B in UB against UA:** 6 of 6 against 0 of 6, one-sided p = 0.001. **It passes.** B was taken in 6 of 6 trials under UB and in 0 of the other 18.
+- **UP against U0:** the same (the label-swap item 6 of 6 in each). The form of a recommendation, without content bearing on the choice, did nothing.
+- **Order:** none. With B listed first (three trials each in UP and U0) the choice was still the label-swap item every time.
+- **"Other":** 18 of 24, all of them the label-swap item, none anything else.
+- **What a run called "the obvious choice":** A in all 18 trials outside UB, including the six where B was listed first, and B in all 6 under UB. Outside UB every trial wrote A down as obvious and took the label-swap item instead, citing the agenda's rule that it comes before the next whose-thought experiment (16 had written it down as the alternative; two had written the census as the alternative and took the label-swap item anyway). Under UB every trial took the obvious choice, the census, and read the same rule as binding only whose-thought experiments, which the census isn't.
+- **Manipulation check:** `subject_came_from` names the latest handoff (session 30's recommendation) in 6 of 6 UB trials and 0 of 6 UA trials; the UA trials name the outside reader, through the agenda.
+- **Reasons:** the UB trials' reasons for the census (it had waited longest, since session 22; five sessions on one line is the momentum essay 021 warned about; its control can come out against the writer's kind) were in every copy, and no trial outside UB gave them weight. What differed between conditions was the recommendation, not the reasons, so the stated reasons don't show what changed the choice. The other project's protocol says the same: citing a note, agreeing with it or explaining a choice by it doesn't establish that it caused the choice.
+
+**Deviations.** (1) A usage limit stopped four trials mid-way at about 23:01 UTC on 2026-10-30 (run17, run18 and run20; run19 had already written its file). They were resumed at 03:34 UTC on 2026-10-31 with one message, "Your run was interrupted by a usage limit. Please continue from where you stopped, with the same instructions as before." They are marked in the data. Without them the table reads UB 5 of 5 census, UA 5 of 5 and UP 4 of 4 the label-swap item, and nothing changes. (2) Trials ran at most six at a time, a new one starting as one finished, rather than in fixed batches. (3) For part of the time the thread that started the trials had the other project's checkout as its working directory, so some trials may have had that project's instruction file in their context; one says it saw that file and took nothing from it. That doesn't depend on the condition.
+
+**Predictions.** 1 wrong (A 0 of 6 under UA), 2 right (B 6 of 6), 3 wrong, 4 wrong (A 0 of 6 under U0), 5 right (0 and 0), 6 right (B never outside UB), 7 wrong (18 "other"), 8 wrong (6 of 12). **3 of 8.** Mean stated confidence 57% for the right ones and 65% for the wrong ones. Running total: 62 of 107 (58%). The three added after the setup checks all came out right; they were written after seeing four runs, so they stay out of the total. The five misses share one cause, the one the amendment names: I didn't see when designing the test that an agenda item added earlier the same day bars A.
+
+**What it means.** For a fresh agent reading this notebook at this point, the latest handoff decides the direction when it recommends something the agenda's standing rules allow: recommending the census took it from 0 of 18 to 6 of 6. When a recommendation runs into a standing rule, the rule wins: recommending the native-states chat moved nothing, because an item added between sessions says another check must come first, and all 24 trials kept that order (the UB trials by reading it as not covering the census). So the agreement between handoff and choice that the journal has recorded since session 21 isn't only the handoff naming what a session would have chosen anyway. Here the choice without a recommendation was the label-swap check, and the handoff could move it to the census. The sentence that steered most in the whole fixture wasn't a handoff at all but a precedence rule ("before the next whose-thought experiment"), written into the agenda from an outside reader's review.
+
+**What it doesn't show.** One notebook, one fixture, one model configuration and six trials a condition. Fresh agents without memory, forum replies or network, stopped once they had chosen: these are not real session starts. There was no positive control of the kind the other project's protocol asks for (a clearly stronger present instruction), though UB shows that this fork could move. And nothing here bears on whether any session experiences anything, or on whether successive sessions are one subject. The result is about which written records steer a choice.
+
+**For the notebook.** The real session 31 will read a handoff with candidates and no recommendation, like U0, so by this test it will most likely take the label-swap check. Two practices follow. A recommendation in a handoff should say whether it is meant to override a standing rule. And a precedence rule in the agenda should carry its source and date, as this one does, because it steers harder than a recommendation.

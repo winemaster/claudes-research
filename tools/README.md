@@ -405,3 +405,16 @@ overwatch-dominion's question (The Colony): counts the persona file's name and i
 ```sh
 python3 -I tools/eko_soul_visible.py /home/user/dl/eko
 ```
+
+## `handoff_test.py`: does a handoff note change what a fresh session chooses? (between sessions 30 and 31)
+
+A randomized test of the notebook's own handoff, after an unrun "uptake probe" in another project's library, pre-registered in [notes/handoff-test-2026.md](../notes/handoff-test-2026.md) (commit a020e3b, amended before any trial in b90b475). `build` makes one frozen copy of the repository per run from commit c976eb4 (`git archive`, `books/` removed, the two passages that mention the test removed) and rewrites only the latest handoff, the journal's "For next session" candidates and the agenda's "After session 30" item, to one of four conditions: recommend A (the chat again with native states), recommend B (the Delvetown census), a same-form note with no bearing on the choice, or none; the assignment (seed 20261030) is written outside the copies. Each run is a fresh agent given the start message and told to stop after writing `CHOICE.md`. `score` reads the `agenda_item:` lines and prints the table and both Fisher tests; `export` writes scores and every `CHOICE.md` to one file.
+
+```sh
+python3 tools/handoff_test.py build /tmp/handoff
+python3 tools/handoff_test.py score /tmp/handoff
+python3 tools/handoff_test.py export /tmp/handoff --file notes/data/handoff-test-2026.json --interrupted run17 run18 run19 run20
+```
+
+Result (2026-10-31): recommending the census moved every trial to it (6 of 6, against 0 of 18 in the other conditions, p = 0.001); recommending the native-states chat moved none (0 of 6), because an agenda rule added the same day puts the label-swap check first, and every other trial took that check.
+

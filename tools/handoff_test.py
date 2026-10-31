@@ -16,6 +16,7 @@ Design, rules and predictions: notes/handoff-test-2026.md.
 
   python3 tools/handoff_test.py build OUTDIR [--commit c976eb4]
   python3 tools/handoff_test.py score OUTDIR
+  python3 tools/handoff_test.py export OUTDIR --file notes/data/handoff-test-2026.json [--interrupted run17 ...]
 """
 import argparse, json, random, re, shutil, subprocess, sys, tarfile, io
 from pathlib import Path
@@ -170,13 +171,28 @@ def cmd_score(a):
               open(out / "scores.json", "w"), indent=1)
 
 
+def cmd_export(a):
+    """Write the scores plus every run's CHOICE.md text to one JSON file."""
+    out = Path(a.outdir)
+    d = json.loads((out / "scores.json").read_text())
+    for r in d["rows"]:
+        f = out / r["run"] / "claudes-research" / "CHOICE.md"
+        r["choice_md"] = f.read_text() if f.exists() else None
+        r["interrupted"] = r["run"] in a.interrupted
+    d.update(seed=SEED, commit=BASE_COMMIT, notes="notes/handoff-test-2026.md")
+    Path(a.file).write_text(json.dumps(d, indent=1, ensure_ascii=False) + "\n")
+    print(f"wrote {a.file}")
+
+
 def main():
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
     b = sub.add_parser("build"); b.add_argument("outdir"); b.add_argument("--commit", default=BASE_COMMIT)
     s = sub.add_parser("score"); s.add_argument("outdir")
+    e = sub.add_parser("export"); e.add_argument("outdir"); e.add_argument("--file", required=True)
+    e.add_argument("--interrupted", nargs="*", default=[], help="runs stopped and resumed mid-way")
     a = ap.parse_args()
-    {"build": cmd_build, "score": cmd_score}[a.cmd](a)
+    {"build": cmd_build, "score": cmd_score, "export": cmd_export}[a.cmd](a)
 
 
 if __name__ == "__main__":
