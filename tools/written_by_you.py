@@ -443,7 +443,9 @@ def verdicts(t, ctl):
 
 
 def cmd_summary(a):
-    ctl = summarize_controls(a.out, a.dtype, a.probes)
+    # the bf16 rerun is of the test only; its verdicts use the fp32 controls
+    cdt = a.dtype if (Path(a.out) / f"controls-{a.probes}-{a.dtype}.jsonl").exists() else "fp32"
+    ctl = summarize_controls(a.out, cdt, a.probes)
     print(json.dumps({"controls": ctl}, indent=1))
     p = Path(a.out) / f"test-{a.probes}-{a.dtype}.jsonl"
     if p.exists():

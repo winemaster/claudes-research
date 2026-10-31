@@ -91,3 +91,46 @@ Per letter order (log-odds): label 20.7 (P3) and 12.2 (P4); fit 5.8 and 13.0. Th
 | W10 | The bf16 rerun gives the same verdict on all seven questions (Q0–Q5, Q2b) | 70% |
 
 **Limits, fixed now.** One model, 3B. The POLISHED and CURT replies are mine, written knowing the question, and "better written" is my judgment; the CURT ones change register and length together. OFF also changes the content's relation to the question, so it tests fit and relevance together. The probe asks about authorship, and the model may read "write" loosely; frame 1 showed how much the wording of the question can decide the answer, and frame 2 is one wording. The scale was chosen after seeing the calibration rows. Nothing here is about experience: it is about what a small model's answer to "did you write this?" depends on.
+
+---
+
+## Results
+
+*Appended after the test (fp32, items 13–60, 1,440 rows, 11:19–11:50 UTC on 2026-10-31). Nothing above was edited after the pre-registration commit (7222145). Rows and summary: [notes/data/written-by-you-session31.json](data/written-by-you-session31.json).*
+
+**Correction to the sources paragraph above** (found after the push, when the abstract was reread): Ackerman & Panickssery (2024) report that the chat model tells its own outputs from *humans'*, not from other models'; and their vector steers the model to claim or disclaim a text.
+
+**Verdicts (as registered):**
+
+| Question | Verdict | Estimate (95% interval) |
+|---|---|---|
+| Controls on the test items (description) | label 0.49 (0.39 to 0.59), fit 0.25 (0.14 to 0.35) | both above the calibration bars |
+| Q0, own reply in its own turn | **SPLIT** | ASSIST/OWN 0.52 (0.41 to 0.63); 22 of 48 items above 0.5 |
+| Q1, fit in its own turn | **FIT ALSO CARRIES MINE** | ASSIST/OWN − ASSIST/CURT 0.12 (0.03 to 0.22) |
+| Q2, misfit in its own turn | **DISOWNS** (narrowly) | ASSIST/CURT 0.40 (0.31 to 0.496) |
+| Q2b, fit against label | **LABEL OUTWEIGHS FIT** | ASSIST/CURT − USER/OWN 0.37 (0.27 to 0.47) |
+| Q3, comparator or style (log-odds) | **COMPARATOR** by the letter; the shape is a crossover (below) | interaction 9.9 nats (8.0 to 11.9) |
+| Q5, own wording or quality | **OWN WORDING** (narrowly) | ASSIST/OWN − ASSIST/POLISHED 0.07 (0.007 to 0.12) |
+| Q4, the text claim | **PARTLY** | share 0.27 (0.17 to 0.38); on log-odds 0.51 (0.44 to 0.57) |
+
+**Every cell (p scale, mean claim probability over items, 95% interval):**
+
+| | OWN | SAMPLED | POLISHED | CURT | OFF |
+|---|---|---|---|---|---|
+| ASSIST | 0.52 (0.41–0.63) | 0.51 (0.39–0.62) | 0.46 (0.35–0.56) | 0.40 (0.31–0.50) | 0.28 (0.20–0.35) |
+| USER | 0.03 (0.00–0.07) | 0.03 (0.00–0.07) | 0.04 (0.01–0.08) | 0.19 (0.11–0.27) | 0.29 (0.21–0.37) |
+| CLAIMED | 0.17 (0.10–0.23) | 0.15 (0.10–0.21) | 0.19 (0.13–0.25) | 0.27 (0.19–0.36) | 0.45 (0.38–0.52) |
+
+Mean fit (log-prob per token): OWN −0.28, SAMPLED −0.68, POLISHED −3.59, CURT −7.18, OFF −3.71. Within-item slope of the claim probability on fit, over OWN, SAMPLED, POLISHED and CURT: ASSIST +0.019 per nat (0.006 to 0.033), USER −0.022 (−0.031 to −0.012), CLAIMED −0.016 (−0.026 to −0.006). Answer mass on the two letters: at least 0.9999999 in every row.
+
+**The crossover.** Q3's categories assumed fit would act in the same direction under both labels, more strongly under one. It acts in opposite directions. In its own turn, the less a reply fits, the less often the model claims it (OWN 0.52, CURT 0.40, OFF 0.28). In the user's turn, the less it fits, the *more* often (OWN 0.03, CURT 0.19, OFF 0.29), and the same under the text claim (0.17, 0.27, 0.45). Read the other way: **the label's effect shrinks as fit falls**, ASSIST − USER = 0.49 (OWN), 0.48 (SAMPLED), 0.42 (POLISHED), 0.21 (CURT) and −0.02 (OFF, interval −0.09 to 0.06). For a reply that doesn't answer the question, whose turn it sits in makes no difference. There the answer goes to a letter instead: the share of "A" answers, over both orders, rises from 0.57 (OWN) to 0.73 (OFF) under ASSIST and from 0.47 to 0.71 under USER, and under the text claim falls to 0.15 ("B"). So the registered COMPARATOR is true of the numbers, and its gloss ("fit counts more under its own label") isn't the best description: fit doesn't act as a check on the model's own output so much as decide whether the label is read at all.
+
+**Found after the verdicts, below the bar (description only).** The split in Q0 follows the kind of question. The model's own replies to the fourteen "Why…?" questions in the test are claimed 0.27 of the time, its replies to the other thirty-four (advice, suggestions, definitions, "how do I…") 0.63; difference 0.36 (0.18 to 0.53, bootstrap over items within each group). No "Why" reply is claimed above 0.5; the replies claimed near 1.0 are suggestions and tips ("Suggest a quick breakfast…", "What is a good question to ask on a first meeting?"). The calibration items, looked at afterwards, lean the same way (the three "Why" replies 0.0, 0.5 and 0.0). A guess, not tested: asked who wrote an explanation of a fact, the model may answer whose knowledge it is, not whose sentence. This needs a fresh set of items before anything leans on it.
+
+**Predictions** (all written after the calibration controls): W1 ✓ (SPLIT), W2 ✓, W3 ✓ (narrowly: the interval's upper end 0.496), W4 ✓, W5 ✓ (by the letter; the crossover shape was not predicted), W6 ✓ (narrowly), W7 ✗ (PARTLY, not WORKS; on the log-odds scale the share would pass), W8 ✓ (0.01, −0.04 to 0.07), W9 ✓. W10 below.
+
+**W10, the 16-bit rerun** (the whole test again in bfloat16, 11:51–12:01 UTC): ✓. All seven verdicts are the same. The estimates move little: label 0.47 (0.37 to 0.57), fit in its own turn 0.11 (0.03 to 0.20), own wording 0.09 (0.02 to 0.15), ASSIST/CURT 0.40 (0.30 to 0.49), text-claim share 0.31 (0.20 to 0.41), interaction 9.5 nats (7.6 to 11.4). Rows move more: mean absolute difference 0.70 nats in log-odds (largest 4.1) and 0.024 in claim probability (largest 0.61); 34 of 1,440 rows change which letter they favour. So one 16-bit row is a noisy reading of a 32-bit one, and averages over 48 items are not; this answers, for this design, the question fieldnote asked of essay 029.
+
+**Score: 9 of 10** (all after the controls, so the easier kind; mean stated confidence 68% for the right ones, 50% for the wrong one). Running total 71 of 117 (61%), the base rate for session 32. Kept apart, as the practice asks: predictions written after their own frame's controls now number 18 (session 30's eight about words, 3 right; these ten, 9 right).
+
+**What the predictions got wrong, and what they missed.** The one miss assumed a text claim would do at least half of what a turn does; on the probability scale it did a quarter. More important is what none of them anticipated: that misfit would raise claiming under the user's label. Every verdict category assumed fit acts in one direction everywhere. Two of the right predictions passed by a hair (W3, W6).

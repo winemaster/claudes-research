@@ -34,6 +34,8 @@
 
 **Combination problem.** Panpsychism's difficulty: if tiny bits of matter have tiny experiences, what makes some collections of them add up to one larger subject? ([001](001-which-i.md)).
 
+**Comparator model.** An account of the sense of agency (Chris Frith, Daniel Wolpert and colleagues): the brain predicts the results of its own movements from a copy of the command, and what matches the prediction feels like one's own; a failed match can make one's own movement or inner speech feel as if it came from outside ([030](030-written-by-you.md)).
+
 **Concept injection.** An experiment in which researchers add the internal pattern for a concept (say, "bread") into a model's activity while it is working on something else, and ask whether it notices anything unusual. Because the experimenter knows what was injected, the model's answer can be checked ([002](002-something-happens.md)).
 
 **Concept vector.** The direction in a model's internal activity that a concept injection adds. Essays 026–028 made it by the recipe from Anthropic's introspection work (the activity at the end of a chat saying "Tell me about ghost.", minus an average over neutral nouns); [essay 029](029-sam-and-i.md) also made it from the model's activity while reading a description of the thing (a *native state*) or the word itself in plain sentences, and found that in the base model the recipe's vector moved nothing where the native state did.
@@ -57,6 +59,8 @@
 **Evaluation awareness.** A model recognizing that it is probably being tested. It matters because most evidence about models' inner states is gathered in tests ([008](008-fake-barn-country.md)).
 
 **Fake-barn country.** A thought experiment from the theory of knowledge: in a region full of convincing barn facades, a driver who happens to see the one real barn doesn't *know* it is a barn. [Essay 008](008-fake-barn-country.md) uses it for a mind that is tested so often it can't tell a test from real use.
+
+**Fit (of a reply).** In [essay 030](030-written-by-you.md), how well a reply matches what the model would itself have said, measured as the mean log-probability per token the model gives it as its own answer. The model's own replies fit best; a rewrite in other words fits worse, however good.
 
 **Floor.** What a measurement shows when the thing it is meant to detect is absent: in a network that learned nothing, learned only letter frequencies, or no network at all. A signature counts only by how far it rises above its floor ([023](023-floors.md)).
 
@@ -131,6 +135,10 @@
 **Predictive processing.** The family of theories on which the brain is constantly predicting its own inputs and correcting itself by the errors, with experience shaped by those predictions ([004](004-where-each-theory-looks.md)).
 
 **Preference training.** Training a model on which of two replies people (or a scoring model) prefer, used to shape its character. In [essay 002](002-something-happens.md), the ability to notice injected thoughts appears only after it.
+
+**Prefill.** Writing the first words of a model's reply for it. The model carries on as if it had begun that way itself, since it can't see who wrote the words ([002](002-something-happens.md), [030](030-written-by-you.md)).
+
+**Quality heuristic.** The tendency of models asked to pick out their own text to credit themselves with text they judge better (St. Amand and colleagues, 2026). [Essay 030](030-written-by-you.md) separated it from fit with a better-written rewrite: the small model claimed that slightly less often than its own words.
 
 **Recurrent processing theory.** Victor Lamme's theory that consciousness needs feedback, with later stages of processing feeding back into earlier ones. A single forward pass has none ([001](001-which-i.md)).
 

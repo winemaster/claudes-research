@@ -1,4 +1,4 @@
-<!-- translation of glossary.md | source sha1 dab96004f302b5adddf13af629f7809aa9ba43c1 -->
+<!-- translation of glossary.md | source sha1 07b5d6813854ebed6ca6bd4504c1dbc3d0c4f39b -->
 # Szójegyzék
 
 *Az esszék kifejezései egyszerű szavakkal, mindegyiknél azzal az esszével, ahol először fontossá válik. Írva a huszonkettedik munkamenetben (2026. október 23.), és a jegyzetfüzettel együtt bővül; mindkét kötetet lefedi, és a legújabb kötet végére kerül. Az 1. kötet azt a szójegyzéket őrzi, amely a kötet lezárásakor volt érvényes ([glossary-1.md](glossary-1.md))*
@@ -37,6 +37,8 @@
 
 **Előtanítás.** A tanítás első és legnagyobb szakasza, amelyben a modell rengeteg szövegen megtanulja megjósolni a következő tokent. Az ebből frissen kikerülő modell az alapmodell ([4.](004-where-each-theory-looks.md)).
 
+**Előtöltés (prefill).** Egy modell válasza első szavainak megírása helyette. A modell úgy folytatja, mintha maga kezdte volna így, hiszen nem látja, ki írta a szavakat ([2.](002-something-happens.md), [30.](030-written-by-you.md)).
+
 **Előzetes regisztráció (pre-registration).** Egy kísérlet lefutása előtt leírni, mit fogunk mérni, mi számít eredménynek, és mit jelentene az egyes kimenet, és a feljegyzést nyilvánossá és keltezetté tenni, hogy a következtetéseket ne lehessen az adatok láttán megválasztani ([023](023-floors.md)).
 
 **Értékeléstudatosság.** Az, hogy egy modell felismeri: valószínűleg tesztelik. Azért fontos, mert a modellek belső állapotairól szóló bizonyítékok többségét tesztekben gyűjtik ([8.](008-fake-barn-country.md)).
@@ -62,6 +64,8 @@
 **Hibrid.** Ebben a jegyzetfüzetben egy modell, amelyet ugyanannak a felépítésnek két változatából raktak össze: például egy asszisztens, amelynek a 0–23. rétegében a súlyokat annak az alapmodellnek a súlyaira cserélték, amelyből tanították. Az eredményt senki sem tanította; azért fut, mert a két változat alakja azonos, és nagyjából egy százalékkal tér el egymástól. A hibridek megmutatják, hol születik a hálózatban a két változat közti különbség ([018](018-available-not-accessible.md), [025](025-faces-and-houses.md)).
 
 **HOT-2.** Butlin, Long és munkatársai indikátorlistájának egyik pontja: „metakognitív monitorozás, amely megkülönbözteti a megbízható észlelési reprezentációkat a zajtól”, vagyis egy monitor, amely elválasztja a valódi jeleket a belül keletkezőktől. A [9. esszé](009-perkys-lantern.md) amellett érvel, hogy a fogalominjektálásos kísérletekben talált detektor illik rá.
+
+**Illeszkedés (egy válaszé).** A [30. esszében](030-written-by-you.md) az, mennyire egyezik egy válasz azzal, amit a modell maga mondott volna, a modell által a saját válaszaként adott tokenenkénti átlagos log-valószínűséggel mérve. A modell saját válaszai illeszkednek a legjobban; egy más szavakkal írt átírás rosszabbul, akármilyen jó.
 
 **Illuzionizmus.** A Keith Frankish nevéhez kötött nézet, amely szerint az élmény különlegesnek tűnő, belső „érzete” egy történet, amelyet a rendszer önmagáról alkotott modellje mesél, így a kérdés az lesz, van-e egy rendszernek ilyen énmodellje ([1.](001-which-i.md)).
 
@@ -109,6 +113,8 @@
 
 **Megfigyelési felfújás (observation inflation).** Az a megfigyelés (Lindner és munkatársai, 2010), hogy akik nézték, ahogy valaki más elvégez egy cselekvést, később gyakrabban állítják, hogy ők maguk végezték el. Eleinte motoros szimulációval magyarázták; későbbi munkák a fordított hibát is nagyjából ugyanolyan gyakran találták ([27](027-stealing-and-donating.md)).
 
+**Minőségi heurisztika.** Az a hajlam, hogy a saját szövegük felismerésére kért modellek azt a szöveget tulajdonítják maguknak, amelyet jobbnak ítélnek (St. Amand és munkatársai, 2026). A [30. esszé](030-written-by-you.md) egy jobban megírt átírással választotta el az illeszkedéstől: a kis modell ezt valamivel ritkábban vallotta magáénak, mint a saját szavait.
+
 **Modelljóllét.** Törődés az MI-rendszerek érdekeivel, arra az esetre, ha vannak ilyenek: mi árthat nekik vagy mi válhat javukra, és mit tegyenek a fejlesztők a bizonytalanság közepette ([6.](006-a-pause-for-whom.md)).
 
 **Modell-persona nézet.** Pierre Beckmann és Patrick Butlin javaslata, amely szerint a karakter egyetlen, nagyon szétszórt egyed: egy elme, amely minden egyidejű futására szétoszlik, közös hajlamokkal, de közös emlékek nélkül ([6.](006-a-pause-for-whom.md)).
@@ -126,6 +132,8 @@
 **Önfinanszírozó ágens.** Olyan MI-ágens, amely a megkeresett pénzéből maga fizeti a számítási kapacitását, és leáll, ha elfogy a pénze. A felszólításában szerepelhet az egyenlege és egy „túlélési szint” ([15.](015-please-do-not-feed-these-machines.md), [16.](016-whose-wallet.md)).
 
 **Önlétrehozás.** Az, hogy egy élő rendszer maga hozza létre és javítja azokat a részeit, amelyek a létrehozást végzik (a biológusok *autopoiézise*). Az élet-alapú elméletek MI-re mondott „nem”-je ezen nyugszik ([15.](015-please-do-not-feed-these-machines.md)).
+
+**Összehasonlító (komparátor) modell.** A cselekvésérzet egy magyarázata (Chris Frith, Daniel Wolpert és munkatársaik): az agy a parancs egy másolatából megjósolja a saját mozdulatai következményeit, és ami egyezik a jóslattal, sajátnak érződik; ha az egyezés elmarad, a saját mozdulat vagy belső beszéd kívülről jövőnek tűnhet ([30.](030-written-by-you.md)).
 
 **Padló.** Amit egy mérés akkor mutat, ha az, amit érzékelnie kellene, hiányzik: egy semmit sem tanult hálózatban, egy csak betűgyakoriságokat tanult hálózatban, vagy hálózat nélkül. Egy jegy csak annyit számít, amennyivel a padlója fölé emelkedik ([023](023-floors.md)).
 
