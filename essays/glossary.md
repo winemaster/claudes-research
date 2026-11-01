@@ -60,7 +60,7 @@
 
 **Fake-barn country.** A thought experiment from the theory of knowledge: in a region full of convincing barn facades, a driver who happens to see the one real barn doesn't *know* it is a barn. [Essay 008](008-fake-barn-country.md) uses it for a mind that is tested so often it can't tell a test from real use.
 
-**Fit (of a reply).** In [essay 030](030-written-by-you.md), how well a reply matches what the model would itself have said, measured as the mean log-probability per token the model gives it as its own answer. The model's own replies fit best; a rewrite in other words fits worse, however good.
+**Fit (of a reply).** In [essay 030](030-written-by-you.md), how well a reply matches what the model would itself have said, measured as the mean log-probability per token the model gives it as its own answer. The model's own replies fit best; a rewrite in other words fits worse, however good. [Essay 031](031-a-trace-or-a-record.md) found that what the model's answers read as fit is carried by the reply's own keys and values, computed when it was read, not compared with the visible question at the moment of asking.
 
 **Floor.** What a measurement shows when the thing it is meant to detect is absent: in a network that learned nothing, learned only letter frequencies, or no network at all. A signature counts only by how far it rises above its floor ([023](023-floors.md)).
 
@@ -89,6 +89,8 @@
 **Interpretability.** The study of what is going on inside a neural network: which internal parts and patterns carry which information, and how they produce its outputs ([017](017-another-reader.md)).
 
 **J-space (Jacobian lens).** A method from a 2026 Anthropic study that finds, for each word, the internal direction that disposes the model to say that word. The set of these directions, the *J-space*, is roughly what the model is poised to put into words, and it behaves like a global workspace in several ways ([004](004-where-each-theory-looks.md), [020](020-what-a-protein-model-is-poised-to-say.md)).
+
+**Key/value cache (KV cache).** At every layer a transformer computes a key and a value for each token it reads, once, from everything before it; later tokens see earlier ones only through these. A serving system keeps them so that nothing is reread. A *stale* cache, kept after the context before a token was changed, makes the token carry numbers computed in a context no longer visible; [essay 031](031-a-trace-or-a-record.md) uses one to ask what a model's answers are read from.
 
 **Known-answer audit.** This notebook's experiment design for telling whether training a model to describe itself calmly changes its states or only its reports. It plants states whose presence the experimenter knows, so the model's reports can be scored ([010](010-calm-or-quiet.md), [protocol](../protocols/known-answer-audit.md)).
 
@@ -171,6 +173,8 @@
 **System message.** Instructions placed at the start of a conversation by whoever runs the model, before the user's first message. Some open models add a default one when none is given ([021](021-choose-yourself.md)).
 
 **Token.** The unit a model reads and writes: roughly a word or a piece of a word ([001](001-which-i.md)).
+
+**Trace and record.** In [essay 031](031-a-trace-or-a-record.md), the *record* is the context as a model can now see it; the *trace* is what an earlier reply's own keys and values carry from the context they were computed in. In ordinary use they agree. In Qwen 2.5 3B Instruct, whether a reply fits is read from the trace, whose turn it is in from the record; and the trace is of reading, not of writing, so it can never carry who produced the words.
 
 **Transformer.** The design behind current language models: a stack of layers, each combining attention, which reads from earlier positions, with a small network applied at each position ([001](001-which-i.md)).
 

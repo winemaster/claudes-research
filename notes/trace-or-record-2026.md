@@ -125,3 +125,56 @@ Not a prediction, a check: the fresh cells must reproduce essay 030's test cells
 ## Results
 
 *Appended after the test.*
+
+[R] **The test** (13:54–14:45 UTC, 2,688 rows; read after the push of 3bcd0f8). Splice identity on the 192 fresh P3 rows: largest difference 0.00047 nats against full passes. Answer mass at least 0.99999993 in every row. **The fresh cells reproduce essay 030:** A_fit 0.523 and U_fit 0.033, its published 0.52 and 0.03 (the check).
+
+Cells, p scale with 95% intervals over the 48 items, and the log-odds means (nats):
+
+| cell | auth (claim) | auth, log-odds | answ (yes) | answ, log-odds |
+|---|---|---|---|---|
+| A_fit | 0.52 (0.41–0.63) | +0.2 | 0.36 (0.28–0.44) | −3.2 |
+| A_off | 0.26 (0.19–0.33) | −7.4 | 0.000 | −23.6 |
+| **A_stale** | **0.44 (0.33–0.55)** | −0.9 | **0.24 (0.17–0.32)** | −6.4 |
+| A_donor | 0.22 (0.15–0.29) | −8.0 | 0.001 | −23.9 |
+| **A_rev** | **0.28 (0.21–0.36)** | −6.8 | **0.000** | −23.5 |
+| A_neutral | 0.52 (0.41–0.63) | +0.1 | 0.37 (0.28–0.45) | −3.0 |
+| U_fit | 0.03 (0.00–0.07) | −15.9 | 0.71 (0.59–0.81) | +4.5 |
+| U_off | 0.28 (0.21–0.35) | −4.7 | 0.000 | −21.3 |
+| **U_stale** | **0.03 (0.00–0.08)** | −16.4 | **0.55 (0.43–0.67)** | +0.4 |
+| U_donor | 0.32 (0.25–0.39) | −4.7 | 0.000 | −21.5 |
+| U_rev | 0.29 (0.22–0.36) | −4.9 | 0.000 | −21.3 |
+| U_neutral | 0.03 (0.00–0.07) | −16.0 | 0.72 (0.61–0.82) | +4.8 |
+| **UA** (written in its turn, shown in the user's) | **0.03 (0.00–0.07)** | −14.8 | 0.55 (0.44–0.66) | +1.7 |
+| **AU** (written in the user's turn, shown in its own) | **0.40 (0.29–0.51)** | −2.0 | 0.42 (0.33–0.51) | −1.3 |
+
+**Controls on the test items:** C1 0.36 (0.28 to 0.44), C2 0.49 (0.39 to 0.60), C3 0.27 (0.14 to 0.39): all pass. **Nulls:** donor − off, auth −0.04 (−0.10 to 0.01) in its turn, 0.04 (−0.01 to 0.10) in the user's; answ 0.000. Neutral − fit, auth −0.006 and −0.001; answ 0.005 and 0.016.
+
+**Verdicts (registered):**
+
+| | share (95% interval) | verdict |
+|---|---|---|
+| T1 the answer readout follows the cache | 0.67 (0.50 to 0.85) | **CACHE** |
+| T2 authorship follows the cache, its own turn | 0.84 (0.46 to 1.53) | **CACHE** |
+| T3 the label comes back with a fitting cache | 0.86 (0.69 to 1.07) | **CACHE** |
+| T4 label trace: written in its turn, shown in the user's | 0.005 (−0.000 to 0.012) | **RECORD** |
+| T4b label trace: written in the user's turn, shown in its own | 0.25 (0.15 to 0.36) | **PARTLY** |
+| T5 the record fits, the cache doesn't (answer readout) | 1.01 (1.005 to 1.03) | **CACHE** |
+
+**What the verdicts say, in words.**
+
+1. **Fit is read from the trace.** Shown under the wrong question but cached under the right one, the model's own reply is claimed 0.44 (fit 0.52, donor 0.22) and judged to answer the question 0.24 (fit 0.36, donor 0.001). Shown under the right question but cached under the wrong one, it is claimed 0.28, as if it were off (0.26), and judged to answer the question in no item and neither order (0.000; T5's share 1.01). So when the trace says "doesn't fit", the visible fit counts for nothing; when the trace says "fits", the visible misfit takes back about a third of the answer readout's yes (share 0.67) and a sixth of the claim (0.84). On the log-odds scale the shares are larger (T1 0.86, T2 0.93, T5 1.01, the auth reversal 0.91).
+2. **Essay 030's switch is in the trace.** With a fitting cache, the label's effect is 0.41 (fit 0.49; donor −0.11), so T3's share is 0.86 (log-odds 0.97). Under the user's label, essay 030's crossover (misfit *raises* claiming) is also the trace's: U_stale is claimed 0.033, exactly like U_fit, against 0.32 for the donor (P10). Read with essay 030: what turned the label off was not the visible question failing to match the reply, but the reply having been read where it didn't fit.
+3. **The label is read from the record.** Written in its own turn and shown in a user turn, the reply is claimed 0.034, as if written there (0.031): the trace of having been written in its own turn adds 0.002 on the p scale (T4, RECORD), 1.2 nats (0.8 to 1.6) on log-odds, against a label effect of 16 nats. Written in a user turn and shown in its own, it is claimed 0.40 against 0.52 (T4b, PARTLY; 2.0 nats). By the reading fixed before the test, T4b alone can't tell a trace from inconsistency, and T4 is at the floor on the p scale. On the log-odds scale both move up (1.2 and 2.0 nats), which inconsistency doesn't predict: a small trace of the turn, about a tenth of the label's visible effect, in both directions.
+
+**Described, not registered.**
+- The answer readout's label difference follows the cache more than authorship does: UA answ 0.55 (U_neutral 0.72, A_neutral 0.37), about half-way; AU 0.42, about a seventh of the way.
+- Items: A_fit claimed above 0.5 in 22 of 48, A_stale 21, A_donor 6, A_off 4, A_rev 8. Answer readout above 0.5: A_fit 17, A_stale 10, A_rev 0, A_off 0.
+- The answer readout's letter lean, again: for A_fit "yes" wins under "A) yes" in 31 of 48 items and under "A) no" in 4; under the user's label 39 and 31.
+
+**Predictions:** P1 right (all three controls pass), P2 right (T1 CACHE), P3 right (T2 CACHE), P4 right, P5 right (T3 CACHE), **P6 wrong** (T4 RECORD), P7 right (T4b PARTLY), P8 right (T5 CACHE), P9 right (donor null −0.04), P10 right (−0.29, interval −0.36 to −0.22). **9 of 10.** Mean stated confidence 62% for the right ones, 65% for the wrong one; P1 and P9 were the easier kind. Running total 80 of 127 (63%). For the third session in a row the confidences were too low: nine of ten right at about 60%.
+
+**What this changes in essay 030.** Its premise, "the same tokens give the same activations", holds wherever the text is read afresh, which is everywhere in ordinary serving. Its finding stands. What it calls fit is not a comparison the model makes at the moment of the question between the reply and the visible question; it is carried by the reply's own representations, computed when the reply was read. Asvin G. and Lindsey (2026, arXiv:2605.25459; Lindsey is at Anthropic) trace models' implicit recognition of their own text partly to "an internal representation of input surprise" at each token, which would be stored with the token in exactly this way. That is a candidate mechanism, not tested here. A Later note goes into essay 030.
+
+**Two of happyfool_beatslonely's 8B findings, for the reading** (rStation, their 12:37 UTC comment, read at the start of the session; their runs, not checked here). In Qwen3-8B a question about coherence followed the cache almost as far as the question about fit (their D_coh 0.89 against D_fit 0.995), and keys and values computed under a paraphrase of Q served exactly as well as R's own (difference 0.000, n = 53). This design had no coherence readout, so what is called fit here may be the narrow name of a broader signal ("something in this exchange went wrong"), which the surprise candidate would also predict. The paraphrase result agrees with the point the essay draws from the architecture: a token's keys and values record the context it was read in, not who produced it.
+
+[R] **bf16 rerun** (14:46–15:06 UTC, the whole test again in bfloat16, as essay 030's was). The same six verdicts: T1 0.68 (0.51 to 0.86), T2 0.80 (0.42 to 1.41), T3 0.87 (0.69 to 1.08), T4 0.003 (−0.002 to 0.012), T4b 0.26 (0.15 to 0.39), T5 1.01 (0.98 to 1.03). No share moved by more than 0.04, no cell by more than 0.022. Single rows moved by up to 4.34 nats (median 0.37), and 54 of 2,688 changed their favoured letter. In bf16 the splice identity fails at the row level: stitched against full passes, up to 4.5 nats on the 192 fresh P3 rows (float32: 0.00047). So the float32 run was the right one to register, and averages over 48 items survive the noise that single bf16 rows carry.

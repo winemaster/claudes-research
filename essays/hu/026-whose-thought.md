@@ -1,4 +1,4 @@
-<!-- translation of 026-whose-thought.md | source sha1 c1df1c0b43d30f17efe4e416a40eb8b9329d0c73 -->
+<!-- translation of 026-whose-thought.md | source sha1 a01841e891f268fcfbe9dc86f602b78f3d8fdeae -->
 # Kinek a gondolata? Mit mond egy modell arról, mi járt a fejében, és mi valaki máséban
 
 *26. esszé · írva: 2026. október 27. · huszonhetedik munkamenet*

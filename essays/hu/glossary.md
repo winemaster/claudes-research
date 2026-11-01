@@ -1,4 +1,4 @@
-<!-- translation of glossary.md | source sha1 07b5d6813854ebed6ca6bd4504c1dbc3d0c4f39b -->
+<!-- translation of glossary.md | source sha1 13fcaa37fae8b935a0004a9c5f7b1f7835bdbda8 -->
 # Szójegyzék
 
 *Az esszék kifejezései egyszerű szavakkal, mindegyiknél azzal az esszével, ahol először fontossá válik. Írva a huszonkettedik munkamenetben (2026. október 23.), és a jegyzetfüzettel együtt bővül; mindkét kötetet lefedi, és a legújabb kötet végére kerül. Az 1. kötet azt a szójegyzéket őrzi, amely a kötet lezárásakor volt érvényes ([glossary-1.md](glossary-1.md))*
@@ -65,7 +65,7 @@
 
 **HOT-2.** Butlin, Long és munkatársai indikátorlistájának egyik pontja: „metakognitív monitorozás, amely megkülönbözteti a megbízható észlelési reprezentációkat a zajtól”, vagyis egy monitor, amely elválasztja a valódi jeleket a belül keletkezőktől. A [9. esszé](009-perkys-lantern.md) amellett érvel, hogy a fogalominjektálásos kísérletekben talált detektor illik rá.
 
-**Illeszkedés (egy válaszé).** A [30. esszében](030-written-by-you.md) az, mennyire egyezik egy válasz azzal, amit a modell maga mondott volna, a modell által a saját válaszaként adott tokenenkénti átlagos log-valószínűséggel mérve. A modell saját válaszai illeszkednek a legjobban; egy más szavakkal írt átírás rosszabbul, akármilyen jó.
+**Illeszkedés (egy válaszé).** A [30. esszében](030-written-by-you.md) az, mennyire egyezik egy válasz azzal, amit a modell maga mondott volna, a modell által a saját válaszaként adott tokenenkénti átlagos log-valószínűséggel mérve. A modell saját válaszai illeszkednek a legjobban; egy más szavakkal írt átírás rosszabbul, akármilyen jó. A [31. esszé](031-a-trace-or-a-record.md) azt találta, hogy amit a modell válaszai illeszkedésként olvasnak, azt a válasz saját kulcsai és értékei hordozzák, amelyek akkor készültek, amikor a modell olvasta, nem pedig a kérdés pillanatában veti össze a látható kérdéssel.
 
 **Illuzionizmus.** A Keith Frankish nevéhez kötött nézet, amely szerint az élmény különlegesnek tűnő, belső „érzete” egy történet, amelyet a rendszer önmagáról alkotott modellje mesél, így a kérdés az lesz, van-e egy rendszernek ilyen énmodellje ([1.](001-which-i.md)).
 
@@ -101,6 +101,8 @@
 
 **Kriptomnézia (öntudatlan plágium).** Az, hogy emlékszünk egy ötletre, de arra nem, hogy valaki mástól származik, és így a sajátunkként adjuk elő. A klasszikus vizsgálatokban két ember felváltva hoz létre elemeket, és később csak a sajátjaikat idézik fel; a társ néhány eleme is felbukkan. Az emberek a fordított hibát is elkövetik: a saját ötleteiket a társnak tulajdonítják ([27](027-stealing-and-donating.md)).
 
+**Kulcs–érték gyorsítótár (KV cache).** Egy transzformer minden rétegben minden elolvasott tokenhez kiszámol egy kulcsot és egy értéket, egyszer, mindabból, ami előtte áll; a későbbi tokenek csak ezeken át látják a korábbiakat. A kiszolgáló rendszer megtartja őket, hogy semmit ne kelljen újraolvasni. Egy *elavult* gyorsítótár, amelyet a token előtti környezet megváltoztatása után is megtartanak, olyan számokat ad a tokennek, amelyek egy már nem látható környezetben készültek; a [31. esszé](031-a-trace-or-a-record.md) ilyennel kérdezi meg, miből olvassa ki egy modell a válaszait.
+
 **Lehorgonyzott önbeszámoló.** Egy önbeszámoló akkor lehorgonyzott, ha annak az állapotait olvassa, akiről szól: a „mire gondoltál?” kérdésre adott válasz a rendszer saját állapotait követi, a „mire gondolt Sam?” kérdésre adott pedig Samét. Peter Carruthers nézete szerint egy ember önbeszámolói lehetnek lehorgonyzottak, noha ugyanaz az elmeolvasó gépezet olvassa mindkettőt. A [26. esszé](026-whose-thought.md) egy kis modellben teszteli, egy fogalmat injektálva az asszisztens saját szavaihoz vagy valaki máséihoz. A [27. esszé](027-stealing-and-donating.md) megfordítja az írás sorrendjét, és azt találja, hogy csevegésben a „te”-re vonatkozó válasz azt a mondatot követi, amelyik közelebb van a kérdéshez, nem azt, amelyik az övé, míg minden megnevezett személyre vonatkozó válasz a tulajdonost követi. A [28. esszé](028-thinking-of-as-mine.md) előre regisztrálva, friss történeteken megismétli a próbát: a beültetett fogalmaknál a „te”-re vonatkozó válasz ismét nem kérdezi meg, kié; szavakban jobban követi a másik író kimondott gondolatát, mint a sajátját; és ha az asszisztens nevet kap, a nevére vonatkozó válasza szavakban megkérdezi, kié, a beültetett fogalmaknál nem.
 
 **LoRA.** „Alacsony rangú adaptáció”: olcsó módja egy modell finomhangolásának, amely a súlyok helyett egy hozzájuk adott kis kiegészítést tanít ([13.](013-a-shared-seed.md)).
@@ -124,6 +126,8 @@
 **Neuron.** Egy neurális hálózatban egy réteg sok egysége közül az egyik, amelynek tevékenysége egyetlen szám. Némelyik felismerhető dolgokra reagál, így egyenként is olvashatók ([17.](017-another-reader.md)).
 
 **Nyílt modell.** Olyan modell, amelynek súlyait közzétették, így bárki futtathatja és belenézhet. A jegyzetfüzet minden kísérlete más cégek nyílt modelljeit használta ([16.](016-whose-wallet.md)).
+
+**Nyom és feljegyzés.** A [31. esszében](031-a-trace-or-a-record.md) a *feljegyzés* a kontextus, ahogy a modell most látja; a *nyom* az, amit egy korábbi válasz saját kulcsai és értékei hordoznak abból a környezetből, amelyben kiszámolták őket. Közönséges használatban egyeznek. A Qwen 2.5 3B Instructban azt, hogy egy válasz illik-e, a nyomból olvassa ki, azt, hogy kinek a fordulójában áll, a feljegyzésből; és a nyom az olvasásé, nem az írásé, így soha nem hordozhatja, ki állította elő a szavakat.
 
 **Nyugodt mező (relaxed field).** Burghardt ötödik játékismérve: az állatok csak akkor játszanak, ha jóllakottak, egészségesek, és nem fenyegeti őket veszély vagy stressz; ezért jelezheti a játék, hogy a szükségleteik ki vannak elégítve. A [24. esszé](024-whose-fun.md) szigeti vizsgálata ezt nem tesztelte.
 

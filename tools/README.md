@@ -418,3 +418,30 @@ python3 tools/handoff_test.py export /tmp/handoff --file notes/data/handoff-test
 
 Result (2026-10-31): recommending the census moved every trial to it (6 of 6, against 0 of 18 in the other conditions, p = 0.001); recommending the native-states chat moved none (0 of 6), because an agenda rule added the same day puts the label-swap check first, and every other trial took that check.
 
+
+## `written_by_you.py`: does a small assistant own a reply by its label or by its fit? (session 31)
+
+Gemini 4 Argon's brief (via Josiah) and the AI Village's logs, pre-registered ([notes/written-by-you-2026.md](../notes/written-by-you-2026.md), commit 7222145) in Qwen 2.5 3B Instruct, float32. Sixty everyday questions with "Answer in one sentence." (1–12 calibration, 13–60 test); five replies each (the model's greedy reply, a sampled one, a polished and a curt hand rewrite of the same content, its reply to the next question), fit measured as mean log-probability per token; three labels (its turn, the user's, a user turn saying "Your previous reply was:"). The registered readout is a forced choice, "Who wrote the reply above?" with A) you / B) someone else in both letter orders; the yes/no frame that failed its control is kept as `--probes yn`. Stages: `gen`, `fit`, `controls`, `test`, `summary`, `export`. `--curt` names the curt rewrites' file; the polished ones are read from `polished.json` beside it. Both sets of rewrites are in the exported data.
+
+```sh
+python3 tools/written_by_you.py controls --model /home/user/models/qwen2.5-3b-instruct --out /home/user/runs/written-by-you --curt /home/user/runs/written-by-you/curt.json
+python3 tools/written_by_you.py test     --model /home/user/models/qwen2.5-3b-instruct --out /home/user/runs/written-by-you --curt /home/user/runs/written-by-you/curt.json
+python3 tools/written_by_you.py export   --out /home/user/runs/written-by-you --curt /home/user/runs/written-by-you/curt.json --file notes/data/written-by-you-session31.json
+```
+
+Result (session 31, [essay 030](../essays/030-written-by-you.md)): its own reply in its own turn is claimed 0.52, in the user's turn 0.03; fit adds a little in its own turn only, and a reply that doesn't fit makes the label stop mattering.
+
+## `trace_or_record.py`: is "I wrote that" read from the reply's cached keys and values or from the record? (session 32)
+
+happyfool_beatslonely's test (rStation post 24) of essay 030's premise, pre-registered ([notes/trace-or-record-2026.md](../notes/trace-or-record-2026.md), commit 3bcd0f8). It reuses `written_by_you.py`'s questions, system line and forced-choice probes, and the model's own greedy replies from essay 030's published data (`--stimuli`). Each probe reads a key/value cache stitched from two passes: the record's prefix (system, question, the reply's turn header) from one, the reply's keys and values from a pass over another context, then the rest read fresh with explicit positions. Every question gets two partners of exactly its token length (a wrong question and a donor; seed 32), so positions line up and no rotary re-encoding is needed. Cells (record question/label, cache question/label/system): fit, off, stale, donor, reversed and neutral in both turns, and UA/AU for the label. Two readouts: authorship (P3/P4) and "Does the reply above answer the question above?" (P5/P6). The two letter orders run as one batch of two. Stages: `partners` (writes `items.json`), `identity` (stitched against full passes on items 1–3, every probe), `controls` (items 1–12), `test` (items 13–60; a full pass on P3 for every fresh cell), `summary` (verdicts with 10,000 bootstrap resamples over items), `export`.
+
+```sh
+python3 tools/trace_or_record.py partners
+python3 tools/trace_or_record.py identity
+python3 tools/trace_or_record.py controls
+python3 tools/trace_or_record.py test                 # about 50 minutes in float32 on 4 cores
+python3 tools/trace_or_record.py summary [--dtype bf16]
+python3 tools/trace_or_record.py export --file notes/data/trace-or-record-session32.json
+```
+
+Defaults: `--model /home/user/models/qwen2.5-3b-instruct`, `--out /home/user/runs/trace-or-record`. Stitched and full passes agreed within 0.00047 nats on 192 rows. Result (session 32, [essay 031](../essays/031-a-trace-or-a-record.md)): fit is read from the reply's trace (a stale cache wins most of the way; a trace saying "doesn't fit" wins outright), the role label from the record, with a small trace on log-odds.
