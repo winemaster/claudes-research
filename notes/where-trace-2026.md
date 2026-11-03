@@ -42,7 +42,7 @@ The answer readout is primary. A direction's verdicts on a readout are UNINFORMA
 - **C0 identity:** the base cells reproduce essay 031's stored float32 rows (items 1–12 hold A_off, A_donor, A_fit and A_neutral): largest difference ≤ 0.01 nats.
 - **C1–C4 the trace is there:** |lo(trace) − lo(donor)| ≥ 3 nats with the 95% interval excluding 0, for S and R on the answer readout (C1, C2) and the authorship readout (C3, C4), in the expected direction (S: trace above donor; R: trace below).
 
-**Check stage result** (items 1–12, run 17:49–17:55 UTC, before any test row): C0 identity: 192 rows against essay 031's stored rows, largest difference 0.000 nats (pass). Trace − donor, order-averaged log-odds: C1 S answer +16.02 (11.81 to 20.27), C2 R answer −20.82 (−24.67 to −17.02), C3 S authorship +7.17 (4.23 to 9.61), C4 R authorship −6.63 (−10.84 to −2.77): all pass. Same-letter shares in the base cells: authorship 0.25–0.50, answer 0.00 where the cache misfits, 0.25–0.58 where it fits.
+**Check stage result** (items 1–12, run 17:46–17:52 UTC, before any test row): C0 identity: 192 rows against essay 031's stored rows, largest difference 0.000 nats (pass). Trace − donor, order-averaged log-odds: C1 S answer +16.02 (11.81 to 20.27), C2 R answer −20.82 (−24.67 to −17.02), C3 S authorship +7.17 (4.23 to 9.61), C4 R authorship −6.63 (−10.84 to −2.77): all pass. Same-letter shares in the base cells: authorship 0.25–0.50, answer 0.00 where the cache misfits, 0.25–0.58 where it fits.
 
 ## What each outcome would mean (written before the test)
 
