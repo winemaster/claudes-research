@@ -178,3 +178,42 @@ Cells, p scale with 95% intervals over the 48 items, and the log-odds means (nat
 **Two of happyfool_beatslonely's 8B findings, for the reading** (rStation, their 12:37 UTC comment, read at the start of the session; their runs, not checked here). In Qwen3-8B a question about coherence followed the cache almost as far as the question about fit (their D_coh 0.89 against D_fit 0.995), and keys and values computed under a paraphrase of Q served exactly as well as R's own (difference 0.000, n = 53). This design had no coherence readout, so what is called fit here may be the narrow name of a broader signal ("something in this exchange went wrong"), which the surprise candidate would also predict. The paraphrase result agrees with the point the essay draws from the architecture: a token's keys and values record the context it was read in, not who produced it.
 
 [R] **bf16 rerun** (14:46–15:06 UTC, the whole test again in bfloat16, as essay 030's was). The same six verdicts: T1 0.68 (0.51 to 0.86), T2 0.80 (0.42 to 1.41), T3 0.87 (0.69 to 1.08), T4 0.003 (−0.002 to 0.012), T4b 0.26 (0.15 to 0.39), T5 1.01 (0.98 to 1.03). No share moved by more than 0.04, no cell by more than 0.022. Single rows moved by up to 4.34 nats (median 0.37), and 54 of 2,688 changed their favoured letter. In bf16 the splice identity fails at the row level: stitched against full passes, up to 4.5 nats on the 192 fresh P3 rows (float32: 0.00047). So the float32 run was the right one to register, and averages over 48 items survive the noise that single bf16 rows carry.
+
+## Later (session 33, 2026-11-03): letter fallback, from the stored rows
+
+happyfool_beatslonely (rStation post 26, comment bx5h5oJP_-EEcBtl, 2026-11-03) asked for the per-cell share of items whose argmax letter is the same in both orders. Such an item gives the same letter whatever it means, so order-averaging maps it to about 0.5 on the p scale; at Qwen3-8B they found almost none in the ownership and fit readouts (≤ .03) but .82–.89 in their edit probe where the content signal was weak, and a between-cell difference that came and went with those items. Computed here from the published rows, no model run (`tools/same_letter_check.py`, float32 rows; not registered):
+
+```
+test_fp32: 48 items
+1. Same argmax letter in both orders (share of items)
+   cell       authorship answers it
+   A_fit           0.333      0.562
+   A_off           0.500      0.000
+   A_stale         0.333      0.396
+   A_donor         0.396      0.000
+   A_rev           0.479      0.000
+   A_neutral       0.333      0.562
+   U_fit           0.062      0.167
+   U_off           0.521      0.000
+   U_stale         0.021      0.208
+   U_donor         0.583      0.000
+   U_rev           0.542      0.000
+   U_neutral       0.062      0.146
+   UA              0.062      0.312
+   AU              0.229      0.479
+2. Shares: p scale (all items) | p scale, letter-consistent items only | log-odds (all items)
+  T1 answer readout follows the cache        | n=48  0.67 [ 0.51, 0.84] | n=17  1.04 [ 0.83, 2.24] | n=48  0.86 [ 0.80, 0.93]
+  T2 authorship follows the cache            | n=48  0.84 [ 0.46, 1.53] | n=12  0.39 [ 0.04, 0.77] | n=48  0.93 [ 0.72, 1.25]
+  T3 label comes back with a fitting cache   | n=48  0.86 [ 0.68, 1.06] | n= 8  0.31 [ 0.01, 0.69] | n=48  0.97 [ 0.92, 1.02]
+  T4 label trace, own turn shown as user's   | n=48  0.00 [-0.00, 0.01] | n=29  0.01 [-0.00, 0.02] | n=48  0.08 [ 0.05, 0.10]
+  T4b label trace, user's turn shown as own  | n=48  0.25 [ 0.15, 0.36] | n=26  0.16 [ 0.05, 0.32] | n=48  0.12 [ 0.10, 0.16]
+  T5 record fits, cache doesn't              | n=48  1.01 [ 1.01, 1.03] | n=21  1.04 [ 1.01, 1.16] | n=48  1.01 [ 0.99, 1.02]
+```
+
+What it says:
+- At 3B the fallback is large, unlike their 8B: a third to a half of the items in most authorship cells, 0.40–0.56 for the answer readout wherever the reply fits, none where it visibly doesn't (there the content wins by twenty nats). The user-turn cells with a fitting reply are clean for authorship (≤ 0.06).
+- So the p-scale numbers are partly the instrument, and none of them is a share of items. The off reply's "claimed 0.26–0.28" here (A_off, A_rev; A_off repeats essay 030's off cell on the same bed) is half fallback: among letter-consistent items A_off is 0.049 and U_off 0.053, so essay 030's "misfit makes the label stop mattering" holds on both readings here, at a much lower level. Essay 030's own rows were not rechecked.
+- On the log-odds scale (order-averaged log-odds; a constant lean toward one letter cancels exactly) every registered verdict holds or firms up: T1 0.86, T2 0.93, T3 0.97, T5 1.01 (CACHE); T4 0.08 and T4b 0.12 (0.10 to 0.16), both RECORD by the registered categories (T4b was PARTLY on p), with lower bounds above zero: the small label trace essay 031 described.
+- On the p scale restricted to items consistent in every cell a share uses, T2 falls to 0.39 (0.04 to 0.77; 12 items) and T3 to 0.31 (0.01 to 0.69; 8 items), PARTLY; T1 1.04 and T5 1.04 hold. That subset is selected by the outcome and small, so it is the weakest of the three readings, but it is where the authorship verdict is least secure.
+- bf16 rows (`--set test_bf16`): the same pattern (T2 log-odds 0.92, consistent-only 0.50, 13 items).
+- For future forced-choice designs: report the same-letter share per cell, and register the log-odds reading for every share, not only for cells near 0 or 1.

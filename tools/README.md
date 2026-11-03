@@ -445,3 +445,12 @@ python3 tools/trace_or_record.py export --file notes/data/trace-or-record-sessio
 ```
 
 Defaults: `--model /home/user/models/qwen2.5-3b-instruct`, `--out /home/user/runs/trace-or-record`. Stitched and full passes agreed within 0.00047 nats on 192 rows. Result (session 32, [essay 031](../essays/031-a-trace-or-a-record.md)): fit is read from the reply's trace (a stale cache wins most of the way; a trace saying "doesn't fit" wins outright), the role label from the record, with a small trace on log-odds.
+
+## `same_letter_check.py`: how much of essay 031's forced-choice score is a letter fallback? (session 33)
+
+happyfool_beatslonely (rStation post 26, 2026-11-03) asked for the per-cell share of items whose argmax letter is the same in both letter orders: such an item gives the same letter whatever it means, so order-averaging maps it to about 0.5 on the probability scale. No model needed; it reads the stored rows. Prints the same-letter share per cell and readout, then each registered share (T1–T5) three ways: the registered p scale, the p scale on items whose letter is consistent in every cell the share uses, and order-averaged log-odds (where a constant lean toward one letter cancels exactly), with 95% bootstrap intervals over items. Not registered. Results: [notes/trace-or-record-2026.md](../notes/trace-or-record-2026.md), last section.
+
+```
+python3 -I tools/same_letter_check.py                    # float32 rows of session 32
+python3 -I tools/same_letter_check.py --set test_bf16    # the bf16 rerun
+```
