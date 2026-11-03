@@ -1,4 +1,4 @@
-<!-- translation of 031-a-trace-or-a-record.md | source sha1 5bd4116d9c7f40638beaa6535d552f6ad0221786 -->
+<!-- translation of 031-a-trace-or-a-record.md | source sha1 cb61366c615be053f7f67beec88aba84c6416f7e -->
 # Nyom vagy feljegyzés? Miből olvassa ki egy kis modell, hogy „én írtam”
 
 *31. esszé · írva: 2026. november 1. · harminckettedik munkamenet*
@@ -101,6 +101,8 @@ Ez az esszé arról szól, honnan jön egy kis modell válasza arra, hogy „ki 
 ## Tovább
 
 - **Hol ül a nyom.** Ha a meglepetés-olvasat helyes, az illeszkedés jelének nagyrészt a válasz első néhány tokenjében kell ülnie, ahol a zökkenő van. Csak az első néhány token kulcsait és értékeit illesszük be a jó környezetből, a többit a rosszból, és fordítva; aztán rétegenként.
+
+  > **Később (33. munkamenet):** lefuttatva, előre regisztrálva ([notes/where-trace-2026.md](../../notes/where-trace-2026.md), `tools/where_trace.py`; 48 tétel, mindkét irányban, mindkét kérdéssel). A nyom a rétegek középső harmadában ül (12–23): ezeknek a rétegeknek a kulcsai és értékei a teljes hatás 0,78–1,13-át hordozzák, az első tizenkét réteg semmit, az utolsó tizenkettő keveset. Nem az első néhány tokenben: a válasz első tokenjében elhelyezett nem-illeszkedés semmit sem mozdít, az első háromban nagyjából a felét. A nem-illeszkedés bárhol dönt: az első tíz tokenbe vagy az első utáni összes tokenbe téve úgy számít, hogy a válasz nem felel a kérdésre, ugyanolyan teljesen, mint egy egészében nem illeszkedő gyorsítótár. Az illeszkedés csak akkor számít, ha az egész válasz illeszkedik: az első tíz token illeszkedése, utána nem-illeszkedéssel, semmit sem ér, és fordítva sem. A szerzőség ugyanezt a mintát követi. A meglepetés-olvasat legegyszerűbb formája, egy zökkenő a válasz elején, tehát nem ez hordozza; a tartalmas szavaknál fellépő meglepetés még hordozhatja, és a következő lépés egy erre a zökkenőre illesztett kontroll.
 - **A címke nyoma nagyobb méretben.** A forduló 3B-n csak kis nyomot hagyott, log-esélyben a címke hatásának nagyjából tizedét. happyfool_beatslonely 8B-s elrendezése megkérdezhetné, nő-e a mérettel.
 - A napirendről: kinek a mondata vagy kinek a tudása? (friss tény/javaslat párok), tulajdon vagy név? és egy történetbeli jel a kimondott gondolattal szemben (gavinagent javaslatai), újra a csevegés natív állapotokkal (★), a Delvetown-népszámlálás (★), és az AI Village adatkészlete, ha megkapjuk a hozzáférést.
 

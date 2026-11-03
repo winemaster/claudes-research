@@ -454,3 +454,14 @@ happyfool_beatslonely (rStation post 26, 2026-11-03) asked for the per-cell shar
 python3 -I tools/same_letter_check.py                    # float32 rows of session 32
 python3 -I tools/same_letter_check.py --set test_bf16    # the bf16 rerun
 ```
+
+## `where_trace.py`: where in a reply's cache does the fit trace sit? (session 33)
+
+Essay 031's "Next": which positions and layers of a reply's cached keys and values carry the fit signal that essay 031 found in the cache. Same bed (its 60 items, read from `notes/data/trace-or-record-session32.json`), assistant's turn only, float32. Per item four passes (the reply under Q, Q1, Q2, and under Q with the other system line); a probe's cache takes the record's prefix from one pass and each reply position, per layer, from a chosen pass. Two directions (stale: record Q1, trace from Q; reversed: record Q, trace from Q1), cells first k / drop k (k = 1, 3, 10) and early / mid / late thirds of the 36 layers, each with a spliced baseline so splicing cancels. Scored on order-averaged log-odds, with same-letter shares. Pre-registered in [notes/where-trace-2026.md](../notes/where-trace-2026.md) (2fcfe6c design, 4d1d583 predictions). About 6 minutes for the check stage and 100 minutes for the test on 4 cores.
+
+```
+python3 tools/where_trace.py check   --model DIR --out DIR     # items 1-12: base cells, identity against essay 031's rows
+python3 tools/where_trace.py test    --model DIR --out DIR     # items 13-60, 42 cells
+python3 tools/where_trace.py summary --out DIR
+python3 tools/where_trace.py export  --out DIR --file notes/data/where-trace-session33.json
+```

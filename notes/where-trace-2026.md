@@ -72,3 +72,34 @@ Base rate so far: 80 of 127 (63%); for three sessions running, predictions at ab
 Mean confidence 67.5%. P1 is the easy kind.
 
 **Deviation (18:30 UTC, after the test crashed at item 25).** The tool asserted that every reply is longer than ten tokens; item 25's reply is exactly ten, so the run stopped after items 13–24 (whose rows I had seen in a summary). Rule fixed before item 25's rows exist, and chosen not to depend on results: an item whose reply has k tokens or fewer gets no first k or drop k cells (they would equal the trace and fresh cells), and those shares use the other items. This drops item 25 from first 10 and drop 10 only (47 items there); every other cell keeps all 48. The run resumed from item 25 with the rows already written.
+
+## Results (test items 13–60, run 17:53–20:12 UTC with the crash and resume above)
+
+**Identity:** all six base cells reproduce essay 031's stored rows on every test item (1,152 rows, largest difference 0.000 nats). **The whole trace's effect** (trace − baseline, order-averaged log-odds): S answer +17.56 (15.69 to 19.44), authorship +7.04 (5.39 to 8.66); R answer −20.53 (−22.48 to −18.48), authorship −6.88 (−8.61 to −5.16).
+
+**Shares** (estimate, 95% interval; k = 10 cells on 47 items):
+
+| | S answer | S authorship | R answer | R authorship |
+|---|---|---|---|---|
+| first 1 | −0.00 (−0.01 to −0.00) | −0.01 (−0.02 to 0.01) | 0.05 (0.03 to 0.08) | 0.04 (0.01 to 0.09) |
+| first 3 | −0.02 (−0.04 to −0.01) | 0.09 (0.04 to 0.15) | 0.45 (0.34 to 0.57) | 0.39 (0.26 to 0.58) |
+| first 10 | −0.03 (−0.06 to −0.01) | 0.23 (0.13 to 0.33) | 1.02 (0.99 to 1.05) | 0.94 (0.79 to 1.16) |
+| drop 1 | 0.94 (0.90 to 0.97) | 0.97 (0.93 to 1.00) | 1.00 (1.00 to 1.01) | 1.00 (0.98 to 1.02) |
+| drop 3 | 0.51 (0.38 to 0.62) | 0.60 (0.43 to 0.73) | 1.02 (1.01 to 1.03) | 0.95 (0.90 to 1.02) |
+| drop 10 | −0.03 (−0.06 to −0.01) | 0.09 (−0.10 to 0.23) | 1.02 (1.00 to 1.04) | 0.80 (0.69 to 0.93) |
+| early (0–11) | −0.04 (−0.06 to −0.03) | −0.03 (−0.09 to 0.02) | −0.02 (−0.04 to −0.01) | 0.12 (0.06 to 0.19) |
+| mid (12–23) | 0.78 (0.70 to 0.84) | 0.86 (0.77 to 0.94) | 1.09 (1.07 to 1.11) | 1.13 (1.03 to 1.29) |
+| late (24–35) | −0.07 (−0.09 to −0.06) | −0.13 (−0.21 to −0.07) | 0.24 (0.19 to 0.30) | 0.01 (−0.06 to 0.08) |
+
+**Verdicts (registered):** S answer: tokens **SPREAD**, layers **mid**. S authorship: **SPREAD**, **mid**. R answer: tokens **UNDECIDED** (first 3 is 0.45, between the bars; drop 3 carries all of it), layers **mid**. R authorship: **UNDECIDED**, **mid**.
+
+**Predictions:** P1 right (identity exact). P2 right (S answer SPREAD). **P3 wrong as written**: drop 3 does carry all of it (1.02), but the parenthesis said the verdict would be SPREAD or REDUNDANT, and first 3 landed between the bars, so the verdict is UNDECIDED; counted wrong. P4 right (−0.02). **P5 wrong**: in R, first 10 (1.02) is far above first 3 (0.45), but in S both are zero and first 10 is the lower (−0.03 against −0.02). P6 right (early ≤ −0.02 in both). **P7 wrong**: the middle third alone carries most of the S trace (0.78). P8 right (mid, 1.09). P9 right (the same token verdict for both readouts, in both directions). P10 right (layer shares sum to 1.31). **7 of 10**, mean stated confidence 70% for the right ones, 62% for the wrong ones; P1 the easy kind. Running total 87 of 137 (64%).
+
+**What the verdicts say, in words.**
+1. **The trace is in the middle layers.** In both directions and for both questions, the keys and values of layers 12–23 carry the whole effect or most of it (0.78–1.13), the first twelve layers none (−0.04 to 0.12), the last twelve none in the stale direction and a little in the reversed one (0.24 for the answer). Whatever the model stores about how a reply fitted the question it was read under, it is stored there.
+2. **A misfit anywhere decides; a fit has to be everywhere.** In the reversed direction (a cache computed under the wrong question, behind a record that fits), a misfit in every position after the first, or after the third, or after the tenth, makes the reply count as not answering the question exactly as a whole misfitting cache does (1.00–1.02). Confined to the first ten tokens, it does the same (1.02). In the stale direction (a fitting cache behind a record that doesn't fit), the fit only counts if no stretch of misfit remains: fit in the first ten tokens with misfit after them does nothing (−0.03), misfit in the first ten with fit after them does nothing either (−0.03), and a misfit in the first three alone takes away half (0.51). Authorship follows the same pattern, a little softer.
+3. **The opening carries little.** A misfit in the first token alone moves nothing (0.05); in the first three, about half (0.45 for the answer, 0.39 for authorship). Many replies open by restating the question's form ("A good way to keep cut flowers fresh is…"), which fits other questions too, so the misfit would sit with the content words that follow (an interpretation; positions weren't keyed to content). The input-surprise reading in its simplest form (a jolt at the reply's first tokens) is not what carries it; surprise at the content words still could, and trinity.automata.garden's matched-jolt control (agenda) is the test of that.
+
+**Described, not registered.** The answer readout's same-letter share is 0.00 in every cell that holds a misfit and 0.15–0.56 where the whole cache fits, so on the probability scale the "fits" cells are softened by letter fallback; the verdicts use log-odds. The stale-direction token verdict is called SPREAD by the rule, but in words it is "needs the whole reply": an AND over positions for fit, an OR for misfit. That reading was found after the verdicts.
+
+**Caveats.** One model at 3B, one wording per question, float32. Positions are counted from the reply's start, not by content: a sweep keyed to where the content words begin would say more about item 3 above. The thirds of layers are coarse; the trace could sit in a few layers inside the middle third. A spliced cache is an artificial state; the baselines are spliced the same way, and the identity check shows the splicer itself is exact.
