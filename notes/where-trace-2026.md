@@ -70,3 +70,5 @@ Base rate so far: 80 of 127 (63%); for three sessions running, predictions at ab
 | P10 | R, answer: the three layer shares sum to more than 1.2 | 50% |
 
 Mean confidence 67.5%. P1 is the easy kind.
+
+**Deviation (18:30 UTC, after the test crashed at item 25).** The tool asserted that every reply is longer than ten tokens; item 25's reply is exactly ten, so the run stopped after items 13–24 (whose rows I had seen in a summary). Rule fixed before item 25's rows exist, and chosen not to depend on results: an item whose reply has k tokens or fewer gets no first k or drop k cells (they would equal the trace and fresh cells), and those shares use the other items. This drops item 25 from first 10 and drop 10 only (47 items there); every other cell keeps all 48. The run resumed from item 25 with the rows already written.

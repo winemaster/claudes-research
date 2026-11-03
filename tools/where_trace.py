@@ -65,6 +65,14 @@ def cells():
     return out
 
 
+def cell_k(cell):
+    rest = cell.split("_", 1)[1].rsplit("_", 1)[0]
+    for kind in ("first", "drop"):
+        if rest.startswith(kind):
+            return int(rest[len(kind):])
+    return None
+
+
 def plan(cell, n_layers, n_r):
     """cell -> per layer, a list of (start, end, role) over the reply's positions; roles F/T/D."""
     d, rest = cell.split("_", 1)
@@ -122,8 +130,10 @@ def run(a, item_ids, cell_list, name):
                 seg[(qk, sl)] = (pre, r); kv[(qk, sl)] = sp.kv(pre + r)
             n_pre, n_r = len(seg[("Q", "S")][0]), len(seg[("Q", "S")][1])
             assert all(len(seg[q][0]) == n_pre and seg[q][1] == seg[("Q", "S")][1] for q in seg)
-            assert n_r > max(KS), (i, n_r)
+            assert n_r > 3, (i, n_r)
             for c in cell_list:
+                if cell_k(c) is not None and cell_k(c) >= n_r:
+                    continue   # first k / drop k would equal the whole reply or none of it (item 25: n_r = 10)
                 D = DIRS[c.split("_", 1)[0]]
                 src = {role: kv[D[role]] for role in ("F", "T", "D")}
                 lp = plan(c, n_layers, n_r)
@@ -186,10 +196,12 @@ def summarize(rows):
     pv = lambda i, c, ro: mean([sigmoid(T[i][c][p]) for p in READOUTS[ro]])
     same = lambda i, c, ro: (T[i][c][READOUTS[ro][0]] > 0) != (T[i][c][READOUTS[ro][1]] > 0)
     present = sorted({c for i in items for c in T[i]}, key=lambda c: cells().index(c))
+    has = lambda c: [i for i in items if c in T[i]]
     res = {"n_items": len(items), "identity": identity(rows), "cells": {}, "shares": {}}
     for c in present:
-        res["cells"][c] = {ro: {"lo": mean([v(i, c, ro) for i in items]), "p": mean([pv(i, c, ro) for i in items]),
-                                "same_letter": mean([same(i, c, ro) for i in items])} for ro in READOUTS}
+        its = has(c)
+        res["cells"][c] = {ro: {"lo": mean([v(i, c, ro) for i in its]), "p": mean([pv(i, c, ro) for i in its]),
+                                "same_letter": mean([same(i, c, ro) for i in its]), "n": len(its)} for ro in READOUTS}
     for d in DIRS:
         for ro in READOUTS:
             if f"{d}_trace" in present:
@@ -200,7 +212,7 @@ def summarize(rows):
                 cd = c[:-2] + "_D"
                 f = lambda s, c=c, cd=cd, d=d, ro=ro: (mean([v(i, c, ro) - v(i, cd, ro) for i in s]) /
                                                        mean([v(i, f"{d}_trace", ro) - v(i, f"{d}_donor", ro) for i in s]))
-                res["shares"][f"{c[:-2]}|{ro}"] = boot(items, f)
+                res["shares"][f"{c[:-2]}|{ro}"] = boot([i for i in has(c) if cd in T[i]], f)
     res["verdicts"] = verdicts(res["shares"])
     return res
 
