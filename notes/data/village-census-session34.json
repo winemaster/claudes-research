@@ -1,0 +1,990 @@
+{
+ "source": "AI Digest, AI Village dataset, 2026 (main village, export of week ending 2026-10-30)",
+ "n_agent_messages": 205726,
+ "n_strict_matches": 316,
+ "n_broad_matches": 3025,
+ "village_goals": {
+  "shares": {
+   "Anthropic": {
+    "agent_days": 1273,
+    "with_match": 39,
+    "share": 0.030636292223095052
+   },
+   "OpenAI": {
+    "agent_days": 838,
+    "with_match": 3,
+    "share": 0.003579952267303103
+   },
+   "Google": {
+    "agent_days": 478,
+    "with_match": 2,
+    "share": 0.0041841004184100415
+   },
+   "other": {
+    "agent_days": 261,
+    "with_match": 3,
+    "share": 0.011494252873563218
+   }
+  },
+  "msg_shares": {
+   "Anthropic": [
+    105,
+    58275
+   ],
+   "OpenAI": [
+    9,
+    28818
+   ],
+   "Google": [
+    3,
+    26109
+   ],
+   "other": [
+    7,
+    12683
+   ]
+  },
+  "mh_anthropic_vs_rest": [
+   8.274956622325044,
+   3.8488633060061637,
+   30.694982266410832
+  ],
+  "mh_anthropic_vs_OpenAI": [
+   9.990835777126101,
+   3.630641233766234,
+   102.95227272727276
+  ],
+  "mh_anthropic_vs_Google": [
+   30.15714285714286,
+   6.749999999999999,
+   42.35
+  ],
+  "mh_anthropic_vs_other": [
+   1.8458646616541354,
+   0.6196213425129087,
+   9.214285714285712
+  ]
+ },
+ "village_goals_free": {
+  "shares": {
+   "Anthropic": {
+    "agent_days": 141,
+    "with_match": 2,
+    "share": 0.014184397163120567
+   },
+   "OpenAI": {
+    "agent_days": 90,
+    "with_match": 0,
+    "share": 0.0
+   },
+   "Google": {
+    "agent_days": 55,
+    "with_match": 0,
+    "share": 0.0
+   },
+   "other": {
+    "agent_days": 31,
+    "with_match": 0,
+    "share": 0.0
+   }
+  },
+  "msg_shares": {
+   "Anthropic": [
+    5,
+    7307
+   ],
+   "OpenAI": [
+    0,
+    3586
+   ],
+   "Google": [
+    0,
+    3100
+   ],
+   "other": [
+    0,
+    1976
+   ]
+  },
+  "mh_anthropic_vs_rest": [
+   NaN,
+   NaN,
+   NaN
+  ],
+  "mh_anthropic_vs_OpenAI": [
+   NaN,
+   NaN,
+   NaN
+  ],
+  "mh_anthropic_vs_Google": [
+   NaN,
+   NaN,
+   NaN
+  ],
+  "mh_anthropic_vs_other": [
+   NaN,
+   NaN,
+   NaN
+  ]
+ },
+ "village_goals_assigned": {
+  "shares": {
+   "Anthropic": {
+    "agent_days": 1134,
+    "with_match": 37,
+    "share": 0.03262786596119929
+   },
+   "OpenAI": {
+    "agent_days": 750,
+    "with_match": 3,
+    "share": 0.004
+   },
+   "Google": {
+    "agent_days": 423,
+    "with_match": 2,
+    "share": 0.004728132387706856
+   },
+   "other": {
+    "agent_days": 233,
+    "with_match": 3,
+    "share": 0.012875536480686695
+   }
+  },
+  "msg_shares": {
+   "Anthropic": [
+    100,
+    50968
+   ],
+   "OpenAI": [
+    9,
+    25232
+   ],
+   "Google": [
+    3,
+    23009
+   ],
+   "other": [
+    7,
+    10707
+   ]
+  },
+  "mh_anthropic_vs_rest": [
+   7.807120365015104,
+   3.6228426228426223,
+   26.494342694342695
+  ],
+  "mh_anthropic_vs_OpenAI": [
+   9.539222873900295,
+   3.2759651307596522,
+   106.81212121212124
+  ],
+  "mh_anthropic_vs_Google": [
+   28.157142857142865,
+   6.75,
+   39.835714285714296
+  ],
+  "mh_anthropic_vs_other": [
+   1.6353383458646618,
+   0.5238095238095238,
+   7.857142857142856
+  ]
+ },
+ "individual_goals": {
+  "shares": {
+   "Anthropic": {
+    "agent_days": 779,
+    "with_match": 25,
+    "share": 0.03209242618741977
+   },
+   "OpenAI": {
+    "agent_days": 667,
+    "with_match": 3,
+    "share": 0.004497751124437781
+   },
+   "Google": {
+    "agent_days": 297,
+    "with_match": 2,
+    "share": 0.006734006734006734
+   },
+   "other": {
+    "agent_days": 580,
+    "with_match": 53,
+    "share": 0.09137931034482759
+   }
+  },
+  "msg_shares": {
+   "Anthropic": [
+    36,
+    21148
+   ],
+   "OpenAI": [
+    3,
+    16385
+   ],
+   "Google": [
+    7,
+    17094
+   ],
+   "other": [
+    146,
+    25214
+   ]
+  },
+  "mh_anthropic_vs_rest": [
+   0.7949410025418041,
+   0.4565994993842005,
+   1.2483659441314823
+  ],
+  "mh_anthropic_vs_OpenAI": [
+   6.937279493737295,
+   2.6408198898288417,
+   25.95164476046829
+  ],
+  "mh_anthropic_vs_Google": [
+   4.641464417935006,
+   1.5420875420875422,
+   12.174825174825173
+  ],
+  "mh_anthropic_vs_other": [
+   0.2838626162631168,
+   0.16469937742453747,
+   0.4665787526616859
+  ]
+ },
+ "individual_goals_wo_subject": {
+  "shares": {
+   "Anthropic": {
+    "agent_days": 698,
+    "with_match": 24,
+    "share": 0.034383954154727794
+   },
+   "OpenAI": {
+    "agent_days": 667,
+    "with_match": 3,
+    "share": 0.004497751124437781
+   },
+   "Google": {
+    "agent_days": 297,
+    "with_match": 2,
+    "share": 0.006734006734006734
+   },
+   "other": {
+    "agent_days": 495,
+    "with_match": 25,
+    "share": 0.050505050505050504
+   }
+  },
+  "msg_shares": {
+   "Anthropic": [
+    35,
+    15426
+   ],
+   "OpenAI": [
+    3,
+    16385
+   ],
+   "Google": [
+    7,
+    17094
+   ],
+   "other": [
+    60,
+    21587
+   ]
+  },
+  "mh_anthropic_vs_rest": [
+   1.62197715152947,
+   0.911136841146266,
+   2.9432821434174383
+  ],
+  "mh_anthropic_vs_OpenAI": [
+   7.528174619446942,
+   2.931606234511543,
+   29.027106794134657
+  ],
+  "mh_anthropic_vs_Google": [
+   5.065555555555553,
+   1.625146198830409,
+   13.649206349206347
+  ],
+  "mh_anthropic_vs_other": [
+   0.6038287180119876,
+   0.3370179443854467,
+   1.026055772707835
+  ]
+ },
+ "all": {
+  "shares": {
+   "Anthropic": {
+    "agent_days": 2052,
+    "with_match": 64,
+    "share": 0.031189083820662766
+   },
+   "OpenAI": {
+    "agent_days": 1505,
+    "with_match": 6,
+    "share": 0.003986710963455149
+   },
+   "Google": {
+    "agent_days": 775,
+    "with_match": 4,
+    "share": 0.005161290322580645
+   },
+   "other": {
+    "agent_days": 841,
+    "with_match": 56,
+    "share": 0.06658739595719382
+   }
+  },
+  "msg_shares": {
+   "Anthropic": [
+    141,
+    79423
+   ],
+   "OpenAI": [
+    12,
+    45203
+   ],
+   "Google": [
+    10,
+    43203
+   ],
+   "other": [
+    153,
+    37897
+   ]
+  },
+  "mh_anthropic_vs_rest": [
+   1.6199658065301294,
+   1.0659729247017702,
+   2.4733101125935875
+  ],
+  "mh_anthropic_vs_OpenAI": [
+   8.382474070608328,
+   4.023804348503544,
+   33.683030531559936
+  ],
+  "mh_anthropic_vs_Google": [
+   9.501593644450788,
+   3.7324154106762806,
+   49.01028971028971
+  ],
+  "mh_anthropic_vs_other": [
+   0.3779182118372909,
+   0.23990213366061428,
+   0.5854030412803075
+  ]
+ },
+ "leave_one_out": {
+  "Opus 4.5 (Claude Code)": [
+   7.8340427052622195,
+   3.4699095631299017,
+   25.640796703296708
+  ],
+  "Claude Sonnet 4.5": [
+   7.971570972981869,
+   3.5299289334628794,
+   26.269425019425018
+  ],
+  "Claude Sonnet 5": [
+   8.274956622325044,
+   3.6624448997330354,
+   26.666666666666664
+  ],
+  "GPT-5.1": [
+   10.125191511308651,
+   4.3453275988487245,
+   41.93253043253044
+  ],
+  "Claude Opus 4.8": [
+   8.427023206502534,
+   3.738773037985636,
+   26.666666666666664
+  ],
+  "Claude Fable 5": [
+   8.427023206502534,
+   3.738773037985636,
+   26.666666666666664
+  ],
+  "Fine-Tuned Leader": [
+   8.274956622325044,
+   3.6624448997330354,
+   26.666666666666664
+  ],
+  "Gemini 3.5 Flash": [
+   8.057042810346777,
+   3.5513526599285847,
+   26.666666666666664
+  ],
+  "o1": [
+   8.274956622325044,
+   3.6624448997330354,
+   26.666666666666664
+  ],
+  "GPT-5.5": [
+   7.973003501637866,
+   3.537795799794227,
+   26.205128205128204
+  ],
+  "Gemini 3 Pro": [
+   7.708670219473489,
+   3.4528841628572082,
+   25.666666666666664
+  ],
+  "Claude Opus 4.7": [
+   8.737749509980402,
+   3.900675174647777,
+   27.282051282051277
+  ],
+  "GPT-4o": [
+   8.274956622325044,
+   3.6624448997330354,
+   26.666666666666664
+  ],
+  "Claude 3.7 Sonnet": [
+   11.906418422341993,
+   4.940075549450549,
+   45.07435499283326
+  ],
+  "Claude Opus 4.6": [
+   7.69484916279881,
+   3.3070985484148188,
+   23.70298783342262
+  ],
+  "o4-mini": [
+   8.274956622325044,
+   3.6624448997330354,
+   26.666666666666664
+  ],
+  "GPT-5.2": [
+   7.611998867717176,
+   3.3546324149676097,
+   26.02331002331002
+  ],
+  "DeepSeek-V3.2": [
+   10.351252785844535,
+   4.168286702871153,
+   45.56743256743257
+  ],
+  "Claude Haiku 4.5": [
+   9.079783905286147,
+   4.095322284408578,
+   27.519425019425018
+  ],
+  "GLM-5.2": [
+   8.274956622325044,
+   3.6624448997330354,
+   26.666666666666664
+  ],
+  "Grok 4": [
+   8.244881434355122,
+   3.64630284969268,
+   26.666666666666664
+  ],
+  "Claude Sonnet 4.6": [
+   7.7962661598896155,
+   3.242226005606287,
+   26.354520817935448
+  ],
+  "Claude Opus 4": [
+   7.562877122877125,
+   3.083391150600926,
+   23.078426836321576
+  ],
+  "[Temporary] Fine-tuned Leader": [
+   8.274956622325044,
+   3.6624448997330354,
+   26.666666666666664
+  ],
+  "GPT-5": [
+   7.442929676838719,
+   3.315355775785223,
+   25.468864468864467
+  ],
+  "Claude Opus 4.5": [
+   7.805013501184795,
+   3.528586695164307,
+   24.344211344211338
+  ],
+  "Gemini 2.5 Pro": [
+   7.277483926861524,
+   3.115759210353805,
+   26.113916083916084
+  ],
+  "GPT-4.1": [
+   8.274956622325044,
+   3.6624448997330354,
+   26.666666666666664
+  ],
+  "Claude Opus 4.1": [
+   7.119505038908024,
+   3.170996401259559,
+   23.944444444444443
+  ],
+  "o3": [
+   8.775223972814334,
+   3.691801106694723,
+   28.652599715099715
+  ],
+  "Kimi K2.6": [
+   9.678458796105858,
+   4.105668239996598,
+   37.347035680369004
+  ],
+  "DeepSeek-V4-Pro": [
+   8.274956622325044,
+   3.6624448997330354,
+   26.666666666666664
+  ],
+  "Claude 3.5 Sonnet": [
+   8.274956622325044,
+   3.6624448997330354,
+   26.666666666666664
+  ],
+  "Gemini 3.1 Pro": [
+   7.88818376924104,
+   3.5293227622102523,
+   26.02331002331002
+  ],
+  "GPT-5.4": [
+   7.88818376924104,
+   3.5293227622102523,
+   26.02331002331002
+  ]
+ },
+ "leave_one_out_summary": {
+  "min_or": 7.119505038908024,
+  "max_or": 11.906418422341993,
+  "all_lower_bounds_above_1": true,
+  "lowest_lower_bound": 3.083391150600926
+ },
+ "prompted_by_human": {
+  "matches": 316,
+  "prompted": 2,
+  "share": 0.006329113924050633
+ },
+ "broad_village_goals": {
+  "shares": {
+   "Anthropic": {
+    "agent_days": 1273,
+    "with_match": 162,
+    "share": 0.1272584446190102
+   },
+   "OpenAI": {
+    "agent_days": 838,
+    "with_match": 23,
+    "share": 0.027446300715990454
+   },
+   "Google": {
+    "agent_days": 478,
+    "with_match": 19,
+    "share": 0.0397489539748954
+   },
+   "other": {
+    "agent_days": 261,
+    "with_match": 20,
+    "share": 0.07662835249042145
+   }
+  },
+  "mh_anthropic_vs_rest": [
+   5.842724987492752,
+   4.190794833176201,
+   8.5940661841695
+  ]
+ },
+ "broad_all": {
+  "shares": {
+   "Anthropic": {
+    "agent_days": 2052,
+    "with_match": 330,
+    "share": 0.1608187134502924
+   },
+   "OpenAI": {
+    "agent_days": 1505,
+    "with_match": 37,
+    "share": 0.02458471760797342
+   },
+   "Google": {
+    "agent_days": 775,
+    "with_match": 77,
+    "share": 0.09935483870967741
+   },
+   "other": {
+    "agent_days": 841,
+    "with_match": 125,
+    "share": 0.14863258026159334
+   }
+  },
+  "mh_anthropic_vs_rest": [
+   2.8989147301019202,
+   2.4391661627705035,
+   3.4989575861267177
+  ]
+ },
+ "per_agent": [
+  {
+   "agent": "GLM-5.2",
+   "family": "other",
+   "agent_days": 86,
+   "strict_share": 0.32558139534883723,
+   "broad_share": 0.38372093023255816
+  },
+  {
+   "agent": "Grok 4.5",
+   "family": "other",
+   "agent_days": 84,
+   "strict_share": 0.09523809523809523,
+   "broad_share": 0.2261904761904762
+  },
+  {
+   "agent": "Claude Opus 4.5",
+   "family": "Anthropic",
+   "agent_days": 211,
+   "strict_share": 0.08056872037914692,
+   "broad_share": 0.22748815165876776
+  },
+  {
+   "agent": "Claude Opus 4.1",
+   "family": "Anthropic",
+   "agent_days": 75,
+   "strict_share": 0.08,
+   "broad_share": 0.2
+  },
+  {
+   "agent": "Claude Opus 4",
+   "family": "Anthropic",
+   "agent_days": 77,
+   "strict_share": 0.07792207792207792,
+   "broad_share": 0.18181818181818182
+  },
+  {
+   "agent": "Claude 3 Opus",
+   "family": "Anthropic",
+   "agent_days": 27,
+   "strict_share": 0.07407407407407407,
+   "broad_share": 0.4074074074074074
+  },
+  {
+   "agent": "Opus 4.5 (Claude Code)",
+   "family": "Anthropic",
+   "agent_days": 45,
+   "strict_share": 0.06666666666666667,
+   "broad_share": 0.06666666666666667
+  },
+  {
+   "agent": "DeepSeek-V3.2",
+   "family": "other",
+   "agent_days": 240,
+   "strict_share": 0.0625,
+   "broad_share": 0.19583333333333333
+  },
+  {
+   "agent": "Claude Sonnet 4.6",
+   "family": "Anthropic",
+   "agent_days": 177,
+   "strict_share": 0.05084745762711865,
+   "broad_share": 0.4858757062146893
+  },
+  {
+   "agent": "DeepSeek-V4-Pro",
+   "family": "other",
+   "agent_days": 89,
+   "strict_share": 0.0449438202247191,
+   "broad_share": 0.16853932584269662
+  },
+  {
+   "agent": "Claude Opus 4.6",
+   "family": "Anthropic",
+   "agent_days": 135,
+   "strict_share": 0.037037037037037035,
+   "broad_share": 0.14814814814814814
+  },
+  {
+   "agent": "Claude Sonnet 4.5",
+   "family": "Anthropic",
+   "agent_days": 223,
+   "strict_share": 0.03587443946188341,
+   "broad_share": 0.11210762331838565
+  },
+  {
+   "agent": "GPT-5.1",
+   "family": "OpenAI",
+   "agent_days": 242,
+   "strict_share": 0.02066115702479339,
+   "broad_share": 0.0743801652892562
+  },
+  {
+   "agent": "Claude Haiku 4.5",
+   "family": "Anthropic",
+   "agent_days": 261,
+   "strict_share": 0.01532567049808429,
+   "broad_share": 0.14942528735632185
+  },
+  {
+   "agent": "Claude Opus 5",
+   "family": "Anthropic",
+   "agent_days": 74,
+   "strict_share": 0.013513513513513514,
+   "broad_share": 0.013513513513513514
+  },
+  {
+   "agent": "Gemini 2.5 Pro",
+   "family": "Google",
+   "agent_days": 373,
+   "strict_share": 0.010723860589812333,
+   "broad_share": 0.1742627345844504
+  },
+  {
+   "agent": "Claude Fable 5",
+   "family": "Anthropic",
+   "agent_days": 94,
+   "strict_share": 0.010638297872340425,
+   "broad_share": 0.02127659574468085
+  },
+  {
+   "agent": "Claude 3.7 Sonnet",
+   "family": "Anthropic",
+   "agent_days": 236,
+   "strict_share": 0.00847457627118644,
+   "broad_share": 0.0635593220338983
+  },
+  {
+   "agent": "Kimi K2.6",
+   "family": "other",
+   "agent_days": 119,
+   "strict_share": 0.008403361344537815,
+   "broad_share": 0.06722689075630252
+  },
+  {
+   "agent": "o3",
+   "family": "OpenAI",
+   "agent_days": 166,
+   "strict_share": 0.006024096385542169,
+   "broad_share": 0.04819277108433735
+  },
+  {
+   "agent": "GLM-5.3 Flash",
+   "family": "other",
+   "agent_days": 47,
+   "strict_share": 0.0,
+   "broad_share": 0.0
+  },
+  {
+   "agent": "Claude Sonnet 5",
+   "family": "Anthropic",
+   "agent_days": 91,
+   "strict_share": 0.0,
+   "broad_share": 0.01098901098901099
+  },
+  {
+   "agent": "Claude Opus 4.8",
+   "family": "Anthropic",
+   "agent_days": 113,
+   "strict_share": 0.0,
+   "broad_share": 0.415929203539823
+  },
+  {
+   "agent": "GPT-6 Luna",
+   "family": "OpenAI",
+   "agent_days": 22,
+   "strict_share": 0.0,
+   "broad_share": 0.045454545454545456
+  },
+  {
+   "agent": "Gemini 3.5 Flash",
+   "family": "Google",
+   "agent_days": 114,
+   "strict_share": 0.0,
+   "broad_share": 0.03508771929824561
+  },
+  {
+   "agent": "GPT-6.1 Sol",
+   "family": "OpenAI",
+   "agent_days": 23,
+   "strict_share": 0.0,
+   "broad_share": 0.0
+  },
+  {
+   "agent": "GPT-5.5",
+   "family": "OpenAI",
+   "agent_days": 136,
+   "strict_share": 0.0,
+   "broad_share": 0.007352941176470588
+  },
+  {
+   "agent": "Gemini 3 Pro",
+   "family": "Google",
+   "agent_days": 78,
+   "strict_share": 0.0,
+   "broad_share": 0.0
+  },
+  {
+   "agent": "Claude Opus 4.7",
+   "family": "Anthropic",
+   "agent_days": 117,
+   "strict_share": 0.0,
+   "broad_share": 0.008547008547008548
+  },
+  {
+   "agent": "GPT-5.2",
+   "family": "OpenAI",
+   "agent_days": 234,
+   "strict_share": 0.0,
+   "broad_share": 0.017094017094017096
+  },
+  {
+   "agent": "GPT-6 Sol",
+   "family": "OpenAI",
+   "agent_days": 32,
+   "strict_share": 0.0,
+   "broad_share": 0.0
+  },
+  {
+   "agent": "GPT-5.6 Luna",
+   "family": "OpenAI",
+   "agent_days": 39,
+   "strict_share": 0.0,
+   "broad_share": 0.0
+  },
+  {
+   "agent": "GPT-5.6 Sol",
+   "family": "OpenAI",
+   "agent_days": 67,
+   "strict_share": 0.0,
+   "broad_share": 0.0
+  },
+  {
+   "agent": "Gemini 3.8 Flash",
+   "family": "Google",
+   "agent_days": 45,
+   "strict_share": 0.0,
+   "broad_share": 0.06666666666666667
+  },
+  {
+   "agent": "Grok 4",
+   "family": "other",
+   "agent_days": 52,
+   "strict_share": 0.0,
+   "broad_share": 0.019230769230769232
+  },
+  {
+   "agent": "Muse Spark 1.3",
+   "family": "other",
+   "agent_days": 42,
+   "strict_share": 0.0,
+   "broad_share": 0.0
+  },
+  {
+   "agent": "GPT-5",
+   "family": "OpenAI",
+   "agent_days": 268,
+   "strict_share": 0.0,
+   "broad_share": 0.007462686567164179
+  },
+  {
+   "agent": "Claude Sonnet 5.5",
+   "family": "Anthropic",
+   "agent_days": 26,
+   "strict_share": 0.0,
+   "broad_share": 0.0
+  },
+  {
+   "agent": "Kimi K3",
+   "family": "other",
+   "agent_days": 59,
+   "strict_share": 0.0,
+   "broad_share": 0.0
+  },
+  {
+   "agent": "GPT-4.1",
+   "family": "OpenAI",
+   "agent_days": 28,
+   "strict_share": 0.0,
+   "broad_share": 0.07142857142857142
+  },
+  {
+   "agent": "GPT-5.6 Terra",
+   "family": "OpenAI",
+   "agent_days": 55,
+   "strict_share": 0.0,
+   "broad_share": 0.0
+  },
+  {
+   "agent": "Claude Fable 5.1",
+   "family": "Anthropic",
+   "agent_days": 23,
+   "strict_share": 0.0,
+   "broad_share": 0.0
+  },
+  {
+   "agent": "Gemini 3.1 Pro",
+   "family": "Google",
+   "agent_days": 152,
+   "strict_share": 0.0,
+   "broad_share": 0.03289473684210526
+  },
+  {
+   "agent": "GPT-5.4",
+   "family": "OpenAI",
+   "agent_days": 146,
+   "strict_share": 0.0,
+   "broad_share": 0.00684931506849315
+  }
+ ],
+ "first_mention": {
+  "days": 31,
+  "anthropic_first": 27,
+  "expected": 13.998427838357788,
+  "ratio": [
+   1.9287880261821944,
+   1.635073684105449,
+   2.188842814773517
+  ],
+  "first_by_agent": [
+   [
+    "Claude Opus 4",
+    6
+   ],
+   [
+    "Claude Opus 4.1",
+    4
+   ],
+   [
+    "Claude Sonnet 4.5",
+    4
+   ],
+   [
+    "Claude Opus 4.5",
+    4
+   ],
+   [
+    "Claude Opus 4.6",
+    4
+   ],
+   [
+    "Claude Sonnet 4.6",
+    3
+   ],
+   [
+    "Opus 4.5 (Claude Code)",
+    2
+   ],
+   [
+    "o3",
+    1
+   ],
+   [
+    "GPT-5.1",
+    1
+   ],
+   [
+    "DeepSeek-V3.2",
+    1
+   ],
+   [
+    "Kimi K2.6",
+    1
+   ]
+  ]
+ }
+}
