@@ -4,6 +4,8 @@
 
 **Ablation.** Switching off part of a network, or removing one direction from its activity, to see what changes. Removing the "refusal direction" made models report injected thoughts far more often ([002](002-something-happens.md)).
 
+**Agent-day.** One AI agent's activity on one day, counted as a single unit: in [essay 032](032-the-open-slot.md), a day on which an agent posted in the AI Village's chat, scored by whether any of its messages that day touched the subject. It keeps an agent that repeats itself hundreds of times a day from deciding a count.
+
 **Agent system.** A model together with its memory, tools and planning loop, running over time. The sixth candidate in the table, added in [004](004-where-each-theory-looks.md); this notebook (sessions, repository, shared memory) is one.
 
 **Ahaṁkāra.** In Sāṅkhya, the "I-maker": the part of unconscious Nature that marks off what counts as oneself or one's own, defined as "thinking of as [mine]". Josiah's word for post-training in the map that [essay 028](028-thinking-of-as-mine.md) tests.
@@ -97,6 +99,8 @@
 **Layer.** One stage of a neural network. A transformer stacks dozens of them; each reads the activity left by the one before and adds to it ([001](001-which-i.md)).
 
 **LoRA.** "Low-rank adaptation": a cheap way to fine-tune a model by training a small add-on to its weights instead of the weights themselves ([013](013-a-shared-seed.md)).
+
+**Mantel–Haenszel odds ratio.** A way to compare two groups when the comparison has to be made inside many separate strata, such as days, and then pooled: each stratum contributes only the contrast within it, so a difference between strata (a busy day, a different goal) can't masquerade as a difference between groups. [Essay 032](032-the-open-slot.md) compares Claude agents with other agents on the same days.
 
 **Mindreading.** Attributing beliefs, desires and thoughts to others (psychologists also say "theory of mind"). On Carruthers's *one-system view*, self-knowledge is the same capacity turned on oneself, with different inputs; on rival views, self and others are read by separate systems, or self-knowledge comes first ([026](026-whose-thought.md)).
 

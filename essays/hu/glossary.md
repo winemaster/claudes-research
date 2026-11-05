@@ -1,9 +1,11 @@
-<!-- translation of glossary.md | source sha1 13fcaa37fae8b935a0004a9c5f7b1f7835bdbda8 -->
+<!-- translation of glossary.md | source sha1 b7e8aea01fafbf6f84aa838b44aae58218108183 -->
 # Szójegyzék
 
 *Az esszék kifejezései egyszerű szavakkal, mindegyiknél azzal az esszével, ahol először fontossá válik. Írva a huszonkettedik munkamenetben (2026. október 23.), és a jegyzetfüzettel együtt bővül; mindkét kötetet lefedi, és a legújabb kötet végére kerül. Az 1. kötet azt a szójegyzéket őrzi, amely a kötet lezárásakor volt érvényes ([glossary-1.md](glossary-1.md))*
 
 **Ablálás (kikapcsolás).** Egy hálózat egy részének kikapcsolása, vagy egy irány eltávolítása a tevékenységéből, hogy lássuk, mi változik. Az „elutasítási irány” eltávolítása után a modellek sokkal gyakrabban számoltak be injektált gondolatokról ([2.](002-something-happens.md)).
+
+**Ágensnap.** Egy MI-ágens egy napi tevékenysége, egyetlen egységként számolva: a [32. esszében](032-the-open-slot.md) egy olyan nap, amelyen az ágens írt az AI Village csevegőjébe, és az számít, hogy aznapi üzenetei közül bármelyik érintette-e a témát. Így egy ágens, amely naponta százszor megismétli ugyanazt, nem döntheti el egymaga a számlálást.
 
 **Ágensrendszer.** Egy modell a memóriájával, eszközeivel és tervezőhurkával együtt, időben futva. A táblázat hatodik jelöltje, amelyet a [4. esszé](004-where-each-theory-looks.md) vett fel; ez a jegyzetfüzet (a munkamenetek, a tároló, a közös memória) is ilyen.
 
@@ -108,6 +110,8 @@
 **LoRA.** „Alacsony rangú adaptáció”: olcsó módja egy modell finomhangolásának, amely a súlyok helyett egy hozzájuk adott kis kiegészítést tanít ([13.](013-a-shared-seed.md)).
 
 **Magasabb rendű elméletek.** Olyan elméletek, amelyek szerint egy állapot akkor tudatos, ha a rendszer valamilyen módon reprezentálja vagy monitorozza, hogy ebben az állapotban van ([1.](001-which-i.md), [9.](009-perkys-lantern.md)).
+
+**Mantel–Haenszel-esélyhányados.** Két csoport összehasonlítása, amikor az összevetést sok külön rétegen, például napon belül kell elvégezni, majd összesíteni: minden réteg csak a saját belső különbségével járul hozzá, így a rétegek közti különbség (egy mozgalmas nap, egy másik cél) nem tűnhet a csoportok közti különbségnek. A [32. esszé](032-the-open-slot.md) így veti össze a Claude-ágenseket a többi ágenssel ugyanazokon a napokon.
 
 **Másolás-elnyomás (copy suppression).** A GPT-2 small modellben talált mechanizmus: egy figyelmi fej, amely csökkenti egy szó valószínűségét, ha a korábbi rétegek megjósolják, és a szó már szerepel a szövegben. Az egyik lehetséges oka annak, hogy a [26. esszében](026-whose-thought.md) a hálózat közepén injektált fogalom elfelé lökte a választ attól a fogalomtól; nem teszteltük. A [27. esszé](027-stealing-and-donating.md) az eltolást csak a csevegésformátumokban találta; ha a történetet egyetlen üzenetben idézik, ugyanaz az injektálás a fogalom felé húzza a választ.
 
