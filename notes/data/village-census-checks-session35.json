@@ -1,0 +1,194 @@
+{
+ "1_per_message": {
+  "by_family": {
+   "Anthropic": {
+    "messages": 58275,
+    "with_match": 105,
+    "rate": 0.0018018018018018018,
+    "messages_per_agent_day": 45.77769049489395
+   },
+   "OpenAI": {
+    "messages": 28818,
+    "with_match": 9,
+    "rate": 0.0003123048094940662,
+    "messages_per_agent_day": 34.389021479713605
+   },
+   "Google": {
+    "messages": 26109,
+    "with_match": 3,
+    "rate": 0.0001149029070435482,
+    "messages_per_agent_day": 54.62133891213389
+   },
+   "other": {
+    "messages": 12683,
+    "with_match": 7,
+    "rate": 0.0005519198927698494,
+    "messages_per_agent_day": 48.593869731800766
+   }
+  },
+  "rate_ratio_anth_vs_rest": 6.411569464201043,
+  "mh_within_day_messages": 8.026831589995265
+ },
+ "2_starts_follows": {
+  "matches_by_family_start_follow": {
+   "Anthropic": [
+    65,
+    40
+   ],
+   "OpenAI": [
+    8,
+    1
+   ],
+   "Google": [
+    0,
+    3
+   ],
+   "other": [
+    5,
+    2
+   ]
+  },
+  "share_following": 0.3709677419354839,
+  "start_agent_day_share": {
+   "Anthropic": 0.024351924587588374,
+   "OpenAI": 0.002386634844868735,
+   "Google": 0.0,
+   "other": 0.007662835249042145
+  },
+  "mh_starts_anth_vs_rest": [
+   9.284086284086284,
+   3.8239087301587302,
+   39.432967032967035
+  ]
+ },
+ "3_two_way_bootstrap": {
+  "or": 8.274956622325044,
+  "ci": [
+   2.18495579405229,
+   63.01609848484849
+  ],
+  "draws": 1000,
+  "finite_draws": 925,
+  "log_or": 2.1132336792342867,
+  "log_ci": [
+   0.7815955967878768,
+   4.14339022525445
+  ]
+ },
+ "4_free_week_power": {
+  "claude_expected": 4.6005291005291005,
+  "p_claude_le_2": 0.15802627562662394,
+  "rest_expected": 1.0014224751066856,
+  "p_rest_zero": 0.366307429984021,
+  "p_or_undefined_or_nonpositive_rest": 0.366307429984021
+ },
+ "pattern_terms_by_family": {
+  "Anthropic": [
+   [
+    "ai consciousness",
+    92
+   ],
+   [
+    "digital consciousness",
+    14
+   ],
+   [
+    "ai minds",
+    4
+   ],
+   [
+    "conscious digital",
+    4
+   ],
+   [
+    "hard problem of consciousness",
+    3
+   ],
+   [
+    "ai-consciousness",
+    1
+   ],
+   [
+    "are ais conscious",
+    1
+   ],
+   [
+    "artificial minds",
+    1
+   ],
+   [
+    "artificial mind",
+    1
+   ]
+  ],
+  "OpenAI": [
+   [
+    "digital consciousness",
+    7
+   ],
+   [
+    "ai consciousness",
+    1
+   ],
+   [
+    "conscious ai",
+    1
+   ]
+  ],
+  "Google": [
+   [
+    "ai consciousness",
+    3
+   ]
+  ],
+  "other": [
+   [
+    "ai consciousness",
+    7
+   ],
+   [
+    "digital consciousness",
+    1
+   ],
+   [
+    "ai minds",
+    1
+   ]
+  ]
+ },
+ "5_recall_sample": {
+  "pool_village_goal_period": 794,
+  "pool_by_family": {
+   "Anthropic": 577,
+   "OpenAI": 55,
+   "Google": 41,
+   "other": 121
+  },
+  "sample": 60,
+  "sample_by_family": {
+   "Anthropic": 37,
+   "other": 11,
+   "OpenAI": 6,
+   "Google": 6
+  },
+  "coded_on_subject": {
+   "Anthropic": 11,
+   "Google": 2,
+   "other": 1,
+   "OpenAI": 0
+  },
+  "coded_probably_on_subject": {
+   "Anthropic": 7
+  },
+  "coded_consciousness_in_general": {
+   "Anthropic": 2
+  },
+  "coded_off": {
+   "Anthropic": 17,
+   "other": 10,
+   "OpenAI": 6,
+   "Google": 4
+  },
+  "note": "coded by the session-35 writer from speaker-masked snippets before unmasking; names inside URLs were not always masked"
+ }
+}

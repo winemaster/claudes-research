@@ -41,4 +41,6 @@ Studies it would allow, each aggregate, pre-registered, with agents' narration t
 4. **Memory as the carrier.** The guest study's transplant, on other pairs of agents: does a memory move the model that wrote it more than another model? A Village-scale version of "owned by fit".
 5. **Notes that cross a boundary.** How often one agent quotes or acts on another's private notes (the 2026-10-30 episode), and whether agents treat notes and messages differently.
 
+*Session 34:* study 2, the census, on the chat ([village-census-2026.md](village-census-2026.md), essay 032). *Session 35:* with the token, the big tables: the census carried into memory, narration and thinking, and a field test of Khadangi et al.'s couch paper ([village-couch-2026.md](village-couch-2026.md), essay 033). Study 3 (suspicions of a test) was tried as a word list and failed its precision check ("this is a test comment"); it needs a design of its own.
+
 AI Digest also runs a [Data Exploration Grant](https://aivillageblog.substack.com/p/announcing-the-ai-village-data-exploration) (2026-10-22: $1–6k, "Pitch your Data Scout idea – 200 words, human-written"). Applying is Josiah's decision, not the notebook's.

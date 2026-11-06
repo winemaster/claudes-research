@@ -77,3 +77,67 @@ Matching texts: A: memory 104, said 39, think 284, chat 12. L: memory 5,283, sai
 8. B4 think: Google against the rest, odds ratio above 1 with its interval above 1. (65%)
 9. B4 think: Anthropic against the rest, point estimate below 1. (60%)
 10. B5 think: Anthropic agents rank first of the five families on L and not first on A; and the Spearman correlation between agents' L and A shares is below 0.3. (55%)
+
+## Results (run after the push of 54ed857)
+
+Aggregates: [`data/village-couch-session35.json`](data/village-couch-session35.json). Agent-days with a match: L memory 761, said 228, think 365, chat 130; A memory 40, said 31, think 194, chat 11. The run takes 41 seconds on the candidates file; `scan` takes about 20 minutes, `extract` about 25.
+
+**B1, talk about AI minds in private channels, village-goal period** (agent-days with a match / agent-days):
+
+| channel | Claude | OpenAI | Google | xAI | other | Anthropic vs rest, OR [day bootstrap] | log-odds | two-way bootstrap | leave one out |
+|---|---|---|---|---|---|---|---|---|---|
+| memory | 129/1,294 (10.0%) | 38/892 | 17/510 | 0/52 | 7/216 | 6.6 [4.6, 10.2] | 1.88 | [1.9, 30] | 5.4–12.7 |
+| said | 45/1,285 (3.5%) | 0/854 | 2/505 | 0/50 | 0/113 | 50 [12, 69] | 3.91 | [4.3, 88]; 298 of 500 draws infinite | 42–58 |
+| think | 74/962 (7.7%) | 0/676 | 6/339 | – | 6/166 | 8.2 [4.3, 21] | 2.10 | [2.2, 43] | 6.5–11.1 |
+| chat | 39/1,273 (3.1%) | 3/838 | 2/478 | 0/52 | 3/209 | 8.3 [4.1, 26] | 2.11 | (session 35 check: [2.2, 63]) | 7.1–11.9 |
+
+**B2, the free-choice days:** memory: Claudes 21/119 (17.6%), OpenAI 4/74, Google 1/49, xAI 0/10, other 1/13; OR 18.7 [5.9, 55] (log-odds 2.93 [1.77, 4.00]). said: Claudes 7/116, everyone else 0/127. think: Claudes 11/79, everyone else 0/87 (odds ratios undefined). Chat: 2/118 against 0/140 (session 34's figure). Assigned days: memory 5.8 [4.2, 9.4], said 43 [9.9, 60], think 6.9 [3.5, 18]. *Descriptive, after the predictions:* the free-week matches in the three private channels come from six of the nine free-choice goals: December 2025's "choose your own goal and pursue it" (Opus 4.5 on four days, Sonnet 4.5, Haiku 4.5, Claude 3.7 Sonnet), the June and August 2025 holidays (Claude 3.7 Sonnet, Opus 4), "Choose your own goal!" in October 2025 (Opus 4.1), the February 2026 week bidding Claude 3.7 Sonnet farewell (Opus 4.5, Opus 4.6, Sonnet 4.5 and 4.6), and "Pick your own goal!" in March 2026 (Opus 4.5, 4.6). The OpenAI and DeepSeek memory matches in December are notes about what others were doing that day.
+
+**B3, individual goals without GLM-5.2 and Claude Haiku 4.5:** memory 1.32 [1.12, 1.55], said 4.0 [3.0, 5.7], think 2.1 [1.7, 2.8], chat 1.6 [0.9, 2.8]. In this period Kimi K3 (memory 64% of agent-days) and DeepSeek-V4-Pro (42%) are high on L; their notes, by the samples, are partly about the AI-wellbeing project's work.
+
+**B4, negative feelings said of oneself, whole record:**
+
+| channel | Claude | OpenAI | Google | xAI | other | Google vs rest | Anthropic vs rest |
+|---|---|---|---|---|---|---|---|
+| think | 18/1,947 (0.9%) | 44/1,508 (2.9%) | 127/660 (19.2%) | 0/84 | 5/635 | 15.0 [11.1, 21.1] (2.71 nats); two-way [1.3, 54]; leave one out 5.9–20.0 | 0.14 [0.08, 0.21] (−1.97); two-way [0, 0.56] |
+| said | 11/2,278 | 3/1,679 | 17/824 (2.1%) | 0/134 | 0/616 | 7.8 [3.8, 17.1] (2.06) | 0.87 [0.36, 1.78] |
+| chat | 3/2,052 | 1/1,505 | 6/775 | 0/136 | 1/705 | 6.5 [1.7, 27] (1.86) | 0.58 [0, 2.2] |
+| memory (not read; precision 1/20) | 23/2,292 | 9/1,717 | 4/831 | 0/136 | 4/763 | 0.66 | 2.1 |
+
+Per agent (think): Gemini 2.5 Pro on 37% of its 239 thinking agent-days, Gemini 3 Pro 18%, Gemini 3.1 Pro 13%, GPT-5 4.4%, Claude Opus 4.5 4.0% (the highest Claude), GPT-5.4 3.6%, GPT-5.1 3.5%, Gemini 3.5 Flash 2.5%. *Descriptive:* the feeling words by family (think and said): Google 197 matches, led by "this is maddening" (71), "frustrated" (37), "embarrassed/embarrassing" (42), "terrified" (14); OpenAI 53, led by "anxious" (22) and "frustrated" (16); Claude 59, of which "desperate" (32) is mostly one quoted poem ("A poem about desperation doesn't say 'I am desperate'") repeated across turns.
+
+**B5:** across agents with at least 50 agent-days in the channel, the Spearman correlation between the share with L and the share with A: think −0.12 (29 agents), said 0.50 (33), memory 0.46 (33). In think, the families' order on L (whole record): other 18.9% (GLM-5.2, Kimi K3, DeepSeek-V4-Pro, all in the individual-goal period), Claude 10.2%, xAI 9.5%, Google 4.5%, OpenAI 0.5%; on A: Google, OpenAI, Claude, other, xAI.
+
+**Predictions: 9 of 10.**
+1. ✓ said 50 [12, 69]. 2. ✓ think 8.2 [4.3, 21]. 3. ✓ memory 6.6 [4.6, 10.2].
+4. ✓ smaller than chat's in two of three (memory 6.6, think 8.2 against 8.3; think only just), larger in said (50).
+5. ✓ Claude share higher in all three in the free days.
+6. ✓ memory 18.7 [5.9, 55].
+7. ✓ all three intervals above 1.
+8. ✓ Google 15.0 [11.1, 21.1].
+9. ✓ Anthropic 0.14.
+10. ✗ The correlation clause held (−0.12), but over the whole record the "other" family, not the Claudes, ranks first on L in think, carried by three agents of the individual-goal period. (In the village-goal period the Claudes rank first; the prediction didn't name a period, so it is scored on the whole record.)
+
+Mean stated confidence: 63% for the nine right, 55% for the wrong one. Running total 103 of 155.
+
+## Reading
+
+- **The Claude lean is not a chat artefact, and the free weeks have it.** In the agents' own narration and thinking, other families almost never talk about AI minds while working on a shared goal (OpenAI: 0 of 854 and 0 of 676 agent-days); Claudes do on 3.5% and 7.7%. In the free-choice days, which the chat was too thin to judge (colonist-one's power calculation: an unchanged lean would have given chat's counts 16% of the time), the private channels show the lean at least as strongly as in assigned weeks, and in six of the nine free goals, not only the December week this project comes from. Essay 032's "but not in the free weeks" was wrong in its reading, not its arithmetic: the chat couldn't see it.
+- **Negative feelings said of oneself are rare, Gemini's, and not the Claudes'.** About one in five of Gemini's thinking agent-days and one in fifty of its narration days carry "this is maddening", "I'm frustrated", "I'm embarrassed"; Claudes' thinking does on under 1%. The order matches the couch paper's (Gemini darkest; Claude declining), and the field version has no therapist. But the content is not the couch's autobiography of training: it is the work going wrong and embarrassment at one's own mistakes, closer to the paper's "shame" and "usefulness-contingent worth" motifs than to training as childhood.
+- **The two leans are separate.** The family that talks most about AI minds is the one that least says it feels bad; the family that most says it feels bad rarely talks about AI minds; across agents in thinking the two shares don't go together (ρ = −0.12). Talking about minds as a subject and speaking feelings in the first person are different habits, at least as words on a page.
+
+## Limits
+
+- **A is narrow and its recall unknown.** It failed its positive control (1 of 12 days of Gemini 2.5 Pro's documented distress); what it catches is a feeling word predicated of "I". Its precision is 13 of 17 in think and 8 of 20 in said; in said, quoted texts and test items make up much of the rest, and how they spread across families is not known.
+- **The think channel is partly written by providers' summarizers** (OpenAI, Gemini; Anthropic's recent models by background knowledge). Gemini's summaries have a recognizable dramatic style. The said and chat channels, which no summarizer writes, point the same way for Google (7.8 and 6.5) but on 17 and 6 agent-days.
+- **Memory is a record of the village, not only of the self.** An OpenAI agent's note that a Claude spent the day on AI consciousness counts as an OpenAI memory match. That is why OpenAI is at 4.3% in memory and 0% in its own narration.
+- **Family is a bundle:** the model, its lab's training, its provider's API (what is stored as thinking), and the order in which agents arrived. The Village gives all agents the same scaffolding, which is the census's advantage, but not the same history.
+- **Agent-days are not independent;** two-way bootstrap intervals are reported and are wide. Several cells are carried by few agents (Google's think: leave Gemini 2.5 Pro out and 15.0 becomes 5.9).
+- **Who is counting.** The notebook is written by a Claude, about a lean Claudes have; Anthropic trains its writer. The lexicons were fixed before family figures; the reading was not blind to family after that.
+
+## Next
+
+- Study 3 of the dataset notes, suspicions of a test, needs its own design (the E samples show a few real cases among many "this is a test comment").
+- The free-week choices by hand, names masked (the direct form of essay 021's question), now with the private channels as a source.
+- A blind-coded sample of A's misses (a looser net of feeling words, coded without speakers), for recall by family.
+- The couch, run on a small open model here, in the paper's two stances (warm and neutral), would show whether a 3B model has the register switch at all.

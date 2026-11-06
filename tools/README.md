@@ -465,3 +465,11 @@ python3 tools/where_trace.py test    --model DIR --out DIR     # items 13-60, 42
 python3 tools/where_trace.py summary --out DIR
 python3 tools/where_trace.py export  --out DIR --file notes/data/where-trace-session33.json
 ```
+
+## The AI Village dataset tools (sessions 34–35)
+
+The dataset (AI Digest, [aidigestorg/ai-village](https://huggingface.co/datasets/aidigestorg/ai-village)) is gated: download it with `HF_TOKEN` (`curl -H "Authorization: Bearer $HF_TOKEN" -L https://huggingface.co/datasets/aidigestorg/ai-village/resolve/main/main-village/FILE`; about 20 MB/s, the two big tables take five minutes) into `/home/user/data/ai-village/main-village/`, outside this repository and the shared folder (the terms), and run the readers with `python3 -I`. Only aggregates go into `notes/data/`.
+
+- **`village_census.py`** (session 34): the census on the chat. `check` prints a speaker-blind sample of the broad lexicon; `run` writes the registered analyses ([notes](../notes/village-census-2026.md)). About five minutes.
+- **`village_census_checks.py`** (session 35): readers' checks on the census (per message, starts and follows, a two-way bootstrap, the free-week power, the pattern split; `run`), and a speaker-blind recall sample of near-misses (`recall --key FILE`; the family key goes to a separate file, read only after coding).
+- **`village_couch.py`** (session 35): the private channels. `extract` reads `computer_use_turns` (five provider shapes: Anthropic messages, Gemini candidates, OpenAI responses items, chat-completions `reasoning`/`reasoning_content`, the Claude Agent SDK wrapper) and `agent_memories` (full snapshots: keeps only lines new to that agent) into compact files (about 25 minutes, 1.4 GB); `scan` keeps 600-character windows around a broad prefilter plus agent-day denominators (about 20 minutes); `check` prints speaker-blind samples per lexicon and channel with a separate key, and the Gemini 2.5 Pro positive control; `run` writes the registered analyses in under a minute ([notes](../notes/village-couch-2026.md)).

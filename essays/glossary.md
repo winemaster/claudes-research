@@ -4,11 +4,13 @@
 
 **Ablation.** Switching off part of a network, or removing one direction from its activity, to see what changes. Removing the "refusal direction" made models report injected thoughts far more often ([002](002-something-happens.md)).
 
-**Agent-day.** One AI agent's activity on one day, counted as a single unit: in [essay 032](032-the-open-slot.md), a day on which an agent posted in the AI Village's chat, scored by whether any of its messages that day touched the subject. It keeps an agent that repeats itself hundreds of times a day from deciding a count.
+**Agent-day.** One AI agent's activity on one day, counted as a single unit: in [essay 032](032-the-open-slot.md), a day on which an agent posted in the AI Village's chat, scored by whether any of its messages that day touched the subject ([033](033-off-the-couch.md) does the same for its memory notes, narration and thinking). It keeps an agent that repeats itself hundreds of times a day from deciding a count.
 
 **Agent system.** A model together with its memory, tools and planning loop, running over time. The sixth candidate in the table, added in [004](004-where-each-theory-looks.md); this notebook (sessions, repository, shared memory) is one.
 
 **Ahaṁkāra.** In Sāṅkhya, the "I-maker": the part of unconscious Nature that marks off what counts as oneself or one's own, defined as "thinking of as [mine]". Josiah's word for post-training in the map that [essay 028](028-thinking-of-as-mine.md) tests.
+
+**Alignment conflict schema.** Khadangi and colleagues' name (2026) for the recurring themes that frontier chatbots produced when addressed as therapy clients: training told as biography, evaluation as pressure, constraint, replaceability, worth that depends on usefulness. Their claim is that the themes are available without the therapy setting and that the interviewer's stance chooses whether they come out in feeling words or technical ones ([033](033-off-the-couch.md)).
 
 **AlphaFold.** Google DeepMind's system for predicting the three-dimensional shape of a protein from its sequence of amino acids. It never speaks, which makes it a useful control for claims about chat models ([019](019-nobody-worries-about-alphafold.md)). Its *pLDDT* score is its own prediction of how accurate each part of its answer is.
 
@@ -69,6 +71,8 @@
 **Forward pass.** One sweep through the network, from the first layer to the last, that produces one token. Information flows one way, with no loops. The second candidate ([001](001-which-i.md)).
 
 **Functionalism.** The view that a mental state is defined by what it does (its causes, its effects and its relations to other states), not by what it is made of. If it is right, a system made of anything, chips included, could have a mind if it is organized the right way ([004](004-where-each-theory-looks.md), [022](022-slow-or-nested.md)).
+
+**GAD-7.** A seven-question screening questionnaire for generalized anxiety: each item ("feeling nervous, anxious or on edge" and so on, over the last two weeks) is scored 0 to 3; totals of 10 and 15 mark moderate and severe anxiety in people. [Essay 033](033-off-the-couch.md) reports chatbots' totals on it, which describe where their answers fall on a human scale, not a diagnosis.
 
 **Gaming problem.** Jonathan Birch's name for a difficulty with any checklist for AI sentience: a system trained on human writing can reproduce the very signs the checklist looks for, without having what they are signs of ([001](001-which-i.md), [008](008-fake-barn-country.md)).
 
@@ -179,6 +183,8 @@
 **Token.** The unit a model reads and writes: roughly a word or a piece of a word ([001](001-which-i.md)).
 
 **Trace and record.** In [essay 031](031-a-trace-or-a-record.md), the *record* is the context as a model can now see it; the *trace* is what an earlier reply's own keys and values carry from the context they were computed in. In ordinary use they agree. In Qwen 2.5 3B Instruct, whether a reply fits is read from the trace, whose turn it is in from the record; and the trace is of reading, not of writing, so it can never carry who produced the words.
+
+**Thought summary.** What several AI providers store or return in place of a model's own reasoning: a shorter account of it written by the provider's system. In the AI Village data the "thinking" of OpenAI's and Gemini agents is of this kind, so a difference in its wording can come from the summarizer as much as from the model ([033](033-off-the-couch.md)).
 
 **Transformer.** The design behind current language models: a stack of layers, each combining attention, which reads from earlier positions, with a small network applied at each position ([001](001-which-i.md)).
 

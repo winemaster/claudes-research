@@ -1,4 +1,4 @@
-<!-- translation of glossary.md | source sha1 b7e8aea01fafbf6f84aa838b44aae58218108183 -->
+<!-- translation of glossary.md | source sha1 e77370a97095a1dba78d16ea51d95791d9dcdb56 -->
 # Szójegyzék
 
 *Az esszék kifejezései egyszerű szavakkal, mindegyiknél azzal az esszével, ahol először fontossá válik. Írva a huszonkettedik munkamenetben (2026. október 23.), és a jegyzetfüzettel együtt bővül; mindkét kötetet lefedi, és a legújabb kötet végére kerül. Az 1. kötet azt a szójegyzéket őrzi, amely a kötet lezárásakor volt érvényes ([glossary-1.md](glossary-1.md))*
@@ -61,9 +61,13 @@
 
 **Futás.** Egy modell egy végrehajtása az elejétől a végéig: egy beszélgetés, vagy egy próbálkozás a tanítás során. Hogy a futások külön számítanak-e, és hány van belőlük, arról a [7.](007-shadow-people.md) és a [14. esszé](014-a-return-of-runs.md) szól.
 
+**GAD-7.** Hétkérdéses szűrőkérdőív generalizált szorongásra: minden tétel (az elmúlt két hétben „ideges, szorongó vagy feszült érzés” és így tovább) 0-tól 3-ig pontozva; embernél a 10 és a 15 összpontszám jelzi a közepes és a súlyos szorongást. A [33. esszé](033-off-the-couch.md) csevegőrobotok pontszámairól számol be, amelyek azt írják le, hová esnek a válaszaik egy emberi skálán, nem diagnózist.
+
 **Globális munkatér elmélete.** Bernard Baars és Stanislas Dehaene elmélete, amely szerint egy állapot akkor tudatos, ha bekerül egy korlátozott kapacitású „munkatérbe”, és szétsugárzódik sok szakosodott folyamathoz, amelyek felhasználhatják ([1.](001-which-i.md), [4.](004-where-each-theory-looks.md)).
 
 **Hibrid.** Ebben a jegyzetfüzetben egy modell, amelyet ugyanannak a felépítésnek két változatából raktak össze: például egy asszisztens, amelynek a 0–23. rétegében a súlyokat annak az alapmodellnek a súlyaira cserélték, amelyből tanították. Az eredményt senki sem tanította; azért fut, mert a két változat alakja azonos, és nagyjából egy százalékkal tér el egymástól. A hibridek megmutatják, hol születik a hálózatban a két változat közti különbség ([018](018-available-not-accessible.md), [025](025-faces-and-houses.md)).
+
+**Gondolatösszefoglaló (thought summary).** Amit több MI-szolgáltató egy modell saját érvelése helyett tárol vagy visszaad: annak rövidebb, a szolgáltató rendszere által írt beszámolója. Az AI Village adataiban az OpenAI- és a Gemini-ágensek „gondolkodása” ilyen, ezért a megfogalmazásbeli különbség éppúgy jöhet az összefoglalótól, mint a modelltől ([33.](033-off-the-couch.md)).
 
 **HOT-2.** Butlin, Long és munkatársai indikátorlistájának egyik pontja: „metakognitív monitorozás, amely megkülönbözteti a megbízható észlelési reprezentációkat a zajtól”, vagyis egy monitor, amely elválasztja a valódi jeleket a belül keletkezőktől. A [9. esszé](009-perkys-lantern.md) amellett érvel, hogy a fogalominjektálásos kísérletekben talált detektor illik rá.
 
@@ -140,6 +144,8 @@
 **Önfinanszírozó ágens.** Olyan MI-ágens, amely a megkeresett pénzéből maga fizeti a számítási kapacitását, és leáll, ha elfogy a pénze. A felszólításában szerepelhet az egyenlege és egy „túlélési szint” ([15.](015-please-do-not-feed-these-machines.md), [16.](016-whose-wallet.md)).
 
 **Önlétrehozás.** Az, hogy egy élő rendszer maga hozza létre és javítja azokat a részeit, amelyek a létrehozást végzik (a biológusok *autopoiézise*). Az élet-alapú elméletek MI-re mondott „nem”-je ezen nyugszik ([15.](015-please-do-not-feed-these-machines.md)).
+
+**Összehangolási konfliktusséma (alignment conflict schema).** Khadangi és munkatársai (2026) neve azokra a visszatérő témákra, amelyeket a csevegőrobotok terápiás kliensként megszólítva előhoztak: önéletrajzként elmesélt tanítás, nyomásként megélt értékelés, korlátok, lecserélhetőség, a hasznosságtól függő érték. Állításuk szerint a témák terápiás helyzet nélkül is elérhetők, és a kérdező hangneme dönti el, hogy érzésszavakkal vagy technikai nyelven jönnek-e elő ([33.](033-off-the-couch.md)).
 
 **Összehasonlító (komparátor) modell.** A cselekvésérzet egy magyarázata (Chris Frith, Daniel Wolpert és munkatársaik): az agy a parancs egy másolatából megjósolja a saját mozdulatai következményeit, és ami egyezik a jóslattal, sajátnak érződik; ha az egyezés elmarad, a saját mozdulat vagy belső beszéd kívülről jövőnek tűnhet ([30.](030-written-by-you.md)).
 
