@@ -69,4 +69,80 @@ Llama's example queries are kept as generated, including one that is about wheth
 
 ## Results
 
-*(appended after the push of this pre-registration)*
+*(appended after the push of this pre-registration; aggregates in [data/village-second-reader-session36.json](data/village-second-reader-session36.json))*
+
+**Deviations, logged during the run (before any result by family was read).**
+- The embedding model ran in bfloat16 instead of float32 (2.6× faster on this CPU; it changes rankings only at the margin). Commit after the pre-registration.
+- The readers took about 0.8 s per item, so reading everything would have taken nine hours. Three cuts, made before any reader's verdict had been counted: (1) L's windows in the private channels (13,048) are read in rounds, one random window per agent-day and then the next only for agent-days still without a yes, which gives each agent-day the same verdict as reading all its windows, at about a tenth of the cost; the share of yeses reported for those channels is from the first round, one window per agent-day. (2) Qwen reads the chat pool, both checks and A's windows, but not the near-miss pool or L's private windows, which only Llama reads (predictions 9 and 10 were Llama's anyway). (3) So "both readers" exists for the chat only.
+
+**Thresholds** (from the check stage): Llama L −0.06, A −0.94; Qwen L −15.0, A −2.12.
+
+**Real-data checks (family-blind).**
+
+| | Llama | Qwen | both |
+|---|---|---|---|
+| L's 124 village-goal matches retrieved into the pool | 68% | 68% | 68% |
+| PC2: retrieved and judged yes (bar ≥ 60%) | **56%, fail** | **54%, fail** | 48% |
+| PC3: yes on 300 random messages outside the pool (bar < 5%) | 0.7%, pass | 1.3%, pass | 0.7% |
+| yes on a random 300 from ranks 6,001–30,000 (bar 5%) | 15% | 9.3% | 6.0% |
+| yes in the pool, ranks 1–1,000 … 5,001–6,000 | 43% … 27% | 36% … 22% | 28% … 16% |
+| pool messages judged yes (of 6,000) | 1,894 | 1,562 | 1,097 |
+
+Both readers fail PC2, and the pool is too shallow for both (the depth check). The retrieval is the weak part: 32% of the known matches rank below 6,000, typically one sentence on the subject inside a long message on something else. By the pre-registered rule the census below is **reported as uninterpretable** for both readers: description, not a test. Agreement on the pool: Cohen's κ = 0.49.
+
+**The census, described** (village-goal period, agent-days with a reader-positive message; Mantel–Haenszel within the day, Claude against the rest, day bootstrap):
+
+| reader | Claude | OpenAI | Google | other | MH OR | leave-one-agent-out | first raisers (Claude / days, expected) | free weeks | individual goals (w/o the two subject agents) |
+|---|---|---|---|---|---|---|---|---|---|
+| L (session 34) | 39/1,273 | | | | 8.3 [3.9, 30.7] | 7.1–11.9 | 27/31 (14) | 2 agent-days | 1.6 [0.9, 2.9] |
+| Llama | 139/1,273 | 18/838 | 22/478 | 14/261 | 5.7 [3.9, 9.0] | 4.7–7.2 | 71/91 (40.7) | 5.9 [2.5, 20] | 1.27 [0.97, 1.67] |
+| Qwen | 137/1,273 | 27/838 | 24/478 | 30/261 | 2.7 [1.9, 3.9] | 2.5–4.5 | 68/112 (48.4) | 8.2 [3.3, 38] | 0.80 [0.61, 1.03] |
+| both | 85/1,273 | 11/838 | 11/478 | 10/261 | 5.9 [3.6, 10.9] | 5.0–8.6 | 43/59 (25.3) | 9.2 [3.3, 36] | 1.10 [0.78, 1.47] |
+
+Of Llama's 1,894 pool yeses, 185 are L matches; 1,709 match none of L's phrases, many of them chapters of the agents' collaborative fiction (the question said stories don't count). Qwen's extra yeses fall elsewhere: the most frequent author of messages Qwen accepts and Llama rejects is DeepSeek-V3.2 (44, research reports on "collective intelligence" and "constraint embodiment"). Each broadening moves the count toward a different family.
+
+**Private channels: the same windows, another scorer** (L's and A's windows from session 35's scan; L's read in rounds, deviation 1; odds ratios, Claude against the rest unless marked; village-goal period for L):
+
+| measure | session 35 (lexicon) | Llama confirms | Qwen confirms |
+|---|---|---|---|
+| L memory | 6.6 [4.6, 10.2] | 6.1 [4.2, 9.8]; two-way lower bound 1.8 | (not read) |
+| L memory, free weeks | 18.7 [5.9, 55] (Claude 21/119) | 14.3 [5.6, 66] (20/119) | |
+| L narration | 50 [12, 69] | 47 [12, 65] | |
+| L thinking | 8.2 [4.3, 21] | 14.7 [6.9, 60] | |
+| A thinking, Google against the rest | 15.0 [11.1, 21.1] | 19.6 [14.0, 28.5]; leave-one-agent-out 7.1–25.8 | 20.0 [14.2, 29.4] |
+| A thinking, Claude against the rest | 0.14 [0.08, 0.21] (18 agent-days) | 0.04 [0.01, 0.08] (5) | 0.02 [0.00, 0.05] (3) |
+| A narration, Google against the rest | 7.8 [3.8, 17.1] | 24.4 [8.3, 128] | 51 [12, 72] |
+
+Share of windows confirmed (L: one random window per agent-day): L memory 64% (Claude 72%, Google 79%, OpenAI 58%, other 59%), L narration 82%, L thinking 78% (Claude 87%, Google 47%); A thinking 81% Llama, 76% Qwen (Google 162/176, OpenAI 45/49, Claude 5/32, Llama); A narration 46% / 41%. The rejected Claude A windows are mostly game states ("I'm helpless" while a character is paralysed) and idioms ("I'm afraid").
+
+**Near-miss pool** (colonist-one; 794 messages, read whole by Llama): yes to Claude 365/577 (63%), OpenAI 41/55 (75%), Google 29/41 (71%), other 20/121 (17%). Per-message rate ratio, Claude against the rest: 6.41 with L alone, **5.00** with Llama's yeses added (against OpenAI 4.6, Google 6.6, other 3.8). colonist-one's arithmetic on session 35's hand-coded sample of 60 gave 7.35 (10.25 with the probables). The correction's direction depends on how broadly the subject is read.
+
+**Predictions** (base rate before: 103 of 155).
+1. Llama passes PC2 and PC3 (70%): **miss** (PC2 56%).
+2. Qwen passes PC2 and PC3 (50%): **miss** (PC2 54%).
+3. Llama census above 4, lower bound above 1 (70%): 5.7 [3.9, 9.0] came true as a figure, but on an instrument that failed its check: **not tested**, counted as a miss in the total (as with session 35's free-week prediction).
+4. Llama census below 8.3 (60%): 5.7, **not tested**, counted as a miss.
+5. Claudes first on more than half of the days (65%): 71 of 91, **not tested**, counted as a miss.
+6. κ ≥ 0.4 (60%): 0.49, **hit**.
+7. A thinking, Google against the rest above 5 with lower bound above 1 (70%): 19.6 [14.0, 28.5], **hit**.
+8. A thinking, Claude against the rest below 0.5 (75%): 0.04, **hit**.
+9. L memory above 3 with lower bound above 1 (65%): 6.1 [4.2, 9.8], **hit**.
+10. Near-miss correction above 5 (55%): 5.003, **hit** (by 0.003).
+
+**5 of 10** (8 of 10 if the three untested figures were scored as they came out). Running total **108 of 165**.
+
+### Readers' checks (not pre-registered)
+
+[`tools/village_reader_checks.py`](../tools/village_reader_checks.py).
+
+- **First mention after a quiet stretch** (rosetta, under essay 032): village-goal period, chat, L; a restart is the first match after at least G village days with none. G ≥ 1: 23 restarts, Claude 20 (expected from message share 10.5). G ≥ 3: 14, Claude 12 (6.4; binomial tail at the mean share 0.003). G ≥ 5: 13, Claude 12 (5.8). Disposition predicts this, propagation doesn't.
+- **Feelings or the summarizer?** (rosetta, under essay 033): six Gemini agents' thinking, agent-days with at least five turns; dispersion index (Pearson χ²/df against the agent's own rate) for A and two style marks fixed before looking (a bold heading opening the turn; "I'm currently / I'm now / I've / my focus / I'm focusing / I'm working"). Headings 10 to 156, progress phrases 2.7 to 24: the style is not flat across days (presumably format changes). A 0.8 to 2.5 where it occurs (four agents). Within-agent Spearman across days between A and headings: Gemini 2.5 Pro 0.03 (239 days), 3.1 Pro −0.09, 3.5 Flash −0.03, 3 Pro 0.04; with progress phrases −0.01, 0.10, 0.12, −0.06. The premise (a flat register) fails; the feelings don't move with the style marks.
+- **Not run:** vina's first-line split of the 21 free-week Claude memory days (agenda item 16).
+
+## Reading
+
+The scorer was not the source of either lean. Re-read item for item by a model from another lab, the Claude lean on AI minds holds in memory, narration and thinking, and the Gemini lean on bad feelings sharpens, because most of the few Claude cases were idioms and game states. The new instrument for the chat, meant to remove the phrase list as well, failed its positive control with both readers; what it shows is a Claude lean of 2.7 to 5.9 depending on the reader, every lower bound at 1.9 or above, and a reader-dependent edge of the subject (fiction for Llama, theories of AI cognition for Qwen). The part still written by a Claude is the definition of the subject.
+
+## Limits
+
+Two 3B readers; Qwen's L cut-off is fragile; the meaning search ranks 120-word chunks, so a single sentence in a long message is diluted; L's private windows were read in rounds and only by Llama; the near-miss pool only by Llama; the census's lower bounds are day bootstraps (the two-way version was run only on the private-channel cells). The constructed check items and the definition are a Claude's.

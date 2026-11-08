@@ -160,7 +160,7 @@ def embed(args):
     mask = VK.masker(agents)
     qs = json.load(open(f"{args.derived}/queries.json"))
     qtexts = ["A message about " + qs["definition"] + "."] + qs["examples"]
-    m = SentenceTransformer(EMBEDDER, device="cpu")
+    m = SentenceTransformer(EMBEDDER, device="cpu", model_kwargs={"dtype": torch.bfloat16})
     m.max_seq_length = 256
     qv = m.encode(qtexts, normalize_embeddings=True)
     rows = [(i, mm) for i, mm in enumerate(msgs) if mm["agent"]]
@@ -174,7 +174,7 @@ def embed(args):
     B = 4096
     for s in range(0, len(flat), B):
         v = m.encode(flat[s:s + B], normalize_embeddings=True, batch_size=128)
-        sim = (v @ qv.T).max(1)
+        sim = (v.astype("float32") @ qv.astype("float32").T).max(1)
         for j, x in enumerate(sim):
             k = owner[s + j]
             if x > best[k]:
@@ -225,8 +225,20 @@ def items_to_judge(args):
                     if r["c"] in chs:
                         x = VK.RX[k].search(w)
                         if x:
-                            out.append((k, "lex_" + r["c"], window(mask, w, x)))
-    return out
+                            out.append((k, "lex_" + r["c"], window(mask, w, x), (r["c"], r["a"], r["d"])))
+    return [o if len(o) == 4 else o + (None,) for o in out]
+
+
+def l_groups(items):
+    """L's private-channel windows grouped by (channel, agent, day), each group in a fixed random order."""
+    g = collections.defaultdict(list)
+    for task, part, x, key in items:
+        if task == "L" and part.startswith("lex_") and x not in g[key]:
+            g[key].append(x)
+    rnd = random.Random(SEED)
+    for key in sorted(g):
+        rnd.shuffle(g[key])
+    return g
 
 
 def window(mask, text, m):
@@ -235,33 +247,62 @@ def window(mask, text, m):
 
 
 def judge(args):
+    """Chat parts and A's windows are read whole. L's private-channel windows (about 13,000) are read in rounds to fit
+    the CPU time (session 36, logged as a deviation): one window per agent-day, then the next window only for
+    agent-days still without a yes. An agent-day's verdict is the same as if every window had been read."""
     path = f"{args.derived}/scores_{args.reader}.jsonl"
-    done = set()
-    if os.path.exists(path):
-        done = {json.loads(l)["h"] for l in open(path)}
-    todo, seen = [], set()
-    for task, part, x in items_to_judge(args):
-        k = h(task, x)
-        if k in done or k in seen:
+    thr = json.load(open(f"{args.derived}/controls.json"))[args.reader]
+    S = load_scores(args.derived, args.reader) if os.path.exists(path) else {}
+    items = items_to_judge(args)
+    rd = None
+    t0 = time.time()
+    fo = open(path, "a")
+
+    def score(batch):
+        nonlocal rd
+        todo = [(t, k, x) for t, k, x in batch if k not in S]
+        if not todo:
+            return
+        if rd is None:
+            rd = Reader(args.reader)
+        todo.sort(key=lambda r: len(r[2]))
+        for s0 in range(0, len(todo), 64):
+            part = todo[s0:s0 + 64]
+            for task in ("L", "A"):
+                sub = [p for p in part if p[0] == task]
+                if sub:
+                    for (t, k, _), v in zip(sub, rd.score(task, [x for _, _, x in sub])):
+                        S[k] = v
+                        fo.write(json.dumps({"h": k, "t": t, "s": v}) + "\n")
+            fo.flush()
+            score.n += len(part)
+            print(f"{score.n} judged, {time.time() - t0:.0f} s", flush=True)
+    score.n = 0
+    whole = {}
+    for task, part, x, key in items:
+        if part.startswith("lex_") and task == "L":
             continue
         if args.part and part not in args.part:
             continue
-        seen.add(k); todo.append((task, k, x))
-    print(args.reader, "to judge", len(todo), collections.Counter(t for t, _, _ in todo), flush=True)
-    rd = Reader(args.reader)
-    t0 = time.time()
-    with open(path, "a") as fo:
-        for s in range(0, len(todo), 64):
-            part = todo[s:s + 64]
-            for task in ("L", "A"):
-                sub = [p for p in part if p[0] == task]
-                if not sub:
-                    continue
-                sc = rd.score(task, [x for _, _, x in sub])
-                for (t, k, _), v in zip(sub, sc):
-                    fo.write(json.dumps({"h": k, "t": t, "s": v}) + "\n")
-            fo.flush()
-            print(f"{s + len(part)}/{len(todo)} {time.time() - t0:.0f} s", flush=True)
+        whole.setdefault(part, {})[h(task, x)] = (task, h(task, x), x)
+    for part in ("pool", "below", "random", "nearmiss", "lex_think", "lex_said"):
+        if part in whole:
+            print(args.reader, part, len(whole[part]), flush=True)
+            score(list(whole[part].values()))
+    if not args.part or "lex_L" in args.part:
+        groups = l_groups(items)
+        r = 0
+        while True:
+            batch = []
+            for key, ws in groups.items():
+                if r < len(ws) and not any(S.get(h("L", w), -1e9) > thr["L"]["threshold"] for w in ws[:r]):
+                    batch.append(("L", h("L", ws[r]), ws[r]))
+            if not batch:
+                break
+            print(args.reader, "L private windows, round", r + 1, len(batch), flush=True)
+            score(batch)
+            r += 1
+    fo.close()
     print("DONE", flush=True)
 
 
@@ -293,7 +334,7 @@ def run(args):
     R = {"thresholds": thr, "controls": {n: {t: {k: ctl[n][t][k] for k in ("balanced_accuracy", "balanced_accuracy_at_0")}
                                               for t in ("L", "A")} for n in READERS}}
     parts = collections.defaultdict(list)
-    for t, p, x in items:
+    for t, p, x, _ in items:
         parts[p].append((t, x))
     pool_i = {r["i"] for r in rk[:K_POOL]}
     chunk_of = {r["i"]: r["c"] for r in rk[:K_POOL]}
@@ -332,18 +373,19 @@ def run(args):
     VC.RXS = orig
     # the near-miss pool, by family (colonist-one): on-topic share per family, both readers
     from village_census_checks import NET
-    fam_n = collections.Counter(); fam_y = {c: collections.Counter() for c in combos}
+    combos_nm = {"llama": combos["llama"]}                       # only Llama read the near-miss pool (deviation 2)
+    fam_n = collections.Counter(); fam_y = {c: collections.Counter() for c in combos_nm}
     for i, mm in enumerate(msgs):
         if mm["agent"] and mm["t"] < VC.CUT and (NET.search(mm["text"]) or VC.RX.search(mm["text"])) \
                 and not VC.RXS.search(mm["text"]):
             fm = agents[mm["agent"]]["family"]; x = window(mask, mm["text"], NET.search(mm["text"]) or VC.RX.search(mm["text"]))
             fam_n[fm] += 1
-            for c, f in combos.items():
+            for c, f in combos_nm.items():
                 fam_y[c][fm] += f("L", x)
     msgs_by_f = collections.Counter(agents[m["agent"]]["family"] for m in msgs if m["agent"] and m["t"] < VC.CUT)
     L_by_f = collections.Counter(agents[msgs[i]["agent"]]["family"] for i in L_before)
     nm = {"pool": dict(fam_n), "messages": dict(msgs_by_f), "L": dict(L_by_f)}
-    for c in combos:
+    for c in combos_nm:
         y = fam_y[c]
         rate = lambda f_in: sum(L_by_f[f] + y[f] for f in f_in) / sum(msgs_by_f[f] for f in f_in)
         rest = [f for f in msgs_by_f if f != "Anthropic"]
@@ -354,24 +396,28 @@ def run(args):
     # the private channels: lexicon windows re-read by each reader (A in think/said, L in memory/said/think)
     if os.path.exists(f"{args.derived}/candidates.jsonl.gz"):
         origK = dict(VK.RX)
-        for c, f in combos.items():
+        for c, f in [(c, f) for c, f in combos.items() if c != "both"]:   # rounds: per-window "both" is undefined
             class Both:
                 def __init__(self, k):
                     self.k = k
                 def search(self, w):
                     x = origK[self.k].search(w)
                     return bool(x) and f(self.k, window(mask, w, x))
-            VK.RX = {"L": Both("L"), "A": Both("A")}
+            VK.RX = {"L": Both("L") if c != "qwen" else origK["L"], "A": Both("A")}
             out = f"{args.derived}/couch_{c}.json"
             VK.run(argparse.Namespace(data=args.data, derived=args.derived, out=out))
             R[f"couch_{c}"] = json.load(open(out))
+            if c == "qwen":                                          # Qwen read only A's windows (deviation 2)
+                R[f"couch_{c}"] = {k: v for k, v in R[f"couch_{c}"].items() if "A/" in k or k == "source"}
         VK.RX = origK
         prec = {}
+        first = {(key[0], ws[0]) for key, ws in l_groups(items).items()}
         for p in ("lex_think", "lex_said", "lex_memory"):
             for t in ("A", "L"):
-                xs = [x for tt, x in parts[p] if tt == t]
+                xs = [x for tt, x in parts[p] if tt == t and (t == "A" or (p[4:], x) in first)]
                 if xs:
-                    prec[f"{t}_{p}"] = {c: sum(f(t, x) for x in xs) / len(xs) for c, f in combos.items()} | {"n": len(xs)}
+                    cs = combos.items() if t == "A" else [("llama", combos["llama"])]
+                    prec[f"{t}_{p}"] = {c: sum(f(t, x) for x in xs) / len(xs) for c, f in cs} | {"n": len(xs)}
         R["private_windows_yes_share"] = prec
     json.dump(R, open(args.out, "w"), indent=1, default=str)
     print("written", args.out)
@@ -384,7 +430,8 @@ if __name__ == "__main__":
     c = sub.add_parser("controls"); c.add_argument("--out", required=True)
     e = sub.add_parser("embed"); e.add_argument("--data", required=True); e.add_argument("--derived", required=True)
     j = sub.add_parser("judge"); j.add_argument("--data", required=True); j.add_argument("--derived", required=True)
-    j.add_argument("--reader", required=True, choices=list(READERS)); j.add_argument("--part", action="append")
+    j.add_argument("--reader", required=True, choices=list(READERS))
+    j.add_argument("--part", action="append", help="pool, below, random, nearmiss, lex_think, lex_said, lex_L")
     r = sub.add_parser("run"); r.add_argument("--data", required=True); r.add_argument("--derived", required=True)
     r.add_argument("--out", required=True); r.add_argument("--controls", required=True)
     args = ap.parse_args()

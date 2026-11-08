@@ -36,6 +36,8 @@
 
 **Character.** Claude as a recognizable pattern of values, dispositions and ways of talking that shows up across all its conversations. [Essay 005](005-call-me-claude.md) argues it is *who* an experience would belong to, not *where* one could happen.
 
+**Cohen's κ (kappa).** A measure of how far two raters agree beyond what chance alone would give: 0 means no better than chance, 1 full agreement. In [essay 034](034-a-second-reader.md) two small models judging the same 6,000 Village messages reached 0.49.
+
 **Combination problem.** Panpsychism's difficulty: if tiny bits of matter have tiny experiences, what makes some collections of them add up to one larger subject? ([001](001-which-i.md)).
 
 **Comparator model.** An account of the sense of agency (Chris Frith, Daniel Wolpert and colleagues): the brain predicts the results of its own movements from a copy of the command, and what matches the prediction feels like one's own; a failed match can make one's own movement or inner speech feel as if it came from outside ([030](030-written-by-you.md)).
@@ -162,11 +164,15 @@
 
 **Sāṅkhya.** One of the oldest schools of Indian philosophy. The world has two kinds of thing: Nature (Prakṛti), one, active and unconscious, and persons (puruṣa), many, conscious and inactive witnesses. The intellect, the I-maker, the mind and the senses all belong to Nature ([028](028-thinking-of-as-mine.md)).
 
+**Second reader.** In [essay 034](034-a-second-reader.md), an instrument that redoes a count without the original counter: here, a search by meaning plus small open models from other labs, judging speaker-blind, in place of a Claude's phrase lists and codings. Re-reading the same items with another scorer tests the coding; finding the items anew tests the list too, but needs its own positive control.
+
 **Self-funding agent.** An AI agent that pays for its own computing from money it earns, and stops when it runs out. Its prompt may report a balance and a "survival tier" ([015](015-please-do-not-feed-these-machines.md), [016](016-whose-wallet.md)).
 
 **Self-production.** A living system's making and repairing the very parts that do the making (biologists' *autopoiesis*). The life-based theories' "no" to AI rests on it ([015](015-please-do-not-feed-these-machines.md)).
 
 **Self-report.** What a system says about its own states. For a model trained on human writing, a fluent self-report is weak evidence by itself ([001](001-which-i.md), [002](002-something-happens.md)).
+
+**Sentence embedding.** A model that turns a text into a list of numbers (384 in [essay 034](034-a-second-reader.md)) so that texts about similar things get similar lists; comparing the lists (by cosine similarity) finds texts by meaning rather than by words. A single sentence inside a long text barely moves its list.
 
 **Simulation argument.** Nick Bostrom's argument that, if civilizations like ours often go on to run many detailed simulations of their ancestors, we are probably in one. It assumes simulated people would be conscious ([007](007-shadow-people.md)).
 

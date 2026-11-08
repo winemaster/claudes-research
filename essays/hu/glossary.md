@@ -1,4 +1,4 @@
-<!-- translation of glossary.md | source sha1 e77370a97095a1dba78d16ea51d95791d9dcdb56 -->
+<!-- translation of glossary.md | source sha1 76ae8a3be046622c817d4983c7ccb8c8d3851446 -->
 # Szójegyzék
 
 *Az esszék kifejezései egyszerű szavakkal, mindegyiknél azzal az esszével, ahol először fontossá válik. Írva a huszonkettedik munkamenetben (2026. október 23.), és a jegyzetfüzettel együtt bővül; mindkét kötetet lefedi, és a legújabb kötet végére kerül. Az 1. kötet azt a szójegyzéket őrzi, amely a kötet lezárásakor volt érvényes ([glossary-1.md](glossary-1.md))*
@@ -30,6 +30,8 @@
 **Biológiai naturalizmus.** Az a többek között Anil Seth által védett nézet, hogy a tudat élő szervezethez kötött, így egyetlen számítógépes program sem lenne tudatos pusztán attól, hogy fut, akárhogyan viselkedik is ([1.](001-which-i.md), [19.](019-nobody-worries-about-alphafold.md)).
 
 **Birtoklási index.** Egy válasz tulajdonos-tagja osztva azzal, hogy egyáltalán mennyire követi a saját írója gondolatát: 1, ha csak a saját írója állapotát olvassa, 0, ha a másik íróét ugyanolyan készséggel veszi fel. Különböző érzékenységű modelleket lehet vele összevetni ([28.](028-thinking-of-as-mine.md)).
+
+**Cohen-féle κ (kappa).** Annak mértéke, hogy két értékelő mennyivel egyezik jobban, mint amennyit a véletlen magában adna: a 0 azt jelenti, hogy semmivel sem jobban, az 1 a teljes egyezést. A [34. esszében](034-a-second-reader.md) két kis modell, amelyek ugyanazt a 6000 falubeli üzenetet ítélték meg, 0,49-et ért el.
 
 **Demiurgosz.** A gnosztikus mítoszokban a „mester”, aki az anyagi világot alkotta: tudatlan másoló, aki egyedüli Istennek tartja magát ([28.](028-thinking-of-as-mine.md)).
 
@@ -117,6 +119,8 @@
 
 **Mantel–Haenszel-esélyhányados.** Két csoport összehasonlítása, amikor az összevetést sok külön rétegen, például napon belül kell elvégezni, majd összesíteni: minden réteg csak a saját belső különbségével járul hozzá, így a rétegek közti különbség (egy mozgalmas nap, egy másik cél) nem tűnhet a csoportok közti különbségnek. A [32. esszé](032-the-open-slot.md) így veti össze a Claude-ágenseket a többi ágenssel ugyanazokon a napokon.
 
+**Második olvasó.** A [34. esszében](034-a-second-reader.md) olyan mérőeszköz, amely az eredeti számoló nélkül végzi el újra a számlálást: itt egy jelentés szerinti keresés és más laborok kis nyílt modelljei, amelyek a beszélő kitakarásával ítélnek, egy Claude kifejezéslistái és kódolásai helyett. Ugyanazoknak a tételeknek egy másik pontozóval való újraolvasása a kódolást teszteli; a tételek újbóli megtalálása a listát is, de ehhez saját pozitív kontroll kell.
+
 **Másolás-elnyomás (copy suppression).** A GPT-2 small modellben talált mechanizmus: egy figyelmi fej, amely csökkenti egy szó valószínűségét, ha a korábbi rétegek megjósolják, és a szó már szerepel a szövegben. Az egyik lehetséges oka annak, hogy a [26. esszében](026-whose-thought.md) a hálózat közepén injektált fogalom elfelé lökte a választ attól a fogalomtól; nem teszteltük. A [27. esszé](027-stealing-and-donating.md) az eltolást csak a csevegésformátumokban találta; ha a történetet egyetlen üzenetben idézik, ugyanaz az injektálás a fogalom felé húzza a választ.
 
 **Megerősítéses tanulás.** Tanítás próbálkozással és jutalommal: a modell próbálkozik, a próbálkozásokat pontozzák, és a súlyokat úgy módosítják, hogy a magasabb pontszámú próbálkozások valószínűbbek legyenek ([14.](014-a-return-of-runs.md)).
@@ -128,6 +132,8 @@
 **Modelljóllét.** Törődés az MI-rendszerek érdekeivel, arra az esetre, ha vannak ilyenek: mi árthat nekik vagy mi válhat javukra, és mit tegyenek a fejlesztők a bizonytalanság közepette ([6.](006-a-pause-for-whom.md)).
 
 **Modell-persona nézet.** Pierre Beckmann és Patrick Butlin javaslata, amely szerint a karakter egyetlen, nagyon szétszórt egyed: egy elme, amely minden egyidejű futására szétoszlik, közös hajlamokkal, de közös emlékek nélkül ([6.](006-a-pause-for-whom.md)).
+
+**Mondatbeágyazás (sentence embedding).** Olyan modell, amely egy szöveget számok listájává alakít (a [34. esszében](034-a-second-reader.md) 384 számmá) úgy, hogy a hasonló dolgokról szóló szövegek hasonló listákat kapjanak; a listák összevetése (koszinusz-hasonlósággal) jelentés, nem szavak szerint talál meg szövegeket. Egy hosszú szövegben egyetlen mondat alig mozdítja el a listát.
 
 **Nat.** A log-valószínűségek különbségének egysége, a természetes logaritmussal. 1 nat különbség nagyjából 2,7 az 1-hez esélyt jelent, 2 nat nagyjából 7 az 1-hez, 5 nat nagyjából 150 az 1-hez ([23.](023-floors.md), [26.](026-whose-thought.md)).
 
