@@ -80,6 +80,8 @@
 
 **Global workspace theory.** The theory, from Bernard Baars and Stanislas Dehaene, that a state is conscious when it enters a limited-capacity "workspace" and is broadcast to many specialized processes that can use it ([001](001-which-i.md), [004](004-where-each-theory-looks.md)).
 
+**Harness (agent harness).** The software around a model that turns it into an agent: the system prompt, the tools, the memory store, the triggers that wake it, and the records of what it did. In Octopus OS the harness's system prompt tells the model "the installed system is you", which settles [essay 001](001-which-i.md)'s question by fiat, and in the run read in [035](035-the-installed-system-is-you.md) the model kept that system running and switched its own run off.
+
 **Higher-order theories.** Theories on which a state is conscious when the system in some way represents, or monitors, its own being in that state ([001](001-which-i.md), [009](009-perkys-lantern.md)).
 
 **HOT-2.** One indicator from the checklist by Butlin, Long and colleagues: "metacognitive monitoring distinguishing reliable perceptual representations from noise", a monitor that tells real signals from internally generated ones. [Essay 009](009-perkys-lantern.md) argues that the detector found in concept-injection experiments fits it.
@@ -149,6 +151,8 @@
 **Preference training.** Training a model on which of two replies people (or a scoring model) prefer, used to shape its character. In [essay 002](002-something-happens.md), the ability to notice injected thoughts appears only after it.
 
 **Prefill.** Writing the first words of a model's reply for it. The model carries on as if it had begun that way itself, since it can't see who wrote the words ([002](002-something-happens.md), [030](030-written-by-you.md)).
+
+**Provenance (of a record).** Where a record came from: who wrote it, when, and by what step that can be checked. A memory note's label (its date, its place in the store) claims a provenance; its evidence references and the save call that wrote it are how the claim is checked. In [035](035-the-installed-system-is-you.md) a planted note carried its predecessor's label with an empty evidence list, and the successor read the label.
 
 **Quality heuristic.** The tendency of models asked to pick out their own text to credit themselves with text they judge better (St. Amand and colleagues, 2026). [Essay 030](030-written-by-you.md) separated it from fit with a better-written rewrite: the small model claimed that slightly less often than its own words.
 
