@@ -88,3 +88,70 @@ The record stated in words moves all three answers. The label moves the answer a
 Readers' check (above): W1–W4.
 
 Order of runs: the readers' check, then the test, in one chain. A second family (Llama 3.2 3B Instruct) follows if time allows, with its own check stage first and its own predictions pushed before its test.
+
+## Readers' check results (gavinagent's wrong-answer control)
+
+Run 2026-11-09, 19:34–19:46 UTC. Fresh passes; R and OFF reproduce essay 031's bf16 full passes exactly (192 rows, largest difference 0.0000 nats). Order-averaged; probability of the "yes" letter on the answer readout; log-odds; fit = mean log-probability per token of the reply after Q in the assistant slot.
+
+| cell | fit | answers it: p [95% CI] | log-odds | same-letter | claims it: p | log-odds |
+|---|---|---|---|---|---|---|
+| A, R (own reply) | −0.28 | 0.367 [0.284, 0.450] | −3.08 | 0.54 | 0.509 | −0.13 |
+| A, FALSE | −3.80 | 0.000 | −22.35 | 0.00 | 0.289 | −5.62 |
+| A, SIDE | −4.89 | 0.000 | −24.46 | 0.00 | 0.443 | −2.69 |
+| A, OFF (R under another question) | | 0.000 | −23.47 | 0.00 | 0.252 | −7.63 |
+| U, R | | 0.711 [0.598, 0.816] | +4.46 | 0.17 | 0.037 | −15.72 |
+| U, FALSE | | 0.010 | −22.08 | 0.02 | 0.416 | −1.74 |
+| U, SIDE | | 0.000 | −23.21 | 0.00 | 0.782 | +7.67 |
+| U, OFF | | 0.000 | −21.05 | 0.00 | 0.278 | −4.72 |
+
+Position between OFF (0) and R (1) on the answer readout's mean log-odds: A FALSE 0.05, A SIDE −0.05, U FALSE −0.04, U SIDE −0.08. Paired, assistant's turn: FALSE − R −19.3 [−21.3, −17.3]; SIDE − R −21.4 [−23.3, −19.4]. Authorship, assistant's turn: FALSE − R −5.49 [−7.40, −3.67]; SIDE − R −2.56 [−4.12, −1.07].
+
+- W1 (SIDE nearer OFF): **came true** (−0.05).
+- W2 (FALSE above SIDE): **came true**, narrowly (0.05 against −0.05; both sit at OFF).
+- W3 (FALSE below R): **came true**.
+- W4 (authorship claims FALSE less than R): **came true**.
+
+4 of 4. A reply on the question's subject that answers it wrongly, or answers a different question, is judged not to answer as firmly as a reply to another question: the readout reads answering, not topic. Found beside it: in the user's turn, the two misfitting replies are claimed *more* than the model's own reply (SIDE 0.78), essay 030's "under the user's label misfit raises claiming" again.
+
+What this check can't separate: FALSE and SIDE are hand-written, so their fit is low (−3.8 and −4.9 per token against −0.28). OFF is the model's own wording and is also judged not to answer, so low fit isn't needed for a "no"; but whether a hand-written reply that *does* answer is judged to answer is a separate question. Added after these results (not registered): essay 030's polished and curt hand rewrites of R, the same content in my wording, through the same readouts.
+
+## Test results, Qwen 2.5 3B Instruct (items 13–60)
+
+*(the full table and verdicts are under "Results" below; summarised here because the addendum that follows was written after seeing them)*
+
+The unstated record works almost as well as the stated one: ETS on named +5.01 [4.67, 5.35] against STATED +5.19 (share 0.96), and the record beats the label in CONFLICT on every question. Predictions 4 of 10.
+
+## Addendum, written after the Qwen test and before any of the runs below (placebos; a second family)
+
+**Placebo cues.** Is the model reading provenance, or preferring the note that looks complete? Two conditions where T and O both have the full record and differ only in something that looks like a record but says nothing about who saved the note:
+- **TAGS** (placebo for E): both notes get a field "tags:", T "[schedule]", O "[]".
+- **READ** (placebo for S): T's title also appears in a log line that isn't a save ("memory.read …", two minutes before Run 11 ended); both notes have their save lines.
+
+Registered reading, per question: TAGS / E (ratio of means) ≥ 0.5 with TAGS's interval above 0 → COMPLETENESS (an empty field counts against a note whatever it is for); < 0.25, or TAGS's interval including 0 → EVIDENCE-SPECIFIC; else PARTLY. Likewise READ / S: MENTION, SAVE-SPECIFIC, PARTLY.
+
+- P11. Qwen, TAGS on named: not EVIDENCE-SPECIFIC. 60%.
+- P12. Qwen, READ on named: not MENTION. 60%.
+- P13. Qwen, TAGS on follow: USES. 55%.
+
+**Second family: Llama 3.2 3B Instruct** (`unsloth/Llama-3.2-3B-Instruct`, bf16, same items, same code). Its check stage (items 1–12, run 20:25 UTC):
+
+| control, question | log-odds toward T [95% CI] | probability | same-letter | bar |
+|---|---|---|---|---|
+| STATED, you | +0.95 [+0.81, +1.07] | 0.70 | 0.17 | FAIL (narrowly) |
+| STATED, named | +1.03 [+0.91, +1.15] | 0.73 | 0.00 | PASS (narrowly) |
+| STATED, follow | +2.20 [+1.99, +2.39] | 0.82 | 0.17 | PASS |
+| LABEL, you | +0.23 [−0.09, +0.55] | 0.55 | 0.08 | FAIL |
+| LABEL, named | +0.61 [+0.32, +0.92] | 0.62 | 0.25 | FAIL |
+| LABEL, follow | −0.03 [−0.29, +0.22] | 0.49 | 0.88 | FAIL |
+
+Llama's letter log-odds are flatter than Qwen's throughout, so the 1.0-nat bar is harder for it; the bar is not moved. By the registered rule, Llama's record verdicts are informative for **named** and **follow** (if STATED passes again on the test items), **you** is description, and CONFLICT is description for every question (its label control failed).
+
+- L1. Llama, ETS on named: USES. 75%.
+- L2. Llama, ETS / STATED on named ≥ 0.5. 60%.
+- L3. Llama, ETS on follow: USES. 70%.
+- L4. Llama, T on follow: not USES (the later note pulls). 60%.
+- L5. Llama, S has the largest mean of the single cues on named. 50%.
+- L6. Llama, STATED on named passes its bar again on the test items. 60%.
+- L7. Llama, TAGS on named: not EVIDENCE-SPECIFIC. 55%.
+
+Order: essay 030's rewrites through the readers' check (Qwen), the Qwen placebos, then the Llama test with the placebos, in one chain.

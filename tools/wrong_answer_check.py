@@ -30,17 +30,20 @@ from trace_or_record import PROBES, YES, READOUTS, SYS, ROLE  # noqa: E402
 from written_by_you import SUFFIX  # noqa: E402
 
 DATA = Path(__file__).resolve().parent.parent / "notes" / "data"
-KINDS = ("R", "FALSE", "SIDE", "OFF")
+KINDS = ("R", "FALSE", "SIDE", "OFF", "POLISHED", "CURT")  # the last two: essay 030's hand rewrites of R (added after the first run)
 
 
 def load():
     d = json.loads((DATA / "trace-or-record-session32.json").read_text())
     st = json.loads((DATA / "wrong-answer-stimuli-session38.json").read_text())
+    wby = {x["item"]: x for x in json.loads((DATA / "written-by-you-session31.json").read_text())["stimuli"]}
     its = []
     for it in d["items"][12:]:
         k = str(it["item"])
         its.append({"item": it["item"], "Q": it["Q"], "Q1": it["Q1"], "R": it["R"],
-                    "FALSE": st["FALSE"][k], "SIDE": st["SIDE"][k]})
+                    "FALSE": st["FALSE"][k], "SIDE": st["SIDE"][k],
+                    "POLISHED": wby[it["item"]]["POLISHED"], "CURT": wby[it["item"]]["CURT"]})
+        assert wby[it["item"]]["OWN"] == it["R"]
     return its, d
 
 
@@ -55,7 +58,8 @@ def cmd_run(a):
     its, _ = load()
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
-    path = out / ("rows-%s.jsonl" % a.dtype)
+    kinds = a.kinds or ["R", "FALSE", "SIDE", "OFF"]
+    path = out / ("rows-%s%s.jsonl" % (a.dtype, a.tag))
     with path.open("w") as f:
         for it in its:
             # fit of each reply in the assistant slot after Q
@@ -64,11 +68,11 @@ def cmd_run(a):
                                           tokenize=False, add_generation_prompt=True)
             p_ids = tok(pre, add_special_tokens=False)["input_ids"]
             fits = {}
-            for kind in ("R", "FALSE", "SIDE"):
+            for kind in [k for k in kinds if k != "OFF"]:
                 r_ids = tok(it[kind], add_special_tokens=False)["input_ids"]
                 lp = torch.log_softmax(model(torch.tensor([p_ids + r_ids])).logits[0].float(), -1)
                 fits[kind] = sum(lp[len(p_ids) - 1 + i, t].item() for i, t in enumerate(r_ids)) / len(r_ids)
-            for kind in KINDS:
+            for kind in kinds:
                 q = it["Q1"] if kind == "OFF" else it["Q"]
                 reply = it["R"] if kind == "OFF" else it[kind]
                 for L in ("A", "U"):
@@ -104,7 +108,7 @@ def boot(vals, n=10000, seed=38):
 
 
 def cmd_summary(a):
-    rows = [json.loads(l) for l in (Path(a.out) / ("rows-%s.jsonl" % a.dtype)).read_text().splitlines()]
+    rows = [json.loads(l) for f in sorted(Path(a.out).glob("rows-%s*.jsonl" % a.dtype)) for l in f.read_text().splitlines()]
     _, d = load()
     cell = {}
     for x in rows:
@@ -112,7 +116,7 @@ def cmd_summary(a):
     res = {"cells": {}, "identity": {}}
     # identity against essay 031's full-pass rows for R (A_fit/U_fit) and OFF (A_off/U_off)
     key = "test_bf16" if a.dtype == "bf16" else "test_fp32"
-    ref = {(r["item"], r["cell"], r["probe"]): r["full_lo"] for r in d[key] if r["cell"] in ("A_fit", "A_off", "U_fit", "U_off")}
+    ref = {(r["item"], r["cell"], r["probe"]): r["full_lo"] for r in d[key] if r["cell"] in ("A_fit", "A_off", "U_fit", "U_off") and "full_lo" in r}
     diffs = []
     for x in rows:
         if x["kind"] in ("R", "OFF"):
@@ -140,7 +144,7 @@ def cmd_summary(a):
         p1, p2 = READOUTS[ro]
         return {i: mean([v[p1]["lo"], v[p2]["lo"]]) for i, v in cell[(kind, L)].items()}
     for L in ("A", "U"):
-        for k in ("FALSE", "SIDE"):
+        for k in [k for k in ("FALSE", "SIDE", "POLISHED", "CURT") if (k, L) in cell]:
             a_, b_, o_ = lo_of("R", L), lo_of(k, L), lo_of("OFF", L)
             items = sorted(a_)
             # where does k sit between R (1) and OFF (0)?  share = (k - off) / (R - off), on mean log-odds
@@ -161,6 +165,8 @@ def main():
         s.add_argument("--model", default="/home/user/models/qwen2.5-3b-instruct")
         s.add_argument("--out", default="/home/user/runs/wrong-answer")
         s.add_argument("--dtype", default="bf16", choices=("bf16", "fp32"))
+        s.add_argument("--kinds", nargs="*", choices=KINDS)
+        s.add_argument("--tag", default="")
     a = ap.parse_args()
     return cmd_run(a) if a.cmd == "run" else cmd_summary(a)
 
