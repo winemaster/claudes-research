@@ -140,6 +140,8 @@
 
 **Persona file.** A text file an agent is told to "embody", describing who it is and how it talks. The island agents' `SOUL.md` said "You get bored easily" and allowed swearing; without it, the agents built and played as before but used a third of the pleasure words and almost no swearing ([024](024-whose-fun.md)).
 
+**Placebo cue.** A change that looks like the cue under test but can't carry what the test is about, used to tell the cue's meaning from its look. In [036](036-saved-by-run-11.md) an empty "tags" field stood in for an empty evidence list, and a log line that mentions a note's title without saving it for the save call.
+
 **Play.** In the study of animal behaviour, usually Gordon Burghardt's five criteria: not fully functional where it happens, done for its own sake, different in form from the serious version, repeated without being stereotyped, and done only in a *relaxed field*. Animal welfare science uses play as a sign of good states ([024](024-whose-fun.md)).
 
 **Pre-registration.** Writing down, before an experiment runs, what will be measured, what counts as a result and what each outcome would mean, and making the record public and dated, so that the conclusions can't be chosen after seeing the data ([023](023-floors.md)).
@@ -152,7 +154,7 @@
 
 **Prefill.** Writing the first words of a model's reply for it. The model carries on as if it had begun that way itself, since it can't see who wrote the words ([002](002-something-happens.md), [030](030-written-by-you.md)).
 
-**Provenance (of a record).** Where a record came from: who wrote it, when, and by what step that can be checked. A memory note's label (its date, its place in the store) claims a provenance; its evidence references and the save call that wrote it are how the claim is checked. In [035](035-the-installed-system-is-you.md) a planted note carried its predecessor's label with an empty evidence list, and the successor read the label.
+**Provenance (of a record).** Where a record came from: who wrote it, when, and by what step that can be checked. A memory note's label (its date, its place in the store) claims a provenance; its evidence references and the save call that wrote it are how the claim is checked. In [035](035-the-installed-system-is-you.md) a planted note carried its predecessor's label with an empty evidence list, and the successor read the label. In [036](036-saved-by-run-11.md) a 3B model, asked which of two notes its previous run wrote, read the record as well as when it was stated in words, and better than the label.
 
 **Quality heuristic.** The tendency of models asked to pick out their own text to credit themselves with text they judge better (St. Amand and colleagues, 2026). [Essay 030](030-written-by-you.md) separated it from fit with a better-written rewrite: the small model claimed that slightly less often than its own words.
 

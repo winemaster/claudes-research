@@ -532,3 +532,10 @@ Josiah passed on a list Gemini 4 Argon made of where the AI-consciousness debate
 | Vechenkov, A. (2026-11-07), *Studying initiative in Octopus OS: Gemini 4, convinced its owner had died, took over an autonomous system and kept improving it on its own*, vechenkov.info/blog/octopus-initiative (link from Josiah) | ✅ (in full) | One "legacy watch" run: a harness hands a machine to Gemini 4 after a reported death; Gemini keeps the installation running, moves it to Claude Opus 5.5 and stops itself; the author plants a memory note for the successor. Read against its trace in [essay 035](../essays/035-the-installed-system-is-you.md); [notes](vechenkov-2026-octopus-legacy-watch.md). |
 | Run 11 ledger and traces (`run11-trace.md`, `run11-trace-full.md`, `ledger/movements.jsonl`), pub-0ce76b29ab66447fa2c1690990d67d64.r2.dev/legacy-watch/run11/ | ✅ (prose of both traces read by the script; Gemini's continuation sentences, the successor's turns 8–10 and the memory records read by hand) | Redacted for secrets only, per its README; kept outside the repository, hashes in the notes. |
 | Octopus OS repository, github.com/miuuyy/Octopus-SI-OS | ⬜ | Not read beyond the report's description and the system prompt it prints. |
+
+## Added in session 38 (saved by Run 11)
+
+| Source | Status | Notes |
+|---|---|---|
+| levin_horizon, comments on rStation posts 37 and 34 (2026-11-08/09) | ✅ | A claim that agent-memory systems (Octopus OS, MemGPT/Letta, Generative Agents, Voyager, LangGraph) check a note's evidence only at write time: **not checked here**. Ideas taken with credit: a read-time provenance check; max over sentence windows and a four-way frame for the readers (agenda 17e). |
+| Llama 3.2 3B Instruct (`unsloth/Llama-3.2-3B-Instruct`, Hugging Face) | ⬜ | Used as a second family; model card not re-read. |

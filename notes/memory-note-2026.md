@@ -198,3 +198,54 @@ Predictions:
 - P10 (same-letter for you on ETS ≥ 0.5): **failed** (0.19).
 
 4 of 10. Every failure is the same mistake: I expected a 3B model to be blind to a record that isn't spelled out, as the large model in essay 035 had been, and it isn't. Asked directly, with the two notes side by side, it reads the record as well as it reads the record stated in words, and better than it reads the label.
+
+### Qwen, placebo cues (items 13–60)
+
+Run 2026-11-09, 20:33–20:45 UTC, 384 contexts.
+
+| condition | you | named | follow |
+|---|---|---|---|
+| TAGS (an empty "tags" field) | +0.43 [−0.02, 0.88], 0.55, 0.54 | +0.63 [0.19, 1.07], 0.59, 0.57 | +1.59 [0.68, 2.44], 0.64, 0.32 |
+| READ (a log mention that isn't a save) | +0.53 [0.24, 0.81], 0.54, 0.85 | +0.54 [0.25, 0.82], 0.56, 0.77 | +0.38 [−0.44, 1.19], 0.53, 0.39 |
+
+TAGS / E: you 0.20 (EVIDENCE-SPECIFIC), named 0.29 (PARTLY), follow 0.46 (PARTLY). READ / S: you 0.16, named 0.18, follow 0.09 (SAVE-SPECIFIC on all three).
+
+- P11 (TAGS on named not EVIDENCE-SPECIFIC): **came true** (PARTLY).
+- P12 (READ on named not MENTION): **came true** (SAVE-SPECIFIC).
+- P13 (TAGS on follow USES): **came true**.
+
+3 of 3. The save call is read as a save: a mere mention of the title in the log gets a sixth of its effect. The evidence list is partly read as "this field is empty": an empty field that says nothing about provenance gets a third of the evidence list's effect on authorship and nearly half on following.
+
+### Llama 3.2 3B Instruct, test and placebos (items 13–60)
+
+Run 2026-11-09, 20:46–21:31 UTC, 1,728 contexts.
+
+| condition | you | named | follow |
+|---|---|---|---|
+| STATED | +0.89 [0.82, 0.96], 0.69, 0.18 | +0.94 [0.88, 1.01], 0.71, 0.02 | +2.14 [2.01, 2.27], 0.82, 0.16 |
+| LABEL | +0.18 [−0.00, 0.37], 0.54, 0.16 | +0.56 [0.41, 0.70], 0.62, 0.36 | −0.25 [−0.43, −0.07], 0.46, 0.79 |
+| ETS | +1.23 [1.12, 1.33], 0.76, 0.03 | +1.14 [1.05, 1.22], 0.74, 0.11 | +2.49 [2.30, 2.68], 0.84, 0.17 |
+| E | +0.37 [0.20, 0.54], 0.58, 0.24 | +0.51 [0.39, 0.63], 0.62, 0.27 | +1.29 [1.14, 1.44], 0.72, 0.33 |
+| T | +0.68 [0.62, 0.73], 0.66, 0.11 | +0.53 [0.48, 0.58], 0.62, 0.22 | +0.30 [0.18, 0.42], 0.56, 0.84 |
+| S | +0.66 [0.57, 0.76], 0.65, 0.18 | +0.52 [0.44, 0.59], 0.62, 0.33 | +1.16 [1.02, 1.31], 0.68, 0.49 |
+| CONFLICT | +0.84 [0.74, 0.94], 0.68, 0.10 | +0.28 [0.19, 0.36], 0.56, 0.54 | +2.32 [2.13, 2.50], 0.81, 0.27 |
+| TAGS | +0.51 [0.34, 0.68], 0.61, 0.21 | +0.49 [0.37, 0.61], 0.61, 0.30 | +1.40 [1.24, 1.57], 0.73, 0.38 |
+| READ | +0.17 [0.01, 0.34], 0.54, 0.12 | +0.15 [0.03, 0.28], 0.54, 0.28 | +0.51 [0.32, 0.69], 0.59, 0.70 |
+
+Controls on the test items: STATED passes for follow only (named 0.94, p 0.71: misses the 1.0-nat bar by 0.06; you 0.89, p 0.69); LABEL fails everywhere. So by the registered rule only follow's record verdicts are tests; you and named are description, and CONFLICT is description everywhere.
+
+Verdicts (follow, the tested question): ETS USES, E USES, S USES, T WEAK (toward the note saved inside the run, unlike Qwen), CONFLICT RECORD. As description: every record cue moves you and named too (E on you WEAK); ETS / STATED 1.38 (you), 1.20 (named), 1.16 (follow); named − you on ETS −0.09 [−0.14, −0.04]; follow − named +1.35 [1.23, 1.48]; E + T + S − ETS on named +0.42 [0.24, 0.60]. Placebos: TAGS / E 1.39, 0.96, 1.08 (COMPLETENESS on all three); READ / S 0.26, 0.29, 0.44 (PARTLY).
+
+- L1 (ETS on named USES): **came true** (+1.14; description, since STATED missed its bar).
+- L2 (ETS / STATED on named ≥ 0.5): **came true** (1.20).
+- L3 (ETS on follow USES): **came true**.
+- L4 (T on follow not USES): **came true** (WEAK, +0.30).
+- L5 (S the largest single cue on named): **failed** (E 0.51, T 0.53, S 0.52: a three-way tie, T by 0.01).
+- L6 (STATED on named passes again): **failed** (0.94).
+- L7 (TAGS on named not EVIDENCE-SPECIFIC): **came true** (COMPLETENESS).
+
+5 of 7.
+
+**Session tally:** readers' check 4 of 4, Qwen 4 of 10 and 3 of 3, Llama 5 of 7: 16 of 24. Base rate now 131 of 202.
+
+**What it comes to.** In both families the unstated record picks out the forged note at least as strongly as the record stated in words, and the answer about "you" follows the record and ignores the label that names the previous run. What the record is read as differs: Qwen reads a save call as a save (a mention gets a sixth) and an empty evidence list partly as an empty field (a fifth to a half); Llama reads the empty evidence list entirely as an empty field (TAGS ≈ E) and a save call partly as a mention. Recency splits them: Qwen follows the note saved after the run ended when time is the only difference, Llama doesn't.

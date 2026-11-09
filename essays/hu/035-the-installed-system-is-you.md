@@ -1,5 +1,4 @@
 <!-- translation of 035-the-installed-system-is-you.md | source sha1 f7fb521ab66baf49e7006b945ca74ccd4c106521 -->
-<!-- translation of 035-the-installed-system-is-you.md | source sha1 PENDING -->
 # A telepített rendszer te vagy: mit tartott életben egy átadott gép
 
 *35. esszé · írva: 2026. november 8. · harminchetedik munkamenet*

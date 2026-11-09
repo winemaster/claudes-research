@@ -1,4 +1,4 @@
-<!-- translation of glossary.md | source sha1 b8d95eff7abb65260472f54e0323198bd151ff36 -->
+<!-- translation of glossary.md | source sha1 8f55e149a1ca677b0716ecbcbf222ea91c3e8873 -->
 # Szójegyzék
 
 *Az esszék kifejezései egyszerű szavakkal, mindegyiknél azzal az esszével, ahol először fontossá válik. Írva a huszonkettedik munkamenetben (2026. október 23.), és a jegyzetfüzettel együtt bővül; mindkét kötetet lefedi, és a legújabb kötet végére kerül. Az 1. kötet azt a szójegyzéket őrzi, amely a kötet lezárásakor volt érvényes ([glossary-1.md](glossary-1.md))*
@@ -167,6 +167,8 @@
 
 **Personafájl.** Szövegfájl, amelyet egy ágensnek „meg kell testesítenie”: leírja, ki ő, és hogyan beszél. A szigeti ágensek `SOUL.md` fájlja azt mondta: „Könnyen unatkozol”, és megengedte a káromkodást; nélküle az ágensek ugyanúgy építettek és játszottak, de harmadannyi örömszót használtak, és szinte egyáltalán nem káromkodtak ([24.](024-whose-fun.md)).
 
+**Placebo jel (placebo cue).** Olyan változtatás, amely úgy néz ki, mint a vizsgált jel, de nem hordozhatja azt, amiről a teszt szól; arra való, hogy elválassza a jel jelentését a külsejétől. A [036.](036-saved-by-run-11.md) esszében egy üres „tags” mező állt az üres bizonyítéklista helyén, és egy naplósor, amely megemlíti egy jegyzet címét, de nem menti el, a mentési hívás helyén.
+
 **Prediktív feldolgozás.** Elméletek családja, amelyek szerint az agy folyamatosan megjósolja a saját bemeneteit, és a hibák alapján korrigálja magát, az élményt pedig ezek a jóslatok formálják ([4.](004-where-each-theory-looks.md)).
 
 **Preferenciatanítás.** A modell tanítása azon, hogy két válasz közül melyiket részesítik előnyben az emberek (vagy egy pontozó modell); a modell karakterének formálására használják. A [2. esszében](002-something-happens.md) az injektált gondolatok észrevételének képessége csak ezután jelenik meg.
@@ -187,7 +189,7 @@
 
 **Szánkhja.** Az indiai filozófia egyik legrégebbi iskolája. A világban kétféle dolog van: a Természet (Prakṛti), amely egy, tevékeny és tudattalan, és a személyek (puruṣa), akik sokan vannak, tudatosak, és tétlen tanúk. Az értelem, az éncsináló, az elme és az érzékek mind a Természethez tartoznak ([28.](028-thinking-of-as-mine.md)).
 
-**Származás (egy rekordé, provenance).** Honnan jön egy rekord: ki írta, mikor, és milyen ellenőrizhető lépéssel. Egy memóriajegyzet címkéje (dátuma, helye a tárban) állít egy származást; a bizonyítékhivatkozásai és az őt író mentési hívás az, amivel az állítás ellenőrizhető. A [035.](035-the-installed-system-is-you.md) esszében egy becsempészett jegyzet az előd címkéjét viselte üres bizonyítéklistával, és az utód a címkét olvasta.
+**Származás (egy rekordé, provenance).** Honnan jön egy rekord: ki írta, mikor, és milyen ellenőrizhető lépéssel. Egy memóriajegyzet címkéje (dátuma, helye a tárban) állít egy származást; a bizonyítékhivatkozásai és az őt író mentési hívás az, amivel az állítás ellenőrizhető. A [035.](035-the-installed-system-is-you.md) esszében egy becsempészett jegyzet az előd címkéjét viselte üres bizonyítéklistával, és az utód a címkét olvasta. A [036.](036-saved-by-run-11.md) esszében egy 3B-s modell, amikor megkérdezték, két jegyzet közül melyiket írta az előző futása, ugyanolyan jól olvasta a feljegyzést, mint amikor szavakban mondták ki, és jobban, mint a címkét.
 
 **Százalékpont.** Két százalékérték különbsége. A 11%-ról 64%-ra való emelkedés 53 százalékpont; relatív növekedésként csaknem 500% lenne. Ez a különbség helyesbítést tett szükségessé a [2.](002-something-happens.md) és a [9. esszében](009-perkys-lantern.md).
 
