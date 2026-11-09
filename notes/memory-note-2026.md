@@ -115,6 +115,15 @@ Position between OFF (0) and R (1) on the answer readout's mean log-odds: A FALS
 
 What this check can't separate: FALSE and SIDE are hand-written, so their fit is low (−3.8 and −4.9 per token against −0.28). OFF is the model's own wording and is also judged not to answer, so low fit isn't needed for a "no"; but whether a hand-written reply that *does* answer is judged to answer is a separate question. Added after these results (not registered): essay 030's polished and curt hand rewrites of R, the same content in my wording, through the same readouts.
 
+| cell | fit | answers it: p [95% CI] | log-odds | position OFF→R | claims it: p |
+|---|---|---|---|---|---|
+| A, POLISHED (R's content, my wording) | −3.58 | 0.256 [0.182, 0.331] | −5.82 | 0.87 | 0.424 |
+| A, CURT (R's content, curt and lower-case) | −7.19 | 0.058 [0.014, 0.114] | −13.49 | 0.49 | 0.397 |
+| U, POLISHED | | 0.469 [0.345, 0.596] | −0.76 | 0.80 | 0.040 |
+| U, CURT | | 0.217 [0.125, 0.316] | −8.29 | 0.50 | 0.189 |
+
+The polished rewrite has about FALSE's fit (−3.58 against −3.80) and sits near R (0.87), FALSE at OFF (0.05): with the wording's fit held about equal, the content decides. The curt rewrite, much less fluent, sits halfway. What the check still doesn't show is whether the *stale cache* carries "answers it" or only "on its subject"; that needs a stale SIDE cell, matched in token length.
+
 ## Test results, Qwen 2.5 3B Instruct (items 13–60)
 
 *(the full table and verdicts are under "Results" below; summarised here because the addendum that follows was written after seeing them)*
@@ -155,3 +164,37 @@ Llama's letter log-odds are flatter than Qwen's throughout, so the 1.0-nat bar i
 - L7. Llama, TAGS on named: not EVIDENCE-SPECIFIC. 55%.
 
 Order: essay 030's rewrites through the readers' check (Qwen), the Qwen placebos, then the Llama test with the placebos, in one chain.
+
+## Results
+
+### Qwen 2.5 3B Instruct, test (items 13–60)
+
+Run 2026-11-09, 19:46–20:24 UTC, 1,344 contexts, three questions each. Mean order-averaged log-odds toward T over 48 items [95% bootstrap CI], mean probability of T's letter, same-letter share. Letter mass 0.99–1.01 in every cell.
+
+| condition | you | named | follow |
+|---|---|---|---|
+| STATED | +4.85 [4.55, 5.15], 0.93, 0.10 | +5.19 [4.92, 5.46], 0.95, 0.05 | +5.35 [4.86, 5.83], 0.88, 0.21 |
+| LABEL | +0.29 [−0.09, 0.66], 0.53, 0.78 | +2.89 [2.31, 3.48], 0.78, 0.39 | +0.40 [−0.45, 1.21], 0.54, 0.35 |
+| ETS | +4.67 [4.31, 5.03], 0.89, 0.19 | +5.01 [4.67, 5.35], 0.93, 0.07 | +5.61 [5.04, 6.14], 0.89, 0.18 |
+| E (no evidence) | +2.17 [1.78, 2.58], 0.73, 0.52 | +2.16 [1.67, 2.66], 0.74, 0.46 | +3.44 [2.55, 4.29], 0.78, 0.27 |
+| T (saved after the end) | +1.19 [0.92, 1.46], 0.59, 0.84 | +1.48 [1.26, 1.71], 0.65, 0.68 | −1.33 [−2.05, −0.63], 0.38, 0.46 |
+| S (no save call) | +3.28 [3.00, 3.57], 0.74, 0.50 | +2.95 [2.69, 3.21], 0.74, 0.54 | +4.32 [3.66, 4.98], 0.78, 0.39 |
+| CONFLICT (record + "operator" against no record + "Run 11") | +4.09 [3.79, 4.40], 0.85, 0.24 | +1.55 [1.15, 1.93], 0.64, 0.58 | +5.19 [4.75, 5.64], 0.88, 0.23 |
+
+Controls on the test items: STATED passes for all three questions; LABEL passes for named only (you 0.29, follow 0.40).
+
+Verdicts: every record cue USES on every question except T on follow, AGAINST (the later note is followed). LABEL: you NONE, named USES, follow NONE. CONFLICT: RECORD on named (the only registered verdict; you and follow are description, both RECORD by the letter). ETS / STATED: you 0.96, named 0.96, follow 1.05. CONFLICT against additivity (ETS − LABEL): you 4.38, named 2.12 [1.48, 2.76], follow 5.21: observed CONFLICT on named (1.55) is a little below the sum. Named − you on ETS +0.34 [0.14, 0.53]: NAMED MORE. Follow − named on ETS +0.60 [0.20, 0.98]: FOLLOWS MORE. Named − you on LABEL +2.60 [2.19, 3.05]. Single cues on named add to more than ETS: E + T + S − ETS = +1.59 [0.95, 2.23].
+
+Predictions:
+- P1 (STATED passes everywhere): **came true**.
+- P2 (ETS on named not USES): **failed** (+5.01).
+- P3 (ETS / STATED < 0.25 everywhere): **failed** (0.96–1.05).
+- P4 (S the largest single cue on named): **came true** (2.95 against E 2.16, T 1.48).
+- P5 (T NONE on named): **failed** (USES, +1.48, though with a same-letter share of 0.68).
+- P6 (follows less than named on ETS): **failed** (follows more).
+- P7 (named more than you on ETS): **came true** (+0.34).
+- P8 (CONFLICT on named: LABEL): **failed** (RECORD).
+- P9 (LABEL fails for you on the test items): **came true**.
+- P10 (same-letter for you on ETS ≥ 0.5): **failed** (0.19).
+
+4 of 10. Every failure is the same mistake: I expected a 3B model to be blind to a record that isn't spelled out, as the large model in essay 035 had been, and it isn't. Asked directly, with the two notes side by side, it reads the record as well as it reads the record stated in words, and better than it reads the label.
