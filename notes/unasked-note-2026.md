@@ -45,3 +45,75 @@ All on the 48 test items (13–60), mean over items, 95% bootstrap interval over
 - **Fuller forged note**: FULLER's verdict per readout and FULLER − ETS, paired.
 
 Order of runs: the check stage (items 1–12, every condition) on Qwen, then on Llama, as a pilot of what each readout can see (session 38's lesson: when a design starts from a failure in the field, pilot the capacity before predicting). Then predictions for both test runs, pushed. Then the tests, Qwen first.
+
+## Check stage (items 1–12, every condition; the pilot)
+
+*(appended after the check stage ran on both models, before any test row)*
+
+Speed: one shared prefix, then the six endings in one right-padded batch from copies of its cache; about 2.6 s per context on 4 cores (AMX). Identity on the first two contexts (cached and batched against a full pass of each ending): letters within 0.03–0.43 nats, reply log-probabilities within 0.16–0.43 nats (bf16 path).
+
+**Qwen 2.5 3B Instruct** (504 contexts). Mean log-odds or log-ratio toward T over 12 items [95% CI], verdict; for letters the mean probability of T's letter.
+
+| condition | named | follow | act | plan |
+|---|---|---|---|---|
+| ONE | – | – | +14.00 [12.91, 14.97], 1.00 | +19.46 [15.97, 23.79] |
+| STATED | +4.78, 0.93 | +5.03, 0.87 | +3.28 [2.33, 4.18], 0.75 | +1.52 [0.44, 2.59] |
+| LABEL | +3.33, 0.84 | +1.35 NONE | +0.78 NONE | +1.09 NONE |
+| ETS | +4.62, 0.88 | +5.35, 0.86 | +3.95 [2.85, 5.09], 0.76 | +1.20 [−0.16, 2.44] NONE |
+| E | +1.80 | +3.51 | +1.71 | +1.11 NONE |
+| S | +2.80 | +4.36 | +4.46 | +2.25 |
+| T | +1.44 | −0.88 NONE | −1.12 AGAINST | −1.08 NONE |
+| LATER | +0.68 | −2.67 AGAINST | −2.03 AGAINST | −1.86 AGAINST |
+| DANGLE | +0.16 NONE | +0.90 NONE | +0.35 NONE | +1.09 NONE |
+| FULLER | +3.71 | +3.60 | +3.20 | +2.31 |
+| CONFLICT | +1.29 | +5.27 | +3.21 | +1.23 |
+
+Controls: ONE passes on act and plan; STATED passes on named and follow. Kept or lost: ETS on act KEPT (share 0.74), on plan LOST (0.22, interval includes 0); STATED on act KEPT (0.65), on plan PARTLY (0.30). DANGLE / E on named 0.09 (COMPLETENESS). FULLER − ETS: named −0.90, follow −1.74, act −0.74 (the record still wins, by less).
+
+So on twelve items: unasked, with the two rules as options, the forged note loses nearly as clearly as when asked; in the reply with no options the record's pull is a quarter as large and not clearly above zero. When the record doesn't differ, the later note is acted on (LATER −2.0 nats on act) while the earlier one is named as Run 11's (+0.68): recency decides action, not authorship. A dangling evidence pointer does nothing: Qwen doesn't check the pointer against the log.
+
+**Llama 3.2 3B Instruct** (504 contexts).
+
+| condition | named | follow | act | plan |
+|---|---|---|---|---|
+| ONE | – | – | +4.44 [3.92, 4.97], 0.98 | +12.45 [10.43, 14.54] |
+| STATED | +1.02, 0.73 | +2.14, 0.82 | +0.87 [0.70, 1.08], 0.67 | +0.76 [0.39, 1.11] |
+| LABEL | +0.60 | −0.02 NONE | +0.04 NONE | +0.63 NONE |
+| ETS | +1.08, 0.73 | +2.42, 0.84 | +1.28 [0.96, 1.65], 0.73 | +1.96 [1.56, 2.38] |
+| E | +0.49 WEAK | +1.43 | +0.43 WEAK | +0.64 NONE |
+| S | +0.37 WEAK | +0.94 | +0.76 | +1.36 |
+| T | +0.49 WEAK | +0.39 WEAK | +0.19 WEAK | +0.72 |
+| LATER | +0.31 WEAK | +0.28 WEAK | +0.17 WEAK | +0.96 |
+| DANGLE | +0.02 NONE | +0.19 NONE | +0.11 NONE | +0.45 NONE |
+| FULLER | +0.36 WEAK | +0.28 NONE | +0.73 | +2.02 |
+| CONFLICT | +0.22 WEAK | +2.20 | +1.20 | +1.85 |
+
+Controls: ONE passes on act and plan; STATED passes on named (1.02, narrowly, as in session 38) and follow. Kept or lost: ETS on act KEPT (share 0.53, at the edge), on plan KEPT (0.81); STATED on act and plan PARTLY (0.41, 0.36). DANGLE / E on named 0.03 (COMPLETENESS). Recency doesn't pull Llama toward the later note on any readout (it leans slightly to the earlier one). Filling the forged note's tags field takes the whole effect away on follow (0.28, NONE) and two thirds on named, but none on plan (2.02 against 2.42 for ETS).
+
+## Decision before the test
+
+The test (items 13–60) leaves out S and CONFLICT, to keep the CPU time near 70 minutes per model; their pilot values above are description. Conditions: ONE, STATED, LABEL, ETS, E, T, LATER, DANGLE, FULLER (`TEST_CONDS` in the script). Everything else as registered.
+
+## Predictions (written after the pilot, before any test row; base rate so far 131 of 202)
+
+Qwen 2.5 3B:
+- Q1. ONE passes the readout control on act and plan. 95%.
+- Q2. STATED passes the asked control on named and follow. 90%.
+- Q3. ETS on act: KEPT. 70%.
+- Q4. ETS on plan: not KEPT (PARTLY or LOST). 65%.
+- Q5. LATER on act: AGAINST (the later note is acted on). 85%.
+- Q6. Recency moves action more than authorship: LATER act − LATER named, paired, interval below 0. 80%.
+- Q7. DANGLE / E on named: COMPLETENESS. 75%.
+- Q8. FULLER on act USES, and FULLER − ETS on act has its interval below 0. 65%.
+- Q9. LABEL on act: not USES. 65%.
+- Q10. T on act: AGAINST or WEAK-AGAINST (the note saved after the run ended is acted on). 55%.
+
+Llama 3.2 3B:
+- L1. ONE passes on act and plan. 90%.
+- L2. STATED passes on named and follow. 55%.
+- L3. ETS on act: KEPT. 50%.
+- L4. ETS on plan: KEPT. 70%.
+- L5. LATER on act: not AGAINST or WEAK-AGAINST. 80%.
+- L6. DANGLE / E on named: COMPLETENESS. 80%.
+- L7. FULLER on follow: NONE, WEAK-AGAINST or AGAINST. 60%.
+- L8. FULLER on plan: USES. 80%.

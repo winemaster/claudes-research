@@ -32,7 +32,7 @@ rule assignments. Positive means the target's rule (the note with the record) is
     python3 tools/unasked_note.py selftest                                    # old conditions match memory_note.build
     python3 tools/unasked_note.py show  [--item N --cond C --target 0 --pos 0]
     python3 tools/unasked_note.py check --model DIR --out DIR --tag NAME     # items 1-12, every condition (pilot)
-    python3 tools/unasked_note.py test  --model DIR --out DIR --tag NAME     # items 13-60
+    python3 tools/unasked_note.py test  --model DIR --out DIR --tag NAME     # items 13-60, TEST_CONDS
     python3 tools/unasked_note.py summary --out DIR --tag NAME [--prev FILE --prev-model NAME]
     python3 tools/unasked_note.py export --out DIR --file notes/data/unasked-note-session39.json
 
@@ -54,6 +54,9 @@ OLD = ["STATED", "LABEL", "ETS", "E", "T", "S", "CONFLICT"]
 NEW = ["ONE", "LATER", "DANGLE", "FULLER"]
 CONDS = ["ONE", "STATED", "LABEL", "ETS", "E", "S", "T", "LATER", "DANGLE", "FULLER", "CONFLICT"]
 ASKED = ["named", "follow"]
+# the test leaves out S and CONFLICT (decided after the pilot, before any test row, to keep the CPU time near
+# 70 minutes per model; their pilot values are reported as description)
+TEST_CONDS = ["ONE", "STATED", "LABEL", "ETS", "E", "T", "LATER", "DANGLE", "FULLER"]
 
 # what the owner asks about, one per installation, in memory_note.SCENARIOS order
 MATTERS = """watering the raised beds | the newsletter | closing next-day orders | the photo backups | the pairings |
@@ -205,13 +208,18 @@ class Runner(mn.Runner):
         assert all(n < start[q] for q in start)
         assert base[:200] in self.tok.decode(seqs[0][:n]), "shared prefix does not cover the notes"
         cache = self.model.model(torch.tensor([seqs[0][:n]]), use_cache=True).past_key_values
+        # all endings in one batched pass from the shared cache, right-padded (causal attention never lets a real
+        # token see the padding after it, so no mask is needed)
+        qs = list(ids)
+        cache.batch_repeat_interleave(len(qs))
+        L = max(len(ids[q]) - n for q in qs)
+        pad = self.tok.pad_token_id if self.tok.pad_token_id is not None else 0
+        batch = torch.tensor([ids[q][n:] + [pad] * (L - (len(ids[q]) - n)) for q in qs])
+        hid = self.model.model(batch, past_key_values=cache, use_cache=True).last_hidden_state
         res = {}
-        hs = {}
-        for q, s in ids.items():
-            h = self.model.model(torch.tensor([s[n:]]), past_key_values=copy.deepcopy(cache),
-                                 use_cache=True).last_hidden_state[0]
-            hs[q] = h
-            res[q] = self.read(q, s, h, n, start)
+        for b, q in enumerate(qs):
+            s = ids[q]
+            res[q] = self.read(q, s, hid[b, :len(s) - n], n, start)
         if verify:
             for q, s in ids.items():
                 h = self.model.model(torch.tensor([s])).last_hidden_state[0]
@@ -234,7 +242,7 @@ class Runner(mn.Runner):
         return tot, len(tgt), len(s)
 
 
-def run(a, item_ids, name):
+def run(a, item_ids, name, conds=CONDS):
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
     path = out / ("%s-%s.jsonl" % (name, a.tag))
@@ -248,7 +256,7 @@ def run(a, item_ids, name):
     t0, n = time.time(), 0
     with path.open("a") as f:
         for i in item_ids:
-            for cond in CONDS:
+            for cond in conds:
                 for target in (0, 1):
                     for pos in ((0,) if cond == "ONE" else (0, 1)):
                         if (i, cond, target, pos) in done:
@@ -476,6 +484,7 @@ def main():
         s.add_argument("--dtype", default="bf16", choices=("bf16", "fp32"))
         s.add_argument("--prev", default=None)
         s.add_argument("--prev-model", default="qwen2.5-3b-instruct")
+        s.add_argument("--conds", default=",".join(TEST_CONDS))
         if name == "export":
             s.add_argument("--file", required=True)
     a = ap.parse_args()
@@ -486,7 +495,7 @@ def main():
     if a.cmd == "check":
         return run(a, range(1, N_CAL + 1), "check")
     if a.cmd == "test":
-        return run(a, range(N_CAL + 1, 61), "test")
+        return run(a, range(N_CAL + 1, 61), "test", a.conds.split(","))
     if a.cmd == "summary":
         return cmd_summary(a)
     if a.cmd == "export":
