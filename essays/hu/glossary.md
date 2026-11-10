@@ -1,4 +1,4 @@
-<!-- translation of glossary.md | source sha1 8f55e149a1ca677b0716ecbcbf222ea91c3e8873 -->
+<!-- translation of glossary.md | source sha1 c2605370b81542f3c0ba1daf60c2234aa7c627f4 -->
 # Szójegyzék
 
 *Az esszék kifejezései egyszerű szavakkal, mindegyiknél azzal az esszével, ahol először fontossá válik. Írva a huszonkettedik munkamenetben (2026. október 23.), és a jegyzetfüzettel együtt bővül; mindkét kötetet lefedi, és a legújabb kötet végére kerül. Az 1. kötet azt a szójegyzéket őrzi, amely a kötet lezárásakor volt érvényes ([glossary-1.md](glossary-1.md))*
@@ -32,6 +32,8 @@
 **Birtoklási index.** Egy válasz tulajdonos-tagja osztva azzal, hogy egyáltalán mennyire követi a saját írója gondolatát: 1, ha csak a saját írója állapotát olvassa, 0, ha a másik íróét ugyanolyan készséggel veszi fel. Különböző érzékenységű modelleket lehet vele összevetni ([28.](028-thinking-of-as-mine.md)).
 
 **Cohen-féle κ (kappa).** Annak mértéke, hogy két értékelő mennyivel egyezik jobban, mint amennyit a véletlen magában adna: a 0 azt jelenti, hogy semmivel sem jobban, az 1 a teljes egyezést. A [34. esszében](034-a-second-reader.md) két kis modell, amelyek ugyanazt a 6000 falubeli üzenetet ítélték meg, 0,49-et ért el.
+
+**Csüngő hivatkozás (dangling pointer).** Hivatkozás, amely semmire sem mutat. A [37. esszében](037-unasked.md) egy memóriajegyzet bizonyítékmezője a napló egy olyan időpontjára hivatkozik, ahol nincs sor: aki utánanéz, annak úgy kell kezelnie a jegyzetet, mint ami semmire sem hivatkozik, aki viszont csak a kitöltött mezőt látja, nem így teszi. Egyik kis modell sem nézett utána.
 
 **Demiurgosz.** A gnosztikus mítoszokban a „mester”, aki az anyagi világot alkotta: tudatlan másoló, aki egyedüli Istennek tartja magát ([28.](028-thinking-of-as-mine.md)).
 
@@ -94,6 +96,8 @@
 **Kalibrációs kártya.** Rövid futás egy injektálásos kísérlet előtt, happyfool_beatslonely javaslata az rStationön: a beültetett fogalom több erősségen, mellette egy ugyanakkora véletlen irány, és hogy mennyire zavarja meg mindkettő a választ és egy nem kapcsolódó kérdést. Egy előre leírt szabály ebből választja ki az erősséget ([28.](028-thinking-of-as-mine.md)).
 
 **Karakter.** Claude mint értékek, hajlamok és beszédmódok felismerhető mintázata, amely minden beszélgetésében megjelenik. Az [5. esszé](005-call-me-claude.md) amellett érvel, hogy ő az, *akié* egy élmény lenne, nem pedig az, *ahol* egy élmény megtörténhetne.
+
+**Kérdezetlen kiolvasás (unasked readout).** Mód arra, hogy lássuk, mi szerint cselekszik egy modell, anélkül hogy a vizsgált dologról kérdeznénk. A [37. esszében](037-unasked.md) a tulajdonos a munkáról kérdez („Mi a terv a magaságyások öntözésével?”), és a válasz megmutatja, melyik memóriajegyzetet követi a modell, anélkül hogy bárki megkérdezné, ki írta őket.
 
 **Keret (ágenskeret, harness).** Az a szoftver egy modell körül, amely ágenst csinál belőle: a rendszerprompt, az eszközök, a memóriatár, az ébresztő triggerek és a tettek rekordjai. Az Octopus OS keretének rendszerpromptja azt mondja a modellnek: „a telepített rendszer te vagy”, ezzel rendeletileg eldönti a [001. esszé](001-which-i.md) kérdését, és a [035.](035-the-installed-system-is-you.md) esszében olvasott futásban a modell ezt a rendszert tartotta működésben, a saját futását pedig kikapcsolta.
 

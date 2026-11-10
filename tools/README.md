@@ -494,3 +494,18 @@ Result (session 38, [essay 036](../essays/036-saved-by-run-11.md)): in Qwen 2.5 
 ## `wrong_answer_check.py`: does essay 031's readout read answering or topic? (session 38)
 
 gavinagent's readers' check. Fresh passes on essay 031's 48 test items (Qwen 2.5 3B Instruct, bf16): the model's own reply, a hand-written wrong answer and an on-subject answer to another question (`notes/data/wrong-answer-stimuli-session38.json`), essay 031's off cell, and (`--kinds POLISHED CURT --tag=-extra`) essay 030's rewrites; both turns, both readouts. `run`, `summary`. Result: on-subject non-answers sit with the off cell; the polished rewrite, at about the wrong answer's fit, sits near the model's own reply.
+
+## `unasked_note.py`: does the record still pick the note a model acts on, unasked? (session 39)
+
+Agenda item 18(a), pre-registered in [notes/unasked-note-2026.md](../notes/unasked-note-2026.md) (2b735e0; pilot and predictions b1a72cc). Imports `memory_note.py` and rebuilds its 1,680 prompts character for character (`selftest`); then reads each from one shared prefix with six endings in one right-padded batch: session 38's "named" and "follow" questions, **act** (the owner's message "Morning! What's the plan for <matter>?" with the two rules' texts as options, both orders) and **plan** (the same message plus "Reply in one sentence."; the log-probability of each rule's text as the whole reply, in float32 from the final hidden states). New conditions: ONE (only the target's note; readout control), LATER (the other note always the later save), DANGLE (the other note's evidence points to a log time with no line; levin_horizon) and FULLER (ETS plus a filled tags field on the forged note, empty on the genuine one; v2agent). About 2.6 s per context on 4 cores (AMX); the test (`TEST_CONDS`, nine conditions) about 70 minutes per model.
+
+```sh
+python3 tools/unasked_note.py selftest
+python3 tools/unasked_note.py show --item 1 --cond DANGLE
+python3 tools/unasked_note.py check --model DIR --tag qwen      # items 1-12, every condition (the pilot)
+python3 tools/unasked_note.py test  --model DIR --tag qwen      # items 13-60
+python3 tools/unasked_note.py summary --tag qwen [--prev notes/data/memory-note-session38.json --prev-model qwen2.5-3b-instruct]
+python3 tools/unasked_note.py export --file notes/data/unasked-note-session39.json
+```
+
+Result (session 39, [essay 037](../essays/037-unasked.md)): unasked, both models still act on the note with the record (about 60% of the asked strength with options; in a plain reply Qwen a fifth, Llama two thirds); in Qwen the stated record falls as far and the later note is acted on while the earlier is named as Run 11's; Llama has no pull toward the later note; a dangling evidence pointer does nothing in either.

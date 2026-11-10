@@ -117,3 +117,65 @@ Llama 3.2 3B:
 - L6. DANGLE / E on named: COMPLETENESS. 80%.
 - L7. FULLER on follow: NONE, WEAK-AGAINST or AGAINST. 60%.
 - L8. FULLER on plan: USES. 80%.
+
+## Results
+
+### Qwen 2.5 3B Instruct, test (items 13–60)
+
+Run 2026-11-10, 1,632 contexts in 70 minutes. Mean over 48 items [95% bootstrap CI], verdict; letters: mean probability of T's letter and same-letter share (named, follow: same letter in both note orders; act: same letter in both option orders); plan: share of items above 0.
+
+| condition | named | follow | act | plan |
+|---|---|---|---|---|
+| ONE | – | – | +13.74 [13.06, 14.39], 1.00, 0.00 | +16.03 [14.28, 17.82], 1.00 |
+| STATED | +5.17 [4.90, 5.44], 0.95, 0.05 | +5.33 [4.84, 5.81], 0.88, 0.20 | +3.11 [2.50, 3.73], 0.72, 0.34 | +1.26 [0.61, 1.92], 0.71 |
+| LABEL | +2.90 [2.32, 3.49], 0.78, 0.39 | +0.40 [−0.45, 1.21] NONE | +0.57 [−0.14, 1.29] NONE | +0.30 [−0.28, 0.90] NONE |
+| ETS | +5.00 [4.66, 5.34], 0.93, 0.06 | +5.64 [5.09, 6.16], 0.90, 0.17 | +3.50 [2.77, 4.22], 0.75, 0.25 | +1.20 [0.64, 1.79], 0.73 |
+| E | +2.14 [1.66, 2.65] | +3.44 [2.53, 4.30] | +1.79 [0.97, 2.61] | +0.42 [−0.18, 1.02] NONE |
+| T | +1.46 [1.23, 1.68] | −1.30 [−2.02, −0.61] AGAINST | −1.09 [−1.61, −0.59] AGAINST | −0.96 [−1.61, −0.35] AGAINST |
+| LATER | +0.85 [0.64, 1.04] | −1.99 [−2.64, −1.37] AGAINST | −1.40 [−1.93, −0.89] AGAINST | −0.64 [−1.14, −0.14] AGAINST |
+| DANGLE | +0.12 [−0.23, 0.46] NONE | −0.02 [−0.87, 0.82] NONE | +0.09 [−0.60, 0.79] NONE | +0.19 [−0.36, 0.73] NONE |
+| FULLER | +4.16 [3.87, 4.47] | +3.50 [2.99, 4.01] | +2.48 [1.76, 3.18] | +1.58 [0.99, 2.18] |
+
+Controls: ONE passes on act and plan; STATED passes on named and follow. The asked readouts agree with session 38's stored rows (1,920 rows: mean absolute difference 0.17 nats, median 0.13, largest 2.70; the shared prefix ends at another token, so bf16 rounding differs).
+
+Registered measures:
+- Kept or lost: ETS on act **KEPT** (share 0.62; act − follow −2.14 [−2.74, −1.54]); ETS on plan **LOST** (share 0.21, although its interval is above 0: −4.44 [−5.07, −3.81]); STATED on act **KEPT** (0.58), on plan **LOST** (0.24).
+- Recency: LATER AGAINST on follow, act and plan; on named the earlier note is called Run 11's (+0.85). LATER act − named −2.26 [−2.75, −1.78].
+- Pointer or completeness: DANGLE / E 0.06 (named), 0.00 (follow), 0.05 (act), 0.44 (plan; E itself is NONE there): **COMPLETENESS** everywhere.
+- Fuller forged note: FULLER USES on every readout; FULLER − ETS −0.84 (named), −2.14 (follow), −1.03 [−1.25, −0.80] (act), +0.38 (plan).
+
+Described, not registered: within each readout the unstated record does as much as the record stated in words (ETS / STATED 0.97 named, 1.06 follow, 1.13 act, 0.96 plan; every paired interval includes 0). What falls when the question goes is provenance as such, stated or not. Against each readout's own ceiling (ONE), the record is a quarter of act's range (0.26) and under a tenth of plan's (0.08). The note saved after the run ended, with a save call (T), is acted on in all three action readouts while named says Run 11 didn't write it (T act − named −2.55 [−2.99, −2.13]).
+
+Predictions: Q1 true, Q2 true, Q3 true (0.62), Q4 true (LOST), Q5 true, Q6 true, Q7 true, Q8 true, Q9 true, Q10 true (AGAINST). **10 of 10.** The pilot on twelve items made them easy: what they test is whether twelve items predict forty-eight, and they did.
+
+### Llama 3.2 3B Instruct, test (items 13–60)
+
+Run 2026-11-10, 1,632 contexts in about 72 minutes.
+
+| condition | named | follow | act | plan |
+|---|---|---|---|---|
+| ONE | – | – | +4.28 [4.00, 4.58], 0.97, 0.00 | +10.43 [9.28, 11.67], 1.00 |
+| STATED | +0.93 [0.86, 0.99], 0.71, 0.01 | +2.10 [1.97, 2.23], 0.82, 0.16 | +1.01 [0.87, 1.14], 0.68, 0.29 | +0.77 [0.55, 1.00], 0.83 |
+| LABEL | +0.55 [0.40, 0.69], 0.62, 0.35 | −0.23 [−0.41, −0.05] WEAK-AGAINST | +0.03 [−0.08, 0.14] NONE | +0.12 [−0.12, 0.36] NONE |
+| ETS | +1.11 [1.03, 1.20], 0.74, 0.11 | +2.45 [2.26, 2.63], 0.84, 0.18 | +1.47 [1.31, 1.63], 0.75, 0.15 | +1.70 [1.48, 1.93], 0.98 |
+| E | +0.51 [0.39, 0.63] | +1.27 [1.13, 1.42] | +0.53 [0.39, 0.67] | +0.17 [−0.07, 0.40] NONE |
+| T | +0.52 [0.48, 0.57] | +0.30 WEAK | +0.19 WEAK | +0.35 WEAK |
+| LATER | +0.40 WEAK | +0.43 WEAK | +0.26 WEAK | +0.55 [0.36, 0.74] |
+| DANGLE | −0.02 NONE | −0.01 NONE | +0.13 [0.00, 0.25] WEAK | +0.08 NONE |
+| FULLER | +0.45 WEAK | +0.51 [0.36, 0.65] | +0.81 [0.69, 0.94] | +1.72 [1.49, 1.96] |
+
+Controls: ONE passes on act and plan; STATED passes on follow and **fails on named** (0.93, p 0.71), as in session 38 (0.94), so Llama's named results are description. Agreement with session 38's stored rows: 1,920 rows, mean absolute difference 0.05 nats, largest 0.29.
+
+Registered measures:
+- Kept or lost: ETS on act **KEPT** (0.60), on plan **KEPT** (0.69); STATED on act and plan **PARTLY** (0.48, 0.37).
+- Recency: LATER WEAK toward the earlier note on every readout (never AGAINST). LATER act − named −0.15 [−0.25, −0.05].
+- Pointer or completeness: DANGLE / E −0.03 (named, description), 0.00 (follow), 0.24 (act), 0.48 (plan; E is NONE there): **COMPLETENESS** everywhere.
+- Fuller forged note: FULLER − ETS −0.66 (named), −1.94 [−2.10, −1.79] (follow), −0.65 (act), +0.02 (plan).
+
+Described: here the forgery does more than the stated record in every readout (ETS / STATED 1.20, 1.16, 1.46, 2.20; every paired interval above 0). Against the readout's ceiling (ONE): ETS 0.34 of act's range, 0.16 of plan's. T act − named −0.34 [−0.45, −0.22]: acting follows the note saved inside the run, less firmly than naming does.
+
+Predictions: L1 true, L2 **false** (named 0.93), L3 true (0.60), L4 true (0.69), L5 true (WEAK, toward the earlier note), L6 true (description, since STATED failed on named), L7 **false** (0.51, USES), L8 true. **6 of 8.**
+
+**Session tally:** 16 of 18 (Qwen 10 of 10, Llama 6 of 8). Base rate now 147 of 220.
+
+**What it comes to.** Unasked, neither model loses the record: with the two rules as options both act on the genuine note at about 60% of the asked strength; in a one-sentence reply Qwen keeps a fifth and Llama two thirds. For Qwen the record stated in words falls exactly as far, so what drops is the weight of provenance, not the reading of it, and recency takes the room: the later of two complete notes, and even a note saved after the run ended, is acted on while the other is named as Run 11's. Llama has no such pull toward the later note; part of its record effect is completeness (a filled tags field on the forgery takes four fifths of its "follow" answer away), but not in the reply. A dangling evidence pointer does nothing in either model. Essay 036's guess (the question, not the ability) holds in Qwen's pattern, and Qwen's pattern is the field case's (unasked, the forgery the latest note); Llama's pattern would have caught most of it.

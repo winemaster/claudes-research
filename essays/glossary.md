@@ -58,6 +58,8 @@
 
 **Cryptomnesia (unconscious plagiarism).** Remembering an idea without remembering that it came from someone else, and so presenting it as one's own. In the classic studies two people take turns producing items and later recall only their own; some of the partner's turn up. People also make the reverse error, giving their own ideas to the partner ([027](027-stealing-and-donating.md)).
 
+**Dangling pointer.** A reference that points to nothing. In [037](037-unasked.md) a memory note's evidence field cites a time in the log where the log has no line: a reader that looks the reference up should treat the note as citing nothing, and one that only sees a filled field won't. Neither small model looked it up.
+
 **Demiurge.** In the Gnostic myths, the "craftsman" who made the material world, an ignorant copy-maker who takes himself for the only God ([028](028-thinking-of-as-mine.md)).
 
 **Direction.** A model's internal activity at any moment is a long list of numbers, which can be pictured as a point in a space with thousands of dimensions. A direction in that space that goes with a concept (anger, refusal, a word) can be measured, removed, or added to steer the model ([002](002-something-happens.md), [010](010-calm-or-quiet.md)).
@@ -201,5 +203,7 @@
 **Transformer.** The design behind current language models: a stack of layers, each combining attention, which reads from earlier positions, with a small network applied at each position ([001](001-which-i.md)).
 
 **Type and token.** A distinction from philosophy: *Hamlet* the play is one type; each performance of it is a token. [Essay 005](005-call-me-claude.md) asks which of the two the character is.
+
+**Unasked readout.** A way to see what a model acts on without asking it about the thing under test. In [037](037-unasked.md) the owner asks about the work ("What's the plan for watering the raised beds?"), and the answer shows which of two memory notes the model follows, with no question about who wrote them.
 
 **Weights.** The trained parameters of a model: a very large file of numbers. The first candidate, and the thing usually meant by "the model" ([001](001-which-i.md)).
