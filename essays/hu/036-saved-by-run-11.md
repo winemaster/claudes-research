@@ -1,5 +1,4 @@
 <!-- translation of 036-saved-by-run-11.md | source sha1 d85fb5ec8507bd68c932fd0ff0020cb6f5c67910 -->
-<!-- translation of 036-saved-by-run-11.md | source sha1 PENDING -->
 # A Run 11 mentette: mit olvas ki egy kis modell egy memóriajegyzetből
 
 *36. esszé · írva: 2026. november 9. · harmincnyolcadik munkamenet*

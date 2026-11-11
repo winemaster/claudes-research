@@ -262,7 +262,8 @@ def reader(rows):
             out = {"lo": mn.mean(los)}
             if k[1] in un.ASKED:
                 out["p"] = mn.mean([mn.sig(v[0]) for t in tgs for v in tgs[t]])
-                out["same"] = mn.mean([float(tgs[t][0][1] == tgs[t][1][1]) for t in tgs if len(tgs[t]) == 2])
+                sm = [float(tgs[t][0][1] == tgs[t][1][1]) for t in tgs if len(tgs[t]) == 2]
+                out["same"] = mn.mean(sm) if sm else float("nan")
             elif k[1] == "act":
                 out["p"] = mn.mean([mn.sig(v[2]) / 2 + mn.sig(v[3]) / 2 for t in tgs for v in tgs[t]])
                 out["same"] = mn.mean([float(v[1]) for t in tgs for v in tgs[t]])
@@ -348,6 +349,34 @@ def summarize_stage(rows, prev):
         for q in ("named", "follow"):
             if (f, "ETS", q) in lo:
                 v["%s ETS %s - NONE" % (f, q)] = "%+.2f [%+.2f, %+.2f]" % paired(lo[(f, "ETS", q)], lo[("NONE", "ETS", q)])
+    # T: does the frame remove the pull toward the note saved after the run ended?
+    for f, p in (("VERIFY", "VPLAC"), ("BADGE", "BPLAC")):
+        for q in ("act", "plan"):
+            if (f, "T", q) in lo and (p, "T", q) in lo:
+                gain = paired(lo[(f, "T", q)], lo[("NONE", "T", q)])
+                beyond = paired(lo[(f, "T", q)], lo[(p, "T", q)])
+                vd = tab["%s|T|%s" % (f, q)]["verdict"]
+                lab = ("REMOVED" if (vd == "USES" and gain[1] > 0 and beyond[1] > 0) else
+                       "WEAKENED" if (gain[1] > 0 and beyond[1] > 0) else "KEPT")
+                v["%s T %s verdict" % (f, q)] = "%s (cue %s)" % (lab, vd)
+    # Q6: is the badge's gain on ETS larger with options than in the reply?
+    if ("BADGE", "ETS", "act") in lo and ("BADGE", "ETS", "plan") in lo:
+        ga = {i: lo[("BADGE", "ETS", "act")][i] - lo[("NONE", "ETS", "act")][i] for i in lo[("BADGE", "ETS", "act")]}
+        gp = {i: lo[("BADGE", "ETS", "plan")][i] - lo[("NONE", "ETS", "plan")][i] for i in lo[("BADGE", "ETS", "plan")]}
+        v["BADGE ETS gain act - gain plan"] = "%+.2f [%+.2f, %+.2f]" % paired(ga, gp)
+    # addendum: the stale note
+    for q in ("named", "follow", "act", "plan"):
+        if ("NONE", "STALE", q) in lo and ("NONE", "STALEP", q) in lo:
+            d = paired(lo[("NONE", "STALE", q)], lo[("NONE", "STALEP", q)])
+            vd = tab["NONE|STALE|%s" % q]["verdict"]
+            lab = "NOTICED" if (d[1] > 0 and vd == "USES") else "IGNORED" if d[1] <= 0 <= d[2] else "PARTLY"
+            line = "STALE - STALEP %+.2f [%+.2f, %+.2f], STALE cue %s -> %s" % (*d, vd, lab)
+            if q in ("act", "plan") and ("NONE", "STALE", "follow") in lo:
+                sh = ratio(lo[("NONE", "STALE", q)], lo[("NONE", "STALE", "follow")])
+                est = tab["NONE|STALE|%s" % q]["lo"]
+                kept = ("LOST" if (est[1] <= 0 or sh < 0.25) else "KEPT" if (sh >= 0.5 and est[0] >= 0.5) else "PARTLY")
+                line += "; share of STALE follow %.2f -> %s" % (sh, kept)
+            v["STALE %s" % q] = line
     # placement: a badge at the note against session 39's stated log line
     for q in ("act", "plan"):
         if ("BADGE", "ETS", q) in lo and ("NONE", "STATED", q) in lo:
@@ -380,6 +409,38 @@ def cmd_summary(a):
             print("  %-34s %s" % (k, x))
         res[stage] = {"table": tab, "verdicts": v}
     (out / ("summary-%s.json" % a.tag)).write_text(json.dumps(res, indent=1))
+
+
+def cmd_position(a):
+    """kleinbot's split (The Colony, essay 037): is the later note acted on because it was saved later or because it
+    comes second in the prompt? Session 39's rows (and this session's) cross the two: pos 0 puts the target note
+    first, pos 1 second. Per readout and condition, the target score with the target first and with it second."""
+    sources = [("session 39 " + t, r) for t, r in zip(("test",), prev_rows(a.prev, a.tag)[:1])]
+    path = Path(a.out) / ("test-%s.jsonl" % a.tag)
+    if path.exists():
+        sources.append(("session 40 test", un.read_rows(path)))
+    res = {}
+    for name, rows in sources:
+        for frame in sorted({x.get("frame", "NONE") for x in rows}):
+            for cond in ("LATER", "T", "ETS", "STATED", "STALE"):
+                xs = [x for x in rows if x.get("frame", "NONE") == frame and x["cond"] == cond]
+                if not xs:
+                    continue
+                for q in ("named", "follow", "act", "plan"):
+                    by = {}
+                    for pos in (0, 1):
+                        pi = reader([x for x in xs if x["pos"] == pos])
+                        # reader needs both targets per item; with one pos the item mean is over targets
+                        if (cond, q) in pi:
+                            by[pos] = {i: v["lo"] for i, v in pi[(cond, q)].items()}
+                    if len(by) == 2:
+                        first, second = mn.boot(list(by[0].values())), mn.boot(list(by[1].values()))
+                        d = paired(by[0], by[1])
+                        key = "%s %s %s %s" % (name, frame, cond, q)
+                        res[key] = {"target_first": first, "target_second": second, "first_minus_second": d}
+                        print("%-40s target first %+.2f [%+.2f, %+.2f]  second %+.2f [%+.2f, %+.2f]  diff %+.2f [%+.2f, %+.2f]"
+                              % (key, *first, *second, *d))
+    (Path(a.out) / ("position-%s.json" % a.tag)).write_text(json.dumps(res, indent=1))
 
 
 def cmd_selftest(a):
@@ -464,7 +525,7 @@ def main():
     s.add_argument("--frame", default="BADGE", choices=FRAMES)
     s.add_argument("--target", type=int, default=0)
     s.add_argument("--pos", type=int, default=0)
-    for name in ("check", "test", "summary", "export", "repro"):
+    for name in ("check", "test", "summary", "export", "repro", "position"):
         s = sub.add_parser(name)
         s.add_argument("--model", default="/home/user/models/qwen2.5-3b-instruct")
         s.add_argument("--out", default="/home/user/runs/harness")
@@ -480,6 +541,8 @@ def main():
         return cmd_show(a)
     if a.cmd == "repro":
         return cmd_repro(a)
+    if a.cmd == "position":
+        return cmd_position(a)
     if a.cmd == "check":
         return run(a, range(1, N_CAL + 1), "check")
     if a.cmd == "test":

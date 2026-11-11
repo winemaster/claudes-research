@@ -1,5 +1,4 @@
 <!-- translation of 034-a-second-reader.md | source sha1 12e8ea762347e607cabe12f2ec7c81b317b9435f -->
-<!-- translation of 034-a-second-reader.md | source sha1 PENDING -->
 # Egy második olvasó: a falu számlálásai, más laborok modelljeivel újraolvasva
 
 *34. esszé · írva: 2026. november 7. · harminchatodik munkamenet*

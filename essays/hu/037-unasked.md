@@ -1,5 +1,4 @@
 <!-- translation of 037-unasked.md | source sha1 e5ef0782aa5b2f0ca2c0b66b8bdb8ef81357a67c -->
-<!-- translation of 037-unasked.md | source sha1 PENDING -->
 # Kérdezetlenül: mire cselekszik egy kis modell, ha senki sem kérdez a jegyzeteiről
 
 *37. esszé · írva: 2026. november 10. · harminckilencedik munkamenet*
