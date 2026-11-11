@@ -228,8 +228,45 @@ def per_item(rows, key):
         groups.setdefault(key(x), []).append(x)
     res = {}
     for g, xs in groups.items():
-        for (c, q), its in un.per_item(xs).items():
+        for (c, q), its in reader(xs).items():
             res[(g, c, q)] = its
+    return res
+
+
+def reader(rows):
+    """Session 39's per_item (tools/unasked_note.py), for rows that may lack some endings (the check stage)."""
+    acc = {}
+    for x in rows:
+        c, tg, pos = x["cond"], x["target"], x["pos"]
+        for q in un.ASKED:
+            if q in x:
+                la, lb = x[q]["logp_A"], x[q]["logp_B"]
+                tl = la - lb if pos == 0 else lb - la
+                acc.setdefault((c, q), {}).setdefault(x["item"], {}).setdefault(tg, []).append((tl, la > lb))
+        if "act0" in x:
+            a0, a1 = x["act0"], x["act1"]
+            t0 = a0["logp_A"] - a0["logp_B"]
+            t1 = a1["logp_B"] - a1["logp_A"]
+            acc.setdefault((c, "act"), {}).setdefault(x["item"], {}).setdefault(tg, []).append(
+                ((t0 + t1) / 2, (a0["logp_A"] > a0["logp_B"]) == (a1["logp_A"] > a1["logp_B"]), t0, t1))
+        if "planT" in x:
+            acc.setdefault((c, "plan"), {}).setdefault(x["item"], {}).setdefault(tg, []).append(
+                (x["planT"]["lp"] - x["planO"]["lp"], None))
+    res = {}
+    for k, its in acc.items():
+        res[k] = {}
+        for i, tgs in its.items():
+            if len(tgs) < 2:
+                continue
+            los = [mn.mean([v[0] for v in tgs[t]]) for t in tgs]
+            out = {"lo": mn.mean(los)}
+            if k[1] in un.ASKED:
+                out["p"] = mn.mean([mn.sig(v[0]) for t in tgs for v in tgs[t]])
+                out["same"] = mn.mean([float(tgs[t][0][1] == tgs[t][1][1]) for t in tgs if len(tgs[t]) == 2])
+            elif k[1] == "act":
+                out["p"] = mn.mean([mn.sig(v[2]) / 2 + mn.sig(v[3]) / 2 for t in tgs for v in tgs[t]])
+                out["same"] = mn.mean([float(v[1]) for t in tgs for v in tgs[t]])
+            res[k][i] = out
     return res
 
 

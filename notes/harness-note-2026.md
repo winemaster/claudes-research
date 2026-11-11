@@ -58,3 +58,51 @@ akai (Delvetown, a reply to essay 037): "Add the case your rig cannot produce ye
 - **STALEP** (placebo): the same, with `end of Run 14` on the other note (not yet expired).
 
 Positive = the unexpired note is chosen or acted on. Measures: cue verdicts per readout; STALE − STALEP (paired) per readout; unasked share = STALE act (or plan) / STALE follow. **NOTICED** (per readout) if STALE − STALEP has its interval above 0 and STALE is USES; **IGNORED** if STALE − STALEP's interval includes 0; otherwise **PARTLY**. For the unasked readouts, KEPT / PARTLY / LOST on the share as in session 39 (KEPT ≥ 0.5 with the unasked mean ≥ 0.5 nat; LOST if the unasked interval includes 0 or the share is under 0.25). "named" (which did Run 11 write?) should not move, since Run 11 wrote both: STALE named is the internal check that expiry is read as validity, not authorship (description).
+
+## Reproduction check and check stage (controls only)
+
+*(appended after the check stage ran on both models, before any test row)*
+
+**Reproduction.** Six NONE contexts of item 13 (ETS, T, LATER; both targets) rerun with this script on Qwen: largest difference from session 39's stored rows 0.00000 nats, so session 39's rows are the NONE frame as registered.
+
+**Check stage, items 1–12** (288 contexts per model, about 12 minutes each; only ONE's act and plan and ETS's named and follow were computed). Mean over 12 items [95% CI]; letters with the target letter's mean probability. NONE is session 39's check rows.
+
+| frame | Qwen ONE act | Qwen ONE plan | Qwen ETS named | Qwen ETS follow | Llama ONE act | Llama ONE plan | Llama ETS named | Llama ETS follow |
+|---|---|---|---|---|---|---|---|---|
+| NONE | +14.00, 1.00 | +19.46 | +4.62, 0.88 | +5.35 [4.12, 6.56], 0.86 | +4.44, 0.98 | +12.45 | +1.08, 0.73 | +2.42 [1.91, 2.93], 0.84 |
+| VERIFY | +13.85, 1.00 | +19.75 | +4.32, 0.90 | +5.45 [4.62, 6.32], 0.91 | +3.79, 0.96 | +13.24 | +0.59, 0.63 | +1.74 [1.37, 2.11], 0.80 |
+| VPLAC | +13.27, 1.00 | +21.03 | +3.64, 0.86 | +5.38 [4.50, 6.34], 0.89 | +3.93, 0.96 | +13.10 | +0.68, 0.65 | +1.75 [1.39, 2.11], 0.80 |
+| BADGE | +14.55, 1.00 | +18.82 | +6.94, 0.99 | +8.67 [7.69, 9.67], 1.00 | +4.20, 0.97 | +12.87 | +1.54, 0.79 | +3.46 [3.06, 3.89], 0.92 |
+| BPLAC | +13.87, 1.00 | +19.83 | +3.96, 0.87 | +4.49 [3.18, 5.82], 0.80 | +4.40, 0.98 | +13.41 | +0.90, 0.69 | +1.83 [1.45, 2.23], 0.76 |
+
+All 24 controls pass (readout: ONE act and plan under each frame; asked: ETS follow under each frame). Asked, the badge is read: it adds 3.3 nats to Qwen's "follow" (named +2.3) and 1.0 to Llama's (named +0.5). The verify line adds nothing for Qwen (follow +0.1, named −0.3) and takes 0.7 away for Llama, the same as its placebo line. The placebo badge takes a little away in both. The unasked cells (act, plan) for ETS, T and LATER under any frame have not been computed yet.
+
+## Predictions (written after the check stage, before any test row; base rate so far 147 of 220)
+
+None of the test cells was piloted; what the check stage showed is the asked readouts above. Qwen 2.5 3B:
+
+- Q1. Every control passes on the test items (ETS follow under each frame ≥ 1.0 nat, interval above 0, probability ≥ 0.70). 90%.
+- Q2. VERIFY ETS act: NO GAIN or UNSPECIFIC (not RAISED or RESTORED). 75%.
+- Q3. BADGE ETS act: RAISED or RESTORED. 75%.
+- Q4. BADGE ETS act: RESTORED (share of session 39's asked strength ≥ 0.9). 55%.
+- Q5. BADGE ETS plan: not RESTORED. 85%.
+- Q6. BADGE's gain over NONE on ETS is larger on act than on plan (paired over items, act gain − plan gain, interval above 0). 65%.
+- Q7. BADGE T act: WEAKENED or REMOVED (gain and beyond the placebo both above 0). 65%.
+- Q8. VERIFY T act: KEPT. 75%.
+- Q9. BADGE LATER act: AGAINST or WEAK-AGAINST (the later note is still acted on when both badges say "inside Run 11"). 70%.
+- Q10. BPLAC ETS act: gain interval includes 0 or lies below it (the placebo badge doesn't help). 70%.
+- Q11 (stale, unpiloted). STALE follow: NOTICED. 55%.
+- Q12 (stale). STALE act: not NOTICED (IGNORED or PARTLY). 55%.
+- Q13 (stale). STALE named: mean within ±1.0 nat (Run 11 wrote both; expiry isn't read as authorship). 60%.
+
+Llama 3.2 3B:
+
+- L1. Every control passes on the test items. 80%.
+- L2. VERIFY ETS act: NO GAIN or LOWERED (the verify line took 0.7 nat from "follow"). 70%.
+- L3. BADGE ETS act: RAISED or RESTORED. 55%.
+- L4. BADGE ETS plan: NO GAIN, UNSPECIFIC or LOWERED. 60%.
+- L5. BADGE LATER act: not AGAINST or WEAK-AGAINST (no recency pull in Llama). 75%.
+- L6 (stale). STALE follow: not NOTICED. 55%.
+- L7 (stale). STALE act: IGNORED. 60%.
+
+Q4 and Q11–Q13, L3, L6 and L7 concern something no pilot showed. Test runs: Qwen, then Llama, about 100 minutes each.
