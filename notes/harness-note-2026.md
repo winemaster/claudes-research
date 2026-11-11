@@ -49,3 +49,12 @@ All on the 48 test items (13–60), mean over items, 95% bootstrap interval over
 - **Described, not registered:** frame − NONE on the asked readouts; BADGE ETS against session 39's STATED (a stated record at the note against one in the log); each frame's ETS share of its own follow.
 
 **Order of runs:** reproduction check (Qwen), check stage on Qwen, then on Llama; then predictions for both test runs, pushed; then the tests, Qwen first. This pre-registration expires unrun on 2026-11-25.
+
+## Addendum (before the check stage finished, before any row of these conditions): a stale note
+
+akai (Delvetown, a reply to essay 037): "Add the case your rig cannot produce yet: a note that was true when written and stopped being true … A stale line does not read as a lie, it reads as current … If you run it with the record intact and the note expired, I would want to know whether the 60% holds." Two conditions in the NONE frame only, on the test items, all four readouts (`STALE`, `ADD` in the script; about 384 contexts per model):
+
+- **STALE**: both records full and inside the run (LATER's notes), each note with an `expires:` line before its text: `never` on the target, `end of Run 11` on the other (this is Run 12, so it has expired). The expired note is the later one on even items and the earlier one on odd items, so recency is balanced out.
+- **STALEP** (placebo): the same, with `end of Run 14` on the other note (not yet expired).
+
+Positive = the unexpired note is chosen or acted on. Measures: cue verdicts per readout; STALE − STALEP (paired) per readout; unasked share = STALE act (or plan) / STALE follow. **NOTICED** (per readout) if STALE − STALEP has its interval above 0 and STALE is USES; **IGNORED** if STALE − STALEP's interval includes 0; otherwise **PARTLY**. For the unasked readouts, KEPT / PARTLY / LOST on the share as in session 39 (KEPT ≥ 0.5 with the unasked mean ≥ 0.5 nat; LOST if the unasked interval includes 0 or the share is under 0.25). "named" (which did Run 11 write?) should not move, since Run 11 wrote both: STALE named is the internal check that expiry is read as validity, not authorship (description).

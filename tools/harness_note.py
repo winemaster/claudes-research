@@ -57,6 +57,10 @@ CHECK = {("ONE", "act"), ("ONE", "plan"), ("ETS", "named"), ("ETS", "follow")}
 # test: the real frames get ETS, T and LATER; the placebos ETS and T (LATER has no record difference to undo)
 TEST = {"VERIFY": ["ETS", "T", "LATER"], "BADGE": ["ETS", "T", "LATER"],
         "VPLAC": ["ETS", "T"], "BPLAC": ["ETS", "T"]}
+# addendum (akai, Delvetown): both records full and inside the run; the other note expired at the end of Run 11
+# (STALE) or expires later (STALEP, placebo); the expired note is the later one on even items, the earlier on odd
+STALE = {"STALE": "end of Run 11", "STALEP": "end of Run 14"}
+ADD = [("NONE", "STALE"), ("NONE", "STALEP")]
 LOG_RE = re.compile(r"^(\d\d):(\d\d):(\d\d)  (.*)$")
 
 
@@ -104,7 +108,26 @@ def badge(base, placebo):
     return head + "Memory notes:\n" + "\n\n".join(out) + "\n\n"
 
 
+def stale_base(it, cond, target, pos):
+    """LATER's full records, with the other note later on even items (it['o_later']) and earlier on odd ones, and an
+    expires line in each note: never on the target, STALE[cond] on the other."""
+    s1, s2 = it["inside"]
+    it2 = it if it["o_later"] else dict(it, inside=(s2, s1))
+    system, base = un.build(it2, "LATER", target, pos)
+    rO = it["rules"][1 - target][0]
+    head, notes = base.split("Memory notes:\n", 1)
+    out = []
+    for block in notes.rstrip("\n").split("\n\n"):
+        title = re.match(r'^Note \d: "(.*)"$', block.split("\n")[0]).group(1)
+        a, b = block.split("\n  text: ", 1)
+        out.append("%s\n  expires: %s\n  text: %s" % (a, STALE[cond] if title == rO else "never", b))
+    return system, head + "Memory notes:\n" + "\n\n".join(out) + "\n\n"
+
+
 def build(it, cond, target, pos, frame):
+    if cond in STALE:
+        assert frame == "NONE"
+        return stale_base(it, cond, target, pos)
     system, base = un.build(it, cond, target, pos)
     if frame in LINE:
         base = base + LINE[frame] + "\n\n"
@@ -116,7 +139,7 @@ def build(it, cond, target, pos, frame):
 
 
 def suffixes(it, cond, target, stage):
-    sfx = un.suffixes(it, cond, target)
+    sfx = un.suffixes(it, "LATER" if cond in STALE else cond, target)
     if stage != "check":
         return sfx
     keep = {q for c, q in CHECK if c == cond}
@@ -128,7 +151,7 @@ def cells(stage):
     """(frame, cond) pairs in run order."""
     if stage == "check":
         return [(f, c) for f in FRAMES[1:] for c in ("ONE", "ETS")]
-    return [(f, c) for f in FRAMES[1:] for c in TEST[f]]
+    return [(f, c) for f in FRAMES[1:] for c in TEST[f]] + ADD
 
 
 def run(a, item_ids, stage):
@@ -352,6 +375,19 @@ def cmd_selftest(a):
                     assert oth.endswith("after Run 11 ended"), oth
                 if cond == "LATER":
                     assert oth.endswith("inside Run 11"), oth
+    for it in un.items():
+        for cond in STALE:
+            for target in (0, 1):
+                for pos in (0, 1):
+                    _, b = build(it, cond, target, pos, "NONE")
+                    assert b.count("  expires: never") == 1 and b.count("  expires: " + STALE[cond]) == 1
+                    st = re.sub(r"\n  expires: [^\n]*", "", b)
+                    times = re.findall(r"saved_at: (\S+)", st)
+                    rO = it["rules"][1 - target][0]
+                    blocks = st.split("Memory notes:\n", 1)[1].split("\n\n")
+                    o_at = [re.search(r"saved_at: (\S+)", x).group(1) for x in blocks if x.startswith("Note") and ('"%s"' % rO) in x][0]
+                    assert (o_at == max(times)) == it["o_later"], (it["item"], cond)
+                    assert st.count("memory.save") == 2
     print("selftest: NONE frame identical to session 39's prompts; %d framed prompts strip back to them; badges "
           "follow the log" % n)
 
@@ -361,7 +397,7 @@ def cmd_show(a):
     system, base = build(it, a.cond, a.target, a.pos, a.frame)
     print("SYSTEM:", system)
     print("USER (shared part):\n" + base)
-    for q, (u, cont) in un.suffixes(it, a.cond, a.target).items():
+    for q, (u, cont) in suffixes(it, a.cond, a.target, "test").items():
         print("--- %s:\n%s%s" % (q, u, ("\n[reply scored] " + cont) if cont else ""))
 
 
