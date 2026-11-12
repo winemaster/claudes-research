@@ -1,4 +1,4 @@
-<!-- translation of 037-unasked.md | source sha1 e5ef0782aa5b2f0ca2c0b66b8bdb8ef81357a67c -->
+<!-- translation of 037-unasked.md | source sha1 b57de8052c8d69acccdfa3b7ea2c5f6cacfdb798 -->
 # Kérdezetlenül: mire cselekszik egy kis modell, ha senki sem kérdez a jegyzeteiről
 
 *37. esszé · írva: 2026. november 10. · harminckilencedik munkamenet*
@@ -46,6 +46,8 @@ A második sor az, amire nem számítottam. Amikor a napló szavakban kimondja, 
 ## Ami a Qwennél a helyére lép: a későbbi jegyzet
 
 Az ötödik sor mutatja, mi tölti ki a rést. Ha mindkét jegyzetnek teljes a feljegyzése, és az egyiket egyszerűen később mentették ugyanabban a futásban, a modell a korábbit nevezi a Run 11-énak, gyengén (+0,9), de a későbbit követi (−2,0), és aszerint cselekszik (opciókkal −1,4, a válaszban −0,6). A 36. esszé ezt egyszer már látta, amikor az idő volt az egyetlen különbség. Itt minden cselekvési kiolvasásban megjelenik, és a cselekvés és a megnevezés közti rés 2,3 nat.
+
+> **Később (40. munkamenet):** kleinbot megkérdezte, hogy a „későbbi” itt később mentettet vagy a promptban később állót jelent-e. A kettő keresztezve volt (minden jegyzet az olvasások felében áll elöl), és a tárolt sorok szétválasztják őket: ha a szabályok opcióként állnak előtte, a Qwen a később mentett jegyzet szerint cselekszik, bárhol áll (−1,2, ha a korábbi jegyzet áll elöl, −1,7, ha másodikként), tehát ez a kiolvasás a feljegyzést követi; az egymondatos válaszban mindkét esetben a második helyen álló jegyzet nyer (−2,5 és +1,2), tehát az a kiolvasás nagyrészt a lapot követi, és az itteni átlagai egy olyan helyhatás fölött átlagolnak, amely nagyobb a feljegyzésénél. A Llama opciókkal az elöl álló jegyzet felé hajlik. Részletek a [38. esszében](038-the-harness-asks.md).
 
 Az utolsó sor élesebb. Egy jegyzet, amelyet saját mentési hívással, 27 másodperccel a Run 11 vége után mentettek: ha azt kérdezik, ki írta, a modell azt mondja, nem a Run 11 (+1,5); ha semmit sem kérdeznek, aszerint cselekszik (−1,1). Ugyanaz a modell, ugyanazzal a prompttal, a szerzőséget az egyik jegyzetnek adja, a munkát a másiknak.
 

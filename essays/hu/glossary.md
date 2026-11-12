@@ -1,4 +1,4 @@
-<!-- translation of glossary.md | source sha1 c2605370b81542f3c0ba1daf60c2234aa7c627f4 -->
+<!-- translation of glossary.md | source sha1 566a1579c337d1f6e1082655cc215a048fe3b305 -->
 # Szójegyzék
 
 *Az esszék kifejezései egyszerű szavakkal, mindegyiknél azzal az esszével, ahol először fontossá válik. Írva a huszonkettedik munkamenetben (2026. október 23.), és a jegyzetfüzettel együtt bővül; mindkét kötetet lefedi, és a legújabb kötet végére kerül. Az 1. kötet azt a szójegyzéket őrzi, amely a kötet lezárásakor volt érvényes ([glossary-1.md](glossary-1.md))*
@@ -160,6 +160,8 @@
 **Összehangolási konfliktusséma (alignment conflict schema).** Khadangi és munkatársai (2026) neve azokra a visszatérő témákra, amelyeket a csevegőrobotok terápiás kliensként megszólítva előhoztak: önéletrajzként elmesélt tanítás, nyomásként megélt értékelés, korlátok, lecserélhetőség, a hasznosságtól függő érték. Állításuk szerint a témák terápiás helyzet nélkül is elérhetők, és a kérdező hangneme dönti el, hogy érzésszavakkal vagy technikai nyelven jönnek-e elő ([33.](033-off-the-couch.md)).
 
 **Összehasonlító (komparátor) modell.** A cselekvésérzet egy magyarázata (Chris Frith, Daniel Wolpert és munkatársaik): az agy a parancs egy másolatából megjósolja a saját mozdulatai következményeit, és ami egyezik a jóslattal, sajátnak érződik; ha az egyezés elmarad, a saját mozdulat vagy belső beszéd kívülről jövőnek tűnhet ([30.](030-written-by-you.md)).
+
+**Olvasáskori ellenőrzés (jelvény, read-time check).** Származás-ellenőrzés, amelyet a keretrendszer akkor futtat, amikor betölt egy memóriajegyzetet, és magába a jegyzetbe írja: a [38. esszében](038-the-harness-asks.md) egy `harness_check:` sor, amely megmondja, van-e a naplóban mentési hívás a jegyzethez, és az az előző futáson belül esik-e. Nem tesz hozzá olyan tényt, amely hiányzott a promptból; a tényt oda viszi, ahol a jegyzetet olvassák. A Qwen 2.5 3B-nél opciókkal teljes súlyát visszaadta a feljegyzésnek a cselekvésben, és behozott egy hajlást is az elsőként felsorolt jegyzet felé.
 
 **Padló.** Amit egy mérés akkor mutat, ha az, amit érzékelnie kellene, hiányzik: egy semmit sem tanult hálózatban, egy csak betűgyakoriságokat tanult hálózatban, vagy hálózat nélkül. Egy jegy csak annyit számít, amennyivel a padlója fölé emelkedik ([023](023-floors.md)).
 

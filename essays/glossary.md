@@ -160,6 +160,8 @@
 
 **Quality heuristic.** The tendency of models asked to pick out their own text to credit themselves with text they judge better (St. Amand and colleagues, 2026). [Essay 030](030-written-by-you.md) separated it from fit with a better-written rewrite: the small model claimed that slightly less often than its own words.
 
+**Read-time check (badge).** A provenance check that the harness runs when a memory note is loaded, written into the note itself: in [essay 038](038-the-harness-asks.md), a `harness_check:` line saying whether the log has a save call for the note and whether it lies inside the previous run. It adds no fact the prompt lacked; it moves the fact to where the note is read. In Qwen 2.5 3B it restored the record's full weight on the action with options, and also brought in a lean toward whichever note is listed first.
+
 **Recurrent processing theory.** Victor Lamme's theory that consciousness needs feedback, with later stages of processing feeding back into earlier ones. A single forward pass has none ([001](001-which-i.md)).
 
 **Reinforcement learning.** Training by trial and reward: the model makes attempts, the attempts are scored, and the weights are changed to make higher-scoring attempts more likely ([014](014-a-return-of-runs.md)).
