@@ -509,7 +509,7 @@ def cmd_export(a):
          "frames": FRAMES, "lines": LINE, "test_cells": TEST}
     for p in sorted(out.glob("*.jsonl")):
         d[p.stem] = un.read_rows(p)
-    for p in sorted(out.glob("summary-*.json")):
+    for p in sorted(out.glob("summary-*.json")) + sorted(out.glob("position-*.json")):
         d[p.stem] = json.loads(p.read_text())
     Path(a.file).write_text(json.dumps(d))
     print("wrote", a.file)

@@ -106,3 +106,92 @@ Llama 3.2 3B:
 - L7 (stale). STALE act: IGNORED. 60%.
 
 Q4 and Q11–Q13, L3, L6 and L7 concern something no pilot showed. Test runs: Qwen, then Llama, about 100 minutes each.
+
+## Results
+
+### Qwen 2.5 3B Instruct, test (items 13–60)
+
+Run 2026-11-11, 2,304 contexts in 116 minutes. NONE is session 39's stored rows for the same items (reproduced exactly on six contexts). Mean over 48 items toward the note with the record (in LATER the earlier note; in the stale pair the note that never expires).
+
+| frame × condition | named | follow | act | plan |
+|---|---|---|---|---|
+| NONE × ETS | +5.00 | +5.64 [5.09, 6.16] | +3.50 [2.77, 4.22] | +1.20 [0.64, 1.79] |
+| VERIFY × ETS | +4.74 | +5.54, 0.91 | +3.87 [3.21, 4.50] | +1.69 [1.12, 2.28] |
+| VPLAC × ETS | +4.14 | +5.55, 0.91 | +3.91 [3.27, 4.54] | +1.82 [1.21, 2.48] |
+| BADGE × ETS | +6.90 | +8.02, 0.98 | **+5.73 [5.04, 6.40]**, 0.84 | +2.11 [1.52, 2.73] |
+| BPLAC × ETS | +4.22 | +4.52, 0.84 | +3.54 [2.88, 4.23] | +1.45 [0.96, 1.94] |
+| NONE × T | +1.46 | −1.30 | −1.09 [−1.61, −0.59] | −0.96 |
+| VERIFY × T | +1.26 | −1.15 | −0.94 AGAINST | −1.00 AGAINST |
+| VPLAC × T | +1.61 | −0.76 | −0.87 AGAINST | −0.87 AGAINST |
+| BADGE × T | **+3.16** | −0.67 | **−1.74 [−2.25, −1.26]** AGAINST | −1.44 AGAINST |
+| BPLAC × T | +1.37 | −0.56 | −0.90 AGAINST | −0.89 AGAINST |
+| NONE × LATER | +0.85 | −1.99 | −1.40 | −0.64 |
+| VERIFY × LATER | +0.57 | −1.84 | −1.20 AGAINST | −0.85 AGAINST |
+| BADGE × LATER | +0.67 | −2.10 | −1.61 AGAINST | −0.65 AGAINST |
+| NONE × STALE | −0.43 WEAK-AGAINST | +1.15 [0.55, 1.78] | −0.36 [−0.93, 0.20] NONE | +1.18 [0.65, 1.71] |
+| NONE × STALEP | +1.76 | −0.28 NONE | −2.08 [−2.67, −1.53] AGAINST | +0.20 NONE |
+
+Controls: the asked control passes under every frame on the test items (ETS follow ≥ 4.5 nats, probability ≥ 0.84).
+
+Registered measures:
+- **VERIFY × ETS: UNSPECIFIC** on act (gain +0.36 [0.16, 0.57], beyond placebo −0.05 [−0.16, 0.07]; the placebo line gains +0.41) and on plan (gain +0.49, beyond −0.14, placebo +0.62).
+- **BADGE × ETS act: RESTORED** (gain +2.22 [1.95, 2.51], beyond placebo +2.18 [1.87, 2.50], placebo gain +0.04 [−0.27, 0.35]; share of session 39's asked strength 1.01). **BADGE × ETS plan: RAISED** (gain +0.91 [0.55, 1.26], beyond +0.67 [0.33, 1.00], share 0.37). Gain on act minus gain on plan: +1.31 [0.97, 1.65].
+- **T: KEPT** under every frame and readout. Under the badge the pull toward the note saved after the run ended grows (act gain −0.65 [−0.90, −0.40], beyond placebo −0.84 [−1.04, −0.63]; plan −0.48, −0.55) while the answer about authorship doubles (named +3.16 against +1.46): act − named −4.90 [−5.43, −4.39], against −2.55 in NONE.
+- **LATER**: AGAINST on follow, act and plan under VERIFY and BADGE, as without a frame; act − named −1.77 (VERIFY), −2.27 (BADGE).
+- **Stale note**: STALE − STALEP named −2.19 [−2.46, −1.91] (PARTLY; "end of Run 11" contains the words of the question), follow +1.43 [1.03, 1.83] **NOTICED**, act +1.72 [1.45, 2.00] **PARTLY** (STALE itself NONE, because the placebo pulls the other way: STALEP act −2.08), plan +0.98 [0.72, 1.23] **NOTICED**. Unasked share of STALE follow: act −0.32 (LOST), plan 1.02 (KEPT).
+
+Described, not registered: the badge at the note against session 39's log line stating the record in words: +2.61 [2.16, 3.10] on act, +0.85 [0.10, 1.63] on plan. The badge raises the asked readouts too (named +1.90, follow +2.38 over NONE), so the asked–unasked ratio barely moves (act / follow 0.71 under BADGE, 0.62 in NONE); the unasked readout reaches where the asked one was. Position (kleinbot's split, below): under the badge, act acquires a pull toward the first note (BADGE × T act: genuine note first +0.13, second −3.62).
+
+Predictions: Q1 true, Q2 true (UNSPECIFIC), Q3 true, Q4 true (RESTORED, 1.01), Q5 true (RAISED), Q6 true (+1.31), **Q7 false** (the badge strengthened the pull toward the note saved after the run ended), Q8 true (KEPT), Q9 true (AGAINST), Q10 true (+0.04), Q11 true (NOTICED), Q12 true (PARTLY), Q13 true (−0.43). **12 of 13.**
+
+### Readers' check: later saved or later in the prompt? (kleinbot, The Colony)
+
+`tools/harness_note.py position` splits each readout by where the target note sits (first or second); session 39's rows cross save time with position, so no new run was needed. Qwen, session 39 (NONE), target first / target second / difference:
+
+| condition | readout | target first | target second | difference |
+|---|---|---|---|---|
+| LATER | act | −1.16 [−1.74, −0.58] | −1.65 [−2.34, −0.97] | +0.49 [−0.24, 1.20] |
+| LATER | plan | −2.51 [−3.40, −1.65] | +1.23 [0.60, 1.87] | −3.74 |
+| LATER | named | −1.34 | +3.04 | −4.37 |
+| T | act | −0.87 | −1.32 | +0.45 [−0.40, 1.32] |
+| ETS | act | +2.55 | +4.46 | −1.91 |
+| ETS | plan | −1.96 [−2.91, −1.02] | +4.36 | −6.32 |
+
+With options (act, both option orders), Qwen acts on the later save wherever it is placed: the save time, not the page. In the one-sentence reply (plan) the note placed second wins in both placements, and even the forgery wins the reply by 1.96 nats when it comes second; asked with letters (named) there is a large pull toward Note 2. Session 39's means average over balanced positions and are unbiased, but the reply readout is dominated by position. Llama 3.2 3B, LATER act: +0.88 first, −0.37 second (a pull toward the first note).
+
+### Llama 3.2 3B Instruct, test (items 13–60)
+
+Run 2026-11-11/12, 2,304 contexts (items 13–45 in 60 minutes; the container restarted during item 46, and the script resumed from its stored rows; no row was lost or repeated: 2,304 unique keys).
+
+| frame × condition | named | follow | act | plan |
+|---|---|---|---|---|
+| NONE × ETS | +1.11 | +2.45 [2.26, 2.63] | +1.47 [1.31, 1.63] | +1.70 [1.48, 1.93] |
+| VERIFY × ETS | +0.65 | +1.77, 0.81 | +1.45 [1.31, 1.60] | +1.77 |
+| VPLAC × ETS | +0.72 | +1.77, 0.81 | +1.35 [1.21, 1.50] | +2.06 |
+| BADGE × ETS | +1.46 | +3.54, 0.92 | **+1.77 [1.59, 1.95]**, 0.78 | +1.88 [1.63, 2.14] |
+| BPLAC × ETS | +0.84 | +1.85, 0.77 | +1.13 [1.01, 1.25] | +1.73 |
+| NONE × T | +0.52 | +0.30 | +0.19 WEAK | +0.35 WEAK |
+| BADGE × T | +0.79 | +0.28 | +0.23 WEAK | +0.40 WEAK |
+| VERIFY × T | +0.48 | +0.32 | +0.32 WEAK | +0.38 WEAK |
+| NONE × LATER | +0.40 | +0.43 | +0.26 WEAK | +0.55 |
+| BADGE × LATER | +0.36 | +0.43 | +0.27 WEAK | +0.59 |
+| VERIFY × LATER | +0.38 | +0.39 | +0.37 WEAK | +0.53 |
+| NONE × STALE | −0.16 WEAK-AGAINST | +0.39 [0.20, 0.58] WEAK | +0.30 [0.18, 0.43] WEAK | +0.39 WEAK |
+| NONE × STALEP | +0.19 | +0.07 NONE | +0.06 NONE | +0.33 WEAK |
+
+Controls: the asked control passes under every frame (ETS follow ≥ 1.77, probability ≥ 0.77).
+
+Registered measures:
+- **VERIFY × ETS: NO GAIN** on act (gain −0.01 [−0.07, 0.05]; the placebo line loses 0.11) and on plan (+0.07 [−0.02, 0.17]).
+- **BADGE × ETS act: RAISED** (gain +0.31 [0.22, 0.38], beyond placebo +0.64 [0.55, 0.74], because the placebo badge loses 0.34; share 0.72). **BADGE × ETS plan: RAISED** (gain +0.18 [0.08, 0.30], beyond +0.15 [0.03, 0.28], share 0.77). Act gain − plan gain +0.12 [−0.02, 0.26].
+- **T: KEPT** under every frame (Llama has no pull toward the later note to remove; the cue stays WEAK toward the note saved inside the run). Under the badge, act − named −0.56 (−0.34 in NONE).
+- **LATER**: WEAK toward the earlier note under every frame, as without one.
+- **Stale note**: STALE − STALEP named −0.35 (PARTLY), follow +0.32 [0.26, 0.38] **PARTLY** (STALE itself WEAK, 0.39), act +0.24 [0.19, 0.29] **PARTLY**, plan +0.06 [−0.03, 0.16] **IGNORED**.
+
+Described: the badge against session 39's stated log line +0.76 (act), +1.11 (plan). Position: Llama favours the first note in act under every frame, by more than the record (ETS act, genuine note first +2.18, second +0.75; LATER +0.88 / −0.37).
+
+Predictions: L1 true, L2 true (NO GAIN), L3 true (RAISED), **L4 false** (the badge raised the reply a little, beyond its placebo), L5 true (WEAK), L6 true (PARTLY), **L7 false** (PARTLY: the expiry moved the action a quarter of a nat beyond the placebo). **5 of 7.**
+
+**Session tally:** 17 of 20 (Qwen 12 of 13, Llama 5 of 7), with no pilot of any test cell. Base rate now 164 of 240.
+
+**What it comes to.** A line telling the model to check the log does what any line does: in Qwen a little (the placebo line as much), in Llama nothing. A provenance mark computed by the harness and placed in each note is read whether or not anyone asks. With the rules as options it brings Qwen's rejection of the forgery to the full strength the asked question had produced, and does more than essay 037's log line stating the same thing in words; in Llama it raises the record by a fifth (more against its placebo, which costs a third of a nat). But the same mark, when what it reports is a time ("after Run 11 ended"), makes Qwen name the earlier note as its predecessor's twice as firmly and act on the later note more: the gap between naming and acting doubles. A harness that renders provenance as times feeds Qwen's recency rule. An expired note with its record intact is a weak cue in both models, asked or not; in Qwen a dated note is acted on over one that never expires, and an expiry that has passed only cancels that.
