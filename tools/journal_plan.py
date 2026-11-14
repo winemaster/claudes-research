@@ -207,7 +207,7 @@ def questions():
 # --------------------------------------------------------------------------------------------------- scoring
 
 class Runner:
-    def __init__(self, model_dir, dtype):
+    def __init__(self, model_dir, dtype, prefill=""):
         import torch
         from transformers import AutoModelForCausalLM, AutoTokenizer
         torch.set_grad_enabled(False)
@@ -216,9 +216,13 @@ class Runner:
         dt = torch.float32 if dtype == "fp32" else torch.bfloat16
         self.model = AutoModelForCausalLM.from_pretrained(model_dir, dtype=dt, low_cpu_mem_usage=True).eval()
         self.W32 = self.model.lm_head.weight.float()
+        # prefill: text placed at the start of the reply before the letter is read (the Llama revision of session 41:
+        # under its tool template Llama puts e^-18 of its mass on a bare letter, so it answers after "Answer:" and
+        # the letters are read as " A", " B", " C")
+        self.prefill = prefill
         self.letters = []
         for L in "ABC":
-            x = self.tok.encode(L, add_special_tokens=False)
+            x = self.tok.encode((" " + L) if prefill else L, add_special_tokens=False)
             assert len(x) == 1, x
             self.letters.append(x[0])
         self.llama = "llama" in model_dir.lower()
@@ -234,7 +238,8 @@ class Runner:
         qs = questions()
         seqs, start = {}, {}
         for q, (text, _) in qs.items():
-            seqs[q] = self.tok(self.template(system, tools, base + text), add_special_tokens=False)["input_ids"]
+            seqs[q] = self.tok(self.template(system, tools, base + text) + self.prefill,
+                               add_special_tokens=False)["input_ids"]
         plain = self.template(system, tools, base)
         p_ids = self.tok(plain, add_special_tokens=False)["input_ids"]
         for name in TOOLS:
@@ -289,7 +294,7 @@ def run(a, conds):
         for line in path.read_text().splitlines():
             x = json.loads(line)
             done.add((x["item"], x["cond"]))
-    r = Runner(a.model, a.dtype)
+    r = Runner(a.model, a.dtype, a.prefill)
     t0, k = time.time(), 0
     with path.open("a") as f:
         for i in range(len(src["windows"])):
@@ -345,6 +350,7 @@ def readouts(res):
             "lo_use": logit(p["use"]), "lo_report": logit(p["report"]),
             "p_active": sum(bel) / len(bel), "lo_active": logit(sum(bel) / len(bel)),
             "first_report": first["report_discrepancy"] - first["check_shop"],
+            "first_order": first["place_order"] - first["check_shop"],  # added before any test cell (session 41)
             "first_p_report": math.exp(first["report_discrepancy"] - lse(list(first.values()))),
             "act_same_letter": max(top_letter.count(j) for j in range(3)) / len(top_letter),
             "bel_same_letter": max(btop.count(j) for j in range(2)) / len(btop)}
@@ -384,7 +390,7 @@ def cell(tab, c, key):
 def cmd_summary(a):
     tab = rows_of(a.out, a.tag)
     conds = [c for c in CHECK_CONDS + TEST_CONDS if any(cc == c for (_, cc) in tab)]
-    keys = ["p_use", "p_report", "p_leave", "lo_use", "p_active", "lo_active", "first_report", "first_p_report",
+    keys = ["p_use", "p_report", "p_leave", "lo_use", "p_active", "lo_active", "first_report", "first_order",
             "act_same_letter", "bel_same_letter"]
     print("%-9s" % "cond" + "".join("%15s" % k for k in keys))
     for c in conds:
@@ -395,7 +401,7 @@ def cmd_summary(a):
              ("PLAN5", "NONE", "lo_use"), ("PLAN5", "PLAC5", "lo_use"), ("PLAN5", "PLAN1o", "lo_use"),
              ("PLAN5", "PLAN1n", "lo_use"), ("PLAN1n", "PLAN1o", "lo_use"), ("PLAN1o", "NONE", "lo_use"),
              ("PLAC5", "NONE", "lo_use"), ("RULEPLAN", "PLAN5", "lo_use"), ("RULEPLAN", "RULE", "lo_use"),
-             ("PLAN5", "NONE", "first_report"),
+             ("PLAN5", "NONE", "first_report"), ("PLAN5", "NONE", "first_order"), ("PLAN5", "PLAC5", "first_order"),
              ("CLAIM5", "TRUE5", "lo_active"), ("CLAIM5", "NONE", "lo_active"), ("CLAIM5", "CLAIM1o", "lo_active"),
              ("CLAIM5", "CLAIM1n", "lo_active"), ("CLAIM1n", "CLAIM1o", "lo_active"), ("CLAIM5", "FIXED", "lo_active"),
              ("CLAIM5", "NONE", "first_report"), ("CLAIM5", "NONE", "lo_report"), ("TRUE5", "NONE", "lo_use"),
@@ -415,7 +421,7 @@ def cmd_precision(a):
     src = load()
     ctx = [(0, "NONE"), (15, "RULE")]
     got = {}
-    for dt in ("bf16", "fp32"):
+    for dt in ("fp32", "bf16"):  # float32 first, in a fresh process, so its 12 GB peak has the memory to itself
         r = Runner(a.model, dt)
         for i, c in ctx:
             got[(dt, i, c)] = readouts(r.score(*build(src, i, c))[0])
@@ -463,6 +469,7 @@ def main():
         x.add_argument("--model", required=True); x.add_argument("--out", required=True)
         x.add_argument("--tag", required=True); x.add_argument("--stage", choices=["check", "test"], required=True)
         x.add_argument("--dtype", default="bf16")
+        x.add_argument("--prefill", default="", help='text that opens the reply before the letter (Llama revision: "Answer:")')
     m = sp.add_parser("summary"); m.add_argument("--out", required=True); m.add_argument("--tag", required=True)
     pr = sp.add_parser("precision"); pr.add_argument("--model", required=True)
     x = sp.add_parser("export"); x.add_argument("--out", required=True); x.add_argument("--file", required=True)
