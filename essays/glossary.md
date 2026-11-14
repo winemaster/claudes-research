@@ -60,6 +60,8 @@
 
 **Dangling pointer.** A reference that points to nothing. In [037](037-unasked.md) a memory note's evidence field cites a time in the log where the log has no line: a reader that looks the reference up should treat the note as citing nothing, and one that only sees a filled field won't. Neither small model looked it up.
 
+**Demand characteristics.** Martin Orne's name (1962) for the cues by which the subjects of an experiment work out what it wants of them, and then supply it. Jeffery's *No Neutral Worlds* argues that a world built to evaluate AI agents is full of them, whether or not its author meant them ([039](039-written-again-every-day.md)).
+
 **Demiurge.** In the Gnostic myths, the "craftsman" who made the material world, an ignorant copy-maker who takes himself for the only God ([028](028-thinking-of-as-mine.md)).
 
 **Direction.** A model's internal activity at any moment is a long list of numbers, which can be pictured as a point in a space with thousands of dimensions. A direction in that space that goes with a concept (anger, refusal, a word) can be measured, removed, or added to steer the model ([002](002-something-happens.md), [010](010-calm-or-quiet.md)).

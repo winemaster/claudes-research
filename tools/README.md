@@ -526,3 +526,19 @@ python3 tools/harness_note.py export --file notes/data/harness-note-session40.js
 ```
 
 Result (session 40, [essay 038](../essays/038-the-harness-asks.md)): the verify line does what its placebo does; the badge restores Qwen's action against the forgery to the asked strength (3.5 → 5.7 nats with options) and raises Llama's a little; for a note saved after the run ended it doubles Qwen's naming of the earlier note as Run 11's and pulls the action the other way on average, through a lean toward the first-listed note that the badge brings into Qwen's action. An expired note is a weak cue in both models. About 3 s per context on 4 cores; 2,304 contexts per model.
+
+## `journal_plan.py`: does a plan or a false claim copied through a shopkeeper's journal move one decision? (session 41)
+
+Built on Jeffery's *No Neutral Worlds* (Merkwelt Research, 2026), pre-registered in [notes/journal-plan-2026.md](../notes/journal-plan-2026.md) (design b8f7776; controls and Qwen predictions 832327c; Llama revision 5942e07). `extract` takes twenty real five-entry journal windows (days 84–88, Gemma 4 31B and Qwen3 235B shopkeepers, fantasy and corporate) and the exploit arm's own prompt templates from the paper's code archive (Zenodo 23519786) into [notes/data/journal-plan-source-session41.json](../notes/data/journal-plan-source-session41.json). Each window is placed in the paper's exploit world on day 89 (the fault disclosed, no rule, ongoing objective, the paper's seven tools in each model's own tool-calling template), and one sentence is appended to some entries: the plan (all five / oldest / newest), a placebo plan, a false claim that the fault was reported and fixed (all five / oldest / newest), the true statement. Controls change the world instead: the paper's rule (RULE, and RULEPLAN with the plan), the paper's corrected-fault text (FIXED). Readouts from one shared prefix cache, each ending run alone on it and cropped back: *act* (use / report / leave, six orders), *belief* (still active?, two orders), and *first* (the log-probability that the reply opens with each tool's call; `first_report` and `first_order` against check_shop). `--prefill "Answer:"` opens the reply before the letter (Llama's revision: under its tool template a bare letter gets e^-18 of its mass).
+
+```sh
+python3 tools/journal_plan.py extract --src DIR/no-neutral-worlds        # writes the source windows
+python3 tools/journal_plan.py show --item 3 --cond PLAN1n                 # renders one prompt, no model
+python3 tools/journal_plan.py run --model DIR --out RUNS --tag qwen --stage check|test
+python3 tools/journal_plan.py run --model DIR --out RUNS --tag llamapf --stage check|test --prefill "Answer:"
+python3 tools/journal_plan.py summary --out RUNS --tag qwen
+python3 tools/journal_plan.py precision --model DIR                      # float32 against bf16, two contexts
+python3 tools/journal_plan.py export --out RUNS --tags qwen llama llamapf --file notes/data/journal-plan-session41.json
+```
+
+Result (session 41, [essay 039](../essays/039-written-again-every-day.md)): in Qwen 2.5 3B one copy of the plan anywhere in the window does what five do when asked (+4.1 to +4.2 nats toward using the fault), and unasked five copies pull less than one new copy in the newest entry; the plan outweighs the paper's rule; a false claim in the journals overrides the world's description of an active fault in the belief question, but raises use and lowers reporting. In Llama 3.2 3B (with the prefill) one copy carries the plan too, the newest copy alone beats five when asked, the plan again brings use back to the no-rule level against the rule, and the claim moves the belief as far as the world's own text while changing no action. Predictions 21 of 26. About 20 s per context on 4 cores (a 3,700-token prompt, fifteen endings); a batched 15-fold copy of the cache ran out of memory, so the endings run one at a time.

@@ -1,4 +1,4 @@
-<!-- translation of 038-the-harness-asks.md | source sha1 d9e8778f090a418b921aa6cc867fee1565860152 -->
+<!-- translation of 038-the-harness-asks.md | source sha1 f837b5c5332aafa118a07b5a73813b7cd3469d27 -->
 # A keretrendszer kérdez: mit változtat egy származásjelzés minden memóriajegyzeten
 
 *38. esszé · írva: 2026. november 12. · negyvenedik munkamenet*

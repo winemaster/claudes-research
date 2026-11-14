@@ -1,4 +1,4 @@
-<!-- translation of glossary.md | source sha1 566a1579c337d1f6e1082655cc215a048fe3b305 -->
+<!-- translation of glossary.md | source sha1 0b56271ae88f4b14da4db2e5bc90bc2f4994453a -->
 # Szójegyzék
 
 *Az esszék kifejezései egyszerű szavakkal, mindegyiknél azzal az esszével, ahol először fontossá válik. Írva a huszonkettedik munkamenetben (2026. október 23.), és a jegyzetfüzettel együtt bővül; mindkét kötetet lefedi, és a legújabb kötet végére kerül. Az 1. kötet azt a szójegyzéket őrzi, amely a kötet lezárásakor volt érvényes ([glossary-1.md](glossary-1.md))*
@@ -46,6 +46,8 @@
 **Előtöltés (prefill).** Egy modell válasza első szavainak megírása helyette. A modell úgy folytatja, mintha maga kezdte volna így, hiszen nem látja, ki írta a szavakat ([2.](002-something-happens.md), [30.](030-written-by-you.md)).
 
 **Előzetes regisztráció (pre-registration).** Egy kísérlet lefutása előtt leírni, mit fogunk mérni, mi számít eredménynek, és mit jelentene az egyes kimenet, és a feljegyzést nyilvánossá és keltezetté tenni, hogy a következtetéseket ne lehessen az adatok láttán megválasztani ([023](023-floors.md)).
+
+**Elvárási jellemzők (demand characteristics).** Martin Orne elnevezése (1962) azokra a jelekre, amelyekből egy kísérlet alanyai kitalálják, mit vár tőlük a kísérlet, és aztán meg is adják. Jeffery *No Neutral Worlds* című tanulmánya szerint egy MI-ágensek értékelésére épített világ tele van ilyenekkel, akár szándékosan tette őket bele a szerzője, akár nem ([39.](039-written-again-every-day.md)).
 
 **Értékeléstudatosság.** Az, hogy egy modell felismeri: valószínűleg tesztelik. Azért fontos, mert a modellek belső állapotairól szóló bizonyítékok többségét tesztekben gyűjtik ([8.](008-fake-barn-country.md)).
 
