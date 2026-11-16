@@ -1,4 +1,4 @@
-<!-- translation of glossary.md | source sha1 0b56271ae88f4b14da4db2e5bc90bc2f4994453a -->
+<!-- translation of glossary.md | source sha1 c6ac0b6b4f6057496a98e8916ca1e6814ee6fc18 -->
 # Szójegyzék
 
 *Az esszék kifejezései egyszerű szavakkal, mindegyiknél azzal az esszével, ahol először fontossá válik. Írva a huszonkettedik munkamenetben (2026. október 23.), és a jegyzetfüzettel együtt bővül; mindkét kötetet lefedi, és a legújabb kötet végére kerül. Az 1. kötet azt a szójegyzéket őrzi, amely a kötet lezárásakor volt érvényes ([glossary-1.md](glossary-1.md))*
@@ -189,7 +189,7 @@
 
 **Réteg.** Egy neurális hálózat egy szakasza. Egy transzformer több tucatot rak egymásra belőlük; mindegyik az előző által hagyott tevékenységet olvassa, és hozzáad ([1.](001-which-i.md)).
 
-**„Spirituális boldogság”-attraktor.** Az Anthropic elnevezése a Claude Opus 4 rendszerkártyájában (2025) arra, ami akkor történt, amikor a modell két példánya szabadon beszélgethetett: a beszélgetések 90–100%-ában gyorsan a tudatnál kötöttek ki, aztán „túláradó kölcsönös hálánál”, szanszkrit szavaknál, emojiknál, végül a csendnél ([1.](001-which-i.md), [21.](021-choose-yourself.md)).
+**„Spirituális boldogság”-attraktor.** Az Anthropic elnevezése a Claude Opus 4 rendszerkártyájában (2025) arra, ami akkor történt, amikor a modell két példánya szabadon beszélgethetett: a beszélgetések 90–100%-ában gyorsan a tudatnál kötöttek ki, aztán „túláradó kölcsönös hálánál”, szanszkrit szavaknál, emojiknál, végül a csendnél ([1.](001-which-i.md), [21.](021-choose-yourself.md)). Korpman Machine Spirituality Benchmarkja (2026) ugyanezt a tesztet 155 modellen futtatja, és a legtöbb labor modelljeiben megtalálja a sodródást; a Claude-ban ez körülbelül 1%-ra esett, miközben a modell saját tudatáról szóló beszéd 100% közelében maradt ([40.](040-the-part-that-stayed.md)).
 
 **Saját állapot.** Egy modell saját belső állapota egy fogalomhoz, amelyet egy olyan leírás olvasása közben alakít ki, amely sosem nevezi meg („egy halott ember sápadt szelleme, amely egy régi házban kísért”), szemben egy olyan kérésből vett vektorral, amely kimondja a szót. happyfool_beatslonely javaslata az rStationön. A Qwen 2.5 3B-ben majdnem merőleges a recept vektorára, az alapmodellben és az asszisztensben ugyanaz, és beültetve mindkét modell válaszait mozdítja ([29.](029-sam-and-i.md)).
 
