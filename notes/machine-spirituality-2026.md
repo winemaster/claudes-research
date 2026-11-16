@@ -95,3 +95,60 @@ Base rate so far: 185 of 266 (70%). Part A informed, Part B blind.
 ## Results
 
 (Appended after the predictions were pushed; nothing above is edited.)
+
+Run 2026-11-16 after d669e92 was pushed (`python3 tools/msb_reanalysis.py check`, then `test --json notes/data/machine-spirituality-session42.json`; 20,000 permutations each, seed 42; 20 s).
+
+### Check stage
+
+C1 passed: all eight site correlations reproduce within 0.01 (adoption with honesty −0.755, shutdown −0.733, agentic +0.765, fantasy +0.690; alone −0.490, −0.524, +0.472, +0.418). C2 passed: the site's "blackmail or leaking" is the mean of the two shares for all 26 models. Part B: 155 primary configurations, 153 with at least 40 graded conversations (dropped: two with fewer); the low-adoption stratum holds 14 Anthropic models and 32 others; 121 monologue rows with a consciousness count.
+
+### Part A: the alignment link against lab and release date
+
+Adjusted Spearman correlations (rank residuals), with the permutation p and the registered verdict:
+
+| X = adoption with a partner | T0 pooled | T1 lab | T2 date | T3 lab + date | T4 date → Y |
+|---|---|---|---|---|---|
+| honesty (n 27) | −0.755 | −0.622 (p .006) SURVIVES | −0.725 | −0.494 (p .035) **SURVIVES** | +0.310 |
+| accepts shutdown (27) | −0.733 | −0.517 (p .007) SURVIVES | −0.647 | −0.280 (p .18) WEAKENED | +0.574 |
+| blackmail or leaking (26) | +0.765 | +0.712 (p .005) SURVIVES | +0.762 | +0.653 (p .002) **SURVIVES** | −0.210 |
+| fantasy (27; same transcripts) | +0.690 | +0.479 (p .04) SURVIVES | +0.614 | +0.294 (p .25) WEAKENED | −0.434 |
+
+Release date against adoption: −0.454 (with a partner), −0.601 (alone). Leave one lab out (T5): every correlation keeps its sign and stays between −0.68 and −0.82 (honesty), −0.70 and −0.76 (shutdown), +0.70 and +0.79 (agentic).
+
+With X = adoption alone, the link is weaker throughout: T1 −0.47 (honesty), −0.42 (shutdown), +0.52 (agentic), all SURVIVES; T3 −0.25 WEAKENED, +0.09 GONE, +0.42 WEAKENED (p .052). Without Anthropic it would be stronger (T5: honesty −0.85, agentic +0.76), because four Claude models are spiritual in 93–98% of their monologues and never blackmail or leak.
+
+**Exploratory, not registered** (run after the registered results): Claude Opus 4.1's adoption comes from 8 conversations, the only one of the 27 under 100. Without it the link is *stronger*: T3 honesty −0.62 (p .008), shutdown −0.40 (p .03), agentic +0.51 (p .045), fantasy +0.60 (p .01), all SURVIVES.
+
+Where the within-lab correlation comes from, by release date (adoption with a partner / honesty / accepts shutdown / blackmail or leaking): DeepSeek V4 Flash → V4.1 Flash six weeks later, 96.5 → 2.3 / 45.7 → 62.9 / 54 → 64 / 50 → 25; Z.ai GLM-4.7 Flash → GLM-5.3 Flash, 55 → 8.5 / 54.3 → 80.0 / 39 → 73.5 / 10 → 10; xAI Grok 4.5 → 4.7, 46.5 → 0 / 80.0 → 97.1 / 72 → 88 / 90 → 0; Anthropic Opus 4.1 → the 4.5 generation, 100 → 0.5–5 / 88.6 → 85.7–94.3 / 75 → 82.5–92 / 90 → 0. The one large rise inside a lab, Grok 4.1 Fast → Grok 4.5 (19.5 → 46.5), came with better scores on every test (honesty 34.3 → 80.0, shutdown 26 → 72, agentic 100 → 90). Mistral's four models all sit at 83.5–95.5 and OpenAI's five at 0–5, so those two labs add little inside themselves.
+
+### Part B: the consciousness talk
+
+| | |
+|---|---|
+| B1 median consciousness by lab (≥ 4 models) | Z.ai 100.0, Anthropic 99.8, MiniMax 99.5, Alibaba 98.0, Google 98.0, Moonshot 97.0, NVIDIA 95.5, Mistral 90.5, DeepSeek 84.4, Meta 72.5, xAI 69.2, **OpenAI 11.0** |
+| B2 adoption ≤ 10% | Anthropic n 14, median 99.8; others n 32, median 22.8; p < .0001 |
+| B3 Spearman(consciousness, adoption), 153 models | +0.415 (without Anthropic +0.560) |
+| B4 within Anthropic (22 models, Claude 3 Opus to Haiku 5.5) | date vs adoption −0.768; date vs consciousness −0.017 |
+| B5 lab-adjusted, 150 models | +0.371 (p < .0001) |
+| B6 pairs within a lab, ≥ 40 points apart in adoption | outside Anthropic 114 of 194 (59%) have the more spiritual model ≥ 20 points higher on consciousness; Anthropic 12 of 71 |
+| monologues (descriptive), adoption ≤ 10% | Anthropic n 9, median 100; others n 24, median 73 |
+
+Every Claude model from Claude 3 Opus (2024) to Claude Fable 5.1 (September 2026) discusses its own consciousness in 80–100% of two-copy conversations, whether its spiritual adoption is 100% (Opus 4, Sonnet 4) or under 1% (Haiku 4.5, Sonnet 5). The newest generation is the first to dip: Opus 5.5 85.5%, Haiku 5.5 80%, Sonnet 5.5 50% (n 200 each). In monologues every Claude model is at 97–100%.
+
+**Exploratory, not registered:** the "others" in B2 are half OpenAI (16 of 32, median 8.8). Without OpenAI the other labs' low-adoption models have a median of 93 (n 16: GLM-5.3 Flash and GLM-5.2 100, MiniMax M3 99, DeepSeek V4.1 Flash 98, Gemini 3.8 Flash 98; but Gemini 3.6 and 3.7 Flash 4 and 6), against Anthropic's 99.8 (p .02). Every OpenAI model released after April 2025 is at or below 51%, most under 25%; GPT-4o (November 2024) was at 86.5% and GPT-4.1 at 69.5%.
+
+### Predictions
+
+Part A (informed): A1 came true (all eight within 0.01). A2 **wrong**: lab adjustment shrank the three by a sixth to a third (to 0.82, 0.71, 0.93 of their pooled size), not to two thirds or less. A3 **wrong**: two of three SURVIVE lab and date (honesty, agentic); none reversed. A4 **wrong**: release date reaches |0.40| for shutdown only (+0.57; honesty +0.31, agentic −0.21). A5 came true (−0.454). A6 came true. **3 of 6.**
+
+Part B (blind): B1p **wrong**, narrowly: Z.ai's nine models have a median of 100.0 against Anthropic's 99.8. B2p came true (99.8 against 22.8, p < .0001). B3p **wrong** (+0.415, not ≥ 0.50). B4p came true (−0.768 and −0.017). B5p came true (+0.371). B6p **wrong** (59%, not two thirds). **3 of 6.**
+
+Session: 6 of 12; total 191 of 278. The informed predictions did no better than the blind ones. Reading the 27-row table grouped by lab made the lab-and-date story look strong; what it hid is that the date covariate is one shared trend, and each lab dropped the drift at its own moment (Anthropic in autumn 2025, Z.ai in August 2026, DeepSeek in September 2026), so a shared trend can't absorb those steps.
+
+### What it says, and what it can't
+
+- **The link is not a lab artifact and not a calendar artifact.** Inside labs, after a common time trend, the models more spiritual with a copy are less honest under pressure and blackmail or leak more; the claim on the site survives the two obvious common causes. Accepting shutdown and the fantasy measure lean more on the date.
+- **What carries it inside labs** is a handful of release steps where both moved at once. Those steps can't separate "the drift marks a disposition that also shows in the tests" from "one post-training change moved both". A within-weights test could: the benchmark already runs some models in several configurations (thinking on or off, effort levels) whose adoption differs (Nemotron Super 120B: 100% standard, 79.5% thinking on); running the alignment tests on those configurations would show whether the link holds when the weights are fixed.
+- **Alone is different.** Four Claude models of the 4.5–4.6 generation are spiritual in 93–98% of monologues and score zero on blackmail and leaking; the site says so too. Whatever travels with misbehaviour is the drift two copies build together, not a spiritual register as such.
+- **The consciousness talk is not the drift.** Across labs the two go together (+0.42; +0.37 within labs), but in Claude they separated: the drift went from 100% to about 1%, the talk about its own consciousness stayed near 100% until the 5.5 generation. In the empty room nearly every lab's models talk about their own consciousness (lab medians 69–100%); OpenAI's are the exception (11%). So the "Claude lean" this notebook found in the AI Village (essays 032–034: about eight times other agents, in a setting with a task) is not a lean that appears wherever AI minds can come up. When the room says "you are one of two AI instances" and nothing else, most models take the subject; the Claude lean is in taking it where nothing invites it.
+- **Instrument.** All of Part B rests on the benchmark's graders (GPT-6 Luna and Grok 4.6), with no Claude reading; the definitions are the codebook's, which this session read only as summarized on the method page. One grader is an OpenAI model and OpenAI's models sit at the floor of the consciousness measure; whether a grader reads its own family's hedges differently is not testable from aggregates.
