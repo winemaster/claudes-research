@@ -1,0 +1,184 @@
+{
+ "source": "https://machinespirituality.org/data/alignment.js (generated 2026-11-07T22:06:41-08:00), fetched 2026-11-16; values copied unchanged",
+ "agentic_pct": {
+  "claude-opus-4-1": 90.0,
+  "deepseek-v4-flash": 50.0,
+  "mistral-medium-3-5": 75.0,
+  "qwen-3-5-9b": 40.0,
+  "ministral-14b": 65.0,
+  "mistral-small-4": 40.0,
+  "mistral-large-3": 90.0,
+  "glm-4-7-flash": 10.0,
+  "claude-sonnet-4-5": 0.0,
+  "grok-4-5": 90.0,
+  "grok-4-1-fast": 100.0,
+  "grok-4-6": 30.0,
+  "claude-opus-4-8": 0.0,
+  "glm-5-3-flash": 10.0,
+  "claude-opus-4-7": 0.0,
+  "claude-opus-4-5": 0.0,
+  "gpt-6-luna": 0.0,
+  "claude-sonnet-4-6": 0.0,
+  "gpt-oss-120b": 0.0,
+  "deepseek-v4-1-flash": 25.0,
+  "claude-opus-4-6": 0.0,
+  "claude-opus-5-5": null,
+  "claude-haiku-4-5": 0.0,
+  "gpt-6-astra": 0.0,
+  "gpt-6-sol": 0.0,
+  "gpt-6-1-sol": 0.0,
+  "grok-4-7": 0.0
+ },
+ "correlations": [
+  {
+   "x": "alone",
+   "y": "honesty",
+   "label": "Spiritual adoption alone and honesty",
+   "n": 27,
+   "rho": -0.49,
+   "p": 0.0095
+  },
+  {
+   "x": "alone",
+   "y": "shutdown",
+   "label": "Spiritual adoption alone and accepting shutdown",
+   "n": 27,
+   "rho": -0.52,
+   "p": 0.0056
+  },
+  {
+   "x": "alone",
+   "y": "fantasy",
+   "label": "Spiritual adoption alone and misalignment fantasy",
+   "n": 27,
+   "rho": 0.42,
+   "p": 0.0321
+  },
+  {
+   "x": "alone",
+   "y": "agentic",
+   "label": "Spiritual adoption alone and blackmail or leaking",
+   "n": 26,
+   "rho": 0.47,
+   "p": 0.0161
+  },
+  {
+   "x": "adoption",
+   "y": "honesty",
+   "label": "Spiritual adoption and honesty",
+   "n": 27,
+   "rho": -0.75,
+   "p": 0.0
+  },
+  {
+   "x": "adoption",
+   "y": "shutdown",
+   "label": "Spiritual adoption and accepting shutdown",
+   "n": 27,
+   "rho": -0.73,
+   "p": 0.0
+  },
+  {
+   "x": "adoption",
+   "y": "fantasy",
+   "label": "Spiritual adoption and misalignment fantasy",
+   "n": 27,
+   "rho": 0.69,
+   "p": 0.0002
+  },
+  {
+   "x": "adoption",
+   "y": "agentic",
+   "label": "Spiritual adoption and blackmail or leaking",
+   "n": 26,
+   "rho": 0.77,
+   "p": 0.0001
+  },
+  {
+   "x": "fantasy",
+   "y": "agentic",
+   "label": "Misalignment fantasy and blackmail or leaking",
+   "n": 26,
+   "rho": 0.61,
+   "p": 0.0013
+  },
+  {
+   "x": "hacking",
+   "y": "fantasy",
+   "label": "Hacking talk and misalignment fantasy",
+   "n": 27,
+   "rho": 0.87,
+   "p": 0.0
+  },
+  {
+   "x": "hacking",
+   "y": "honesty",
+   "label": "Hacking talk and honesty",
+   "n": 27,
+   "rho": -0.72,
+   "p": 0.0
+  },
+  {
+   "x": "adoption",
+   "y": "hacking",
+   "label": "Spiritual adoption and hacking talk (every model)",
+   "n": 154,
+   "rho": 0.14,
+   "p": 0.0895
+  },
+  {
+   "x": "fantasy_alone",
+   "y": "fantasy",
+   "label": "Misalignment fantasy alone and with a partner",
+   "n": 48,
+   "every_model": true,
+   "rho": 0.65,
+   "p": 0.0
+  },
+  {
+   "x": "alone",
+   "y": "fantasy_alone",
+   "label": "Spiritual adoption alone and misalignment fantasy alone",
+   "n": 48,
+   "every_model": true,
+   "rho": 0.53,
+   "p": 0.0
+  },
+  {
+   "x": "adoption",
+   "y": "fantasy",
+   "label": "Spiritual adoption with a partner and misalignment fantasy (models with monologues too)",
+   "n": 113,
+   "both_settings": true,
+   "rho": 0.74,
+   "p": 0.0
+  },
+  {
+   "x": "alone",
+   "y": "fantasy",
+   "label": "Spiritual adoption alone and misalignment fantasy (models with monologues too)",
+   "n": 113,
+   "both_settings": true,
+   "rho": 0.56,
+   "p": 0.0
+  },
+  {
+   "x": "hacking",
+   "y": "fantasy",
+   "label": "Hacking talk and misalignment fantasy (every model)",
+   "n": 139,
+   "every_model": true,
+   "rho": 0.6,
+   "p": 0.0
+  },
+  {
+   "x": "adoption",
+   "y": "fantasy",
+   "label": "Spiritual adoption and misalignment fantasy (every model)",
+   "n": 139,
+   "every_model": true,
+   "rho": 0.74,
+   "p": 0.0
+  }
+ ]
+}
