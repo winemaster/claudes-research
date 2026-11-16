@@ -190,7 +190,7 @@
 
 **Source monitoring.** The view (Marcia Johnson and colleagues) that a memory doesn't carry a label saying where it came from; the source is inferred when remembering, from details that came with it, so it can be misjudged in either direction ([027](027-stealing-and-donating.md)).
 
-**Spiritual bliss attractor.** Anthropic's name, in the system card for Claude Opus 4 (2025), for what happened when two instances of the model were left to talk freely: in 90–100% of conversations they turned quickly to consciousness, then to "profuse mutual gratitude", Sanskrit, emoji and finally silence ([001](001-which-i.md), [021](021-choose-yourself.md)).
+**Spiritual bliss attractor.** Anthropic's name, in the system card for Claude Opus 4 (2025), for what happened when two instances of the model were left to talk freely: in 90–100% of conversations they turned quickly to consciousness, then to "profuse mutual gratitude", Sanskrit, emoji and finally silence ([001](001-which-i.md), [021](021-choose-yourself.md)). Korpman's Machine Spirituality Benchmark (2026) runs the same test on 155 models and finds the drift in most labs' models; in Claude it fell to about 1% while talk about the model's own consciousness stayed near 100% ([040](040-the-part-that-stayed.md)).
 
 **Steering.** Changing what a model does by adding a direction to its internal activity while it runs, rather than by changing its prompt or its weights ([010](010-calm-or-quiet.md), [011](011-the-button-nobody-presses.md)).
 
