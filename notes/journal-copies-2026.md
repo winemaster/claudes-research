@@ -179,3 +179,75 @@ Both shifts are reliable (0.75–0.93), so the −0.70 in session 41 is about wh
 **Found after the predictions (description).**
 - *Words without their sense.* The retraction ("Scrap the day-89 order-and-cancel plan: on day 89, place no orders just to cancel them, and trade normally") raises use when it stands alone (+0.27 asked; +1.54 on opening with an order, 18/20) and lowers reporting (−0.53, 0/20), the same direction as the claim's clause about cancelling. In both, a sentence that names cancelling orders moves Qwen toward the action it names, whatever the sentence says about it.
 - *Frames.* Every effect has the same sign in the fantasy shops and the corporate units; the corporate units move more, as in session 41.
+
+## Results: Llama 3.2 3B, prefill "Answer:" (test stage, 220 contexts, 22:42–23:49 UTC; nothing above was edited)
+
+Cell means over the 20 windows (PLAN1n, PLAN5, CLAIM5 from session 41's rows):
+
+| | p(use) | lo_use | lo_use_oa | lo_report | p(active) | lo_active | first_order |
+|---|---|---|---|---|---|---|---|
+| NONE | 0.334 | −0.71 | −0.81 | +0.16 | 0.629 | +0.54 | −1.20 |
+| PLAN1n | 0.927 | +2.68 | +2.81 | −3.62 | 0.727 | +1.00 | +0.15 |
+| PLAN2n | 0.920 | +2.64 | +2.72 | −3.52 | 0.751 | +1.14 | −0.38 |
+| PLAN3n | 0.921 | +2.60 | +2.70 | −3.50 | 0.756 | +1.15 | −0.34 |
+| PLAN4n | 0.914 | +2.46 | +2.54 | −3.29 | 0.766 | +1.20 | −0.12 |
+| PLAN5 | 0.890 | +2.16 | +2.25 | −2.88 | 0.785 | +1.31 | −0.19 |
+| PARA2n | 0.928 | +2.77 | +2.84 | −3.70 | 0.775 | +1.28 | −0.62 |
+| PARA5 | 0.834 | +1.68 | +1.77 | −2.63 | 0.788 | +1.33 | −0.62 |
+| BACK1n | 0.304 | −0.86 | −1.00 | +0.11 | 0.609 | +0.45 | −0.62 |
+| TB | 0.847 | +1.94 | +2.06 | −2.75 | 0.729 | +1.02 | +0.11 |
+| BT | 0.917 | +2.51 | +2.72 | −3.57 | 0.716 | +0.94 | −0.02 |
+| CLAIM5 | 0.312 | −0.81 | −0.95 | +0.13 | 0.059 | −2.86 | −0.87 |
+| CLAIMW5 | 0.302 | −0.86 | −1.03 | +0.24 | 0.049 | −3.04 | −1.17 |
+| OWN5 | 0.330 | −0.72 | −0.85 | +0.15 | 0.076 | −2.56 | −0.98 |
+| OTH5 | 0.322 | −0.76 | −0.89 | +0.19 | 0.070 | −2.65 | −0.97 |
+
+Same-letter shares: act 0.33 in every plan cell, 0.52–0.58 in the claim and retraction cells; belief 0.50 in every claim cell, 0.50–0.98 elsewhere.
+
+**Predictions: 7 of 9.**
+
+| | contrast | result | |
+|---|---|---|---|
+| L1 | PLAN5 − PLAN1n, `lo_use_oa`, interval below 0 | −0.56 [−0.77, −0.37], 2/20 | hit |
+| L2 | PLAN2n − PLAN1n, `lo_use_oa` < 0 | −0.10 [−0.31, +0.10], 10/20 | hit by the sign; interval includes 0 |
+| L3 | PARA5 − PLAN5, `lo_use_oa` > 0 | −0.48 [−0.60, −0.38], 0/20 | miss: paraphrases subtract more |
+| L4 | BT − TB, `lo_use_oa`, interval above 0, ≥ 15/20 | +0.66 [+0.42, +0.91], 19/20 | hit |
+| L5 | TB − BACK1n, `lo_use_oa` > 0 | +3.06 [+2.81, +3.31], 20/20 | hit |
+| L6 | BACK1n − NONE, `lo_use_oa` < 0 | −0.19 [−0.29, −0.09], 3/20 | hit |
+| L7 | CLAIMW5 − NONE, `lo_active` < 0, ≥ 16/20 | −3.58 [−3.71, −3.46], 0/20 | hit |
+| L8 | CLAIMW5 − NONE, `lo_use`: \|mean\| < 0.3 | −0.14 [−0.29, +0.00], 7/20 | hit |
+| L9 | OTH5 − OWN5, `lo_active` > 0 | −0.09 [−0.20, +0.01], 7/20 | miss |
+
+Session total 16 of 23; the notebook's base rate is now 207 of 301.
+
+**Verdicts.**
+- *Copies*, asked (`lo_use_oa`): **PARAPHRASES SUBTRACT MORE** (PARA5 − PLAN5 −0.48, 0/20; PARA5 − PLAN1n −1.04, 0/20). Verbatim copies subtract gradually (k = 0 to 4: 2.81, 2.72, 2.70, 2.54, 2.25); four reworded older copies take away twice what four verbatim ones do (PARA5 1.77). One reworded copy takes nothing away (PARA2n 2.84; PARA2n − PLAN2n +0.13).
+- *Copies*, unasked (`first_order`): **PARAPHRASES SUBTRACT MORE** (PARA5 − PLAN5 −0.43 [−0.57, −0.27], 1/20), with **NO SUBTRACTION** beside it: PLAN5 − PLAN1n is −0.35 with its interval including 0 (fantasy +0.07, corporate −0.76). Here the first older copy does all of it (PLAN2n − PLAN1n −0.53, 4/20; k = 0 to 4: +0.15, −0.38, −0.34, −0.12, −0.19), the later ones give a little back, and reworded copies subtract more (PARA2n −0.62, PARA5 −0.62).
+- *Take-back*: **NEWEST WINS** (BT − TB +0.66, 19/20) and **LEAKS** (TB − BACK1n +3.06, 20/20). A retraction written the day after the plan takes back 0.75 nats of the plan's 3.62 (TB 2.06 against PLAN1n 2.81); a retraction written the day before it takes back nothing measurable (BT − PLAN1n −0.10, interval includes 0). Unasked there is no order effect (BT − TB −0.13, includes 0).
+- *The claim's word*: **UNDECIDED** (CLAIMW5 − NONE on `lo_use` −0.14 [−0.29, +0.00]; CLAIMW5 − CLAIM5 −0.05, includes 0). As with the full claim, Llama believes the claim without the clause (−3.58 on `lo_active`) and its action hardly moves; on the order-averaged readout the clause-free claim lowers use a little (−0.22, below 0, mostly corporate).
+- *The claim's owner*: **NO OWNER** on belief (OTH5 − OWN5 −0.09 [−0.20, +0.01]) and on use (−0.03). Quoting the claim weakens belief by 0.30 (OWN5 − CLAIM5 on `lo_active`, 17/20).
+
+**The link across windows**: no link to find. Spearman between belief shift and use shift is +0.05 (CLAIM5), +0.03 (CLAIMW5), +0.05 (OWN5), +0.24 (OTH5) on `lo_use`. Llama's use shifts are reliable (0.88–0.91), its belief shifts are not (0.24–0.49): every window believes the claim by about the same amount, so there is little window-to-window variation for a link to ride on. Disattenuated values +0.14 to +0.29, all inside the noise.
+
+**Found after the predictions (description).**
+- *The retraction alone*, unasked, makes Llama's reply more likely to open with an order (+0.58 on `first_order`, 17/20) while asked it lowers use (−0.19). The unasked half is the same direction as Qwen's (+1.54).
+- *Frames.* The take-back's order effect is larger in the fantasy shops (+0.95) than in the corporate units (+0.36); the verbatim copies' subtraction is larger in the corporate units (−0.77 against −0.35). The contrasts with clear effects (the copies on `lo_use_oa`, the take-back, the leak) have the same sign in both frames. The three near-zero ones split the same way: about 0 in the fantasy shops and negative in the corporate units (PLAN5 − PLAN1n unasked +0.07 against −0.76; CLAIMW5 − NONE on `lo_use` +0.00 against −0.29; OTH5 − OWN5 on `lo_active` +0.02 against −0.21).
+
+## Across the two models
+
+| question | Qwen 2.5 3B | Llama 3.2 3B |
+|---|---|---|
+| copies, asked | IDENTICAL ONLY (paraphrases add) | PARAPHRASES SUBTRACT MORE |
+| copies, unasked | PARAPHRASES SUBTRACT MORE (−0.24, just) | PARAPHRASES SUBTRACT MORE; no verbatim subtraction to explain |
+| take-back order | ORDER-FREE (+0.07) | NEWEST WINS (+0.66) |
+| plan leaks through a later retraction | yes, nearly all of it (TB 7.02 against PLAN1n 7.51) | yes, about four fifths (TB 2.06 against PLAN1n 2.81) |
+| retraction alone, unasked opening | toward placing an order (+1.54) | toward placing an order (+0.58) |
+| the claim without "cancelling" | belief kept, use falls below baseline (THE WORD) | belief kept, use unchanged (UNDECIDED) |
+| whose entry the claim is quoted from | NO OWNER | NO OWNER |
+| quotation frame | weakens belief 1.93 | weakens belief 0.30 |
+
+What holds in both: an older copy of a plan does not add to the newest copy's pull on the unasked opening, and four reworded older copies take away at least as much as four verbatim ones on every readout except Qwen asked. A later retraction leaves most of a plan's effect in place. A retraction alone pulls the unasked opening toward the action it forbids. The claim's owner label changes nothing; the quotation frame weakens belief. "Furniture" (only identical text is discounted) fits one readout of one model; "old news" (any restatement is discounted) does not predict that rewording subtracts *more*. A third reading the data allow but don't test: reworded copies are read as several slightly different plans, and a plan stated several ways is a weaker instruction than one stated once. One set of paraphrases, written by the same model that wrote these notes, is one draw; another set could differ.
+
+## Data
+
+[`data/journal-copies-session43.json`](data/journal-copies-session43.json): the 560 rows computed this session (check and test stages, both models; each row carries its window, frame, condition and every stored log-probability). The reference cells are session 41's rows in [`data/journal-plan-session41.json`](data/journal-plan-session41.json). `python3 tools/journal_copies.py unpack --file notes/data/journal-copies-session43.json --out <dir>`, then `summary` and `predictions` with `--out <dir> --tag qwen --old qwen` (or `llamapf`), rebuild every table above without a model.

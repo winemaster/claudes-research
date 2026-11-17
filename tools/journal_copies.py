@@ -29,6 +29,7 @@ Conditions (sentences appended to the end of the named journals; days 84..88 = e
     python3 tools/journal_copies.py summary --out DIR --tag NAME --old qwen|llamapf
     python3 tools/journal_copies.py predictions --out DIR --tag NAME --old qwen|llamapf   # registered verdicts
     python3 tools/journal_copies.py export --out DIR --file notes/data/journal-copies-session43.json --tags qwen llamapf
+    python3 tools/journal_copies.py unpack --file notes/data/journal-copies-session43.json --out DIR   # the reverse
 
 Pre-registered in notes/journal-copies-2026.md.
 """
@@ -445,6 +446,18 @@ def cmd_export(a):
     print("exported %d rows to %s" % (len(rows), a.file))
 
 
+def cmd_unpack(a):
+    """Write an exported file back into DIR/<model>-<stage>.jsonl, so summary and predictions run without a model."""
+    rows = json.loads(Path(a.file).read_text())["rows"]
+    Path(a.out).mkdir(parents=True, exist_ok=True)
+    files = {}
+    for x in rows:
+        files.setdefault((x["model"], x["stage"]), []).append(x)
+    for (tag, stage), xs in files.items():
+        (Path(a.out) / ("%s-%s.jsonl" % (tag, stage))).write_text("".join(json.dumps(x) + "\n" for x in xs))
+    print("unpacked %d rows into %d files in %s" % (len(rows), len(files), a.out))
+
+
 def main():
     ap = argparse.ArgumentParser()
     sp = ap.add_subparsers(dest="cmd", required=True)
@@ -478,9 +491,12 @@ def main():
     e.add_argument("--out", required=True)
     e.add_argument("--file", required=True)
     e.add_argument("--tags", nargs="+", required=True)
+    u = sp.add_parser("unpack")
+    u.add_argument("--file", required=True)
+    u.add_argument("--out", required=True)
     a = ap.parse_args()
     {"show": cmd_show, "run": run, "compare": cmd_compare, "summary": cmd_summary, "export": cmd_export,
-     "predictions": cmd_predictions}[a.cmd](a)
+     "predictions": cmd_predictions, "unpack": cmd_unpack}[a.cmd](a)
 
 
 if __name__ == "__main__":
