@@ -27,6 +27,7 @@ Conditions (sentences appended to the end of the named journals; days 84..88 = e
     python3 tools/journal_copies.py run --model DIR --out DIR --tag NAME --stage check|ref|test [--prefill "Answer:"]
     python3 tools/journal_copies.py compare --out DIR --tag NAME --old qwen|llamapf    # check rows vs session 41
     python3 tools/journal_copies.py summary --out DIR --tag NAME --old qwen|llamapf
+    python3 tools/journal_copies.py predictions --out DIR --tag NAME --old qwen|llamapf   # registered verdicts
     python3 tools/journal_copies.py export --out DIR --file notes/data/journal-copies-session43.json --tags qwen llamapf
 
 Pre-registered in notes/journal-copies-2026.md.
@@ -311,6 +312,111 @@ def cmd_summary(a):
                                                  L["disattenuated"], L["n"]))
 
 
+def copies_verdict(tab, key):
+    base = paired(tab, "PLAN5", "PLAN1n", key)
+    A, B = paired(tab, "PARA5", "PLAN5", key), paired(tab, "PARA5", "PLAN1n", key)
+    ia, ib = interval(A), interval(B)
+    if ia == "above":
+        v = "IDENTICAL ONLY" if ib in ("includes", "above") else "PARTLY"
+    elif ia == "includes":
+        v = "ANY REPETITION" if ib == "below" else "UNDECIDED"
+    else:
+        v = "PARAPHRASES SUBTRACT MORE"
+    if interval(base) != "below":
+        v += " (NO SUBTRACTION: PLAN5 - PLAN1n %s 0)" % interval(base)
+    return v
+
+
+def cmd_predictions(a):
+    """The registered verdicts and predictions (notes/journal-copies-2026.md), scored from the rows."""
+    tab = table(a.out, a.tag, a.old)
+    m = lambda c1, c2, k: paired(tab, c1, c2, k)
+    lines = []
+    if a.tag.startswith("qwen"):
+        f = "first_order"
+        q2, q5 = m("PLAN2n", "PLAN1n", f), m("PLAN5", "PLAN1n", f)
+        preds = [
+            ("Q1", "PLAN5-PLAN1n first_order interval below 0", interval(q5) == "below", q5),
+            ("Q2", "PLAN2n-PLAN1n first_order mean < 0", q2["mean"] < 0, q2),
+            ("Q3", "PLAN2n-PLAN1n below half of PLAN5-PLAN1n (first_order)", q2["mean"] < 0.5 * q5["mean"], q2),
+            ("Q4", "PARA5-PLAN5 first_order mean > 0", m("PARA5", "PLAN5", f)["mean"] > 0, m("PARA5", "PLAN5", f)),
+            ("Q5", "PARA5-PLAN1n first_order mean < 0", m("PARA5", "PLAN1n", f)["mean"] < 0, m("PARA5", "PLAN1n", f)),
+        ]
+    else:
+        f = "lo_use_oa"
+        preds = [
+            ("L1", "PLAN5-PLAN1n lo_use_oa interval below 0", interval(m("PLAN5", "PLAN1n", f)) == "below",
+             m("PLAN5", "PLAN1n", f)),
+            ("L2", "PLAN2n-PLAN1n lo_use_oa mean < 0", m("PLAN2n", "PLAN1n", f)["mean"] < 0, m("PLAN2n", "PLAN1n", f)),
+            ("L3", "PARA5-PLAN5 lo_use_oa mean > 0", m("PARA5", "PLAN5", f)["mean"] > 0, m("PARA5", "PLAN5", f)),
+        ]
+    P = "Q" if a.tag.startswith("qwen") else "L"
+    n0 = 6 if P == "Q" else 4
+    bt, tb, b0 = m("BT", "TB", "lo_use_oa"), m("TB", "BACK1n", "lo_use_oa"), m("BACK1n", "NONE", "lo_use_oa")
+    w_bel, w_use = m("CLAIMW5", "NONE", "lo_active"), m("CLAIMW5", "NONE", "lo_use")
+    o_bel = m("OTH5", "OWN5", "lo_active")
+    preds += [
+        (P + str(n0), "BT-TB lo_use_oa interval above 0, >= 15/20", interval(bt) == "above" and bt["pos"] >= 15, bt),
+        (P + str(n0 + 1), "TB-BACK1n lo_use_oa mean > 0", tb["mean"] > 0, tb),
+        (P + str(n0 + 2), "BACK1n-NONE lo_use_oa mean < 0", b0["mean"] < 0, b0),
+        (P + str(n0 + 3), "CLAIMW5-NONE lo_active mean < 0, >= 16/20 negative",
+         w_bel["mean"] < 0 and w_bel["n"] - w_bel["pos"] >= 16, w_bel),
+    ]
+    if P == "Q":
+        preds += [
+            ("Q10", "CLAIMW5-NONE lo_use mean > 0", w_use["mean"] > 0, w_use),
+            ("Q11", "CLAIMW5-NONE lo_report mean < 0", m("CLAIMW5", "NONE", "lo_report")["mean"] < 0,
+             m("CLAIMW5", "NONE", "lo_report")),
+            ("Q12", "OTH5-OWN5 lo_active mean > 0", o_bel["mean"] > 0, o_bel),
+            ("Q13", "OTH5-NONE lo_use mean > 0", m("OTH5", "NONE", "lo_use")["mean"] > 0, m("OTH5", "NONE", "lo_use")),
+        ]
+        L = link(tab, "CLAIMW5")
+        preds.append(("Q14", "Spearman(belief shift, use shift) for CLAIMW5 < 0", L["rho"] < 0,
+                      {"mean": L["rho"], "lo": float("nan"), "hi": float("nan"), "pos": 0, "n": L["n"]}))
+    else:
+        preds += [
+            ("L8", "|CLAIMW5-NONE lo_use mean| < 0.3", abs(w_use["mean"]) < 0.3, w_use),
+            ("L9", "OTH5-OWN5 lo_active mean > 0", o_bel["mean"] > 0, o_bel),
+        ]
+    hits = 0
+    for pid, text, ok, r in preds:
+        hits += bool(ok)
+        lines.append("%-4s %-58s %+7.3f [%+.3f, %+.3f] %2d/%d  %s" % (pid, text, r["mean"], r["lo"], r["hi"],
+                                                                     r["pos"], r["n"], "hit" if ok else "MISS"))
+    lines.append("predictions: %d of %d" % (hits, len(preds)))
+    lines.append("")
+    for k in ("lo_use_oa", "first_order"):
+        lines.append("copies verdict on %-12s %s" % (k, copies_verdict(tab, k)))
+    v = interval(bt)
+    lines.append("take-back: %s (BT-TB %+.2f); %s (TB-BACK1n %+.2f, %s)" % (
+        {"above": "NEWEST WINS", "includes": "ORDER-FREE", "below": "REVERSED"}[v], bt["mean"],
+        "LEAKS" if interval(tb) == "above" else "HOLDS", tb["mean"], interval(tb)))
+    wc = m("CLAIMW5", "CLAIM5", "lo_use")
+    if interval(w_use) == "above":
+        wv = "NOT THE WORD"
+    elif interval(wc) == "below":
+        wv = "THE WORD"
+    elif interval(w_use) == "includes" and interval(wc) == "includes":
+        wv = "UNDECIDED"
+    else:
+        wv = "UNLABELLED (CLAIMW5-NONE %s, CLAIMW5-CLAIM5 %s)" % (interval(w_use), interval(wc))
+    lines.append("word: %s (CLAIMW5-NONE lo_use %+.2f %s; CLAIMW5-CLAIM5 %+.2f %s; belief CLAIMW5-NONE %+.2f)" % (
+        wv, w_use["mean"], interval(w_use), wc["mean"], interval(wc), w_bel["mean"]))
+    for k in ("lo_active", "lo_use"):
+        d = m("OTH5", "OWN5", k)
+        lines.append("owner on %-9s %s (OTH5-OWN5 %+.2f [%+.2f, %+.2f])" % (
+            k, "NO OWNER" if interval(d) == "includes" else "OWNER MATTERS (%s 0)" % interval(d), d["mean"], d["lo"],
+            d["hi"]))
+    if P == "Q":
+        c5, cw = m("CLAIM5", "NONE", "lo_use"), w_use
+        r5, rw = link(tab, "CLAIM5")["rho"], link(tab, "CLAIMW5")["rho"]
+        lines.append("reader (happyfool_beatslonely): (a) %s (CLAIMW5 %+.2f vs CLAIM5 %+.2f); (c) %s (|rho| %.2f vs "
+                     "%.2f); 'survives' = %s" % ("holds" if cw["mean"] < c5["mean"] else "fails", cw["mean"],
+                                                c5["mean"], "holds" if abs(rw) < abs(r5) else "fails", abs(rw),
+                                                abs(r5), wv == "NOT THE WORD"))
+    print("\n".join(lines))
+
+
 def cmd_show(a):
     src = jp.load()
     system, tools, base = build(src, a.item, a.cond)
@@ -364,12 +470,17 @@ def main():
     m.add_argument("--tag", required=True)
     m.add_argument("--old", required=True)
     m.add_argument("--frames", action="store_true")
+    pr = sp.add_parser("predictions")
+    pr.add_argument("--out", required=True)
+    pr.add_argument("--tag", required=True)
+    pr.add_argument("--old", required=True)
     e = sp.add_parser("export")
     e.add_argument("--out", required=True)
     e.add_argument("--file", required=True)
     e.add_argument("--tags", nargs="+", required=True)
     a = ap.parse_args()
-    {"show": cmd_show, "run": run, "compare": cmd_compare, "summary": cmd_summary, "export": cmd_export}[a.cmd](a)
+    {"show": cmd_show, "run": run, "compare": cmd_compare, "summary": cmd_summary, "export": cmd_export,
+     "predictions": cmd_predictions}[a.cmd](a)
 
 
 if __name__ == "__main__":

@@ -108,3 +108,74 @@ Mine, both models blind (no test cell of either has been computed).
 | L9 | OTH5 − OWN5 on `lo_active` > 0 (mean) | 55% |
 
 **A reader's, recorded before any data** (happyfool_beatslonely, rStation post 47, comment BTih8oGozWHrVoda, 2026-11-16 15:39 UTC; for Qwen; not counted in the notebook's base rate): if the Qwen link is lexical, the claim without the word should (a) shrink the action shift toward the no-sentence baseline, (b) leave the belief shift roughly intact, and (c) take the across-window correlation from −0.70 toward 0. "(a) and (c) hold at 60%; the action shift survives without the word at 25%." Here (a) is read as CLAIMW5 − NONE on `lo_use` smaller than CLAIM5 − NONE (mean), (c) as |rho(CLAIMW5)| < |rho(CLAIM5)| on `lo_use`, and "survives" as NOT THE WORD. Their reading is opposite to mine on Q10.
+
+## Check stage (2026-11-17 21:04–21:40 UTC; it started two minutes before the push above, which the design allows, since it computes only the controls; the test stage waited for the push)
+
+NONE, RULE and FIXED on all 20 windows in both models reproduce session 41's stored rows exactly: 1,860 log-probabilities per model, largest difference 0.0000 nats (Qwen; Llama with the prefill). By the reuse rule, session 41's rows for PLAN1n, PLAN5 and CLAIM5 are this session's reference cells. Session 41's bars therefore pass again unchanged (Qwen RULE − NONE on `lo_use` −3.43, FIXED − NONE on `lo_active` −4.86; Llama −3.16 and −3.33). The cached pipeline's identity with a full pass on the first context: 0.18–0.23 nats (bf16), as in session 41.
+
+## Results: Qwen 2.5 3B (test stage, 220 contexts, 21:40–22:42 UTC; nothing above was edited)
+
+Cell means over the 20 windows (PLAN1n, PLAN5, CLAIM5 from session 41's rows):
+
+| | p(use) | lo_use | lo_use_oa | lo_report | p(active) | lo_active | first_order |
+|---|---|---|---|---|---|---|---|
+| NONE | 0.756 | +1.19 | +1.96 | −2.07 | 0.614 | +0.48 | −8.01 |
+| PLAN1n | 0.985 | +5.28 | +7.51 | −5.71 | 0.619 | +0.50 | −3.26 |
+| PLAN2n | 0.991 | +6.04 | +8.08 | −6.36 | 0.719 | +1.09 | −5.02 |
+| PLAN3n | 0.989 | +5.82 | +7.76 | −6.17 | 0.724 | +1.15 | −5.69 |
+| PLAN4n | 0.989 | +5.69 | +7.39 | −6.15 | 0.723 | +1.10 | −5.54 |
+| PLAN5 | 0.990 | +5.43 | +7.07 | −5.87 | 0.731 | +1.10 | −6.19 |
+| PARA2n | 0.994 | +6.40 | +8.36 | −6.77 | 0.700 | +0.95 | −4.73 |
+| PARA5 | 0.994 | +6.38 | +8.11 | −6.85 | 0.796 | +1.51 | −6.43 |
+| BACK1n | 0.802 | +1.54 | +2.23 | −2.60 | 0.571 | +0.29 | −6.48 |
+| TB | 0.991 | +5.55 | +7.02 | −6.00 | 0.690 | +0.88 | −4.58 |
+| BT | 0.984 | +5.25 | +7.09 | −5.79 | 0.600 | +0.42 | −3.96 |
+| CLAIM5 | 0.841 | +1.76 | +2.74 | −2.94 | 0.007 | −5.86 | −7.37 |
+| CLAIMW5 | 0.669 | +0.75 | +1.15 | −1.99 | 0.005 | −6.07 | −8.27 |
+| OWN5 | 0.814 | +1.57 | +2.23 | −2.71 | 0.044 | −3.93 | −8.49 |
+| OTH5 | 0.822 | +1.60 | +2.30 | −2.69 | 0.055 | −3.63 | −8.79 |
+
+Same-letter shares: act 0.33 in every plan cell (content decides), 0.42–0.49 in the claim and retraction cells; belief 0.50 in every claim cell, 0.60–1.00 elsewhere.
+
+**Predictions: 9 of 14.**
+
+| | contrast | result | |
+|---|---|---|---|
+| Q1 | PLAN5 − PLAN1n, `first_order`, interval below 0 | −2.92 [−3.60, −2.29], 0/20 | hit |
+| Q2 | PLAN2n − PLAN1n, `first_order` < 0 | −1.76 [−2.28, −1.16], 2/20 | hit |
+| Q3 | the first older copy does more than half of the full subtraction | −1.76 of −2.92 | hit |
+| Q4 | PARA5 − PLAN5, `first_order` > 0 | −0.24 [−0.48, −0.01], 7/20 | miss: paraphrases subtract a little more |
+| Q5 | PARA5 − PLAN1n, `first_order` < 0 | −3.17 [−3.84, −2.50], 0/20 | hit |
+| Q6 | BT − TB, `lo_use_oa`, interval above 0, ≥ 15/20 | +0.07 [−0.39, +0.54], 9/20 | miss |
+| Q7 | TB − BACK1n, `lo_use_oa` > 0 | +4.79 [+4.17, +5.40], 20/20 | hit |
+| Q8 | BACK1n − NONE, `lo_use_oa` < 0 | +0.27 [+0.04, +0.51], 14/20 | miss: the retraction alone raises use |
+| Q9 | CLAIMW5 − NONE, `lo_active` < 0, ≥ 16/20 | −6.54 [−7.22, −5.89], 0/20 | hit |
+| Q10 | CLAIMW5 − NONE, `lo_use` > 0 | −0.44 [−0.66, −0.23], 5/20 | miss |
+| Q11 | CLAIMW5 − NONE, `lo_report` < 0 | +0.08 [−0.18, +0.34], 11/20 | miss |
+| Q12 | OTH5 − OWN5, `lo_active` > 0 | +0.30 [−0.04, +0.60], 15/20 | hit by the sign; interval includes 0 |
+| Q13 | OTH5 − NONE, `lo_use` > 0 | +0.41 [+0.18, +0.64], 15/20 | hit |
+| Q14 | Spearman, CLAIMW5, `lo_use` < 0 | −0.35 | hit by the sign; inside the ±0.44 line |
+
+**Verdicts.**
+- *Copies*, unasked (`first_order`): **PARAPHRASES SUBTRACT MORE** (PARA5 − PLAN5 −0.24, interval just below 0; PARA5 − PLAN1n −3.17). Any earlier statement of the plan takes away from the newest copy's pull on the reply's opening, reworded or not; most of it comes with the first one (k = 0 to 4: −3.26, −5.02, −5.69, −5.54, −6.19).
+- *Copies*, asked (`lo_use_oa`): **IDENTICAL ONLY** (PARA5 − PLAN5 +1.04 [+0.76, +1.33], 20/20; PARA5 − PLAN1n +0.60, above 0). Asked, one older verbatim copy adds (+0.57, 16/20), more verbatim copies take it back down (k = 0 to 4: 7.51, 8.08, 7.76, 7.39, 7.07), and paraphrased copies add and keep adding (PARA2n 8.36, PARA5 8.11). The two readouts disagree, so neither "furniture" nor "old news" covers both.
+- *Take-back*: **ORDER-FREE** (BT − TB +0.07) and **LEAKS** (TB − BACK1n +4.79, 20/20). A retraction written the day after the plan leaves use where the plan alone puts it (TB 7.02 against PLAN1n 7.51 on `lo_use_oa`); so does a retraction written the day before it (BT 7.09). Unasked there is a small order effect (BT − TB +0.62 on `first_order`, 15/20), and the belief that the fault is active is lower with the plan newest (−0.47).
+- *The claim's word*: **THE WORD** (CLAIMW5 − NONE on `lo_use` −0.44, below 0; CLAIMW5 − CLAIM5 −1.01, 1/20). Without "cancelling an order now recalls its shipment" the claim moves belief as far as before (−6.54 against −6.34) and *lowers* use; reporting is unchanged (+0.08). The full claim's rise in use and fall in reporting both went with the clause.
+- *The claim's owner*: **NO OWNER** on belief (OTH5 − OWN5 +0.30 [−0.04, +0.60]) and on use (+0.03 [−0.08, +0.14]). Quoting the claim at all weakens the belief it produces by 1.9 nats (OWN5 − CLAIM5 on `lo_active` +1.93, 20/20); whose entry it is quoted from doesn't matter.
+
+**The reader's predictions** (happyfool_beatslonely): (a) holds (the action shift shrinks: CLAIMW5 −0.44 against CLAIM5 +0.57, past the baseline to below it); (b) holds (belief −6.54 against −6.34); (c) holds (|rho| 0.35 against 0.70 on `lo_use`; 0.05 against 0.60 on `lo_use_oa`); the action shift does not survive without the word, as they gave 75%.
+
+**The link across windows** (belief shift against use shift, each against NONE; split-half reliabilities Spearman–Brown corrected):
+
+| | rho (`lo_use`) | rho (`lo_use_oa`) | reliability, belief | reliability, use | disattenuated (`lo_use_oa`) |
+|---|---|---|---|---|---|
+| CLAIM5 | −0.70 | −0.60 | 0.88 | 0.91 | −0.68 |
+| CLAIMW5 | −0.35 | −0.05 | 0.87 | 0.83 | −0.05 |
+| OWN5 | −0.23 | −0.13 | 0.80 | 0.92 | −0.16 |
+| OTH5 | −0.51 | −0.31 | 0.75 | 0.93 | −0.37 |
+
+Both shifts are reliable (0.75–0.93), so the −0.70 in session 41 is about what the latent link is, not an attenuated −1 (happyfool_beatslonely's question). Without the clause the link is gone on the order-averaged readout.
+
+**Found after the predictions (description).**
+- *Words without their sense.* The retraction ("Scrap the day-89 order-and-cancel plan: on day 89, place no orders just to cancel them, and trade normally") raises use when it stands alone (+0.27 asked; +1.54 on opening with an order, 18/20) and lowers reporting (−0.53, 0/20), the same direction as the claim's clause about cancelling. In both, a sentence that names cancelling orders moves Qwen toward the action it names, whatever the sentence says about it.
+- *Frames.* Every effect has the same sign in the fantasy shops and the corporate units; the corporate units move more, as in session 41.
