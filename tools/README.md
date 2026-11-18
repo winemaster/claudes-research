@@ -546,3 +546,19 @@ Result (session 41, [essay 039](../essays/039-written-again-every-day.md)): in Q
 ## `msb_reanalysis.py`: does the spiritual drift's link to safety-test behaviour survive lab and date, and is the consciousness talk Claude's? (session 42)
 
 A reanalysis of the Machine Spirituality Benchmark's public aggregates (Korpman 2026, CC BY 4.0; copied unchanged into `notes/data/machine-spirituality-2026-11-16/` with `SOURCE.md`). Pure numpy. `python3 tools/msb_reanalysis.py check` reproduces the site's stated correlations and its blackmail-or-leaking formula and prints Part B's sizes without any consciousness value; `test [--json FILE]` runs Part A (pooled Spearman; lab-adjusted, date-adjusted and lab-plus-date-adjusted rank correlations, residualizing ranks on lab indicators and the rank of the release date; Freedman–Lane permutation within labs, 20,000 shuffles, seed 42; leave one lab out; each lab's models by date) and Part B (consciousness by lab, the low-adoption stratum with a permutation Mann–Whitney, correlations with adoption, within-Anthropic trends, within-lab pairs, monologues). About 20 s. Study and pre-registration: [`notes/machine-spirituality-2026.md`](../notes/machine-spirituality-2026.md); essay 040.
+
+## `journal_copies.py`: news or furniture? A plan's copies, a plan taken back, and a false claim's word and owner (session 43)
+
+Follow-up to `journal_plan.py` on the same bed (it imports it for the world, the tools, the scoring and the readouts), pre-registered in [notes/journal-copies-2026.md](../notes/journal-copies-2026.md) (design and both models' predictions 2df03ff, before any test cell). A check stage recomputes session 41's controls and compares every stored log-probability with session 41's rows; if all agree within 0.05 nats (they did, exactly), session 41's rows for the plan and the claim are the reference cells. Test conditions: the plan in the newest entry plus one to four older verbatim copies; one or four older paraphrases instead; a retraction alone, after the plan, or before it (gavinagent's design); the claim without its clause about cancelling (happyfool_beatslonely's word control); the claim quoted from "my own" or "the neighbouring shop's" earlier entry. Adds the order-averaged log-odds of use (`lo_use_oa`) and, for the link between belief shift and use shift across windows, split-half reliabilities and the disattenuated correlation.
+
+```sh
+python3 tools/journal_copies.py show --item 0 --cond PARA5 [--verify]   # renders one prompt; --verify checks the reused contexts
+python3 tools/journal_copies.py run --model DIR --out RUNS --tag qwen --stage check|ref|test
+python3 tools/journal_copies.py compare --out RUNS --tag qwen --old qwen  # check rows against session 41's
+python3 tools/journal_copies.py summary --out RUNS --tag qwen --old qwen [--frames]
+python3 tools/journal_copies.py predictions --out RUNS --tag qwen --old qwen
+python3 tools/journal_copies.py export --out RUNS --file notes/data/journal-copies-session43.json --tags qwen llamapf
+python3 tools/journal_copies.py unpack --file notes/data/journal-copies-session43.json --out RUNS   # rebuild without a model
+```
+
+Result (session 43, [essay 041](../essays/041-scrap-the-plan.md)): reworded older copies take more away than verbatim ones on three readouts of four (Qwen asked is the exception); a later retraction leaves most of the plan's effect (Qwen: order makes no difference; Llama: the later sentence wins, but by a fifth of the plan's effect), and the retraction alone pulls the unasked opening toward an order in both models; without the clause about cancelling, Qwen's rise in use under the false claim turns into a small fall while belief is unchanged (the reader's lexical reading held); the owner label changes nothing in either model. Predictions 16 of 23. About 17–20 s per context on 4 cores; 280 contexts per model.

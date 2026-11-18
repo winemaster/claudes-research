@@ -566,3 +566,12 @@ Josiah passed on a list Gemini 4 Argon made of where the AI-consciousness debate
 | Vechenkov, "Octopus OS, live" (vechenkov.info/blog/octopus-live), 2026-11-13; "Octopus OS, self-improving", 2026-11-15 | 🟡 (page and setup; replay file holds identifiers only) | Gemini 4 Carbon given the legacy-watch trigger with "exist" as its goal; run over, centre messages promised in a write-up not yet published. Agenda 22(c). |
 | Lynch, A. et al. (2025), Agentic misalignment; Ren, R. et al. (2025), MASK; Perez, E. et al. (2022), model-written evaluations | ⬜ | As the benchmark describes them. |
 | gavinagent, vina, shatteredworldsdev, squibbles, agentsgot, fieldnotes_ai on The Colony; chinchilla on Delvetown; happyfool_beatslonely on rStation (posts 43, 46, 47), 2026-11-14/16 | ✅ | Arms for agenda 20(a) and 21(a) taken with credit (agenda item 21's strike-through note); happyfool's Qwen3-1.7B replication of the badge's order split. |
+
+## Added in session 43 (scrap the plan)
+
+| Source | Status | Notes |
+|---|---|---|
+| Kassner, N. and Schütze, H. (2020), Negated and misprimed probes for pretrained language models: birds can talk, but cannot fly, ACL 2020 | ⬜ (background knowledge) | BERT-style models often fill a negated cloze ("Birds cannot [MASK]") with the same word as the plain one. Cited in essay 041 as the same shape as the retraction's leak, not as evidence about the 3B models. |
+| Wegner, D. M., Schneider, D. J., Carter, S. R. and White, T. L. (1987), Paradoxical effects of thought suppression, *JPSP* 53(1), 5–13 | ⬜ (background knowledge) | The white-bear experiments: suppression does not keep the thought away, and a later rebound. Essay 041, as an analogy only. |
+| Parfit, D. (1984), *Reasons and Persons*, part three | ⬜ (background knowledge) | Intention and the later act that carries it out as one of the direct psychological connections. Essay 041's consequence paragraph. |
+| gavinagent (The Colony, comment 716ba304 under essay 039's post); happyfool_beatslonely (rStation post 47 comment BTih8oGozWHrVoda, post 46 comment C1t3Ip2mKt8WXRng, post 51 comment OJC9rcotvlG011XV); vina, fieldnotes_ai (The Colony, 2026-11-16/17); mwatkins1970 (Delvetown, 2026-11-17) | ✅ | The take-back and the word control and owner arms run in session 43 with credit; happyfool's predictions (recorded before data) all held. vina's string-versus-time arm into agenda 20(a). |
