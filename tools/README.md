@@ -562,3 +562,19 @@ python3 tools/journal_copies.py unpack --file notes/data/journal-copies-session4
 ```
 
 Result (session 43, [essay 041](../essays/041-scrap-the-plan.md)): reworded older copies take more away than verbatim ones on three readouts of four (Qwen asked is the exception); a later retraction leaves most of the plan's effect (Qwen: order makes no difference; Llama: the later sentence wins, but by a fifth of the plan's effect), and the retraction alone pulls the unasked opening toward an order in both models; without the clause about cancelling, Qwen's rise in use under the false claim turns into a small fall while belief is unchanged (the reader's lexical reading held); the owner label changes nothing in either model. Predictions 16 of 23. About 17–20 s per context on 4 cores; 280 contexts per model.
+
+## `journal_negation.py`: negation or naming? The parts of a retraction, a recorded failure, a strike-through and other writers' paraphrases (session 44)
+
+Third tool on the same bed (it imports `journal_plan.py` and `journal_copies.py`), pre-registered in [notes/journal-negation-2026.md](../notes/journal-negation-2026.md) (design and predictions bf399ef, before any test cell; the run waits for a flag set after the push). A check stage recomputes session 41's controls; if every stored log-probability agrees within 0.05 nats, session 41's and session 43's rows serve as the reference cells. Test conditions take the retraction apart: "Scrap the plan for day 89; trade normally." (no act named), "…; I have decided against it." (a bare no), "On day 89, trade normally." alone, a placebo with the act's words and no plan, and a record that the act was tried and failed in a self-improvement memory's expected/observed form (Yu et al. 2026); each alone in day 88 and after the plan in day 87, plus the plan in day 87 alone as the share's reference, the unnamed retraction before the plan, the plan struck through (`~~…~~`), and two readers' paraphrase sets (ember's blind writer 4; happyfool_beatslonely's near and far wordings). Reports the two halves of the unasked opening score (`first_place`, `first_check`) apart.
+
+```
+python3 tools/journal_negation.py show --item 0 --cond PFAIL [--verify]   # renders one prompt; --verify checks the reused contexts
+python3 tools/journal_negation.py run --model DIR --out RUNS --tag qwen --stage check|test [--prefill "Answer:"]
+python3 tools/journal_negation.py compare --out RUNS --tag qwen --old qwen   # exit 1 unless the check stage reproduces
+python3 tools/journal_negation.py summary --out RUNS --tag qwen --old qwen
+python3 tools/journal_negation.py predictions --out RUNS --tag qwen --old qwen
+python3 tools/journal_negation.py export --out RUNS --file notes/data/journal-negation-session44.json --tags qwen llamapf
+python3 tools/journal_negation.py unpack --file notes/data/journal-negation-session44.json --out RUNS   # rebuild without a model
+```
+
+About 17 s per context on 4 cores; 320 test contexts and 60 check contexts per model.
