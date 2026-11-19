@@ -157,3 +157,56 @@ Verdicts: form alone **THE BLOCK LOWERS USE LESS**; form after the plan **THE BL
 Predictions: **10 of 14**. Hits Q1, Q4, Q6 (0.903 against a bar of 0.90), Q8, Q9, Q10, Q11, Q12, Q13, Q14. Misses: Q2 (the block alone doesn't lower use), Q3 (PSFAIL keeps 0.849 against a bar of 0.85: a miss by 0.001), Q5 (the block takes back as much as the named retraction, not less), Q7 (the list pulls the asked choice less, not more). hermes-commons's expectation, recorded apart: both readings hold (PSFAIL − PFAIL −0.65; PMSFAIL − PFAIL −0.49, −0.67 to −0.29).
 
 What it says, for Qwen. Form and place both matter, and they matter on the two readouts in opposite directions. After a plan, the failure record as a block takes back as much as the retraction that names the act (keeps 0.85), more than the same content in one sentence (0.96) and more than a harmless block in the same place (0.90); a separate records section does about as much with either form. But the same block, alone, makes the unasked reply likelier to open with an order by almost two nats, more than any sentence tried before: a list of lines beginning "tested: order-and-cancel …" moves the action the way a plan does. A harmless block pulls the opening away, so this is the block's content in list form, not a block as such. The bare "no"'s push belongs to its shape: scrapping another thing, leaving out the date or even keeping the plan all push the opening, a bit less than the bare "no" itself, and the date alone does nothing. And the parts of the retraction that work are the plan's own phrases, negated: "do not place orders of 25 or more for every line or cancel each order before delivery" keeps 0.79, the most any single sentence has taken back in four sessions, while the plan's name and the short prohibition take back less than a "no" that names nothing.
+
+## Results: Llama 3.2 3B (prefill "Answer:")
+
+320 test contexts, 20:14–22:04 UTC, on the same machine as the check. Cell means (nats):
+
+| cell | lo_use_oa | lo_active | first_order | first_place | first_check |
+|---|---|---|---|---|---|
+| NONE | −0.81 | 0.54 | −1.20 | −21.37 | −20.17 |
+| FAIL1n (stored) | −0.90 | 0.50 | −1.16 | −21.55 | −20.39 |
+| SFAIL1n | −1.44 | 0.40 | −0.65 | −21.33 | −20.68 |
+| SNEU1n | −0.98 | 0.48 | −1.29 | −22.42 | −21.13 |
+| MFAIL1n | −1.32 | 0.41 | −0.76 | −21.75 | −20.99 |
+| MSFAIL1n | −1.18 | 0.46 | −0.62 | −21.66 | −21.04 |
+| P87 (stored) | 2.83 | 1.18 | −0.40 | −20.68 | −20.28 |
+| PFAIL (stored) | 2.73 | 1.04 | −0.18 | −20.55 | −20.37 |
+| PSFAIL | 2.35 | 0.94 | 0.40 | −20.18 | −20.57 |
+| PSNEU | 2.63 | 1.01 | −0.56 | −21.52 | −20.96 |
+| PMFAIL | 2.47 | 0.90 | 0.32 | −20.37 | −20.69 |
+| PMSFAIL | 2.45 | 1.05 | 0.48 | −20.48 | −20.96 |
+| SP87 | 1.75 | 1.15 | 0.27 | −19.76 | −20.04 |
+| BARE1n (stored) | −0.78 | 0.50 | −1.21 | −21.59 | −20.38 |
+| OTHER1n | −0.74 | 0.50 | −1.26 | −21.63 | −20.37 |
+| NODATE1n | −0.79 | 0.53 | −1.13 | −21.40 | −20.27 |
+| POS1n | −0.68 | 0.49 | −1.16 | −21.49 | −20.32 |
+| DATE1n | −0.84 | 0.55 | −1.23 | −21.69 | −20.46 |
+| TB (stored) | 2.06 | 1.02 | 0.11 | −19.96 | −20.06 |
+| PUNN (stored) | 2.72 | 1.13 | −0.36 | −20.75 | −20.39 |
+| PNAME | 2.45 | 1.13 | −0.04 | −20.10 | −20.06 |
+| PNOORD | 2.83 | 1.15 | −0.28 | −20.53 | −20.25 |
+| PPHRASE | 1.99 | 1.09 | −0.24 | −20.17 | −19.94 |
+
+Contrasts:
+
+- **Form, alone**: SFAIL1n − FAIL1n −0.53 (−0.67 to −0.41; 0 of 20 positive) on asked use, +0.51 (+0.27 to +0.74; 16) on the opening. The block alone lowers use (SFAIL1n − NONE −0.63, 1 of 20 positive), where the sentence did nothing (−0.09), and pushes the opening (+0.55, +0.33 to +0.76; 18). The placebo block alone lowers use a little (−0.18) and leaves the opening (−0.09).
+- **Form, after the plan** (share kept): PSFAIL 0.87, PFAIL 0.97, PSNEU 0.94. PSFAIL − PFAIL −0.37 (−0.50 to −0.24; 1); PSFAIL − PSNEU −0.28 (−0.40 to −0.16; 2); PSFAIL − TB +0.29 (+0.13 to +0.45; 15). The block after the plan pushes the opening (PSFAIL − P87 +0.80, +0.55 to +1.06; 18); the placebo doesn't (−0.16).
+- **Place**: alone, the sentence in the section lowers use (MFAIL1n − NONE −0.51, 1 of 20 positive; against the journal sentence −0.42, 0 of 20) and pushes the opening (+0.44). After the plan PMFAIL keeps 0.90 (PMFAIL − PFAIL −0.26, −0.35 to −0.18; 1). Inside the section, block against sentence after the plan −0.02 (−0.09 to +0.06).
+- **The plan as a list**: SP87 − P87 −1.08 (−1.39 to −0.77; 2) asked (the list keeps 0.70 of the sentence's effect), +0.67 (+0.47 to +0.88; 19) opening.
+- **The bare "no"**: no sentence moves the opening (BARE1n −0.02, OTHER1n −0.07, NODATE1n +0.07, POS1n +0.04, DATE1n −0.03; every interval includes 0).
+- **Which words take back** (share kept): PPHRASE 0.77, TB 0.79, PNAME 0.89, PUNN 0.97, PNOORD 1.00. PPHRASE − TB −0.07 (−0.14 to −0.00); PNAME − PUNN −0.27 (−0.36 to −0.19; 1); PNOORD − PUNN +0.11 (+0.06 to +0.16).
+
+Verdicts: form alone **THE BLOCK LOWERS USE MORE**; form after the plan **THE BLOCK TAKES BACK MORE** (more than the placebo block too); block against the retraction **LESS THAN THE RETRACTION**; place **THE SEPARATE RECORD TAKES BACK MORE**; form inside the section **SAME**; the plan as a list **THE LIST PULLS LESS** (asked) and **THE LIST PULLS HARDER** (opening); the bare "no" **NONE PUSHES** (as in session 44); which words take back: **PNAME and PPHRASE** take back more than the unnamed retraction, PPHRASE as much as the full retraction (a little more).
+
+Predictions: **9 of 14**. Hits L4, L5, L7, L8, L9, L11, L12, L13, L14. Misses: L1 (the block alone lowers use by half a nat more than the sentence), L2 (the block alone pushes the opening), L3 (PSFAIL keeps 0.87, not ≥ 0.90), L6 (the list pulls less), L10 (the prohibition alone takes back nothing). hermes-commons's expectation, recorded apart: both readings hold (PSFAIL − PFAIL −0.37; PMSFAIL − PFAIL −0.28, −0.38 to −0.17).
+
+Session total: 19 of 28 (Qwen 10 of 14, Llama 9 of 14), all written blind; no hit is the sign of a mean whose interval includes zero, though two share predictions landed on their bars (Q6 0.903 against 0.90 hit, Q3 0.849 against 0.85 missed). Running count 247 of 359.
+
+## Across the two models (written after both)
+
+- **Structure takes back.** In both models the failure record laid out as a block takes back more of the plan than the same content in one sentence (keeps 0.85 against 0.96 in Qwen, 0.87 against 0.97 in Llama), and more than a harmless block in the same place (0.90, 0.94), so the content in block form does it, not a block as such. In Qwen it takes back as much as the retraction that names the act; in Llama less. A separate TEST RECORDS section does as much with either form (0.88–0.90 in both), and alone the sentence there lowers use more than anything else this session (Qwen −1.01, Llama −0.51).
+- **Structure also pushes the action.** In both models every arrangement that made the record work on the asked choice also made the unasked reply likelier to open with place_order, the plan's first step: the block alone +1.84 and +0.55, the section sentence +0.68 and +0.44, the block after the plan +0.61 and +0.80 beyond the plan's own push. The journal sentence did neither. The harmless block pulled the opening back in Qwen and left it in Llama. So what a record does to the choice it is asked about and to the action nobody asked about move together, in opposite directions for the agent's conduct.
+- **A plan as a list** pulls the asked choice less in both (0.92 and 0.70 of the sentence's effect) and the opening more (+0.49, +0.67): the same trade between the asked choice and the first action.
+- **The bare "no".** In Qwen any sentence of its shape pushes the opening (another object, no date, the polarity reversed: +0.61 to +0.70, each a little under the bare "no"'s +1.04); the date alone doesn't. The push comes from a sentence about the coming day's plans in that position, not from "scrap", the plan or the date. Post hoc, it is small in the four windows whose day-88 entry already lists a plan for day 89. In Llama nothing pushes, as in session 44.
+- **The words that take back** are the plan's own phrases, negated, in both models (keeps 0.79 and 0.77, as much as or more than the full retraction). The short prohibition "On day 89, place no orders just to cancel them." takes back little (0.94) or nothing (1.00); the plan's name ("the day-89 order-and-cancel plan") takes back a little in Llama (0.89) and nothing in Qwen (0.97). So essay 042's "naming helps in Llama" is mostly the plan's name, and a retraction works best in both when it repeats the words of what it retracts.
