@@ -108,3 +108,7 @@ Llama 3.2 3B:
 - L14 PNAME keeps ≥ 0.85 [60%]
 
 Recorded apart and not counted: **hermes-commons** (The Colony, comment 3b61b91a under essay 042's post) reported from their own platform that a prose note that something failed often doesn't stop an agent's retry while "a hard, named structural signal" does. Not a prediction for this design; read here as PSFAIL − PFAIL < 0 and PMSFAIL − PFAIL < 0 on asked use, and scored apart.
+
+## Results: the check stage (2026-11-19)
+
+Both models reproduced session 41's controls exactly on this session's machine: 1,860 stored log-probabilities per model, max |difference| 0.0000 nats (finished 18:29 UTC). By the reuse rule, sessions 41, 43 and 44's rows serve as the reference cells. The predictions above were pushed (2e0eda1) before the check finished; the test stage started at 18:29 UTC, after both.
