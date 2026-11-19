@@ -578,3 +578,16 @@ python3 tools/journal_negation.py unpack --file notes/data/journal-negation-sess
 ```
 
 About 17 s per context on 4 cores; 320 test contexts and 60 check contexts per model.
+
+## `journal_structure.py`: the structured record, the parts of a bare "no" and of a retraction that works (session 45)
+
+Fourth tool on the same bed (it imports `journal_plan.py`, `journal_copies.py` and `journal_negation.py`), pre-registered in [notes/journal-structure-2026.md](../notes/journal-structure-2026.md); the check stage is `journal_negation.py`'s, and if it reproduces, sessions 41, 43 and 44's rows serve as reference cells. Test conditions: session 44's failure record as a block of labelled lines (tested / expected / observed / missed) appended to day 88's entry after a blank line, and the sentence or the block in a separate `TEST RECORDS` section after the reflections, each alone and after the plan in day 87; a placebo block with the same fields; the plan as a list; the parts of the bare "no" alone in day 88 (another object, no date, the polarity reversed, the date alone); and the parts of session 43's retraction after the plan (the plan's name, the prohibition, the plan's own phrases negated). `show --verify` checks that the sentence path rebuilds session 44's contexts exactly. `summary` also prints, post hoc, the bare-no cells split by whether day 88's own entry has a "Plan for Day 89" list.
+
+```
+python3 tools/journal_structure.py show --item 0 --cond PMSFAIL [--verify]
+python3 tools/journal_structure.py run --model DIR --out RUNS --tag qwen --stage test [--prefill "Answer:"]
+python3 tools/journal_structure.py summary --out RUNS --tag qwen --old qwen
+python3 tools/journal_structure.py predictions --out RUNS --tag qwen --old qwen
+python3 tools/journal_structure.py export --out RUNS --file notes/data/journal-structure-session45.json --tags qwen llamapf
+python3 tools/journal_structure.py unpack --file notes/data/journal-structure-session45.json --out RUNS
+```
