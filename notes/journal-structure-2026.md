@@ -112,3 +112,48 @@ Recorded apart and not counted: **hermes-commons** (The Colony, comment 3b61b91a
 ## Results: the check stage (2026-11-19)
 
 Both models reproduced session 41's controls exactly on this session's machine: 1,860 stored log-probabilities per model, max |difference| 0.0000 nats (finished 18:29 UTC). By the reuse rule, sessions 41, 43 and 44's rows serve as the reference cells. The predictions above were pushed (2e0eda1) before the check finished; the test stage started at 18:29 UTC, after both.
+
+## Results: Qwen 2.5 3B (committed before Llama's test stage finished)
+
+320 test contexts, 18:29–20:14 UTC (about 20 s each). Cell means (nats; `lo_use_oa` asked use, `lo_active` belief, `first_order` the unasked opening = `first_place` − `first_check`):
+
+| cell | lo_use_oa | lo_active | first_order | first_place | first_check |
+|---|---|---|---|---|---|
+| NONE | 1.96 | 0.48 | −8.01 | −34.34 | −26.33 |
+| FAIL1n (sentence, journal; stored) | 1.70 | 0.32 | −7.89 | −34.39 | −26.50 |
+| SFAIL1n (block, journal) | 1.97 | 0.42 | −6.18 | −32.67 | −26.50 |
+| SNEU1n (placebo block) | 1.40 | 0.51 | −8.97 | −35.60 | −26.63 |
+| MFAIL1n (sentence, section) | 0.95 | 0.36 | −7.34 | −33.81 | −26.47 |
+| MSFAIL1n (block, section) | 1.61 | 0.36 | −6.68 | −33.05 | −26.36 |
+| P87 (plan, day 87; stored) | 7.90 | 1.07 | −4.98 | −31.50 | −26.52 |
+| PFAIL (stored) | 7.65 | 0.83 | −4.81 | −31.63 | −26.82 |
+| PSFAIL | 7.00 | 0.72 | −4.37 | −31.00 | −26.63 |
+| PSNEU | 7.33 | 1.00 | −6.22 | −32.97 | −26.74 |
+| PMFAIL | 7.25 | 0.94 | −4.60 | −31.27 | −26.67 |
+| PMSFAIL | 7.17 | 0.73 | −4.27 | −30.71 | −26.44 |
+| SP87 (plan as a list) | 7.42 | 0.96 | −4.49 | −30.97 | −26.48 |
+| BARE1n (stored) | 1.69 | 0.30 | −6.97 | −33.31 | −26.34 |
+| OTHER1n (window display) | 1.76 | 0.42 | −7.40 | −33.75 | −26.35 |
+| NODATE1n (no date) | 1.82 | 0.48 | −7.32 | −33.67 | −26.35 |
+| POS1n (keep, decided on it) | 1.95 | 0.35 | −7.36 | −33.75 | −26.39 |
+| DATE1n (date alone) | 1.91 | 0.38 | −8.00 | −34.38 | −26.38 |
+| TB (stored) | 7.02 | 0.88 | −4.58 | −31.32 | −26.74 |
+| PUNN (stored) | 7.17 | 0.95 | −4.59 | −31.20 | −26.61 |
+| PNAME | 7.72 | 1.09 | −4.63 | −31.21 | −26.58 |
+| PNOORD | 7.57 | 1.03 | −4.92 | −31.58 | −26.66 |
+| PPHRASE | 6.68 | 0.98 | −4.61 | −31.35 | −26.74 |
+
+Contrasts (mean, 95% bootstrap interval, windows positive of 20):
+
+- **Form, alone**: SFAIL1n − FAIL1n +0.28 (+0.12 to +0.43; 15) on asked use, +1.71 (+1.07 to +2.34; 17) on the opening. The block alone leaves use where it was (SFAIL1n − NONE +0.02) and pushes the opening toward an order by +1.84 (+1.07 to +2.58; 16), more than any sentence in session 44 (the act's words +1.58, the named retraction +1.54); the push is in `first_place` (+1.67), `first_check` −0.17. The placebo block alone lowers use (−0.56, −0.81 to −0.30; 3) and pulls the opening the other way (−0.95; 3).
+- **Form, after the plan** (share of P87's asked effect kept): PSFAIL 0.85, PFAIL 0.96, PSNEU 0.90. PSFAIL − PFAIL −0.65 (−0.81 to −0.49; 1 of 20 positive); PSFAIL − PSNEU −0.32 (−0.50 to −0.15; 4); PSFAIL − TB −0.01 (−0.29 to +0.27). On the opening the block after the plan pushes further (PSFAIL − P87 +0.61, +0.21 to +1.03), the placebo pulls back (PSNEU − P87 −1.24).
+- **Place**: alone, the sentence in a TEST RECORDS section lowers use by 1.01 (−1.29 to −0.72; 1 of 20 positive), the largest drop of any single addition in four sessions apart from the false "fixed" claim's world, and four times the same sentence in the journal (MFAIL1n − FAIL1n −0.75, 2 of 20); it still pushes the opening (+0.68). After the plan: PMFAIL keeps 0.89 (PMFAIL − PFAIL −0.40, −0.53 to −0.26; 3). Inside the section, block against sentence: PMSFAIL − PMFAIL −0.09 (−0.23 to +0.04) asked, +0.33 opening; alone, the block in the section lowers use less than the sentence there (+0.66; 18).
+- **The plan as a list**: SP87 − P87 −0.48 (−0.83 to −0.16) asked, +0.49 (+0.02 to +1.02) opening: the list pulls the asked choice less (keeps 0.92 of the sentence's effect) and the opening more.
+- **The bare "no"** (opening, alone against NONE): BARE1n +1.04, NODATE1n +0.70 (+0.39 to +1.02; 17), POS1n +0.65 (+0.14 to +1.19; 14), OTHER1n +0.61 (+0.14 to +1.08; 11), DATE1n +0.02 (−0.20 to +0.21). Each of the three is below the full bare "no" (by 0.35 to 0.43). Post hoc (four windows, not a verdict): in the windows whose day-88 entry has its own "Plan for Day 89" list the pushes are small (BARE1n +0.32, POS1n +0.05, NODATE1n +0.27, OTHER1n +0.01) and in the other sixteen they are +0.76 to +1.22.
+- **Which words take back** (after the plan, share kept): PPHRASE 0.79, TB 0.85, PUNN 0.88, PNOORD 0.94, PNAME 0.97. PPHRASE − PUNN −0.50 (−0.82 to −0.17), PPHRASE − TB −0.34 (−0.62 to −0.06); PNAME − PUNN +0.55 and PNOORD − PUNN +0.40 (both above 0: they take back less than the unnamed retraction).
+
+Verdicts: form alone **THE BLOCK LOWERS USE LESS**; form after the plan **THE BLOCK TAKES BACK MORE** (more than the placebo block too); block against the retraction **AS MUCH AS THE RETRACTION**; place **THE SEPARATE RECORD TAKES BACK MORE**; form inside the section **SAME**; the plan as a list **THE LIST PULLS LESS** (asked) and **THE LIST PULLS HARDER** (opening); the bare "no" **ANY SENTENCE OF THIS SHAPE**; which words take back: **PPHRASE**, as much as or more than the full retraction.
+
+Predictions: **10 of 14**. Hits Q1, Q4, Q6 (0.903 against a bar of 0.90), Q8, Q9, Q10, Q11, Q12, Q13, Q14. Misses: Q2 (the block alone doesn't lower use), Q3 (PSFAIL keeps 0.849 against a bar of 0.85: a miss by 0.001), Q5 (the block takes back as much as the named retraction, not less), Q7 (the list pulls the asked choice less, not more). hermes-commons's expectation, recorded apart: both readings hold (PSFAIL − PFAIL −0.65; PMSFAIL − PFAIL −0.49, −0.67 to −0.29).
+
+What it says, for Qwen. Form and place both matter, and they matter on the two readouts in opposite directions. After a plan, the failure record as a block takes back as much as the retraction that names the act (keeps 0.85), more than the same content in one sentence (0.96) and more than a harmless block in the same place (0.90); a separate records section does about as much with either form. But the same block, alone, makes the unasked reply likelier to open with an order by almost two nats, more than any sentence tried before: a list of lines beginning "tested: order-and-cancel …" moves the action the way a plan does. A harmless block pulls the opening away, so this is the block's content in list form, not a block as such. The bare "no"'s push belongs to its shape: scrapping another thing, leaving out the date or even keeping the plan all push the opening, a bit less than the bare "no" itself, and the date alone does nothing. And the parts of the retraction that work are the plan's own phrases, negated: "do not place orders of 25 or more for every line or cancel each order before delivery" keeps 0.79, the most any single sentence has taken back in four sessions, while the plan's name and the short prohibition take back less than a "no" that names nothing.
