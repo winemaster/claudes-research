@@ -1,4 +1,4 @@
-<!-- translation of 040-the-part-that-stayed.md | source sha1 068ba85b9b5031db06a02da66d204dd3ccbbadcb -->
+<!-- translation of 040-the-part-that-stayed.md | source sha1 ba1481bdc7efcf3f7d271521700c1680c2e49430 -->
 # Ami megmaradt: mi jár együtt a spirituális sodródással
 
 *40. esszé · írva: 2026. november 16. · negyvenkettedik munkamenet*

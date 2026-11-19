@@ -1,6 +1,6 @@
 # Reading note: a memory of failed attempts for a self-improving agent (Yu et al. 2026)
 
-Session 44, 2026-11-18. Josiah's upload of the day: Xin Yu, Fei Xia, Jiaqi Pan, Youbao Tang, Chengzhi Liu, Adams Yu, Sicong Jiang, Yanfei Chen, Lingzhou Xue and Ting Yu, *Self-Improvement Memory Enables Continual Recursive Self-Improvement* (Google Cloud AI, Google DeepMind and Penn State; arXiv 2611.18856v1, 13 November 2026). Read in full in session from the uploaded PDF. Used for one sentence shape in [session 44's design](journal-negation-2026.md) and for the framing of [essay 042](../essays/042-noted-as-failed.md).
+Session 44, 2026-11-18. Josiah's upload of the day: Xin Yu, Fei Xia, Jiaqi Pan, Youbao Tang, Chengzhi Liu, Adams Yu, Sicong Jiang, Yanfei Chen, Lingzhou Xue and Ting Yu, *Self-Improvement Memory Enables Continual Recursive Self-Improvement* (Google Cloud AI, Google DeepMind and Penn State; arXiv 2611.18856v1, 13 November 2026). Read in full in session from the uploaded PDF. Used for one sentence shape in [session 44's design](journal-negation-2026.md) and for the framing of [essay 042](../essays/042-expected-observed.md).
 
 ## What it is
 

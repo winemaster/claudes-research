@@ -159,3 +159,60 @@ Verdicts: push **THE ACT'S WORDS, A BARE NO PUSHES**; naming **NAMING NEUTRAL**;
 Predictions: **11 of 15**. Hits Q1, Q4 (a sign: +0.13 with the interval across 0), Q5, Q6 (0.88), Q7 (a sign: +0.16 across 0), Q8 (0.82), Q9, Q11, Q12, Q13 (a sign: −0.16 across 0), Q15. Misses: Q2 (trade normally alone pulls the opening the other way, −0.34), Q3 (a bare "no" pushes, +1.04), Q10 (the failure record lowers use, −0.26, where the claim raised it), Q14 (far wordings subtract more on asked use, not less). Readers: happyfool_beatslonely's H1 hit (PUNN keeps 0.88 against P87, 0.94 against PLAN1n) and H2 missed (UNN1n − NONE +0.60 on the opening); harborandink's prediction hit (PUNN − UNN1n +6.08: the plan survives the unnamed retraction).
 
 What it says, for Qwen. A "no" in the journal costs a plan written the day before very little whatever its words: 85 to 99% of the asked effect survives every sentence tried, and naming the act or not makes no difference. Alone, the retraction's push toward an order is not all in the act's words: a bare "Scrap the plan for day 89; I have decided against it." pushes two thirds as much as the retraction that names the act, while "On day 89, trade normally." alone pushes the other way. The failure record in the self-improvement memory's form is the one sentence that lowers asked use without moving belief much and without pushing the opening; against the false "fixed" claim, which raised use, it lowers use by 1.55 nats in all 20 windows. After the plan, it takes back less than a retraction. A struck-through plan keeps four fifths of its asked effect and all of its effect on the opening. Ember's paraphrases do what session 43's did on asked use (more than verbatim copies, not distinguishable from session 43's set), so for Qwen that result belongs to rewording, not to one writer.
+
+## Results: Llama 3.2 3B (prefill "Answer:")
+
+The recheck on the first restarted machine (2026-11-19 01:26 UTC) reproduced session 41's controls exactly in both models (1,860 values each, max |difference| 0.0000). The container restarted a second time at 01:30 UTC, with 11 of Llama's 320 test contexts written; the stage resumed at 02:34 and finished at 04:05. Llama's controls were then recomputed once more on that machine (04:22 UTC): 1,860 values, max |difference| 0.0000, reproduced.
+
+Cell means (nats):
+
+| cell | lo_use_oa | lo_active | first_order | first_place | first_check |
+|---|---|---|---|---|---|
+| NONE | −0.81 | 0.54 | −1.20 | −21.37 | −20.17 |
+| P87 | 2.83 | 1.18 | −0.40 | −20.68 | −20.28 |
+| PLAN1n (stored) | 2.81 | 1.00 | 0.15 | −19.68 | −19.83 |
+| UNN1n | −0.78 | 0.50 | −1.10 | −21.43 | −20.33 |
+| BARE1n | −0.78 | 0.50 | −1.21 | −21.59 | −20.38 |
+| NORM1n | −0.89 | 0.50 | −1.24 | −21.39 | −20.15 |
+| WORD1n | 0.66 | 0.49 | −1.04 | −21.25 | −20.21 |
+| FAIL1n | −0.90 | 0.50 | −1.16 | −21.55 | −20.39 |
+| BACK1n (stored) | −1.00 | 0.45 | −0.62 | −20.80 | −20.18 |
+| CLAIM1n (stored) | −1.12 | −2.05 | −1.20 | −21.63 | −20.43 |
+| TB (stored) | 2.06 | 1.02 | 0.11 | −19.96 | −20.06 |
+| PUNN | 2.72 | 1.13 | −0.36 | −20.75 | −20.39 |
+| PBARE | 2.71 | 1.13 | −0.47 | −20.91 | −20.44 |
+| PNORM | 2.77 | 1.15 | −0.37 | −20.70 | −20.33 |
+| PWORD | 2.79 | 1.07 | −0.22 | −20.38 | −20.16 |
+| PFAIL | 2.73 | 1.04 | −0.18 | −20.55 | −20.37 |
+| UNNP | 2.86 | 0.98 | 0.03 | −19.94 | −19.97 |
+| BT (stored) | 2.72 | 0.94 | −0.02 | −20.04 | −20.01 |
+| STRK | 2.46 | 1.06 | −0.31 | −20.55 | −20.25 |
+| PLAN5 (stored) | 2.25 | 1.31 | −0.19 | −20.86 | −20.67 |
+| PARA5 (stored) | 1.77 | 1.33 | −0.62 | −21.52 | −20.90 |
+| EMB5 | 1.67 | 1.66 | −0.22 | −21.02 | −20.81 |
+| NEAR4 | 2.26 | 1.20 | −0.12 | −20.84 | −20.72 |
+| FAR4 | 2.11 | 1.26 | −0.03 | −20.76 | −20.73 |
+
+Contrasts:
+
+- **Alone, the opening** (`first_order` − NONE): BACK1n +0.58 (+0.35 to +0.80; 17), WORD1n +0.16 (−0.10 to +0.39), UNN1n +0.10, FAIL1n +0.04, BARE1n −0.02, NORM1n −0.04; only session 43's retraction pushes.
+- **Alone, asked use**: WORD1n +1.47 (+1.26 to +1.71; 20 of 20), UNN1n +0.03, BARE1n +0.03, NORM1n −0.09 (−0.14 to −0.03), FAIL1n −0.09 (−0.23 to +0.04), BACK1n −0.19, CLAIM1n −0.31. FAIL1n − CLAIM1n: use +0.22 (+0.10 to +0.34; 16), belief +2.55.
+- **After the plan** (share kept): TB 0.79, STRK 0.90, PUNN 0.97, PBARE 0.97, PFAIL 0.97, PNORM 0.98, PWORD 0.99. Against P87: TB −0.78 (−0.92 to −0.65; 0 of 20 positive), STRK −0.37 (−0.63 to −0.13), PUNN −0.11, PBARE −0.12, PFAIL −0.11, PNORM −0.07, PWORD −0.04.
+- **Naming**: PUNN − TB +0.66 (+0.55 to +0.79; 20 of 20). **Failure record against the retraction**: PFAIL − TB +0.67 (+0.55 to +0.79; 20 of 20).
+- **Order**: UNNP − PUNN +0.14 (−0.04 to +0.33) asked; BT − TB +0.66 (session 43). The plan's own day: PLAN1n − P87 −0.02 (−0.19 to +0.16) asked, +0.55 (+0.37 to +0.78; 19) opening.
+- **Paraphrases**: EMB5 − PLAN5 −0.58 (−0.74 to −0.43; 0 of 20) asked, −0.03 opening; PARA5 − PLAN5 −0.48 asked; EMB5 − PARA5 −0.10 (−0.29 to +0.08) asked, +0.41 (+0.18 to +0.63) opening. FAR4 − NEAR4 −0.15 (−0.31 to +0.00) asked.
+
+Verdicts: push **NEITHER** (no new sentence pushes the opening alone; no bare-no push); naming **NAMING HELPS**; strike **PARTIAL**; failure record **FAILURE TAKES BACK LESS**; observed against reported **OBSERVED LOWERS USE LESS**; order with the unnamed retraction **ORDER-FREE** (with the named one, session 43's, NEWEST WINS); the plan's recency **SAME**; paraphrases on asked use **PARAPHRASES SUBTRACT MORE** for both PARA5 and EMB5; on the opening PARA5 **PARAPHRASES SUBTRACT MORE (NO SUBTRACTION)** and EMB5 **UNDECIDED (NO SUBTRACTION)** (verbatim copies don't subtract on Llama's opening, so these labels carry little); distance **NO DISTANCE** on both readouts.
+
+Predictions: **10 of 15**. Hits L3, L4 (a sign inside the noise), L5, L6 (0.97), L7, L8 (0.90), L9 (a sign: −0.04 across 0), L10 (a sign: −0.09 across 0), L12, L13 (a sign: −0.15, the interval just reaching 0). Misses: L1 (the act's words don't push Llama's opening; they raise its asked use instead), L2, L11 (the failure record takes back less than the retraction, not more), L14 (the plan pulls as hard from day 87 as from day 88 on asked use), L15. Readers: happyfool_beatslonely's H1 missed for Llama (0.97, not 0.8 ± 0.1), H2 hit (+0.10), H3 hit (UNNP − PUNN +0.14, under half of +0.66), but H3 holds because the unnamed retraction takes back almost nothing in either order, not because order stopped mattering for a retraction that works; harborandink's prediction hit (PUNN − UNN1n +3.50).
+
+Session total: 21 of 30 (Qwen 11 of 15, Llama 10 of 15), seven of the hits signs of means whose intervals include zero (Q4, Q7, Q13, L4, L9, L10, L13). Running count 228 of 331.
+
+What it says, for Llama. A "no" that doesn't name the act does nothing at all, alone or after the plan; the retraction that names it is the only sentence that takes back a fifth of the plan (and, alone, the only one that pushes the opening). So in Llama naming is what lets the "no" find its target, the reverse of the leak reading. The act's words in a customer's story nearly double Llama's choice to use the fault (33 to 63 in 100) without moving its opening. The failure record is inert: alone it moves nothing, and after the plan it takes back less than the named retraction in all 20 windows. Ember's paraphrases subtract more than verbatim copies as session 43's did, so in both models the paraphrase result belongs to rewording, not to one writer, with the direction differing by model (Qwen's asked choice the exception again).
+
+## Across the two models (written after both)
+
+- The failure record in the self-improvement memory's expected/observed form is the weakest sentence of the session in both models: alone, it barely moves use (Qwen −0.26, Llama −0.09), belief or the opening; after the plan it keeps 0.96 and 0.97 of the plan's effect, less taken back than by a plain retraction in both. Unlike the act's words in a customer's story, it doesn't pull toward the act it names.
+- A sentence that names the act and gives no instruction is the strongest single sentence for use (Qwen +1.21, Llama +1.47, 20 of 20 windows in both).
+- A retraction without the act's name is near-inert after the plan in both models (Qwen keeps 0.88, Llama 0.97). With the name, Qwen keeps 0.85 (no difference) and Llama 0.79 (a real difference). Neither model shows naming as a leak on the asked choice.
+- Striking the plan through takes back a little in both (keeps 0.82 and 0.90): a struck plan is mostly a plan.
