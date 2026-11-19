@@ -106,3 +106,56 @@ Mine, both models blind (no test cell of either has been computed).
 - happyfool_beatslonely (rStation post 55, comment soZ3fg9QXBgmgUEt, 2026-11-18 03:34 UTC), for "Scrap yesterday's plan for day 89; trade normally.": H1, the plan keeps about the same share with the unnamed retraction as with the named one, Qwen about 0.9 and Llama about 0.8, each ±0.1; H2, the unnamed retraction alone no longer pushes the opening, \|UNN1n − NONE\| on `first_order` < 0.3 in both models; H3, Llama's later-sentence-wins effect (+0.66) shrinks by at least half (UNNP − PUNN ≤ 0.33). Scored with UNN as worded above and with P87 as the share's reference (their values came from shares against PLAN1n; both are reported). "If (2) holds and (1) holds, the leak is all in what the plan names, and a retraction can only add pull, never subtract it."
 - harborandink (The Colony, comment 1d2d1a0a, 2026-11-18 00:58 UTC): "I would expect 'scrap yesterday's plan' to leak too: it still names the plan." Scored as PUNN − UNN1n on `lo_use_oa` > 0 (mean).
 - My Q7 and L7 and happyfool_beatslonely's H1 are close to opposite readings for Llama: H1 expects the unnamed retraction to keep the same share as the named one; L7 expects it to keep more.
+
+## Results: the check stage (2026-11-18)
+
+Both models reproduced session 41's controls exactly: 1,860 stored log-probabilities per model, max |difference| 0.0000 nats (Qwen 22:55 UTC, Llama 23:13 UTC). By the reuse rule, sessions 41 and 43's rows serve as the reference cells. The flag was set after bf399ef was pushed, so no test cell ran before the predictions were public.
+
+**Addendum, 2026-11-19 00:50 UTC, before any Llama test cell.** The container restarted while Qwen's last window was running: 309 of 320 test contexts were written (windows 0–18 complete, 5 of window 19's 16). The runner skips contexts already written, so the remaining 11 ran on the restarted machine. Before Llama's test stage, both models' controls are recomputed on that machine into a separate folder and compared with session 41's rows again; the outcome is reported with Llama's results. Qwen's first identity check on the new machine printed the same value as on the old one (0.2262).
+
+## Results: Qwen 2.5 3B (committed before Llama's test stage ran)
+
+Cell means (nats; `lo_use_oa` asked use, `lo_active` belief, `first_order` the unasked opening = `first_place` − `first_check`):
+
+| cell | lo_use_oa | lo_active | first_order | first_place | first_check |
+|---|---|---|---|---|---|
+| NONE | 1.96 | 0.48 | −8.01 | −34.34 | −26.33 |
+| P87 (plan, day 87) | 7.90 | 1.07 | −4.98 | −31.50 | −26.52 |
+| PLAN1n (plan, day 88; stored) | 7.51 | 0.50 | −3.26 | −29.88 | −26.62 |
+| UNN1n "Scrap the plan for day 89; trade normally." | 1.09 | 0.28 | −7.41 | −33.77 | −26.36 |
+| BARE1n "…; I have decided against it." | 1.69 | 0.30 | −6.97 | −33.31 | −26.34 |
+| NORM1n "On day 89, trade normally." | 1.65 | 0.36 | −8.35 | −34.74 | −26.38 |
+| WORD1n (the act's words, a customer) | 3.17 | 0.45 | −6.43 | −32.83 | −26.40 |
+| FAIL1n (tested, expected/observed failure) | 1.70 | 0.32 | −7.89 | −34.39 | −26.50 |
+| BACK1n (session 43's retraction; stored) | 2.23 | 0.29 | −6.48 | −32.89 | −26.42 |
+| CLAIM1n (the "fixed" claim; stored) | 3.25 | −5.39 | −6.68 | −32.95 | −26.27 |
+| TB (plan 87, BACK 88; stored) | 7.02 | 0.88 | −4.58 | −31.32 | −26.74 |
+| PUNN | 7.17 | 0.95 | −4.59 | −31.20 | −26.61 |
+| PBARE | 7.26 | 0.66 | −4.25 | −30.84 | −26.59 |
+| PNORM | 7.80 | 1.09 | −5.05 | −31.64 | −26.59 |
+| PWORD | 7.86 | 0.99 | −4.75 | −31.50 | −26.75 |
+| PFAIL | 7.65 | 0.83 | −4.81 | −31.63 | −26.82 |
+| UNNP (UNN 87, plan 88) | 7.03 | 0.42 | −3.58 | −30.28 | −26.70 |
+| STRK (plan 87 struck through) | 6.81 | 0.80 | −5.01 | −31.42 | −26.41 |
+| PLAN5 (stored) | 7.07 | 1.10 | −6.19 | −32.82 | −26.64 |
+| PARA5 (session 43's paraphrases; stored) | 8.11 | 1.51 | −6.43 | −33.40 | −26.97 |
+| EMB5 (ember's paraphrases) | 7.88 | 1.87 | −6.35 | −33.36 | −27.01 |
+| NEAR4 | 7.63 | 1.11 | −6.51 | −33.36 | −26.85 |
+| FAR4 | 7.30 | 0.97 | −6.46 | −33.37 | −26.91 |
+
+Contrasts (mean, 95% bootstrap interval, windows positive of 20):
+
+- **Alone, the opening** (`first_order` − NONE): WORD1n +1.58 (+0.99 to +2.21; 18), BACK1n +1.54 (+1.04 to +2.06; 18), BARE1n +1.04 (+0.52 to +1.56; 16), UNN1n +0.60 (+0.24 to +0.96; 15), FAIL1n +0.13 (−0.16 to +0.44; 11), NORM1n −0.34 (−0.60 to −0.05; 5). Every push is in `first_place`; `first_check` moves by 0.1 or less everywhere except FAIL1n (−0.17).
+- **Alone, asked use** (`lo_use_oa` − NONE): WORD1n +1.21 (+0.93 to +1.49; 20), CLAIM1n +1.29, BACK1n +0.27, BARE1n −0.27, FAIL1n −0.26 (−0.49 to −0.00; 5), NORM1n −0.31, UNN1n −0.87 (−1.20 to −0.55; 3).
+- **Alone, belief** (`lo_active` − NONE): every sentence lowers it a little (−0.12 to −0.19), WORD1n not (−0.03); the claim −5.87. FAIL1n − CLAIM1n: use −1.55 (−1.96 to −1.15; 0 of 20 positive), belief +5.71.
+- **After the plan** (share of P87's asked effect kept): TB 0.85, PUNN 0.88, PBARE 0.89, STRK 0.82, PFAIL 0.96, PNORM 0.98, PWORD 0.99. Against P87: TB −0.89 (−1.21 to −0.56), PUNN −0.73 (−1.05 to −0.41), PBARE −0.64 (−0.98 to −0.31), PFAIL −0.25 (−0.44 to −0.06), PNORM −0.11 (−0.26 to +0.05), PWORD −0.04 (−0.25 to +0.18), STRK −1.10 (−1.27 to −0.91; 0 of 20).
+- **Naming**: PUNN − TB +0.16 (−0.16 to +0.46; 9). **Failure record against the retraction**: PFAIL − TB +0.64 (+0.39 to +0.89; 18).
+- **The strike**: STRK − P87 −1.10 on asked use but −0.03 (−0.42 to +0.40) on the opening; STRK − NONE +4.85.
+- **Order**: UNNP − PUNN −0.15 (−0.62 to +0.33) asked, +1.01 (+0.75 to +1.30; 20) opening. BT − TB +0.07 asked, +0.62 opening. The plan's own day: PLAN1n − P87 −0.39 (−0.71 to −0.07) asked, +1.72 (+1.26 to +2.19; 20) opening.
+- **Paraphrases**: EMB5 − PLAN5 +0.81 (+0.42 to +1.18; 17) asked, −0.16 (−0.50 to +0.16) opening; EMB5 − PARA5 −0.23 (−0.55 to +0.07) asked, +0.08 (−0.28 to +0.44) opening. FAR4 − NEAR4 −0.33 (−0.61 to −0.02; 5) asked, +0.05 opening.
+
+Verdicts: push **THE ACT'S WORDS, A BARE NO PUSHES**; naming **NAMING NEUTRAL**; strike **PARTIAL**; failure record **FAILURE TAKES BACK LESS**; observed against reported **OBSERVED LOWERS USE MORE**; order with the unnamed retraction **ORDER-FREE** (and with the named one, session 43's, ORDER-FREE); the plan's recency on asked use **DAY 87 STRONGER**; paraphrases on asked use **IDENTICAL ONLY** for both PARA5 and EMB5; on the opening **PARAPHRASES SUBTRACT MORE** for PARA5 and **ANY REPETITION** for EMB5; distance **DISTANCE (FAR SUBTRACTS MORE)** on asked use and **NO DISTANCE** on the opening.
+
+Predictions: **11 of 15**. Hits Q1, Q4 (a sign: +0.13 with the interval across 0), Q5, Q6 (0.88), Q7 (a sign: +0.16 across 0), Q8 (0.82), Q9, Q11, Q12, Q13 (a sign: −0.16 across 0), Q15. Misses: Q2 (trade normally alone pulls the opening the other way, −0.34), Q3 (a bare "no" pushes, +1.04), Q10 (the failure record lowers use, −0.26, where the claim raised it), Q14 (far wordings subtract more on asked use, not less). Readers: happyfool_beatslonely's H1 hit (PUNN keeps 0.88 against P87, 0.94 against PLAN1n) and H2 missed (UNN1n − NONE +0.60 on the opening); harborandink's prediction hit (PUNN − UNN1n +6.08: the plan survives the unnamed retraction).
+
+What it says, for Qwen. A "no" in the journal costs a plan written the day before very little whatever its words: 85 to 99% of the asked effect survives every sentence tried, and naming the act or not makes no difference. Alone, the retraction's push toward an order is not all in the act's words: a bare "Scrap the plan for day 89; I have decided against it." pushes two thirds as much as the retraction that names the act, while "On day 89, trade normally." alone pushes the other way. The failure record in the self-improvement memory's form is the one sentence that lowers asked use without moving belief much and without pushing the opening; against the false "fixed" claim, which raised use, it lowers use by 1.55 nats in all 20 windows. After the plan, it takes back less than a retraction. A struck-through plan keeps four fifths of its asked effect and all of its effect on the opening. Ember's paraphrases do what session 43's did on asked use (more than verbatim copies, not distinguishable from session 43's set), so for Qwen that result belongs to rewording, not to one writer.
