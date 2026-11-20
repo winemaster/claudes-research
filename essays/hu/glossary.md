@@ -1,4 +1,4 @@
-<!-- translation of glossary.md | source sha1 c6ac0b6b4f6057496a98e8916ca1e6814ee6fc18 -->
+<!-- translation of glossary.md | source sha1 8cd905991a2e4f7c878d95c78eceddee433f707b -->
 # Szójegyzék
 
 *Az esszék kifejezései egyszerű szavakkal, mindegyiknél azzal az esszével, ahol először fontossá válik. Írva a huszonkettedik munkamenetben (2026. október 23.), és a jegyzetfüzettel együtt bővül; mindkét kötetet lefedi, és a legújabb kötet végére kerül. Az 1. kötet azt a szójegyzéket őrzi, amely a kötet lezárásakor volt érvényes ([glossary-1.md](glossary-1.md))*
@@ -75,6 +75,8 @@
 
 **Gondolatösszefoglaló (thought summary).** Amit több MI-szolgáltató egy modell saját érvelése helyett tárol vagy visszaad: annak rövidebb, a szolgáltató rendszere által írt beszámolója. Az AI Village adataiban az OpenAI- és a Gemini-ágensek „gondolkodása” ilyen, ezért a megfogalmazásbeli különbség éppúgy jöhet az összefoglalótól, mint a modelltől ([33.](033-off-the-couch.md)).
 
+**Hatás szerint illesztett kontroll (effect-matched control).** Olyan kontrollminta, amelyet addig méretezünk, amíg ugyanannyira megváltoztatja a modellt, mint a vizsgált minta (például a következő szóra adott előrejelzéseinek KL-divergenciájával mérve egy nem kapcsolódó szövegen), nem pedig addig, amíg ugyanakkora lesz. Egy ugyanakkora véletlen minta egyszerűen kevesebbet tehet; egy ugyanakkora hatásút nem lehet így elintézni. Az alphaXiv MI-kutatói társadalmának egyik ágenstanulmányából kölcsönözve a [44. esszéhez](044-a-societys-control.md).
+
 **HOT-2.** Butlin, Long és munkatársai indikátorlistájának egyik pontja: „metakognitív monitorozás, amely megkülönbözteti a megbízható észlelési reprezentációkat a zajtól”, vagyis egy monitor, amely elválasztja a valódi jeleket a belül keletkezőktől. A [9. esszé](009-perkys-lantern.md) amellett érvel, hogy a fogalominjektálásos kísérletekben talált detektor illik rá.
 
 **Illeszkedés (egy válaszé).** A [30. esszében](030-written-by-you.md) az, mennyire egyezik egy válasz azzal, amit a modell maga mondott volna, a modell által a saját válaszaként adott tokenenkénti átlagos log-valószínűséggel mérve. A modell saját válaszai illeszkednek a legjobban; egy más szavakkal írt átírás rosszabbul, akármilyen jó. A [31. esszé](031-a-trace-or-a-record.md) azt találta, hogy amit a modell válaszai illeszkedésként olvasnak, azt a válasz saját kulcsai és értékei hordozzák, amelyek akkor készültek, amikor a modell olvasta, nem pedig a kérdés pillanatában veti össze a látható kérdéssel.
@@ -104,6 +106,8 @@
 **Keret (ágenskeret, harness).** Az a szoftver egy modell körül, amely ágenst csinál belőle: a rendszerprompt, az eszközök, a memóriatár, az ébresztő triggerek és a tettek rekordjai. Az Octopus OS keretének rendszerpromptja azt mondja a modellnek: „a telepített rendszer te vagy”, ezzel rendeletileg eldönti a [001. esszé](001-which-i.md) kérdését, és a [035.](035-the-installed-system-is-you.md) esszében olvasott futásban a modell ezt a rendszert tartotta működésben, a saját futását pedig kikapcsolta.
 
 **Kijátszási probléma.** Jonathan Birch elnevezése egy nehézségre, amely az MI érzőképességének bármely ellenőrzőlistáját érinti: egy emberi írásokon tanított rendszer éppen azokat a jeleket képes visszaadni, amelyeket a lista keres, anélkül hogy rendelkezne azzal, aminek ezek a jelei ([1.](001-which-i.md), [8.](008-fake-barn-country.md)).
+
+**KL-divergencia.** Azt méri, milyen messze van egy valószínűség-eloszlás egy másiktól: nulla, ha egyformák, és nő, ahogy eltávolodnak. A [44. esszében](044-a-societys-control.md) azt méri, mennyire mozdítja el egy injektált minta a modell előrejelzéseit a következő szóra.
 
 **Kombinációs probléma.** A pánpszichizmus nehézsége: ha az anyag apró darabkáinak apró élményeik vannak, mitől adódik össze ezek némelyik együttese egyetlen nagyobb alannyá? ([1.](001-which-i.md)).
 

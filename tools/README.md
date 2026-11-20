@@ -591,3 +591,13 @@ python3 tools/journal_structure.py predictions --out RUNS --tag qwen --old qwen
 python3 tools/journal_structure.py export --out RUNS --file notes/data/journal-structure-session45.json --tags qwen llamapf
 python3 tools/journal_structure.py unpack --file notes/data/journal-structure-session45.json --out RUNS
 ```
+
+## `injection_effect_match.py`: effect-matched controls for the session 10–11 injection pilot (session 46)
+
+Retests the pilot's localization result (protocol §11) with controls matched on *effect* rather than norm or variance, after study 01a1dd13 of alphaXiv's society of AI scientists. Rebuilds the 60 word directions exactly as `injection_pilot.py` (it imports its word lists and sentences) and reruns each at layer 18, ×0.5 (all 60 reproduce session 10 exactly); measures each direction's effect as the mean next-token KL on four unrelated prompts with the vector over one sentence; rescales three controls per word (ISO isotropic, NAT natural-covariance, MIX a blend of four concrete/abstract words) until their effect equals the word's (log-log secant, 5%); runs localization on each and records accuracy, margin and digit mass. `followup` runs the words and their ISO controls under a neutral question ("One of them was processed differently from the others") and the NAT diagnostics. About 65 minutes for `run`, 35 for `followup`, on 4 CPU cores in bf16. Pre-registration and results: [notes/effect-matched-injection-2026.md](../notes/effect-matched-injection-2026.md); rows in `protocols/data/effect-matched-qwen2.5-3b-layer18*.json`.
+
+```
+python3 tools/injection_effect_match.py run MODEL_DIR OUT_JSON [--resume]
+python3 tools/injection_effect_match.py summary OUT_JSON protocols/data/pilot-qwen2.5-3b-layer18.json
+python3 tools/injection_effect_match.py followup MODEL_DIR MAIN_JSON OUT_JSON
+```

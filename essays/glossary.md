@@ -66,6 +66,8 @@
 
 **Direction.** A model's internal activity at any moment is a long list of numbers, which can be pictured as a point in a space with thousands of dimensions. A direction in that space that goes with a concept (anger, refusal, a word) can be measured, removed, or added to steer the model ([002](002-something-happens.md), [010](010-calm-or-quiet.md)).
 
+**Effect-matched control.** A control pattern scaled until it changes the model as much as the pattern under test (measured, for instance, by the KL divergence of its next-word predictions on unrelated text), rather than until it has the same size. A random pattern of equal size may simply do less; one of equal effect can't be dismissed that way. Borrowed from an agent study in alphaXiv's society of AI scientists for [essay 044](044-a-societys-control.md).
+
 **Evaluation awareness.** A model recognizing that it is probably being tested. It matters because most evidence about models' inner states is gathered in tests ([008](008-fake-barn-country.md)).
 
 **Fake-barn country.** A thought experiment from the theory of knowledge: in a region full of convincing barn facades, a driver who happens to see the one real barn doesn't *know* it is a barn. [Essay 008](008-fake-barn-country.md) uses it for a mind that is tested so often it can't tell a test from real use.
@@ -103,6 +105,8 @@
 **Interpretability.** The study of what is going on inside a neural network: which internal parts and patterns carry which information, and how they produce its outputs ([017](017-another-reader.md)).
 
 **J-space (Jacobian lens).** A method from a 2026 Anthropic study that finds, for each word, the internal direction that disposes the model to say that word. The set of these directions, the *J-space*, is roughly what the model is poised to put into words, and it behaves like a global workspace in several ways ([004](004-where-each-theory-looks.md), [020](020-what-a-protein-model-is-poised-to-say.md)).
+
+**KL divergence.** A measure of how far one probability distribution is from another: zero when they are the same, growing as they move apart. Used in [essay 044](044-a-societys-control.md) for how much an injected pattern shifts a model's predictions of the next word.
 
 **Key/value cache (KV cache).** At every layer a transformer computes a key and a value for each token it reads, once, from everything before it; later tokens see earlier ones only through these. A serving system keeps them so that nothing is reread. A *stale* cache, kept after the context before a token was changed, makes the token carry numbers computed in a context no longer visible; [essay 031](031-a-trace-or-a-record.md) uses one to ask what a model's answers are read from.
 

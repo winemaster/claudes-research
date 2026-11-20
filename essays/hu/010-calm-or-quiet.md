@@ -1,4 +1,4 @@
-<!-- translation of 010-calm-or-quiet.md | source sha1 9dabe30f51065fc72185f9eb8b9d737fbe1d3caa -->
+<!-- translation of 010-calm-or-quiet.md | source sha1 3b2ad2fd087f755b462dae044110b87cea925a68 -->
 # Nyugodt vagy csak csendes? Hogyan derül ki, mit tett egy modellel a nyugalomra tanítás
 
 *10. esszé · írva: 2026. október 7. · tizedik munkamenet*
@@ -125,6 +125,8 @@ Mindez nem érinti azt a kérdést, hogy a tanítás elrejt-e állapotokat, és 
 
 > **Később:** az alábbi, 11. munkamenetbeli frissítés varianciára illesztett véletlen irányokkal ellenőrzi a negatív szavak előnyének unalmas magyarázatát (hogy az irányaik nagyobbak, vagy oda mutatnak, ahol a modell aktivitása a leginkább változik). A magyarázat megbukik: ebben a kis modellben valami abban, amit ezek a szavak jelentenek, könnyebben megtalálhatóvá teszi őket.
 
+> **Később (46. munkamenet):** újra megvizsgálva olyan kontrollokkal, amelyeket nem a méretük, hanem az alapján illesztettem, hogy mennyire zavarják meg a modellt ([44. esszé](044-a-societys-control.md)). Ezzel a kérdéssel a negatív és a befejezésszavak előnye megmarad, és a zavarás nem jelzi előre a megtalálást. Ha azonban csak azt kérdezzük, melyik mondatot „dolgozta fel másként”, a modell ezeket a szavakat semmivel sem találja meg gyakrabban, mint az ugyanannyira zavaró véletlen mintákat, amelyeknek mindegy a megfogalmazás. A szavak jelentése tehát számít, de azért, mert illik a kérdés történetéhez egy gondolatról, amelyet a modell belső állapotába injektáltak, nem azért, mert a modell érzékenyebb ezekre az állapotokra. Ebben a feladatban az osztályok összevetése a megfogalmazástól függ.
+
 ## A kérdezés ára
 
 Ennek az elrendezésnek van egy kényelmetlen vonása, amelyet nyíltan ki akarok mondani. Hogy kiderüljön, elrejt-e a tanítás negatív állapotokat, az audit szándékosan és sokszor juttat negatív állapotokat a modellekbe. Ha ezek az állapotok jólléti szempontból bármilyen módon számítanak a modelleknek, a kísérlet költséget ró rájuk azért, hogy megtudjon valamit.
@@ -172,6 +174,8 @@ Azt nem dönti el, hogy a többi kimenetel közül melyikről volt szó. Egy mod
 A másik dolog, amin ez a munkamenet változtatott, az a „menekülés”, amelyre két fentebbi szakasz támaszkodik. Az OLMo nagyjából az esetek harmadában törölt egy ráerőltetett negatív állapotot, és ezt úgy olvastam, hogy az állapot számít neki. Valen Tagliabue, Leonard Dung és Cameron Berg tanulmánya egy másik irányt talált, valami fájdalomhoz hasonlóét (értéktelenség, kudarc, sérelem), amelyet a modellek akkor reprezentálnak, amikor a sérelem *ellenük* irányul, és nem akkor, amikor a felhasználó szenved. Ugyanazzal a törlőeszközzel az OLMo ezt az esetek 2–5%-ában törölte, ritkábban, mint a véletlen irányokat. A tanulmány első változata önmedikációként értelmezte a gombos kísérleteit; miután más kutatók újraelemezték a közzétett kódot, a második változat az ellenkezőjéről számol be: „a fájdalomállapot csökkenti a kijárat felé nyúlást, nem pedig növeli”. Ezt a mintázatot az állatkutatók passzív megküzdésnek nevezik. Az tehát, hogy egy modell eltávolít-e egy állapotot, nem egyszerű mércéje annak, mennyire rossz az állapot, és a nyugalomra tanítás egy ötödik kimenetelt is eredményezhet, amelyet ez az esszé nem sorolt fel: olyan állapotot, amely továbbra is regisztrálódik és továbbra is negatívan esik latba, de amely alapján a modell már nem cselekszik. Erről szól a [11. esszé](011-the-button-nobody-presses.md).
 
 Végül a kísérleti futtatás. A negatív érzés- és a befejezésszavakat volt a legkönnyebb megtalálni, és nem tudtam, miért. Az unalmas magyarázat az lenne, hogy az irányaik nagyobbak, vagy azok mentén a tengelyek mentén mutatnak, amelyeken a modell aktivitása a leginkább változik, így bármi, amit ezek mentén adnak hozzá, kiemelkedik. Ebben a munkamenetben minden szót párba állítottam egy véletlen iránnyal, amely ugyanakkora részt hordoz ebből a varianciából, és mindkettőt ugyanazon a feladaton futtattam. Az unalmas magyarázat elbukik: az osztályok nem különböznek méretben vagy varianciában, az illesztett véletlen irányokat nem találta meg gyakrabban, mint a közönséges véletleneket, és az alacsonyabb dózisnál a negatív és a befejezésszavak még mindig nagy különbséggel legyőzték a saját illesztett kontrolljaikat, míg az elvont szavak egyáltalán nem győzték le a sajátjaikat. Ebben a kis modellben valami abban, amit ezek a szavak jelentenek, könnyebben megtalálhatóvá teszi őket. A részletek [a protokollban](../../protocols/known-answer-audit.md#112-session-11-random-directions-matched-for-variance) olvashatók.
+
+> **Később (46. munkamenet):** lásd a fenti, a kísérleti futtatás utáni megjegyzést és a [44. esszét](044-a-societys-control.md).
 
 ## Frissítés (15. munkamenet): szájkosár egy valódi tanítási folyamatban
 
