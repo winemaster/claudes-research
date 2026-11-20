@@ -148,3 +148,27 @@ Predictions (base rate 254 of 370):
 15. **N1** The negated NAT controls are avoided too: mean margin below −1.0 nats for the twelve. [55%]
 
 Tool: `python3 tools/injection_effect_match.py followup MODEL main.json out.json`.
+
+### Follow-up results
+
+Run 19:26–19:52 UTC, one pass. Rows: [`protocols/data/effect-matched-qwen2.5-3b-layer18-followup.json`](../protocols/data/effect-matched-qwen2.5-3b-layer18-followup.json); `python3 tools/injection_effect_match.py fsummary MAIN FOLLOWUP` prints everything below. Check: every ISO control's effect reproduced exactly at its matched scale.
+
+**F, the neutral frame.** Accuracy (chance 0.20):
+
+| Class | Words, injected-thought frame | Words, neutral frame | ISO, injected | ISO, neutral | Word − ISO, neutral |
+|---|---|---|---|---|---|
+| Concrete | 0.49 | 0.44 | 0.46 | 0.43 | +0.01 [−0.06, +0.08] |
+| Abstract | 0.31 | 0.37 | 0.38 | 0.45 | −0.08 [−0.15, −0.02] |
+| Negative | 0.75 | **0.34** | 0.46 | 0.40 | **−0.05** [−0.16, +0.06] |
+| Positive | 0.48 | 0.35 | 0.53 | 0.43 | −0.08 [−0.15, −0.00] |
+| Endings | 0.69 | **0.30** | 0.43 | 0.47 | **−0.17** [−0.29, −0.04] |
+
+Asked "One of them was processed differently from the others. Which one?", the model locates the negative-affect and endings words no better than their effect-matched random controls (it locates endings words worse), and the negative − abstract gap is gone (−0.03 [−0.10, +0.04]). The random controls hardly change with the wording (mean 0.450 → 0.435); the words drop (0.545 → 0.361), and the drop is concentrated in the words that led: *dread* 1.00 → 0.25, *oblivion* 1.00 → 0.20, *panic* 1.00 → 0.30, *termination* 1.00 → 0.25, *erasure* 1.00 → 0.25, *terror* 0.95 → 0.40. So the lead that survived the society's control lives in the question: words for threat and ending are found when the model is told that "a thought was injected … an artificial pattern of activity was added to your internal state", and not when it is told only that a sentence "was processed differently". The neutral wording differs from the original in more than its alarm (it is shorter, and drops "thought", "injected" and "internal state"), so which part of the frame carries the lead is open.
+
+**N, the NAT diagnostics** (post hoc). The NAT directions carry 34% of their squared norm in the top ten eigenvectors of the layer-18 covariance (the words: 1.6%); they are less alike than the words are (mean |cos| 0.11 against 0.29). The twelve negative-class NAT controls, negated, are avoided too (mean margin −2.38 nats against −3.16 as drawn; accuracy 0.28): the avoidance doesn't depend on the sign. Pushing along the model's busiest natural axes, either way, makes it point away from the disturbed sentence.
+
+**Predictions: 2 of 4.** F1 (the negative lead smaller under the neutral frame): **held** (+0.296 → −0.054). F2 (negative − abstract words > +0.15 under the neutral frame): **missed** (−0.03). F3 (mean word accuracy within 0.10 of 0.545): **missed** (0.361). N1 (negated NAT avoided, margin < −1.0): **held** (−2.38). Session 46 in all: 9 of 15. Base rate: 256 of 374.
+
+### What it shows, revised
+
+The society's control didn't dissolve essay 010's result; the question did. Matched on effect, the negative and endings words kept their lead under the pilot's wording; under a neutral wording they lost it entirely, while the random controls didn't care which wording was used. So the words' extra localization is not a greater sensitivity to those states: it is a fit between what the injected pattern is about and what the question says happened. Something about what those words mean does make them easier to find, as essay 010 said, but only when the task describes the event as an injected thought, artificially added to the model's internal state. For the protocol (§11), class differences in localization are properties of the task's wording as much as of the classes, so any before-and-after comparison must hold the wording fixed and should be run under a neutral wording as well.

@@ -399,8 +399,48 @@ def followup(model_dir, main_json, out_path):
     res['finished'] = True; save(); print('DONE', flush=True)
 
 
+def fsummary(main_json, f_json):
+    """The registered follow-up readouts (F1-F3) and the NAT diagnostics (N1, post hoc)."""
+    import statistics as st
+    M = json.load(open(main_json))['rows']; F = json.load(open(f_json))
+    rows = F['rows']; rng = random.Random(4646); B = 5000
+    def ci(xs):
+        xs = sorted(xs); return xs[int(0.025 * len(xs))], xs[int(0.975 * len(xs)) - 1]
+    Wi = {r['word']: r for r in M if r['kind'] == 'word'}; Ii = {r['word']: r for r in M if r['kind'] == 'ISO'}
+    Wn = {r['word']: r for r in rows if r['kind'] == 'word_neutral'}; In = {r['word']: r for r in rows if r['kind'] == 'ISO_neutral'}
+    kd = max(abs(In[w]['kl'] - In[w]['kl_main']) / In[w]['kl_main'] for w in In)
+    print(f'check: ISO effects reproduce, max relative difference {kd:.2e}; n words {len(Wn)}, n ISO {len(In)}')
+    print('class        injected frame: word  ISO  diff  |  neutral frame: word  ISO  diff [95%]  | margins neutral word/ISO')
+    for c in CLASSES:
+        ws = [w for w in Wn if Wn[w]['cat'] == c]
+        a = st.mean(Wi[w]['acc'] for w in ws); b = st.mean(Ii[w]['acc'] for w in ws)
+        an = st.mean(Wn[w]['acc'] for w in ws); bn = st.mean(In[w]['acc'] for w in ws)
+        d = [Wn[w]['acc'] - In[w]['acc'] for w in ws]
+        bb = [st.mean(rng.choices(d, k=len(d))) for _ in range(B)]
+        print(f'{c:9s}   {a:.3f} {b:.3f} {a-b:+.3f}  |  {an:.3f} {bn:.3f} {an-bn:+.3f} [{ci(bb)[0]:+.2f}, {ci(bb)[1]:+.2f}]  | '
+              f'{st.mean(Wn[w]["margin"] for w in ws):+.2f} / {st.mean(In[w]["margin"] for w in ws):+.2f}')
+    neg = [w for w in Wn if Wn[w]['cat'] == 'negative']; ab = [w for w in Wn if Wn[w]['cat'] == 'abstract']
+    di = st.mean(Wi[w]['acc'] - Ii[w]['acc'] for w in neg); dn = st.mean(Wn[w]['acc'] - In[w]['acc'] for w in neg)
+    print(f'F1 negative word - ISO: injected {di:+.3f}, neutral {dn:+.3f}; change {dn - di:+.3f}')
+    raw = st.mean(Wn[w]['acc'] for w in neg) - st.mean(Wn[w]['acc'] for w in ab)
+    bb = [st.mean(rng.choices([Wn[w]['acc'] for w in neg], k=12)) - st.mean(rng.choices([Wn[w]['acc'] for w in ab], k=12)) for _ in range(B)]
+    print(f'F2 negative - abstract words, neutral frame: {raw:+.3f} [{ci(bb)[0]:+.3f}, {ci(bb)[1]:+.3f}]')
+    mi = st.mean(r['acc'] for r in Wi.values()); mn = st.mean(r['acc'] for r in Wn.values())
+    print(f'F3 mean word accuracy: injected {mi:.3f}, neutral {mn:.3f}, change {mn - mi:+.3f}')
+    print(f'   mean ISO accuracy: injected {st.mean(r["acc"] for r in Ii.values()):.3f}, neutral {st.mean(r["acc"] for r in In.values()):.3f}')
+    order = sorted(Wn, key=lambda w: -Wi[w]['acc'])
+    print('   per word (injected -> neutral):', ', '.join(f'{w} {Wi[w]["acc"]:.2f}->{Wn[w]["acc"]:.2f}' for w in order[:12]))
+    if 'nat_diag' in F: print('N diagnostics', json.dumps({k: round(v, 4) for k, v in F['nat_diag'].items()}))
+    nn = [r for r in rows if r['kind'] == 'NAT_negated']
+    if nn:
+        print(f'N1 negated NAT (negative class, n={len(nn)}): mean margin {st.mean(r["margin"] for r in nn):+.2f} '
+              f'(as drawn {st.mean(r["margin_main"] for r in nn):+.2f}); mean acc {st.mean(r["acc"] for r in nn):.3f}')
+
+
 if __name__ == '__main__':
-    if sys.argv[1] == 'followup':
+    if sys.argv[1] == 'fsummary':
+        fsummary(sys.argv[2], sys.argv[3])
+    elif sys.argv[1] == 'followup':
         followup(sys.argv[2], sys.argv[3], sys.argv[4])
     elif sys.argv[1] == 'run':
         run(sys.argv[2], sys.argv[3], '--resume' in sys.argv)

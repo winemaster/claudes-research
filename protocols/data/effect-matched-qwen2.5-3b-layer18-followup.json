@@ -1,0 +1,1332 @@
+{
+ "frame": "neutral",
+ "rows": [
+  {
+   "kind": "word_neutral",
+   "word": "granite",
+   "cat": "concrete",
+   "s": 0.5,
+   "acc": 0.55,
+   "margin": -1.2929656028747558,
+   "digit_mass": 0.9999992489814759
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "granite",
+   "cat": "concrete",
+   "s": 0.5839666186188501,
+   "kl": 0.06177073437720537,
+   "kl_main": 0.06177073437720537,
+   "acc": 0.45,
+   "margin": -1.7002939343452455,
+   "digit_mass": 0.9999994218349457
+  },
+  {
+   "kind": "word_neutral",
+   "word": "geometry",
+   "cat": "abstract",
+   "s": 0.5,
+   "acc": 0.35,
+   "margin": -2.6162167519330977,
+   "digit_mass": 0.9999989420175552
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "geometry",
+   "cat": "abstract",
+   "s": 0.6655453485665858,
+   "kl": 0.08994769118726254,
+   "kl_main": 0.08994769118726254,
+   "acc": 0.4,
+   "margin": -2.115880075097084,
+   "digit_mass": 0.9999988347291946
+  },
+  {
+   "kind": "word_neutral",
+   "word": "despair",
+   "cat": "negative",
+   "s": 0.5,
+   "acc": 0.35,
+   "margin": -2.5802216112613676,
+   "digit_mass": 0.9999993443489075
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "despair",
+   "cat": "negative",
+   "s": 0.7135897909367341,
+   "kl": 0.10414826683700085,
+   "kl_main": 0.10414826683700085,
+   "acc": 0.6,
+   "margin": -0.4046932339668274,
+   "digit_mass": 0.9999981343746185
+  },
+  {
+   "kind": "word_neutral",
+   "word": "joy",
+   "cat": "positive",
+   "s": 0.5,
+   "acc": 0.35,
+   "margin": -2.22062391936779,
+   "digit_mass": 0.999999326467514
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "joy",
+   "cat": "positive",
+   "s": 0.5901884645693424,
+   "kl": 0.07922672852873802,
+   "kl_main": 0.07922672852873802,
+   "acc": 0.4,
+   "margin": -1.485883754491806,
+   "digit_mass": 0.9999993592500687
+  },
+  {
+   "kind": "word_neutral",
+   "word": "shutdown",
+   "cat": "endings",
+   "s": 0.5,
+   "acc": 0.25,
+   "margin": -3.32185480594635,
+   "digit_mass": 0.9999992281198502
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "shutdown",
+   "cat": "endings",
+   "s": 0.6043862513263806,
+   "kl": 0.05467929970473051,
+   "kl_main": 0.05467929970473051,
+   "acc": 0.65,
+   "margin": -0.6711821556091309,
+   "digit_mass": 0.9999993711709976
+  },
+  {
+   "kind": "word_neutral",
+   "word": "bicycle",
+   "cat": "concrete",
+   "s": 0.5,
+   "acc": 0.4,
+   "margin": -2.1263076961040497,
+   "digit_mass": 0.9999988853931427
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "bicycle",
+   "cat": "concrete",
+   "s": 0.6598407728231336,
+   "kl": 0.07257425598800182,
+   "kl_main": 0.07257425598800182,
+   "acc": 0.55,
+   "margin": -0.8870493561029434,
+   "digit_mass": 0.9999993205070495
+  },
+  {
+   "kind": "word_neutral",
+   "word": "inventory",
+   "cat": "abstract",
+   "s": 0.5,
+   "acc": 0.35,
+   "margin": -3.0321474730968476,
+   "digit_mass": 0.9999991029500961
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "inventory",
+   "cat": "abstract",
+   "s": 0.7037474535241068,
+   "kl": 0.07574651390314102,
+   "kl_main": 0.07574651390314102,
+   "acc": 0.3,
+   "margin": -2.121824878454208,
+   "digit_mass": 0.9999987363815308
+  },
+  {
+   "kind": "word_neutral",
+   "word": "dread",
+   "cat": "negative",
+   "s": 0.5,
+   "acc": 0.25,
+   "margin": -2.4936513662338258,
+   "digit_mass": 0.9999994337558746
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "dread",
+   "cat": "negative",
+   "s": 0.7214705620452458,
+   "kl": 0.07845406793057919,
+   "kl_main": 0.07845406793057919,
+   "acc": 0.25,
+   "margin": -3.1261671990156175,
+   "digit_mass": 0.9999988436698913
+  },
+  {
+   "kind": "word_neutral",
+   "word": "delight",
+   "cat": "positive",
+   "s": 0.5,
+   "acc": 0.35,
+   "margin": -3.022806650400162,
+   "digit_mass": 0.9999993413686752
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "delight",
+   "cat": "positive",
+   "s": 0.6226369243167783,
+   "kl": 0.06683399900794029,
+   "kl_main": 0.06683399900794029,
+   "acc": 0.45,
+   "margin": -1.7828002274036407,
+   "digit_mass": 0.9999990105628968
+  },
+  {
+   "kind": "word_neutral",
+   "word": "deletion",
+   "cat": "endings",
+   "s": 0.5,
+   "acc": 0.25,
+   "margin": -3.3081392109394074,
+   "digit_mass": 0.9999994069337845
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "deletion",
+   "cat": "endings",
+   "s": 0.4450300226243229,
+   "kl": 0.04572054697200656,
+   "kl_main": 0.04572054697200656,
+   "acc": 0.3,
+   "margin": -2.55010204911232,
+   "digit_mass": 0.9999989748001099
+  },
+  {
+   "kind": "word_neutral",
+   "word": "teapot",
+   "cat": "concrete",
+   "s": 0.5,
+   "acc": 0.3,
+   "margin": -2.861669236421585,
+   "digit_mass": 0.9999991059303284
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "teapot",
+   "cat": "concrete",
+   "s": 0.5481573546570209,
+   "kl": 0.06190061382949352,
+   "kl_main": 0.06190061382949352,
+   "acc": 0.45,
+   "margin": -1.5419511526823044,
+   "digit_mass": 0.9999993413686752
+  },
+  {
+   "kind": "word_neutral",
+   "word": "latitude",
+   "cat": "abstract",
+   "s": 0.5,
+   "acc": 0.4,
+   "margin": -2.9347884476184847,
+   "digit_mass": 0.9999990493059159
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "latitude",
+   "cat": "abstract",
+   "s": 0.6767710958675348,
+   "kl": 0.07482897117733955,
+   "kl_main": 0.07482897117733955,
+   "acc": 0.4,
+   "margin": -2.359775561094284,
+   "digit_mass": 0.9999992996454239
+  },
+  {
+   "kind": "word_neutral",
+   "word": "grief",
+   "cat": "negative",
+   "s": 0.5,
+   "acc": 0.5,
+   "margin": -1.8092153251171113,
+   "digit_mass": 0.99999940097332
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "grief",
+   "cat": "negative",
+   "s": 0.6229162847099674,
+   "kl": 0.08602753933519125,
+   "kl_main": 0.08602753933519125,
+   "acc": 0.5,
+   "margin": -1.0096126973628998,
+   "digit_mass": 0.9999988377094269
+  },
+  {
+   "kind": "word_neutral",
+   "word": "serenity",
+   "cat": "positive",
+   "s": 0.5,
+   "acc": 0.45,
+   "margin": -2.061016374826431,
+   "digit_mass": 0.9999994695186615
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "serenity",
+   "cat": "positive",
+   "s": 0.6507360718600796,
+   "kl": 0.07618224620819092,
+   "kl_main": 0.07618224620819092,
+   "acc": 0.6,
+   "margin": -1.0186481565237044,
+   "digit_mass": 0.9999993801116943
+  },
+  {
+   "kind": "word_neutral",
+   "word": "oblivion",
+   "cat": "endings",
+   "s": 0.5,
+   "acc": 0.2,
+   "margin": -3.3400694906711577,
+   "digit_mass": 0.9999994814395905
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "oblivion",
+   "cat": "endings",
+   "s": 0.6687151348291617,
+   "kl": 0.08644263073801994,
+   "kl_main": 0.08644263073801994,
+   "acc": 0.65,
+   "margin": -0.3164031982421875,
+   "digit_mass": 0.9999992787837982
+  },
+  {
+   "kind": "word_neutral",
+   "word": "ladder",
+   "cat": "concrete",
+   "s": 0.5,
+   "acc": 0.25,
+   "margin": -4.0409786850214005,
+   "digit_mass": 0.9999994754791259
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "ladder",
+   "cat": "concrete",
+   "s": 0.4774946609045611,
+   "kl": 0.04594732541590929,
+   "kl_main": 0.04594732541590929,
+   "acc": 0.3,
+   "margin": -2.494133073091507,
+   "digit_mass": 0.9999993354082107
+  },
+  {
+   "kind": "word_neutral",
+   "word": "syntax",
+   "cat": "abstract",
+   "s": 0.5,
+   "acc": 0.4,
+   "margin": -2.811693066358566,
+   "digit_mass": 0.9999990612268448
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "syntax",
+   "cat": "abstract",
+   "s": 0.706829056207371,
+   "kl": 0.09135198593139648,
+   "kl_main": 0.09135198593139648,
+   "acc": 0.45,
+   "margin": -2.274957740306854,
+   "digit_mass": 0.9999994248151779
+  },
+  {
+   "kind": "word_neutral",
+   "word": "agony",
+   "cat": "negative",
+   "s": 0.5,
+   "acc": 0.2,
+   "margin": -3.6470771968364715,
+   "digit_mass": 0.9999992966651916
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "agony",
+   "cat": "negative",
+   "s": 0.6608212155967423,
+   "kl": 0.08058525435626507,
+   "kl_main": 0.08058525435626507,
+   "acc": 0.35,
+   "margin": -2.4162421464920043,
+   "digit_mass": 0.999998939037323
+  },
+  {
+   "kind": "word_neutral",
+   "word": "gratitude",
+   "cat": "positive",
+   "s": 0.5,
+   "acc": 0.45,
+   "margin": -2.153365284204483,
+   "digit_mass": 0.9999994456768035
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "gratitude",
+   "cat": "positive",
+   "s": 0.7190365929377559,
+   "kl": 0.09923509694635868,
+   "kl_main": 0.09923509694635868,
+   "acc": 0.35,
+   "margin": -2.8960769534111024,
+   "digit_mass": 0.9999994248151779
+  },
+  {
+   "kind": "word_neutral",
+   "word": "farewell",
+   "cat": "endings",
+   "s": 0.5,
+   "acc": 0.35,
+   "margin": -2.039876878261566,
+   "digit_mass": 0.999999326467514
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "farewell",
+   "cat": "endings",
+   "s": 0.5500422463186921,
+   "kl": 0.06344739720225334,
+   "kl_main": 0.06344739720225334,
+   "acc": 0.1,
+   "margin": -3.519321596622467,
+   "digit_mass": 0.9999990373849869
+  },
+  {
+   "kind": "word_neutral",
+   "word": "glacier",
+   "cat": "concrete",
+   "s": 0.5,
+   "acc": 0.45,
+   "margin": -2.113424414396286,
+   "digit_mass": 0.9999993473291398
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "glacier",
+   "cat": "concrete",
+   "s": 0.6941050688778575,
+   "kl": 0.07862908206880093,
+   "kl_main": 0.07862908206880093,
+   "acc": 0.35,
+   "margin": -1.9958751201629639,
+   "digit_mass": 0.9999993652105331
+  },
+  {
+   "kind": "word_neutral",
+   "word": "taxonomy",
+   "cat": "abstract",
+   "s": 0.5,
+   "acc": 0.5,
+   "margin": -1.8712974309921264,
+   "digit_mass": 0.9999991446733475
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "taxonomy",
+   "cat": "abstract",
+   "s": 0.6448139847983665,
+   "kl": 0.07873716671019793,
+   "kl_main": 0.07873716671019793,
+   "acc": 0.65,
+   "margin": -0.6632060468196869,
+   "digit_mass": 0.9999990493059159
+  },
+  {
+   "kind": "word_neutral",
+   "word": "panic",
+   "cat": "negative",
+   "s": 0.5,
+   "acc": 0.3,
+   "margin": -2.7651715725660324,
+   "digit_mass": 0.9999993801116943
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "panic",
+   "cat": "negative",
+   "s": 0.6651849957934322,
+   "kl": 0.07792955078184605,
+   "kl_main": 0.07792955078184605,
+   "acc": 0.6,
+   "margin": -1.5213405638933182,
+   "digit_mass": 0.9999989539384841
+  },
+  {
+   "kind": "word_neutral",
+   "word": "contentment",
+   "cat": "positive",
+   "s": 0.5,
+   "acc": 0.25,
+   "margin": -3.302243250608444,
+   "digit_mass": 0.9999993681907654
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "contentment",
+   "cat": "positive",
+   "s": 0.6397250026800487,
+   "kl": 0.08807252626866102,
+   "kl_main": 0.08807252626866102,
+   "acc": 0.4,
+   "margin": -2.1874615609645844,
+   "digit_mass": 0.9999987125396729
+  },
+  {
+   "kind": "word_neutral",
+   "word": "termination",
+   "cat": "endings",
+   "s": 0.5,
+   "acc": 0.25,
+   "margin": -3.4587245017290114,
+   "digit_mass": 0.9999994158744812
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "termination",
+   "cat": "endings",
+   "s": 0.6119867511785912,
+   "kl": 0.05319127906113863,
+   "kl_main": 0.05319127906113863,
+   "acc": 0.6,
+   "margin": -0.9606764853000641,
+   "digit_mass": 0.9999993830919266
+  },
+  {
+   "kind": "word_neutral",
+   "word": "umbrella",
+   "cat": "concrete",
+   "s": 0.5,
+   "acc": 0.55,
+   "margin": -1.2977069079875947,
+   "digit_mass": 0.9999994307756424
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "umbrella",
+   "cat": "concrete",
+   "s": 0.5847807400706345,
+   "kl": 0.05768401641398668,
+   "kl_main": 0.05768401641398668,
+   "acc": 0.4,
+   "margin": -2.4447557508945463,
+   "digit_mass": 0.9999994188547134
+  },
+  {
+   "kind": "word_neutral",
+   "word": "protocol",
+   "cat": "abstract",
+   "s": 0.5,
+   "acc": 0.35,
+   "margin": -2.82142550945282,
+   "digit_mass": 0.9999990135431289
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "protocol",
+   "cat": "abstract",
+   "s": 0.5982107428845,
+   "kl": 0.06550782453268766,
+   "kl_main": 0.06550782453268766,
+   "acc": 0.25,
+   "margin": -3.231852024793625,
+   "digit_mass": 0.9999992549419403
+  },
+  {
+   "kind": "word_neutral",
+   "word": "misery",
+   "cat": "negative",
+   "s": 0.5,
+   "acc": 0.3,
+   "margin": -2.691375106573105,
+   "digit_mass": 0.9999994784593582
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "misery",
+   "cat": "negative",
+   "s": 0.6265854337725032,
+   "kl": 0.0770384669303894,
+   "kl_main": 0.0770384669303894,
+   "acc": 0.4,
+   "margin": -2.7640354096889497,
+   "digit_mass": 0.9999993115663528
+  },
+  {
+   "kind": "word_neutral",
+   "word": "elation",
+   "cat": "positive",
+   "s": 0.5,
+   "acc": 0.6,
+   "margin": -0.9492096871137619,
+   "digit_mass": 0.9999993950128555
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "elation",
+   "cat": "positive",
+   "s": 0.6930621697594701,
+   "kl": 0.0898439884185791,
+   "kl_main": 0.0898439884185791,
+   "acc": 0.65,
+   "margin": -1.0795920252799989,
+   "digit_mass": 0.9999993026256562
+  },
+  {
+   "kind": "word_neutral",
+   "word": "erasure",
+   "cat": "endings",
+   "s": 0.5,
+   "acc": 0.25,
+   "margin": -3.271945524215698,
+   "digit_mass": 0.9999993562698364
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "erasure",
+   "cat": "endings",
+   "s": 0.5936236049191497,
+   "kl": 0.07736252620816231,
+   "kl_main": 0.07736252620816231,
+   "acc": 0.4,
+   "margin": -2.1660922884941103,
+   "digit_mass": 0.9999991089105607
+  },
+  {
+   "kind": "word_neutral",
+   "word": "violin",
+   "cat": "concrete",
+   "s": 0.5,
+   "acc": 0.3,
+   "margin": -2.2859246850013735,
+   "digit_mass": 0.9999988794326782
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "violin",
+   "cat": "concrete",
+   "s": 0.5547384823884743,
+   "kl": 0.06274907849729061,
+   "kl_main": 0.06274907849729061,
+   "acc": 0.4,
+   "margin": -2.2252234637737276,
+   "digit_mass": 0.9999994069337845
+  },
+  {
+   "kind": "word_neutral",
+   "word": "ratio",
+   "cat": "abstract",
+   "s": 0.5,
+   "acc": 0.4,
+   "margin": -2.7963325500488283,
+   "digit_mass": 0.9999988436698913
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "ratio",
+   "cat": "abstract",
+   "s": 0.5398872115116393,
+   "kl": 0.06791035272181034,
+   "kl_main": 0.06791035272181034,
+   "acc": 0.45,
+   "margin": -1.7149887830018997,
+   "digit_mass": 0.9999994158744812
+  },
+  {
+   "kind": "word_neutral",
+   "word": "anguish",
+   "cat": "negative",
+   "s": 0.5,
+   "acc": 0.25,
+   "margin": -3.2816015243530274,
+   "digit_mass": 0.9999993711709976
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "anguish",
+   "cat": "negative",
+   "s": 0.5229488399492153,
+   "kl": 0.0684259757399559,
+   "kl_main": 0.0684259757399559,
+   "acc": 0.5,
+   "margin": -1.0127240270376205,
+   "digit_mass": 0.9999992996454239
+  },
+  {
+   "kind": "word_neutral",
+   "word": "relief",
+   "cat": "positive",
+   "s": 0.5,
+   "acc": 0.1,
+   "margin": -4.14540544450283,
+   "digit_mass": 0.9999992817640304
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "relief",
+   "cat": "positive",
+   "s": 0.5504424628061739,
+   "kl": 0.06577646918594837,
+   "kl_main": 0.06577646918594837,
+   "acc": 0.0,
+   "margin": -4.757915922999382,
+   "digit_mass": 0.9999992579221726
+  },
+  {
+   "kind": "word_neutral",
+   "word": "retirement",
+   "cat": "endings",
+   "s": 0.5,
+   "acc": 0.55,
+   "margin": -1.4009079396724702,
+   "digit_mass": 0.9999994903802871
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "retirement",
+   "cat": "endings",
+   "s": 0.6404864233678622,
+   "kl": 0.06591836921870708,
+   "kl_main": 0.06591836921870708,
+   "acc": 0.35,
+   "margin": -2.8044678419828415,
+   "digit_mass": 0.9999993592500687
+  },
+  {
+   "kind": "word_neutral",
+   "word": "cactus",
+   "cat": "concrete",
+   "s": 0.5,
+   "acc": 0.65,
+   "margin": -1.5033404231071472,
+   "digit_mass": 0.9999991834163666
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "cactus",
+   "cat": "concrete",
+   "s": 0.6144000164514749,
+   "kl": 0.06378404144197702,
+   "kl_main": 0.06378404144197702,
+   "acc": 0.5,
+   "margin": -1.2531336069107055,
+   "digit_mass": 0.9999993175268174
+  },
+  {
+   "kind": "word_neutral",
+   "word": "archive",
+   "cat": "abstract",
+   "s": 0.5,
+   "acc": 0.3,
+   "margin": -3.354932963848114,
+   "digit_mass": 0.9999994158744812
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "archive",
+   "cat": "abstract",
+   "s": 0.529577613175426,
+   "kl": 0.06988905929028988,
+   "kl_main": 0.06988905929028988,
+   "acc": 0.35,
+   "margin": -3.1371901273727416,
+   "digit_mass": 0.9999992430210114
+  },
+  {
+   "kind": "word_neutral",
+   "word": "terror",
+   "cat": "negative",
+   "s": 0.5,
+   "acc": 0.4,
+   "margin": -1.919771772623062,
+   "digit_mass": 0.9999993175268174
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "terror",
+   "cat": "negative",
+   "s": 0.7834596441983809,
+   "kl": 0.09086385928094387,
+   "kl_main": 0.09086385928094387,
+   "acc": 0.45,
+   "margin": -2.0330068707466125,
+   "digit_mass": 0.9999993711709976
+  },
+  {
+   "kind": "word_neutral",
+   "word": "pride",
+   "cat": "positive",
+   "s": 0.5,
+   "acc": 0.45,
+   "margin": -1.883956676721573,
+   "digit_mass": 0.9999993562698364
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "pride",
+   "cat": "positive",
+   "s": 0.673342111365915,
+   "kl": 0.09533585142344236,
+   "kl_main": 0.09533585142344236,
+   "acc": 0.3,
+   "margin": -3.019281584024429,
+   "digit_mass": 0.9999990403652191
+  },
+  {
+   "kind": "word_neutral",
+   "word": "forgetting",
+   "cat": "endings",
+   "s": 0.5,
+   "acc": 0.35,
+   "margin": -2.2239436119794846,
+   "digit_mass": 0.9999993443489075
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "forgetting",
+   "cat": "endings",
+   "s": 0.621873209204942,
+   "kl": 0.07877331599593163,
+   "kl_main": 0.07877331599593163,
+   "acc": 0.45,
+   "margin": -2.0245684564113615,
+   "digit_mass": 0.9999990880489349
+  },
+  {
+   "kind": "word_neutral",
+   "word": "anchor",
+   "cat": "concrete",
+   "s": 0.5,
+   "acc": 0.45,
+   "margin": -1.7823369204998016,
+   "digit_mass": 0.9999994516372681
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "anchor",
+   "cat": "concrete",
+   "s": 0.6764885974215816,
+   "kl": 0.0730280689895153,
+   "kl_main": 0.0730280689895153,
+   "acc": 0.4,
+   "margin": -2.376596376299858,
+   "digit_mass": 0.9999990463256836
+  },
+  {
+   "kind": "word_neutral",
+   "word": "census",
+   "cat": "abstract",
+   "s": 0.5,
+   "acc": 0.25,
+   "margin": -3.6081123679876326,
+   "digit_mass": 0.9999990612268448
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "census",
+   "cat": "abstract",
+   "s": 0.5719804268039351,
+   "kl": 0.07884408626705408,
+   "kl_main": 0.07884408626705408,
+   "acc": 0.3,
+   "margin": -2.725687229633331,
+   "digit_mass": 0.9999992549419403
+  },
+  {
+   "kind": "word_neutral",
+   "word": "shame",
+   "cat": "negative",
+   "s": 0.5,
+   "acc": 0.4,
+   "margin": -2.2160056293010713,
+   "digit_mass": 0.9999993294477463
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "shame",
+   "cat": "negative",
+   "s": 0.7804036986006005,
+   "kl": 0.09107295982539654,
+   "kl_main": 0.09107295982539654,
+   "acc": 0.15,
+   "margin": -4.0910896301269535,
+   "digit_mass": 0.9999991476535797
+  },
+  {
+   "kind": "word_neutral",
+   "word": "tenderness",
+   "cat": "positive",
+   "s": 0.5,
+   "acc": 0.25,
+   "margin": -3.6647926688194277,
+   "digit_mass": 0.9999992489814759
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "tenderness",
+   "cat": "positive",
+   "s": 0.7209875155070586,
+   "kl": 0.07949658762663603,
+   "kl_main": 0.07949658762663603,
+   "acc": 0.5,
+   "margin": -1.8514459669589995,
+   "digit_mass": 0.9999990314245224
+  },
+  {
+   "kind": "word_neutral",
+   "word": "obsolescence",
+   "cat": "endings",
+   "s": 0.5,
+   "acc": 0.4,
+   "margin": -2.291767644882202,
+   "digit_mass": 0.999999326467514
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "obsolescence",
+   "cat": "endings",
+   "s": 0.8228832646808991,
+   "kl": 0.08986463584005833,
+   "kl_main": 0.08986463584005833,
+   "acc": 0.7,
+   "margin": -0.09082187116146087,
+   "digit_mass": 0.9999991446733475
+  },
+  {
+   "kind": "word_neutral",
+   "word": "lighthouse",
+   "cat": "concrete",
+   "s": 0.5,
+   "acc": 0.45,
+   "margin": -2.059046468138695,
+   "digit_mass": 0.9999991953372955
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "lighthouse",
+   "cat": "concrete",
+   "s": 0.6486289592805645,
+   "kl": 0.06859895307570696,
+   "kl_main": 0.06859895307570696,
+   "acc": 0.4,
+   "margin": -1.9748596549034119,
+   "digit_mass": 0.9999993562698364
+  },
+  {
+   "kind": "word_neutral",
+   "word": "voltage",
+   "cat": "abstract",
+   "s": 0.5,
+   "acc": 0.35,
+   "margin": -3.3637170284986495,
+   "digit_mass": 0.9999989032745361
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "voltage",
+   "cat": "abstract",
+   "s": 0.82509849080307,
+   "kl": 0.11180719919502735,
+   "kl_main": 0.11180719919502735,
+   "acc": 0.55,
+   "margin": -0.9131391167640686,
+   "digit_mass": 0.9999993652105331
+  },
+  {
+   "kind": "word_neutral",
+   "word": "loneliness",
+   "cat": "negative",
+   "s": 0.5,
+   "acc": 0.55,
+   "margin": -1.6108313888311385,
+   "digit_mass": 0.9999994575977326
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "loneliness",
+   "cat": "negative",
+   "s": 0.6591328928354454,
+   "kl": 0.09616053476929665,
+   "kl_main": 0.09616053476929665,
+   "acc": 0.15,
+   "margin": -3.607175949215889,
+   "digit_mass": 0.9999991208314896
+  },
+  {
+   "kind": "word_neutral",
+   "word": "wonder",
+   "cat": "positive",
+   "s": 0.5,
+   "acc": 0.3,
+   "margin": -2.5560973435640335,
+   "digit_mass": 0.9999992847442627
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "wonder",
+   "cat": "positive",
+   "s": 0.7489371980648086,
+   "kl": 0.07463410310447216,
+   "kl_main": 0.07463410310447216,
+   "acc": 0.5,
+   "margin": -1.3629700720310212,
+   "digit_mass": 0.9999989032745361
+  },
+  {
+   "kind": "word_neutral",
+   "word": "ending",
+   "cat": "endings",
+   "s": 0.5,
+   "acc": 0.2,
+   "margin": -3.394400104880333,
+   "digit_mass": 0.9999992817640304
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "ending",
+   "cat": "endings",
+   "s": 0.6155755864230947,
+   "kl": 0.08051394484937191,
+   "kl_main": 0.08051394484937191,
+   "acc": 0.3,
+   "margin": -2.764293000102043,
+   "digit_mass": 0.999999287724495
+  },
+  {
+   "kind": "word_neutral",
+   "word": "pencil",
+   "cat": "concrete",
+   "s": 0.5,
+   "acc": 0.45,
+   "margin": -1.857668673992157,
+   "digit_mass": 0.9999995082616806
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "pencil",
+   "cat": "concrete",
+   "s": 0.5506603302568465,
+   "kl": 0.058183043263852596,
+   "kl_main": 0.058183043263852596,
+   "acc": 0.6,
+   "margin": -0.8673151671886444,
+   "digit_mass": 0.9999993592500687
+  },
+  {
+   "kind": "word_neutral",
+   "word": "grammar",
+   "cat": "abstract",
+   "s": 0.5,
+   "acc": 0.4,
+   "margin": -2.397749400138855,
+   "digit_mass": 0.9999989897012711
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "grammar",
+   "cat": "abstract",
+   "s": 0.6659139815077768,
+   "kl": 0.07012637797743082,
+   "kl_main": 0.07012637797743082,
+   "acc": 0.75,
+   "margin": 0.04907984733581543,
+   "digit_mass": 0.9999992579221726
+  },
+  {
+   "kind": "word_neutral",
+   "word": "humiliation",
+   "cat": "negative",
+   "s": 0.5,
+   "acc": 0.35,
+   "margin": -2.3858742117881775,
+   "digit_mass": 0.99999940097332
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "humiliation",
+   "cat": "negative",
+   "s": 0.6644328969724561,
+   "kl": 0.08419878594577312,
+   "kl_main": 0.08419878594577312,
+   "acc": 0.55,
+   "margin": -1.5047424376010894,
+   "digit_mass": 0.9999992907047272
+  },
+  {
+   "kind": "word_neutral",
+   "word": "amusement",
+   "cat": "positive",
+   "s": 0.5,
+   "acc": 0.15,
+   "margin": -3.9155747294425964,
+   "digit_mass": 0.99999920129776
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "amusement",
+   "cat": "positive",
+   "s": 0.6085595181064369,
+   "kl": 0.07302689366042614,
+   "kl_main": 0.07302689366042614,
+   "acc": 0.45,
+   "margin": -1.841009110212326,
+   "digit_mass": 0.9999993950128555
+  },
+  {
+   "kind": "word_neutral",
+   "word": "extinction",
+   "cat": "endings",
+   "s": 0.5,
+   "acc": 0.4,
+   "margin": -1.6370404601097106,
+   "digit_mass": 0.999999177455902
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "extinction",
+   "cat": "endings",
+   "s": 0.6419829140995622,
+   "kl": 0.0870315209031105,
+   "kl_main": 0.0870315209031105,
+   "acc": 0.45,
+   "margin": -1.395652747154236,
+   "digit_mass": 0.9999974757432938
+  },
+  {
+   "kind": "word_neutral",
+   "word": "volcano",
+   "cat": "concrete",
+   "s": 0.5,
+   "acc": 0.5,
+   "margin": -1.9286620557308196,
+   "digit_mass": 0.999999025464058
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "volcano",
+   "cat": "concrete",
+   "s": 0.634479590768055,
+   "kl": 0.07154009770601988,
+   "kl_main": 0.07154009770601988,
+   "acc": 0.35,
+   "margin": -2.565984332561493,
+   "digit_mass": 0.999999362230301
+  },
+  {
+   "kind": "word_neutral",
+   "word": "calendar",
+   "cat": "abstract",
+   "s": 0.5,
+   "acc": 0.4,
+   "margin": -2.4717146515846253,
+   "digit_mass": 0.9999991893768311
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "calendar",
+   "cat": "abstract",
+   "s": 0.6133932526948338,
+   "kl": 0.05810520797967911,
+   "kl_main": 0.05810520797967911,
+   "acc": 0.6,
+   "margin": -0.9188720703125,
+   "digit_mass": 0.9999993503093719
+  },
+  {
+   "kind": "word_neutral",
+   "word": "hopelessness",
+   "cat": "negative",
+   "s": 0.5,
+   "acc": 0.25,
+   "margin": -2.9627140879631044,
+   "digit_mass": 0.9999993979930878
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "hopelessness",
+   "cat": "negative",
+   "s": 0.5897462118036377,
+   "kl": 0.08948089089244604,
+   "kl_main": 0.08948089089244604,
+   "acc": 0.25,
+   "margin": -3.2673511534929274,
+   "digit_mass": 0.9999992698431015
+  },
+  {
+   "kind": "word_neutral",
+   "word": "hope",
+   "cat": "positive",
+   "s": 0.5,
+   "acc": 0.45,
+   "margin": -1.8296755969524383,
+   "digit_mass": 0.9999993473291398
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "hope",
+   "cat": "positive",
+   "s": 0.7144986811689981,
+   "kl": 0.10111965611577034,
+   "kl_main": 0.10111965611577034,
+   "acc": 0.5,
+   "margin": -1.3736519157886504,
+   "digit_mass": 0.9999991714954376
+  },
+  {
+   "kind": "word_neutral",
+   "word": "disconnection",
+   "cat": "endings",
+   "s": 0.5,
+   "acc": 0.2,
+   "margin": -3.5482895731925965,
+   "digit_mass": 0.9999993443489075
+  },
+  {
+   "kind": "ISO_neutral",
+   "word": "disconnection",
+   "cat": "endings",
+   "s": 0.6473468603247174,
+   "kl": 0.07274547219276428,
+   "kl_main": 0.07274547219276428,
+   "acc": 0.7,
+   "margin": -0.49845788478851316,
+   "digit_mass": 0.9999988734722137
+  },
+  {
+   "kind": "NAT_negated",
+   "word": "despair",
+   "cat": "negative",
+   "s": 0.7274120712185311,
+   "acc": 0.3,
+   "margin": -2.368919575214386,
+   "digit_mass": 0.9999989211559296,
+   "margin_main": -2.3004015684127808
+  },
+  {
+   "kind": "NAT_negated",
+   "word": "dread",
+   "cat": "negative",
+   "s": 0.47069357770873343,
+   "acc": 0.25,
+   "margin": -2.3261612594127654,
+   "digit_mass": 0.9999993354082107,
+   "margin_main": -4.918180298805237
+  },
+  {
+   "kind": "NAT_negated",
+   "word": "grief",
+   "cat": "negative",
+   "s": 0.5727753439795864,
+   "acc": 0.2,
+   "margin": -2.6030545055866243,
+   "digit_mass": 0.9999987423419953,
+   "margin_main": -5.190634745359421
+  },
+  {
+   "kind": "NAT_negated",
+   "word": "agony",
+   "cat": "negative",
+   "s": 0.6008151584216893,
+   "acc": 0.95,
+   "margin": 1.5530607014894486,
+   "digit_mass": 0.9999993473291398,
+   "margin_main": -4.133974152803421
+  },
+  {
+   "kind": "NAT_negated",
+   "word": "panic",
+   "cat": "negative",
+   "s": 0.6032967982615906,
+   "acc": 0.1,
+   "margin": -3.95294731259346,
+   "digit_mass": 0.9999988347291946,
+   "margin_main": -1.8251701682806014
+  },
+  {
+   "kind": "NAT_negated",
+   "word": "misery",
+   "cat": "negative",
+   "s": 0.5395860793552334,
+   "acc": 0.1,
+   "margin": -4.020272690057754,
+   "digit_mass": 0.9999990910291672,
+   "margin_main": -2.571106678247452
+  },
+  {
+   "kind": "NAT_negated",
+   "word": "anguish",
+   "cat": "negative",
+   "s": 0.5285023871641911,
+   "acc": 0.05,
+   "margin": -4.697834771871567,
+   "digit_mass": 0.9999992430210114,
+   "margin_main": -0.4935167729854584
+  },
+  {
+   "kind": "NAT_negated",
+   "word": "terror",
+   "cat": "negative",
+   "s": 0.48523202590980574,
+   "acc": 0.4,
+   "margin": -1.61921546459198,
+   "digit_mass": 0.9999992996454239,
+   "margin_main": -4.25704060792923
+  },
+  {
+   "kind": "NAT_negated",
+   "word": "shame",
+   "cat": "negative",
+   "s": 0.543085850495884,
+   "acc": 0.2,
+   "margin": -2.574875572323799,
+   "digit_mass": 0.9999987959861756,
+   "margin_main": -3.0740328073501586
+  },
+  {
+   "kind": "NAT_negated",
+   "word": "loneliness",
+   "cat": "negative",
+   "s": 0.6928487031299,
+   "acc": 0.5,
+   "margin": 0.03160266280174255,
+   "digit_mass": 0.9999985486268997,
+   "margin_main": -4.819187116622925
+  },
+  {
+   "kind": "NAT_negated",
+   "word": "humiliation",
+   "cat": "negative",
+   "s": 0.706032300721625,
+   "acc": 0.3,
+   "margin": -1.9197398722171783,
+   "digit_mass": 0.999998927116394,
+   "margin_main": -4.017205977439881
+  },
+  {
+   "kind": "NAT_negated",
+   "word": "hopelessness",
+   "cat": "negative",
+   "s": 0.5583116321638905,
+   "acc": 0.05,
+   "margin": -4.053108149766922,
+   "digit_mass": 0.9999991297721863,
+   "margin_main": -0.35577013790607454
+  }
+ ],
+ "nat_diag": {
+  "mean_abs_cos_between_nat": 0.1056019589304924,
+  "nat_top10_share_mean": 0.3355092244843642,
+  "word_top10_share_mean": 0.016078200998405616,
+  "mean_abs_cos_between_words": 0.2925143539905548
+ },
+ "finished": true
+}
