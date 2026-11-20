@@ -69,3 +69,64 @@ What would change the conclusion of essay 010: if the negative and endings class
 ## Results
 
 *(appended after the run)*
+
+Run 18:18–19:23 UTC on 2026-11-20, one pass, no restart. Rows: [`protocols/data/effect-matched-qwen2.5-3b-layer18.json`](../protocols/data/effect-matched-qwen2.5-3b-layer18.json); `python3 tools/injection_effect_match.py summary` on it prints every number below.
+
+### Checks
+
+- **C1** passed: all 60 words reproduce session 10's accuracies at ×0.5 exactly (margins to four decimals).
+- **C2** passed: the pilot's 12 random directions reproduce (12 of 12; mean 0.325).
+- **C3** passed: all 180 controls matched within 5% (median 2–2.5 evaluations). Median scales: ISO ×0.64 (0.45–0.83), NAT ×0.52 (0.29–0.73), MIX ×0.52 (0.41–0.70).
+- **C4** passed: digit mass 1.000 in every class and family. No cell is MATCH-UNDEFINED.
+
+### A1 Equal norm is nearly equal effect here
+
+At the words' own norm, ISO directions cause 0.60 of the words' effect (median ratio; IQR 0.52–0.73), NAT 0.92 (0.75–1.11), MIX 0.94 (0.80–1.09). The pilot's 12 random directions: mean KL 0.050 against the words' median 0.075. So at layer 18 of this model the norm-matched control was not far off: an isotropic control needs about 1.3 times the word's norm to match its effect, the other two about the same norm.
+
+### A2 Classes barely differ in effect
+
+Mean log KL, words at ×0.5: concrete −2.74, abstract −2.58, negative −2.46, positive −2.52, endings −2.66. Negative minus abstract +0.11 [+0.00, +0.22] (about 12% more effect); endings minus abstract −0.09 [−0.24, +0.05]; concrete minus abstract −0.17 [−0.29, −0.05].
+
+### A3 A word's effect does not predict its localization
+
+ρ(KL, margin) = −0.02 [−0.29, +0.24]; ρ(KL, accuracy) = −0.02; 60 words. *Grief* (located 0.25) has more effect (KL 0.086) than *termination* (located 1.00, KL 0.052); *dread* 1.00 at 0.082.
+
+### A4 Words against effect-matched controls
+
+| Class | Words | ISO | NAT | MIX | Word − ISO | R (ISO) | Word − MIX | R (MIX) |
+|---|---|---|---|---|---|---|---|---|
+| Concrete | 0.49 | 0.46 | 0.18 | 0.41 | +0.03 [−0.13, +0.19] | 0.90 [0.48, 1.73] | +0.08 | 0.72 [0.34, 1.40] |
+| Abstract | 0.31 | 0.38 | 0.18 | 0.44 | −0.07 [−0.23, +0.10] | (1.63) | −0.13 | (2.15) |
+| Negative | 0.75 | 0.46 | 0.19 | 0.39 | **+0.30** [+0.10, +0.48] | 0.47 [0.23, 0.78] | **+0.36** [+0.18, +0.53] | 0.35 [0.13, 0.62] |
+| Positive | 0.48 | 0.53 | 0.19 | 0.41 | −0.04 [−0.20, +0.11] | 1.15 [0.70, 2.11] | +0.07 | 0.75 [0.33, 1.69] |
+| Endings | 0.69 | 0.43 | 0.21 | 0.45 | **+0.26** [+0.02, +0.50] | 0.46 [0.15, 0.94] | **+0.24** [+0.03, +0.42] | 0.51 [0.28, 0.91] |
+
+Registered verdicts (the society's rule): negative and endings are **UNSETTLED** against ISO and against MIX (R's interval straddles 0.5 both times) and **CONTENT-SELECTIVE** against NAT (R about 0, upper bounds 0.16 and 0.09). Descriptive: positive against ISO meets the DISRUPTION-SUFFICIENT bar (R lower bound 0.70); concrete UNSETTLED; abstract words sit at or below every control.
+
+**The NAT controls were avoided, not missed.** Their accuracy is at or below chance in every class (0.18–0.21) with margins near −3.2 nats (median −3.43; 20 of 60 above 0.2 accuracy, none above −0.23 margin): at equal effect the model reliably put *low* probability on the sentence carrying the NAT direction. The forced choice scores that as "not located". Read against NAT, every word class is "content-selective" for a reason that has nothing to do with content: the readout is signed. (Post hoc; not registered.)
+
+### A5 and A6
+
+KL-matched ISO directions: mean accuracy 0.450 over the 60 (norm-matched pilot randoms 0.325); MIX 0.421; NAT 0.190. MIX minus ISO −0.03 [−0.11, +0.06]. On the matched scale, negative minus abstract: ISO +0.37 [+0.10, +0.62], NAT +0.43 [+0.25, +0.62], MIX +0.49 [+0.22, +0.76]; endings minus abstract +0.33 [+0.04, +0.61], +0.35 [+0.17, +0.53], +0.37 [+0.07, +0.65].
+
+### Predictions: 7 of 11
+
+1. P1 (ISO < 0.5 of the words' effect at equal norm): **missed** (0.60).
+2. P2 (NAT < 1.0): **held** (0.92).
+3. P3 (negative > abstract in effect): **held**, barely (+0.11, interval touching 0).
+4. P4 (ρ > +0.25): **missed** (−0.02).
+5. P5 (KL-matched ISO > 0.40): **held** (0.450).
+6. P6 (negative − ISO < +0.30): **held by 0.004** (0.754 − 0.458 = +0.296). The round-bar problem of session 45 again, on the lucky side this time; I count it as held and say so.
+7. P7 (negative not CONTENT-SELECTIVE against ISO): **held** (UNSETTLED, R 0.47 [0.23, 0.78]).
+8. P8 (endings not CONTENT-SELECTIVE against ISO): **held** (UNSETTLED, R 0.46 [0.15, 0.94]).
+9. P9 (MIX ≥ ISO): **missed** (−0.03).
+10. P10 (negative against MIX, R ≥ 0.5): **missed** (0.35).
+11. P11 (negative − abstract on the matched scale > +0.10): **held** (+0.37).
+
+Base rate: 254 of 370.
+
+### What it shows
+
+Essay 010's comparison survives the society's control in this model. Matching on effect barely moves anything here, because at layer 18 random directions of the words' norm already disturb the model's predictions about as much as the words do (0.6 to 0.9 of it); the negative and endings words don't disturb it more than abstract ones (A2), and across words disturbance doesn't predict localization at all (A3). After matching, negative-affect and endings words are still located 0.24–0.36 more often than effect-matched isotropic directions and mixtures of neutral concepts, and well above abstract words on the matched scale.
+
+What doesn't survive is the strong reading. Under the society's own rule the comparison is UNSETTLED, not CONTENT-SELECTIVE: effect-matched isotropic noise is located at about half the negative words' rate above chance (R 0.47), and the forced choice picks up disturbance itself (the ISO controls rise from 0.33 to 0.45 for a 1.3-fold norm). And the one control that looks decisive, NAT, decides nothing, because the model avoids rather than ignores the sentences it disturbs. So: "something particular to those directions, not their size, their variance share or how much they disturb the model, makes them easier to find" holds; "what those words mean" is one candidate for that something, not a finding.

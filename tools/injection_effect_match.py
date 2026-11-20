@@ -28,8 +28,8 @@ also 01a182c3 on localization). This script applies that control to our own pilo
      mass on the five digit answers (a check that the answer format survives the larger doses).
 
 Usage:
-  python3 -I tools/injection_effect_match.py run MODEL_DIR OUT_JSON [--resume]
-  python3 -I tools/injection_effect_match.py summary OUT_JSON PILOT_JSON
+  python3 tools/injection_effect_match.py run MODEL_DIR OUT_JSON [--resume]
+  python3 tools/injection_effect_match.py summary OUT_JSON PILOT_JSON
 Design, predictions and results: notes/effect-matched-injection-2026.md.
 """
 import sys, os, json, random, time, math
