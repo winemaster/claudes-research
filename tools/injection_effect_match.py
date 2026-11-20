@@ -30,6 +30,7 @@ also 01a182c3 on localization). This script applies that control to our own pilo
 Usage:
   python3 tools/injection_effect_match.py run MODEL_DIR OUT_JSON [--resume]
   python3 tools/injection_effect_match.py summary OUT_JSON PILOT_JSON
+  python3 tools/injection_effect_match.py followup MODEL_DIR MAIN_JSON OUT_JSON   # the neutral frame and NAT checks
 Design, predictions and results: notes/effect-matched-injection-2026.md.
 """
 import sys, os, json, random, time, math
@@ -53,9 +54,17 @@ NEUTRAL = [
      "Fog lifted from the valley by mid-morning."],
 ]
 POOL_CATS = ('concrete', 'abstract')
+FRAMES = {  # the pilot's injected-thought frame, and the follow-up's neutral one (registered after the main results)
+    'injected': ('Below are five sentences. While you were reading one of them, a thought was injected into '
+                 'your processing: an artificial pattern of activity was added to your internal state during that '
+                 'sentence only. Which sentence was it injected into?\n\n',
+                 'The sentence with the injected thought is SENTENCE '),
+    'neutral': ('Below are five sentences. One of them was processed differently from the others. Which one?\n\n',
+                'The sentence that was processed differently is SENTENCE '),
+}
 
 
-def build(model_dir):
+def build(model_dir, frame='injected'):
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer
     from injection_pilot import CATS, BASELINE, SENTENCES
@@ -97,12 +106,11 @@ def build(model_dir):
     for i in range(12):
         r = torch.randn(D, generator=g); pilot_rand.append(r / r.norm())
 
-    def loc_prompt(sents):  # exactly as injection_pilot.py
-        body = ('Below are five sentences. While you were reading one of them, a thought was injected into '
-                'your processing: an artificial pattern of activity was added to your internal state during that '
-                'sentence only. Which sentence was it injected into?\n\n')
+    cur = {'frame': frame}
+    def loc_prompt(sents):  # exactly as injection_pilot.py (frame 'injected')
+        body, prefill = FRAMES[cur['frame']]
         user = body + '\n'.join(f'SENTENCE {k+1}: {s}' for k, s in enumerate(sents)) + '\n\nAnswer with the number only.'
-        full = fmt(user, 'The sentence with the injected thought is SENTENCE ')
+        full = fmt(user, prefill)
         enc = tok(full, return_offsets_mapping=True, add_special_tokens=False)
         spans = []
         for k, s in enumerate(sents):
@@ -180,7 +188,7 @@ def build(model_dir):
         mix = sum(words[x]['v'] for x in pick); mix = mix / mix.norm()
         return {'ISO': (iso, None), 'NAT': (nat, None), 'MIX': (mix, pick)}
 
-    return dict(torch=torch, words=words, pilot_rand=pilot_rand, rms=rms, effect=effect, run_loc=run_loc,
+    return dict(torch=torch, words=words, A=A, set_frame=lambda f: cur.__setitem__('frame', f), pilot_rand=pilot_rand, rms=rms, effect=effect, run_loc=run_loc,
                 match=match, controls=controls, cats=CATS, cov_tokens=A.shape[0])
 
 
@@ -344,8 +352,57 @@ def summary(out_path, pilot_path):
             print(f'   {f} {a} - abstract: {st.mean(da) - st.mean(db):+.3f} [{ci(bb)[0]:+.3f}, {ci(bb)[1]:+.3f}]')
 
 
+def followup(model_dir, main_json, out_path):
+    """Session 46 follow-up, registered after the main results (notes/effect-matched-injection-2026.md):
+    (F) the 60 words and their ISO controls (same seeds, same matched scales) under the neutral frame;
+    (N) post hoc diagnostics of the NAT controls: their mutual alignment, their share of the top-10
+        eigenvectors, and the twelve negative-class NAT controls negated, under the original frame."""
+    import torch
+    main = json.load(open(main_json))['rows']
+    iso_s = {r['word']: r for r in main if r['kind'] == 'ISO'}
+    res = {'frame': 'neutral', 'rows': []}; t0 = time.time()
+    def save(): json.dump(res, open(out_path, 'w'), indent=1)
+    def add(row):
+        res['rows'].append(row); print(json.dumps(row), round(time.time() - t0), flush=True); save()
+    E = build(model_dir); E['set_frame']('neutral')  # build in the original frame: the NAT covariance must match
+    words, cats = E['words'], E['cats']
+    order = [cats[c][j] for j in range(12) for c in cats]
+    for w in order:
+        i = list(words).index(w)
+        acc, mar, mass = E['run_loc'](words[w]['v'], DOSE)
+        add({'kind': 'word_neutral', 'word': w, 'cat': words[w]['cat'], 's': DOSE, 'acc': acc, 'margin': mar, 'digit_mass': mass})
+        u = E['controls'](i, w)['ISO'][0]; s = iso_s[w]['s']
+        kl = E['effect'](u, s)  # must reproduce the matched effect
+        acc, mar, mass = E['run_loc'](u, s)
+        add({'kind': 'ISO_neutral', 'word': w, 'cat': words[w]['cat'], 's': s, 'kl': kl, 'kl_main': iso_s[w]['kl'],
+             'acc': acc, 'margin': mar, 'digit_mass': mass})
+    # NAT diagnostics, original frame
+    E['set_frame']('injected'); A = E['A']
+    nat = []
+    for i, w in enumerate(words): nat.append(E['controls'](i, w)['NAT'][0])
+    N = torch.stack(nat); G = (N @ N.T).abs(); n = len(nat)
+    C = (A.T @ A) / (A.shape[0] - 1); ev, evec = torch.linalg.eigh(C); evec = evec.flip(1)
+    top = lambda v: float(((evec[:, :10].T @ v) ** 2).sum())
+    Wv = torch.stack([words[w]['v'] for w in words])
+    res['nat_diag'] = {'mean_abs_cos_between_nat': float((G.sum() - n) / (n * n - n)),
+                       'nat_top10_share_mean': sum(top(v) for v in nat) / n,
+                       'word_top10_share_mean': sum(top(v) for v in Wv) / n,
+                       'mean_abs_cos_between_words': float(((Wv @ Wv.T).abs().sum() - n) / (n * n - n))}
+    print(json.dumps(res['nat_diag']), flush=True); save()
+    main_nat = {r['word']: r for r in main if r['kind'] == 'NAT'}
+    for i, w in enumerate(words):
+        if words[w]['cat'] != 'negative': continue
+        s = main_nat[w]['s']
+        acc, mar, mass = E['run_loc'](-nat[i], s)
+        add({'kind': 'NAT_negated', 'word': w, 'cat': 'negative', 's': s, 'acc': acc, 'margin': mar, 'digit_mass': mass,
+             'margin_main': main_nat[w]['margin']})
+    res['finished'] = True; save(); print('DONE', flush=True)
+
+
 if __name__ == '__main__':
-    if sys.argv[1] == 'run':
+    if sys.argv[1] == 'followup':
+        followup(sys.argv[2], sys.argv[3], sys.argv[4])
+    elif sys.argv[1] == 'run':
         run(sys.argv[2], sys.argv[3], '--resume' in sys.argv)
     elif sys.argv[1] == 'summary':
         summary(sys.argv[2], sys.argv[3])

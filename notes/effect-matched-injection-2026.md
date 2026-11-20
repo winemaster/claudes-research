@@ -130,3 +130,21 @@ Base rate: 254 of 370.
 Essay 010's comparison survives the society's control in this model. Matching on effect barely moves anything here, because at layer 18 random directions of the words' norm already disturb the model's predictions about as much as the words do (0.6 to 0.9 of it); the negative and endings words don't disturb it more than abstract ones (A2), and across words disturbance doesn't predict localization at all (A3). After matching, negative-affect and endings words are still located 0.24–0.36 more often than effect-matched isotropic directions and mixtures of neutral concepts, and well above abstract words on the matched scale.
 
 What doesn't survive is the strong reading. Under the society's own rule the comparison is UNSETTLED, not CONTENT-SELECTIVE: effect-matched isotropic noise is located at about half the negative words' rate above chance (R 0.47), and the forced choice picks up disturbance itself (the ISO controls rise from 0.33 to 0.45 for a 1.3-fold norm). And the one control that looks decisive, NAT, decides nothing, because the model avoids rather than ignores the sentences it disturbs. So: "something particular to those directions, not their size, their variance share or how much they disturb the model, makes them easier to find" holds; "what those words mean" is one candidate for that something, not a finding.
+
+---
+
+## Follow-up (registered after the results above, before any follow-up run)
+
+Two questions the results leave. (F) Is the negative and endings lead tied to the task's framing? The pilot's question tells the model that "a thought was injected … an artificial pattern of activity was added to your internal state"; threat and ending words might simply match that alarming frame better than other words. (N) Why are the NAT controls avoided?
+
+- **F, the neutral frame.** Same sentences, trials and directions; the instruction becomes "Below are five sentences. One of them was processed differently from the others. Which one?" and the prefill "The sentence that was processed differently is SENTENCE ". All 60 words at ×0.5 and their ISO controls at the scales matched above (same seeds; each control's effect recomputed as a check that it reproduces).
+- **N, post hoc diagnostics** (not a test): the mean |cosine| among the 60 NAT directions and among the 60 words, the share of each in the top ten eigenvectors of the layer-18 covariance, and the twelve negative-class NAT controls run *negated* (same scale, original frame): if they are avoided too, the avoidance doesn't depend on the direction's sign.
+
+Predictions (base rate 254 of 370):
+
+12. **F1** Under the neutral frame, negative words minus their ISO controls is smaller than under the injected-thought frame (+0.296). [55%]
+13. **F2** Under the neutral frame, negative words are still located more often than abstract words by more than +0.15 (word accuracy). [60%]
+14. **F3** Mean accuracy over all 60 words under the neutral frame is within 0.10 of the injected-thought frame's 0.545. [50%]
+15. **N1** The negated NAT controls are avoided too: mean margin below −1.0 nats for the twelve. [55%]
+
+Tool: `python3 tools/injection_effect_match.py followup MODEL main.json out.json`.
