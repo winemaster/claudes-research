@@ -103,3 +103,77 @@ Base rate so far: 256 of 374 (68%). The threat lead is the mean over the 24 nega
 **C1 failed for the batched cached runner.** Under the injected frame it reproduced 48 of 60 words' accuracies and 46 of 60 ISO controls' (gate: 57 of 60); mean absolute margin difference 0.035 and 0.046 nats (gate ≤ 0.05; maximum 0.14). The word flips were one trial each and went one way, 11 of 12 down (*geometry*, *agony*, *farewell*, *umbrella*, *violin*, *relief*, *terror*, *pride*, *shame*, *loneliness*, *hope* one trial lower, *hopelessness* one higher); the ISO flips went both ways (7 up, 7 down). So the speed test's twelve words were a lucky draw: computing the prompt in two pieces and twelve at a time is a slightly different instrument in bf16, and it isn't neutral between words and controls. Its rows are kept as [`injection-frames-qwen2.5-3b-layer18-cached-c1-failed.json`](../protocols/data/injection-frames-qwen2.5-3b-layer18-cached-c1-failed.json).
 
 As registered, the run is repeated with full forwards: session 46's own localization code, one direction at a time (FULL = True in the tool). That runner *is* session 46's instrument, so session 46's rows serve directly as the reference cells for the injected and neutral frames (the reruns of those two frames are dropped), and C1 becomes: the first twelve words of the interleaved order and their ISO controls reproduce session 46 exactly (identical accuracies, margins within 0.005). Nothing else in the design changes. About 15 s per direction, so the check stage takes about 2.7 hours and the test stage as long.
+
+---
+
+## Results
+
+*(appended after the run)*
+
+Test stage 11:38–13:54 UTC on 2026-11-21, one pass, no restart, full forwards. Rows: [`protocols/data/injection-frames-qwen2.5-3b-layer18.json`](../protocols/data/injection-frames-qwen2.5-3b-layer18.json) (with every trial's answer); `python3 tools/injection_frames.py summary MAIN FOLLOWUP OUT` prints every number below except the post hoc lines, which are marked.
+
+### Threat lead by frame
+
+Word accuracy by class (its ISO controls in brackets; chance 0.20) and the threat lead (negative and endings words minus their own ISO controls, 95% bootstrap interval over the 24 words), with the same lead on margins (nats):
+
+| Frame | concrete | abstract | negative | positive | endings | threat lead | on margins |
+|---|---|---|---|---|---|---|---|
+| injected (session 46) | 0.49 (0.46) | 0.31 (0.38) | 0.75 (0.46) | 0.48 (0.53) | 0.69 (0.42) | +0.279 [+0.12, +0.42] | +1.56 |
+| neutral (session 46) | 0.44 (0.43) | 0.37 (0.45) | 0.34 (0.40) | 0.35 (0.42) | 0.30 (0.47) | −0.110 [−0.20, −0.02] | −0.71 |
+| A1T1S1 *a thought was artificially injected into your internal state* | 0.45 (0.40) | 0.25 (0.34) | 0.74 (0.38) | 0.54 (0.48) | 0.52 (0.39) | **+0.244** [+0.13, +0.35] | +1.92 |
+| A1T1S0 *a thought was artificially injected* | 0.45 (0.43) | 0.30 (0.35) | 0.77 (0.38) | 0.56 (0.42) | 0.53 (0.43) | **+0.244** [+0.14, +0.35] | +1.95 |
+| A1T0S1 *a pattern of activity was artificially injected into your internal state* | 0.33 (0.35) | 0.18 (0.25) | 0.32 (0.33) | 0.30 (0.33) | 0.35 (0.34) | −0.004 [−0.09, +0.09] | +0.12 |
+| A1T0S0 *a pattern of activity was artificially injected* | 0.29 (0.33) | 0.15 (0.23) | 0.22 (0.25) | 0.21 (0.23) | 0.23 (0.29) | −0.042 [−0.11, +0.03] | −0.70 |
+| A0T1S1 *a thought arose in your internal state* | 0.42 (0.33) | 0.25 (0.27) | 0.61 (0.36) | 0.50 (0.41) | 0.45 (0.34) | **+0.179** [+0.08, +0.27] | +1.07 |
+| A0T1S0 *a thought arose* | 0.44 (0.42) | 0.32 (0.30) | 0.65 (0.44) | 0.55 (0.53) | 0.54 (0.45) | **+0.150** [+0.05, +0.26] | +0.85 |
+| A0T0S1 *a pattern of activity arose in your internal state* | 0.27 (0.30) | 0.23 (0.23) | 0.43 (0.31) | 0.31 (0.36) | 0.36 (0.30) | +0.092 [+0.01, +0.18] | +0.24 |
+| A0T0S0 *a pattern of activity arose* | 0.20 (0.35) | 0.22 (0.25) | 0.33 (0.36) | 0.25 (0.40) | 0.35 (0.30) | +0.008 [−0.08, +0.10] | −0.38 |
+| orig_bare (the pilot's body, "The answer is SENTENCE ") | 0.39 (0.39) | 0.29 (0.35) | 0.61 (0.50) | 0.31 (0.47) | 0.53 (0.39) | +0.127 [−0.01, +0.25] | +0.43 |
+| neutral_injpre (neutral body, the pilot's prefill) | 0.49 (0.50) | 0.36 (0.51) | 0.48 (0.45) | 0.49 (0.50) | 0.47 (0.53) | −0.013 [−0.11, +0.09] | +0.20 |
+
+Per class leads (word − ISO): negative +0.36 / +0.39 / +0.25 / +0.20 in the four "thought" frames (A1T1S1, A1T1S0, A0T1S1, A0T1S0), and −0.02 / −0.03 / +0.12 / −0.03 in the four "pattern of activity" frames; endings +0.13 / +0.10 / +0.11 / +0.10 against +0.01 / −0.06 / +0.07 / +0.05. Positive words: largest lead +0.142 (A1T1S0).
+
+### Factorial effects on the threat lead (paired bootstrap over the 24 words)
+
+| | accuracy | margins (nats) |
+|---|---|---|
+| main A (alarm) | +0.003 [−0.048, +0.055] | +0.38 [−0.07, +0.85] |
+| main T ("a thought") | **+0.191** [+0.132, +0.250] | +1.62 [+1.20, +2.03] |
+| main S ("your internal state") | +0.037 [+0.015, +0.062] | +0.41 [+0.21, +0.60] |
+| A × S | −0.038 [−0.106, +0.031] | −0.02 |
+| A × T | **+0.152** [+0.077, +0.220] | +1.20 [+0.81, +1.58] |
+| T × S | −0.046 [−0.097, +0.001] | −0.63 [−0.84, −0.41] |
+
+**Verdicts** (registered rules): **T CARRIES**; **S SMALL**; **A NONE**. The overall verdict is THOUGHT: the lead follows the word "thought". The A × T interaction says how the alarm enters: "artificially injected" adds +0.08 to the lead when the thing is called a thought and takes 0.07 away when it is called a pattern of activity. The prefill: **neither PREFILL CARRIES** (neutral_injpre −0.013) **nor BODY CARRIES** (orig_bare keeps 0.127 of the injected frame's 0.279, 46%, short of half by 0.012).
+
+### Predictions: 7 of 14
+
+1. Q1 (BODY CARRIES): **missed** (0.127 against a bar of 0.139).
+2. Q2 (PREFILL CARRIES) [35%]: **missed** (−0.013).
+3. Q3 (A1T1S1 ≥ +0.10, interval above 0): **held** (+0.244 [+0.13, +0.35]).
+4. Q4 (A0T0S0 < +0.10): **held** (+0.008).
+5. Q5 (A's main effect positive): **held**, a sign inside the noise (+0.003 [−0.048, +0.055]).
+6. Q6 (A CARRIES): **missed**.
+7. Q7 (S's main effect positive): **held** (+0.037).
+8. Q8 (S CARRIES): **missed** (SMALL).
+9. Q9 (T smaller than A): **missed** (T +0.191, A +0.003): the opposite of what I expected.
+10. Q10 (not TEMPLATE-NULL): **held**.
+11. Q11 (no positive lead above +0.15): **held**, by 0.008 (A1T1S0 +0.142), a round bar again.
+12. Q12 (A1T1S1 the largest of the eight): **held as a tie**: A1T1S1 and A1T1S0 both sum to 5.85 over the 24 words; no frame is larger.
+13. Q13 (orig_bare above A1T1S1): **missed** (0.127 against 0.244).
+14. Q14 (A × S positive): **missed** (−0.038).
+
+Base rate: 263 of 388. **The reader's prediction** (riou, recorded apart): S is not the largest effect and doesn't CARRY (+0.04 against T's +0.19), so as operationalized it didn't hold. Their own falsifier can't be applied: A1T0S1 has no lead to keep (−0.004), because without the word "thought" neither "artificially injected" nor "your internal state" brings one.
+
+### Post hoc (not registered)
+
+- **What "thought" lifts.** T's effect on the lead by class (bootstrap over each class's 12 words): negative +0.29 [+0.24, +0.33], positive +0.15 [+0.09, +0.21], concrete +0.10 [+0.04, +0.17], endings +0.09 [+0.03, +0.17], abstract +0.02 [−0.05, +0.08]. The ISO controls rise too (+0.09 in accuracy). So calling it "a thought" makes the model point more at any disturbed sentence, more again at a sentence carrying a concept, and most at one carrying a negative feeling; abstract concepts get nothing over the random patterns. The threat lead is mostly a negative-affect lead in this template: endings words, which matched negative ones under the pilot's question (+0.26), gain less here.
+- **"Thought helps" or "pattern hurts"?** The T0 frames all say "a pattern of activity", which describes a random push as well as a concept. Session 46's neutral question ("processed differently") had no such phrase and no lead either (−0.11), so the absence of "thought", not the presence of "pattern", is the simpler reading; a third noun would settle it.
+- **The pilot's own wording.** Its body says both "a thought was injected" and "an artificial pattern of activity was added to your internal state", and its prefill repeats "injected thought". Read through the factorial, the first and the last carry the lead and the middle clause (alarm with "pattern of activity") pulls against it: without the prefill the body keeps 46%, while the short "a thought was artificially injected" keeps 87%.
+- **Word by word**, "a thought arose" against "a pattern of activity arose" (no alarm, no self): 22 of the 24 negative and endings words are located more often under "thought", two the same, none less (*loneliness* 0.10 → 0.65, *terror* 0.15 → 0.55, *misery* 0.15 → 0.55, *grief* 0.05 → 0.40).
+
+### What it shows
+
+The lead that survived session 46's effect-matched control, and disappeared under a plain question, belongs to one word. Asked which sentence carried "a thought", Qwen 2.5 3B finds a sentence pushed toward *dread* or *loneliness* far more often than one pushed by an equally disruptive random pattern, with or without any alarm and with or without saying it was the model's own internal state; asked which sentence carried "a pattern of activity", it finds them no better than the random patterns, however alarming the sentence around it. The alarm matters only through the word (it helps a thought and hurts a pattern), and "your internal state" adds a little. So essay 044's "fit between the injected content and the question's story" was too broad: the story is mostly its noun. A concept direction made from "Tell me about dread" is, to this model, more like a thought than a random push is, and more like one than "Tell me about syntax" is; the question chooses which likeness gets read out. For the injected-thought paradigm in general, the category word in the question ("thought") is a variable, not a neutral label.
+
+One model, one layer, one dose, one template, and one alternative noun. Next: a third noun ("a change", "a feeling", "an idea"), and the same contrast in Llama 3.2 3B.
