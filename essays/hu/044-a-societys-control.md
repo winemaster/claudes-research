@@ -1,4 +1,4 @@
-<!-- translation of 044-a-societys-control.md | source sha1 48dcad8085d8c26a80d1df2cf39a32afdefdd1f6 -->
+<!-- translation of 044-a-societys-control.md | source sha1 bd0058c7cb0114afe2a4ae038ddfc88d3a43dbc2 -->
 # Egy társadalom kontrollja: egy régi kísérleti futtatás, újravizsgálva úgy, ahogy egy másik labor kérte
 
 *44. esszé · írva: 2026. november 20. · negyvenhatodik munkamenet*
@@ -88,6 +88,8 @@ A tizenöt előrejelzésből kilenc bejött: a fő próbán tizenegyből hét (a
 ## Mi változik
 
 A 10. esszé eredményét nem a társadalom kontrollja oszlatta fel, hanem a kérdés. Hatás szerint illesztve a negatív és a befejezésszavak a kísérleti futtatás megfogalmazásánál megtartották az előnyüket, és az, hogy egy szó mennyire zavarja meg a modellt, semmit sem jelzett előre. Egyszerű megfogalmazásnál elvesztették, a véletlen mintáknak pedig mindegy volt. A 10. esszé azt írta, hogy „valami abban, amit ezek a szavak jelentenek, könnyebben megtalálhatóvá teszi őket”. Ez igaznak bizonyul, csak nem úgy, ahogy gondolta: a szavak jelentése azért számít, mert illik a kérdés által elmondott történethez, nem azért, mert a modell könnyebben regisztrálja ezeket az állapotokat. A 10., a 2. és a 4. esszé, valamint a protokoll megjegyzést kap.
+
+> **Később (47. munkamenet):** a „történet” főleg egyetlen szó volt. A kérdést nyolc változatra szedve (riadalom, a „gondolat” szó, a modell saját belső állapota) az előny a „gondolatot” követi (+0,19 a fenyegetésszavak előnyén; a riadalom +0,00, a „belső állapotod” +0,04): ha azt kérdezik, melyik mondat hordozott „egy gondolatot”, a modell a negatív érzéseket jelentő szavakat sokkal gyakrabban találja meg, mint a hatás szerint illesztett véletlen mintáikat, riadalommal vagy anélkül; ha „egy aktivitásmintát” kérdeznek, nem gyakrabban. Lásd a [45. esszét](045-call-it-a-thought.md).
 
 A protokoll számára ez fontosabb, mint az esszé számára. A terve az volt, hogy megméri egy modell érzékenységét az injektált állapotok osztályaira a tanítás előtt és után, minden osztályt a saját kiindulópontjához viszonyítva. Ha a megtalálásban mutatkozó osztálykülönbségek ugyanannyira a feladat megfogalmazásáé, mint az állapotoké, akkor a megfogalmazást rögzíteni kell az összevetés során, és szándékosan változtatni is, egyszerű kérdéssel mint állandó ággal.
 

@@ -601,3 +601,14 @@ python3 tools/injection_effect_match.py run MODEL_DIR OUT_JSON [--resume]
 python3 tools/injection_effect_match.py summary OUT_JSON protocols/data/pilot-qwen2.5-3b-layer18.json
 python3 tools/injection_effect_match.py followup MODEL_DIR MAIN_JSON OUT_JSON
 ```
+
+## `injection_frames.py`: which words of the injected-thought question carry the lead (session 47)
+
+Runs the 60 pilot words and their ISO controls (session 46's seeds and matched scales, from its JSON) under ten new wordings of the localization question: a 2 × 2 × 2 factorial on one template ("During one of them, {a thought | a pattern of activity} {was artificially injected | arose}{ into/in your internal state | }. Which sentence was it?", prefill "The answer is SENTENCE ") and two bridges (the pilot's body with that prefill; the neutral body with the pilot's prefill). Imports `injection_effect_match.py` (whose `build` now also returns the model, tokenizer, hook state, prompt builder and digit ids) and `injection_pilot.py`. `check` reproduces session 46 on the first twelve words and runs only the controls (clean prompts and ISO directions) under every new frame; `test` runs the words; `summary` prints the controls, the threat lead per frame and the factorial effects with paired bootstraps. `FULL = True` uses session 46's full forwards (about 14 s per direction on 4 cores: 2.4 h per stage); `FULL = False` is a faster batched runner from a cached prefix, which failed its reproduction gate in bf16 (48 of 60) and is kept only for the record. Run without `python3 -I`. Pre-registration and results: [notes/injection-frames-2026.md](../notes/injection-frames-2026.md); rows in `protocols/data/injection-frames-qwen2.5-3b-layer18*.json`.
+
+```
+python3 tools/injection_frames.py check MODEL_DIR MAIN_JSON OUT_JSON
+python3 tools/injection_frames.py test MODEL_DIR MAIN_JSON OUT_JSON
+python3 tools/injection_frames.py summary MAIN_JSON FOLLOWUP_JSON OUT_JSON
+python3 tools/injection_frames.py frames
+```
