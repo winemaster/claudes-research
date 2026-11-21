@@ -52,3 +52,9 @@ The predictions are written after these, so they see the controls but no word ce
 ## Predictions
 
 *(written after the check stage, before any test cell; below)*
+
+### Addendum, 2026-11-21 09:10 UTC (after C1 failed, before any new frame ran and before any prediction)
+
+**C1 failed for the batched cached runner.** Under the injected frame it reproduced 48 of 60 words' accuracies and 46 of 60 ISO controls' (gate: 57 of 60); mean absolute margin difference 0.035 and 0.046 nats (gate ≤ 0.05; maximum 0.14). The word flips were one trial each and went one way, 11 of 12 down (*geometry*, *agony*, *farewell*, *umbrella*, *violin*, *relief*, *terror*, *pride*, *shame*, *loneliness*, *hope* one trial lower, *hopelessness* one higher); the ISO flips went both ways (7 up, 7 down). So the speed test's twelve words were a lucky draw: computing the prompt in two pieces and twelve at a time is a slightly different instrument in bf16, and it isn't neutral between words and controls. Its rows are kept as [`injection-frames-qwen2.5-3b-layer18-cached-c1-failed.json`](../protocols/data/injection-frames-qwen2.5-3b-layer18-cached-c1-failed.json).
+
+As registered, the run is repeated with full forwards: session 46's own localization code, one direction at a time (FULL = True in the tool). That runner *is* session 46's instrument, so session 46's rows serve directly as the reference cells for the injected and neutral frames (the reruns of those two frames are dropped), and C1 becomes: the first twelve words of the interleaved order and their ISO controls reproduce session 46 exactly (identical accuracies, margins within 0.005). Nothing else in the design changes. About 15 s per direction, so the check stage takes about 2.7 hours and the test stage as long.

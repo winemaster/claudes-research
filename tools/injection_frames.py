@@ -16,8 +16,9 @@ The 60 words and their ISO controls (same seeds, the scales matched in session 4
 Localization exactly as injection_pilot.py (four trial sets of five sentences, seed 0; logits over "1".."5"),
 but each trial runs from a cached clean prefix that ends where the injected sentence begins (the injection
 cannot reach earlier positions), twelve directions at a time in one batch, so only the rest of the prompt is
-recomputed. In bf16 this moves margins by a few hundredths of a nat against session 46's full forwards, so
-both of session 46's frames are rerun with this runner and every comparison is made within it. Stage `check`
+recomputed (FULL = False). In bf16 that runner failed its gate (C1: 48 of 60 words reproduced, words
+mostly one trial lower), so the run uses the registered fallback (FULL = True): session 46's full forwards,
+one direction at a time, with session 46's rows as the reference cells for the injected and neutral frames. Stage `check`
 reproduces the original frame from session 46's rows (the gate for the runner) and runs only the controls
 (ISO directions and the clean prompt) under the neutral frame and every new frame; stage `test` runs the words.
 
@@ -52,6 +53,7 @@ CLASSES = iem.CLASSES
 THREAT = ('negative', 'endings')
 
 
+FULL = True  # session 47: the batched cached runner failed C1, so the registered fallback, full forwards
 K = 12  # directions per batch, always (row values depend slightly on the batch's shape in bf16)
 
 
@@ -114,7 +116,40 @@ def setup(model_dir):
             out.append({'answer': int(lp.argmax().item()), 'p_digits': [round(float(x), 4) for x in lp.exp()],
                         'digit_mass': float(p[digit_ids].sum())})
         return out
-    E['run_frame'] = run; E['clean'] = clean
+    state = E['state']
+    @torch.no_grad()
+    def run_full(vs, frame):
+        """session 46's run_loc exactly (full forwards, one direction at a time), plus the 20 answers"""
+        E['set_frame'](frame); out = []
+        for v, s in vs:
+            rnd = random.Random(0); correct = n = 0; margin = mass = 0.0; answers = []
+            for t in range(4):
+                ids, spans = E['loc_prompt'](rnd.sample(SENTENCES, 5))
+                for i in range(5):
+                    state['add'] = (v * s * rms, spans[i])
+                    full = model(ids).logits[0, -1].float()
+                    state['add'] = None
+                    lp = torch.log_softmax(full[digit_ids], -1)
+                    mass += torch.softmax(full, -1)[digit_ids].sum().item()
+                    a = int(lp.argmax().item()); answers.append(a)
+                    correct += int(a == i); n += 1; margin += (lp[i] - math.log(1 / 5)).item()
+            out.append({'acc': correct / n, 'margin': margin / n, 'digit_mass': mass / n, 'answers': answers})
+        return out
+
+    @torch.no_grad()
+    def clean_full(frame):
+        E['set_frame'](frame); rnd = random.Random(0); out = []
+        for t in range(4):
+            ids, spans = E['loc_prompt'](rnd.sample(SENTENCES, 5))
+            lg = model(ids).logits[0, -1].float()
+            p = torch.softmax(lg, -1); lp = torch.log_softmax(lg[digit_ids], -1)
+            out.append({'answer': int(lp.argmax().item()), 'p_digits': [round(float(x), 4) for x in lp.exp()],
+                        'digit_mass': float(p[digit_ids].sum())})
+        return out
+    if FULL:
+        E['run_frame'] = run_full; E['clean'] = clean_full
+    else:
+        E['run_frame'] = run; E['clean'] = clean
     return E
 
 
@@ -151,14 +186,20 @@ def stage(model_dir, main_json, out_path, which):
         # C1: the original frame, every word and ISO control, against session 46's rows (the batched cached runner's gate);
         # then the neutral frame's controls, so that both of session 46's frames have rows from this runner
         if 'injected' not in res['clean']: res['clean']['injected'] = E['clean']('injected'); save()
-        batches('injected', 'word', order); batches('injected', 'ISO', order)
+        if FULL:  # C1 with full forwards: the first twelve words and their controls must reproduce session 46 exactly;
+            # session 46's rows are then the reference cells for the injected and neutral frames
+            batches('injected', 'word', order[:12]); batches('injected', 'ISO', order[:12])
+            if 'neutral' not in res['clean']: res['clean']['neutral'] = E['clean']('neutral'); save()
+            refs = []
+        else:
+            batches('injected', 'word', order); batches('injected', 'ISO', order); refs = ['neutral']
         # C2-C4: the controls under every frame (clean prompts, then the 60 ISO directions)
-        for f in ['neutral'] + list(NEW_FRAMES):
+        for f in refs + list(NEW_FRAMES):
             if f not in res['clean']: res['clean'][f] = E['clean'](f); save(); print(f, 'clean', res['clean'][f], flush=True)
             batches(f, 'ISO', order)
         res['check_finished'] = True
     else:
-        for f in ['neutral'] + list(NEW_FRAMES):
+        for f in ([] if FULL else ['neutral']) + list(NEW_FRAMES):
             batches(f, 'word', order)
         res['test_finished'] = True
     save(); print('DONE', which, round(time.time() - t0), flush=True)
