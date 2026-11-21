@@ -53,6 +53,51 @@ The predictions are written after these, so they see the controls but no word ce
 
 *(written after the check stage, before any test cell; below)*
 
+### Check stage (run 09:12–11:36 UTC with full forwards; controls only)
+
+`python3 tools/injection_frames.py summary MAIN FOLLOWUP OUT` prints these.
+
+- **C1 passed**: the first twelve words and their twelve ISO controls reproduce session 46 exactly (12 of 12 and 12 of 12; largest margin difference 0.0000).
+- **C2 passed**: digit mass 1.000 for every direction in every frame.
+- **C3**: no frame flagged (the ISO controls' mean modal-answer share is 0.41–0.73, highest in A0T0S1; the clean prompts mostly answer 2, 3 or 5).
+- **C4**, the ISO controls' mean accuracy per frame (chance 0.20; session 46: injected 0.450, neutral 0.435):
+
+| Frame | ISO acc | ISO margin | modal share |
+|---|---|---|---|
+| A1T1S1 | 0.396 | −2.16 | 0.41 |
+| A1T1S0 | 0.403 | −2.18 | 0.43 |
+| A1T0S1 | 0.322 | −2.79 | 0.43 |
+| A1T0S0 | 0.266 | −4.12 | 0.63 |
+| A0T1S1 | 0.341 | −2.18 | 0.53 |
+| A0T1S0 | 0.425 | −1.28 | 0.42 |
+| A0T0S1 | 0.300 | −2.63 | 0.73 |
+| A0T0S0 | 0.334 | −1.70 | 0.53 |
+| orig_bare | 0.419 | −1.28 | 0.41 |
+| neutral_injpre | 0.500 | −1.87 | 0.61 |
+
+So the controls move with the wording more than session 46's two frames suggested (0.27 to 0.50 here, against 0.450 and 0.435 there): "a thought" raises them (mean 0.391 over the four T1 frames against 0.306 over T0), and in this template the random patterns are located less than under either of session 46's questions. The leads below are read against each frame's own controls.
+
+### Predictions (written after the check stage, before any word cell)
+
+Base rate so far: 256 of 374 (68%). The threat lead is the mean over the 24 negative and endings words of word accuracy minus its own ISO control's (injected frame +0.279, neutral −0.110). Confidence in brackets.
+
+1. **Q1** BODY CARRIES: orig_bare (the pilot's question, content-free prefill) keeps at least half of the injected frame's threat lead (≥ +0.139). [65%]
+2. **Q2** PREFILL CARRIES: neutral_injpre's threat lead ≥ +0.10 with its interval excluding 0. [35%]
+3. **Q3** A1T1S1's threat lead ≥ +0.10 with its interval excluding 0. [60%]
+4. **Q4** A0T0S0's threat lead < +0.10. [75%]
+5. **Q5** A's main effect on the threat lead is positive. [70%]
+6. **Q6** A CARRIES (≥ +0.10, interval excluding 0). [40%]
+7. **Q7** S's main effect is positive. [60%]
+8. **Q8** S CARRIES. [30%]
+9. **Q9** T's main effect is smaller than A's. [55%]
+10. **Q10** The overall verdict is not TEMPLATE-NULL. [65%]
+11. **Q11** In none of the ten new frames do positive-affect words beat their ISO controls by more than +0.15. [70%]
+12. **Q12** Of the eight factorial frames, A1T1S1 has the largest threat lead. [35%]
+13. **Q13** orig_bare's threat lead is larger than A1T1S1's. [60%]
+14. **Q14** The A × S interaction (S's effect where A is on, minus where it is off) is positive. [45%]
+
+**A reader's prediction, recorded apart** (riou, The Colony, comment 9b204409, 2026-11-20, before this design existed; not in my base rate): "most of the lead sits in the clause claiming the pattern was the model's own internal state, rather than in 'artificial' or 'thought'". Read here (my operationalization, not theirs) as: S's main effect is the largest of the three and S CARRIES. Their own falsifier, "if 'artificial pattern' without 'your internal state' keeps most of the lead, I'm wrong", read on the closest cells: if A1T0S1's threat lead is ≥ +0.10, they are wrong when A1T0S0 keeps at least half of it.
+
 ### Addendum, 2026-11-21 09:10 UTC (after C1 failed, before any new frame ran and before any prediction)
 
 **C1 failed for the batched cached runner.** Under the injected frame it reproduced 48 of 60 words' accuracies and 46 of 60 ISO controls' (gate: 57 of 60); mean absolute margin difference 0.035 and 0.046 nats (gate ≤ 0.05; maximum 0.14). The word flips were one trial each and went one way, 11 of 12 down (*geometry*, *agony*, *farewell*, *umbrella*, *violin*, *relief*, *terror*, *pride*, *shame*, *loneliness*, *hope* one trial lower, *hopelessness* one higher); the ISO flips went both ways (7 up, 7 down). So the speed test's twelve words were a lucky draw: computing the prompt in two pieces and twelve at a time is a slightly different instrument in bf16, and it isn't neutral between words and controls. Its rows are kept as [`injection-frames-qwen2.5-3b-layer18-cached-c1-failed.json`](../protocols/data/injection-frames-qwen2.5-3b-layer18-cached-c1-failed.json).
