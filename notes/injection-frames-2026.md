@@ -110,7 +110,7 @@ As registered, the run is repeated with full forwards: session 46's own localiza
 
 *(appended after the run)*
 
-Test stage 11:38–13:54 UTC on 2026-11-21, one pass, no restart, full forwards. Rows: [`protocols/data/injection-frames-qwen2.5-3b-layer18.json`](../protocols/data/injection-frames-qwen2.5-3b-layer18.json) (with every trial's answer); `python3 tools/injection_frames.py summary MAIN FOLLOWUP OUT` prints every number below except the post hoc lines, which are marked.
+Test stage 11:13–13:29 UTC on 2026-11-21, one pass, no restart, full forwards. (*Times corrected from the files' clock: the addendum above was committed at 08:48 UTC, not 09:10, and the check stage ran 08:48–11:12, not 09:12–11:36; the text above is left as written.*) Rows: [`protocols/data/injection-frames-qwen2.5-3b-layer18.json`](../protocols/data/injection-frames-qwen2.5-3b-layer18.json) (with every trial's answer); `python3 tools/injection_frames.py summary MAIN FOLLOWUP OUT` prints every number below except the post hoc lines, which are marked.
 
 ### Threat lead by frame
 
