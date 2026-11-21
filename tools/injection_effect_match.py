@@ -189,6 +189,7 @@ def build(model_dir, frame='injected'):
         return {'ISO': (iso, None), 'NAT': (nat, None), 'MIX': (mix, pick)}
 
     return dict(torch=torch, words=words, A=A, set_frame=lambda f: cur.__setitem__('frame', f), pilot_rand=pilot_rand, rms=rms, effect=effect, run_loc=run_loc,
+                model=model, tok=tok, state=state, loc_prompt=loc_prompt, digit_ids=digit_ids,  # for injection_frames.py (session 47)
                 match=match, controls=controls, cats=CATS, cov_tokens=A.shape[0])
 
 
