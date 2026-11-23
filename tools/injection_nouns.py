@@ -161,8 +161,8 @@ def summary(main_json, s47_json, out_path):
                 lab = ('BEYOND THOUGHT' if pos > 1.25 else 'LIKE THOUGHT' if pos >= 0.75 else 'BETWEEN' if pos > 0.25
                        else 'LIKE PATTERN' if pos >= -0.25 else 'BELOW PATTERN')
                 line += (f'  position {pos:+.2f} [{plo:+.2f}, {phi:+.2f}] {lab}; minus pattern {pt[n] - pt["pattern"]:+.3f} '
-                         f'[{a:+.3f}, {b:+.3f}]{" *" if a > 0 or b < 0 else ""}; thought minus it {pt["thought"] - pt[n]:+.3f} '
-                         f'[{c:+.3f}, {d:+.3f}]{" *" if c > 0 or d < 0 else ""}')
+                         f'[{a:+.3f}, {b:+.3f}]{" *" if a > 1e-9 or b < -1e-9 else ""}; thought minus it {pt["thought"] - pt[n]:+.3f} '
+                         f'[{c:+.3f}, {d:+.3f}]{" *" if c > 1e-9 or d < -1e-9 else ""}')
             print(line)
     print('\nPer-class leads by noun (word - ISO, mean of its two frames) [95% over the class\'s 12 words]:')
     for n in FRAMES_BY_NOUN:
@@ -181,7 +181,8 @@ def summary(main_json, s47_json, out_path):
     print('\nThe alarm by noun: threat lead under "was artificially injected" minus under "arose" [95% over the 24 words]:')
     for n, (f1, f0) in FRAMES_BY_NOUN.items():
         e = lead(f1, TW) - lead(f0, TW); lo, hi = ci([lead(f1, b) - lead(f0, b) for b in boots])
-        lab = ('HELPS' if e >= 0.05 and lo > 0 else 'HURTS' if e <= -0.05 and hi < 0 else 'SMALL' if lo > 0 or hi < 0 else 'NONE')
+        eps = 1e-9  # session 48: a bootstrap end of 2.8e-17 is a rounding residue of 0, not an interval excluding 0
+        lab = ('HELPS' if e >= 0.05 and lo > eps else 'HURTS' if e <= -0.05 and hi < -eps else 'SMALL' if lo > eps or hi < -eps else 'NONE')
         print(f'  {n:10s} {e:+.3f} [{lo:+.3f}, {hi:+.3f}] {lab}')
 
 

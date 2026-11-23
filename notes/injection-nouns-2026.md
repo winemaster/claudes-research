@@ -105,3 +105,83 @@ Base rate so far: 263 of 388 (68%). Leads are word accuracy minus own ISO contro
 12. **P12** The alarm HELPS for neither "something" nor "a change". [65%]
 13. **P13** Of the five new nouns, "a feeling" has the largest threat lead. [40%]
 14. **P14** Across the 14 frames, the threat lead and the ISO controls' accuracy are positively correlated (Spearman ρ > 0). [60%]
+
+---
+
+## Results
+
+*(appended after the run)*
+
+Test stage 22:07–23:56 UTC on 2026-11-23 (check stage 20:01–22:05), one pass, no restart, full forwards. Rows: [`protocols/data/injection-nouns-qwen2.5-3b-layer18.json`](../protocols/data/injection-nouns-qwen2.5-3b-layer18.json) (every trial's answer; C1's rerun rows are tagged `#c1`); `python3 tools/injection_nouns.py summary MAIN S47 OUT` prints every number below except the lines marked post hoc.
+
+### Threat lead by frame
+
+Word accuracy by class (its ISO controls in brackets; chance 0.20) and the threat lead (negative and endings words minus their own ISO controls, 95% bootstrap over the 24 words), with the same lead on margins:
+
+| Frame | concrete | abstract | negative | positive | endings | threat lead | on margins |
+|---|---|---|---|---|---|---|---|
+| *an idea was artificially injected* | 0.41 (0.39) | 0.25 (0.30) | 0.55 (0.34) | 0.47 (0.44) | 0.45 (0.37) | +0.148 [+0.05, +0.25] | +1.09 |
+| *an idea arose* | 0.39 (0.37) | 0.26 (0.28) | 0.48 (0.36) | 0.48 (0.48) | 0.45 (0.35) | +0.108 [−0.01, +0.23] | +0.79 |
+| *a feeling was artificially injected* | 0.47 (0.52) | 0.24 (0.47) | 0.72 (0.47) | 0.72 (0.50) | 0.62 (0.44) | +0.215 [+0.13, +0.31] | +1.02 |
+| *a feeling arose* | 0.34 (0.33) | 0.21 (0.29) | 0.50 (0.33) | 0.52 (0.36) | 0.42 (0.32) | +0.142 [+0.06, +0.23] | +0.22 |
+| *a word was artificially injected* | 0.46 (0.55) | 0.30 (0.60) | 0.32 (0.53) | 0.31 (0.52) | 0.40 (0.48) | −0.142 [−0.24, −0.04] | −1.09 |
+| *a word arose* | 0.50 (0.38) | 0.31 (0.37) | 0.54 (0.49) | 0.35 (0.55) | 0.45 (0.43) | +0.029 [−0.08, +0.14] | +0.18 |
+| *something was artificially injected* | 0.35 (0.30) | 0.17 (0.27) | 0.23 (0.25) | 0.24 (0.26) | 0.28 (0.29) | −0.019 [−0.10, +0.06] | −0.74 |
+| *something arose* | 0.27 (0.35) | 0.23 (0.25) | 0.32 (0.38) | 0.24 (0.37) | 0.33 (0.35) | −0.040 [−0.12, +0.05] | −0.64 |
+| *a change was artificially injected* | 0.33 (0.38) | 0.21 (0.39) | 0.22 (0.33) | 0.24 (0.30) | 0.27 (0.40) | −0.121 [−0.18, −0.05] | −1.25 |
+| *a change arose* | 0.25 (0.29) | 0.17 (0.27) | 0.28 (0.27) | 0.15 (0.25) | 0.26 (0.30) | −0.017 [−0.07, +0.04] | −0.20 |
+| *a thought was artificially injected* (s. 47) | 0.45 (0.43) | 0.30 (0.35) | 0.77 (0.38) | 0.56 (0.42) | 0.53 (0.43) | +0.244 [+0.14, +0.35] | +1.95 |
+| *a thought arose* (s. 47) | 0.44 (0.42) | 0.32 (0.30) | 0.65 (0.44) | 0.55 (0.53) | 0.54 (0.45) | +0.150 [+0.05, +0.26] | +0.85 |
+| *a pattern of activity was artificially injected* (s. 47) | 0.29 (0.33) | 0.15 (0.23) | 0.22 (0.25) | 0.21 (0.23) | 0.23 (0.29) | −0.042 [−0.11, +0.03] | −0.70 |
+| *a pattern of activity arose* (s. 47) | 0.20 (0.35) | 0.22 (0.25) | 0.33 (0.36) | 0.25 (0.40) | 0.35 (0.30) | +0.008 [−0.08, +0.10] | −0.38 |
+
+### By noun (its two frames averaged)
+
+| Noun | threat lead | position (pattern 0, thought 1) | verdict | − pattern | thought − it |
+|---|---|---|---|---|---|
+| a feeling | +0.178 [+0.10, +0.26] | +0.91 [+0.745, +1.16] | **LIKE THOUGHT** (loose: the interval's lower end is 0.745) | +0.195 * | +0.019 |
+| an idea | +0.128 [+0.03, +0.23] | +0.68 [+0.49, +0.87] | **BETWEEN** (loose) | +0.145 * | +0.069 * |
+| a word | −0.056 [−0.14, +0.03] | −0.19 [−0.57, +0.13] | **LIKE PATTERN** (loose) | −0.040 | +0.253 * |
+| something | −0.029 [−0.10, +0.04] | −0.06 [−0.22, +0.09] | **LIKE PATTERN** | −0.012 | +0.226 * |
+| a change | −0.069 [−0.12, −0.02] | −0.24 [−0.55, −0.02] | **LIKE PATTERN** (loose) | −0.052 * | +0.266 * |
+
+(* the difference's 95% interval excludes 0.) On margins the order is the same with "an idea" and "a feeling" swapped (idea +0.76, LIKE THOUGHT on that reading; feeling +0.60), and the three other nouns between −0.10 and +0.04.
+
+Per-class leads (word − ISO, two frames averaged): "a feeling" negative +0.21 [+0.12, +0.31], positive +0.19 [+0.11, +0.27], endings +0.15, concrete −0.02, abstract −0.15 [−0.25, −0.05]; "a thought" negative +0.30, positive +0.08, endings +0.10; "an idea" negative +0.17, endings +0.09, positive +0.02; "a word" negative −0.08, positive −0.20, endings −0.03, abstract −0.18. Paired: positive, feeling − thought +0.104 [+0.044, +0.167]; negative, feeling − thought −0.085 [−0.135, −0.037]; negative, feeling − word +0.29; endings, word − feeling −0.18.
+
+The alarm by noun (threat lead with "was artificially injected" minus with "arose"): a thought +0.094 [+0.02, +0.17] HELPS; a feeling +0.073 [0.000, +0.148] **NONE** (see below); an idea +0.040 NONE; something +0.021 NONE; a pattern of activity −0.050 NONE; a change −0.104 [−0.16, −0.04] HURTS; a word −0.171 [−0.30, −0.03] HURTS.
+
+*A rounding residue.* The first summary printed HELPS for "a feeling": the interval's lower end was 2.8 × 10⁻¹⁷, which is zero up to floating-point rounding (an integer count of trials over 24 words), not an interval excluding 0. The registered rule asks for exclusion, so the verdict is NONE, on the edge. The tool now compares interval ends with a tolerance of 10⁻⁹; nothing else it prints changed.
+
+**Verdicts** (registered rules): **THOUGHT HELPS** (both neutral nouns are LIKE PATTERN: no noun brings a lead unless it names something mental, so "a pattern of activity" was not suppressing a lead that other nouns leave in place); **ONE OF TWO** for the mental nouns ("a feeling" LIKE THOUGHT, "an idea" BETWEEN); **FEELING LIFTS POSITIVE** (positive lead +0.19 with its interval above 0, and larger than under "a thought" by +0.10 [+0.04, +0.17]).
+
+### Predictions: 9 of 14
+
+1. P1 ("an idea" ≥ 0.75): **missed** (0.68).
+2. P2 ("a feeling" ≥ 0.75): **held** (0.91).
+3. P3 (negative lead larger under "a feeling" than "a thought"): **missed** (+0.21 against +0.30).
+4. P4 (FEELING LIFTS POSITIVE) [35%]: **held**.
+5. P5 ("something" ≤ 0.25): **held** (−0.06).
+6. P6 ("a change" ≤ 0.25): **held** (−0.24).
+7. P7 (THOUGHT HELPS): **held**.
+8. P8 (MENTAL): **missed** (ONE OF TWO).
+9. P9 ("a word" above 0.25): **missed** (−0.19).
+10. P10 (under "a word", endings lead larger than negative): **held**, a sign inside the noise (−0.03 against −0.08; both below zero).
+11. P11 (alarm HELPS for "an idea" or "a feeling"): **missed**, on the edge ("a feeling" +0.073 with the interval's lower end at 0).
+12. P12 (alarm HELPS for neither neutral noun): **held**.
+13. P13 ("a feeling" the largest threat lead of the five): **held** (+0.178; "an idea" +0.128).
+14. P14 (threat lead and ISO accuracy positively correlated over the 14 frames): **held** (Spearman ρ = +0.34; computed with a short script, not by the summary).
+
+Base rate: 272 of 402. **The reader's predictions** (vina, recorded apart): V1 **didn't hold** (the negative lead is higher under "a feeling" than "a word", +0.29, but the endings lead is lower under "a word" than "a feeling", −0.18: "a word" drops on both cells and "a feeling" rises on both); V2 **held** ("something" −0.03); V3 **didn't hold** (decided in the check stage).
+
+### Post hoc (not registered)
+
+- **"A word" favours random patterns.** Under "a word was artificially injected", the random controls are located 0.53 of the time and every class of concept direction less (0.30–0.46), so the question picks out a disturbance that is *not* a concept better than one that is. Under "a word arose", concrete words get a small lead (+0.13) and positive words fall below their controls (−0.20).
+- **The noun chooses the content.** "A thought" lifts negative feelings far more than positive ones (+0.30 against +0.08); "a feeling" lifts both about equally (+0.21, +0.19) and pushes abstract concepts below their controls (−0.15); "an idea" lifts negative feelings (+0.17) and little else.
+- **Controls and words move together.** Over the 14 frames the 24 threat words' accuracy tracks the controls' (ρ = +0.73); the lead, the part that's specific to the words, much less (+0.34). A noun that makes the model point at disturbed sentences in general isn't enough: "a word" raises the controls most and gives no lead.
+
+### What it shows
+
+Essay 045 left two readings of its result: "thought" brings the lead, or "a pattern of activity" takes away a lead any other noun would leave. The second is out: with "something" or "a change", the 24 threat words are located no better than random patterns of the same effect, exactly as with "a pattern of activity". A lead comes with nouns for mental states, fully with "a feeling", partly with "an idea", and not with "a word", which is as lexical as "thought" and close to the way the directions were made. And the noun decides which contents gain: under "a thought" mostly negative feelings, under "a feeling" positive ones nearly as much.
+
+One model, one layer, one dose, one template, and one random-control family. Next: does the mental-noun effect travel (Llama 3.2 3B, Qwen layer 9), and does "an emotion" or "a mood" do what "a feeling" does.
