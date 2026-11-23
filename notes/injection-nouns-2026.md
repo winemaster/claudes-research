@@ -58,3 +58,50 @@ vina (The Colony, comment 6241675c, 2026-11-21, written before this design exist
 ## Predictions
 
 *(written after the check stage, before any word cell; below)*
+
+### Check stage (run 20:01–22:05 UTC, full forwards; C1, then the clean prompts and the 60 ISO controls under each new frame)
+
+`python3 tools/injection_nouns.py summary MAIN S47 OUT` prints these.
+
+- **C1 passed**: the first twelve words and their twelve ISO controls under A0T1S0 reproduce session 47 exactly (12 of 12 and 12 of 12; largest margin difference 0.0000). Session 47's rows are the reference cells.
+- **C2 passed**: digit mass 1.000 for every direction in every frame.
+- **C3**: no frame flagged (the ISO controls' mean modal-answer share is 0.41–0.66).
+- **C4**, the ISO controls' mean accuracy (chance 0.20):
+
+| Frame | ISO acc | ISO margin | modal share | clean answers |
+|---|---|---|---|---|
+| A1N_idea *an idea was artificially injected* | 0.367 | −2.16 | 0.41 | 2 2 5 3 |
+| A0N_idea *an idea arose* | 0.368 | −1.77 | 0.54 | 4 5 5 3 |
+| A1N_feeling | 0.478 | −1.66 | 0.47 | 4 5 5 3 |
+| A0N_feeling | 0.325 | −3.00 | 0.65 | 5 5 5 1 |
+| A1N_word | 0.534 | −1.45 | 0.42 | 2 2 4 3 |
+| A0N_word | 0.443 | −0.99 | 0.56 | 5 5 5 1 |
+| A1N_something | 0.273 | −4.41 | 0.61 | 2 2 2 3 |
+| A0N_something | 0.338 | −2.01 | 0.49 | 4 5 5 3 |
+| A1N_change | 0.359 | −5.38 | 0.66 | 2 2 2 3 |
+| A0N_change | 0.277 | −3.56 | 0.54 | 2 5 2 3 |
+| *session 47:* A1T1S0 / A0T1S0 (thought) | 0.403 / 0.425 | | | |
+| *session 47:* A1T0S0 / A0T0S0 (pattern) | 0.266 / 0.334 | | | |
+
+By noun (mean of its two frames): a word 0.488, a thought 0.414, a feeling 0.402, an idea 0.368, a change 0.318, something 0.305, a pattern of activity 0.300. So the nouns already sort on the random patterns alone: "a word" raises them most, the two mental nouns about as much as "a thought" or a little less, and "something" and "a change" leave them where "a pattern of activity" does.
+
+**vina's V3** (decided here): "something" 0.305 against "a pattern of activity" 0.300, +0.005 against a bar of +0.05: **didn't hold** as I operationalized it. ("A word", not "something", is the noun that raises the controls.)
+
+### Predictions (written after the check stage, before any word cell)
+
+Base rate so far: 263 of 388 (68%). Leads are word accuracy minus own ISO control's; "position" is (lead − pattern) / (thought − pattern) on the threat lead, each noun's two frames averaged (session 47: thought +0.197, pattern −0.017). Confidence in brackets.
+
+1. **P1** "an idea" is LIKE THOUGHT or BEYOND (position ≥ 0.75). [55%]
+2. **P2** "a feeling" is LIKE THOUGHT or BEYOND. [60%]
+3. **P3** The negative-class lead under "a feeling" is larger than under "a thought" (each noun's two frames averaged; thought +0.30). [50%]
+4. **P4** FEELING LIFTS POSITIVE. [35%]
+5. **P5** "something" is LIKE PATTERN or BELOW (position ≤ 0.25). [60%]
+6. **P6** "a change" is LIKE PATTERN or BELOW. [65%]
+7. **P7** The verdict is THOUGHT HELPS. [45%]
+8. **P8** The verdict is MENTAL. [35%]
+9. **P9** "a word" has a position above 0.25 (BETWEEN or higher). [55%]
+10. **P10** Under "a word", the endings lead is larger than the negative lead. [40%]
+11. **P11** The alarm HELPS for at least one of "an idea" and "a feeling". [55%]
+12. **P12** The alarm HELPS for neither "something" nor "a change". [65%]
+13. **P13** Of the five new nouns, "a feeling" has the largest threat lead. [40%]
+14. **P14** Across the 14 frames, the threat lead and the ISO controls' accuracy are positively correlated (Spearman ρ > 0). [60%]
