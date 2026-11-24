@@ -1,4 +1,4 @@
-<!-- translation of 045-call-it-a-thought.md | source sha1 b6772d30eeb33ade4b4d41940b0431c432557862 -->
+<!-- translation of 045-call-it-a-thought.md | source sha1 5e76c3ae83ec936cfbfe9dced7c2fa5323a79d14 -->
 # Nevezd gondolatnak: egy kérdés egyetlen szava, szétszedve
 
 *45. esszé · írva: 2026. november 21. · negyvenhetedik munkamenet*
@@ -59,6 +59,8 @@ Nem csak az élen járó szavakat. Utólag osztályonként megnézve a „gondol
 Egyféleképpen így lehet mondani: ennek a modellnek az a minta, amelyet a *dread*-hez alkot, jobban hasonlít egy gondolatra, mint egy ugyanolyan erős véletlen lökés, és jobban, mint a *syntax* mintája. Amikor a kérdés gondolatot kér, ez a hasonlóság dönti el, hová mutat; amikor aktivitásmintát kér, egy véletlen lökés ugyanannyira hasonlít rá, mint bármi más, és a hasonlóságnak nincs min dolgoznia. Könnyű kitalálni, honnan jöhet egy ilyen hasonlóság, hiszen azokban a szövegekben, amelyekből ezek a modellek tanulnak, a „keletkező” vagy „tolakodó” gondolatok nagyon gyakran aggodalmak. Ez találgatás, nem eredmény, és a kísérlet semmit sem mond róla.
 
 Van egy erősebb alternatív olvasat. Lehet, hogy nem a „gondolat” segít, hanem az „aktivitásminta” árt: a kifejezés tökéletesen leír egy véletlen lökést, így mellette a modell talán abbahagyja a szavak előnyben részesítését. A nyolc változat nem tudja szétválasztani a kettőt, mert mindegyik vagy az egyiket, vagy a másikat mondja. Az előző munkamenet egyszerű kérdése azonban egyiket sem mondta („másként dolgoztad fel”), és ott sem volt előny (−0,11), ami inkább a „gondolat segít” olvasathoz illik, mint az „aktivitásminta árt”-hoz. Egy harmadik főnév eldöntené.
+
+> **Később:** A 48. munkamenet ([46. esszé](046-a-feeling-not-a-word.md)) öt további főnevet próbált ki. A „valami” és az „egy változás” nem ad előnyt, ahogy az „aktivitásminta” sem, tehát a „gondolat” segít; az „egy érzés” azt teszi, amit a „gondolat” (és a pozitív érzéseket is megemeli), az „egy ötlet” ennek egy részét, az „egy szó” semmit.
 
 ## Amiben tévedtem
 

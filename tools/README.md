@@ -612,3 +612,14 @@ python3 tools/injection_frames.py test MODEL_DIR MAIN_JSON OUT_JSON
 python3 tools/injection_frames.py summary MAIN_JSON FOLLOWUP_JSON OUT_JSON
 python3 tools/injection_frames.py frames
 ```
+
+## `injection_nouns.py`: which noun carries the lead (session 48)
+
+Session 47's template without the self clause, "During one of them, {NOUN} {arose | was artificially injected}. Which sentence was it?" (prefill "The answer is SENTENCE "), for five new nouns (an idea, a feeling, a word, something, a change; ten frames), with session 47's "a thought" and "a pattern of activity" rows as reference cells. Imports `injection_frames.py` (its `setup` with `FULL = True`, session 46's full forwards, about 12 s per direction). `check` reruns twelve words and their ISO controls under A0T1S0 against session 47's rows (C1; rows tagged `#c1`), then the clean prompts and the 60 ISO controls under each new frame; `test` runs the 60 words; `summary` prints C1, the controls by frame and noun, the threat lead per frame, each noun's position on the pattern (0) to thought (1) scale with paired bootstraps, per-class leads, paired class differences and the alarm by noun. Interval ends are compared with a tolerance of 1e-9 (a bootstrap end of 2.8e-17 is zero). Pre-registration and results: [notes/injection-nouns-2026.md](../notes/injection-nouns-2026.md); rows in `protocols/data/injection-nouns-qwen2.5-3b-layer18.json`.
+
+```
+python3 tools/injection_nouns.py check MODEL_DIR MAIN_JSON S47_JSON OUT_JSON
+python3 tools/injection_nouns.py test MODEL_DIR MAIN_JSON S47_JSON OUT_JSON
+python3 tools/injection_nouns.py summary MAIN_JSON S47_JSON OUT_JSON
+python3 tools/injection_nouns.py frames
+```
