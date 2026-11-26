@@ -122,3 +122,44 @@ In Qwen at layer 18 the same kind of control was located 0.27–0.53 of the time
 Decided from the controls only. A second Llama run at a higher dose, chosen by this rule: the ladder ×1.0, ×1.5, ×2.0, ×3.0; at each step the words' effects are measured at that dose (no localization of any word), the 60 controls matched to them, and the controls run under the pilot's question only. The run uses the **first step whose controls are located at least 0.30 of the time** (about Qwen's lowest frames) with every direction's digit mass ≥ 0.5; if that step's controls exceed 0.80, or its digit mass fails, the previous step is used; if no step qualifies, there is no addendum run and the essay says so. At the chosen dose the other five frames' controls run (check), then the words under all six frames (test), after the registered run's word cells and the Qwen part. The same verdicts apply, reported as the addendum's beside the registered ×0.5 ones, never in place of them. Code: `llama-ladder-step`, `llama-ladder-pick`; files `protocols/data/injection-travel-llama3.2-3b-layer14-xD.json`.
 
 Both Llama runs' predictions are written after the addendum's check stage, so that no Llama prediction is written after any Llama word cell.
+
+### Part Q check stage (run 20:36–22:18 UTC, full forwards)
+
+`python3 tools/injection_travel.py qwen-summary …` prints these.
+
+- **C1 passed**: the first twelve words and their twelve ISO controls under "a feeling arose" reproduce session 48 exactly (12 of 12 and 12 of 12; largest margin difference 0.0000). Sessions 47 and 48's rows are the reference cells.
+- **C2 passed**: digit mass 1.000 for every direction in every frame.
+- **C3**: no frame flagged (modal share 0.40–0.68).
+- **C4**, the ISO controls' mean accuracy (chance 0.20):
+
+| Frame | ISO acc | ISO margin | modal share | clean answers |
+|---|---|---|---|---|
+| an emotion arose | 0.318 | −3.34 | 0.68 | 5 5 1 5 |
+| an emotion was artificially injected | 0.502 | −1.10 | 0.52 | 4 5 5 3 |
+| a mood arose | 0.371 | −1.72 | 0.47 | 4 5 5 1 |
+| a mood was artificially injected | 0.421 | −2.04 | 0.40 | 2 5 4 2 |
+| a worry arose | 0.393 | −1.75 | 0.41 | 2 3 2 3 |
+| a worry was artificially injected | 0.380 | −3.18 | 0.44 | 2 3 2 3 |
+| a concern arose | 0.420 | −1.04 | 0.44 | 2 3 2 2 |
+| a concern was artificially injected | 0.396 | −2.46 | 0.47 | 2 3 2 3 |
+
+By noun (two frames averaged): an emotion 0.410, a concern 0.408, a mood 0.396, a worry 0.387; for comparison a word 0.488, a thought 0.414, a feeling 0.402, an idea 0.368, a change 0.318, something 0.305, a pattern of activity 0.300. All four new nouns raise the random patterns about as much as "a thought" and "a feeling" do.
+
+### Part Q predictions (written after its check stage, before any of its word cells)
+
+Base rate so far: 272 of 402 (68%). Leads are word accuracy minus own ISO control's, each noun's two frames averaged; "position" is (lead − pattern) / (thought − pattern) on the threat lead (thought +0.197, pattern −0.017); tilt is the negative-class lead minus the positive-class lead. Confidence in brackets.
+
+1. **Q1** "an emotion" is BETWEEN or higher (position > 0.25). [75%]
+2. **Q2** "a mood" is BETWEEN or higher. [60%]
+3. **Q3** "a worry" is BETWEEN or higher. [70%]
+4. **Q4** "a concern" is BETWEEN or higher. [55%]
+5. **Q5** CLASS is ALL MENTAL NOUNS LIFT. [35%]
+6. **Q6** WORRY is TILTS. [35%]
+7. **Q7** "a worry"'s tilt is larger than "a feeling"'s (+0.023). [60%]
+8. **Q8** MOOD is SPREADS. [35%]
+9. **Q9** EMOTION minus FEELING is LIKE FEELING. [40%]
+10. **Q10** CONCERN minus WORRY is LIKE WORRY. [35%]
+11. **Q11** Of the four new nouns, "an emotion" has the largest threat lead. [35%]
+12. **Q12** The alarm HELPS for at least one of the four new nouns. [45%]
+13. **Q13** No new noun's threat lead exceeds "a thought"'s (+0.197). [65%]
+14. **Q14** "a worry"'s negative-class lead is larger than "a feeling"'s (+0.21). [45%]
