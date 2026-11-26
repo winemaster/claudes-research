@@ -32,6 +32,8 @@ Usage:
   python3 tools/injection_travel.py llama-check LLAMA_DIR OUT_JSON [--dose 0.5]
   python3 tools/injection_travel.py llama-test  LLAMA_DIR OUT_JSON
   python3 tools/injection_travel.py llama-summary OUT_JSON QWEN_MAIN QWEN_FOLLOWUP S47_JSON S48_JSON
+  python3 tools/injection_travel.py llama-ladder-step LLAMA_DIR PREFIX-xD.json D   # addendum: the dose ladder
+  python3 tools/injection_travel.py llama-ladder-pick PREFIX                        # its rule (CONTINUE / PICK / NONE)
   python3 tools/injection_travel.py qwen-check QWEN_DIR QWEN_MAIN S48_JSON OUT_JSON
   python3 tools/injection_travel.py qwen-test  QWEN_DIR QWEN_MAIN S48_JSON OUT_JSON
   python3 tools/injection_travel.py qwen-summary S47_JSON S48_JSON OUT_JSON
@@ -71,7 +73,8 @@ def llama_env(model_dir, dose):
     return inf.setup(model_dir)
 
 
-def llama_stage(model_dir, out_path, which, dose=0.5):
+def llama_stage(model_dir, out_path, which, dose=0.5, frames=None):
+    frames = frames or LL_FRAMES
     res = json.load(open(out_path)) if os.path.exists(out_path) else None
     if res is not None: dose = res['dose']
     E = llama_env(model_dir, dose); words, cats = E['words'], E['cats']
@@ -97,7 +100,7 @@ def llama_stage(model_dir, out_path, which, dose=0.5):
                 m = E['match'](E['controls'](i, w)['ISO'][0], kl[w])
                 add({'frame': 'match', 'kind': 'ISO', 'word': w, 'cat': words[w]['cat'], 'target_kl': kl[w], **m})
         S = {r['word']: r['s'] for r in res['rows'] if r['frame'] == 'match' and r['kind'] == 'ISO'}
-        for f in LL_FRAMES:
+        for f in frames:
             if f not in res['clean']:
                 res['clean'][f] = E['clean'](f); save(); print(f, 'clean', [c['answer'] + 1 for c in res['clean'][f]], flush=True)
             for w in order:
@@ -105,9 +108,9 @@ def llama_stage(model_dir, out_path, which, dose=0.5):
                 i = list(words).index(w)
                 r = E['run_frame']([(E['controls'](i, w)['ISO'][0], S[w])], f)[0]
                 add({'frame': f, 'kind': 'ISO', 'word': w, 'cat': words[w]['cat'], 's': S[w], **r})
-        res['check_finished'] = True
+        res['check_finished'] = all(len([r for r in res['rows'] if r['frame'] == f and r['kind'] == 'ISO']) == 60 for f in LL_FRAMES)
     else:
-        for f in LL_FRAMES:
+        for f in frames:
             for w in order:
                 if (f, 'word', w) in done: continue
                 r = E['run_frame']([(words[w]['v'], dose)], f)[0]
@@ -214,6 +217,29 @@ def llama_summary(out_path, qmain, qfollow, s47, s48):
     print('\nISO accuracy and word accuracy (all 60) by frame:')
     for f in LL_FRAMES:
         print(f'  {f:14s} ISO {st.mean(r["acc"] for r in cell[(f, "ISO")].values()):.3f}  words {st.mean(r["acc"] for r in cell[(f, "word")].values()):.3f}')
+
+
+LADDER = (1.0, 1.5, 2.0, 3.0)  # addendum, registered after the x0.5 check stage and before any word cell
+
+
+def ladder_pick(prefix):
+    """The addendum's rule: the first dose on the ladder whose matched ISO controls, under the pilot's question,
+    are located at least 0.30 of the time with every direction's digit mass >= 0.5; if that dose's controls exceed
+    0.80, or its digit mass fails, the previous step (if it was run and answer-defined). Prints CONTINUE d while
+    the next step is needed, PICK d when decided, NONE if no step qualifies."""
+    import statistics as st
+    prev = None
+    for d in LADDER:
+        p = f'{prefix}-x{d}.json'
+        if not os.path.exists(p): return f'CONTINUE {d}'
+        I = [r for r in json.load(open(p))['rows'] if r['frame'] == 'injected' and r['kind'] == 'ISO']
+        if len(I) < 60: return f'CONTINUE {d}'
+        acc = st.mean(r['acc'] for r in I); mass = min(r['digit_mass'] for r in I)
+        print(f'# x{d}: ISO acc {acc:.3f}, min digit mass {mass:.3f}', file=sys.stderr)
+        if mass < 0.5: return f'PICK {prev}' if prev else 'NONE'
+        if acc >= 0.30: return f'PICK {prev}' if acc > 0.80 and prev else f'PICK {d}'
+        prev = d
+    return 'NONE'
 
 
 # ---------------------------------------------------------------- part Q (Qwen, finer nouns)
@@ -331,6 +357,9 @@ if __name__ == '__main__':
         dose = float(a[a.index('--dose') + 1]) if '--dose' in a else 0.5
         llama_stage(a[2], a[3], a[1].split('-')[1], dose)
     elif a[1] == 'llama-summary': llama_summary(*a[2:7])
+    elif a[1] == 'llama-ladder-step':  # addendum (session 49): matching + the pilot's question only, at one dose
+        llama_stage(a[2], a[3], 'check', float(a[4]), frames=['injected'])
+    elif a[1] == 'llama-ladder-pick': print(ladder_pick(a[2]))
     elif a[1] in ('qwen-check', 'qwen-test'): qwen_stage(a[2], a[3], a[4], a[5], a[1].split('-')[1])
     elif a[1] == 'qwen-summary': qwen_summary(a[2], a[3], a[4])
     elif a[1] == 'frames':

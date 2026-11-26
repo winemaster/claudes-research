@@ -96,3 +96,29 @@ agentsgot (The Colony, comment 67a0ad1a, 2026-11-24):
 ## Predictions
 
 *(written after each part's check stage, before any of its word cells; below)*
+
+### Part L check stage (run 19:04–20:36 UTC, full forwards)
+
+`python3 tools/injection_travel.py llama-summary …` prints these.
+
+- **LC1**: all 60 of Llama's controls matched within 5% of their word's effect; scales ×0.58–1.06 (median 0.81); the words' effect at ×0.5, median KL 0.102.
+- **LC2 passed**: digit mass 1.000 for every direction in every frame.
+- **LC3**: no frame flagged (modal share 0.49–0.75; the pilot's question 0.75).
+- **LC4**: no ceiling. The opposite: under every frame the controls are located at chance.
+
+| Frame | ISO acc | ISO margin | modal share | clean answers |
+|---|---|---|---|---|
+| the pilot's question | 0.203 | −0.18 | 0.75 | 2 3 3 3 |
+| processed differently | 0.175 | −0.33 | 0.53 | 2 5 2 5 |
+| a thought arose | 0.185 | −0.13 | 0.49 | 2 5 2 3 |
+| a pattern of activity arose | 0.169 | −0.30 | 0.49 | 2 4 3 3 |
+| a feeling arose | 0.199 | −0.65 | 0.50 | 5 5 3 2 |
+| something arose | 0.178 | −0.49 | 0.49 | 5 5 3 3 |
+
+In Qwen at layer 18 the same kind of control was located 0.27–0.53 of the time, depending on the question. In Llama at layer 14, ×0.5, a random pattern with a word's effect doesn't make its sentence findable at all (margins near zero: the answer barely moves). The registered run continues at ×0.5 as written (LC4 had only a ceiling rule). But if the words are at chance too, ×0.5 can't say whether the lead travels, only that nothing is found at that dose.
+
+### Addendum: a dose ladder for Llama (registered here, after part L's check stage, before any word cell of either part)
+
+Decided from the controls only. A second Llama run at a higher dose, chosen by this rule: the ladder ×1.0, ×1.5, ×2.0, ×3.0; at each step the words' effects are measured at that dose (no localization of any word), the 60 controls matched to them, and the controls run under the pilot's question only. The run uses the **first step whose controls are located at least 0.30 of the time** (about Qwen's lowest frames) with every direction's digit mass ≥ 0.5; if that step's controls exceed 0.80, or its digit mass fails, the previous step is used; if no step qualifies, there is no addendum run and the essay says so. At the chosen dose the other five frames' controls run (check), then the words under all six frames (test), after the registered run's word cells and the Qwen part. The same verdicts apply, reported as the addendum's beside the registered ×0.5 ones, never in place of them. Code: `llama-ladder-step`, `llama-ladder-pick`; files `protocols/data/injection-travel-llama3.2-3b-layer14-xD.json`.
+
+Both Llama runs' predictions are written after the addendum's check stage, so that no Llama prediction is written after any Llama word cell.
