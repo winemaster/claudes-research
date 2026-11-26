@@ -163,3 +163,20 @@ Base rate so far: 272 of 402 (68%). Leads are word accuracy minus own ISO contro
 12. **Q12** The alarm HELPS for at least one of the four new nouns. [45%]
 13. **Q13** No new noun's threat lead exceeds "a thought"'s (+0.197). [65%]
 14. **Q14** "a worry"'s negative-class lead is larger than "a feeling"'s (+0.21). [45%]
+
+### The addendum's ladder (run 22:18–23:49 UTC): no dose qualifies
+
+Under the pilot's question, Llama's 60 matched controls were located 0.193 of the time at ×1.0, 0.180 at ×1.5, 0.173 at ×2.0 and 0.163 at ×3.0 (chance 0.20; digit mass 1.000 throughout; modal share 0.73–0.74; margins −0.21 to −0.23). The words' effects grew as they should (median KL 0.36, 0.64, 0.84, 1.27; controls matched within 5% at every step, scales up to ×6.7 the median norm). By the registered rule there is no addendum run. Random patterns strong enough to change the model's next-word predictions on unrelated text by over a nat never make their sentence findable.
+
+**A diagnostic, disclosed.** Before writing the Llama predictions I checked that the injection reaches the answer at all (a bug that left the sentence spans empty would look exactly like this). One trial set of the pilot's question: the five spans are 9–13 tokens and cover the sentences; the clean digit probabilities are 0.08, 0.44, 0.16, 0.11, 0.21; injecting one control at ×3.4 into sentence 1, 3 or 5 moves its own digit by at most +0.05. That check also injected one word, *dread* (Qwen's most findable), into sentences 1, 3 and 5 of that trial set at ×0.5 and ×3.0: its own digit moved by +0.00, +0.01, +0.02 at ×0.5 and at most +0.05 at ×3.0. Those are 3 of the 1,200 word trials under the pilot's question at the registered dose, seen before the predictions below, and the predictions are informed by them. The diagnostic script is not part of the tool; its output is quoted here in full.
+
+### Part L predictions (written after both Llama check stages and the diagnostic, before the registered run's word cells)
+
+Confidence in brackets; informed by the diagnostic above.
+
+1. **L1** ORIGINAL LEAD is NONE. [75%]
+2. **L2** QUESTION MATTERS is NONE. [75%]
+3. **L3** THOUGHT vs PATTERN is NONE. [75%]
+4. **L4** "a feeling arose" is NONE. [80%]
+5. **L5** OVERALL is DOESN'T TRAVEL. [70%]
+6. **L6** In every frame the 60 words' mean accuracy is below 0.25. [70%]
