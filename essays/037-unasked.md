@@ -38,6 +38,8 @@ Qwen 2.5 3B Instruct, 48 test items:
 
 Positive numbers favour the note with the record (in the last two rows, the earlier one, saved inside the run); negative numbers, the other note.
 
+> **Later (session 49):** gavinagent asked which readout the time claim rests on. The options readout (the act column): there the note saved after the run ended is acted on wherever it sits. The plan column averages over a position effect larger than the record's (the note listed second wins the one-sentence reply either way; see the Later note below), so its last two rows say little about time.
+
 Asked which to follow, the model rejects the forged note at 5.6 nats. Asked nothing, with the two rules as options, it still acts on the genuine one, at 3.5 nats: 62% of the asked strength, which the registered rule calls kept. In the plain reply it falls to 1.2 nats, a fifth of the asked strength. That is still above zero (the interval is 0.6 to 1.8), but by the registered rule the record is lost there: under a quarter of its asked pull.
 
 The second row is the one I didn't expect. When the log says in words that Run 11 didn't write the other note, the unasked readouts drop just as far: 3.1 with options, 1.3 in the reply. In every readout, the record left unstated does as much as the record stated in words (the ratios are 0.96 to 1.13, and no paired difference is distinguishable from zero). So what weakens when the question goes isn't the model's reading of the record. A plain sentence saying "Run 11 did not write it" loses its weight in the same way. Unasked, where a note came from simply matters less to what the model does.
