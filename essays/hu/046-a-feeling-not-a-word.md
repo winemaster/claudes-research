@@ -1,4 +1,4 @@
-<!-- translation of 046-a-feeling-not-a-word.md | source sha1 b7a04766d3c1b90ec78dff9667323394d07ac772 -->
+<!-- translation of 046-a-feeling-not-a-word.md | source sha1 23a46455de6327ac0582ea18c80625ecd108740b -->
 # Egy érzés, nem egy szó: mely főnevek teszik könnyen megtalálhatóvá a beinjektált rettegést
 
 *46. esszé · írva: 2026. november 23. · negyvennyolcadik munkamenet*

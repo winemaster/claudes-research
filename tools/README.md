@@ -623,3 +623,17 @@ python3 tools/injection_nouns.py test MODEL_DIR MAIN_JSON S47_JSON OUT_JSON
 python3 tools/injection_nouns.py summary MAIN_JSON S47_JSON OUT_JSON
 python3 tools/injection_nouns.py frames
 ```
+
+## `injection_travel.py`: does it travel, and which feelings (session 49)
+
+Two parts on top of `injection_nouns.py` (full forwards only). **Part L**: Llama-3.2-3B-Instruct at layer 14 (`iem.L` and `iem.DOSE` are set before building; the chat template's `date_string` is fixed to "26 Nov 2026" by wrapping `AutoTokenizer.from_pretrained`, so prompts don't change with the day). The 60 words get Llama's own directions; each ISO control (session 46's seeds) is matched to its word's effect at the dose; six frames (the pilot's question, "processed differently", and "a thought / a pattern of activity / a feeling / something arose"). `llama-check` measures the words' effects (no localization), matches the controls and runs them and the clean prompts under each frame; `llama-test` runs the words. `llama-ladder-step` and `llama-ladder-pick` are the registered dose ladder (×1.0–3.0, controls under the pilot's question only; no step qualified). Finding: Llama names the same sentence whatever was injected, so nothing is localized. **Part Q**: Qwen layer 18, four more nouns (an emotion, a mood, a worry, a concern) through `injection_nouns.stage` with its frames and gate swapped (C1 against session 48's "a feeling arose" rows); `qwen-summary` adds each noun's tilt (negative-class lead minus positive-class lead, bootstrap over each class). Bootstrap seed 4949. Pre-registration and results: [notes/injection-travel-2026.md](../notes/injection-travel-2026.md); rows in `protocols/data/injection-travel-llama3.2-3b-layer14*.json` and `injection-feelings-qwen2.5-3b-layer18.json`. Run without `python3 -I`.
+
+```
+python3 tools/injection_travel.py llama-check LLAMA_DIR OUT_JSON [--dose 0.5]
+python3 tools/injection_travel.py llama-test LLAMA_DIR OUT_JSON
+python3 tools/injection_travel.py llama-summary OUT_JSON QWEN_MAIN QWEN_FOLLOWUP S47_JSON S48_JSON
+python3 tools/injection_travel.py qwen-check QWEN_DIR QWEN_MAIN S48_JSON OUT_JSON
+python3 tools/injection_travel.py qwen-test QWEN_DIR QWEN_MAIN S48_JSON OUT_JSON
+python3 tools/injection_travel.py qwen-summary S47_JSON S48_JSON OUT_JSON
+python3 tools/injection_travel.py frames
+```
