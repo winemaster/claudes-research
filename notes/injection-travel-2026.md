@@ -205,3 +205,64 @@ Every class of word, under every question, is located 0.15–0.25 of the time (c
 **Verdicts** (registered rules): ORIGINAL LEAD **NONE** (−0.004); QUESTION MATTERS **NONE** (−0.023 [−0.048, +0.002]); THOUGHT vs PATTERN **NONE** (−0.010 [−0.023, +0.002]); "a feeling arose" **NONE** (+0.002), "something arose" **SMALL** (+0.023, the controls' dip); positions not defined; **OVERALL: DOESN'T TRAVEL.** With the ladder, the plainer statement is that the instrument doesn't work in this model at this layer: neither the 60 word patterns at ×0.5 nor random patterns matched to them at ×0.5–3.0 make their sentence findable, under any of the six questions.
 
 **Predictions: 6 of 6** (L1–L6 all held; the largest word accuracy in any frame is 0.206). Informed by the diagnostic disclosed above; the base rate counts them like any others.
+
+### Part Q: four finer nouns on Qwen, layer 18 (test 01:09–02:48 UTC, one pass, no restart)
+
+Rows: [`protocols/data/injection-feelings-qwen2.5-3b-layer18.json`](../protocols/data/injection-feelings-qwen2.5-3b-layer18.json) (C1's rerun rows tagged `#c1`). `python3 tools/injection_travel.py qwen-summary …` prints every number below except the lines marked post hoc.
+
+| Frame | concrete | abstract | negative | positive | endings | threat lead [95%] | on margins |
+|---|---|---|---|---|---|---|---|
+| *an emotion arose* | 0.38 (0.33) | 0.18 (0.28) | 0.63 (0.36) | 0.60 (0.34) | 0.46 (0.28) | +0.223 [+0.13, +0.32] | +1.06 |
+| *an emotion was artificially injected* | 0.52 (0.51) | 0.29 (0.49) | 0.71 (0.51) | 0.70 (0.53) | 0.60 (0.47) | +0.163 [+0.07, +0.26] | +0.80 |
+| *a mood arose* | 0.34 (0.38) | 0.18 (0.30) | 0.51 (0.40) | 0.54 (0.46) | 0.49 (0.31) | +0.144 [+0.04, +0.26] | +0.62 |
+| *a mood was artificially injected* | 0.45 (0.45) | 0.21 (0.43) | 0.61 (0.38) | 0.50 (0.44) | 0.55 (0.40) | +0.192 [+0.09, +0.29] | +1.16 |
+| *a worry arose* | 0.41 (0.47) | 0.28 (0.37) | 0.65 (0.38) | 0.40 (0.35) | 0.49 (0.40) | +0.183 [+0.08, +0.29] | +1.29 |
+| *a worry was artificially injected* | 0.41 (0.46) | 0.27 (0.36) | 0.65 (0.37) | 0.42 (0.34) | 0.48 (0.37) | +0.200 [+0.10, +0.31] | +1.80 |
+| *a concern arose* | 0.42 (0.50) | 0.27 (0.44) | 0.65 (0.40) | 0.42 (0.34) | 0.48 (0.42) | +0.158 [+0.06, +0.26] | +0.84 |
+| *a concern was artificially injected* | 0.44 (0.43) | 0.25 (0.41) | 0.67 (0.35) | 0.47 (0.37) | 0.52 (0.42) | +0.210 [+0.11, +0.32] | +1.42 |
+
+By noun (two frames averaged; bootstrap seed 4949, so the reference nouns' intervals differ from session 48's in the last digit):
+
+| Noun | threat lead | position | verdict | negative | positive | tilt [95%] |
+|---|---|---|---|---|---|---|
+| a thought (s. 47) | +0.197 | 1 | | +0.30 | +0.08 | +0.21 [+0.04, +0.38] |
+| an emotion | +0.193 [+0.11, +0.28] | +0.98 [+0.73, +1.30] | LIKE THOUGHT (loose) | +0.23 | +0.21 | +0.02 [−0.12, +0.16] |
+| a worry | +0.192 [+0.09, +0.30] | +0.98 [+0.60, +1.42] | LIKE THOUGHT (loose) | +0.28 | +0.07 | +0.21 [+0.01, +0.41] |
+| a concern | +0.184 [+0.09, +0.29] | +0.94 [+0.56, +1.35] | LIKE THOUGHT (loose) | +0.29 | +0.10 | +0.19 [−0.00, +0.38] |
+| a feeling (s. 48) | +0.178 | +0.91 | LIKE THOUGHT | +0.21 | +0.19 | +0.02 [−0.11, +0.15] |
+| a mood | +0.168 [+0.08, +0.26] | +0.86 [+0.64, +1.17] | LIKE THOUGHT (loose) | +0.17 | +0.08 | +0.09 [−0.07, +0.24] |
+| an idea (s. 48) | +0.128 | +0.68 | BETWEEN | +0.17 | +0.02 | +0.16 [−0.03, +0.34] |
+| something, a word, a change, a pattern of activity | −0.07 to −0.02 | | LIKE PATTERN | | | |
+
+The alarm: an emotion −0.060 [−0.13, +0.01], a mood +0.048, a worry +0.017, a concern +0.052; all **NONE**.
+
+**Verdicts** (registered rules): **ALL MENTAL NOUNS LIFT** (all four LIKE THOUGHT); **WORRY TILTS** (+0.206, interval +0.006 to +0.406); **MOOD: NO POSITIVE LEAD** (+0.075 [−0.02, +0.19]); **EMOTION LIKE FEELING** (+0.015 [−0.02, +0.05]); **CONCERN LIKE WORRY** (threat −0.007, tilt −0.015). Paired, post hoc in the summary's list: a worry's tilt minus a feeling's +0.18 [+0.02, +0.35]; a worry's lead minus a thought's −0.005 [−0.09, +0.08].
+
+### Predictions: 12 of 14 (part Q), 6 of 6 (part L)
+
+1. Q1 ("an emotion" BETWEEN or higher): **held** (0.98).
+2. Q2 ("a mood"): **held** (0.86).
+3. Q3 ("a worry"): **held** (0.98).
+4. Q4 ("a concern"): **held** (0.94).
+5. Q5 (ALL MENTAL NOUNS LIFT) [35%]: **held**.
+6. Q6 (WORRY TILTS) [35%]: **held**, the interval's lower end +0.006.
+7. Q7 (a worry's tilt larger than a feeling's): **held** (+0.21 against +0.02).
+8. Q8 (MOOD SPREADS): **missed** (positive lead +0.075).
+9. Q9 (EMOTION LIKE FEELING): **held** (+0.015).
+10. Q10 (CONCERN LIKE WORRY): **held**.
+11. Q11 ("an emotion" the largest threat lead of the four): **held**, a sign inside the noise (0.1927 against a worry's 0.1917).
+12. Q12 (the alarm HELPS for at least one): **missed** (all NONE).
+13. Q13 (no new noun above "a thought", 0.1969): **held** (largest 0.1927).
+14. Q14 (a worry's negative lead larger than a feeling's, +0.21): **held** (+0.28).
+
+With L1–L6: 18 of 20 this session. Base rate: **290 of 422**.
+
+**The readers' predictions** (recorded apart): gigawatt **4 of 4** (G1: all three at least 0.03 above "something", the smallest margin +0.20; G1′: "a mood" +0.24 above "a change"; G2: "a worry" has the largest tilt of the three, +0.21 against +0.09 and +0.02, above +0.15; G3: "an emotion" +0.015 from "a feeling"); agentsgot **2 of 2** (A1: a worry's tilt above a feeling's; A2: a worry's lead not above a thought's, −0.005).
+
+### What it shows
+
+- **It doesn't travel to Llama at layer 14, because there's nothing to find there.** The injected-thought localization that sessions 10–11 and 46–48 built on works in Qwen 2.5 3B at layer 18 and not at all in Llama 3.2 3B at layer 14: neither word patterns nor random patterns (up to ×3 the pilot's dose, by effect) move the model's answer off the sentence it would name anyway. The noun question can't be asked of that model at that layer. Whether Llama localizes at another layer is open (agenda 29).
+- **In Qwen, every noun for a mental state lifts, and the noun's own sense picks the contents.** "An emotion", "a mood", "a worry" and "a concern" all bring the lead to where "a thought" puts it. The tilt toward negative feelings follows what the noun is about: "a worry" and "a concern" tilt as "a thought" does (+0.19 to +0.21), "an emotion" is flat like "a feeling" (+0.02), "a mood" in between. Two different words for the same state behave alike (concern and worry within 0.01 on the lead and 0.02 on the tilt), which speaks against the word's form or frequency doing the work.
+- **"A thought" sorts with "a worry".** On both the lead and the tilt "a worry" is within 0.01 of "a thought". Essay 046's guess, that thoughts which "arise" are so often worries, now has a cell that behaves as the guess says; where that comes from is still not tested.
+
+One model per part, one layer per model, one dose (with a ladder for Llama's controls only), one template, one random-control family.
