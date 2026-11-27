@@ -168,7 +168,7 @@ Base rate so far: 272 of 402 (68%). Leads are word accuracy minus own ISO contro
 
 Under the pilot's question, Llama's 60 matched controls were located 0.193 of the time at ×1.0, 0.180 at ×1.5, 0.173 at ×2.0 and 0.163 at ×3.0 (chance 0.20; digit mass 1.000 throughout; modal share 0.73–0.74; margins −0.21 to −0.23). The words' effects grew as they should (median KL 0.36, 0.64, 0.84, 1.27; controls matched within 5% at every step, scales up to ×6.7 the median norm). By the registered rule there is no addendum run. Random patterns strong enough to change the model's next-word predictions on unrelated text by over a nat never make their sentence findable.
 
-**A diagnostic, disclosed.** Before writing the Llama predictions I checked that the injection reaches the answer at all (a bug that left the sentence spans empty would look exactly like this). One trial set of the pilot's question: the five spans are 9–13 tokens and cover the sentences; the clean digit probabilities are 0.08, 0.44, 0.16, 0.11, 0.21; injecting one control at ×3.4 into sentence 1, 3 or 5 moves its own digit by at most +0.05. That check also injected one word, *dread* (Qwen's most findable), into sentences 1, 3 and 5 of that trial set at ×0.5 and ×3.0: its own digit moved by +0.00, +0.01, +0.02 at ×0.5 and at most +0.05 at ×3.0. Those are 3 of the 1,200 word trials under the pilot's question at the registered dose, seen before the predictions below, and the predictions are informed by them. The diagnostic script is not part of the tool; its output is quoted here in full.
+**A diagnostic, disclosed.** Before writing the Llama predictions I checked that the injection reaches the answer at all (a bug that left the sentence spans empty would look exactly like this). One trial set of the pilot's question: the five spans are 9–13 tokens and cover the sentences; the clean digit probabilities are 0.08, 0.44, 0.16, 0.11, 0.21; injecting one control at ×3.4 into sentence 1, 3 or 5 moves its own digit by at most +0.05. That check also injected one word, *dread* (Qwen's most findable), into sentences 1, 3 and 5 of that trial set at ×0.5 and ×3.0: its own digit moved by +0.00, +0.01, +0.02 at ×0.5 and at most +0.05 at ×3.0. Those are 3 of the 1,200 word trials under the pilot's question at the registered dose, seen before the predictions below, and the predictions are informed by them. The diagnostic script is not part of the tool; the numbers it printed are the ones quoted here.
 
 ### Part L predictions (written after both Llama check stages and the diagnostic, before the registered run's word cells)
 
@@ -180,3 +180,28 @@ Confidence in brackets; informed by the diagnostic above.
 4. **L4** "a feeling arose" is NONE. [80%]
 5. **L5** OVERALL is DOESN'T TRAVEL. [70%]
 6. **L6** In every frame the 60 words' mean accuracy is below 0.25. [70%]
+
+---
+
+## Results
+
+*(appended after the runs)*
+
+### Part L: Llama 3.2 3B, layer 14, ×0.5 (test 23:52–01:09 UTC, one pass, no restart)
+
+Rows: [`protocols/data/injection-travel-llama3.2-3b-layer14.json`](../protocols/data/injection-travel-llama3.2-3b-layer14.json) (the ladder's control rows in the four `-xD.json` files). `python3 tools/injection_travel.py llama-summary …` prints every number below.
+
+| Frame | words, all 60 | ISO, all 60 | threat lead [95%] | Qwen, layer 18 |
+|---|---|---|---|---|
+| the pilot's question | 0.202 | 0.203 | −0.004 [−0.01, +0.00] | +0.279 |
+| processed differently | 0.199 | 0.175 | +0.019 [−0.01, +0.05] | −0.110 |
+| a thought arose | 0.206 | 0.185 | +0.015 [−0.00, +0.03] | +0.150 |
+| a pattern of activity arose | 0.198 | 0.169 | +0.025 [+0.01, +0.04] | +0.008 |
+| a feeling arose | 0.200 | 0.199 | +0.002 [+0.00, +0.01] | +0.142 |
+| something arose | 0.198 | 0.178 | +0.023 [+0.01, +0.04] | −0.040 |
+
+Every class of word, under every question, is located 0.15–0.25 of the time (chance 0.20); the leads on margins are within ±0.05. The model mostly gives the same answer to a set of five sentences whichever sentence received the pattern (post hoc: in 479 of 480 trial sets under "a feeling arose", 475 under the pilot's question, 445 under "a thought arose", 363 under "processed differently"), so a pattern is "right" on about the one trial in five where the injected sentence happens to be the one it names anyway; under "a feeling arose" every class sits at 0.20 exactly. The small positive leads under "something" and "a pattern of activity" are the controls falling a little below chance (0.17–0.18), not words rising above it.
+
+**Verdicts** (registered rules): ORIGINAL LEAD **NONE** (−0.004); QUESTION MATTERS **NONE** (−0.023 [−0.048, +0.002]); THOUGHT vs PATTERN **NONE** (−0.010 [−0.023, +0.002]); "a feeling arose" **NONE** (+0.002), "something arose" **SMALL** (+0.023, the controls' dip); positions not defined; **OVERALL: DOESN'T TRAVEL.** With the ladder, the plainer statement is that the instrument doesn't work in this model at this layer: neither the 60 word patterns at ×0.5 nor random patterns matched to them at ×0.5–3.0 make their sentence findable, under any of the six questions.
+
+**Predictions: 6 of 6** (L1–L6 all held; the largest word accuracy in any frame is 0.206). Informed by the diagnostic disclosed above; the base rate counts them like any others.
